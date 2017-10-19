@@ -10,5 +10,6 @@ public class AlphaItem extends SceneObject {
 	public AlphaItem(int x, int y, int width, int height) {
 		super(x, y, width, height);
 		this.item_color = color_list[rand_gen.nextInt(color_list.length)];
+		this.depth = rand_gen.nextInt(2);
 	}
 }

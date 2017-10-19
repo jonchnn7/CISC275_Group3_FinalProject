@@ -19,6 +19,7 @@ public abstract class SceneObject implements Comparable<SceneObject> {
 	protected int item_y;
 	protected int item_width;
 	protected int item_height;
+	protected int item_type;
 	protected int depth;
 	protected Color item_color;
 	
@@ -33,7 +34,7 @@ public abstract class SceneObject implements Comparable<SceneObject> {
 	
 	
 	public int compareTo(SceneObject other_item) {
-		return this.depth - other_item.depth;
+		return other_item.getDepth() - this.depth;
 	}
 	
 	
@@ -54,5 +55,9 @@ public abstract class SceneObject implements Comparable<SceneObject> {
 			return true;
 		
 		return false;
+	}
+	
+	protected int getDepth() {
+		return this.depth;
 	}
 }

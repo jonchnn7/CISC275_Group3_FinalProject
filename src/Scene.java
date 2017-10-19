@@ -1,7 +1,9 @@
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 
 public abstract class Scene {
 	/*	CISC 275 - Group 3 - Estuary Game
@@ -60,9 +62,14 @@ public abstract class Scene {
 	}
 
 	public boolean processClick(int click_x, int click_y) {
+		Collections.sort((ArrayList<SceneObject>)scene_items);
+		
 		for (SceneObject item : this.scene_items) {
-			if ( item.itemClicked(click_x, click_y) )
+			if ( item.itemClicked(click_x, click_y) ) {
+				
+					scene_items.remove(item);  // There must be a better way!
 					return true;
+			}
 		}
 		
 		return false;
