@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.geom.Ellipse2D;
 
 public abstract class SceneObject implements Comparable<SceneObject> {
 	/*	CISC 275 - Group 3 - Estuary Game
@@ -23,14 +24,15 @@ public abstract class SceneObject implements Comparable<SceneObject> {
 	protected int depth;
 	protected String name;
 	protected Color item_color;
+	protected Ellipse2D.Double shape;
 	
 	
 	public SceneObject(int x, int y, int width, int height) {
 		this.item_x = x;
 		this.item_y = y;
-		
 		this.item_width = width;
 		this.item_height = height;
+		this.shape = new Ellipse2D.Double(x, y, width, height);
 	}
 	
 	@Override 
@@ -48,14 +50,7 @@ public abstract class SceneObject implements Comparable<SceneObject> {
 	
 	
 	public boolean itemClicked(int click_x, int click_y) {
-		double x_squared = Math.pow( (Math.max(this.item_x, click_x) - Math.min(this.item_x, click_x)), 2);
-		double y_squared = Math.pow( (Math.max(this.item_y, click_y) - Math.min(this.item_y, click_y)), 2);
-		double max_radius = Math.pow( (this.item_width/2 + this.item_height/2), 2);
-		
-		if (x_squared + y_squared <= max_radius)
-			return true;
-		
-		return false;
+		return shape.contains(click_x, click_y);
 	}
 	
 	protected int getDepth() {
