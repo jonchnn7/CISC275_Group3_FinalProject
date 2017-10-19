@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Iterator;
 
 public abstract class Scene {
 	/*	CISC 275 - Group 3 - Estuary Game
@@ -21,7 +22,7 @@ public abstract class Scene {
 	protected boolean visible;
 	protected String scene_name;
 	protected Color scene_background;
-	protected Collection<SceneObject> scene_items;
+	protected ArrayList<SceneObject> scene_items;
 	
 	
 	public Scene(int width, int height, String name) {
@@ -34,9 +35,11 @@ public abstract class Scene {
         g.setColor(this.scene_background);
         g.fillRect(0, 0, scene_width, scene_height);
         
+        Collections.reverse(scene_items);
         for (SceneObject item : scene_items) {
         	item.drawItem(g);
         }
+        Collections.sort(scene_items);
         
         g.setColor(Color.white);
 		g.setFont(new Font("Sans Serif", Font.BOLD, 42));
@@ -62,16 +65,16 @@ public abstract class Scene {
 	}
 
 	public boolean processClick(int click_x, int click_y) {
-		Collections.sort((ArrayList<SceneObject>)scene_items);
+		Collections.sort(scene_items);
+		System.out.println(scene_items);
 		
-		for (SceneObject item : this.scene_items) {
-			if ( item.itemClicked(click_x, click_y) ) {
-				
-					scene_items.remove(item);  // There must be a better way!
-					return true;
+		for (Iterator<SceneObject> iterator = scene_items.iterator(); iterator.hasNext();) {
+			if ( iterator.next().itemClicked(click_x, click_y) ) {
+				iterator.remove();
+				return true;
 			}
 		}
-		
+				
 		return false;
 	}
 	

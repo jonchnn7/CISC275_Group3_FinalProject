@@ -11,5 +11,10 @@ public class AlphaItem extends SceneObject {
 		super(x, y, width, height);
 		this.item_color = color_list[rand_gen.nextInt(color_list.length)];
 		this.depth = rand_gen.nextInt(2);
+		this.name = "Alpha Item";
+	}
+	
+	public String toString() {
+		return ("[" + this.name + ", " + this.depth + "]");
 	}
 }

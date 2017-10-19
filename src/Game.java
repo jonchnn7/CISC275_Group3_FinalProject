@@ -105,8 +105,6 @@ public class Game extends Canvas {
 	        		game_window.setTitle("CISC 275 - Group 3 - Estuary Game - " + k);
 	        	}
 	        });
-	        
-	        current_scene.drawScene(g);
 	      
 	        if (click_event) {
 	        	g.setColor(Color.lightGray);
@@ -117,6 +115,8 @@ public class Game extends Canvas {
 	        	System.out.println(score);
 	        	click_event = false;
 	        }
+	        
+	        current_scene.drawScene(g);
 	         
 	        // Update Screen
 	        g.dispose();
@@ -130,7 +130,7 @@ public class Game extends Canvas {
 	        if (sleep_time % 1000 == 0) 
 	        	active_scenes.forEach((k,v)->v.updateTime());
 	        
-	        if (sleep_time % 3000 == 0) {
+	        if (sleep_time % 5000 == 0) {
 	        	active_scenes.forEach((k,v)->v.toggleVissible());
 	        }
 	        

@@ -21,6 +21,7 @@ public abstract class SceneObject implements Comparable<SceneObject> {
 	protected int item_height;
 	protected int item_type;
 	protected int depth;
+	protected String name;
 	protected Color item_color;
 	
 	
@@ -32,7 +33,7 @@ public abstract class SceneObject implements Comparable<SceneObject> {
 		this.item_height = height;
 	}
 	
-	
+	@Override 
 	public int compareTo(SceneObject other_item) {
 		return other_item.getDepth() - this.depth;
 	}
@@ -40,7 +41,7 @@ public abstract class SceneObject implements Comparable<SceneObject> {
 	
 	public void drawItem(Graphics g) {
 		g.setColor(this.item_color);
-        g.fillOval(this.item_x, this.item_y, (this.item_width/2), (this.item_height/2));
+        g.fillOval(this.item_x, this.item_y, (this.item_width), (this.item_height));
         g.setColor(Color.white);
         g.drawOval(this.item_x, this.item_y, this.item_width, this.item_height);
 	}
