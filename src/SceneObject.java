@@ -40,5 +40,19 @@ public abstract class SceneObject implements Comparable<SceneObject> {
 	public void drawItem(Graphics g) {
 		g.setColor(this.item_color);
         g.fillOval(this.item_x, this.item_y, (this.item_width/2), (this.item_height/2));
+        g.setColor(Color.white);
+        g.drawOval(this.item_x, this.item_y, this.item_width, this.item_height);
+	}
+	
+	
+	public boolean itemClicked(int click_x, int click_y) {
+		double x_squared = Math.pow( (Math.max(this.item_x, click_x) - Math.min(this.item_x, click_x)), 2);
+		double y_squared = Math.pow( (Math.max(this.item_y, click_y) - Math.min(this.item_y, click_y)), 2);
+		double max_radius = Math.pow( (this.item_width/2 + this.item_height/2), 2);
+		
+		if (x_squared + y_squared <= max_radius)
+			return true;
+		
+		return false;
 	}
 }

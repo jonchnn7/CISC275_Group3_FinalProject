@@ -23,4 +23,5 @@ public class HeadquartersScene extends Scene {
 											   rand_gen.nextInt(150) + 50,
 											   rand_gen.nextInt(150) + 50) );
 	}
+	
 }

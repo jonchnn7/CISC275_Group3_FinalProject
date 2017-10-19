@@ -58,6 +58,15 @@ public abstract class Scene {
 	public void toggleVissible() {
 		this.visible = !this.visible;
 	}
+
+	public boolean processClick(int click_x, int click_y) {
+		for (SceneObject item : this.scene_items) {
+			if ( item.itemClicked(click_x, click_y) )
+					return true;
+		}
+		
+		return false;
+	}
 	
 	abstract protected void fillScene();
 }

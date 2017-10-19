@@ -33,6 +33,7 @@ public class Game extends Canvas {
 	private BufferStrategy buff_strat;
 	private JFrame game_window;
 	private JPanel game_panel;
+	private int score;
 	
 	// Event Variables
 	private int click_x;
@@ -40,6 +41,7 @@ public class Game extends Canvas {
 	private boolean click_event;
 	
 	// Active Scenes - identified by name
+	Scene current_scene;
 	Map<String, Scene> active_scenes = new HashMap<String, Scene>();
 	
 	
@@ -76,6 +78,7 @@ public class Game extends Canvas {
 	    	}
 	    });
 	    
+	    score = 0;
 	    initGame();
 	}
 	
@@ -98,14 +101,20 @@ public class Game extends Canvas {
 	        // Draw Scene
 	        active_scenes.forEach((k, v)->{
 	        	if (v.visible) {
-	        		v.drawScene(g);
+	        		current_scene = v;
 	        		game_window.setTitle("CISC 275 - Group 3 - Estuary Game - " + k);
 	        	}
 	        });
+	        
+	        current_scene.drawScene(g);
 	      
 	        if (click_event) {
 	        	g.setColor(Color.lightGray);
 	        	g.fillRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+	        	if ( current_scene.processClick(click_x, click_y) )
+	        		score++;
+	        		
+	        	System.out.println(score);
 	        	click_event = false;
 	        }
 	         
