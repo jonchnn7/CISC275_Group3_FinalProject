@@ -1,0 +1,21 @@
+MVC
+Model
+	Game
+		Scene[] Active Scenes	
+		Time?
+		Item-Abstract
+			-Types of items
+		Scene-Abstract- implements paint/graphics etc.
+			-Bool Visible
+			-Scene Subclasses
+			-Dimensions
+			-Scene Objects[]
+			-method 
+		Scene Object-Abstract
+			-Scene Object Subclasses
+			-Depth (layer) - using comparator
+			-Coordinates/Location
+			-Dimensions/Size
+			-Shape
+Controller
+Update time
