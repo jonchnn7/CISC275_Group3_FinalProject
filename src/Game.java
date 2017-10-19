@@ -9,7 +9,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 //Event Libraries
-import javax.swing.event.MouseInputAdapter;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 //Utility Libraries
 import java.util.Random;
@@ -32,6 +33,11 @@ public class Game extends Canvas {
 	private BufferStrategy buff_strat;
 	private JFrame game_window;
 	private JPanel game_panel;
+	
+	// Event Variables
+	private int click_x;
+	private int click_y;
+	private boolean click_event;
 	
 	// Active Scenes - identified by name
 	Map<String, Scene> active_scenes = new HashMap<String, Scene>();
@@ -57,6 +63,18 @@ public class Game extends Canvas {
 	    // Buffer Strategy for Accelerated Graphics
 	    createBufferStrategy(2);
 	    buff_strat = getBufferStrategy();
+	    
+	    // Mouse Events
+	    click_event = false;
+	    addMouseListener(new MouseAdapter() {
+	    	public void mouseClicked(MouseEvent e) {
+	    		if (e.getButton() == MouseEvent.BUTTON1) {
+	    			click_event = true;
+	    			click_x = e.getX();
+	    			click_y = e.getY();
+	    		}
+	    	}
+	    });
 	    
 	    initGame();
 	}
@@ -85,6 +103,11 @@ public class Game extends Canvas {
 	        	}
 	        });
 	      
+	        if (click_event) {
+	        	g.setColor(Color.lightGray);
+	        	g.fillRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+	        	click_event = false;
+	        }
 	         
 	        // Update Screen
 	        g.dispose();
