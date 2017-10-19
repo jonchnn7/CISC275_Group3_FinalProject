@@ -79,8 +79,10 @@ public class Game extends Canvas {
 	        
 	        // Draw Scene
 	        active_scenes.forEach((k, v)->{
-	        	if (v.visible)
+	        	if (v.visible) {
 	        		v.drawScene(g);
+	        		game_window.setTitle("CISC 275 - Group 3 - Estuary Game - " + k);
+	        	}
 	        });
 	      
 	         
@@ -90,8 +92,8 @@ public class Game extends Canvas {
 	
 	         
 	        // Loop Delay
-	        try { Thread.sleep(10); } catch (Exception e) {}
-	        sleep_time += 10;
+	        try { Thread.sleep(100); } catch (Exception e) {}
+	        sleep_time += 100;
 	        
 	        if (sleep_time % 1000 == 0) 
 	        	active_scenes.forEach((k,v)->v.updateTime());
