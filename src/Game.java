@@ -109,8 +109,18 @@ public class Game extends Canvas {
 	        if (click_event) {
 	        	g.setColor(Color.lightGray);
 	        	g.fillRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+	        	
+	        	if(current_scene.navCheck(click_x,click_y))
+	        	{
+	        		active_scenes.forEach((k, v)->{
+	    	        	v.toggleVissible();
+	    	        });
+	        	}
+	        	
+	        	
 	        	if ( current_scene.processClick(click_x, click_y) )
 	        		score++;
+	     
 	        		
 	        	System.out.println(score);
 	        	click_event = false;
@@ -131,7 +141,7 @@ public class Game extends Canvas {
 	        	active_scenes.forEach((k,v)->v.updateTime());
 	        
 	        if (sleep_time % 5000 == 0) {
-	        	active_scenes.forEach((k,v)->v.toggleVissible());
+	        	// active_scenes.forEach((k,v)->v.toggleVissible());
 	        }
 	        
 	    }

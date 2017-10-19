@@ -23,12 +23,13 @@ public abstract class Scene {
 	protected String scene_name;
 	protected Color scene_background;
 	protected ArrayList<SceneObject> scene_items;
-	
-	
+	protected ArrayList<SceneObject> nav_items = new ArrayList<SceneObject>();
+		
 	public Scene(int width, int height, String name) {
 		this.scene_width = width;
 		this.scene_height = height;
 		this.scene_name = name;
+		this.nav_items.add(new Navigation());
 	}
 	
 	public void drawScene(Graphics g) {
@@ -40,6 +41,10 @@ public abstract class Scene {
         	item.drawItem(g);
         }
         Collections.sort(scene_items);
+        
+        for (SceneObject item : nav_items)  {
+        	item.drawItem(g);
+        }
         
         g.setColor(Color.white);
 		g.setFont(new Font("Sans Serif", Font.BOLD, 42));
@@ -63,6 +68,19 @@ public abstract class Scene {
 	public void toggleVissible() {
 		this.visible = !this.visible;
 	}
+	
+	public boolean navCheck(int click_x, int click_y) {
+		System.out.println(scene_items);
+		
+		for(SceneObject a : nav_items)
+		{
+			if(a.itemClicked(click_x, click_y))
+					return true;
+		}
+				
+		return false;
+	}
+	
 
 	public boolean processClick(int click_x, int click_y) {
 		Collections.sort(scene_items);
