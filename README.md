@@ -1,8 +1,9 @@
 # CISC275_Group3_FinalProject
 
 ## TODO: ##
-+ Create map, beach, marshland scenes (Scott)
-+ Create/Fix nav buttons (Scott)
++ ~~Create beach, marshland scenes~~ (Scott)
++ ~~Create/Fix nav buttons~~ (Scott)
++ Create map scene
 + Create Interface Overlay Class (Jon)
 + Create Inventory Class (Thomas)
 + Build Inventory (Thomas)
