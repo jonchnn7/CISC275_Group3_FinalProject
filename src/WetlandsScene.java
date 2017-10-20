@@ -10,7 +10,7 @@ public class WetlandsScene extends Scene {
 	public WetlandsScene(int width, int height) {
 		super(width, height, "Wetlands");
 		this.scene_background = Color.lightGray;
-		this.time = 200;
+		this.time = 271;
 		this.visible = true;
 		this.fillScene();
 	}

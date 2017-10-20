@@ -115,7 +115,7 @@ public class Game extends Canvas {
 	        	if (current_scene.processClick(click_x, click_y))
 	        		score++;
 	             		
-	        	System.out.println(score);
+	        	System.out.println("Score: " + score); // DEBUG - REMOVE
 	        	click_event = false;
 	        }
 	        
@@ -132,16 +132,11 @@ public class Game extends Canvas {
 	        
 	        if (sleep_time % 1000 == 0) 
 	        	active_scenes.forEach((k,v)->v.updateTime());
-	        
-	        if (sleep_time % 5000 == 0) {
-	        	// active_scenes.forEach((k,v)->v.toggleVissible());
-	        }
-	        
-	    }
+	      }
 	}
 	
 	private void processNav(String nav_label) {
-		System.out.println(nav_label);
+		System.out.println("NavClick: " + nav_label);  // DEBUG - REMOVE
 		if (nav_label == null)
 			return;
 		else

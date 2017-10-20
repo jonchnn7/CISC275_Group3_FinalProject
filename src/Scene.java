@@ -84,7 +84,7 @@ public abstract class Scene {
 
 	public boolean processClick(int click_x, int click_y) {
 		Collections.sort(scene_items);
-		System.out.println(scene_items);
+		System.out.println(this.scene_name + " Items: " + scene_items);  // DEBUG - REMOVE
 		
 		for (Iterator<SceneObject> iterator = scene_items.iterator(); iterator.hasNext();) {
 			if ( iterator.next().itemClicked(click_x, click_y) ) {
