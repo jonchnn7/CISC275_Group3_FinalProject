@@ -29,7 +29,10 @@ public abstract class Scene {
 		this.scene_width = width;
 		this.scene_height = height;
 		this.scene_name = name;
-		this.nav_items.add(new Navigation("NAV"));
+		this.nav_items.add(new NavObject(5, "HQ"));
+		this.nav_items.add(new NavObject(40, "Bay"));
+		this.nav_items.add(new NavObject(75, "Beach"));
+		this.nav_items.add(new NavObject(110, "Wetlands"));
 	}
 	
 	public void drawScene(Graphics g) {
@@ -69,16 +72,13 @@ public abstract class Scene {
 		this.visible = !this.visible;
 	}
 	
-	public boolean navCheck(int click_x, int click_y) {
-		System.out.println(scene_items);
-		
-		for(SceneObject a : nav_items)
-		{
-			if(a.itemClicked(click_x, click_y))
-					return true;
+	public String navClick(int click_x, int click_y) {		
+		for (SceneObject nav : nav_items ) {
+			if (nav.itemClicked(click_x, click_y))
+				return ((NavObject)nav).navClick();
 		}
-				
-		return false;
+		
+		return null;
 	}
 	
 

@@ -86,7 +86,10 @@ public class Game extends Canvas {
 	private void initGame() {
 		active_scenes.put("HQ", new HeadquartersScene(SCREEN_WIDTH, SCREEN_HEIGHT));
 		active_scenes.put("Bay", new BayScene(SCREEN_WIDTH, SCREEN_HEIGHT));
+		active_scenes.put("Beach", new BeachScene(SCREEN_WIDTH, SCREEN_HEIGHT));
+		active_scenes.put("Wetlands", new WetlandsScene(SCREEN_WIDTH, SCREEN_HEIGHT));
 
+		processNav("HQ");
 		gameLoop();
 	}
 	
@@ -107,21 +110,11 @@ public class Game extends Canvas {
 	        });
 	      
 	        if (click_event) {
-	        	g.setColor(Color.lightGray);
-	        	g.fillRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-	        	
-	        	if(current_scene.navCheck(click_x,click_y))
-	        	{
-	        		active_scenes.forEach((k, v)->{
-	    	        	v.toggleVissible();
-	    	        });
-	        	}
-	        	
-	        	
-	        	if ( current_scene.processClick(click_x, click_y) )
+	        	processNav(current_scene.navClick(click_x, click_y));   	
+	       	
+	        	if (current_scene.processClick(click_x, click_y))
 	        		score++;
-	     
-	        		
+	             		
 	        	System.out.println(score);
 	        	click_event = false;
 	        }
@@ -145,6 +138,19 @@ public class Game extends Canvas {
 	        }
 	        
 	    }
+	}
+	
+	private void processNav(String nav_label) {
+		System.out.println(nav_label);
+		if (nav_label == null)
+			return;
+		else
+			active_scenes.forEach((k,v)->{
+				if (k == nav_label)
+					v.setVisible();
+				else
+					v.setHidden();
+			});
 	}
 	
 	public static void main(String args[]) {

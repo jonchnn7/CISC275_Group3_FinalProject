@@ -3,7 +3,7 @@ import java.util.Random;
 
 public class AlphaItem extends SceneObject {
 	Color[] color_list = {Color.black, Color.white, Color.cyan, Color.darkGray, 
-						  Color.magenta, Color.red, Color.yellow};
+						  Color.magenta, Color.red, Color.yellow, Color.blue, Color.orange};
 	
 	Random rand_gen = new Random();
 
