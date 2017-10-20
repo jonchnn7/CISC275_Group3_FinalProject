@@ -29,7 +29,7 @@ public abstract class Scene {
 		this.scene_width = width;
 		this.scene_height = height;
 		this.scene_name = name;
-		this.nav_items.add(new Navigation());
+		this.nav_items.add(new Navigation("NAV"));
 	}
 	
 	public void drawScene(Graphics g) {

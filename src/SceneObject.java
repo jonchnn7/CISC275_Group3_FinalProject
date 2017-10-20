@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Shape;
 import java.awt.geom.Ellipse2D;
 
 public abstract class SceneObject implements Comparable<SceneObject> {
@@ -24,7 +25,7 @@ public abstract class SceneObject implements Comparable<SceneObject> {
 	protected int depth;
 	protected String name;
 	protected Color item_color;
-	protected Ellipse2D.Double shape;
+	protected Shape shape;
 	
 	
 	public SceneObject(int x, int y, int width, int height) {
