@@ -38,6 +38,9 @@ public abstract class SceneObject implements Comparable<SceneObject> {
 	
 	@Override 
 	public int compareTo(SceneObject other_item) {
+		if (other_item.getDepth() - this.depth == 0) {
+			other_item.setDepth(this.depth - 1);;
+		}
 		return other_item.getDepth() - this.depth;
 	}
 	
@@ -56,5 +59,9 @@ public abstract class SceneObject implements Comparable<SceneObject> {
 	
 	protected int getDepth() {
 		return this.depth;
+	}
+	
+	protected void setDepth(int depth) {
+		this.depth = depth;
 	}
 }
