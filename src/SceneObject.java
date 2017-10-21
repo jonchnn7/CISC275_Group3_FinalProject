@@ -57,6 +57,13 @@ public abstract class SceneObject implements Comparable<SceneObject> {
 		return shape.contains(click_x, click_y);
 	}
 	
+	public boolean compareSceneObjects(SceneObject s1, SceneObject s2) {
+		switch (s1.getClass().getName()) {
+			case "AlphaItem": return(SceneObjectType.AlphaItem.searchCompatability(s2.getClass().getName()));
+			default: return false;
+		}
+	}
+	
 	protected int getDepth() {
 		return this.depth;
 	}
