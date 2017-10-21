@@ -12,7 +12,8 @@
 + Create Static and Dynamic subclasses of SceneObject
 + Create SceneObject subclass Tools (Ryan)
 + Replace circles with images
-+ Write Comparator for object type compatibility (Jolyne)
++ ~~Write Comparator for object type compatibility (Jolyne)
++ Add sceneObjects to enumerator
 
 ## Office Hours Question ##
 + Ask about layout
