@@ -18,11 +18,20 @@ public class HeadquartersScene extends Scene {
 	protected void fillScene() {
 		this.scene_items = new ArrayList<SceneObject>();
 		
-		for (int i=0; i < 10; i++)
-			this.scene_items.add(new AlphaItem(rand_gen.nextInt(this.scene_width),
+		for (int j=-10; j<10; j++)
+			this.scene_items.add(new AlphaItem(rand_gen.nextInt(this.scene_width/2)+20,
 											   rand_gen.nextInt(this.scene_height),
-											   rand_gen.nextInt(100) + 50,
-											   rand_gen.nextInt(100) + 50) );
+										   	   rand_gen.nextInt(100) + 50,
+										       rand_gen.nextInt(100) + 50,
+										       j) );
+		for (int j=-10; j<10; j++)
+			this.scene_items.add(new AlphaItem(rand_gen.nextInt(this.scene_width/2)+this.scene_width/2+20,
+											   rand_gen.nextInt(this.scene_height),
+										   	   rand_gen.nextInt(100) + 50,
+										       rand_gen.nextInt(100) + 50,
+										       j) );
+		
+		
 		Collections.sort(this.scene_items);
 	}
 	
