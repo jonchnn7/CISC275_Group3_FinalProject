@@ -1,6 +1,7 @@
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Shape;
+import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
 
 public abstract class SceneObject implements Comparable<SceneObject> {
@@ -47,9 +48,9 @@ public abstract class SceneObject implements Comparable<SceneObject> {
 	
 	public void drawItem(Graphics g) {
 		g.setColor(this.item_color);
-        g.fillOval(this.item_x, this.item_y, (this.item_width), (this.item_height));
-        g.setColor(Color.white);
-        g.drawOval(this.item_x, this.item_y, this.item_width, this.item_height);
+		((Graphics2D) g).fill(this.shape);
+		g.setColor(Color.white);
+		((Graphics2D) g).draw(this.shape);
 	}
 	
 	
