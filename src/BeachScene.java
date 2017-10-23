@@ -7,12 +7,14 @@ import java.util.Random;
 public class BeachScene extends Scene {
 
 	Random rand_gen = new Random();
+	boolean start_game;
 	
 	public BeachScene(int interface_width, int width, int height) {
 		super(interface_width, width, height, "Beach");
 		this.scene_background = Color.yellow;
 		this.time = 314;
 		this.visible = true;
+		this.start_game = false;
 		this.fillScene();
 	}
 
@@ -28,13 +30,14 @@ public class BeachScene extends Scene {
 	
 	@Override
 	public boolean processClick(int click_x, int click_y) {
+		this.start_game = true;
 		((AlphaCrabPlayer)scene_items.get(4)).move();
 
 		return false;
 	}
 
 	public void moveCrabs() {
-		if (this.visible) {
+		if (this.start_game) {
 			((AlphaCrab)scene_items.get(0)).move();
 			((AlphaCrab)scene_items.get(1)).move();
 			((AlphaCrab)scene_items.get(2)).move();
