@@ -20,7 +20,7 @@ public class BeachScene extends Scene {
 		this.scene_items = new ArrayList<SceneObject>();
 		
 		for (int i=0; i<4; i++) {
-			this.scene_items.add(new AlphaCrab(200, 200+75*i));
+			this.scene_items.add(new AlphaCrab(200, 200+75*i, 1));
 		}
 		
 		this.scene_items.add(new AlphaCrabPlayer(200, 500));
@@ -29,7 +29,7 @@ public class BeachScene extends Scene {
 	
 	@Override
 	public boolean processClick(int click_x, int click_y) {
-		((AlphaCrab)scene_items.get(4)).move();
+		((AlphaCrabPlayer)scene_items.get(4)).move();
 
 		return false;
 	}

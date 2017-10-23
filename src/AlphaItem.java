@@ -8,9 +8,8 @@ public class AlphaItem extends SceneObject {
 	Random rand_gen = new Random();
 
 	public AlphaItem(int x, int y, int width, int height, int d) {
-		super(x, y, width, height);
+		super(x, y, width, height, d);
 		this.item_color = color_list[rand_gen.nextInt(color_list.length)];
-		this.depth = d;
 		this.name = "Alpha Item";
 	}
 	

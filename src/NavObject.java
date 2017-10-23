@@ -8,7 +8,7 @@ public class NavObject extends SceneObject {
 	protected String label;
 		
 	public NavObject(int y, String lbl) {
-		super(5,y, 100, 30);
+		super(5,y, 100, 30, 10);
 		this.item_color = Color.BLACK;
 		this.shape = new Rectangle2D.Double(this.item_x, this.item_y, this.item_width, this.item_height);
 		this.label = lbl;

@@ -29,11 +29,12 @@ public abstract class SceneObject implements Comparable<SceneObject> {
 	protected Shape shape;
 	
 	
-	public SceneObject(int x, int y, int width, int height) {
+	public SceneObject(int x, int y, int width, int height, int depth) {
 		this.item_x = x;
 		this.item_y = y;
 		this.item_width = width;
 		this.item_height = height;
+		this.depth = depth;
 		this.shape = new Ellipse2D.Double(x, y, width, height);
 	}
 	

@@ -9,8 +9,8 @@ public class AlphaCrab extends SceneObject {
 	
 	Random rand_gen = new Random();
 
-	public AlphaCrab(int x, int y) {
-		super(x, y, 100, 50);
+	public AlphaCrab(int x, int y, int d) {
+		super(x, y, 100, 50, d);
 		this.item_color = Color.getHSBColor(26, 68, 66);
 	}
 	
@@ -30,7 +30,7 @@ public class AlphaCrab extends SceneObject {
 	}
 	
 	public void move() {
-		this.item_x += rand_gen.nextInt(10) + 20;
+		this.item_x += rand_gen.nextInt(15) + 20;
 		this.shape = new Ellipse2D.Double(this.item_x, this.item_y, 100, 50);
 	}
 
