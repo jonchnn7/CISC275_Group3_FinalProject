@@ -132,8 +132,8 @@ public class Game extends Canvas {
 	
 	         
 	        // Loop Delay
-	        try { Thread.sleep(100); } catch (Exception e) {}
-	        sleep_time += 100;
+	        try { Thread.sleep(10); } catch (Exception e) {}
+	        sleep_time += 10;
 	        
 	        if (sleep_time % 1000 == 0) 
 	        	active_scenes.forEach((k,v)->v.updateTime());

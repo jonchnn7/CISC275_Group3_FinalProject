@@ -57,6 +57,7 @@ public abstract class SceneObject implements Comparable<SceneObject> {
 	public boolean itemClicked(int click_x, int click_y) {
 		return shape.contains(click_x, click_y);
 	}
+	
 	//compareSceneObjects needs all sceneObjects added to it, then add those to the enumeration
 	public boolean compareSceneObjects(SceneObject s1, SceneObject s2) {
 		switch (s1.getClass().getName()) {

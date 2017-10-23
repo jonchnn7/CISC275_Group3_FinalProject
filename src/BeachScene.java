@@ -18,19 +18,22 @@ public class BeachScene extends Scene {
 	protected void fillScene() {
 		this.scene_items = new ArrayList<SceneObject>();
 		
-		for (int j=-10; j<10; j++)
-			this.scene_items.add(new AlphaItem(rand_gen.nextInt(this.scene_width/2)+20,
-											   rand_gen.nextInt(this.scene_height),
-										   	   rand_gen.nextInt(100) + 50,
-										       rand_gen.nextInt(100) + 50,
-										       j) );
-		for (int j=-10; j<10; j++)
-			this.scene_items.add(new AlphaItem(rand_gen.nextInt(this.scene_width/2)+this.scene_width/2+20,
-											   rand_gen.nextInt(this.scene_height),
-										   	   rand_gen.nextInt(100) + 50,
-										       rand_gen.nextInt(100) + 50,
-										       j) );
+		for (int i=0; i<4; i++) {
+			this.scene_items.add(new AlphaCrab(200, 200+75*i));
+		}
+		
+		this.scene_items.add(new AlphaCrabPlayer(200, 500));
 		Collections.sort(this.scene_items);
+	}
+	
+	@Override
+	public void updateTime() {
+		this.time -= 1;
+		
+		if (this.visible) {
+			for (SceneObject crab : scene_items) 
+				((AlphaCrab)crab).move();
+		}
 	}
 	
 }
