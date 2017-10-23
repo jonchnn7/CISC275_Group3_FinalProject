@@ -22,7 +22,7 @@ public class AlphaFish extends SceneObject {
 		else
 			this.item_x -= (rand_gen.nextInt(10) + 5);
 		
-		this.item_y += rand_gen.nextInt(15) - rand_gen.nextInt(15);
+		this.item_y += rand_gen.nextInt(10) - rand_gen.nextInt(10);
 		
 		this.shape = new Ellipse2D.Double(this.item_x, this.item_y, 100, 50);
 	}

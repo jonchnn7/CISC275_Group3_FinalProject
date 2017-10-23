@@ -76,6 +76,6 @@ public abstract class SceneObject implements Comparable<SceneObject> {
 	}
 	
 	public String toString() {
-		return "[" + this.name + "]";
+		return "[" + this.name + ", (" + this.item_x + "," + this.item_y + "), " + this.depth + "]";
 	}
 }

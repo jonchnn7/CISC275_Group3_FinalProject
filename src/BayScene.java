@@ -1,6 +1,7 @@
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.Random;
 
 public class BayScene extends Scene {
@@ -18,16 +19,16 @@ public class BayScene extends Scene {
 	protected void fillScene() {
 		this.scene_items = new ArrayList<SceneObject>();
 		
-		for (int j=0; j<10; j++) {
+		for (int j=0; j<5; j++) {
 			int length = rand_gen.nextInt(20) + 15;
 			this.scene_items.add(new AlphaFish(0, 
-											   j*70 + 10,
+											   j*140 + 10,
 											   length,
 											   length/2,
 											   j,
 											   true));
 			this.scene_items.add(new AlphaFish(this.scene_width, 
-					   j*70 + 10,
+					   j*140 + 10,
 					   length,
 					   length/2,
 					   -1*j,
@@ -38,7 +39,39 @@ public class BayScene extends Scene {
 	}
 	
 	public void move() {
+		int length = rand_gen.nextInt(20) + 15;
+		
+		// Generate new fish on ~2% of calls
+		if (rand_gen.nextInt(50) == 1) {
+			this.scene_items.add(new AlphaFish(0, 
+					   						   rand_gen.nextInt(this.scene_height),
+					   						   length,
+					   						   length/2,
+					   						   6,
+					   						   true));
+			this.scene_items.add(new AlphaFish(this.scene_width, 
+					               			   rand_gen.nextInt(this.scene_height),
+					               			   length,
+					               			   length/2,
+					               			   -6,
+					               			   false));		
+		}
+		
 		for (SceneObject fish : scene_items)
 			((AlphaFish)fish).move();
+		
+		removeFish();
+	}
+	
+	private void removeFish() {
+		for (Iterator<SceneObject> iterator = scene_items.iterator(); iterator.hasNext();) {
+			AlphaFish fish = (AlphaFish)iterator.next();
+			if ( fish.left_to_right && fish.item_x >= this.scene_width ) {
+				iterator.remove();
+			
+			} else if ( !fish.left_to_right && fish.item_x <= 0 ) { 
+				iterator.remove();
+			}
+		}
 	}
 }
