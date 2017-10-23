@@ -4,10 +4,10 @@
 + ~~Create beach, marshland scenes~~ (Scott)
 + ~~Create/Fix nav buttons~~ (Scott)
 + Create map scene
-+ Create Interface Overlay Class (Jon)
-+ Create Inventory Class (Thomas)
++ ~~Create Interface Overlay~~ Class (Jon)
++ ~~Create Inventory Class~~ (Thomas)
 + Build Inventory (Thomas)
-+ Build Title Screen (Ryan)
++ ~~Build Title Screen~~ (Ryan)
 + Create Tutorial
 + Create Static and Dynamic subclasses of SceneObject
 + Create SceneObject subclass Tools (Ryan)
