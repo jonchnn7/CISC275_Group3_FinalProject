@@ -7,8 +7,8 @@ public class BeachScene extends Scene {
 
 	Random rand_gen = new Random();
 	
-	public BeachScene(int width, int height) {
-		super(width, height, "Beach");
+	public BeachScene(int interface_width, int width, int height) {
+		super(interface_width, width, height, "Beach");
 		this.scene_background = Color.yellow;
 		this.time = 314;
 		this.visible = true;

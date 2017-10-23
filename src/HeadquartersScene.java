@@ -7,8 +7,8 @@ public class HeadquartersScene extends Scene {
 
 	Random rand_gen = new Random();
 	
-	public HeadquartersScene(int width, int height) {
-		super(width, height, "Headquarters");
+	public HeadquartersScene(int interface_width, int width, int height) {
+		super(interface_width, width, height, "Headquarters");
 		this.scene_background = Color.green;
 		this.time = 200;
 		this.visible = true;

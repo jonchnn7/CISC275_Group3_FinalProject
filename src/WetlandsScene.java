@@ -7,8 +7,8 @@ public class WetlandsScene extends Scene {
 
 	Random rand_gen = new Random();
 	
-	public WetlandsScene(int width, int height) {
-		super(width, height, "Wetlands");
+	public WetlandsScene(int interface_width, int width, int height) {
+		super(interface_width, width, height, "Wetlands");
 		this.scene_background = Color.lightGray;
 		this.time = 271;
 		this.visible = true;

@@ -19,13 +19,15 @@ public abstract class Scene {
 	protected int time;
 	protected int scene_width;
 	protected int scene_height;
+	protected int interface_width;
 	protected boolean visible;
 	protected String scene_name;
 	protected Color scene_background;
 	protected ArrayList<SceneObject> scene_items;
 	protected ArrayList<SceneObject> nav_items = new ArrayList<SceneObject>();
 		
-	public Scene(int width, int height, String name) {
+	public Scene(int border_width, int width, int height, String name) {
+		this.interface_width = border_width;
 		this.scene_width = width;
 		this.scene_height = height;
 		this.scene_name = name;
@@ -37,7 +39,7 @@ public abstract class Scene {
 	
 	public void drawScene(Graphics g) {
         g.setColor(this.scene_background);
-        g.fillRect(0, 0, scene_width, scene_height);
+        g.fillRect(interface_width, interface_width,  scene_width, scene_height);
         
         Collections.reverse(scene_items);
         for (SceneObject item : scene_items) {
@@ -52,8 +54,8 @@ public abstract class Scene {
         g.setColor(Color.white);
 		g.setFont(new Font("Sans Serif", Font.BOLD, 42));
 		g.drawString(Integer.toString(this.time),
-				    (this.scene_width-g.getFontMetrics().stringWidth(Integer.toString(this.time)))/2,
-				    50);
+				    (this.scene_width+interface_width-g.getFontMetrics().stringWidth(Integer.toString(this.time)))/2,
+				    50+interface_width);
     }
 	
 	public void updateTime() {

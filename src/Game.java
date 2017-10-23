@@ -30,6 +30,7 @@ public class Game extends Canvas {
 	// Game Properties
 	final private static int SCREEN_WIDTH = 1280;
 	final private static int SCREEN_HEIGHT = 720;
+	final public static int INTERFACE_WIDTH = 75;
 	private BufferStrategy buff_strat;
 	private JFrame game_window;
 	private JPanel game_panel;
@@ -41,6 +42,7 @@ public class Game extends Canvas {
 	private boolean click_event;
 	
 	// Active Scenes - identified by name
+	InterfaceWindow game_interface = new InterfaceWindow(SCREEN_WIDTH, SCREEN_HEIGHT);
 	Scene current_scene;
 	Map<String, Scene> active_scenes = new HashMap<String, Scene>();
 	
@@ -84,10 +86,10 @@ public class Game extends Canvas {
 	
 	
 	private void initGame() {
-		active_scenes.put("HQ", new HeadquartersScene(SCREEN_WIDTH, SCREEN_HEIGHT));
-		active_scenes.put("Bay", new BayScene(SCREEN_WIDTH, SCREEN_HEIGHT));
-		active_scenes.put("Beach", new BeachScene(SCREEN_WIDTH, SCREEN_HEIGHT));
-		active_scenes.put("Wetlands", new WetlandsScene(SCREEN_WIDTH, SCREEN_HEIGHT));
+		active_scenes.put("HQ", new HeadquartersScene(INTERFACE_WIDTH, SCREEN_WIDTH-(2*INTERFACE_WIDTH), SCREEN_HEIGHT-(2*INTERFACE_WIDTH)));
+		active_scenes.put("Bay", new BayScene(INTERFACE_WIDTH, SCREEN_WIDTH-(2*INTERFACE_WIDTH), SCREEN_HEIGHT-(2*INTERFACE_WIDTH)));
+		active_scenes.put("Beach", new BeachScene(INTERFACE_WIDTH, SCREEN_WIDTH-(2*INTERFACE_WIDTH), SCREEN_HEIGHT-(2*INTERFACE_WIDTH)));
+		active_scenes.put("Wetlands", new WetlandsScene(INTERFACE_WIDTH, SCREEN_WIDTH-(2*INTERFACE_WIDTH), SCREEN_HEIGHT-(2*INTERFACE_WIDTH)));
 
 		processNav("HQ");
 		gameLoop();
@@ -100,6 +102,9 @@ public class Game extends Canvas {
 	    	
 	        // Initialize Window
 	        Graphics2D g = (Graphics2D) buff_strat.getDrawGraphics();
+	        
+	        //Draw Interface
+	        game_interface.drawInterface(g, score);
 	        
 	        // Draw Scene
 	        active_scenes.forEach((k, v)->{
