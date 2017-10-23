@@ -25,13 +25,13 @@ public class BayScene extends Scene {
 											   j*140 + 10,
 											   length,
 											   length/2,
-											   j,
+											   j+1,
 											   true));
 			this.scene_items.add(new AlphaFish(this.scene_width, 
 					   j*140 + 10,
 					   length,
 					   length/2,
-					   -1*j,
+					   -1*j-1,
 					   false));
 		
 		Collections.sort(scene_items);	
