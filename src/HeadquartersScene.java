@@ -19,13 +19,13 @@ public class HeadquartersScene extends Scene {
 		this.scene_items = new ArrayList<SceneObject>();
 		
 		for (int j=-10; j<10; j++)
-			this.scene_items.add(new AlphaItem(rand_gen.nextInt(this.scene_width/2)+20,
+			this.scene_items.add(new AlphaItem(rand_gen.nextInt(this.scene_width/2)-40,
 											   rand_gen.nextInt(this.scene_height),
 										   	   rand_gen.nextInt(100) + 50,
 										       rand_gen.nextInt(100) + 50,
 										       j) );
 		for (int j=-10; j<10; j++)
-			this.scene_items.add(new AlphaItem(rand_gen.nextInt(this.scene_width/2)+this.scene_width/2+20,
+			this.scene_items.add(new AlphaItem(rand_gen.nextInt(this.scene_width/2)+this.scene_width/2+40,
 											   rand_gen.nextInt(this.scene_height),
 										   	   rand_gen.nextInt(100) + 50,
 										       rand_gen.nextInt(100) + 50,
