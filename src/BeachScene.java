@@ -32,11 +32,8 @@ public class BeachScene extends Scene {
 
 		return false;
 	}
-	
-	@Override
-	public void updateTime() {
-		this.time -= 1;
-		
+
+	public void moveCrabs() {
 		if (this.visible) {
 			((AlphaCrab)scene_items.get(0)).move();
 			((AlphaCrab)scene_items.get(1)).move();

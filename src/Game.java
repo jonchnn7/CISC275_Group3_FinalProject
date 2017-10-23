@@ -125,7 +125,7 @@ public class Game extends Canvas {
 	        }
 	        
 	        if (current_scene.scene_name == "Beach")
-	        	current_scene.updateTime();
+	        	((BeachScene)current_scene).moveCrabs();
 	        
 	        current_scene.drawScene(g);
 	         
