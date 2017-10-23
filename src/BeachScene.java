@@ -30,6 +30,7 @@ public class BeachScene extends Scene {
 	
 	@Override
 	public boolean processClick(int click_x, int click_y) {
+		System.out.println(this.scene_items);
 		this.start_game = true;
 		((AlphaCrabPlayer)scene_items.get(4)).move();
 

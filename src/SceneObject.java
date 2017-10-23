@@ -74,4 +74,8 @@ public abstract class SceneObject implements Comparable<SceneObject> {
 	protected void setDepth(int depth) {
 		this.depth = depth;
 	}
+	
+	public String toString() {
+		return "[" + this.name + "]";
+	}
 }

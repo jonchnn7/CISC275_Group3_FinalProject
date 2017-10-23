@@ -12,6 +12,7 @@ public class AlphaCrab extends SceneObject {
 	public AlphaCrab(int x, int y, int d) {
 		super(x, y, 100, 50, d);
 		this.item_color = Color.getHSBColor(26, 68, 66);
+		this.name = "Alpha Crab NPC";
 	}
 	
 	@Override

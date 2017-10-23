@@ -9,6 +9,7 @@ public class AlphaCrabPlayer extends AlphaCrab {
 	public AlphaCrabPlayer(int x, int y) {
 		super(x, y, -1);
 		this.item_color = Color.getHSBColor(26, 68, 66);
+		this.name = "Alpha Crab Playable";
 	}
 
 	@Override

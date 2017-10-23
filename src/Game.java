@@ -126,6 +126,8 @@ public class Game extends Canvas {
 	        
 	        if (current_scene.scene_name == "Beach")
 	        	((BeachScene)current_scene).moveCrabs();
+	        else if (current_scene.scene_name == "Bay")
+	        	((BayScene)current_scene).move();
 	        
 	        current_scene.drawScene(g);
 	         

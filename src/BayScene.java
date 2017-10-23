@@ -18,20 +18,27 @@ public class BayScene extends Scene {
 	protected void fillScene() {
 		this.scene_items = new ArrayList<SceneObject>();
 		
-		for (int j=-10; j<10; j++)
-			this.scene_items.add(new AlphaItem(rand_gen.nextInt(this.scene_width/2)+20,
-											   rand_gen.nextInt(this.scene_height),
-										   	   rand_gen.nextInt(100) + 50,
-										       rand_gen.nextInt(100) + 50,
-										       j) );
-		for (int j=-10; j<10; j++)
-			this.scene_items.add(new AlphaItem(rand_gen.nextInt(this.scene_width-interface_width)+interface_width,
-											   rand_gen.nextInt(this.scene_height-interface_width)+interface_width,
-										   	   rand_gen.nextInt(100) + 50,
-										       rand_gen.nextInt(100) + 50,
-										       j) );
+		for (int j=0; j<10; j++) {
+			int length = rand_gen.nextInt(20) + 15;
+			this.scene_items.add(new AlphaFish(0, 
+											   j*70 + 10,
+											   length,
+											   length/2,
+											   j,
+											   true));
+			this.scene_items.add(new AlphaFish(this.scene_width, 
+					   j*70 + 10,
+					   length,
+					   length/2,
+					   -1*j,
+					   false));
 		
-		Collections.sort(scene_items);
+		Collections.sort(scene_items);	
+		}
 	}
-
+	
+	public void move() {
+		for (SceneObject fish : scene_items)
+			((AlphaFish)fish).move();
+	}
 }
