@@ -71,7 +71,7 @@ public class Game extends Canvas {
 	    // Mouse Events
 	    click_event = false;
 	    addMouseListener(new MouseAdapter() {
-	    	public void mouseClicked(MouseEvent e) {
+	    	public void mousePressed(MouseEvent e) {
 	    		if (e.getButton() == MouseEvent.BUTTON1) {
 	    			click_event = true;
 	    			click_x = e.getX();
