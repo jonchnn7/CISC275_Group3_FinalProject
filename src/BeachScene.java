@@ -1,6 +1,7 @@
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.Random;
 
 public class BeachScene extends Scene {
@@ -27,12 +28,21 @@ public class BeachScene extends Scene {
 	}
 	
 	@Override
+	public boolean processClick(int click_x, int click_y) {
+		((AlphaCrab)scene_items.get(4)).move();
+
+		return false;
+	}
+	
+	@Override
 	public void updateTime() {
 		this.time -= 1;
 		
 		if (this.visible) {
-			for (SceneObject crab : scene_items) 
-				((AlphaCrab)crab).move();
+			((AlphaCrab)scene_items.get(0)).move();
+			((AlphaCrab)scene_items.get(1)).move();
+			((AlphaCrab)scene_items.get(2)).move();
+			((AlphaCrab)scene_items.get(3)).move();
 		}
 	}
 	
