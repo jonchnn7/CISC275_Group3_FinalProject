@@ -41,19 +41,19 @@ public class BayScene extends Scene {
 	public void move() {
 		int length = rand_gen.nextInt(20) + 15;
 		
-		// Generate new fish on ~2% of calls
-		if (rand_gen.nextInt(50) == 1) {
+		// Generate new fish on ~4% of calls
+		if (rand_gen.nextInt(25) == 1) {
 			this.scene_items.add(new AlphaFish(0, 
 					   						   rand_gen.nextInt(this.scene_height),
 					   						   length,
 					   						   length/2,
-					   						   6,
+					   						   rand_gen.nextInt(5)+5,
 					   						   true));
 			this.scene_items.add(new AlphaFish(this.scene_width, 
 					               			   rand_gen.nextInt(this.scene_height),
 					               			   length,
 					               			   length/2,
-					               			   -6,
+					               			   -1*rand_gen.nextInt(5)+5,
 					               			   false));		
 		}
 		
