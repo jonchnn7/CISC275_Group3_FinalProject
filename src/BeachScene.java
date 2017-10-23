@@ -24,7 +24,6 @@ public class BeachScene extends Scene {
 		}
 		
 		this.scene_items.add(new AlphaCrabPlayer(200, 500));
-		Collections.sort(this.scene_items);
 	}
 	
 	@Override

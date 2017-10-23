@@ -124,6 +124,9 @@ public class Game extends Canvas {
 	        	click_event = false;
 	        }
 	        
+	        if (current_scene.scene_name == "Beach")
+	        	current_scene.updateTime();
+	        
 	        current_scene.drawScene(g);
 	         
 	        // Update Screen
@@ -132,8 +135,8 @@ public class Game extends Canvas {
 	
 	         
 	        // Loop Delay
-	        try { Thread.sleep(10); } catch (Exception e) {}
-	        sleep_time += 10;
+	        try { Thread.sleep(50); } catch (Exception e) {}
+	        sleep_time += 50;
 	        
 	        if (sleep_time % 1000 == 0) 
 	        	active_scenes.forEach((k,v)->v.updateTime());

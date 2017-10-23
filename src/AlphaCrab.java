@@ -30,7 +30,7 @@ public class AlphaCrab extends SceneObject {
 	}
 	
 	public void move() {
-		this.item_x += rand_gen.nextInt(15) + 20;
+		this.item_x += rand_gen.nextInt(10) + 2;
 		this.shape = new Ellipse2D.Double(this.item_x, this.item_y, 100, 50);
 	}
 
