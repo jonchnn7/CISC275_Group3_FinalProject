@@ -22,10 +22,10 @@ public class BeachScene extends Scene {
 		this.scene_items = new ArrayList<SceneObject>();
 		
 		for (int i=0; i<4; i++) {
-			this.scene_items.add(new AlphaCrab(200, 200+75*i, 1));
+			this.scene_items.add(new AlphaCrab(100, 200+75*i, 1));
 		}
 		
-		this.scene_items.add(new AlphaCrabPlayer(200, 500));
+		this.scene_items.add(new AlphaCrabPlayer(100, 500));
 	}
 	
 	@Override

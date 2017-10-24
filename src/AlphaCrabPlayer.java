@@ -25,7 +25,7 @@ public class AlphaCrabPlayer extends AlphaCrab {
 	@Override
 	public void move() {
 		this.item_x += 25;
-		this.shape = new Ellipse2D.Double(this.item_x, this.item_y, 100, 50);
+		this.shape = new Ellipse2D.Double(this.item_x, this.item_y, 75, 35);
 	}
 }
 
