@@ -30,10 +30,7 @@ public abstract class Scene {
 		this.scene_width = width;
 		this.scene_height = height;
 		this.scene_name = name;
-		this.nav_items.add(new NavObject(5, "HQ"));
-		this.nav_items.add(new NavObject(40, "Bay"));
-		this.nav_items.add(new NavObject(75, "Beach"));
-		this.nav_items.add(new NavObject(110, "Wetlands"));
+		this.nav_items.add(new NavObject(400, "Inventory"));
 	}
 	
 	public void drawScene(Graphics g) {

@@ -1,4 +1,6 @@
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -13,8 +15,8 @@ public class Inventory extends Scene{
 	public Inventory(int interface_width, int width, int height) {
 		super(interface_width, width, height, "Inventory");
 		this.scene_background = Color.ORANGE;
-		this.visible = true;
-		this.time = 300;
+		this.visible = false;
+		this.time = 0;
 		this.fillScene();
 	}
 	
@@ -38,6 +40,23 @@ public class Inventory extends Scene{
 		
 		Collections.sort(this.scene_items);
 	}
+	
+	@Override
+	public void drawScene(Graphics g) {
+        g.setColor(this.scene_background);
+        g.fillRect(interface_width, interface_width,  scene_width, scene_height);
+        
+        Collections.reverse(scene_items);
+        for (SceneObject item : scene_items) {
+        	item.drawItem(g);
+        }
+        Collections.sort(scene_items);
+        
+        for (SceneObject item : nav_items)  {
+        	item.drawItem(g);
+        }
+        
+    }
 
 	/* Should end up being something like this
 	protected void fillScene() {

@@ -45,7 +45,7 @@ public class Game extends Canvas {
 	InterfaceWindow game_interface = new InterfaceWindow(SCREEN_WIDTH, SCREEN_HEIGHT);
 	Scene current_scene;
 	Map<String, Scene> active_scenes = new HashMap<String, Scene>();
-	
+	Scene inventory;
 	
 	public Game() {
 		// Define Window Vars
@@ -90,7 +90,9 @@ public class Game extends Canvas {
 		active_scenes.put("Bay", new BayScene(INTERFACE_WIDTH, SCREEN_WIDTH-(2*INTERFACE_WIDTH), SCREEN_HEIGHT-(2*INTERFACE_WIDTH)));
 		active_scenes.put("Beach", new BeachScene(INTERFACE_WIDTH, SCREEN_WIDTH-(2*INTERFACE_WIDTH), SCREEN_HEIGHT-(2*INTERFACE_WIDTH)));
 		active_scenes.put("Wetlands", new WetlandsScene(INTERFACE_WIDTH, SCREEN_WIDTH-(2*INTERFACE_WIDTH), SCREEN_HEIGHT-(2*INTERFACE_WIDTH)));
-
+		active_scenes.put("Map", new MapScene(INTERFACE_WIDTH, SCREEN_WIDTH-(2*INTERFACE_WIDTH), SCREEN_HEIGHT-(2*INTERFACE_WIDTH)));
+		inventory = new Inventory(INTERFACE_WIDTH, SCREEN_WIDTH-(2*INTERFACE_WIDTH), SCREEN_HEIGHT-(2*INTERFACE_WIDTH));
+		
 		processNav("HQ");
 		gameLoop();
 	}
@@ -130,6 +132,9 @@ public class Game extends Canvas {
 	        	((BayScene)current_scene).move();
 	        
 	        current_scene.drawScene(g);
+	        if(inventory.visible == true) {
+	        	inventory.drawScene(g);
+	        }
 	         
 	        // Update Screen
 	        g.dispose();
@@ -149,6 +154,9 @@ public class Game extends Canvas {
 		System.out.println("NavClick: " + nav_label);  // DEBUG - REMOVE
 		if (nav_label == null)
 			return;
+		else if(nav_label == "Inventory") {
+			inventory.toggleVissible();
+		}
 		else
 			active_scenes.forEach((k,v)->{
 				if (k == nav_label)
