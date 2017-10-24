@@ -1,3 +1,4 @@
+package cisc275.group3.sceneobjects;
 import java.awt.Color;
 import java.util.Random;
 

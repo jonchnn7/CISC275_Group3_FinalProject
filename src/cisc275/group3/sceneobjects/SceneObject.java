@@ -1,3 +1,4 @@
+package cisc275.group3.sceneobjects;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Shape;
@@ -67,12 +68,24 @@ public abstract class SceneObject implements Comparable<SceneObject> {
 		}
 	}
 	
-	protected int getDepth() {
+	public int getDepth() {
 		return this.depth;
 	}
 	
 	protected void setDepth(int depth) {
 		this.depth = depth;
+	}
+	
+	public int getX() {
+		return this.item_x;
+	}
+	
+	public int getY() {
+		return this.item_y;
+	}
+	
+	public int getWidth() {
+		return this.item_width;
 	}
 	
 	public String toString() {

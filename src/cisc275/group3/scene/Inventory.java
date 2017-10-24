@@ -1,6 +1,10 @@
+package cisc275.group3.scene;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Collections;
+
+import cisc275.group3.sceneobjects.AlphaItem;
+import cisc275.group3.sceneobjects.SceneObject;
 
 //NEED TO CHANGE PROCCESS CLICK IF THIS IS GOING TO EXTEND SCENE
 
@@ -11,8 +15,8 @@ public class Inventory extends Scene{
 	//ArrayList<SceneObject> inventory_items = new ArrayList<SceneObject>(); Add once we figure out item types
 
 	public Inventory(int interface_width, int width, int height) {
-		super(interface_width, width, height, "Inventory");
-		this.scene_background = Color.ORANGE;
+		super(0, INTERFACE_HEIGHT, width, height, "Inventory");
+		this.scene_background_color = Color.ORANGE;
 		this.visible = true;
 		this.time = 300;
 		this.fillScene();
