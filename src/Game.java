@@ -58,7 +58,7 @@ public class Game extends Canvas {
 	    setBounds(0,0,SCREEN_WIDTH, SCREEN_HEIGHT);
 	    game_panel.add(this);
 	    game_panel.setIgnoreRepaint(true);
-	
+	    
 	    // Display Window
 	    game_window.pack();
 	    game_window.setResizable(false);
