@@ -136,7 +136,10 @@ public class Game extends Canvas {
 	        	
 	        	if (map_scene.getVisible()) {
 	        		processNav( map_scene.navClick(click_x, click_y) );
-	        		//processNav("Map");
+	        		if (!current_scene.getVisible()) {
+	        			current_scene.toggleClickable();
+	        			map_scene.toggleVisible();
+	        		}
 	        	}
 	        		
 	       	
