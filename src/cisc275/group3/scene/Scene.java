@@ -99,18 +99,19 @@ public abstract class Scene {
 		this.clickable = !this.clickable;
 	}
 
-	public boolean processClick(int click_x, int click_y) {
+	public Color processClick(int click_x, int click_y) {
 		Collections.sort(scene_items);
 		System.out.println(this.scene_name + " Items: " + scene_items);  // DEBUG - REMOVE
-		
+		SceneObject tmp;
 		for (Iterator<SceneObject> iterator = scene_items.iterator(); iterator.hasNext();) {
-			if ( iterator.next().itemClicked(click_x, click_y) ) {
+			tmp = iterator.next();
+			if ( tmp.itemClicked(click_x, click_y) ) {
 				iterator.remove();
-				return true;
+				return tmp.getColor();
 			}
 		}
 				
-		return false;
+		return null;
 	}
 	
 	public void processScore() {

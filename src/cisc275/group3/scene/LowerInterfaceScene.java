@@ -17,6 +17,7 @@ public class LowerInterfaceScene extends Scene {
 	
 	private String time_string;
 	private String score_string;
+	private String mission_string;
 
 	public LowerInterfaceScene(int width, int height, String name) {
 		super(0, height-INTERFACE_HEIGHT, width, INTERFACE_HEIGHT, name);
@@ -29,12 +30,19 @@ public class LowerInterfaceScene extends Scene {
 		
 	}
 	
-	public void drawScene(Graphics g, int time, int score) {
+	public void drawScene(Graphics g, int time, int score, String mission) {
+		mission_string = "Mission: " + mission;
 		time_string = "Time: " + time;
 		score_string = "Score: " + score;
 		
         g.setColor(this.scene_background_color);
         g.fillRect(this.start_x, this.start_y, this.scene_width, this.scene_height);
+        
+        g.setColor(Color.white);
+		g.setFont(new Font("Sans Serif", Font.BOLD, 25));
+		g.drawString(mission_string,
+					 10, 
+					 this.start_y+this.scene_height-g.getFontMetrics().getHeight());
         
         g.setColor(Color.white);
 		g.setFont(new Font("Sans Serif", Font.BOLD, 38));

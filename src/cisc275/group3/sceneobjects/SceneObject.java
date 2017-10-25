@@ -88,6 +88,10 @@ public abstract class SceneObject implements Comparable<SceneObject> {
 		return this.item_width;
 	}
 	
+	public Color getColor() {
+		return this.item_color;
+	}
+	
 	public String toString() {
 		return "[" + this.name + ", (" + this.item_x + "," + this.item_y + "), " + this.depth + "]";
 	}

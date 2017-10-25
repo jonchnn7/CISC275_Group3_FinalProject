@@ -1,6 +1,7 @@
 package cisc275.group3.controller;
 //Window Libraries
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
@@ -14,9 +15,11 @@ import cisc275.group3.scene.HeadquartersScene;
 import cisc275.group3.scene.InventoryScene;
 import cisc275.group3.scene.LowerInterfaceScene;
 import cisc275.group3.scene.MapScene;
+import cisc275.group3.scene.Mission;
 import cisc275.group3.scene.UpperInterfaceScene;
 import cisc275.group3.scene.Scene;
 import cisc275.group3.scene.WetlandsScene;
+import cisc275.group3.sceneobjects.AlphaFish;
 
 //Event Libraries
 import java.awt.event.MouseAdapter;
@@ -25,6 +28,7 @@ import java.awt.event.MouseEvent;
 //Utility Libraries
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 @SuppressWarnings("serial")
 public class Game extends Canvas {
@@ -43,6 +47,10 @@ public class Game extends Canvas {
 	private JFrame game_window;
 	private JPanel game_panel;
 	private int score;
+	private Mission activeMission;
+	Random rand_gen = new Random();
+	private Color[] color_list = {Color.black, Color.cyan, Color.darkGray, Color.magenta,
+			  Color.red, Color.yellow, Color.orange};
 	
 	// Event Variables
 	private int click_x;
@@ -96,6 +104,7 @@ public class Game extends Canvas {
 	    });
 	    
 	    score = 0;
+	    activeMission = new Mission(null);
 	    initGame();
 	}
 	
@@ -140,11 +149,18 @@ public class Game extends Canvas {
 	        			current_scene.toggleClickable();
 	        			map_scene.toggleVisible();
 	        		}
+	        	} else if (current_scene.getName() == "Headquarters") {
+	        		processNav( ((HeadquartersScene)current_scene).navClick(click_x, click_y) );
 	        	}
-	        		
+	        	
+	        	Color tmp = current_scene.processClick(click_x, click_y);
 	       	
-	        	if (current_scene.processClick(click_x, click_y) && current_scene.getClickable())
+	        	if ((tmp != null) && current_scene.getClickable()) {
+	        		if (activeMission.getTargetObjectColor().equals(tmp)) {
+	        			activeMission.setDoneMission(true);
+	        		}
 	        		current_scene.processScore();
+	        	}
 	             		
 	        	System.out.println("Score: " + score); // DEBUG - REMOVE
 	        	click_event = false;
@@ -163,7 +179,7 @@ public class Game extends Canvas {
 	        
 	        // Draw Interface
 	        ((UpperInterfaceScene)interface_bars.get("UPPER")).drawScene(g);
-	        ((LowerInterfaceScene)interface_bars.get("LOWER")).drawScene(g, current_scene.getTime(), current_scene.getScore());
+	        ((LowerInterfaceScene)interface_bars.get("LOWER")).drawScene(g, current_scene.getTime(), current_scene.getScore(), activeMission.toString());
 	         
 	        // Draw Map
 	        if (map_scene.getVisible()) {
@@ -202,7 +218,8 @@ public class Game extends Canvas {
 		} else if (nav_label == "Map") {
 			current_scene.toggleClickable();
 			map_scene.toggleVisible();
-			
+		} else if (nav_label == "Missions") {
+			activeMission = new Mission(color_list[rand_gen.nextInt(color_list.length)]);
 		} else {
 			active_scenes.forEach((k,v)->{
 						     	  if (k == nav_label)
