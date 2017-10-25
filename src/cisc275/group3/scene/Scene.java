@@ -49,6 +49,9 @@ public abstract class Scene {
         g.fillRect(this.start_x, this.start_y,  this.scene_width, this.scene_height);
         
         if (this.scene_items.size() > 0) {
+        	//System.out.println(this.scene_name);
+        	//System.out.println(this.scene_items.size());    DEBUG -- REMOVE
+        	//System.out.println(this.clickable);
 	        Collections.reverse(this.scene_items);
 	        for (SceneObject item : this.scene_items) {
 	        	item.drawItem(g);

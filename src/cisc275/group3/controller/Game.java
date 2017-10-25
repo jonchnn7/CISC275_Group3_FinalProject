@@ -1,9 +1,7 @@
 package cisc275.group3.controller;
 //Window Libraries
 import java.awt.Canvas;
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 import javax.swing.JFrame;
@@ -15,6 +13,7 @@ import cisc275.group3.scene.BeachScene;
 import cisc275.group3.scene.HeadquartersScene;
 import cisc275.group3.scene.InventoryScene;
 import cisc275.group3.scene.LowerInterfaceScene;
+import cisc275.group3.scene.MapScene;
 import cisc275.group3.scene.UpperInterfaceScene;
 import cisc275.group3.scene.Scene;
 import cisc275.group3.scene.WetlandsScene;
@@ -24,11 +23,10 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 //Utility Libraries
-import java.util.Random;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+@SuppressWarnings("serial")
 public class Game extends Canvas {
 	/*	CISC 275 - Group 3 - Estuary Game
 	 * 
@@ -51,7 +49,7 @@ public class Game extends Canvas {
 	private int click_y;
 	private boolean click_event;
 	
-	// Zone Variables - identified by name
+	// Zone Variables
 	Scene current_scene;
 	Map<String, Scene> active_scenes = new HashMap<String, Scene>();
 	
@@ -61,6 +59,8 @@ public class Game extends Canvas {
 	// Interface Variables
 	Map<String, Scene> interface_bars = new HashMap<String, Scene>();
 	
+	// Map Variable
+	MapScene map_scene = new MapScene(SCREEN_WIDTH, SCREEN_HEIGHT);
 	
 	public Game() {
 		// Define Window Vars
@@ -130,9 +130,15 @@ public class Game extends Canvas {
 	        	}
 	        });
 	      
-	        
+	        // If there's a click, figure out what to do with it and do it
 	        if (click_event) {
-	        	processNav( ((UpperInterfaceScene)interface_bars.get("UPPER")).navClick(click_x, click_y) );   	
+	        	processNav( ((UpperInterfaceScene)interface_bars.get("UPPER")).navClick(click_x, click_y) );
+	        	
+	        	if (map_scene.getVisible()) {
+	        		processNav( map_scene.navClick(click_x, click_y) );
+	        		//processNav("Map");
+	        	}
+	        		
 	       	
 	        	if (current_scene.processClick(click_x, click_y) && current_scene.getClickable())
 	        		current_scene.processScore();
@@ -142,6 +148,7 @@ public class Game extends Canvas {
 	        }
 	        
 	        
+	        // Scene Object Updates
 	        if (current_scene.getName() == "Beach")
 	        	((BeachScene)current_scene).moveCrabs();
 	        else if (current_scene.getName() == "Bay")
@@ -155,9 +162,13 @@ public class Game extends Canvas {
 	        ((UpperInterfaceScene)interface_bars.get("UPPER")).drawScene(g);
 	        ((LowerInterfaceScene)interface_bars.get("LOWER")).drawScene(g, current_scene.getTime(), current_scene.getScore());
 	         
+	        // Draw Map
+	        if (map_scene.getVisible()) {
+	        	map_scene.drawScene(g);
+	        }
+	     
 	        // Draw Inventory
 	        if (inventory_scene.getVisible()) {
-	        	current_scene.toggleClickable();
 	        	inventory_scene.drawScene(g);
 	        }
 	        	
@@ -177,19 +188,26 @@ public class Game extends Canvas {
 	
 	private void processNav(String nav_label) {
 		System.out.println("NavClick: " + nav_label);  // DEBUG - REMOVE
+				
 		if (nav_label == null) {
 			return;
+			
 		} else if (nav_label == "Inventory") {
 			current_scene.toggleClickable();
 			inventory_scene.toggleVisible();
 			
-		} else
+		} else if (nav_label == "Map") {
+			current_scene.toggleClickable();
+			map_scene.toggleVisible();
+			
+		} else {
 			active_scenes.forEach((k,v)->{
 						     	  if (k == nav_label)
 						     		  v.setVisible();
 								  else
 									  v.setHidden();
 			});
+		}
 	}
 	
 	public static void main(String args[]) {

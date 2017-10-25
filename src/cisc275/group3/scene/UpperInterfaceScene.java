@@ -23,7 +23,8 @@ public class UpperInterfaceScene extends Scene {
 		this.nav_items.add(new NavObject(5, 40, 100, 30, "Bay"));
 		this.nav_items.add(new NavObject(110, 5, 100, 30, "Beach"));
 		this.nav_items.add(new NavObject(110, 40, 100, 30, "Wetlands"));
-		this.nav_items.add(new NavObject(this.scene_width-160, 5, 150, 60, "Inventory" ));
+		this.nav_items.add(new NavObject(215, 7, 100, 60, "Map"));
+		this.nav_items.add(new NavObject(this.scene_width-160, 7, 150, 60, "Inventory" ));
 	}
 
 	@Override
@@ -32,6 +33,7 @@ public class UpperInterfaceScene extends Scene {
 		
 	}
 	
+	@Override
 	public void drawScene(Graphics g) {
         g.setColor(this.scene_background_color);
         g.fillRect(0, 0, this.scene_width, INTERFACE_HEIGHT);
