@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 //import InterfaceWindow;
+import cisc275.group3.scene.TitleScene;
 import cisc275.group3.scene.BayScene;
 import cisc275.group3.scene.BeachScene;
 import cisc275.group3.scene.HeadquartersScene;
@@ -110,6 +111,7 @@ public class Game extends Canvas {
 	
 	
 	private void initGame() {
+		active_scenes.put("Title", new TitleScene(SCREEN_WIDTH, SCREEN_HEIGHT));
 		active_scenes.put("HQ", new HeadquartersScene(SCREEN_WIDTH, SCREEN_HEIGHT));
 		active_scenes.put("Bay", new BayScene(SCREEN_WIDTH, SCREEN_HEIGHT));
 		active_scenes.put("Beach", new BeachScene(SCREEN_WIDTH, SCREEN_HEIGHT));
@@ -118,7 +120,7 @@ public class Game extends Canvas {
 		interface_bars.put("UPPER", new UpperInterfaceScene(SCREEN_WIDTH, "UPPER"));
 		interface_bars.put("LOWER", new LowerInterfaceScene(SCREEN_WIDTH, SCREEN_HEIGHT, "LOWER"));
 
-		processNav("HQ");
+		processNav("Title");
 		gameLoop();
 	}
 	
