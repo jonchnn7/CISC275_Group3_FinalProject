@@ -16,7 +16,6 @@ public class WetlandsScene extends Scene {
 		this.scene_background_color = Color.lightGray;
 		this.time = 271;
 		this.visible = true;
-		this.nav_items.add(new NavObject(5, "Map"));
 		this.fillScene();
 	}
 

@@ -54,9 +54,6 @@ public class Game extends Canvas {
 	// Zone Variables - identified by name
 	Scene current_scene;
 	Map<String, Scene> active_scenes = new HashMap<String, Scene>();
-<<<<<<< HEAD:src/Game.java
-	Scene inventory;
-=======
 	
 	// Inventory Variables
 	InventoryScene inventory_scene = new InventoryScene(SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -64,7 +61,6 @@ public class Game extends Canvas {
 	// Interface Variables
 	Map<String, Scene> interface_bars = new HashMap<String, Scene>();
 	
->>>>>>> mvc:src/cisc275/group3/controller/Game.java
 	
 	public Game() {
 		// Define Window Vars
@@ -105,15 +101,6 @@ public class Game extends Canvas {
 	
 	
 	private void initGame() {
-<<<<<<< HEAD:src/Game.java
-		active_scenes.put("HQ", new HeadquartersScene(INTERFACE_WIDTH, SCREEN_WIDTH-(2*INTERFACE_WIDTH), SCREEN_HEIGHT-(2*INTERFACE_WIDTH)));
-		active_scenes.put("Bay", new BayScene(INTERFACE_WIDTH, SCREEN_WIDTH-(2*INTERFACE_WIDTH), SCREEN_HEIGHT-(2*INTERFACE_WIDTH)));
-		active_scenes.put("Beach", new BeachScene(INTERFACE_WIDTH, SCREEN_WIDTH-(2*INTERFACE_WIDTH), SCREEN_HEIGHT-(2*INTERFACE_WIDTH)));
-		active_scenes.put("Wetlands", new WetlandsScene(INTERFACE_WIDTH, SCREEN_WIDTH-(2*INTERFACE_WIDTH), SCREEN_HEIGHT-(2*INTERFACE_WIDTH)));
-		active_scenes.put("Map", new MapScene(INTERFACE_WIDTH, SCREEN_WIDTH-(2*INTERFACE_WIDTH), SCREEN_HEIGHT-(2*INTERFACE_WIDTH)));
-		inventory = new Inventory(INTERFACE_WIDTH, SCREEN_WIDTH-(2*INTERFACE_WIDTH), SCREEN_HEIGHT-(2*INTERFACE_WIDTH));
-		
-=======
 		active_scenes.put("HQ", new HeadquartersScene(SCREEN_WIDTH, SCREEN_HEIGHT));
 		active_scenes.put("Bay", new BayScene(SCREEN_WIDTH, SCREEN_HEIGHT));
 		active_scenes.put("Beach", new BeachScene(SCREEN_WIDTH, SCREEN_HEIGHT));
@@ -122,7 +109,6 @@ public class Game extends Canvas {
 		interface_bars.put("UPPER", new UpperInterfaceScene(SCREEN_WIDTH, "UPPER"));
 		interface_bars.put("LOWER", new LowerInterfaceScene(SCREEN_WIDTH, SCREEN_HEIGHT, "LOWER"));
 
->>>>>>> mvc:src/cisc275/group3/controller/Game.java
 		processNav("HQ");
 		gameLoop();
 	}
@@ -164,16 +150,10 @@ public class Game extends Canvas {
 	        
 	        // Draw Scene
 	        current_scene.drawScene(g);
-<<<<<<< HEAD:src/Game.java
-	        if(inventory.visible == true) {
-	        	inventory.drawScene(g);
-	        }
-=======
 	        
 	        // Draw Interface
 	        ((UpperInterfaceScene)interface_bars.get("UPPER")).drawScene(g);
 	        ((LowerInterfaceScene)interface_bars.get("LOWER")).drawScene(g, current_scene.getTime(), current_scene.getScore());
->>>>>>> mvc:src/cisc275/group3/controller/Game.java
 	         
 	        // Draw Inventory
 	        if (inventory_scene.getVisible()) {
@@ -199,18 +179,11 @@ public class Game extends Canvas {
 		System.out.println("NavClick: " + nav_label);  // DEBUG - REMOVE
 		if (nav_label == null) {
 			return;
-<<<<<<< HEAD:src/Game.java
-		else if(nav_label == "Inventory") {
-			inventory.toggleVissible();
-		}
-		else
-=======
 		} else if (nav_label == "Inventory") {
 			current_scene.toggleClickable();
 			inventory_scene.toggleVisible();
 			
 		} else
->>>>>>> mvc:src/cisc275/group3/controller/Game.java
 			active_scenes.forEach((k,v)->{
 						     	  if (k == nav_label)
 						     		  v.setVisible();

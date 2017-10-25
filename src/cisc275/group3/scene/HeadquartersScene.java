@@ -16,7 +16,6 @@ public class HeadquartersScene extends Scene {
 		this.scene_background_color = Color.green;
 		this.time = 200;
 		this.visible = true;
-		this.nav_items.add(new NavObject(5, "Map"));
 		this.fillScene();
 	}
 

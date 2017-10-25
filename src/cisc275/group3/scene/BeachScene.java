@@ -20,7 +20,6 @@ public class BeachScene extends Scene {
 		this.time = 314;
 		this.visible = true;
 		this.start_game = false;
-		this.nav_items.add(new NavObject(5, "Map"));
 		this.fillScene();
 	}
 

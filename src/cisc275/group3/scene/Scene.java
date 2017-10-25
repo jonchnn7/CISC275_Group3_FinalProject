@@ -41,11 +41,7 @@ public abstract class Scene {
 		this.scene_width = width;
 		this.scene_height = height;
 		this.scene_name = name;
-<<<<<<< HEAD:src/Scene.java
-		this.nav_items.add(new NavObject(400, "Inventory"));
-=======
 		this.clickable = true;
->>>>>>> mvc:src/cisc275/group3/scene/Scene.java
 	}
 	
 	public void drawScene(Graphics g) {

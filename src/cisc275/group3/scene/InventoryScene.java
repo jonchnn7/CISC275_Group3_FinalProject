@@ -16,15 +16,9 @@ public class InventoryScene extends Scene{
 	
 	//ArrayList<SceneObject> inventory_items = new ArrayList<SceneObject>(); Add once we figure out item types
 
-<<<<<<< HEAD:src/Inventory.java
-	public Inventory(int interface_width, int width, int height) {
-		super(interface_width, width, height, "Inventory");
-		this.scene_background = Color.ORANGE;
-=======
 	public InventoryScene(int width, int height) {
 		super(0, INTERFACE_HEIGHT, width, height-2*INTERFACE_HEIGHT, "Inventory");
 		this.scene_background_color = Color.ORANGE;
->>>>>>> mvc:src/cisc275/group3/scene/InventoryScene.java
 		this.visible = false;
 		this.time = 0;
 		this.fillScene();
@@ -51,24 +45,6 @@ public class InventoryScene extends Scene{
 		Collections.sort(this.scene_items);
 	}
 	
-<<<<<<< HEAD:src/Inventory.java
-	@Override
-	public void drawScene(Graphics g) {
-        g.setColor(this.scene_background);
-        g.fillRect(interface_width, interface_width,  scene_width, scene_height);
-        
-        Collections.reverse(scene_items);
-        for (SceneObject item : scene_items) {
-        	item.drawItem(g);
-        }
-        Collections.sort(scene_items);
-        
-        for (SceneObject item : nav_items)  {
-        	item.drawItem(g);
-        }
-        
-    }
-=======
 	/*
 	@Override
 	public void drawScene(Graphics g) {
@@ -82,7 +58,6 @@ public class InventoryScene extends Scene{
         Collections.sort(scene_items);
                 
     }*/
->>>>>>> mvc:src/cisc275/group3/scene/InventoryScene.java
 
 	/* Should end up being something like this
 	protected void fillScene() {

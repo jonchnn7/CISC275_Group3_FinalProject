@@ -17,7 +17,6 @@ public class BayScene extends Scene {
 		this.scene_background_color = Color.blue;
 		this.time = 350;
 		this.visible = false;
-		this.nav_items.add(new NavObject(5, "Map"));
 		this.fillScene();
 	}
 
