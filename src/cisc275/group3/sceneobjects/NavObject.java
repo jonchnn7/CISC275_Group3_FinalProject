@@ -1,3 +1,4 @@
+package cisc275.group3.sceneobjects;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -7,8 +8,8 @@ public class NavObject extends SceneObject {
 
 	protected String label;
 		
-	public NavObject(int y, String lbl) {
-		super(5,y, 100, 30, 10);
+	public NavObject(int x, int y, int width, int height, String lbl) {
+		super(x, y, width, height, 20);
 		this.item_color = Color.BLACK;
 		this.shape = new Rectangle2D.Double(this.item_x, this.item_y, this.item_width, this.item_height);
 		this.label = lbl;

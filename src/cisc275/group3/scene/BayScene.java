@@ -1,16 +1,20 @@
+package cisc275.group3.scene;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.Random;
 
+import cisc275.group3.sceneobjects.AlphaFish;
+import cisc275.group3.sceneobjects.SceneObject;
+
 public class BayScene extends Scene {
 
 	Random rand_gen = new Random();
 	
-	public BayScene(int interface_width, int width, int height) {
-		super(interface_width, width, height, "Bay");
-		this.scene_background = Color.blue;
+	public BayScene(int width, int height) {
+		super(0, INTERFACE_HEIGHT, width, height-2*INTERFACE_HEIGHT, "Bay");
+		this.scene_background_color = Color.blue;
 		this.time = 350;
 		this.visible = false;
 		this.nav_items.add(new NavObject(5, "Map"));
@@ -23,13 +27,13 @@ public class BayScene extends Scene {
 		for (int j=0; j<5; j++) {
 			int length = rand_gen.nextInt(20) + 15;
 			this.scene_items.add(new AlphaFish(0-length, 
-											   j*140 + 10,
+											   j*140 + this.start_y + 10,
 											   length,
 											   length/2,
 											   j+1,
 											   true));
 			this.scene_items.add(new AlphaFish(this.scene_width+length, 
-											   j*140 + 10,
+											   j*140 + this.start_y + 10,
 											   length,
 											   length/2,
 											   -1*j-1,
@@ -45,13 +49,13 @@ public class BayScene extends Scene {
 		// Generate new fish on ~4% of calls
 		if (rand_gen.nextInt(25) == 1) {
 			this.scene_items.add(new AlphaFish(0-length, 
-					   						   rand_gen.nextInt(this.scene_height),
+					   						   rand_gen.nextInt(this.scene_height) + this.start_y,
 					   						   length,
 					   						   length/2,
 					   						   rand_gen.nextInt(10)+5,
 					   						   true));
 			this.scene_items.add(new AlphaFish(this.scene_width+length, 
-					               			   rand_gen.nextInt(this.scene_height),
+					               			   rand_gen.nextInt(this.scene_height) + this.start_y,
 					               			   length,
 					               			   length/2,
 					               			   -1*rand_gen.nextInt(10)-5,
@@ -67,10 +71,10 @@ public class BayScene extends Scene {
 	private void removeFish() {
 		for (Iterator<SceneObject> iterator = scene_items.iterator(); iterator.hasNext();) {
 			AlphaFish fish = (AlphaFish)iterator.next();
-			if ( fish.left_to_right && fish.item_x >= (this.scene_width+fish.item_width) ) {
+			if ( fish.getLTR() && fish.getX() >= (this.scene_width+fish.getWidth()) ) {
 				iterator.remove();
 			
-			} else if ( !fish.left_to_right && fish.item_x <= (0-fish.item_width) ) { 
+			} else if ( !fish.getLTR() && fish.getX() <= (0-fish.getWidth()) ) { 
 				iterator.remove();
 			}
 		}

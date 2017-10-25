@@ -1,3 +1,4 @@
+package cisc275.group3.controller;
 //Window Libraries
 import java.awt.Canvas;
 import java.awt.Color;
@@ -7,6 +8,16 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+//import InterfaceWindow;
+import cisc275.group3.scene.BayScene;
+import cisc275.group3.scene.BeachScene;
+import cisc275.group3.scene.HeadquartersScene;
+import cisc275.group3.scene.InventoryScene;
+import cisc275.group3.scene.LowerInterfaceScene;
+import cisc275.group3.scene.UpperInterfaceScene;
+import cisc275.group3.scene.Scene;
+import cisc275.group3.scene.WetlandsScene;
 
 //Event Libraries
 import java.awt.event.MouseAdapter;
@@ -30,7 +41,6 @@ public class Game extends Canvas {
 	// Game Properties
 	final private static int SCREEN_WIDTH = 1280;
 	final private static int SCREEN_HEIGHT = 720;
-	final public static int INTERFACE_WIDTH = 75;
 	private BufferStrategy buff_strat;
 	private JFrame game_window;
 	private JPanel game_panel;
@@ -41,11 +51,20 @@ public class Game extends Canvas {
 	private int click_y;
 	private boolean click_event;
 	
-	// Active Scenes - identified by name
-	InterfaceWindow game_interface = new InterfaceWindow(SCREEN_WIDTH, SCREEN_HEIGHT);
+	// Zone Variables - identified by name
 	Scene current_scene;
 	Map<String, Scene> active_scenes = new HashMap<String, Scene>();
+<<<<<<< HEAD:src/Game.java
 	Scene inventory;
+=======
+	
+	// Inventory Variables
+	InventoryScene inventory_scene = new InventoryScene(SCREEN_WIDTH, SCREEN_HEIGHT);
+	
+	// Interface Variables
+	Map<String, Scene> interface_bars = new HashMap<String, Scene>();
+	
+>>>>>>> mvc:src/cisc275/group3/controller/Game.java
 	
 	public Game() {
 		// Define Window Vars
@@ -58,7 +77,7 @@ public class Game extends Canvas {
 	    setBounds(0,0,SCREEN_WIDTH, SCREEN_HEIGHT);
 	    game_panel.add(this);
 	    game_panel.setIgnoreRepaint(true);
-	
+	    
 	    // Display Window
 	    game_window.pack();
 	    game_window.setResizable(false);
@@ -86,6 +105,7 @@ public class Game extends Canvas {
 	
 	
 	private void initGame() {
+<<<<<<< HEAD:src/Game.java
 		active_scenes.put("HQ", new HeadquartersScene(INTERFACE_WIDTH, SCREEN_WIDTH-(2*INTERFACE_WIDTH), SCREEN_HEIGHT-(2*INTERFACE_WIDTH)));
 		active_scenes.put("Bay", new BayScene(INTERFACE_WIDTH, SCREEN_WIDTH-(2*INTERFACE_WIDTH), SCREEN_HEIGHT-(2*INTERFACE_WIDTH)));
 		active_scenes.put("Beach", new BeachScene(INTERFACE_WIDTH, SCREEN_WIDTH-(2*INTERFACE_WIDTH), SCREEN_HEIGHT-(2*INTERFACE_WIDTH)));
@@ -93,6 +113,16 @@ public class Game extends Canvas {
 		active_scenes.put("Map", new MapScene(INTERFACE_WIDTH, SCREEN_WIDTH-(2*INTERFACE_WIDTH), SCREEN_HEIGHT-(2*INTERFACE_WIDTH)));
 		inventory = new Inventory(INTERFACE_WIDTH, SCREEN_WIDTH-(2*INTERFACE_WIDTH), SCREEN_HEIGHT-(2*INTERFACE_WIDTH));
 		
+=======
+		active_scenes.put("HQ", new HeadquartersScene(SCREEN_WIDTH, SCREEN_HEIGHT));
+		active_scenes.put("Bay", new BayScene(SCREEN_WIDTH, SCREEN_HEIGHT));
+		active_scenes.put("Beach", new BeachScene(SCREEN_WIDTH, SCREEN_HEIGHT));
+		active_scenes.put("Wetlands", new WetlandsScene(SCREEN_WIDTH, SCREEN_HEIGHT));
+		
+		interface_bars.put("UPPER", new UpperInterfaceScene(SCREEN_WIDTH, "UPPER"));
+		interface_bars.put("LOWER", new LowerInterfaceScene(SCREEN_WIDTH, SCREEN_HEIGHT, "LOWER"));
+
+>>>>>>> mvc:src/cisc275/group3/controller/Game.java
 		processNav("HQ");
 		gameLoop();
 	}
@@ -105,37 +135,52 @@ public class Game extends Canvas {
 	        // Initialize Window
 	        Graphics2D g = (Graphics2D) buff_strat.getDrawGraphics();
 	        
-	        //Draw Interface
-	        game_interface.drawInterface(g, score);
 	        
 	        // Draw Scene
 	        active_scenes.forEach((k, v)->{
-	        	if (v.visible) {
+	        	if (v.getVisible()) {
 	        		current_scene = v;
 	        		game_window.setTitle("CISC 275 - Group 3 - Estuary Game - " + k);
 	        	}
 	        });
 	      
+	        
 	        if (click_event) {
-	        	processNav(current_scene.navClick(click_x, click_y));   	
+	        	processNav( ((UpperInterfaceScene)interface_bars.get("UPPER")).navClick(click_x, click_y) );   	
 	       	
-	        	if (current_scene.processClick(click_x, click_y))
-	        		score++;
+	        	if (current_scene.processClick(click_x, click_y) && current_scene.getClickable())
+	        		current_scene.processScore();
 	             		
 	        	System.out.println("Score: " + score); // DEBUG - REMOVE
 	        	click_event = false;
 	        }
 	        
-	        if (current_scene.scene_name == "Beach")
+	        
+	        if (current_scene.getName() == "Beach")
 	        	((BeachScene)current_scene).moveCrabs();
-	        else if (current_scene.scene_name == "Bay")
+	        else if (current_scene.getName() == "Bay")
 	        	((BayScene)current_scene).move();
 	        
+	        
+	        // Draw Scene
 	        current_scene.drawScene(g);
+<<<<<<< HEAD:src/Game.java
 	        if(inventory.visible == true) {
 	        	inventory.drawScene(g);
 	        }
+=======
+	        
+	        // Draw Interface
+	        ((UpperInterfaceScene)interface_bars.get("UPPER")).drawScene(g);
+	        ((LowerInterfaceScene)interface_bars.get("LOWER")).drawScene(g, current_scene.getTime(), current_scene.getScore());
+>>>>>>> mvc:src/cisc275/group3/controller/Game.java
 	         
+	        // Draw Inventory
+	        if (inventory_scene.getVisible()) {
+	        	current_scene.toggleClickable();
+	        	inventory_scene.drawScene(g);
+	        }
+	        	
 	        // Update Screen
 	        g.dispose();
 	        buff_strat.show();
@@ -152,17 +197,25 @@ public class Game extends Canvas {
 	
 	private void processNav(String nav_label) {
 		System.out.println("NavClick: " + nav_label);  // DEBUG - REMOVE
-		if (nav_label == null)
+		if (nav_label == null) {
 			return;
+<<<<<<< HEAD:src/Game.java
 		else if(nav_label == "Inventory") {
 			inventory.toggleVissible();
 		}
 		else
+=======
+		} else if (nav_label == "Inventory") {
+			current_scene.toggleClickable();
+			inventory_scene.toggleVisible();
+			
+		} else
+>>>>>>> mvc:src/cisc275/group3/controller/Game.java
 			active_scenes.forEach((k,v)->{
-				if (k == nav_label)
-					v.setVisible();
-				else
-					v.setHidden();
+						     	  if (k == nav_label)
+						     		  v.setVisible();
+								  else
+									  v.setHidden();
 			});
 	}
 	

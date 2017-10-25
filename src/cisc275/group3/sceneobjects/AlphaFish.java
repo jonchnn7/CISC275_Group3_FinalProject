@@ -1,3 +1,4 @@
+package cisc275.group3.sceneobjects;
 import java.awt.Color;
 import java.awt.geom.Ellipse2D;
 import java.util.Random;
@@ -25,5 +26,9 @@ public class AlphaFish extends SceneObject {
 		this.item_y += rand_gen.nextInt(10) - rand_gen.nextInt(10);
 		
 		this.shape = new Ellipse2D.Double(this.item_x, this.item_y, 100, 50);
+	}
+	
+	public boolean getLTR() {
+		return this.left_to_right;
 	}
 }

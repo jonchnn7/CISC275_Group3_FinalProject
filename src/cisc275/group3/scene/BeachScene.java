@@ -1,17 +1,22 @@
+package cisc275.group3.scene;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.Random;
 
+import cisc275.group3.sceneobjects.AlphaCrab;
+import cisc275.group3.sceneobjects.AlphaCrabPlayer;
+import cisc275.group3.sceneobjects.SceneObject;
+
 public class BeachScene extends Scene {
 
 	Random rand_gen = new Random();
 	boolean start_game;
 	
-	public BeachScene(int interface_width, int width, int height) {
-		super(interface_width, width, height, "Beach");
-		this.scene_background = Color.yellow;
+	public BeachScene(int width, int height) {
+		super(0, INTERFACE_HEIGHT, width, height-2*INTERFACE_HEIGHT, "Beach");
+		this.scene_background_color = Color.yellow;
 		this.time = 314;
 		this.visible = true;
 		this.start_game = false;

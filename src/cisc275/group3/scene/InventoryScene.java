@@ -1,20 +1,30 @@
+package cisc275.group3.scene;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import cisc275.group3.sceneobjects.AlphaItem;
+import cisc275.group3.sceneobjects.SceneObject;
+
 //NEED TO CHANGE PROCCESS CLICK IF THIS IS GOING TO EXTEND SCENE
 
 //in game active_scenes.put("Inventory", new Inventory(SCREEN_WIDTH, SCREEN_HEIGHT));
 
-public class Inventory extends Scene{
+public class InventoryScene extends Scene{
 	
 	//ArrayList<SceneObject> inventory_items = new ArrayList<SceneObject>(); Add once we figure out item types
 
+<<<<<<< HEAD:src/Inventory.java
 	public Inventory(int interface_width, int width, int height) {
 		super(interface_width, width, height, "Inventory");
 		this.scene_background = Color.ORANGE;
+=======
+	public InventoryScene(int width, int height) {
+		super(0, INTERFACE_HEIGHT, width, height-2*INTERFACE_HEIGHT, "Inventory");
+		this.scene_background_color = Color.ORANGE;
+>>>>>>> mvc:src/cisc275/group3/scene/InventoryScene.java
 		this.visible = false;
 		this.time = 0;
 		this.fillScene();
@@ -41,6 +51,7 @@ public class Inventory extends Scene{
 		Collections.sort(this.scene_items);
 	}
 	
+<<<<<<< HEAD:src/Inventory.java
 	@Override
 	public void drawScene(Graphics g) {
         g.setColor(this.scene_background);
@@ -57,6 +68,21 @@ public class Inventory extends Scene{
         }
         
     }
+=======
+	/*
+	@Override
+	public void drawScene(Graphics g) {
+        g.setColor(this.scene_background_color);
+        g.fillRect(this.start_x, this.start_y,  this.scene_width, this.scene_height);
+        
+        Collections.reverse(scene_items);
+        for (SceneObject item : this.scene_items) {
+        	item.drawItem(g);
+        }
+        Collections.sort(scene_items);
+                
+    }*/
+>>>>>>> mvc:src/cisc275/group3/scene/InventoryScene.java
 
 	/* Should end up being something like this
 	protected void fillScene() {

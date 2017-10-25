@@ -1,3 +1,5 @@
+package cisc275.group3.sceneobjects;
+
 import java.util.ArrayList;
 
 public enum SceneObjectType {

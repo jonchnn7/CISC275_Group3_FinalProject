@@ -1,31 +1,39 @@
+package cisc275.group3.sceneobjects;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
+import java.util.Random;
 
-public class AlphaCrabPlayer extends AlphaCrab {
+public class AlphaCrab extends SceneObject {
+	
+	Random rand_gen = new Random();
 
-	public AlphaCrabPlayer(int x, int y) {
-		super(x, y, -1);
+	public AlphaCrab(int x, int y, int d) {
+		super(x, y, 75, 35, d);
 		this.item_color = Color.getHSBColor(26, 68, 66);
-		this.name = "Alpha Crab Playable";
+		this.name = "Alpha Crab NPC";
 	}
-
+	
 	@Override
 	public void drawItem(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setColor(this.item_color);
 		g2.fill(this.shape);
-		g2.setColor(Color.red);
+		g2.setColor(Color.darkGray);
 		g2.setStroke(new BasicStroke(2));
 		g2.draw(this.shape);
 	}
 	
 	@Override
+	public boolean itemClicked(int click_x, int click_y) {
+		return false;
+	}
+	
 	public void move() {
-		this.item_x += 25;
+		this.item_x += rand_gen.nextInt(10) + 4;
 		this.shape = new Ellipse2D.Double(this.item_x, this.item_y, 75, 35);
 	}
-}
 
+}
