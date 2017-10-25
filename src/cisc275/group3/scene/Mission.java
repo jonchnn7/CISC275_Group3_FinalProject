@@ -8,8 +8,8 @@ public class Mission {
 	private Color targetObjectColor;
 	private boolean doneMission;
 	
-	public Mission(Color c) {
-		this.targetObjectColor = c;
+	public Mission(Color black) {
+		this.targetObjectColor = black;
 		this.doneMission = false;
 	}
 
