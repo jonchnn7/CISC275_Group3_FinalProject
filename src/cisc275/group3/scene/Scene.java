@@ -29,6 +29,7 @@ public abstract class Scene {
 	protected int start_x;
 	protected int start_y;
 	protected boolean visible;
+	protected boolean clickable;
 	protected String scene_name;
 	protected Color scene_background_color;
 	protected ArrayList<SceneObject> scene_items;
@@ -40,21 +41,28 @@ public abstract class Scene {
 		this.scene_width = width;
 		this.scene_height = height;
 		this.scene_name = name;
+		this.clickable = true;
 	}
 	
 	public void drawScene(Graphics g) {
         g.setColor(this.scene_background_color);
         g.fillRect(this.start_x, this.start_y,  this.scene_width, this.scene_height);
         
-        Collections.reverse(this.scene_items);
-        for (SceneObject item : this.scene_items) {
-        	item.drawItem(g);
+        if (this.scene_items.size() > 0) {
+	        Collections.reverse(this.scene_items);
+	        for (SceneObject item : this.scene_items) {
+	        	item.drawItem(g);
+	        }
+	        Collections.sort(this.scene_items);
         }
-        Collections.sort(this.scene_items);
     }
 	
 	public void updateTime() {
 		this.time -= 1;
+	}
+	
+	public boolean getClickable() {
+		return this.clickable;
 	}
 	
 	public String getName() {
@@ -80,9 +88,13 @@ public abstract class Scene {
 		this.visible = false;
 	}
 	
-	public void toggleVissible() {
+	public void toggleVisible() {
 		this.visible = !this.visible;
 	}	
+	
+	public void toggleClickable() {
+		this.clickable = !this.clickable;
+	}
 
 	public boolean processClick(int click_x, int click_y) {
 		Collections.sort(scene_items);

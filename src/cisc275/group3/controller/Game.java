@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import cisc275.group3.scene.BayScene;
 import cisc275.group3.scene.BeachScene;
 import cisc275.group3.scene.HeadquartersScene;
+import cisc275.group3.scene.InventoryScene;
 import cisc275.group3.scene.LowerInterfaceScene;
 import cisc275.group3.scene.UpperInterfaceScene;
 import cisc275.group3.scene.Scene;
@@ -50,9 +51,12 @@ public class Game extends Canvas {
 	private int click_y;
 	private boolean click_event;
 	
-	// Active Scenes - identified by name
+	// Zone Variables - identified by name
 	Scene current_scene;
 	Map<String, Scene> active_scenes = new HashMap<String, Scene>();
+	
+	// Inventory Variables
+	InventoryScene inventory_scene = new InventoryScene(SCREEN_WIDTH, SCREEN_HEIGHT);
 	
 	// Interface Variables
 	Map<String, Scene> interface_bars = new HashMap<String, Scene>();
@@ -126,28 +130,37 @@ public class Game extends Canvas {
 	        	}
 	        });
 	      
+	        
 	        if (click_event) {
 	        	processNav( ((UpperInterfaceScene)interface_bars.get("UPPER")).navClick(click_x, click_y) );   	
 	       	
-	        	if (current_scene.processClick(click_x, click_y))
+	        	if (current_scene.processClick(click_x, click_y) && current_scene.getClickable())
 	        		current_scene.processScore();
 	             		
 	        	System.out.println("Score: " + score); // DEBUG - REMOVE
 	        	click_event = false;
 	        }
 	        
+	        
 	        if (current_scene.getName() == "Beach")
 	        	((BeachScene)current_scene).moveCrabs();
 	        else if (current_scene.getName() == "Bay")
 	        	((BayScene)current_scene).move();
 	        
+	        
 	        // Draw Scene
 	        current_scene.drawScene(g);
 	        
 	        // Draw Interface
-	        ((UpperInterfaceScene)interface_bars.get("UPPER")).drawScene(g, current_scene.getScore());
-	        ((LowerInterfaceScene)interface_bars.get("LOWER")).drawScene(g, current_scene.getTime());
+	        ((UpperInterfaceScene)interface_bars.get("UPPER")).drawScene(g);
+	        ((LowerInterfaceScene)interface_bars.get("LOWER")).drawScene(g, current_scene.getTime(), current_scene.getScore());
 	         
+	        // Draw Inventory
+	        if (inventory_scene.getVisible()) {
+	        	current_scene.toggleClickable();
+	        	inventory_scene.drawScene(g);
+	        }
+	        	
 	        // Update Screen
 	        g.dispose();
 	        buff_strat.show();
@@ -164,14 +177,18 @@ public class Game extends Canvas {
 	
 	private void processNav(String nav_label) {
 		System.out.println("NavClick: " + nav_label);  // DEBUG - REMOVE
-		if (nav_label == null)
+		if (nav_label == null) {
 			return;
-		else
+		} else if (nav_label == "Inventory") {
+			current_scene.toggleClickable();
+			inventory_scene.toggleVisible();
+			
+		} else
 			active_scenes.forEach((k,v)->{
-				if (k == nav_label)
-					v.setVisible();
-				else
-					v.setHidden();
+						     	  if (k == nav_label)
+						     		  v.setVisible();
+								  else
+									  v.setHidden();
 			});
 	}
 	

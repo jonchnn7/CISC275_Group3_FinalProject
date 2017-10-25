@@ -1,5 +1,7 @@
 package cisc275.group3.scene;
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -10,15 +12,15 @@ import cisc275.group3.sceneobjects.SceneObject;
 
 //in game active_scenes.put("Inventory", new Inventory(SCREEN_WIDTH, SCREEN_HEIGHT));
 
-public class Inventory extends Scene{
+public class InventoryScene extends Scene{
 	
 	//ArrayList<SceneObject> inventory_items = new ArrayList<SceneObject>(); Add once we figure out item types
 
-	public Inventory(int interface_width, int width, int height) {
-		super(0, INTERFACE_HEIGHT, width, height, "Inventory");
+	public InventoryScene(int width, int height) {
+		super(0, INTERFACE_HEIGHT, width, height-2*INTERFACE_HEIGHT, "Inventory");
 		this.scene_background_color = Color.ORANGE;
-		this.visible = true;
-		this.time = 300;
+		this.visible = false;
+		this.time = 0;
 		this.fillScene();
 	}
 	
@@ -42,6 +44,20 @@ public class Inventory extends Scene{
 		
 		Collections.sort(this.scene_items);
 	}
+	
+	/*
+	@Override
+	public void drawScene(Graphics g) {
+        g.setColor(this.scene_background_color);
+        g.fillRect(this.start_x, this.start_y,  this.scene_width, this.scene_height);
+        
+        Collections.reverse(scene_items);
+        for (SceneObject item : this.scene_items) {
+        	item.drawItem(g);
+        }
+        Collections.sort(scene_items);
+                
+    }*/
 
 	/* Should end up being something like this
 	protected void fillScene() {

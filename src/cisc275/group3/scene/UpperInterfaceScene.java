@@ -19,10 +19,11 @@ public class UpperInterfaceScene extends Scene {
 		this.scene_background_color = Color.darkGray;
 	
 		nav_items = new ArrayList<SceneObject>();
-		this.nav_items.add(new NavObject(5, 5, "HQ"));
-		this.nav_items.add(new NavObject(5, 40, "Bay"));
-		this.nav_items.add(new NavObject(110, 5, "Beach"));
-		this.nav_items.add(new NavObject(110, 40, "Wetlands"));
+		this.nav_items.add(new NavObject(5, 5, 100, 30, "HQ"));
+		this.nav_items.add(new NavObject(5, 40, 100, 30, "Bay"));
+		this.nav_items.add(new NavObject(110, 5, 100, 30, "Beach"));
+		this.nav_items.add(new NavObject(110, 40, 100, 30, "Wetlands"));
+		this.nav_items.add(new NavObject(this.scene_width-160, 5, 150, 60, "Inventory" ));
 	}
 
 	@Override
@@ -31,18 +32,14 @@ public class UpperInterfaceScene extends Scene {
 		
 	}
 	
-	public void drawScene(Graphics g, int score) {
+	public void drawScene(Graphics g) {
         g.setColor(this.scene_background_color);
         g.fillRect(0, 0, this.scene_width, INTERFACE_HEIGHT);
         
         g.setColor(Color.white);
 		g.setFont(new Font("Sans Serif", Font.BOLD, 42));
 		g.drawString("Estuary Click Adventure!",(this.scene_width/2)-g.getFontMetrics().stringWidth("Estuary Click Adventure!")/2,50);
-		
-        g.setColor(Color.white);
-		g.setFont(new Font("Sans Serif", Font.BOLD, 25));
-		g.drawString("Score: " + score, this.scene_width-150, this.scene_height-25);
-		
+				
 		nav_items.forEach((item)->{
 			item.drawItem(g);
 		});
