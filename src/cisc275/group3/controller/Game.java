@@ -156,7 +156,7 @@ public class Game extends Canvas {
 	        	Color tmp = current_scene.processClick(click_x, click_y);
 	       	
 	        	if ((tmp != null) && current_scene.getClickable()) {
-	        		if (activeMission.getTargetObjectColor().equals(tmp)) {
+	        		if (activeMission.getTargetObjectColor()==(tmp)) {
 	        			activeMission.setDoneMission(true);
 	        		}
 	        		current_scene.processScore();
