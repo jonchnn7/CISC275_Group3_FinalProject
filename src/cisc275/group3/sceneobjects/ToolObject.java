@@ -33,6 +33,7 @@ public abstract class ToolObject implements Comparable<ToolObject> {
 		this.item_height = height;
 		
 	}
+	
 	public void mouseLocator() {
 		int mouseY = MouseInfo.getPointerInfo().getLocation().y;
 		int mouseX = MouseInfo.getPointerInfo().getLocation().x;

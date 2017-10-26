@@ -8,6 +8,7 @@ import java.util.Collections;
 
 import cisc275.group3.sceneobjects.NavObject;
 import cisc275.group3.sceneobjects.SceneObject;
+import cisc275.group3.sceneobjects.ToolObject;
 
 public class UpperInterfaceScene extends Scene {		
 	
@@ -24,6 +25,8 @@ public class UpperInterfaceScene extends Scene {
 		this.nav_items.add(new NavObject(110, 5, 100, 30, "Beach"));
 		this.nav_items.add(new NavObject(110, 40, 100, 30, "Wetlands"));
 		this.nav_items.add(new NavObject(215, 7, 100, 60, "Map"));
+		this.nav_items.add(new NavObject(1000, 5, 110, 30, "Net"));
+		this.nav_items.add(new NavObject(1000, 40, 110, 30, "Camera"));
 		this.nav_items.add(new NavObject(this.scene_width-160, 7, 150, 60, "Inventory" ));
 	}
 
