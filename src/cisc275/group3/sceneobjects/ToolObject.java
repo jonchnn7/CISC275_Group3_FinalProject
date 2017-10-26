@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Shape;
 import java.awt.Graphics2D;
+import java.awt.MouseInfo;
 import java.awt.geom.Ellipse2D;
 
 public abstract class ToolObject implements Comparable<ToolObject> {
@@ -25,13 +26,20 @@ public abstract class ToolObject implements Comparable<ToolObject> {
 	protected String tool_name;
 	
 
-	public ToolObject(int x, int y, int width, int height, String t,String n) {
+	public ToolObject(int x, int y, int width, int height) {
 		this.item_x = x;
 		this.item_y = y;
 		this.item_width = width;
 		this.item_height = height;
-		this.click_type = t;
-		this.tool_name = n;
+		
 	}
+	public void mouseLocator() {
+		int mouseY = MouseInfo.getPointerInfo().getLocation().y;
+		int mouseX = MouseInfo.getPointerInfo().getLocation().x;
+		item_x = mouseX;
+		item_y = mouseY;
+	}
+	
+	
 
 }

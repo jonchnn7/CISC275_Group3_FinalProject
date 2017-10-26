@@ -1,5 +1,6 @@
 package cisc275.group3.sceneobjects;
 import java.awt.BasicStroke;
+import java.awt.MouseInfo;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -9,8 +10,10 @@ import java.lang.Object;
 
 public class NetTool extends ToolObject {
 
-	public NetTool(int x, int y, int width, int height, String t, String n) {
-		super(x, y, width, height, "net", "net");
+	public NetTool(int x, int y, int width, int height) {
+		super(x, y, width, height);
+		this.click_type = "net";
+		this.tool_name = "net";
 		// TODO Auto-generated constructor stub
 	}
 
@@ -19,5 +22,4 @@ public class NetTool extends ToolObject {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
 }
