@@ -60,7 +60,13 @@ public class Game extends Canvas {
 	private int current_x;
 	private int current_y;
 	private boolean click_event;
+<<<<<<< HEAD
 
+=======
+	private int current_x;
+	private int current_y;
+	
+>>>>>>> c998213211e5fa6331ea05cea44e96b7c979d8ec
 	// Zone Variables
 	Scene current_scene;
 	Map<String, Scene> active_scenes = new HashMap<String, Scene>();
@@ -76,6 +82,7 @@ public class Game extends Canvas {
 
 	public Game() {
 		// Define Window Vars
+<<<<<<< HEAD
 		game_window = new JFrame("CISC 275 - Group 3 - Estuary Game");
 		game_panel = (JPanel) game_window.getContentPane();
 		game_window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -118,6 +125,51 @@ public class Game extends Canvas {
 				System.out.println("X: " + current_x + ", Y:" + current_y);
 			}
 		});
+=======
+	    game_window = new JFrame("CISC 275 - Group 3 - Estuary Game");
+	    game_panel = (JPanel) game_window.getContentPane();
+	    game_window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	
+	    // Set Window Properties
+	    game_panel.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
+	    setBounds(0,0,SCREEN_WIDTH, SCREEN_HEIGHT);
+	    game_panel.add(this);
+	    game_panel.setIgnoreRepaint(true);
+	    
+	    // Display Window
+	    game_window.pack();
+	    game_window.setResizable(false);
+	    game_window.setVisible(true);
+	    
+	    // Buffer Strategy for Accelerated Graphics
+	    createBufferStrategy(2);
+	    buff_strat = getBufferStrategy();
+	    
+	    // Mouse Events
+	    click_event = false;
+	    addMouseListener(new MouseAdapter() {
+	    	public void mousePressed(MouseEvent e) {
+	    		if (e.getButton() == MouseEvent.BUTTON1) {
+	    			click_event = true;
+	    			click_x = e.getX();
+	    			click_y = e.getY();
+	    		}
+	    	}
+	    });
+	    
+	    addMouseMotionListener(new MouseAdapter() {
+	    	public void mouseMoved(MouseEvent e) {
+	    		current_x = e.getX();
+	    		current_y = e.getY();
+	    		System.out.println("X: " + current_x
+	    						   + ", Y: " + current_y);
+	    	}
+	    });
+	    
+	    score = 0;
+	    activeMission = new Mission(null);
+	    initGame();
+>>>>>>> c998213211e5fa6331ea05cea44e96b7c979d8ec
 	}
 
 	private void initGame() {
