@@ -20,9 +20,7 @@ public class BayScene extends Scene {
 		this.fillScene();
 	}
 
-	protected void fillScene() {
-		this.scene_items = new ArrayList<SceneObject>();
-		
+	protected void fillScene() {		
 		for (int j=0; j<5; j++) {
 			int length = rand_gen.nextInt(20) + 15;
 			this.scene_items.add(new AlphaFish(0-length, 

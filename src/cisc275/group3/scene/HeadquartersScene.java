@@ -24,25 +24,7 @@ public class HeadquartersScene extends Scene {
 
 	protected void fillScene() {
 		this.nav_items = new ArrayList<SceneObject>();
-		this.nav_items.add(new NavObject(this.scene_width/2-100, this.start_y+70, 200, 100, "Missions"));
-		
-		this.scene_items = new ArrayList<SceneObject>();
-		
-		for (int j=-10; j<10; j++)
-			this.scene_items.add(new AlphaItem(rand_gen.nextInt(this.scene_width/2)-60,
-											   rand_gen.nextInt(this.scene_height),
-										   	   rand_gen.nextInt(100) + 50,
-										       rand_gen.nextInt(100) + 50,
-										       j) );
-		for (int j=-10; j<10; j++)
-			this.scene_items.add(new AlphaItem(rand_gen.nextInt(this.scene_width/2)+this.scene_width/2+60,
-											   rand_gen.nextInt(this.scene_height),
-										   	   rand_gen.nextInt(100) + 50,
-										       rand_gen.nextInt(100) + 50,
-										       j) );
-		
-		
-		Collections.sort(this.scene_items);
+		this.nav_items.add(new NavObject(this.scene_width/2-100, this.start_y+70, 200, 100, "Missions"));	
 	}
 	
 	@Override

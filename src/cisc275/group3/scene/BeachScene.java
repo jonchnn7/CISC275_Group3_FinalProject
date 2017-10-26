@@ -23,9 +23,7 @@ public class BeachScene extends Scene {
 		this.fillScene();
 	}
 
-	protected void fillScene() {
-		this.scene_items = new ArrayList<SceneObject>();
-		
+	protected void fillScene() {		
 		for (int i=0; i<4; i++) {
 			this.scene_items.add(new AlphaCrab(100, 200+75*i, 1));
 		}

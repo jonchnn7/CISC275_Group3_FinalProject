@@ -164,7 +164,6 @@ public class Game extends Canvas {
 	        		current_scene.processScore();
 	        	}
 	             		
-	        	System.out.println("Score: " + score); // DEBUG - REMOVE
 	        	click_event = false;
 	        }
 	        

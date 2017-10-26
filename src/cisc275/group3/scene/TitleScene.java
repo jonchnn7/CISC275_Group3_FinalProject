@@ -7,7 +7,7 @@ import java.util.Random;
 import cisc275.group3.sceneobjects.AlphaItem;
 import cisc275.group3.sceneobjects.SceneObject;
 
-///IS thsi working?
+///IS this working?
 
 public class TitleScene extends Scene {
 
