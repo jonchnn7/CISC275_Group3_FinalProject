@@ -57,6 +57,8 @@ public class Game extends Canvas {
 	private int click_x;
 	private int click_y;
 	private boolean click_event;
+	private int current_x;
+	private int current_y;
 	
 	// Zone Variables
 	Scene current_scene;
@@ -101,6 +103,15 @@ public class Game extends Canvas {
 	    			click_x = e.getX();
 	    			click_y = e.getY();
 	    		}
+	    	}
+	    });
+	    
+	    addMouseMotionListener(new MouseAdapter() {
+	    	public void mouseMoved(MouseEvent e) {
+	    		current_x = e.getX();
+	    		current_y = e.getY();
+	    		System.out.println("X: " + current_x
+	    						   + ", Y: " + current_y);
 	    	}
 	    });
 	    
