@@ -23,6 +23,8 @@ import cisc275.group3.scene.WetlandsScene;
 import cisc275.group3.sceneobjects.AlphaFish;
 import cisc275.group3.sceneobjects.CameraTool;
 import cisc275.group3.sceneobjects.NetTool;
+import cisc275.group3.sceneobjects.TrimmerTool;
+import cisc275.group3.sceneobjects.SampleTool;
 import cisc275.group3.sceneobjects.ToolObject;
 
 //Event Libraries
@@ -247,7 +249,21 @@ public class Game extends Canvas {
 			} else {
 				activeTool = null;
 			}
-		} else {
+		}
+		else if (nav_label == "Trimmer") {
+			if ((activeTool == null) || (!activeTool.getName().equals("Trimmer"))) {
+				activeTool = new CameraTool(current_x, current_y, 0, 0);
+			} else {
+				activeTool = null;
+			}
+		}
+		else if (nav_label == "Sample") {
+			if ((activeTool == null) || (!activeTool.getName().equals("Sample"))) {
+				activeTool = new CameraTool(current_x, current_y, 0, 0);
+			} else {
+				activeTool = null;
+			}
+		}else {
 			active_scenes.forEach((k,v)->{
 						     	  if (k == nav_label)
 						     		  v.setVisible();

@@ -25,8 +25,10 @@ public class UpperInterfaceScene extends Scene {
 		this.nav_items.add(new NavObject(110, 5, 100, 30, "Beach"));
 		this.nav_items.add(new NavObject(110, 40, 100, 30, "Wetlands"));
 		this.nav_items.add(new NavObject(215, 7, 100, 60, "Map"));
-		this.nav_items.add(new NavObject(1000, 5, 110, 30, "Net"));
-		this.nav_items.add(new NavObject(1000, 40, 110, 30, "Camera"));
+		this.nav_items.add(new NavObject(1005, 5, 100, 30, "Net"));
+		this.nav_items.add(new NavObject(1005, 40, 100, 30, "Camera"));
+		this.nav_items.add(new NavObject(895, 5, 100, 30, "Trimmer"));
+		this.nav_items.add(new NavObject(895, 40, 100, 30, "Sample"));
 		this.nav_items.add(new NavObject(this.scene_width-160, 7, 150, 60, "Inventory" ));
 	}
 
@@ -54,11 +56,15 @@ public class UpperInterfaceScene extends Scene {
 	public String navClick(int click_x, int click_y) {		
 		for (SceneObject nav : nav_items ) {
 			if (nav.itemClicked(click_x, click_y)) {
-				if (((NavObject)nav).navClick().equals("Net") || ((NavObject)nav).navClick().equals("Camera")) {
+				if (((NavObject)nav).navClick().equals("Net") || ((NavObject)nav).navClick().equals("Camera") 
+						|| ((NavObject)nav).navClick().equals("Trimmer") || ((NavObject)nav).navClick().equals("Sample")) 
+				{
 					if (((NavObject)nav).getColor() == Color.black) {
 						((NavObject)nav).setColorFill(Color.green);
 						for (SceneObject tmpNav : nav_items ) {
-							if ((((NavObject)tmpNav).navClick().equals("Net") || ((NavObject)tmpNav).navClick().equals("Camera")) && !((NavObject)tmpNav).navClick().equals(((NavObject)nav).navClick())) {
+							if ((((NavObject)tmpNav).navClick().equals("Net") || ((NavObject)tmpNav).navClick().equals("Camera")
+									|| ((NavObject)tmpNav).navClick().equals("Trimmer") || ((NavObject)tmpNav).navClick().equals("Sample")) 
+									&& !((NavObject)tmpNav).navClick().equals(((NavObject)nav).navClick())) {
 								((NavObject)tmpNav).setColorFill(Color.black);
 							}
 						}
