@@ -41,6 +41,8 @@ public abstract class ToolObject implements Comparable<ToolObject> {
 		item_y = mouseY;
 	}
 	
-	
+	public String getName() {
+		return this.tool_name;
+	}
 
 }

@@ -53,8 +53,21 @@ public class UpperInterfaceScene extends Scene {
 	
 	public String navClick(int click_x, int click_y) {		
 		for (SceneObject nav : nav_items ) {
-			if (nav.itemClicked(click_x, click_y))
+			if (nav.itemClicked(click_x, click_y)) {
+				if (((NavObject)nav).navClick().equals("Net") || ((NavObject)nav).navClick().equals("Camera")) {
+					if (((NavObject)nav).getColor() == Color.black) {
+						((NavObject)nav).setColorFill(Color.green);
+						for (SceneObject tmpNav : nav_items ) {
+							if ((((NavObject)tmpNav).navClick().equals("Net") || ((NavObject)tmpNav).navClick().equals("Camera")) && !((NavObject)tmpNav).navClick().equals(((NavObject)nav).navClick())) {
+								((NavObject)tmpNav).setColorFill(Color.black);
+							}
+						}
+					} else {
+						((NavObject)nav).setColorFill(Color.black);
+					}
+				}
 				return ((NavObject)nav).navClick();
+			}
 		}
 		
 		return null;

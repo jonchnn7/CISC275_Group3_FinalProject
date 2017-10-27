@@ -21,6 +21,9 @@ import cisc275.group3.scene.UpperInterfaceScene;
 import cisc275.group3.scene.Scene;
 import cisc275.group3.scene.WetlandsScene;
 import cisc275.group3.sceneobjects.AlphaFish;
+import cisc275.group3.sceneobjects.CameraTool;
+import cisc275.group3.sceneobjects.NetTool;
+import cisc275.group3.sceneobjects.ToolObject;
 
 //Event Libraries
 import java.awt.event.MouseAdapter;
@@ -49,6 +52,7 @@ public class Game extends Canvas {
 	private JPanel game_panel;
 	private int score;
 	private Mission activeMission;
+	private ToolObject activeTool;
 	Random rand_gen = new Random();
 	private Color[] color_list = {Color.black, Color.cyan, Color.darkGray, Color.magenta,
 			  Color.red, Color.yellow, Color.orange};
@@ -164,7 +168,8 @@ public class Game extends Canvas {
 	        		processNav( ((HeadquartersScene)current_scene).navClick(click_x, click_y) );
 	        	}
 	        	
-	        	Color tmp = current_scene.processClick(click_x, click_y);
+	        	
+	        	Color tmp = current_scene.processClick(click_x, click_y, activeTool);
 	       	
 	        	if ((tmp != null) && current_scene.getClickable()) {
 	        		if (activeMission.getTargetObjectColor()==(tmp)) {
@@ -230,6 +235,18 @@ public class Game extends Canvas {
 			map_scene.toggleVisible();
 		} else if (nav_label == "Missions") {
 			activeMission = new Mission(color_list[rand_gen.nextInt(color_list.length)]);
+		} else if (nav_label == "Net") {
+			if ((activeTool == null) || (!activeTool.getName().equals("net"))) {
+				activeTool = new NetTool(current_x, current_y, 0, 0);
+			} else {
+				activeTool = null;
+			}
+		} else if (nav_label == "Camera") {
+			if ((activeTool == null) || (!activeTool.getName().equals("camera"))) {
+				activeTool = new CameraTool(current_x, current_y, 0, 0);
+			} else {
+				activeTool = null;
+			}
 		} else {
 			active_scenes.forEach((k,v)->{
 						     	  if (k == nav_label)

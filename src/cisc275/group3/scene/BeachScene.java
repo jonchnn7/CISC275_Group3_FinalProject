@@ -8,6 +8,7 @@ import java.util.Random;
 import cisc275.group3.sceneobjects.AlphaCrab;
 import cisc275.group3.sceneobjects.AlphaCrabPlayer;
 import cisc275.group3.sceneobjects.SceneObject;
+import cisc275.group3.sceneobjects.ToolObject;
 
 public class BeachScene extends Scene {
 
@@ -32,7 +33,7 @@ public class BeachScene extends Scene {
 	}
 	
 	@Override
-	public Color processClick(int click_x, int click_y) {
+	public Color processClick(int click_x, int click_y, ToolObject tool) {
 		System.out.println(this.scene_items);
 		this.start_game = true;
 		((AlphaCrabPlayer)scene_items.get(4)).move();

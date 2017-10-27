@@ -12,7 +12,7 @@ public class CameraTool extends ToolObject {
 
 	public CameraTool(int x, int y, int width, int height) {
 		super(x, y, width, height);
-		this.click_type = "camea";
+		this.click_type = "camera";
 		this.tool_name = "camera";
 		// TODO Auto-generated constructor stub
 	}

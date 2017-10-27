@@ -3,13 +3,21 @@ package cisc275.group3.sceneobjects;
 import java.util.ArrayList;
 
 public enum SceneObjectType {
-	AlphaItem ();
+	AlphaItem (new String[]{"camera"}),
+	AlphaFish (new String[]{"net"}),
+	CameraTool (null),
+	NetTool (null);
 	//Add in new sceneObjects here as they are created
 	
 	ArrayList<String> compatibleObjects;
 	
-	SceneObjectType() {
+	SceneObjectType(String[] objArr) {
 		this.compatibleObjects = new ArrayList<String>();
+		if (objArr != null) {
+			for (String obj : objArr) {
+				this.addCompatibleObject(obj);
+			}
+		}
 	}
 	//Add compatible objects as the sceneObjects are being added
 	public void addCompatibleObject(String s) {
@@ -18,7 +26,7 @@ public enum SceneObjectType {
 	
 	public boolean searchCompatability(String s) {
 		for (String obj : this.compatibleObjects) {
-			if (s.getClass().equals(obj.getClass())) {
+			if (s.equals(obj)) {
 				return true;
 			}
 		}

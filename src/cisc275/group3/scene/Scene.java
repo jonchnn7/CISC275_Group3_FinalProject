@@ -9,6 +9,8 @@ import java.util.Iterator;
 import cisc275.group3.sceneobjects.NavObject;
 import cisc275.group3.sceneobjects.SceneImageObject;
 import cisc275.group3.sceneobjects.SceneObject;
+import cisc275.group3.sceneobjects.SceneObjectType;
+import cisc275.group3.sceneobjects.ToolObject;
 
 public abstract class Scene {
 	/*	CISC 275 - Group 3 - Estuary Game
@@ -109,24 +111,36 @@ public abstract class Scene {
 		this.clickable = !this.clickable;
 	}
 
-	public Color processClick(int click_x, int click_y) {
+	public Color processClick(int click_x, int click_y, ToolObject tool) {
 		Collections.sort(scene_items);
 		System.out.println(this.scene_name + " Items: " + scene_items);  // DEBUG - REMOVE
 		SceneObject tmp;
 		for (Iterator<SceneObject> iterator = scene_items.iterator(); iterator.hasNext();) {
 			tmp = iterator.next();
-			if ( tmp.itemClicked(click_x, click_y) ) {
-				iterator.remove();
-				return tmp.getColor();
+			if ( tmp.itemClicked(click_x, click_y) && (tool != null) ) {
+				if (tmp.getName().equals("Alpha Fish")) { 
+					if (SceneObjectType.AlphaFish.searchCompatability(tool.getName())) {
+						iterator.remove();
+						return tmp.getColor();
+					}
+				} else if (tmp.getName().equals("Alpha Item")) {
+					if (SceneObjectType.AlphaItem.searchCompatability(tool.getName())) {
+						iterator.remove();
+						return tmp.getColor();
+					}
+				} else {
+					return null;
+				}
 			}
 		}
+		/*
 		SceneImageObject tmp1;
 		for (Iterator<SceneImageObject> iterator = scene_items_images.iterator(); iterator.hasNext();) {
 			tmp1 = iterator.next();
 			if ( tmp1.itemClicked(click_x, click_y) ) {
 				iterator.remove();
 			}
-		}
+		}*/
 				
 		return null;
 	}

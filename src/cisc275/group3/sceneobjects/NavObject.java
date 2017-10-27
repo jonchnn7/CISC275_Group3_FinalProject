@@ -32,5 +32,13 @@ public class NavObject extends SceneObject {
 	public String navClick() {
 		return this.label;
 	}
+	
+	public Color getColorFill() {
+		return this.item_color;
+	}
+	
+	public void setColorFill(Color color) {
+		this.item_color = color;
+	}
 
 }
