@@ -10,7 +10,8 @@ public class MissionFish extends SceneImageObject{
 
 	public MissionFish(int x, int y, int d) {
 		super(x, y, d);
-		File file = new File( "C:\\Users\\Jon\\CISC275_Group3_FinalProject\\src\\cisc275\\group3\\sceneobjects\\images\\Fish_left_1.png");
+		System.out.println("MISSION FISH");
+		File file = new File("images/Fish_left_1_Test.png");
 		System.out.println( file.exists() );
 		BufferedImage originalImage, resizedImage;
 		try {	
