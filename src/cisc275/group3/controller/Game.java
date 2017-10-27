@@ -252,14 +252,14 @@ public class Game extends Canvas {
 		}
 		else if (nav_label == "Trimmer") {
 			if ((activeTool == null) || (!activeTool.getName().equals("Trimmer"))) {
-				activeTool = new CameraTool(current_x, current_y, 0, 0);
+				activeTool = new TrimmerTool(current_x, current_y, 0, 0);
 			} else {
 				activeTool = null;
 			}
 		}
 		else if (nav_label == "Sample") {
 			if ((activeTool == null) || (!activeTool.getName().equals("Sample"))) {
-				activeTool = new CameraTool(current_x, current_y, 0, 0);
+				activeTool = new SampleTool(current_x, current_y, 0, 0);
 			} else {
 				activeTool = null;
 			}

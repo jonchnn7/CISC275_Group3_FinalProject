@@ -6,7 +6,9 @@ public enum SceneObjectType {
 	AlphaItem (new String[]{"camera"}),
 	AlphaFish (new String[]{"net"}),
 	CameraTool (null),
-	NetTool (null);
+	NetTool (null),
+	SampleTool (null),
+	TrimmerTool (null);
 	//Add in new sceneObjects here as they are created
 	
 	ArrayList<String> compatibleObjects;
