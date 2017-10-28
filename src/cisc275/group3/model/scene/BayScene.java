@@ -8,14 +8,15 @@ import cisc275.group3.utility.SceneId;
 
 public class BayScene extends Scene implements PropertyScored, PropertyTimed {
 	
-	public BayScene(boolean c, SceneId m, boolean v) {
-		super(c, m, v);
-		time = 350;
-		visible = false;
-		fillScene();
-	}
+  public BayScene(boolean c, SceneId m, boolean v) {
+    super(c, m, v);
+    time = 350;
+    visible = false;
+    
+    fillScene();
+  }
 
-	protected void fillScene() {		
+	private void fillScene() {		
 		for (int j=0; j<5; j++) {
 			int length = rand_gen.nextInt(20) + 15;
 			scene_items.add(new FishAlpha(0-length, 

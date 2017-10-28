@@ -48,5 +48,3 @@ local.properties
 .scala_dependencies
 .worksheet
 
-# Classpath
-.classpath

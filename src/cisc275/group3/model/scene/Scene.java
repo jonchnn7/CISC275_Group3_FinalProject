@@ -58,6 +58,4 @@ public abstract class Scene {
 	public void toggleClickable() {
 		clickable = !clickable;
 	}
-	
-	abstract protected void fillScene();
 }
