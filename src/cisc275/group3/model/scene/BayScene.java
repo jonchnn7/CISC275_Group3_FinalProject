@@ -1,4 +1,5 @@
-package cisc275.group3.scene;
+package cisc275.group3.model.scene;
+
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -24,17 +25,17 @@ public class BayScene extends Scene {
 		for (int j=0; j<5; j++) {
 			int length = rand_gen.nextInt(20) + 15;
 			this.scene_items.add(new AlphaFish(0-length, 
-											   j*140 + this.start_y + 10,
-											   length,
-											   length/2,
-											   j+1,
-											   true));
+				j*140 + this.start_y + 10,
+				length,
+				length/2,
+	  		    j+1,
+				true));
 			this.scene_items.add(new AlphaFish(this.scene_width+length, 
-											   j*140 + this.start_y + 10,
-											   length,
-											   length/2,
-											   -1*j-1,
-											   false));
+				j*140 + this.start_y + 10,
+				length,
+				length/2,
+				-1*j-1,
+				false));
 		
 		Collections.sort(scene_items);	
 		}
@@ -46,17 +47,17 @@ public class BayScene extends Scene {
 		// Generate new fish on ~4% of calls
 		if (rand_gen.nextInt(25) == 1) {
 			this.scene_items.add(new AlphaFish(0-length, 
-					   						   rand_gen.nextInt(this.scene_height) + this.start_y,
-					   						   length,
-					   						   length/2,
-					   						   rand_gen.nextInt(10)+5,
-					   						   true));
+                rand_gen.nextInt(this.scene_height) + this.start_y,
+			    length,
+				length/2,
+				rand_gen.nextInt(10)+5,
+				true));
 			this.scene_items.add(new AlphaFish(this.scene_width+length, 
-					               			   rand_gen.nextInt(this.scene_height) + this.start_y,
-					               			   length,
-					               			   length/2,
-					               			   -1*rand_gen.nextInt(10)-5,
-					               			   false));		
+				rand_gen.nextInt(this.scene_height) + this.start_y,
+				length,
+				length/2,
+				-1*rand_gen.nextInt(10)-5,
+				false));		
 		}
 		
 		for (SceneObject fish : scene_items)

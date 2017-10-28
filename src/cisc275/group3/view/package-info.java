@@ -5,4 +5,4 @@
  * @author bodhi
  *
  */
-package cisc275.group3.sceneobjects;
+package cisc275.group3.view;

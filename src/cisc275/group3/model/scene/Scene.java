@@ -1,4 +1,4 @@
-package cisc275.group3.scene;
+package cisc275.group3.model.scene;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -6,11 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 
-import cisc275.group3.sceneobjects.NavObject;
-import cisc275.group3.sceneobjects.SceneImageObject;
-import cisc275.group3.sceneobjects.SceneObject;
-import cisc275.group3.sceneobjects.SceneObjectType;
-import cisc275.group3.sceneobjects.ToolObject;
+import cisc275.group3.model.sceneobject.SceneObject;
 
 public abstract class Scene {
 	/*	CISC 275 - Group 3 - Estuary Game
@@ -36,19 +32,16 @@ public abstract class Scene {
 	protected String scene_name;
 	protected Color scene_background_color;
 	protected ArrayList<SceneObject> scene_items;
-	protected ArrayList<SceneImageObject> scene_items_images;
 
 		
 	public Scene(int start_x, int start_y, int width, int height, String name) {
-		this.start_x = start_x;
+	    this.start_x = start_x;
 		this.start_y = start_y;
 		this.scene_width = width;
 		this.scene_height = height;
 		this.scene_name = name;
 		this.clickable = true;
 		this.scene_items = new ArrayList<SceneObject>();
-		this.scene_items_images = new ArrayList<SceneImageObject>();
-
 	}
 	
 	public void drawScene(Graphics g) {
