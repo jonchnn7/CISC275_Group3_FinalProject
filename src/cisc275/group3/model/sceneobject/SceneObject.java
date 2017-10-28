@@ -29,4 +29,18 @@ public abstract class SceneObject implements Comparable<SceneObject> {
   public String toString() {
     return "O";
   }
+  
+  /**
+   * @return passport	returns passport object
+   */
+  public ObjectId getPassport() {
+	  return passport;
+  }
+  
+  /**
+   * @return location	returns object location
+   */
+  public Point2D.Double getLocation() {
+	  return location;
+  }
  }

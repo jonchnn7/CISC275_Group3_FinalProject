@@ -16,35 +16,46 @@ public abstract class Scene {
 	protected boolean visible;
 	
 	// RNG
-	Random rand_gen = new Random();
-
-		
+	Random randGen = new Random();
+	
 	public Scene(boolean click, SceneId mani, boolean vis) {
 		clickable = click;
 		manifest = mani;
 		visible = vis;
 		
-		
-		this.clickable = true;
-		this.scene_items = new ArrayList<SceneObject>();
+		scene_items = new ArrayList<SceneObject>();
 	}
 	
-	public void updateTime() {
-		this.time -= 1;
-	}
+	/**
+	 * Every subclass must define
+	 * how to update itself
+	 */
+	abstract public void update();
 	
+	/**
+	 * @return clickable
+	 */
 	public boolean getClickable() {
-		return this.clickable;
+		return clickable;
 	}
 	
+	/**
+	 * @return visible
+	 */
 	public boolean getVisible() {
 		return visible;
 	}
 	
+	/**
+	 * Toggles visibility boolean
+	 */
 	public void toggleVisible() {
 		visible = !this.visible;
 	}	
 	
+	/**
+	 * Toggles clickablity boolean
+	 */
 	public void toggleClickable() {
 		clickable = !clickable;
 	}

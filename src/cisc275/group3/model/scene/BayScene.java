@@ -1,8 +1,11 @@
 package cisc275.group3.model.scene;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 
 import cisc275.group3.model.sceneobject.FishAlpha;
+import cisc275.group3.model.sceneobject.SceneObject;
 import cisc275.group3.utility.ObjectId;
 import cisc275.group3.utility.SceneId;
 
@@ -54,21 +57,50 @@ public class BayScene extends Scene implements PropertyScored, PropertyTimed {
       
       // Add Left Fish to Scene
       scene_items.add(new FishAlpha(
-        leftFishId, // id
-        manifest.getWidth(), // x location
+        leftFishId, // fish id
+        manifest.getWidth()+randGen.nextInt(20), // x location
         i*140 + manifest.getStart_y() + 10, // y location
         20, // speed x
         0, // speed y
         true)); // left moving fish?
       
       scene_items.add(new FishAlpha(
-        rightFishId, //id
+        rightFishId, // fish id
         0, // x location
         i*140 + manifest.getStart_y() + 10, // y location
         20, // speed x
         0, // speed y
         false)); // left moving fish?
     }
+    Collections.sort(scene_items);
+  }
+  
+  @Override
+  public void update() {
+    // Generate new fish on ~4% of calls
+    if (randGen.nextInt(100) <= 4) {
+      scene_items.add(new FishAlpha(
+        createLeftFishId(randGen.nextInt(10)+5, randGen.nextInt(3)), // fish id	
+        manifest.getWidth() + randGen.nextInt(20), // x location
+        randGen.nextDouble()*manifest.getHeight() + manifest.getStart_y(), // y location
+        20, // speed x
+        0, // speed y
+        true)); // moving left?
+      
+      scene_items.add(new FishAlpha(
+ 	    createLeftFishId(randGen.nextInt(10)+5, randGen.nextInt(3)), // fish id	
+        manifest.getWidth() + randGen.nextInt(20), // x location
+    	randGen.nextDouble()*manifest.getHeight() + manifest.getStart_y(), // y location
+    	20, // speed x
+    	0, // speed y
+    	true)); // moving left?
+    }	
+	
+    for (SceneObject fish : scene_items) {
+      ((FishAlpha)fish).move();
+    }	
+	
+    removeFish();
   }
   
   private ObjectId createLeftFishId(int dpth, int fishType) {
@@ -97,6 +129,18 @@ public class BayScene extends Scene implements PropertyScored, PropertyTimed {
     return rightFishId;
   }
   
+  private void removeFish() {
+    for (Iterator<SceneObject> iterator = scene_items.iterator(); iterator.hasNext();) {
+      FishAlpha fish = (FishAlpha)iterator.next();
+      
+      if ( fish.getLeftFish() && fish.getLocation().getX() >= (manifest.getWidth()+fish.getPassport().getWidth()) ) {
+        iterator.remove();
+      } else if ( !fish.getLeftFish() && fish.getLocation().getX() <= (0-fish.getPassport().getWidth()) ) { 
+        iterator.remove();
+      }
+    }
+  }
+  
   @Override
   public int getTime() {
   	return time;
@@ -110,6 +154,11 @@ public class BayScene extends Scene implements PropertyScored, PropertyTimed {
   @Override
   public void updateScore() {
   	// TODO Auto-generated method stub
+  }
+
+  @Override
+  public void updateTime() {
+	time -= 1;
   }
 }
 /*
