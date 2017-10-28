@@ -1,4 +1,4 @@
-package cisc275.goup3.utility;
+package cisc275.group3.utility;
 /**
  * Data structure to hold immutable SceneObject Parameters. Can also
  * be used to more cleanly pass SceneObject information.

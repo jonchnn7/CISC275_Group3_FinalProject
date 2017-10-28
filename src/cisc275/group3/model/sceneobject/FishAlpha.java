@@ -1,7 +1,8 @@
 package cisc275.group3.model.sceneobject;
 
-import cisc275.goup3.utility.ObId;
 import java.awt.geom.Point2D;
+
+import cisc275.group3.utility.ObId;
 
 public class FishAlpha extends SceneObject implements ActionMove {
   protected double speedX;

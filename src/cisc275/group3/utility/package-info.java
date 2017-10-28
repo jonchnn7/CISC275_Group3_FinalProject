@@ -7,4 +7,4 @@
 /**
  * @author Group 3
  */
-package cisc275.goup3.utility;
+package cisc275.group3.utility;
