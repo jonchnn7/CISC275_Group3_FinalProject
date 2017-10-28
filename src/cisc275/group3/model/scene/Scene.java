@@ -6,16 +6,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public abstract class Scene {
-	/*	CISC 275 - Group 3 - Estuary Game
-	 * 
-	 *  Scene.java
-	 * 
-	 * 	This abstract class is used to establish scene requirements 
-	 *  and allow disparate scenes to be compared and grouped.
-	 */
-	
-	// Scene Constants
-	final protected static int INTERFACE_HEIGHT = 75;
 	
 	// Scene Properties
 	protected boolean clickable;
@@ -29,10 +19,10 @@ public abstract class Scene {
 	Random rand_gen = new Random();
 
 		
-	public Scene(boolean c, SceneId m, boolean v) {
-		clickable = c;
-		manifest = m;
-		visible = v;
+	public Scene(boolean click, SceneId mani, boolean vis) {
+		clickable = click;
+		manifest = mani;
+		visible = vis;
 		
 		
 		this.clickable = true;
