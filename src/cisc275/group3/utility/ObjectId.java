@@ -3,7 +3,7 @@ package cisc275.group3.utility;
  * Data structure to hold immutable SceneObject Parameters. Can also
  * be used to more cleanly pass SceneObject information.
  * <p>
- * ObId.java (ObjectID)
+ * ObjectId.java
  * 
  * @param	depth		comparable depth when drawn
  * @param	height		height of object and associated image
@@ -22,7 +22,7 @@ package cisc275.group3.utility;
  * http://www.badlogicgames.com/wordpress/?p=2668 # general design
  */
 
-public class ObId {
+public class ObjectId {
   private final int depth;
   private final int height;
   private final int id;
@@ -30,7 +30,7 @@ public class ObId {
   private final String name;
   private final int width;
 	
-  public ObId(int d, int h, int id, String imFi, String n, int w) {
+  public ObjectId(int d, int h, int id, String imFi, String n, int w) {
     this.depth = d;
     this.height = h;
     this.id = id;

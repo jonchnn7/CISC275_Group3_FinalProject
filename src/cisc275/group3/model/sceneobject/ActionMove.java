@@ -7,5 +7,5 @@ package cisc275.group3.model.sceneobject;
  */
 
 public interface ActionMove {
-  public void move(double dx, double dy);
+  public void move();
 }
