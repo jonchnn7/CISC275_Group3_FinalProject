@@ -18,6 +18,7 @@ public class Controller {
         e.printStackTrace();
       }
       testBay.update();
+      System.out.println(testBay);
     }
   }
 }
