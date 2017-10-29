@@ -64,21 +64,6 @@ public class FishAlpha extends SceneObject implements ActionMove {
   }
   
   /**
-   * prints object properties
-   */
-  @Override
-  public String toString() {
-    String outString = "\nShort Name: " + Character.toString(passport.getName().charAt(0))
-                      +"\nFull Name: " + passport.getName()
-                      +"\nType ID: " + passport.getId()
-                      +"\nImage File : " + passport.getImageFile()
-                      +"\nWidth: " + passport.getWidth()
-                      +"\nHeight: " + passport.getHeight()
-                      +"\nLocation: " + location;
-    return outString;
-  }
-  
-  /**
    * @return leftFish	returns fish moving left?
    */
   public boolean getLeftFish() {
