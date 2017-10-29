@@ -10,7 +10,7 @@ public class Controller {
     BayScene testBay = new BayScene("Bay", 0, 0, 1280, 720, true, true);
     System.out.println(testBay);
     
-    for(int i = 0; i < 1000; i++){
+    while (true){
       testView.drawFish(testBay.getSceneItems());
       try {
         Thread.sleep(100);
