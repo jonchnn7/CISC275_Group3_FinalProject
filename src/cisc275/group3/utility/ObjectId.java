@@ -22,12 +22,12 @@ public class ObjectId {
   private final int width;
 	
   public ObjectId(int d, int h, int id, String imFi, String n, int w) {
-    this.depth = d;
-    this.height = h;
+    depth = d;
+    height = h;
     this.id = id;
-    this.imageFile = imFi;
-    this.name = n;
-    this.width = w;
+    imageFile = imFi;
+    name = n;
+    width = w;
   }
 	
   /**

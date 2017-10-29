@@ -17,11 +17,14 @@ public class Controller {
   
     // Print Each Fish
     testBay.getSceneItems().forEach((fish)->{System.out.println(fish);});
+	
+    for (int i=0; i<100; i++) { 
+      testBay.update();
+    }
 	  
-    testBay.update();
-    testBay.update();
-    testBay.update();
-	  
+    // Print Bay
+    System.out.println(testBay);
+    
     // Print Each Fish
     testBay.getSceneItems().forEach((fish)->{System.out.println(fish);});  
   }
