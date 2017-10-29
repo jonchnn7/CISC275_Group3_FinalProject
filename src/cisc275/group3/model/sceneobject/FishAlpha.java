@@ -64,11 +64,18 @@ public class FishAlpha extends SceneObject implements ActionMove {
   }
   
   /**
-   * toString returns the first letter of the name
+   * prints object properties
    */
   @Override
   public String toString() {
-	  return Character.toString(passport.getName().charAt(0));
+    String outString = "\nShort Name: " + Character.toString(passport.getName().charAt(0))
+                      +"\nFull Name: " + passport.getName()
+                      +"\nType ID: " + passport.getId()
+                      +"\nImage File : " + passport.getImageFile()
+                      +"\nWidth: " + passport.getWidth()
+                      +"\nHeight: " + passport.getHeight()
+                      +"\nLocation: " + location;
+    return outString;
   }
   
   /**

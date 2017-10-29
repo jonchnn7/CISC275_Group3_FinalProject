@@ -30,7 +30,7 @@ public class SceneId {
   
   @Override
   public String toString() {
-    String outString = "\nName " + name
+    String outString = "\nName: " + name
 			            +"\nStart X: " + startX
 			            +"\nStart Y: " + startY
 			            +"\nWidth: " + width

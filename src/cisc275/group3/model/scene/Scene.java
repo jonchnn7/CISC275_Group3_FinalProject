@@ -50,7 +50,7 @@ public abstract class Scene {
                       +"\nClickable: " + clickable
                       +"\nVisible: " + visible
                       +"\nScene Objects: " + sceneItems.size();
-    return outString + "\nObject List: " + sceneItems;
+    return outString;
   }
 	
   /**
@@ -58,6 +58,20 @@ public abstract class Scene {
    */
   public boolean getClickable() {
     return clickable;
+  }
+  
+  /**
+   * @return manifest
+   */
+  public SceneId getManifest() {
+	  return manifest;
+  }
+  
+  /**
+   * 
+   */
+  public ArrayList<SceneObject> getSceneItems() {
+	  return sceneItems;
   }
 	
   /**
