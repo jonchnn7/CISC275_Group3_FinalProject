@@ -4,12 +4,33 @@ import cisc275.group3.utility.ObjectId;
 import java.awt.geom.Point2D;
 import java.util.Random;
 
-
-
+/**
+ * Abstraction of base level scene object properties and methods. Subclasses 
+ * are created to extend unique functionality. Interfaces are created to extend
+ * shared functionality.
+ * <p>
+ * Style changed in an attempt to more uniform and easier to read. See source
+ * below.
+ * <p>
+ * SceneObject.java
+ * 
+ * @param	passport	type class to hold immutable properties
+ * @param	location	current location stored as a 2D point
+ * @param	randGen		RNG, mostly for subclasses
+ * 
+ * Style Changes
+ * https://google.github.io/styleguide/javaguide.html 
+ * http://www.oracle.com/technetwork/articles/java/index-137868.html # javadoc
+ * 
+ * Code Changes
+ * https://docs.oracle.com/javase/tutorial/java/javaOO/thiskey.html  # when to use this
+ * https://docs.oracle.com/javase/tutorial/uiswing/index.html  # swing tutorial
+ * http://www.badlogicgames.com/wordpress/?p=2668 # general design
+ */
 public abstract class SceneObject implements Comparable<SceneObject> {
   protected ObjectId passport;
   protected Point2D.Double location;
-  protected Random rand_gen = new Random();
+  protected Random randGen = new Random();
 
   public SceneObject(ObjectId id, double x, double y) {
 	passport = id;

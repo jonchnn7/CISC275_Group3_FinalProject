@@ -1,6 +1,7 @@
 package cisc275.group3.utility;
+
 /**
- * Data structure to hold immutable SceneObject Parameters. Can also
+ * Data structure to hold immutable SceneObject parameters. Can also
  * be used to more cleanly pass SceneObject information.
  * <p>
  * ObjectId.java
@@ -11,17 +12,7 @@ package cisc275.group3.utility;
  * @param 	imageFile	String location of image file
  * @param	name		String name for object
  * @param 	width		width of object and associated image
- * 
- * Style Guide
- * https://google.github.io/styleguide/javaguide.html
- * http://www.oracle.com/technetwork/articles/java/index-137868.html # javadoc
- * 
- * Code Sources
- * https://docs.oracle.com/javase/tutorial/java/javaOO/thiskey.html  # this
- * https://docs.oracle.com/javase/tutorial/uiswing/index.html  # swing tutorial
- * http://www.badlogicgames.com/wordpress/?p=2668 # general design
  */
-
 public class ObjectId {
   private final int depth;
   private final int height;

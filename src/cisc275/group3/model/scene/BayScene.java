@@ -9,8 +9,11 @@ import cisc275.group3.model.sceneobject.SceneObject;
 import cisc275.group3.utility.ObjectId;
 import cisc275.group3.utility.SceneId;
 
-
-
+/**
+ * Bay game scene. 
+ * <p>
+ * BayScene.java
+ */
 public class BayScene extends Scene implements PropertyScored, PropertyTimed {
   
   // Fish File Locations
@@ -45,9 +48,21 @@ public class BayScene extends Scene implements PropertyScored, PropertyTimed {
     fillScene();
   }
   
+  /**
+   * Used when SceneId must also be created
+   */ 
+  public BayScene(double h, String n, double x, double y, double w, boolean click, boolean vis) {
+    this(click, new SceneId(h, n, x, y, w), vis);
+  }
+  
+  /**
+   * Creates initial screen of five left-to-right and
+   * right-to left fish at different depths. List of 
+   * fish is then sorted by depth.
+   */
   private void fillScene() {
     for (int i=0; i<5; i++) {
-      int fishType = rand_gen.nextInt(3);
+      int fishType = randGen.nextInt(3);
       
       // Create Left Fish ID
       ObjectId leftFishId = createLeftFishId(i+1, fishType);
@@ -56,53 +71,69 @@ public class BayScene extends Scene implements PropertyScored, PropertyTimed {
       ObjectId rightFishId = createRightFishId((-1*i), fishType);
       
       // Add Left Fish to Scene
-      scene_items.add(new FishAlpha(
+      sceneItems.add(new FishAlpha(
         leftFishId, // fish id
         manifest.getWidth()+randGen.nextInt(20), // x location
-        i*140 + manifest.getStart_y() + 10, // y location
+        i*140 + manifest.getStartY() + 10, // y location
         20, // speed x
         0, // speed y
         true)); // left moving fish?
       
-      scene_items.add(new FishAlpha(
+      sceneItems.add(new FishAlpha(
         rightFishId, // fish id
         0, // x location
-        i*140 + manifest.getStart_y() + 10, // y location
+        i*140 + manifest.getStartY() + 10, // y location
         20, // speed x
         0, // speed y
         false)); // left moving fish?
     }
-    Collections.sort(scene_items);
+    Collections.sort(sceneItems); // sort by depth
   }
   
+  /**
+   * Overridden from Scene.java abstract method. On approx. 4% of calls,
+   * a new left-to-right and right-to-left fish is created. The new fish
+   * can occur anywhere on the y-axis with a random depth [5,15).
+   * <p>
+   * Every fish in the scene is then asked to move it along, and then removed
+   * if they're off-screen.
+   */
   @Override
   public void update() {
     // Generate new fish on ~4% of calls
     if (randGen.nextInt(100) <= 4) {
-      scene_items.add(new FishAlpha(
+      sceneItems.add(new FishAlpha(
         createLeftFishId(randGen.nextInt(10)+5, randGen.nextInt(3)), // fish id	
         manifest.getWidth() + randGen.nextInt(20), // x location
-        randGen.nextDouble()*manifest.getHeight() + manifest.getStart_y(), // y location
+        randGen.nextDouble()*manifest.getHeight() + manifest.getStartY(), // y location
         20, // speed x
         0, // speed y
         true)); // moving left?
       
-      scene_items.add(new FishAlpha(
+      sceneItems.add(new FishAlpha(
  	    createLeftFishId(randGen.nextInt(10)+5, randGen.nextInt(3)), // fish id	
         manifest.getWidth() + randGen.nextInt(20), // x location
-    	randGen.nextDouble()*manifest.getHeight() + manifest.getStart_y(), // y location
+    	randGen.nextDouble()*manifest.getHeight() + manifest.getStartY(), // y location
     	20, // speed x
     	0, // speed y
     	true)); // moving left?
     }	
 	
-    for (SceneObject fish : scene_items) {
+    // Move Fish
+    for (SceneObject fish : sceneItems) {
       ((FishAlpha)fish).move();
     }	
 	
+    // Remove Off-screen Fish
     removeFish();
   }
   
+  /**
+   * Utility function to create a left fish id's
+   * @param 	dpth		fish depth
+   * @param		fishType	int for array selection
+   * @return	leftFishId	returns created ObjectId
+   */
   private ObjectId createLeftFishId(int dpth, int fishType) {
 	// Create Left Fish ID
     ObjectId leftFishId = new ObjectId(
@@ -116,6 +147,12 @@ public class BayScene extends Scene implements PropertyScored, PropertyTimed {
     return leftFishId;
   }
   
+  /**
+   * Utility function to create a right fish id's
+   * @param 	dpth		fish depth
+   * @param		fishType	int for array selection
+   * @return	rightFishId	returns created ObjectId
+   */
   private ObjectId createRightFishId(int dpth, int fishType) {
 	// Create Right Fish ID
     ObjectId rightFishId = new ObjectId(
@@ -129,8 +166,11 @@ public class BayScene extends Scene implements PropertyScored, PropertyTimed {
     return rightFishId;
   }
   
+  /**
+   * Removes fish that are off-screen 
+   */
   private void removeFish() {
-    for (Iterator<SceneObject> iterator = scene_items.iterator(); iterator.hasNext();) {
+    for (Iterator<SceneObject> iterator = sceneItems.iterator(); iterator.hasNext();) {
       FishAlpha fish = (FishAlpha)iterator.next();
       
       if ( fish.getLeftFish() && fish.getLocation().getX() >= (manifest.getWidth()+fish.getPassport().getWidth()) ) {
@@ -141,81 +181,37 @@ public class BayScene extends Scene implements PropertyScored, PropertyTimed {
     }
   }
   
+  /**
+   * Overridden from PropertyTimed.java
+   * @return	time
+   */
   @Override
   public int getTime() {
   	return time;
   }
 
+  /**
+   * Overridden from PropertyScored.java
+   * @return	score
+   */
   @Override
   public int getScore() {
   	return score;
   }
 
+  /**
+   * Overridden from PropertyScored.java
+   */
   @Override
   public void updateScore() {
   	// TODO Auto-generated method stub
   }
 
+  /**
+   * Overridden from PropertyTimed.java
+   */
   @Override
   public void updateTime() {
 	time -= 1;
   }
 }
-/*
-	private void fillScene() {		
-		for (int j=0; j<5; j++) {
-			int length = rand_gen.nextInt(20) + 15;
-			scene_items.add(new FishAlpha(0-length, 
-				j*140 + this.start_y + 10,
-				length,
-				length/2,
-	  		    j+1,
-				true));
-			scene_items.add(new AlphaFish(this.scene_width+length, 
-				j*140 + this.start_y + 10,
-				length,
-				length/2,
-				-1*j-1,
-				false));
-		
-		Collections.sort(scene_items);	
-		}
-	}
-	
-	public void move() {
-		int length = rand_gen.nextInt(20) + 15;
-		
-		// Generate new fish on ~4% of calls
-		if (rand_gen.nextInt(25) == 1) {
-			this.scene_items.add(new AlphaFish(0-length, 
-                rand_gen.nextInt(this.scene_height) + this.start_y,
-			    length,
-				length/2,
-				rand_gen.nextInt(10)+5,
-				true));
-			this.scene_items.add(new AlphaFish(this.scene_width+length, 
-				rand_gen.nextInt(this.scene_height) + this.start_y,
-				length,
-				length/2,
-				-1*rand_gen.nextInt(10)-5,
-				false));		
-		}
-		
-		for (SceneObject fish : scene_items)
-			((AlphaFish)fish).move();
-		
-		removeFish();
-	}
-	
-	private void removeFish() {
-		for (Iterator<SceneObject> iterator = scene_items.iterator(); iterator.hasNext();) {
-			AlphaFish fish = (AlphaFish)iterator.next();
-			if ( fish.getLTR() && fish.getX() >= (this.scene_width+fish.getWidth()) ) {
-				iterator.remove();
-			
-			} else if ( !fish.getLTR() && fish.getX() <= (0-fish.getWidth()) ) { 
-				iterator.remove();
-			}
-		}
-	}
-*/
