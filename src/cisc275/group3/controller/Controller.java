@@ -6,10 +6,18 @@ import cisc275.group3.view.AlphaView;
 public class Controller {
 		  
   public static void main (String[] args) {
-    //AlphaView testView = new AlphaView(1280, 720);
+    AlphaView testView = new AlphaView(1280, 720);
     BayScene testBay = new BayScene("Bay", 0, 0, 1280, 720, true, true);
     System.out.println(testBay);
     
-   
+    for(int i = 0; i < 1000; i++){
+      testView.drawFish(testBay.getSceneItems());
+      try {
+        Thread.sleep(100);
+      } catch (InterruptedException e) {
+        e.printStackTrace();
+      }
+      testBay.update();
+    }
   }
 }

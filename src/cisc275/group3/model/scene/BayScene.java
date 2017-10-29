@@ -17,9 +17,9 @@ public class BayScene extends Scene implements PropertyScored, PropertyTimed {
   
   // Fish File Locations
   private static final String[] FISH_LEFT_FILES = 
-	    {"/fish_left_1.png", "/fish_left_2.png", "/fish_left_3.png"};
+	    {"img/fish_left_1.png", "img/fish_left_2.png", "img/fish_left_3.png"};
   private static final String[] FISH_RIGHT_FILES = 
-	    {"/fish_right_1.png", "/fish_right_2.png", "/fish_right_3.png"};
+	    {"img/fish_right_1.png", "img/fish_right_2.png", "img/fish_right_3.png"};
   
   // Fish Names
   private static final String[] FISH_LEFT_NAMES = 
@@ -28,8 +28,8 @@ public class BayScene extends Scene implements PropertyScored, PropertyTimed {
 	{"Angelfish", "Threadfin Butterflyfish", "Sergeant Major"};
   
   // Fish Dimensions
-  private static final int[] FISH_LEFT_LENGTH = {35, 25, 10};
-  private static final int[] FISH_RIGHT_LENGTH = {25, 35, 10};
+  private static final int[] FISH_LEFT_LENGTH = {125, 100, 80};
+  private static final int[] FISH_RIGHT_LENGTH = {100, 120, 85};
   
   // Fish Aspect Ratios
   private static final double[] FISH_LEFT_AR = {0.6367, 0.7898, 0.5828};
@@ -64,15 +64,15 @@ public class BayScene extends Scene implements PropertyScored, PropertyTimed {
       int fishType = randGen.nextInt(3);
       
       // Create Left Fish ID
-      ObjectId leftFishId = createLeftFishId(i+1, fishType);
+      ObjectId leftFishId = createLeftFishId(randGen.nextInt(20)-10, fishType);
       
       // Create Right Fish ID
-      ObjectId rightFishId = createRightFishId((-1*i), fishType);
+      ObjectId rightFishId = createRightFishId(randGen.nextInt(20)-10, fishType);
       
       // Add Left Fish to Scene
       sceneItems.add(new FishAlpha(
         leftFishId, // fish id
-        manifest.getWidth()+randGen.nextInt(20), // x location
+        manifest.getWidth()+randGen.nextInt(500), // x location
         i*140 + manifest.getStartY() + 10, // y location
         20, // speed x
         0, // speed y
@@ -80,7 +80,7 @@ public class BayScene extends Scene implements PropertyScored, PropertyTimed {
       
       sceneItems.add(new FishAlpha(
         rightFishId, // fish id
-        0, // x location
+        0 - randGen.nextInt(500), // x location
         i*140 + manifest.getStartY() + 10, // y location
         20, // speed x
         0, // speed y
@@ -102,20 +102,20 @@ public class BayScene extends Scene implements PropertyScored, PropertyTimed {
     // Generate new fish on ~4% of calls
     if (randGen.nextInt(100) <= 4) {
       sceneItems.add(new FishAlpha(
-        createLeftFishId(randGen.nextInt(10)+5, randGen.nextInt(3)), // fish id	
-        manifest.getWidth() + randGen.nextInt(20), // x location
+        createLeftFishId(randGen.nextInt(20)-10, randGen.nextInt(3)), // fish id	
+        manifest.getWidth() + randGen.nextInt(75), // x location
         randGen.nextDouble()*manifest.getHeight() + manifest.getStartY(), // y location
-        20, // speed x
+        15, // speed x
         0, // speed y
         true)); // moving left?
       
       sceneItems.add(new FishAlpha(
- 	    createLeftFishId(randGen.nextInt(10)+5, randGen.nextInt(3)), // fish id	
-        manifest.getWidth() + randGen.nextInt(20), // x location
+ 	    createRightFishId(randGen.nextInt(20)-10, randGen.nextInt(3)), // fish id	
+        0 - randGen.nextInt(75), // x location
     	randGen.nextDouble()*manifest.getHeight() + manifest.getStartY(), // y location
-    	20, // speed x
+    	15, // speed x
     	0, // speed y
-    	true)); // moving left?
+    	false)); // moving left?
     }	
 	
     // Move Fish

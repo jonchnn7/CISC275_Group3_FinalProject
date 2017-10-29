@@ -47,14 +47,14 @@ public class FishAlpha extends SceneObject implements ActionMove {
    * distribution. This should keep the x-axis speed somewhat predictable, 
    * but add enough variability that movement doesn't look synchronized. The
    * y-axis offset is similar, defined by the sum of a positive and negative
-   * gaussian distribution scaled to 10.
+   * gaussian distribution scaled to 3.
    * <p>
    * The offsets are used to update the location by component.
    */
   @Override
   public void move() {
 	double dx = speedX - speedX*0.1 + randGen.nextGaussian()*speedX*0.2;
-	double dy = randGen.nextGaussian()*10 - randGen.nextGaussian()*10;
+	double dy = randGen.nextGaussian()*3 - randGen.nextGaussian()*3;
 	
 	int dir =  (leftFish) ? -1 : 1; // unit vector for direction
     double x = location.getX() + dir*dx;
