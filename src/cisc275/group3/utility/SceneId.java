@@ -20,7 +20,7 @@ public class SceneId {
   private final double startY;
   private final double width;
   
-  public SceneId (double h, String n, double x, double y, double w) {
+  public SceneId (String n, double x, double y, double w, double h) {
     height = h;
     name = n;
     startX = x;

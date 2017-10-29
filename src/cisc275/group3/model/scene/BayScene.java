@@ -40,8 +40,8 @@ public class BayScene extends Scene implements PropertyScored, PropertyTimed {
   private static final int[] FISH_RIGHT_ID = {4, 5, 6};
   
 
-  public BayScene(boolean click, SceneId mani, boolean vis) {
-    super(click, mani, vis);
+  public BayScene(SceneId mani, boolean click, boolean vis) {
+    super(mani, click, vis);
     time = 350;
     
     fillScene();
@@ -50,8 +50,8 @@ public class BayScene extends Scene implements PropertyScored, PropertyTimed {
   /**
    * Used when SceneId must also be created
    */ 
-  public BayScene(double h, String n, double x, double y, double w, boolean click, boolean vis) {
-    this(click, new SceneId(h, n, x, y, w), vis);
+  public BayScene(String n, double x, double y, double w, double h, boolean click, boolean vis) {
+    this(new SceneId(n, x, y, w, h), click, vis);
   }
   
   /**

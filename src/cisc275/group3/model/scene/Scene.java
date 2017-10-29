@@ -26,7 +26,7 @@ public abstract class Scene {
   // RNG
   Random randGen = new Random();
 	
-  public Scene(boolean click, SceneId mani, boolean vis) {
+  public Scene(SceneId mani, boolean click, boolean vis) {
     clickable = click;
     manifest = mani;
     visible = vis;
