@@ -63,6 +63,13 @@ public abstract class SceneObject implements Comparable<SceneObject> {
   }
   
   /**
+   * @return location	returns object location
+   */
+  public Point2D.Double getLocation() {
+	  return location;
+  }
+  
+  /**
    * @return passport	returns passport object
    */
   public ObjectId getPassport() {
@@ -70,9 +77,9 @@ public abstract class SceneObject implements Comparable<SceneObject> {
   }
   
   /**
-   * @return location	returns object location
+   * @return first character of object
    */
-  public Point2D.Double getLocation() {
-	  return location;
+  public String getShortName() {
+    return Character.toString(passport.getName().charAt(0));
   }
  }

@@ -1,6 +1,5 @@
 package cisc275.group3.model.scene;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 
@@ -173,9 +172,9 @@ public class BayScene extends Scene implements PropertyScored, PropertyTimed {
     for (Iterator<SceneObject> iterator = sceneItems.iterator(); iterator.hasNext();) {
       FishAlpha fish = (FishAlpha)iterator.next();
       
-      if ( fish.getLeftFish() && fish.getLocation().getX() >= (manifest.getWidth()+fish.getPassport().getWidth()) ) {
+      if ( !fish.getLeftFish() && fish.getLocation().getX() >= (manifest.getWidth()+fish.getPassport().getWidth()) ) {
         iterator.remove();
-      } else if ( !fish.getLeftFish() && fish.getLocation().getX() <= (0-fish.getPassport().getWidth()) ) { 
+      } else if ( fish.getLeftFish() && fish.getLocation().getX() <= (0-fish.getPassport().getWidth()) ) { 
         iterator.remove();
       }
     }
