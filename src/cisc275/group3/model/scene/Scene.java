@@ -3,6 +3,7 @@ package cisc275.group3.model.scene;
 import cisc275.group3.model.sceneobject.SceneObject;
 import cisc275.group3.utility.SceneId;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Random;
 
 /**
@@ -43,8 +44,14 @@ public abstract class Scene {
   /**
    * Process Click Events from Controller
    */
-  public void processClick(double clickX, double clickY) {
-    System.out.println("Scene Click");
+  public boolean processClick(double clickX, double clickY) {
+    for (Iterator<SceneObject> iterator = sceneItems.iterator(); iterator.hasNext();) {     
+      if (iterator.next().itemClicked(clickX, clickY)) {
+        iterator.remove();
+        return true;
+      }
+    }
+    return false;
   }
 	
   /**

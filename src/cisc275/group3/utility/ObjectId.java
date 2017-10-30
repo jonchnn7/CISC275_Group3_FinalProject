@@ -1,5 +1,7 @@
 package cisc275.group3.utility;
 
+import java.awt.geom.Ellipse2D;
+
 /**
  * Data structure to hold immutable SceneObject parameters. Can also
  * be used to more cleanly pass SceneObject information.

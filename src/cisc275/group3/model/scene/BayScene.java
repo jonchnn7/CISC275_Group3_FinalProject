@@ -120,9 +120,6 @@ public class BayScene extends Scene implements PropertyScored, PropertyTimed {
     	0, // speed y
     	false)); // moving left?
     }	
-	
-    // Sort by depth
-    Collections.sort(sceneItems);
     
     // Move Fish
     for (SceneObject fish : sceneItems) {
@@ -131,6 +128,9 @@ public class BayScene extends Scene implements PropertyScored, PropertyTimed {
 	
     // Remove Off-screen Fish
     removeFish();
+    
+    // Sort by depth
+    Collections.sort(sceneItems);
   }
   
   /**
@@ -209,7 +209,8 @@ public class BayScene extends Scene implements PropertyScored, PropertyTimed {
    */
   @Override
   public void updateScore() {
-  	// TODO Auto-generated method stub
+  	score += 1;
+  	System.out.println("Score: " + score);
   }
 
   /**

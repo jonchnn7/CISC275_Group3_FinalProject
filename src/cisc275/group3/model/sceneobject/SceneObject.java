@@ -1,6 +1,8 @@
 package cisc275.group3.model.sceneobject;
 
 import cisc275.group3.utility.ObjectId;
+
+import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
 import java.util.Random;
 
@@ -44,7 +46,7 @@ public abstract class SceneObject implements Comparable<SceneObject> {
     Integer myDepth = this.passport.getDepth();
     Integer urDepth = other_item.passport.getDepth();
     
-	return myDepth.compareTo(urDepth);
+	return urDepth.compareTo(myDepth);
   }
 
   /**
@@ -60,6 +62,20 @@ public abstract class SceneObject implements Comparable<SceneObject> {
                       +"\nHeight: " + passport.getHeight()
                       +"\nLocation: " + location;
     return outString;
+  }
+  
+  /**
+   * @return boolean
+   */
+  public boolean itemClicked(double x, double y) {
+    Ellipse2D.Double clickBounds = new Ellipse2D.Double(location.getX(), location.getY(),
+      passport.getWidth(), passport.getHeight());
+	 
+    if (clickBounds.contains(x,y)) {
+      return true;
+    } else {
+      return false;
+    }
   }
   
   /**

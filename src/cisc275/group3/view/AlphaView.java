@@ -3,24 +3,18 @@ package cisc275.group3.view;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.RenderingHints;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import cisc275.group3.model.sceneobject.SceneObject;
-import cisc275.group3.utility.SceneId;
 
 @SuppressWarnings("serial")
 public class AlphaView extends JPanel {
@@ -31,13 +25,12 @@ public class AlphaView extends JPanel {
   private ArrayList<SceneObject> fishList;
   private BufferedImage fishImg;
   
-  private Timer timer;
-  
   @Override
   public void paint(Graphics g) {
     Graphics2D g2d = (Graphics2D) g.create();
     g2d.setColor(Color.blue);
     g2d.fillRect(0, 0, 1280, 720);
+    Collections.reverse(fishList);
     fishList.forEach((item)->{
       try {
         fishImg = ImageIO.read(new File(item.getPassport().getImageFile()));
@@ -62,20 +55,10 @@ public class AlphaView extends JPanel {
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setSize(frameWidth, frameHeight);
     frame.setVisible(true);
-    
-    doIt();
-  }
-  
-  private void doIt() {
-    timer = new Timer(100, new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
-          frame.repaint();
-        }
-     });
-    timer.start();
   }
   
   public void updateObjects(ArrayList<SceneObject> s) {
     fishList = (ArrayList<SceneObject>) s.clone();  // FIX ME.   FIX ME.   FIX ME.   FIX ME.
+    frame.repaint();
   }
 }

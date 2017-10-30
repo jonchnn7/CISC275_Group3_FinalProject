@@ -2,82 +2,70 @@ package cisc275.group3.controller;
 
 import cisc275.group3.model.scene.BayScene;
 import cisc275.group3.view.AlphaView;
-
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import java.awt.event.MouseEvent;
 import javax.swing.Timer;
 
-import org.w3c.dom.events.MouseEvent;
 
-
-public class Controller implements MouseListener {
+public class Controller {
   
+  // Screen Parameters
+  private final int SCREEN_WIDTH;
+  private final int SCREEN_HEIGHT;
+  
+  // View and Model
   AlphaView testView;
   BayScene testBay;
-  
-  private boolean click;	
 	
-  public Controller() {
-    testView = new AlphaView(1280, 720);
-    testBay = new BayScene("Bay", 0, 0, 1280, 720, true, true);
+  public Controller(int x, int y) {
+    SCREEN_WIDTH = x;
+    SCREEN_HEIGHT = y;
+    
+    testView = new AlphaView(SCREEN_WIDTH, SCREEN_HEIGHT);
+    testBay = new BayScene("Bay", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, true, true);
     //System.out.println(testBay);
     
     testView.updateObjects(testBay.getSceneItems());
     
-    click = false;
-	    
-    testView.addMouseListener(this);
+    /**
+     * Adds mouse listener to JPanel. On mouse press, the 
+     * scene is passed the x and y coordinates to process
+     * the event.
+     */
+    testView.addMouseListener(new MouseAdapter() {
+      public void mousePressed(MouseEvent e) {
+        if (e.getButton() == MouseEvent.BUTTON1) {
+    	  if(testBay.processClick(e.getX(), e.getY())) {
+            testBay.updateScore();
+          }
+        }
+      }
+    });
+    
+    /**
+     * Adds mouse motion listener to JPanel
+     */
+    testView.addMouseMotionListener(new MouseAdapter() {
+    	public void mouseMoved(MouseEvent e) {
+    	}
+    });
+    //testView.addMouseListener(this);
+    gameTime();
   }
-	
-  public static void main (String[] args) {
-	  Controller c = new Controller();
-  }
-
-@Override
-public void mouseClicked(java.awt.event.MouseEvent e) {
-  testBay.processClick(e.getX(), e.getY());
-  testView.updateObjects(testBay.getSceneItems());
   
-}
-
-@Override
-public void mousePressed(java.awt.event.MouseEvent e) {
-	// TODO Auto-generated method stub
-	
-}
-
-@Override
-public void mouseReleased(java.awt.event.MouseEvent e) {
-	// TODO Auto-generated method stub
-	
-}
-
-@Override
-public void mouseEntered(java.awt.event.MouseEvent e) {
-	// TODO Auto-generated method stub
-	
-}
-
-@Override
-public void mouseExited(java.awt.event.MouseEvent e) {
-	// TODO Auto-generated method stub
-	
-}
+  /**
+   * Updates the model and display every 100ms
+   */
+  private void gameTime() {
+    Timer timer = new Timer(100, new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        testBay.update();
+          testView.updateObjects(testBay.getSceneItems());
+        }
+     });
+    timer.start();
+  }
 }
