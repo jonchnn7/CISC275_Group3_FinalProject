@@ -31,6 +31,8 @@ public class AlphaView extends JPanel {
   private ArrayList<SceneObject> fishList;
   private BufferedImage fishImg;
   
+  private Timer timer;
+  
   @Override
   public void paint(Graphics g) {
     Graphics2D g2d = (Graphics2D) g.create();
@@ -60,11 +62,20 @@ public class AlphaView extends JPanel {
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setSize(frameWidth, frameHeight);
     frame.setVisible(true);
+    
+    doIt();
   }
   
-  public void drawFish(ArrayList<SceneObject> s) {
-    fishList = s;
-    		
-    frame.repaint();
+  private void doIt() {
+    timer = new Timer(100, new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+          frame.repaint();
+        }
+     });
+    timer.start();
+  }
+  
+  public void updateObjects(ArrayList<SceneObject> s) {
+    fishList = (ArrayList<SceneObject>) s.clone();  // FIX ME.   FIX ME.   FIX ME.   FIX ME.
   }
 }

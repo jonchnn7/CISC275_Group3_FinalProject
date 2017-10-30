@@ -39,6 +39,13 @@ public abstract class Scene {
    * how to update itself
    */
   abstract public void update();
+  
+  /**
+   * Process Click Events from Controller
+   */
+  public void processClick(double clickX, double clickY) {
+    System.out.println("Scene Click");
+  }
 	
   /**
    * Print Scene and Object Information
@@ -68,7 +75,9 @@ public abstract class Scene {
   }
   
   /**
-   * 
+   * Used by View import objects. Changes must
+   * be compatible with View's drawObjects()
+   * @return sceneItems
    */
   public ArrayList<SceneObject> getSceneItems() {
 	  return sceneItems;

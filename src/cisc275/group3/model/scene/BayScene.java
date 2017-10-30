@@ -39,6 +39,9 @@ public class BayScene extends Scene implements PropertyScored, PropertyTimed {
   private static final int[] FISH_LEFT_ID = {1, 2, 3};
   private static final int[] FISH_RIGHT_ID = {4, 5, 6};
   
+  // Fish x-axis Speed
+  private static final int[] FISH_SPEED = {19, 17, 13};
+  
 
   public BayScene(SceneId mani, boolean click, boolean vis) {
     super(mani, click, vis);
@@ -74,7 +77,7 @@ public class BayScene extends Scene implements PropertyScored, PropertyTimed {
         leftFishId, // fish id
         manifest.getWidth()+randGen.nextInt(500), // x location
         i*140 + manifest.getStartY() + 10, // y location
-        20, // speed x
+        FISH_SPEED[fishType]+randGen.nextInt(4), // speed x
         0, // speed y
         true)); // left moving fish?
       
@@ -82,7 +85,7 @@ public class BayScene extends Scene implements PropertyScored, PropertyTimed {
         rightFishId, // fish id
         0 - randGen.nextInt(500), // x location
         i*140 + manifest.getStartY() + 10, // y location
-        20, // speed x
+        FISH_SPEED[fishType], // speed x
         0, // speed y
         false)); // left moving fish?
     }
@@ -118,6 +121,9 @@ public class BayScene extends Scene implements PropertyScored, PropertyTimed {
     	false)); // moving left?
     }	
 	
+    // Sort by depth
+    Collections.sort(sceneItems);
+    
     // Move Fish
     for (SceneObject fish : sceneItems) {
       ((FishAlpha)fish).move();
