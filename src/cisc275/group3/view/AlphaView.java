@@ -12,7 +12,6 @@ import java.util.Collections;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.Timer;
 
 import cisc275.group3.model.sceneobject.SceneObject;
 

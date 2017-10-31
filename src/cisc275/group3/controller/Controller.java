@@ -17,8 +17,8 @@ public class Controller {
   private final int SCREEN_HEIGHT;
   
   // View and Model
-  AlphaView testView;
-  BayScene testBay;
+  private AlphaView testView;
+  private BayScene testBay;
 	
   public Controller(int x, int y) {
     SCREEN_WIDTH = x;
