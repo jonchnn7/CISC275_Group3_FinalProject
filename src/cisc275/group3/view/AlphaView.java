@@ -28,7 +28,7 @@ public class AlphaView extends JPanel {
   public void paint(Graphics g) {
     Graphics2D g2d = (Graphics2D) g.create();
     g2d.setColor(Color.blue);
-    g2d.fillRect(0, 0, 1280, 720);
+    g2d.fillRect(0, 0, frameWidth, frameHeight);
     Collections.reverse(fishList);
     fishList.forEach((item)->{
       try {
