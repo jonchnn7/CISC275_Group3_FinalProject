@@ -1,9 +1,11 @@
 package cisc275.group3.model.scene;
 
+import java.awt.Color;
 import java.util.Collections;
 import java.util.Iterator;
 
 import cisc275.group3.model.sceneobject.FishAlpha;
+import cisc275.group3.model.sceneobject.NavObject;
 import cisc275.group3.model.sceneobject.SceneObject;
 import cisc275.group3.utility.ObjectId;
 import cisc275.group3.utility.SceneId;
@@ -46,6 +48,10 @@ public class BayScene extends Scene implements PropertyScored, PropertyTimed {
   public BayScene(SceneId mani, boolean click, boolean vis) {
     super(mani, click, vis);
     time = 350;
+    backgroundColor = Color.blue;
+    
+	navObjects.add(new NavObject(100,100, "HQ"));
+
     
     fillScene();
   }

@@ -8,11 +8,14 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.awt.Font;
+
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import cisc275.group3.model.scene.Scene;
 import cisc275.group3.model.sceneobject.SceneObject;
 
 @SuppressWarnings("serial")
@@ -21,30 +24,50 @@ public class AlphaView extends JPanel {
   private static int frameWidth;
   
   private JFrame frame;
-  private ArrayList<SceneObject> fishList;
-  private BufferedImage fishImg;
+  private Scene theScene;
+  //private ArrayList<SceneObject> fishList;
+  private BufferedImage currentImg;
   
   @Override
   public void paint(Graphics g) {
     Graphics2D g2d = (Graphics2D) g.create();
-    g2d.setColor(Color.blue);
+    
+    //Draw Background
+    g2d.setColor(theScene.getBackgroundColor());
     g2d.fillRect(0, 0, frameWidth, frameHeight);
-    Collections.reverse(fishList);
-    fishList.forEach((item)->{
+    
+    //Draw NavItems
+    for(int i = 0; i < theScene.getNavObjects().size(); i++) {
+		g.setColor(Color.GREEN);
+        g.fillRect((int)theScene.getNavObjects().get(i).getLocation().getX(),(int) theScene.getNavObjects().get(i).getLocation().getY(), theScene.getNavObjects().get(i).getPassport().getWidth(), theScene.getNavObjects().get(i).getPassport().getHeight());
+        g.setColor(Color.white);
+		g.setFont(new Font("Sans Serif", Font.BOLD, 18));
+		
+		g.drawString(theScene.getNavObjects().get(i).navClick(),
+   		     ((int) theScene.getNavObjects().get(i).getLocation().getX() + (theScene.getNavObjects().get(i).getPassport().getWidth() - g.getFontMetrics().stringWidth(theScene.getNavObjects().get(i).navClick()))/2 ),
+		         (int) (theScene.getNavObjects().get(i).getLocation().getY() + theScene.getNavObjects().get(i).getPassport().getHeight()/2) + (g.getFontMetrics().getHeight()/4) );
+
+    }
+    
+    
+    //Draw SceneItems
+    Collections.reverse(theScene.getSceneItems());
+    theScene.getSceneItems().forEach((item)->{
       try {
-        fishImg = ImageIO.read(new File(item.getPassport().getImageFile()));
+        currentImg = ImageIO.read(new File(item.getPassport().getImageFile()));
       } catch (IOException e) {
         e.printStackTrace();
       }
-      g2d.drawImage(fishImg, (int)item.getLocation().getX(), (int)item.getLocation().getY(), this);
+      g2d.drawImage(currentImg, (int)item.getLocation().getX(), (int)item.getLocation().getY(), this);
     });
     g2d.dispose();
   }
   
-  public AlphaView (int w, int h) {
+  public AlphaView (int w, int h, Scene sc) {
     // Display Parameters
     frameHeight = h;
     frameWidth = w;
+    theScene = sc;
     
     this.setBackground(Color.blue);
     
@@ -55,9 +78,15 @@ public class AlphaView extends JPanel {
     frame.setSize(frameWidth, frameHeight);
     frame.setVisible(true);
   }
+ 
+  public void changeActiveScene(Scene sc) {
+	  theScene = sc;
+  }
   
-  public void updateObjects(ArrayList<SceneObject> s) {
-    fishList = (ArrayList<SceneObject>) s.clone();  // FIX ME.   FIX ME.   FIX ME.   FIX ME.
+  public void paintScene() {
+  
+//  public void updateObjects(ArrayList<SceneObject> s) {
+    //fishList = (ArrayList<SceneObject>) s.clone();  // FIX ME.   FIX ME.   FIX ME.   FIX ME.
     frame.repaint();
   }
 }

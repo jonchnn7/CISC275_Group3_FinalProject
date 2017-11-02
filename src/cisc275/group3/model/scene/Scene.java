@@ -1,7 +1,10 @@
 package cisc275.group3.model.scene;
 
+import cisc275.group3.model.sceneobject.NavObject;
 import cisc275.group3.model.sceneobject.SceneObject;
 import cisc275.group3.utility.SceneId;
+
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
@@ -23,6 +26,9 @@ public abstract class Scene {
   protected int score;
   protected int time;
   protected boolean visible;
+  protected ArrayList<NavObject> navObjects;
+  protected Color backgroundColor;
+
 	
   // RNG
   Random randGen = new Random();
@@ -33,6 +39,9 @@ public abstract class Scene {
     visible = vis;
 		
     sceneItems = new ArrayList<SceneObject>();
+    navObjects = new ArrayList<NavObject>();
+
+    
   }
 	
   /**
@@ -45,14 +54,25 @@ public abstract class Scene {
    * Process Click Events from Controller
    */
   public boolean processClick(double clickX, double clickY) {
-    for (Iterator<SceneObject> iterator = sceneItems.iterator(); iterator.hasNext();) {     
-      if (iterator.next().itemClicked(clickX, clickY)) {
-        iterator.remove();
-        return true;
-      }
-    }
-    return false;
+	  	System.out.println("CHECKING FOR CLICK");
+	    for (Iterator<SceneObject> iterator = sceneItems.iterator(); iterator.hasNext();) {     
+	        if (iterator.next().itemClicked(clickX, clickY)) {
+	          iterator.remove();
+	          return true;
+	        }
+	      }
+	      return false;
   }
+  
+public String processNav(double clickX, double clickY){
+		for(int i = 0; i < navObjects.size(); i++) {
+			if(navObjects.get(i).itemClicked(clickX, clickY)) {
+				return navObjects.get(i).navClick();
+			}
+		}	
+	    return "NONE";
+	}
+  
 	
   /**
    * Print Scene and Object Information
@@ -89,12 +109,20 @@ public abstract class Scene {
   public ArrayList<SceneObject> getSceneItems() {
 	  return sceneItems;
   }
+  
+  public ArrayList<NavObject> getNavObjects() {
+	  return navObjects;
+  }
 	
   /**
    * @return visible
    */
   public boolean getVisible() {
     return visible;
+  }
+  
+  public Color getBackgroundColor() {
+	  return this.backgroundColor;
   }
 	
   /**
