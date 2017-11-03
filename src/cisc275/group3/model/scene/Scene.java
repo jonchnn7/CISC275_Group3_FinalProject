@@ -77,15 +77,18 @@ public String processNav(double clickX, double clickY){
   /**
    * Print Scene and Object Information
    */
+//  public String toString() {
+//    String outString = "\nName: " + manifest.getName()
+//                      +"\nWidth: " + manifest.getWidth()
+//                      +"\nHeight: " + manifest.getHeight()
+//                      +"\nClickable: " + clickable
+//                      +"\nVisible: " + visible
+//                      +"\nScene Objects: " + sceneItems.size();
+//    return outString;
+//  }
   public String toString() {
-    String outString = "\nName: " + manifest.getName()
-                      +"\nWidth: " + manifest.getWidth()
-                      +"\nHeight: " + manifest.getHeight()
-                      +"\nClickable: " + clickable
-                      +"\nVisible: " + visible
-                      +"\nScene Objects: " + sceneItems.size();
-    return outString;
-  }
+	    return this.getManifest().getName();
+	  }
 	
   /**
    * @return clickable

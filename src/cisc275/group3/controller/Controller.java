@@ -1,8 +1,11 @@
 package cisc275.group3.controller;
 
 import cisc275.group3.model.scene.Scene;
+import cisc275.group3.model.scene.WetlandsScene;
 import cisc275.group3.model.scene.BayScene;
+import cisc275.group3.model.scene.BeachScene;
 import cisc275.group3.model.scene.HQScene;
+import cisc275.group3.model.scene.MapScene;
 import cisc275.group3.view.AlphaView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -35,13 +38,21 @@ public class Controller {
     //gameViews = new ArrayList<AlphaView>();
     gameModels = new ArrayList<Scene>();
     gameModels.add(new HQScene("HQ", 0,0,SCREEN_WIDTH, SCREEN_HEIGHT, true, true));
+    gameModels.add(new MapScene("Map", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, false, false));
     gameModels.add(new BayScene("Bay", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, false, false));
-   //gameViews.add(new AlphaView(SCREEN_WIDTH, SCREEN_HEIGHT, gameModels.get(0)));
+    gameModels.add(new BeachScene("Beach", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, false, false));
+    gameModels.add(new WetlandsScene("Wetlands", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, false, false));
+
+    //gameViews.add(new AlphaView(SCREEN_WIDTH, SCREEN_HEIGHT, gameModels.get(0)));
     //gameViews.add(new AlphaView(SCREEN_WIDTH, SCREEN_HEIGHT, gameModels.get(1)));
     
     
-    activeScene = gameModels.get(0);
-    activeView = new AlphaView(SCREEN_WIDTH, SCREEN_HEIGHT, gameModels.get(0));
+    for (int i = 0; i < gameModels.size();i++) {
+    	if(gameModels.get(i).getVisible() == true) {
+    		activeScene = gameModels.get(i);
+    	}
+    }
+    activeView = new AlphaView(SCREEN_WIDTH, SCREEN_HEIGHT, activeScene);
     activeView.paintScene();
     
     /**
@@ -51,21 +62,30 @@ public class Controller {
      */
     activeView.addMouseListener(new MouseAdapter() {
       public void mousePressed(MouseEvent e) {
+    	//get mouse click
         if (e.getButton() == MouseEvent.BUTTON1) {
+        	//if mouseclick returns a nav button at given location
+        	System.out.println(gameModels);
         	if(activeScene.processNav(e.getX(), e.getY()) != "NONE") {
-          	  	for(int i = 0; i < gameModels.size(); i++) {
-          	  		//System.out.println(gameModels.get(i));
-          	  		//System.out.println(activeScene);
-          	  		if(activeScene.processNav(e.getX(), e.getY()) == gameModels.get(i).getManifest().getName() && gameModels.get(i).getVisible() == false) {
-          	  			activeScene.toggleClickable();
-          	  			activeScene.toggleVisible();
-          	  			gameModels.get(i).toggleClickable();
-          	  			gameModels.get(i).toggleVisible();
-          	  			activeScene = gameModels.get(i);
-          	  			activeView.changeActiveScene(gameModels.get(i));
-          	  		}
-        	  }  
+        		System.out.println(activeScene.processNav(e.getX(), e.getY()));
+        		//find the correct scene to nav to
+        		int j = 0;
+          	  	while(((activeScene.processNav(e.getX(), e.getY()) == gameModels.get(j).getManifest().getName()) && (gameModels.get(j).getVisible() == false)) == false) {
+          	  		j++;
+          	  	}
+          	    //make active scene invisible/unclickable
+	  			System.out.println("Active Scene: " + activeScene.getManifest().getName() + "is getting toggled");
+	  			activeScene.toggleClickable();
+	  			activeScene.toggleVisible();
+	  			//set desired scene to visible/clickable
+	  			System.out.println("Desired Scene: " + gameModels.get(j).getManifest().getName() + "is getting toggled");
+	  			gameModels.get(j).toggleClickable();
+	  			gameModels.get(j).toggleVisible();
+	  			//assign new scene as active scene and view
+	  			activeScene = gameModels.get(j);
+	  			activeView.changeActiveScene(gameModels.get(j)); 
         	}
+        	//check to see if click effects any other objects
         	else if(activeScene.processClick(e.getX(), e.getY())) {
     		  //System.out.println("CLICK PROCESSED");
     		  //activeScene.updateScore();

@@ -12,7 +12,7 @@ public class HQScene extends Scene implements PropertyScored, PropertyTimed {
 		
 	public HQScene(SceneId mani, boolean click, boolean vis) {
 		super(mani, click, vis);
-		navObjects.add(new NavObject(100,100, "Bay"));
+		navObjects.add(new NavObject(100,100, "Map"));
 		backgroundColor = Color.BLACK;
 		//time = 300;
 	}

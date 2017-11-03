@@ -50,7 +50,7 @@ public class BayScene extends Scene implements PropertyScored, PropertyTimed {
     time = 350;
     backgroundColor = Color.blue;
     
-	navObjects.add(new NavObject(100,100, "HQ"));
+	navObjects.add(new NavObject(100,100, "Map"));
 
     
     fillScene();
