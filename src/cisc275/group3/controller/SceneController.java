@@ -62,6 +62,8 @@ public abstract class SceneController {
    */
   abstract protected void addMapButton();
   
+  abstract protected void update();
+  
   /**
    * Adds a mouse listener to the scene background and passes clicks
    * through to the model. 
@@ -78,10 +80,5 @@ public abstract class SceneController {
         }
       }
     });
-  }
-  
-  public void update() {
-    scene.update();
-    sceneLayer.updatePanel(scene.getSceneItems());
   }
 }

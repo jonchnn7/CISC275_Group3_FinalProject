@@ -39,13 +39,13 @@ public class AlphaView extends JPanel {
     //Draw NavItems
     for(int i = 0; i < theScene.getNavObjects().size(); i++) {
 		g.setColor(Color.GREEN);
-        g.fillRect((int)theScene.getNavObjects().get(i).getLocation().getX(),(int) theScene.getNavObjects().get(i).getLocation().getY(), theScene.getNavObjects().get(i).getPassport().getWidth(), theScene.getNavObjects().get(i).getPassport().getHeight());
+        g.fillRect((int)theScene.getNavObjects().get(i).getLocation().getX(),(int) theScene.getNavObjects().get(i).getLocation().getY(), (int)theScene.getNavObjects().get(i).getPassport().getWidth(), (int)theScene.getNavObjects().get(i).getPassport().getHeight());
         g.setColor(Color.white);
 		g.setFont(new Font("Sans Serif", Font.BOLD, 18));
 		
 		g.drawString(theScene.getNavObjects().get(i).navClick(),
-   		     ((int) theScene.getNavObjects().get(i).getLocation().getX() + (theScene.getNavObjects().get(i).getPassport().getWidth() - g.getFontMetrics().stringWidth(theScene.getNavObjects().get(i).navClick()))/2 ),
-		         (int) (theScene.getNavObjects().get(i).getLocation().getY() + theScene.getNavObjects().get(i).getPassport().getHeight()/2) + (g.getFontMetrics().getHeight()/4) );
+   		     ((int) theScene.getNavObjects().get(i).getLocation().getX() + ((int)theScene.getNavObjects().get(i).getPassport().getWidth() - g.getFontMetrics().stringWidth(theScene.getNavObjects().get(i).navClick()))/2 ),
+		         (int) (theScene.getNavObjects().get(i).getLocation().getY() + (int)theScene.getNavObjects().get(i).getPassport().getHeight()/2) + (g.getFontMetrics().getHeight()/4) );
 
     }
     

@@ -38,6 +38,7 @@ public class GameController {
   private void initGame() {
     controlMap.put("Bay", new BayController(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap));
     controlMap.put("Map", new MapController(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap));
+    controlMap.put("BeachMini", new BeachMiniController(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap));
     gameTime();
   }
     
@@ -46,19 +47,17 @@ public class GameController {
    * Updates the model and display every 100ms
    */
   private void gameTime() { 
-    final String[] timedKeys = {"Bay", "Beach", "Wetlands"};
     Timer timer = new Timer(100, new ActionListener() {
       public void actionPerformed(ActionEvent e) { 
         controlMap.forEach((k,v)->{
-          // Update Timed Scenes
-          if (Arrays.asList(timedKeys).contains(k) ) {
+          if (k == "Bay") {
             ((BayController)v).update();
-            
-            // Update Time in Timed Scenes
-            if (totalTime % 1000 == 0) {
-              ((BayController)v).updateTime();
-            }
-          }
+            if (totalTime % 1000 == 0) { ((BayController)v).updateTime(); }
+         
+          } else if (k == "BeachMini") {
+            ((BeachMiniController)v).update();
+            if (totalTime % 1000 == 0) { ((BeachMiniController)v).updateTime(); }              
+          }  
         });
         totalTime += 100;
       }

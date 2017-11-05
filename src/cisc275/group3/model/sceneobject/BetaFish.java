@@ -4,7 +4,7 @@ import java.awt.geom.Point2D;
 import cisc275.group3.utility.ObjectId;
 
 /**
- * Alpha release mockup for fish. Handles right-to-left and left-to-right
+ * Beta release mockup for fish. Handles right-to-left and left-to-right
  * moving fish via a boolean. If leftFish is true, fish moving left-to-right.
  * Currently, speedY isn't being used. It's still here, whenever we find a 
  * use for it.
@@ -14,18 +14,18 @@ import cisc275.group3.utility.ObjectId;
  * The filename was reversed from the previous version so, if we have multiple
  * fish, they appear next to each other in the workspace window.
  * <p>
- * FishAlpha.java
+ * FishBeta.java
  * 
  * @param	speedX		type class to hold immutable properties
  * @param	speedY		current location stored as a 2D point
  * @param	leftFish	RNG, mostly for subclasses
  */
-public class FishAlpha extends SceneObject implements ActionMove {
+public class BetaFish extends SceneObject implements ActionMove {
   protected double speedX; // x-axis speed
   protected double speedY; // y-axis speed
   protected boolean leftFish; // moving left-to-right?
 
-  public FishAlpha(ObjectId id, double x, double y, double sx, double sy, boolean lf) {
+  public BetaFish(ObjectId id, double x, double y, double sx, double sy, boolean lf) {
     super(id, x, y);
     speedX = sx; 
     speedY = sy;  // Not actually used?...
@@ -35,7 +35,7 @@ public class FishAlpha extends SceneObject implements ActionMove {
   /**
    * Constructor also creates an ObjectId
    */
-  public FishAlpha(int d, int h, int id, String imFi, String n, int w, double x, double y, double sx, double sy, boolean lf) {
+  public BetaFish(int d, int h, int id, String imFi, String n, int w, double x, double y, double sx, double sy, boolean lf) {
 	  this(new ObjectId(d, h, id, imFi, n, w), x, y, sx, sy, lf);
   }
 

@@ -9,7 +9,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.HashMap;
 
-import cisc275.group3.model.scene.BayScene;
+import cisc275.group3.model.scene.BeachMiniScene;
 import cisc275.group3.utility.LayerCode;
 import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.SceneLayer;
@@ -18,28 +18,27 @@ import cisc275.group3.view.SceneView;
 /**
  * Contains the controller actions and logic for BayScene.java.
  */
-public class BayController extends SceneController {
+public class BeachMiniController extends SceneController {
   
-  public BayController(int w, int h, GameWindow f, HashMap<String, Component> cl) {
+  public BeachMiniController(int w, int h, GameWindow f, HashMap<String, Component> cl) {
     super(w, h, f, cl);
   }
 
   @Override
   protected void createScene() {
-    scene = new BayScene("Bay", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, true, true);
-    sceneLayer = new SceneLayer(SCREEN_WIDTH, SCREEN_HEIGHT, scene.getSceneItems(), Color.BLUE);
-    sceneView = new SceneView(SCREEN_WIDTH, SCREEN_HEIGHT, sceneLayer, 
-        ((BayScene)scene).getScore(), ((BayScene)scene).getTime());
+    scene = new BeachMiniScene("Bay", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, true, true);
+    sceneLayer = new SceneLayer(SCREEN_WIDTH, SCREEN_HEIGHT, scene.getSceneItems(), Color.YELLOW);
+    sceneView = new SceneView(SCREEN_WIDTH, SCREEN_HEIGHT, sceneLayer, ((BeachMiniScene)scene).getTime());
     
     sceneView.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
     sceneView.setBounds(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     sceneView.setDoubleBuffered(true);
-    sceneView.setName("BayLayer");
+    sceneView.setName("BeachMiniLayer");
     
-    mainPane.setLayer(sceneView, LayerCode.Bay.getCode());
-    mainPane.add(sceneView, LayerCode.Bay.getCode());
+    mainPane.setLayer(sceneView, LayerCode.BeachMini.getCode());
+    mainPane.add(sceneView, LayerCode.BeachMini.getCode());
     
-    componentList.put("Bay", sceneView);
+    componentList.put("BeachMini", sceneView);
   
     addML();
     addMapButton();
@@ -47,15 +46,19 @@ public class BayController extends SceneController {
 
   @Override
   protected void addML() {
-    sceneLayer.addMouseListener(new MouseAdapter() {
+    sceneLayer.addMouseMotionListener(new MouseAdapter() {
+      int initialX;
+      
       @Override
       public void mousePressed(MouseEvent e) {
         if (e.getButton() == MouseEvent.BUTTON1) {
-          if ( scene.processClick(e.getX(), e.getY()) ) {
-            ((BayScene)scene).updateScore();
-            sceneView.updateScore(((BayScene)scene).getScore());
-          }
+          initialX = e.getX();
         }
+      }
+      
+      @Override
+      public void mouseDragged(MouseEvent e) {
+        ((BeachMiniScene)scene).update(0.004*(e.getX()-initialX));
       }
     });
   }
@@ -75,14 +78,14 @@ public class BayController extends SceneController {
   
   @Override
   public void update() {
-    if (mainPane.getLayer(componentList.get("Bay")) == LayerCode.Top.getCode()) {
-      ((BayScene)scene).update();
+	if (mainPane.getLayer(componentList.get("BeachMini")) == LayerCode.Top.getCode()) {
+      ((BeachMiniScene)scene).update();
       sceneLayer.updatePanel(scene.getSceneItems());
-    }
+	}
   }
   
   public void updateTime() {
-    ((BayScene)scene).updateTime();
-    sceneView.updateTime(((BayScene)scene).getTime());
+    ((BeachMiniScene)scene).updateTime();
+    sceneView.updateTime(((BeachMiniScene)scene).getTime());
   }
 }

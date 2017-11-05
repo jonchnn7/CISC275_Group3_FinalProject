@@ -31,6 +31,12 @@ public class SceneView extends JPanel {
   private int score;
   private int time;
   
+  /**
+   * Constructor for untimed and unscored models
+   * @param w		int - width
+   * @param h		int - height
+   * @param panel	JPanel - panel background layer
+   */
   public SceneView(int w, int h, JPanel panel) {
     super();
     SCREEN_WIDTH = w;
@@ -48,6 +54,40 @@ public class SceneView extends JPanel {
     add(layeredPane);
   }
   
+  /**
+   * Constructor for timed, but unscored models
+   * @param w	int - width
+   * @param h	int - height
+   * @param sl	SceneLayer - backgorund
+   * @param t	int - time
+   */
+  public SceneView(int w, int h, SceneLayer sl, int t) {
+    super();
+    SCREEN_WIDTH = w;
+    SCREEN_HEIGHT = h;
+    SCENE_LAYER = sl;
+	    
+    time = t;
+	    
+    SCENE_LAYER.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+    
+    createLowerLeftBar();
+	  
+    layeredPane = new JLayeredPane();
+    layeredPane.add(sl, JLayeredPane.DEFAULT_LAYER);
+    layeredPane.add(lowerLeftBar, JLayeredPane.MODAL_LAYER);
+    layeredPane.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
+    add(layeredPane);
+  }
+  
+  /**
+   * Constructor for both timed and scored models
+   * @param w	int - width
+   * @param h	int - height
+   * @param sl	SceneLayer - background
+   * @param s	int - score
+   * @param t	int - time
+   */
   public SceneView(int w, int h, SceneLayer sl, int s, int t) {
     super();
     SCREEN_WIDTH = w;

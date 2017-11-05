@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.util.Collections;
 import java.util.Iterator;
 
-import cisc275.group3.model.sceneobject.FishAlpha;
+import cisc275.group3.model.sceneobject.BetaFish;
 import cisc275.group3.model.sceneobject.NavObject;
 import cisc275.group3.model.sceneobject.SceneObject;
 import cisc275.group3.utility.ObjectId;
@@ -48,11 +48,10 @@ public class BayScene extends Scene implements PropertyScored, PropertyTimed {
   public BayScene(SceneId mani, boolean click, boolean vis) {
     super(mani, click, vis);
     time = 350;
-    backgroundColor = Color.blue;
     
+    backgroundColor = Color.blue;    
 	navObjects.add(new NavObject(100,100, "Map"));
 
-    
     fillScene();
   }
   
@@ -80,7 +79,7 @@ public class BayScene extends Scene implements PropertyScored, PropertyTimed {
       ObjectId rightFishId = createRightFishId(randGen.nextInt(20)-10, fishType);
       
       // Add Left Fish to Scene
-      sceneItems.add(new FishAlpha(
+      sceneItems.add(new BetaFish(
         leftFishId, // fish id
         manifest.getWidth()+randGen.nextInt(500), // x location
         i*140 + manifest.getStartY() + 10, // y location
@@ -88,7 +87,7 @@ public class BayScene extends Scene implements PropertyScored, PropertyTimed {
         0, // speed y
         true)); // left moving fish?
       
-      sceneItems.add(new FishAlpha(
+      sceneItems.add(new BetaFish(
         rightFishId, // fish id
         0 - randGen.nextInt(500), // x location
         i*140 + manifest.getStartY() + 10, // y location
@@ -111,7 +110,7 @@ public class BayScene extends Scene implements PropertyScored, PropertyTimed {
   public void update() {
     // Generate new fish on ~4% of calls
     if (randGen.nextInt(100) <= 4) {
-      sceneItems.add(new FishAlpha(
+      sceneItems.add(new BetaFish(
         createLeftFishId(randGen.nextInt(20)-10, randGen.nextInt(3)), // fish id	
         manifest.getWidth() + randGen.nextInt(75), // x location
         randGen.nextDouble()*manifest.getHeight() + manifest.getStartY(), // y location
@@ -119,7 +118,7 @@ public class BayScene extends Scene implements PropertyScored, PropertyTimed {
         0, // speed y
         true)); // moving left?
       
-      sceneItems.add(new FishAlpha(
+      sceneItems.add(new BetaFish(
  	    createRightFishId(randGen.nextInt(20)-10, randGen.nextInt(3)), // fish id	
         0 - randGen.nextInt(75), // x location
     	randGen.nextDouble()*manifest.getHeight() + manifest.getStartY(), // y location
@@ -130,7 +129,7 @@ public class BayScene extends Scene implements PropertyScored, PropertyTimed {
     
     // Move Fish
     for (SceneObject fish : sceneItems) {
-      ((FishAlpha)fish).move();
+      ((BetaFish)fish).move();
     }	
 	
     // Remove Off-screen Fish
@@ -183,7 +182,7 @@ public class BayScene extends Scene implements PropertyScored, PropertyTimed {
    */
   private void removeFish() {
     for (Iterator<SceneObject> iterator = sceneItems.iterator(); iterator.hasNext();) {
-      FishAlpha fish = (FishAlpha)iterator.next();
+      BetaFish fish = (BetaFish)iterator.next();
       
       if ( !fish.getLeftFish() && fish.getLocation().getX() >= (manifest.getWidth()+fish.getPassport().getWidth()) ) {
         iterator.remove();
