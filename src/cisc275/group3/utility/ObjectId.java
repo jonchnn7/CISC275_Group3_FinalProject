@@ -1,6 +1,7 @@
 package cisc275.group3.utility;
 
 import java.awt.geom.Ellipse2D;
+import java.awt.geom.Point2D;
 
 /**
  * Data structure to hold immutable SceneObject parameters. Can also
@@ -17,19 +18,34 @@ import java.awt.geom.Ellipse2D;
  */
 public class ObjectId {
   private final int depth;
-  private final int height;
+  private final double height;
   private final int id;
   private final String imageFile;
   private final String name;
-  private final int width;
+  private final double width;
+  private Ellipse2D.Double area;
 	
-  public ObjectId(int d, int h, int id, String imFi, String n, int w) {
+  public ObjectId(int d, double h, int id, String imFi, String n, double w) {
     depth = d;
     height = h;
     this.id = id;
     imageFile = imFi;
     name = n;
     width = w;
+  }
+  
+  /**
+   * Utility function to check whether a click is within the area of
+   * the object.
+   * 
+   * @param		location	Point2D.Double - Object location
+   * @param 	clickX		double 
+   * @param 	clickY		double
+   * @return	boolean		returns whether the click is within the object
+   */
+  public boolean checkClick(Point2D.Double l, double x, double y) {
+    area = new Ellipse2D.Double(l.getX(), l.getY(), width, height);   
+    return area.contains(x, y);
   }
 	
   /**
@@ -42,7 +58,7 @@ public class ObjectId {
   /**
    * @return the height
    */
-  public int getHeight() {
+  public double getHeight() {
     return height;
   }
 
@@ -70,7 +86,7 @@ public class ObjectId {
   /**
    * @return the width
    */
-  public int getWidth() {
+  public double getWidth() {
     return width;
   }
 	

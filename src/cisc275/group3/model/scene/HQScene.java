@@ -35,4 +35,10 @@ public class HQScene extends Scene implements PropertyScored, PropertyTimed {
 		
 	}
 
+	@Override
+	protected void fillScene() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -27,4 +27,10 @@ public class MapScene extends Scene{
 		
 	}
 
+	@Override
+	protected void fillScene() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

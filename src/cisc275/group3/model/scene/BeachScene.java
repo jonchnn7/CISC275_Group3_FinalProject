@@ -22,4 +22,10 @@ public class BeachScene extends Scene{
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	protected void fillScene() {
+		// TODO Auto-generated method stub
+		
+	}
 }

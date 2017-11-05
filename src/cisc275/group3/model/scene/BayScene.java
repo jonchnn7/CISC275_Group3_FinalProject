@@ -68,7 +68,8 @@ public class BayScene extends Scene implements PropertyScored, PropertyTimed {
    * right-to left fish at different depths. List of 
    * fish is then sorted by depth.
    */
-  private void fillScene() {
+  @Override
+  protected void fillScene() {
     for (int i=0; i<5; i++) {
       int fishType = randGen.nextInt(3);
       
@@ -216,7 +217,6 @@ public class BayScene extends Scene implements PropertyScored, PropertyTimed {
   @Override
   public void updateScore() {
   	score += 1;
-  	System.out.println("Score: " + score);
   }
 
   /**

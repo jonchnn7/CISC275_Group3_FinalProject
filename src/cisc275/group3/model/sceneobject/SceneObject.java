@@ -68,14 +68,7 @@ public abstract class SceneObject implements Comparable<SceneObject> {
    * @return boolean
    */
   public boolean itemClicked(double x, double y) {
-    Ellipse2D.Double clickBounds = new Ellipse2D.Double(location.getX(), location.getY(),
-      passport.getWidth(), passport.getHeight());
-	 
-    if (clickBounds.contains(x,y)) {
-      return true;
-    } else {
-      return false;
-    }
+    return passport.checkClick(location, x, y);
   }
   
   /**

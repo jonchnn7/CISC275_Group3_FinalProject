@@ -40,13 +40,15 @@ public abstract class Scene {
 		
     sceneItems = new ArrayList<SceneObject>();
     navObjects = new ArrayList<NavObject>();
-
-    
   }
-	
+  
   /**
-   * Every subclass must define
-   * how to update itself
+   * Every subclass must define its initial fill.
+   */
+  abstract protected void fillScene();
+  
+  /**
+   * Every subclass must define how to update itself
    */
   abstract public void update();
   
@@ -54,7 +56,6 @@ public abstract class Scene {
    * Process Click Events from Controller
    */
   public boolean processClick(double clickX, double clickY) {
-	  	System.out.println("CHECKING FOR CLICK");
 	    for (Iterator<SceneObject> iterator = sceneItems.iterator(); iterator.hasNext();) {     
 	        if (iterator.next().itemClicked(clickX, clickY)) {
 	          iterator.remove();
@@ -64,7 +65,7 @@ public abstract class Scene {
 	      return false;
   }
   
-public String processNav(double clickX, double clickY){
+  public String processNav(double clickX, double clickY){
 		for(int i = 0; i < navObjects.size(); i++) {
 			if(navObjects.get(i).itemClicked(clickX, clickY)) {
 				return navObjects.get(i).navClick();
@@ -77,18 +78,18 @@ public String processNav(double clickX, double clickY){
   /**
    * Print Scene and Object Information
    */
-//  public String toString() {
-//    String outString = "\nName: " + manifest.getName()
-//                      +"\nWidth: " + manifest.getWidth()
-//                      +"\nHeight: " + manifest.getHeight()
-//                      +"\nClickable: " + clickable
-//                      +"\nVisible: " + visible
-//                      +"\nScene Objects: " + sceneItems.size();
-//    return outString;
-//  }
   public String toString() {
-	    return this.getManifest().getName();
-	  }
+    String outString = "\nName: " + manifest.getName()
+                      +"\nWidth: " + manifest.getWidth()
+                      +"\nHeight: " + manifest.getHeight()
+                      +"\nClickable: " + clickable
+                      +"\nVisible: " + visible
+                      +"\nScene Objects: " + sceneItems.size();
+    return outString;
+  }
+  //public String toString() {
+  //  return this.getManifest().getName();
+  //}
 	
   /**
    * @return clickable
