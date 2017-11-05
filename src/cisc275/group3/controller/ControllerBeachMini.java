@@ -41,7 +41,7 @@ public class ControllerBeachMini extends ControllerScene {
     componentList.put("BeachMini", sceneView);
   
     addML();
-    addMapButton();
+    addMapMenuButton();
   }
 
   @Override
@@ -59,19 +59,6 @@ public class ControllerBeachMini extends ControllerScene {
       @Override
       public void mouseDragged(MouseEvent e) {
         ((SceneBeachMini)scene).update(0.004*(e.getX()-initialX));
-      }
-    });
-  }
- 
-  @Override
-  protected void addMapButton() {
-    mapButton = sceneView.getMapButton();
-    
-    mapButton.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        Component mapComponent = mainPane.getComponentsInLayer(LayerCode.Map.getCode())[0];       
-        mainPane.setLayer(mapComponent, LayerCode.Overlay.getCode());
       }
     });
   }

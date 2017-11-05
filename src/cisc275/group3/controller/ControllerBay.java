@@ -42,7 +42,7 @@ public class ControllerBay extends ControllerScene {
     componentList.put("Bay", sceneView);
   
     addML();
-    addMapButton();
+    addMapMenuButton();
   }
 
   @Override
@@ -56,19 +56,6 @@ public class ControllerBay extends ControllerScene {
             sceneView.updateScore(((SceneBay)scene).getScore());
           }
         }
-      }
-    });
-  }
- 
-  @Override
-  protected void addMapButton() {
-    mapButton = sceneView.getMapButton();
-    
-    mapButton.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        Component mapComponent = mainPane.getComponentsInLayer(LayerCode.Map.getCode())[0];       
-        mainPane.setLayer(mapComponent, LayerCode.Overlay.getCode());
       }
     });
   }

@@ -32,7 +32,8 @@ public class SceneView extends JPanel {
   private int time;
   
   /**
-   * Constructor for untimed and unscored models
+   * Constructor for untimed and unscored models that still
+   * require an interface menu.
    * @param w		int - width
    * @param h		int - height
    * @param panel	JPanel - panel background layer

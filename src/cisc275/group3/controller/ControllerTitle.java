@@ -52,24 +52,11 @@ public class ControllerTitle extends ControllerScene {
     
     componentList.put("Title", sceneView);
   
-    addMapButton();
+    addMapMenuButton();
   }
 
   @Override
   protected void addML() {
-  }
-  
-  @Override
-  protected void addMapButton() {
-    mapButton = sceneView.getMapButton();
-    
-    mapButton.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        Component mapComponent = mainPane.getComponentsInLayer(LayerCode.Map.getCode())[0];       
-        mainPane.setLayer(mapComponent, LayerCode.Overlay.getCode());
-      }
-    });
   }
   
   @Override

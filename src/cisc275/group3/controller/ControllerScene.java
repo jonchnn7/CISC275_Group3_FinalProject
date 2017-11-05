@@ -4,11 +4,14 @@ import javax.swing.JButton;
 import javax.swing.JLayeredPane;
 
 import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.util.HashMap;
 import java.awt.event.MouseEvent;
 
 import cisc275.group3.model.scene.Scene;
+import cisc275.group3.utility.LayerCode;
 import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.SceneLayer;
 import cisc275.group3.view.SceneView;
@@ -56,12 +59,6 @@ public abstract class ControllerScene {
    */
   abstract protected void createScene();
   
-  /**
-   * Grabs the associated map button and configures the appropriate 
-   * changes to Game_Frame.
-   */
-  abstract protected void addMapButton();
-  
   abstract protected void update();
   
   /**
@@ -77,6 +74,27 @@ public abstract class ControllerScene {
           if ( scene.processClick(e.getX(), e.getY()) ) {
             //scene.updateScore();
           }
+        }
+      }
+    });
+  }
+  
+  /**
+   * Grabs the associated map button and configures the appropriate 
+   * changes to Game_Frame.
+   */
+  protected void addMapMenuButton() {
+    mapButton = sceneView.getMapButton();
+	    
+    mapButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        Component mapComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Map")))[0];
+        
+        if (mainPane.getLayer(mapComponent) == LayerCode.Map.getCode()) {
+          mainPane.setLayer(mapComponent, LayerCode.Overlay.getCode()); 
+        } else {
+          mainPane.setLayer(mapComponent, LayerCode.Map.getCode());
         }
       }
     });

@@ -15,6 +15,12 @@ import cisc275.group3.utility.LayerCode;
 import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.SceneView;
 
+/**
+ * Map Controller is responsible for both the "model" and
+ * control of the map. There are no objects in the map 
+ * scene that aren't clickable (buttons/images/labels), so
+ * this controller constructs the background panel.
+ */
 public class ControllerMap extends ControllerScene {
 
   private JPanel mapPanel;
@@ -29,31 +35,32 @@ public class ControllerMap extends ControllerScene {
   protected void createScene() {
     mapPanel = new JPanel(true);
     mapPanel.setLayout(null);
-    mapPanel.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
-    mapPanel.setBounds(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-    mapPanel.setBackground(Color.getHSBColor(195f, .02f, .93f));
+    mapPanel.setPreferredSize(new Dimension(SCREEN_WIDTH-200, SCREEN_HEIGHT-200));
+    mapPanel.setBounds(100, 100, SCREEN_WIDTH-200, SCREEN_HEIGHT-200);
+    mapPanel.setBackground(Color.DARK_GRAY);
     mapPanel.setOpaque(true);
-    
+   
     addMapButtons();
     
+    mainPane.setLayer(mapPanel, LayerCode.Map.getCode());
+    mainPane.add(mapPanel, LayerCode.Map.getCode());
+    /*
     sceneView = new SceneView(SCREEN_WIDTH, SCREEN_HEIGHT, mapPanel);
     
     sceneView.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
-    sceneView.setBounds(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    sceneView.setBounds(100, 100, SCREEN_WIDTH-200, SCREEN_HEIGHT-200);
     sceneView.setName("MapLayer");
     
     mainPane.setLayer(sceneView, LayerCode.Map.getCode());
     mainPane.add(sceneView, LayerCode.Map.getCode());
-    
-    componentList.put("Map", sceneView);
-  
-    addMapButton();
+    */
+    componentList.put("Map", mapPanel);
   }
   
   private void addMapButtons() {
     bayButton = new JButton("BAY");
     bayButton.setFont(new Font("Roboto", Font.BOLD, 36));
-    bayButton.setBounds(550, 200, 200, 100);
+    bayButton.setBounds(445, 100, 200, 100);
     
     bayButton.addActionListener(new ActionListener() {
       @Override
@@ -71,7 +78,7 @@ public class ControllerMap extends ControllerScene {
     
     beachMiniButton = new JButton("BEACH MINIGAME");
     beachMiniButton.setFont(new Font("Roboto", Font.BOLD, 36));
-    beachMiniButton.setBounds(471, 320, 350, 100);
+    beachMiniButton.setBounds(371, 220, 350, 100);
     
     beachMiniButton.addActionListener(new ActionListener() {
       @Override
@@ -93,7 +100,8 @@ public class ControllerMap extends ControllerScene {
   }
   
   @Override
-  protected void addMapButton() {
+  protected void addMapMenuButton() {
+  /*  
     mapButton = sceneView.getMapButton();
     
     mapButton.addActionListener(new ActionListener() {
@@ -103,6 +111,7 @@ public class ControllerMap extends ControllerScene {
         mainPane.setLayer(mapComponent, LayerCode.Map.getCode());
       }
     });
+  */
   }
   
   @Override
