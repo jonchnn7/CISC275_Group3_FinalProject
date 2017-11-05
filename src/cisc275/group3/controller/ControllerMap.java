@@ -4,10 +4,12 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -26,17 +28,27 @@ public class ControllerMap extends ControllerScene {
   private JPanel mapPanel;
   private JButton bayButton;
   private JButton beachMiniButton;
+  private ImageIcon mapBg;
   
   public ControllerMap(int w, int h, GameWindow f, HashMap<String, Component> cl) {
     super(w, h, f, cl);
+    
+    mapBg = new ImageIcon("img/map_menu_icon.png");
   }
   
   @Override
   protected void createScene() {
-    mapPanel = new JPanel(true);
+    mapPanel = new JPanel(true) {
+      @Override
+      public void paintComponent(Graphics g) {
+        Dimension size = new Dimension(mapBg.getIconWidth(), mapBg.getIconHeight());
+        g.drawImage(mapBg.getImage(), 0, 0, size.width, size.height, this);
+      }
+    };
+    
     mapPanel.setLayout(null);
-    mapPanel.setPreferredSize(new Dimension(SCREEN_WIDTH-200, SCREEN_HEIGHT-200));
-    mapPanel.setBounds(100, 100, SCREEN_WIDTH-200, SCREEN_HEIGHT-200);
+    mapPanel.setPreferredSize(new Dimension(180, 429));
+    mapPanel.setBounds(66, 207, mapPanel.getPreferredSize().width, mapPanel.getPreferredSize().height);
     mapPanel.setBackground(Color.DARK_GRAY);
     mapPanel.setOpaque(true);
    
@@ -44,23 +56,13 @@ public class ControllerMap extends ControllerScene {
     
     mainPane.setLayer(mapPanel, LayerCode.Map.getCode());
     mainPane.add(mapPanel, LayerCode.Map.getCode());
-    /*
-    sceneView = new SceneView(SCREEN_WIDTH, SCREEN_HEIGHT, mapPanel);
-    
-    sceneView.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
-    sceneView.setBounds(100, 100, SCREEN_WIDTH-200, SCREEN_HEIGHT-200);
-    sceneView.setName("MapLayer");
-    
-    mainPane.setLayer(sceneView, LayerCode.Map.getCode());
-    mainPane.add(sceneView, LayerCode.Map.getCode());
-    */
     componentList.put("Map", mapPanel);
   }
   
   private void addMapButtons() {
     bayButton = new JButton("BAY");
-    bayButton.setFont(new Font("Roboto", Font.BOLD, 36));
-    bayButton.setBounds(445, 100, 200, 100);
+    bayButton.setFont(new Font("Roboto", Font.BOLD, 18));
+    bayButton.setBounds(95, 120, 70, 30);
     
     bayButton.addActionListener(new ActionListener() {
       @Override
@@ -77,8 +79,8 @@ public class ControllerMap extends ControllerScene {
     mapPanel.add(bayButton);
     
     beachMiniButton = new JButton("BEACH MINIGAME");
-    beachMiniButton.setFont(new Font("Roboto", Font.BOLD, 36));
-    beachMiniButton.setBounds(371, 220, 350, 100);
+    beachMiniButton.setFont(new Font("Roboto", Font.BOLD, 14));
+    beachMiniButton.setBounds(20, 400, 160, 30);
     
     beachMiniButton.addActionListener(new ActionListener() {
       @Override
@@ -101,17 +103,6 @@ public class ControllerMap extends ControllerScene {
   
   @Override
   protected void addMapMenuButton() {
-  /*  
-    mapButton = sceneView.getMapButton();
-    
-    mapButton.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        Component mapComponent = mainPane.getComponentsInLayer(LayerCode.Overlay.getCode())[0];
-        mainPane.setLayer(mapComponent, LayerCode.Map.getCode());
-      }
-    });
-  */
   }
   
   @Override

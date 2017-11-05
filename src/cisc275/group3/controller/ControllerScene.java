@@ -80,8 +80,9 @@ public abstract class ControllerScene {
   }
   
   /**
-   * Grabs the associated map button and configures the appropriate 
-   * changes to Game_Frame.
+   * Grabs the map menu button and adds an action. If the map is
+   * currently in the map layer, move it to the overlay layer.
+   * Otherwise, do the opposite to hide it.
    */
   protected void addMapMenuButton() {
     mapButton = sceneView.getMapButton();
