@@ -31,7 +31,7 @@ public class MapController extends SceneController {
     mapPanel.setLayout(null);
     mapPanel.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
     mapPanel.setBounds(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-    mapPanel.setBackground(Color.darkGray);
+    mapPanel.setBackground(Color.getHSBColor(195f, .02f, .93f));
     mapPanel.setOpaque(true);
     
     addMapButtons();
