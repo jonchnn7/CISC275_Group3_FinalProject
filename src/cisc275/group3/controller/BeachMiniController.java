@@ -78,7 +78,7 @@ public class BeachMiniController extends SceneController {
   
   @Override
   public void update() {
-	if (mainPane.getLayer(componentList.get("BeachMini")) == LayerCode.Top.getCode()) {
+	if (mainPane.getLayer(componentList.get("BeachMini")) == LayerCode.Main.getCode()) {
       ((BeachMiniScene)scene).update();
       sceneLayer.updatePanel(scene.getSceneItems());
 	}

@@ -48,8 +48,6 @@ public class MapController extends SceneController {
     componentList.put("Map", sceneView);
   
     addMapButton();
-    
-    mainPane.setLayer(sceneView, LayerCode.Overlay.getCode()); // DEBUG --- REMOVE
   }
   
   private void addMapButtons() {
@@ -65,7 +63,7 @@ public class MapController extends SceneController {
         Component beachMiniComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("BeachMini")))[0];
         
         mainPane.setLayer(mapComponent, LayerCode.Map.getCode());
-        mainPane.setLayer(bayComponent, LayerCode.Top.getCode());
+        mainPane.setLayer(bayComponent, LayerCode.Main.getCode());
         mainPane.setLayer(beachMiniComponent, LayerCode.BeachMini.getCode());
       }
     });
@@ -84,12 +82,10 @@ public class MapController extends SceneController {
         
         mainPane.setLayer(mapComponent, LayerCode.Map.getCode());
         mainPane.setLayer(bayComponent, LayerCode.Bay.getCode());
-        mainPane.setLayer(beachMiniComponent, LayerCode.Top.getCode());
+        mainPane.setLayer(beachMiniComponent, LayerCode.Main.getCode());
       }
     });
     mapPanel.add(beachMiniButton);
-    
-  
   }
 
   @Override

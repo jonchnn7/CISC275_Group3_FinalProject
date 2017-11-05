@@ -75,7 +75,7 @@ public class BayController extends SceneController {
   
   @Override
   public void update() {
-    if (mainPane.getLayer(componentList.get("Bay")) == LayerCode.Top.getCode()) {
+    if (mainPane.getLayer(componentList.get("Bay")) == LayerCode.Main.getCode()) {
       ((BayScene)scene).update();
       sceneLayer.updatePanel(scene.getSceneItems());
     }

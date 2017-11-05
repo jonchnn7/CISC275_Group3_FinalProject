@@ -37,8 +37,9 @@ public class GameController {
     
   private void initGame() {
     controlMap.put("Bay", new BayController(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap));
-    controlMap.put("Map", new MapController(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap));
     controlMap.put("BeachMini", new BeachMiniController(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap));
+    controlMap.put("Map", new MapController(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap));
+    controlMap.put("Title", new TitleController(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap));
     gameTime();
   }
     
