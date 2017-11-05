@@ -15,13 +15,13 @@ import cisc275.group3.utility.LayerCode;
 import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.SceneView;
 
-public class MapController extends SceneController {
+public class ControllerMap extends ControllerScene {
 
   private JPanel mapPanel;
   private JButton bayButton;
   private JButton beachMiniButton;
   
-  public MapController(int w, int h, GameWindow f, HashMap<String, Component> cl) {
+  public ControllerMap(int w, int h, GameWindow f, HashMap<String, Component> cl) {
     super(w, h, f, cl);
   }
   

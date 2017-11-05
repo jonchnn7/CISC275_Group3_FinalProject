@@ -17,12 +17,12 @@ import cisc275.group3.utility.LayerCode;
 import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.SceneView;
 
-public class TitleController extends SceneController {
+public class ControllerTitle extends ControllerScene {
 
   private JPanel titlePanel;
   private JLabel titleLabel;
   
-  public TitleController(int w, int h, GameWindow f, HashMap<String, Component> cl) {
+  public ControllerTitle(int w, int h, GameWindow f, HashMap<String, Component> cl) {
     super(w, h, f, cl);
   }
   

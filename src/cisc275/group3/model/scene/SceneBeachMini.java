@@ -7,7 +7,7 @@ import cisc275.group3.model.sceneobject.BetaFish;
 import cisc275.group3.utility.ObjectId;
 import cisc275.group3.utility.SceneId;
 
-public class BeachMiniScene extends Scene implements PropertyTimed {
+public class SceneBeachMini extends Scene implements PropertyTimed {
 	
   // Crab File Location
   private static final String[] CRAB_FILES = 
@@ -29,7 +29,7 @@ public class BeachMiniScene extends Scene implements PropertyTimed {
   // Crab x-axis Speed
   private static final int[] CRAB_SPEED = {10, 0};
 
-  public BeachMiniScene(SceneId mani, boolean click, boolean vis) {
+  public SceneBeachMini(SceneId mani, boolean click, boolean vis) {
 	super(mani, click, vis);
 	
 	time = 0;
@@ -39,7 +39,7 @@ public class BeachMiniScene extends Scene implements PropertyTimed {
   /**
    * Used when SceneId must also be created
    */ 
-  public BeachMiniScene(String n, double x, double y, double w, double h, boolean click, boolean vis) {
+  public SceneBeachMini(String n, double x, double y, double w, double h, boolean click, boolean vis) {
     this(new SceneId(n, x, y, w, h), click, vis);
   }
 

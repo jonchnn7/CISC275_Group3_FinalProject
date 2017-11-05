@@ -15,7 +15,7 @@ import cisc275.group3.utility.SceneId;
  * <p>
  * BayScene.java
  */
-public class BayScene extends Scene implements PropertyScored, PropertyTimed {
+public class SceneBay extends Scene implements PropertyScored, PropertyTimed {
   
   // Fish File Locations
   private static final String[] FISH_LEFT_FILES = 
@@ -45,7 +45,7 @@ public class BayScene extends Scene implements PropertyScored, PropertyTimed {
   private static final int[] FISH_SPEED = {19, 17, 13};
   
 
-  public BayScene(SceneId mani, boolean click, boolean vis) {
+  public SceneBay(SceneId mani, boolean click, boolean vis) {
     super(mani, click, vis);
     time = 350;
     
@@ -58,7 +58,7 @@ public class BayScene extends Scene implements PropertyScored, PropertyTimed {
   /**
    * Used when SceneId must also be created
    */ 
-  public BayScene(String n, double x, double y, double w, double h, boolean click, boolean vis) {
+  public SceneBay(String n, double x, double y, double w, double h, boolean click, boolean vis) {
     this(new SceneId(n, x, y, w, h), click, vis);
   }
   

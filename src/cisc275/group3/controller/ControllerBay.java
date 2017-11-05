@@ -9,7 +9,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.HashMap;
 
-import cisc275.group3.model.scene.BayScene;
+import cisc275.group3.model.scene.SceneBay;
 import cisc275.group3.utility.LayerCode;
 import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.SceneLayer;
@@ -18,18 +18,18 @@ import cisc275.group3.view.SceneView;
 /**
  * Contains the controller actions and logic for BayScene.java.
  */
-public class BayController extends SceneController {
+public class ControllerBay extends ControllerScene {
   
-  public BayController(int w, int h, GameWindow f, HashMap<String, Component> cl) {
+  public ControllerBay(int w, int h, GameWindow f, HashMap<String, Component> cl) {
     super(w, h, f, cl);
   }
 
   @Override
   protected void createScene() {
-    scene = new BayScene("Bay", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, true, true);
+    scene = new SceneBay("Bay", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, true, true);
     sceneLayer = new SceneLayer(SCREEN_WIDTH, SCREEN_HEIGHT, scene.getSceneItems(), Color.BLUE);
     sceneView = new SceneView(SCREEN_WIDTH, SCREEN_HEIGHT, sceneLayer, 
-        ((BayScene)scene).getScore(), ((BayScene)scene).getTime());
+        ((SceneBay)scene).getScore(), ((SceneBay)scene).getTime());
     
     sceneView.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
     sceneView.setBounds(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -52,8 +52,8 @@ public class BayController extends SceneController {
       public void mousePressed(MouseEvent e) {
         if (e.getButton() == MouseEvent.BUTTON1) {
           if ( scene.processClick(e.getX(), e.getY()) ) {
-            ((BayScene)scene).updateScore();
-            sceneView.updateScore(((BayScene)scene).getScore());
+            ((SceneBay)scene).updateScore();
+            sceneView.updateScore(((SceneBay)scene).getScore());
           }
         }
       }
@@ -76,13 +76,13 @@ public class BayController extends SceneController {
   @Override
   public void update() {
     if (mainPane.getLayer(componentList.get("Bay")) == LayerCode.Main.getCode()) {
-      ((BayScene)scene).update();
+      ((SceneBay)scene).update();
       sceneLayer.updatePanel(scene.getSceneItems());
     }
   }
   
   public void updateTime() {
-    ((BayScene)scene).updateTime();
-    sceneView.updateTime(((BayScene)scene).getTime());
+    ((SceneBay)scene).updateTime();
+    sceneView.updateTime(((SceneBay)scene).getTime());
   }
 }

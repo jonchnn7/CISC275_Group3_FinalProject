@@ -9,7 +9,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.HashMap;
 
-import cisc275.group3.model.scene.BeachMiniScene;
+import cisc275.group3.model.scene.SceneBeachMini;
 import cisc275.group3.utility.LayerCode;
 import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.SceneLayer;
@@ -18,17 +18,17 @@ import cisc275.group3.view.SceneView;
 /**
  * Contains the controller actions and logic for BayScene.java.
  */
-public class BeachMiniController extends SceneController {
+public class ControllerBeachMini extends ControllerScene {
   
-  public BeachMiniController(int w, int h, GameWindow f, HashMap<String, Component> cl) {
+  public ControllerBeachMini(int w, int h, GameWindow f, HashMap<String, Component> cl) {
     super(w, h, f, cl);
   }
 
   @Override
   protected void createScene() {
-    scene = new BeachMiniScene("Bay", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, true, true);
+    scene = new SceneBeachMini("Bay", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, true, true);
     sceneLayer = new SceneLayer(SCREEN_WIDTH, SCREEN_HEIGHT, scene.getSceneItems(), Color.YELLOW);
-    sceneView = new SceneView(SCREEN_WIDTH, SCREEN_HEIGHT, sceneLayer, ((BeachMiniScene)scene).getTime());
+    sceneView = new SceneView(SCREEN_WIDTH, SCREEN_HEIGHT, sceneLayer, ((SceneBeachMini)scene).getTime());
     
     sceneView.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
     sceneView.setBounds(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -58,7 +58,7 @@ public class BeachMiniController extends SceneController {
       
       @Override
       public void mouseDragged(MouseEvent e) {
-        ((BeachMiniScene)scene).update(0.004*(e.getX()-initialX));
+        ((SceneBeachMini)scene).update(0.004*(e.getX()-initialX));
       }
     });
   }
@@ -79,13 +79,13 @@ public class BeachMiniController extends SceneController {
   @Override
   public void update() {
 	if (mainPane.getLayer(componentList.get("BeachMini")) == LayerCode.Main.getCode()) {
-      ((BeachMiniScene)scene).update();
+      ((SceneBeachMini)scene).update();
       sceneLayer.updatePanel(scene.getSceneItems());
 	}
   }
   
   public void updateTime() {
-    ((BeachMiniScene)scene).updateTime();
-    sceneView.updateTime(((BeachMiniScene)scene).getTime());
+    ((SceneBeachMini)scene).updateTime();
+    sceneView.updateTime(((SceneBeachMini)scene).getTime());
   }
 }

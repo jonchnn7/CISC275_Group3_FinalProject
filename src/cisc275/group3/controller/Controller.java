@@ -1,11 +1,11 @@
 package cisc275.group3.controller;
 
 import cisc275.group3.model.scene.Scene;
-import cisc275.group3.model.scene.WetlandsScene;
-import cisc275.group3.model.scene.BayScene;
-import cisc275.group3.model.scene.BeachScene;
-import cisc275.group3.model.scene.HQScene;
-import cisc275.group3.model.scene.MapScene;
+import cisc275.group3.model.scene.SceneWetlands;
+import cisc275.group3.model.scene.SceneBay;
+import cisc275.group3.model.scene.SceneBeach;
+import cisc275.group3.model.scene.SceneHQ;
+import cisc275.group3.model.scene.SceneMap;
 import cisc275.group3.view.AlphaView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -37,11 +37,11 @@ public class Controller {
     SCREEN_HEIGHT = y;
     //gameViews = new ArrayList<AlphaView>();
     gameModels = new ArrayList<Scene>();
-    gameModels.add(new HQScene("HQ", 0,0,SCREEN_WIDTH, SCREEN_HEIGHT, true, true));
-    gameModels.add(new MapScene("Map", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, false, false));
-    gameModels.add(new BayScene("Bay", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, false, false));
-    gameModels.add(new BeachScene("Beach", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, false, false));
-    gameModels.add(new WetlandsScene("Wetlands", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, false, false));
+    gameModels.add(new SceneHQ("HQ", 0,0,SCREEN_WIDTH, SCREEN_HEIGHT, true, true));
+    gameModels.add(new SceneMap("Map", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, false, false));
+    gameModels.add(new SceneBay("Bay", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, false, false));
+    gameModels.add(new SceneBeach("Beach", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, false, false));
+    gameModels.add(new SceneWetlands("Wetlands", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, false, false));
 
     //gameViews.add(new AlphaView(SCREEN_WIDTH, SCREEN_HEIGHT, gameModels.get(0)));
     //gameViews.add(new AlphaView(SCREEN_WIDTH, SCREEN_HEIGHT, gameModels.get(1)));

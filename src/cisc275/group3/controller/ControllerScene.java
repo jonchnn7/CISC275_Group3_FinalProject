@@ -18,7 +18,7 @@ import cisc275.group3.view.SceneView;
  * class is necessary so all controllers can be held within a
  * collection.
  */
-public abstract class SceneController {
+public abstract class ControllerScene {
   // Window Parameters
   protected final int SCREEN_WIDTH;
   protected final int SCREEN_HEIGHT;
@@ -34,7 +34,7 @@ public abstract class SceneController {
   protected JButton mapButton;
   protected JLayeredPane mainPane;
   
-  public SceneController(int w, int h, GameWindow f, HashMap<String, Component> cl) {
+  public ControllerScene(int w, int h, GameWindow f, HashMap<String, Component> cl) {
     SCREEN_WIDTH = w;
     SCREEN_HEIGHT = h;
     GAME_FRAME = f;

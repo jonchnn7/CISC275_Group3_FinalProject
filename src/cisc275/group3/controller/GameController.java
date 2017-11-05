@@ -19,7 +19,7 @@ public class GameController {
   
   // Game Variables
   private int totalTime;
-  private HashMap<String, SceneController> controlMap;
+  private HashMap<String, ControllerScene> controlMap;
   private HashMap<String, Component> layerMap;
   
   public GameController(int x, int y) {
@@ -30,16 +30,16 @@ public class GameController {
     GAME_FRAME = new GameWindow(SCREEN_WIDTH, SCREEN_HEIGHT);
     
     // Initialize Game
-    controlMap = new HashMap<String, SceneController>();
+    controlMap = new HashMap<String, ControllerScene>();
     layerMap = new HashMap<String, Component>();
     initGame();
   }
     
   private void initGame() {
-    controlMap.put("Bay", new BayController(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap));
-    controlMap.put("BeachMini", new BeachMiniController(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap));
-    controlMap.put("Map", new MapController(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap));
-    controlMap.put("Title", new TitleController(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap));
+    controlMap.put("Bay", new ControllerBay(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap));
+    controlMap.put("BeachMini", new ControllerBeachMini(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap));
+    controlMap.put("Map", new ControllerMap(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap));
+    controlMap.put("Title", new ControllerTitle(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap));
     gameTime();
   }
     
@@ -52,12 +52,12 @@ public class GameController {
       public void actionPerformed(ActionEvent e) { 
         controlMap.forEach((k,v)->{
           if (k == "Bay") {
-            ((BayController)v).update();
-            if (totalTime % 1000 == 0) { ((BayController)v).updateTime(); }
+            ((ControllerBay)v).update();
+            if (totalTime % 1000 == 0) { ((ControllerBay)v).updateTime(); }
          
           } else if (k == "BeachMini") {
-            ((BeachMiniController)v).update();
-            if (totalTime % 1000 == 0) { ((BeachMiniController)v).updateTime(); }              
+            ((ControllerBeachMini)v).update();
+            if (totalTime % 1000 == 0) { ((ControllerBeachMini)v).updateTime(); }              
           }  
         });
         totalTime += 100;
