@@ -53,11 +53,20 @@ public abstract class Scene {
   abstract public void update();
   
   /**
-   * Process Click Events from Controller
+   * Process Click Events from Controller. If a scene 
+   * object is clicked on, its name is printed to console.
+   * This is probably a good place to check "click 
+   * compatibility".
+   * @param		clickX	double - x-axis coordinate of click
+   * @param		clickY	double - y-axis coordinate of click
+   * @return	boolean	is click on clickable object?
    */
   public boolean processClick(double clickX, double clickY) {
 	    for (Iterator<SceneObject> iterator = sceneItems.iterator(); iterator.hasNext();) {     
-	        if (iterator.next().itemClicked(clickX, clickY)) {
+	    	SceneObject sceneItem = iterator.next();
+	    	
+	        if (sceneItem.itemClicked(clickX, clickY)) {
+	          System.out.println("Clicked on: " + sceneItem.getPassport().getName());
 	          iterator.remove();
 	          return true;
 	        }
