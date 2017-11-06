@@ -4,9 +4,22 @@ import java.awt.geom.Point2D;
 
 import cisc275.group3.utility.ObjectId;
 
+/**
+ * Beta release mockup for crabs.
+ * <p>
+ * For console output, the toString prints the first letter of the fish name.
+ * <p>
+ * The filename was reversed from the previous version so, if we have multiple
+ * objects, they appear next to each other in the workspace window.
+ * <p>
+ * BetaCrab.java
+ * 
+ * @param	speedX	double-speed along x-axis
+ * @param	speedY	double-speed along y-axis
+ */
 public class BetaCrab extends SceneObject implements ActionMove {
-  protected double speedX; // x-axis speed
-  protected double speedY; // y-axis speed
+  private double speedX; // x-axis speed
+  private double speedY; // y-axis speed
 
   public BetaCrab(ObjectId id, double x, double y, double sx, double sy) {
     super(id, x, y);
@@ -32,11 +45,18 @@ public class BetaCrab extends SceneObject implements ActionMove {
     location = new Point2D.Double(x,y);
   }  
   
-  
   public void move(double dx) {		
     double x = location.getX() + dx;
     double y = location.getY();
 			  
     location = new Point2D.Double(x,y);
   }
+  
+  public String toString() {
+	    String outString = "\nBeta Crab" 
+                          +"\n========="
+	                      +"\nLocation: " + location.toString()
+	                      +passport.toString();
+	    return outString;
+	  }
 }

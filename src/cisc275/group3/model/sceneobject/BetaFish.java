@@ -9,21 +9,19 @@ import cisc275.group3.utility.ObjectId;
  * Currently, speedY isn't being used. It's still here, whenever we find a 
  * use for it.
  * <p>
- * For console output, the toString prints the first letter of the fish name.
- * <p>
  * The filename was reversed from the previous version so, if we have multiple
- * fish, they appear next to each other in the workspace window.
+ * objects, they appear next to each other in the workspace window.
  * <p>
- * FishBeta.java
+ * BetaFish.java
  * 
- * @param	speedX		type class to hold immutable properties
- * @param	speedY		current location stored as a 2D point
- * @param	leftFish	RNG, mostly for subclasses
+ * @param	speedX		double-speed along x-axis
+ * @param	speedY		double-speed along y-axis
+ * @param	leftFish	boolean-fish moving to the left?
  */
 public class BetaFish extends SceneObject implements ActionMove {
   protected double speedX; // x-axis speed
   protected double speedY; // y-axis speed
-  protected boolean leftFish; // moving left-to-right?
+  protected boolean leftFish; // moving right to left?
 
   public BetaFish(ObjectId id, double x, double y, double sx, double sy, boolean lf) {
     super(id, x, y);
@@ -82,5 +80,13 @@ public class BetaFish extends SceneObject implements ActionMove {
    */
   public double getSpeedY() {
     return speedY;
+  }
+  
+  public String toString() {
+    String outString = "\nBeta Fish" 
+                      +"\n========="
+                      +"\nLocation: " + location.toString()
+                      +passport.toString();
+    return outString;
   }
 }
