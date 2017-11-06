@@ -58,8 +58,4 @@ public class ControllerTitle extends ControllerScene {
   @Override
   protected void addML() {
   }
-  
-  @Override
-  public void update() {
-  }
 }

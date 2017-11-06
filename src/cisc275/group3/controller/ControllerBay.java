@@ -18,7 +18,7 @@ import cisc275.group3.view.SceneView;
 /**
  * Contains the controller actions and logic for BayScene.java.
  */
-public class ControllerBay extends ControllerScene {
+public class ControllerBay extends ControllerScene implements LinkDynamics, LinkTime {
   
   public ControllerBay(int w, int h, GameWindow f, HashMap<String, Component> cl) {
     super(w, h, f, cl);
@@ -60,6 +60,13 @@ public class ControllerBay extends ControllerScene {
     });
   }
   
+  /**
+   * Connects the Bay model and Bay view. So long as the Bay 
+   * scene is the active pane, update the model and then pass 
+   * the updated scene objects to the view.
+   * <p>
+   * Overriden from interface LinkDynamics.java
+   */
   @Override
   public void update() {
     if (mainPane.getLayer(componentList.get("Bay")) == LayerCode.Main.getCode()) {
@@ -68,6 +75,12 @@ public class ControllerBay extends ControllerScene {
     }
   }
   
+  /**
+   * Updates the model's time variable and shares it with
+   * the view.
+   * <p>
+   * Overridden from interface LinkTime.java
+   */
   public void updateTime() {
     ((SceneBay)scene).updateTime();
     sceneView.updateTime(((SceneBay)scene).getTime());

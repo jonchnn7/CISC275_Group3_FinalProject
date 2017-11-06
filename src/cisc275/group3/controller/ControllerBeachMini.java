@@ -18,7 +18,7 @@ import cisc275.group3.view.SceneView;
 /**
  * Contains the controller actions and logic for BayScene.java.
  */
-public class ControllerBeachMini extends ControllerScene {
+public class ControllerBeachMini extends ControllerScene implements LinkDynamics, LinkTime {
   
   public ControllerBeachMini(int w, int h, GameWindow f, HashMap<String, Component> cl) {
     super(w, h, f, cl);
@@ -63,6 +63,13 @@ public class ControllerBeachMini extends ControllerScene {
     });
   }
   
+  /**
+   * Connects the BeachMinigame model and BeachMinigame view. So
+   * long as the Beach Minigame is the active pane, update the 
+   * model and then pass the updated scene objects to the view.
+   * <p>
+   * Overriden from interface LinkDynamics.java
+   */
   @Override
   public void update() {
 	if (mainPane.getLayer(componentList.get("BeachMini")) == LayerCode.Main.getCode()) {
@@ -71,6 +78,13 @@ public class ControllerBeachMini extends ControllerScene {
 	}
   }
   
+  /**
+   * Updates the model's time variable and shares it with
+   * the view.
+   * <p>
+   * Overridden from interface LinkTime.java
+   */
+  @Override
   public void updateTime() {
     ((SceneBeachMini)scene).updateTime();
     sceneView.updateTime(((SceneBeachMini)scene).getTime());

@@ -104,8 +104,4 @@ public class ControllerMap extends ControllerScene {
   @Override
   protected void addMapMenuButton() {
   }
-  
-  @Override
-  public void update() {
-  }
 }

@@ -59,8 +59,6 @@ public abstract class ControllerScene {
    */
   abstract protected void createScene();
   
-  abstract protected void update();
-  
   /**
    * Adds a mouse listener to the scene background and passes clicks
    * through to the model. 
