@@ -1,9 +1,6 @@
 package cisc275.group3.model.scene;
 
-import java.awt.Color;
-
 import cisc275.group3.model.sceneobject.BetaCrab;
-import cisc275.group3.model.sceneobject.BetaFish;
 import cisc275.group3.utility.ObjectId;
 import cisc275.group3.utility.SceneId;
 
