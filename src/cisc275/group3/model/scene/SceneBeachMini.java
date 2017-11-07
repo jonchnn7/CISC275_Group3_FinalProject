@@ -16,8 +16,8 @@ public class SceneBeachMini extends Scene implements ConstructCrab, PropertyTime
   /**
    * Used when SceneId must also be created
    */ 
-  public SceneBeachMini(String n, double x, double y, double w, double h, boolean click, boolean vis) {
-    this(new SceneId(n, x, y, w, h), click, vis);
+  public SceneBeachMini(String n, double x, double y, double w, double h, String bg, boolean click, boolean vis) {
+    this(new SceneId(n, x, y, w, h, bg), click, vis);
   }
 
   
@@ -26,7 +26,7 @@ public class SceneBeachMini extends Scene implements ConstructCrab, PropertyTime
    */
   @Override
   protected void fillScene() {
-    for (int i=0; i<3; i++) {
+    for (int i=1; i<3; i++) {
     	
       // Add NPC Crab
       sceneItems.add(ConstructCrab.constructCrab(

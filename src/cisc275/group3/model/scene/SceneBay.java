@@ -31,8 +31,8 @@ public class SceneBay extends Scene implements ConstructFish, PropertyScored, Pr
   /**
    * Used when SceneId must also be created
    */ 
-  public SceneBay(String n, double x, double y, double w, double h, boolean click, boolean vis) {
-    this(new SceneId(n, x, y, w, h), click, vis);
+  public SceneBay(String n, double x, double y, double w, double h, String bg, boolean click, boolean vis) {
+    this(new SceneId(n, x, y, w, h, bg), click, vis);
   }
   
   /**
