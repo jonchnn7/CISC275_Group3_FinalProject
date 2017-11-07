@@ -16,7 +16,7 @@ import cisc275.group3.view.SceneLayer;
 import cisc275.group3.view.SceneView;
 
 /**
- * Contains the controller actions and logic for BayScene.java.
+ * Contains the controller actions and logic for SceneBay.java.
  */
 public class ControllerBay extends ControllerScene implements LinkDynamics, LinkTime {
   
@@ -26,8 +26,8 @@ public class ControllerBay extends ControllerScene implements LinkDynamics, Link
 
   @Override
   protected void createScene() {
-    scene = new SceneBay("Bay", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, true, true);
-    sceneLayer = new SceneLayer(SCREEN_WIDTH, SCREEN_HEIGHT, scene.getSceneItems(), Color.BLUE);
+    scene = new SceneBay("Bay", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, "img/bay_bg_1.jpg", true, true);
+    sceneLayer = new SceneLayer(SCREEN_WIDTH, SCREEN_HEIGHT, scene.getSceneItems(), Color.BLUE, scene.getManifest().getBG());
     sceneView = new SceneView(SCREEN_WIDTH, SCREEN_HEIGHT, sceneLayer, 
         ((SceneBay)scene).getScore(), ((SceneBay)scene).getTime());
     

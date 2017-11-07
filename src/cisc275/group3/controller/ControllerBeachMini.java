@@ -16,7 +16,7 @@ import cisc275.group3.view.SceneLayer;
 import cisc275.group3.view.SceneView;
 
 /**
- * Contains the controller actions and logic for BayScene.java.
+ * Contains the controller actions and logic for SceneBeachMini.java.
  */
 public class ControllerBeachMini extends ControllerScene implements LinkDynamics, LinkTime {
   
@@ -26,8 +26,8 @@ public class ControllerBeachMini extends ControllerScene implements LinkDynamics
 
   @Override
   protected void createScene() {
-    scene = new SceneBeachMini("Bay", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, true, true);
-    sceneLayer = new SceneLayer(SCREEN_WIDTH, SCREEN_HEIGHT, scene.getSceneItems(), Color.YELLOW);
+    scene = new SceneBeachMini("Bay", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, "img/beach_sand_bg.png", true, true);
+    sceneLayer = new SceneLayer(SCREEN_WIDTH, SCREEN_HEIGHT, scene.getSceneItems(), Color.YELLOW, scene.getManifest().getBG());
     sceneView = new SceneView(SCREEN_WIDTH, SCREEN_HEIGHT, sceneLayer, ((SceneBeachMini)scene).getTime());
     
     sceneView.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
