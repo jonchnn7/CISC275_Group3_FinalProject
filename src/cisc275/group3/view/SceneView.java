@@ -38,6 +38,8 @@ public class SceneView extends JPanel {
    */
   public SceneView(int w, int h, JPanel panel) {
     super();
+    this.setDoubleBuffered(true);
+    
     SCREEN_WIDTH = w;
     SCREEN_HEIGHT = h;
     SCENE_LAYER = null;
@@ -47,6 +49,7 @@ public class SceneView extends JPanel {
     createLowerLeftBar();
  
     layeredPane = new JLayeredPane();
+    layeredPane.setDoubleBuffered(true);
     layeredPane.add(panel, JLayeredPane.DEFAULT_LAYER);
     layeredPane.add(lowerLeftBar, JLayeredPane.MODAL_LAYER);
     layeredPane.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
@@ -62,6 +65,8 @@ public class SceneView extends JPanel {
    */
   public SceneView(int w, int h, SceneLayer sl, int t) {
     super();
+    this.setDoubleBuffered(true);
+    
     SCREEN_WIDTH = w;
     SCREEN_HEIGHT = h;
     SCENE_LAYER = sl;
@@ -73,6 +78,7 @@ public class SceneView extends JPanel {
     createLowerLeftBar();
 	  
     layeredPane = new JLayeredPane();
+    this.setDoubleBuffered(true);
     layeredPane.add(sl, JLayeredPane.DEFAULT_LAYER);
     layeredPane.add(lowerLeftBar, JLayeredPane.MODAL_LAYER);
     layeredPane.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
@@ -89,19 +95,21 @@ public class SceneView extends JPanel {
    */
   public SceneView(int w, int h, SceneLayer sl, int s, int t) {
     super();
+    this.setDoubleBuffered(true);
+    
     SCREEN_WIDTH = w;
     SCREEN_HEIGHT = h;
     SCENE_LAYER = sl;
     
     score = s;
     time = t;
-    
     SCENE_LAYER.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
     
     createLowerLeftBar();
     createScoreBar();
   
     layeredPane = new JLayeredPane();
+    layeredPane.setDoubleBuffered(true);
     layeredPane.add(sl, JLayeredPane.DEFAULT_LAYER);
     layeredPane.add(lowerLeftBar, JLayeredPane.MODAL_LAYER);
     layeredPane.add(scoreBar, JLayeredPane.MODAL_LAYER);
