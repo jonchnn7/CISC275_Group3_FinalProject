@@ -11,28 +11,34 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import cisc275.group3.model.sceneobject.SceneObject;
 
 @SuppressWarnings("serial")
 public class SceneLayer extends JPanel {
-  protected final int FRAME_WIDTH;
-  protected final int FRAME_HEIGHT;
+  private final int FRAME_WIDTH;
+  private final int FRAME_HEIGHT;
 	  
-  protected ArrayList<SceneObject> itemList;
-  protected BufferedImage currentImg;
-  protected Color panelColor; 
+  private ArrayList<SceneObject> itemList;
+  private BufferedImage currentImg;
+  private Color panelColor; 
+  private String bgImage;
 	  
   @Override
   public void paint(Graphics g) {
     Graphics2D g2d = (Graphics2D) g.create();
 	    
-    //Draw Background
+    // Draw Background
     g2d.setColor(panelColor);
     g2d.fillRect(0, 0, FRAME_WIDTH, FRAME_HEIGHT);
+    
+    // Draw Background Image
+    if (bgImage != "")
+      g2d.drawImage((new ImageIcon(bgImage).getImage()), 0, 0, FRAME_WIDTH, FRAME_HEIGHT, this);
 	    
-    //Draw SceneItems
+    // Draw SceneItems
     Collections.reverse(itemList);
     itemList.forEach((item)->{
       try {
@@ -52,9 +58,15 @@ public class SceneLayer extends JPanel {
     FRAME_WIDTH = w;
     itemList = obList;
     panelColor = sc;
+    bgImage = "";
     
     this.setPreferredSize(new Dimension(FRAME_WIDTH, FRAME_HEIGHT));
     this.setDoubleBuffered(true);
+  }
+  
+  public SceneLayer (int w, int h, ArrayList<SceneObject> obList, Color sc, String bg) {
+    this(w, h, obList, sc);
+    bgImage = bg;
   }
 	  
   @SuppressWarnings("unchecked")
