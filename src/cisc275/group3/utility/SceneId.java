@@ -13,6 +13,7 @@ package cisc275.group3.utility;
  * @param	width		double-scene width
  */
 public class SceneId {
+  private String bgImage;    // CHANGE TO FINAL ONCE ALL BG IMAGES FOUND
   private final double height;
   private final String name;
   private final double startX;
@@ -24,7 +25,14 @@ public class SceneId {
     name = n;
     startX = x;
     startY = y;
-    width = w;	  
+    width = w;
+    bgImage = "";
+    
+  }
+  
+  public SceneId (String n, double x, double y, double w, double h, String bg) {	
+    this(n, x, y, w, h);
+    bgImage = bg;
   }
   
   @Override
@@ -35,6 +43,13 @@ public class SceneId {
 			            +"\nWidth: " + width
 			            +"\nHeight: " + height;
     return outString;
+  }
+  
+  /**
+   * @return the bgImage file
+   */
+  public String getBG() {
+    return bgImage;
   }
 
   /**
