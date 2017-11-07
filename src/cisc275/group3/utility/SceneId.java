@@ -6,12 +6,11 @@ package cisc275.group3.utility;
  * <p>
  * SceneId.java
  * 
- * @param	height		comparable depth when drawn
- * @param	name		height of object and associated image
- * @param	startX			(old) object type. comparable for item <-> tool
- * @param 	startY	String location of image file
- * @param	width		String name for object
- * @param 	width		width of object and associated image
+ * @param	height		double-scene height
+ * @param	name		String-name of scene
+ * @param	startX		double-top left x coordinate
+ * @param 	startY		double-top left y coordinate
+ * @param	width		double-scene width
  */
 public class SceneId {
   private final double height;
