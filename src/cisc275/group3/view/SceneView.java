@@ -5,7 +5,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Insets;
-import java.awt.Toolkit;
 
 import javax.swing.Box;
 import javax.swing.ImageIcon;
@@ -14,7 +13,6 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
-import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
 public class SceneView extends JPanel {
