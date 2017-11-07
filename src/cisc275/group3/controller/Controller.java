@@ -39,7 +39,7 @@ public class Controller {
     gameModels = new ArrayList<Scene>();
     gameModels.add(new SceneHQ("HQ", 0,0,SCREEN_WIDTH, SCREEN_HEIGHT, true, true));
     gameModels.add(new SceneMap("Map", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, false, false));
-    gameModels.add(new SceneBay("Bay", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, false, false));
+    gameModels.add(new SceneBay("Bay", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, "null", false, false));
     gameModels.add(new SceneBeach("Beach", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, false, false));
     gameModels.add(new SceneWetlands("Wetlands", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, false, false));
 
