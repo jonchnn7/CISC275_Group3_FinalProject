@@ -36,7 +36,7 @@ public class BetaCrab extends SceneObject implements ActionMove {
 	
   @Override
   public void move() {
-	double dx = speedX - speedX*0.1 + randGen.nextGaussian()*speedX*0.2;
+	double dx = speedX - speedX*0.1 + randGen.nextGaussian()*speedX*0.2 + randGen.nextInt(7);
 	double dy = 0;
 		
     double x = location.getX() + dx;
