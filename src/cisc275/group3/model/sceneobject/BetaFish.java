@@ -45,14 +45,14 @@ public class BetaFish extends SceneObject implements ActionMove {
    * distribution. This should keep the x-axis speed somewhat predictable, 
    * but add enough variability that movement doesn't look synchronized. The
    * y-axis offset is similar, defined by the sum of a positive and negative
-   * gaussian distribution scaled to 2.
+   * gaussian distribution times a scaling factor.
    * <p>
    * The offsets are used to update the location by component.
    */
   @Override
   public void move() {
 	double dx = speedX - speedX*0.1 + randGen.nextGaussian()*speedX*0.2;
-	double dy = 2*(randGen.nextGaussian() - randGen.nextGaussian());
+	double dy = 1*(randGen.nextGaussian() - randGen.nextGaussian());
 	
 	int dir =  (leftFish) ? -1 : 1; // unit vector for direction
     double x = location.getX() + dir*dx;
