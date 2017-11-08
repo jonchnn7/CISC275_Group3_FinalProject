@@ -21,6 +21,10 @@ import cisc275.group3.view.SceneView;
  * Abstract controller class for scene logic and actions. This
  * class is necessary so all controllers can be held within a
  * collection.
+ * <p>
+ * ControllerScene.java
+ * <p>
+ * @author Scott
  */
 public abstract class ControllerScene implements Serializable {
   // Window Parameters
@@ -39,6 +43,19 @@ public abstract class ControllerScene implements Serializable {
   private JButton toolButton;
   protected JLayeredPane mainPane;
   
+  /**
+   * Abstract Scene Controller Constructor
+   * <p>
+   * Sets the  with, height and frame variables.
+   * <p>
+   * Updates the static componentList that holds the layer depths
+   * for the JComponentLayer. This is necessary to retrieve layer
+   * information.
+   * @param w	int-scene width
+   * @param h 	int-scene height
+   * @param f 	GameWindow-JFrame container
+   * @param cl 	HashMap-associations of scene controllers and layers
+   */
   public ControllerScene(int w, int h, GameWindow f, HashMap<String, Component> cl) {
     SCREEN_WIDTH = w;
     SCREEN_HEIGHT = h;

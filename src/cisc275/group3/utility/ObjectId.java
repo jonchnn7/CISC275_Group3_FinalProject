@@ -9,7 +9,7 @@ import java.io.Serializable;
  * be used to more cleanly pass SceneObject information.
  * <p>
  * ObjectId.java
- * @author Group3
+ * @author Scott
  */
 public class ObjectId implements Serializable {
   private final int depth;

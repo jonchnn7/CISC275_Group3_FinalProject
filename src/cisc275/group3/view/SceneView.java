@@ -14,6 +14,16 @@ import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
 
+/**
+ * Takes in an underlying JPanel and overlays the
+ * user interface via JLayeredPanes. There are 
+ * different constructors that accommodate different
+ * layer requirements.
+ * <p>
+ * SceneView.java
+ * <p>
+ * @author Scott
+ */
 @SuppressWarnings("serial")
 public class SceneView extends JPanel {
   private final int SCREEN_WIDTH;
@@ -125,6 +135,11 @@ public class SceneView extends JPanel {
     add(layeredPane);
   }
   
+  /**
+   * Creates and places the score bar in the lower right
+   * corner of the game window. The score is displayed
+   * with a JLabel and an ImageIcon used as a decorator.
+   */
   private void createScoreBar() {
     scoreLabel = new JLabel(Integer.toString(score),
     		                new ImageIcon("img/coins_icon.png"),
@@ -149,6 +164,12 @@ public class SceneView extends JPanel {
     scoreBar.setLocation(SCREEN_WIDTH-200, SCREEN_HEIGHT-90);
   }
   
+  /**
+   * Creates and places the lower left bar consisting of
+   * the time and map JButtons. The map JButton toggles
+   * whether the map layer is visible. The time is displayed
+   * via a JLabel.
+   */
   private void createLowerLeftBar() {
     mapButton = new JButton();
     mapButton.setBorderPainted(false);
@@ -183,7 +204,13 @@ public class SceneView extends JPanel {
     lowerLeftBar.setBorder(null);
     lowerLeftBar.setLocation(30, SCREEN_HEIGHT-90);
   }
-  
+ 
+  /**
+   * Creates and places toolbox in the upper
+   * right corner of the game window. Utilizes
+   * a JButton with a background image to toggle
+   * whether the toolbox is visible. 
+   */
   private void createToolbox() {
     toolButton = new JButton();
     toolButton.setBorderPainted(false);
