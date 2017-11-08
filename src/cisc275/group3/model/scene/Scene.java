@@ -18,7 +18,7 @@ import java.util.Random;
  * <p>
  * Scene.java
  */
-public abstract class Scene implements Serializable{
+public abstract class Scene implements Serializable {
 	
   // Scene Properties
   protected boolean clickable;
@@ -89,7 +89,9 @@ public abstract class Scene implements Serializable{
   
 	
   /**
-   * Print Scene and Object Information
+   * Represents Scene as a String by printing its 
+   * parameters.
+   * @return multi-line string of parameter states
    */
   public String toString() {
     String outString = "\nName: " + manifest.getName()

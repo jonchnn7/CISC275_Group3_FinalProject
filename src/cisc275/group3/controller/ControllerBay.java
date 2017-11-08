@@ -43,6 +43,7 @@ public class ControllerBay extends ControllerScene implements LinkDynamics, Link
   
     addML();
     addMapMenuButton();
+    addToolMenuButton();
   }
 
   @Override

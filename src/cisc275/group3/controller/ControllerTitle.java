@@ -53,6 +53,7 @@ public class ControllerTitle extends ControllerScene {
     componentList.put("Title", sceneView);
   
     addMapMenuButton();
+    addToolMenuButton();
   }
 
   @Override

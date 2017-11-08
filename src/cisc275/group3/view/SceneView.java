@@ -21,11 +21,13 @@ public class SceneView extends JPanel {
   private final SceneLayer SCENE_LAYER;
   
   private JButton mapButton;
+  private JButton toolButton;
   private JLabel timeLabel;
   private JLabel scoreLabel;
   private JLayeredPane layeredPane;
   private JToolBar lowerLeftBar;
   private JToolBar scoreBar;
+  private JToolBar toolBar;
   private int score;
   private int time;
   
@@ -47,11 +49,13 @@ public class SceneView extends JPanel {
     panel.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
     
     createLowerLeftBar();
+    createToolbox();
  
     layeredPane = new JLayeredPane();
     layeredPane.setDoubleBuffered(true);
     layeredPane.add(panel, JLayeredPane.DEFAULT_LAYER);
     layeredPane.add(lowerLeftBar, JLayeredPane.MODAL_LAYER);
+    layeredPane.add(toolBar, JLayeredPane.MODAL_LAYER);
     layeredPane.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
     add(layeredPane);
   }
@@ -60,7 +64,7 @@ public class SceneView extends JPanel {
    * Constructor for timed, but unscored models
    * @param w	int-width
    * @param h	int-height
-   * @param sl	SceneLayer-backgorund
+   * @param sl	SceneLayer-background
    * @param t	int-time
    */
   public SceneView(int w, int h, SceneLayer sl, int t) {
@@ -76,11 +80,13 @@ public class SceneView extends JPanel {
     SCENE_LAYER.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
     
     createLowerLeftBar();
+    createToolbox();
 	  
     layeredPane = new JLayeredPane();
     this.setDoubleBuffered(true);
     layeredPane.add(sl, JLayeredPane.DEFAULT_LAYER);
     layeredPane.add(lowerLeftBar, JLayeredPane.MODAL_LAYER);
+    layeredPane.add(toolBar, JLayeredPane.MODAL_LAYER);
     layeredPane.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
     add(layeredPane);
   }
@@ -107,12 +113,14 @@ public class SceneView extends JPanel {
     
     createLowerLeftBar();
     createScoreBar();
+    createToolbox();
   
     layeredPane = new JLayeredPane();
     layeredPane.setDoubleBuffered(true);
     layeredPane.add(sl, JLayeredPane.DEFAULT_LAYER);
     layeredPane.add(lowerLeftBar, JLayeredPane.MODAL_LAYER);
     layeredPane.add(scoreBar, JLayeredPane.MODAL_LAYER);
+    layeredPane.add(toolBar, JLayeredPane.MODAL_LAYER);
     layeredPane.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
     add(layeredPane);
   }
@@ -176,6 +184,25 @@ public class SceneView extends JPanel {
     lowerLeftBar.setLocation(30, SCREEN_HEIGHT-90);
   }
   
+  private void createToolbox() {
+    toolButton = new JButton();
+    toolButton.setBorderPainted(false);
+    toolButton.setBorder(null);
+    toolButton.setMargin(new Insets(0, 0, 0, 0));
+    toolButton.setContentAreaFilled(false);
+    toolButton.setIcon(new ImageIcon("img/toolbox_menu.png"));
+    toolButton.setRolloverIcon(new ImageIcon("img/toolbox_menu_invert.png"));
+    toolButton.setSize(107, 40);
+		    	    
+    toolBar = new JToolBar();
+    toolBar.add(toolButton);
+    toolBar.setOpaque(false);
+    toolBar.setFloatable(false);
+    toolBar.setSize(107, 40);
+    toolBar.setBorder(null);
+    toolBar.setLocation(1100, 0);
+  }
+  
   /**
    * Updates the score label to the current score.
    * @param s	int-current score
@@ -199,5 +226,14 @@ public class SceneView extends JPanel {
    */
   public JButton getMapButton() {
     return mapButton;
+  }
+  
+  /**
+   * Returns pointer to the tool button. Allows the 
+   * controller to create the button action
+   * @return the tool JButton
+   */
+  public JButton getToolButton() {
+    return toolButton;
   }
 }

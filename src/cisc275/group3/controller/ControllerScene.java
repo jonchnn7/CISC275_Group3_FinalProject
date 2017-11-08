@@ -35,7 +35,8 @@ public abstract class ControllerScene implements Serializable {
   protected static HashMap<String, Component> componentList;
   
   // Window Components
-  protected JButton mapButton;
+  private JButton mapButton;
+  private JButton toolButton;
   protected JLayeredPane mainPane;
   
   public ControllerScene(int w, int h, GameWindow f, HashMap<String, Component> cl) {
@@ -92,9 +93,32 @@ public abstract class ControllerScene implements Serializable {
         Component mapComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Map")))[0];
         
         if (mainPane.getLayer(mapComponent) == LayerCode.Map.getCode()) {
-          mainPane.setLayer(mapComponent, LayerCode.Overlay.getCode()); 
+          mainPane.setLayer(mapComponent, LayerCode.OverlayMap.getCode()); 
         } else {
           mainPane.setLayer(mapComponent, LayerCode.Map.getCode());
+        }
+      }
+    });
+  }
+  
+  /**
+   * Grabs the tool menu button and adds an action. If the toolbox 
+   * is currently in the toolbox layer, move it to the overlay layer.
+   * Otherwise, do the opposite to hide it.
+   */
+  protected void addToolMenuButton() {
+    toolButton = sceneView.getToolButton();
+	    
+    toolButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        Component toolComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Tools")))[0];
+        
+        
+        if (mainPane.getLayer(toolComponent) == LayerCode.Tools.getCode()) {
+          mainPane.setLayer(toolComponent, LayerCode.OverlayTools.getCode()); 
+        } else {
+          mainPane.setLayer(toolComponent, LayerCode.Tools.getCode());
         }
       }
     });

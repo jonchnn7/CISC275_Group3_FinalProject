@@ -42,6 +42,7 @@ public class ControllerBeachMini extends ControllerScene implements LinkDynamics
   
     addML();
     addMapMenuButton();
+    addToolMenuButton();
   }
 
   @Override
