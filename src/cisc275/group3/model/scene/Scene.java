@@ -5,6 +5,7 @@ import cisc275.group3.model.sceneobject.SceneObject;
 import cisc275.group3.utility.SceneId;
 
 import java.awt.Color;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
@@ -17,7 +18,7 @@ import java.util.Random;
  * <p>
  * Scene.java
  */
-public abstract class Scene {
+public abstract class Scene implements Serializable{
 	
   // Scene Properties
   protected boolean clickable;
@@ -64,6 +65,9 @@ public abstract class Scene {
   public boolean processClick(double clickX, double clickY) {
 	    for (Iterator<SceneObject> iterator = sceneItems.iterator(); iterator.hasNext();) {     
 	    	SceneObject sceneItem = iterator.next();
+	    	
+	    	// Compatibility Check
+	    	// if ( mouse.getTool() == sceneItem.getType() ) { continue; }       ? Maybe ?
 	    	
 	        if (sceneItem.itemClicked(clickX, clickY)) {
 	          System.out.println("Clicked on: " + sceneItem.getPassport().getName());
