@@ -4,6 +4,7 @@ import cisc275.group3.utility.ObjectId;
 
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
+import java.io.Serializable;
 import java.util.Random;
 
 /**
@@ -15,11 +16,7 @@ import java.util.Random;
  * below.
  * <p>
  * SceneObject.java
- * 
- * @param	passport	type class to hold immutable properties
- * @param	location	current location stored as a 2D point
- * @param	randGen		RNG, mostly for subclasses
- * 
+ * <p>
  * Style Changes
  * https://google.github.io/styleguide/javaguide.html 
  * http://www.oracle.com/technetwork/articles/java/index-137868.html # javadoc
@@ -29,7 +26,7 @@ import java.util.Random;
  * https://docs.oracle.com/javase/tutorial/uiswing/index.html  # swing tutorial
  * http://www.badlogicgames.com/wordpress/?p=2668 # general design
  */
-public abstract class SceneObject implements Comparable<SceneObject> {
+public abstract class SceneObject implements Comparable<SceneObject>, Serializable {
   protected ObjectId passport;
   protected Point2D.Double location;
   protected Random randGen = new Random();

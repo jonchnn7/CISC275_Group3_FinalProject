@@ -32,9 +32,9 @@ public class SceneView extends JPanel {
   /**
    * Constructor for untimed and unscored models that still
    * require an interface menu.
-   * @param w		int - width
-   * @param h		int - height
-   * @param panel	JPanel - panel background layer
+   * @param w		int-width
+   * @param h		int-height
+   * @param panel	JPanel-panel background layer
    */
   public SceneView(int w, int h, JPanel panel) {
     super();
@@ -58,10 +58,10 @@ public class SceneView extends JPanel {
   
   /**
    * Constructor for timed, but unscored models
-   * @param w	int - width
-   * @param h	int - height
-   * @param sl	SceneLayer - backgorund
-   * @param t	int - time
+   * @param w	int-width
+   * @param h	int-height
+   * @param sl	SceneLayer-backgorund
+   * @param t	int-time
    */
   public SceneView(int w, int h, SceneLayer sl, int t) {
     super();
@@ -87,11 +87,11 @@ public class SceneView extends JPanel {
   
   /**
    * Constructor for both timed and scored models
-   * @param w	int - width
-   * @param h	int - height
-   * @param sl	SceneLayer - background
-   * @param s	int - score
-   * @param t	int - time
+   * @param w	int-width
+   * @param h	int-height
+   * @param sl	SceneLayer-background
+   * @param s	int-score
+   * @param t	int-time
    */
   public SceneView(int w, int h, SceneLayer sl, int s, int t) {
     super();
@@ -176,14 +176,27 @@ public class SceneView extends JPanel {
     lowerLeftBar.setLocation(30, SCREEN_HEIGHT-90);
   }
   
+  /**
+   * Updates the score label to the current score.
+   * @param s	int-current score
+   */
   public void updateScore(int s) {
     scoreLabel.setText(Integer.toString(s));
   }
   
+  /**
+   * Updates the time to the current time.
+   * @param t int-current time
+   */
   public void updateTime(int t) {
 	  timeLabel.setText(Integer.toString(t));
   }
   
+  /**
+   * Returns pointer to the map button. Allows the 
+   * controller to create the button action
+   * @return the map JButton
+   */
   public JButton getMapButton() {
     return mapButton;
   }

@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.util.HashMap;
 import java.awt.event.MouseEvent;
+import java.io.Serializable;
 
 import cisc275.group3.model.scene.Scene;
 import cisc275.group3.utility.LayerCode;
@@ -21,7 +22,7 @@ import cisc275.group3.view.SceneView;
  * class is necessary so all controllers can be held within a
  * collection.
  */
-public abstract class ControllerScene {
+public abstract class ControllerScene implements Serializable {
   // Window Parameters
   protected final int SCREEN_WIDTH;
   protected final int SCREEN_HEIGHT;

@@ -5,12 +5,13 @@ import cisc275.group3.view.GameWindow;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashMap;
 import javax.swing.Timer;
 
 
-public class GameController {
+public class GameController implements Serializable {
   
   // Game Parameters
   private final int SCREEN_WIDTH;

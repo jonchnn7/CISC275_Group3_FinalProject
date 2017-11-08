@@ -1,5 +1,7 @@
 package cisc275.group3.utility;
 
+import java.io.Serializable;
+
 /**
  * Data structure to hold immutable Scene parameters. Can also
  * be used to more cleanly pass Scene information.
@@ -12,7 +14,7 @@ package cisc275.group3.utility;
  * @param 	startY		double-top left y coordinate
  * @param	width		double-scene width
  */
-public class SceneId {
+public class SceneId implements Serializable{
   private String bgImage;    // CHANGE TO FINAL ONCE ALL BG IMAGES FOUND
   private final double height;
   private final String name;

@@ -2,21 +2,16 @@ package cisc275.group3.utility;
 
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
+import java.io.Serializable;
 
 /**
  * Data structure to hold immutable SceneObject parameters. Can also
  * be used to more cleanly pass SceneObject information.
  * <p>
  * ObjectId.java
- * 
- * @param	depth		comparable depth when drawn
- * @param	height		height of object and associated image
- * @param	id			(old) object type. comparable for item <-> tool
- * @param 	imageFile	String location of image file
- * @param	name		String name for object
- * @param 	width		width of object and associated image
+ * @author Group3
  */
-public class ObjectId {
+public class ObjectId implements Serializable {
   private final int depth;
   private final double height;
   private final int id;
@@ -24,7 +19,16 @@ public class ObjectId {
   private final String name;
   private final double width;
   private Ellipse2D.Double area;
-	
+  
+  /**
+   * Constructs an Object ID 
+   * @param	d		comparable depth when drawn
+   * @param	h		height of object and associated image
+   * @param	id		(old) object type. comparable for item and tool
+   * @param imFi	String location of image file
+   * @param	n		String name for object
+   * @param w		width of object and associated image
+   */
   public ObjectId(int d, double h, int id, String imFi, String n, double w) {
     depth = d;
     height = h;
@@ -38,10 +42,10 @@ public class ObjectId {
    * Utility function to check whether a click is within the area of
    * the object.
    * 
-   * @param		location	Point2D.Double - Object location
-   * @param 	clickX		double 
-   * @param 	clickY		double
-   * @return	boolean		returns whether the click is within the object
+   * @param		l		Point2D.Double-Object location
+   * @param 	x		double 
+   * @param 	y		double
+   * @return	boolean	returns whether the click is within the object
    */
   public boolean checkClick(Point2D.Double l, double x, double y) {
     area = new Ellipse2D.Double(l.getX(), l.getY(), width, height);   
@@ -70,26 +74,31 @@ public class ObjectId {
   }
 	
   /**
-   * @return the image location
+   * @return the object's image location
    */
   public String getImageFile() {
     return imageFile;
   }
 
   /**
-   * @return the name
+   * @return the object's name
    */
   public String getName() {
     return name;
   }
 
   /**
-   * @return the width
+   * @return the object's width
    */
   public double getWidth() {
     return width;
   }
-	
+
+  /**
+   * Print's the object's id as a
+   * collection of its parameters
+   * @return the object's parameters
+   */
   public String toString() {
     String outString = "\nName: " + name
     	              +"\nID: " + id
