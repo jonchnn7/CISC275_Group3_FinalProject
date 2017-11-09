@@ -6,6 +6,14 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 
+/**
+ * Largest level container used to hold the 
+ * game view. The primary component is a 
+ * JLayeredPane which holds the individual 
+ * views (Title, Map, Bay, etc). 
+ * <p>
+ * @author Scott
+ */
 @SuppressWarnings("serial")
 public class GameWindow extends JFrame {
   private final int WINDOW_WIDTH;
@@ -13,6 +21,14 @@ public class GameWindow extends JFrame {
   
   private JLayeredPane mainPane;
   
+  /**
+   * Constructor takes in two int's to set the
+   * window width and height. We then construct
+   * the main JLayeredpane, and set its 
+   * attributes so it doesn't collapse on pack().
+   * @param w int-width
+   * @param h int-height
+   */
   public GameWindow(int w, int h) {
     super("Estuary Click Adventure");
     
@@ -36,6 +52,11 @@ public class GameWindow extends JFrame {
     this.setVisible(true);
   }
   
+  /**
+   * Helper method used to access the main
+   * JLayeredPane.
+   * @return the main JLayeredPane
+   */
   public JLayeredPane getMainPane() {
     return mainPane;
   }

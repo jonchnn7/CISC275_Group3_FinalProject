@@ -17,6 +17,17 @@ import cisc275.group3.view.SceneView;
 
 /**
  * Contains the controller actions and logic for SceneBeachMini.java.
+ * <p>
+ * Extends the abstract ConstrollerScene class and adds dynamics
+ * and timing attributes. Those interfaces require the controller
+ * to pass an update call to the model on every timer tick, and
+ * to update the time every second.
+ * <p>
+ * @see ControllerScene.java
+ * <p>
+ * ControllerBeachMini.java
+ * <p>
+ * @author Scott
  */
 public class ControllerBeachMini extends ControllerScene implements LinkDynamics, LinkTime {
   

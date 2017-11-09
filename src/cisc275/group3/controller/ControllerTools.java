@@ -18,10 +18,17 @@ import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.SceneView;
 
 /**
- * Map Controller is responsible for both the "model" and
- * control of the map. There are no objects in the map 
- * scene that aren't clickable (buttons/images/labels), so
- * this controller constructs the background panel.
+ * The Tools controller is responsible for both the "model" and
+ * control of the toolbox. 
+ * <p>
+ * The toolbox augments the mouse and sets a "click type" that
+ * can be checked against the object type to determine compatibility.
+ * Because there is no underlying model, the controller implements
+ * the corresponding logic.
+ * <p>
+ * ControllerTool.java
+ * <p>
+ * @author Scott
  */
 public class ControllerTools extends ControllerScene {
 

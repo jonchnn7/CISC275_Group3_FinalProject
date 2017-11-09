@@ -3,6 +3,18 @@ package cisc275.group3.controller;
 //Project Imports
 import cisc275.group3.model.scene.SceneBay;
 
+/**
+ * Demonstration controller.
+ * <p>
+ * This controller manipulates the Bay model without the 
+ * presence of a view.
+ * <p>
+ * ControllerDemoBay.java
+ * <p>
+ * @see SceneBay.java
+ * <p>
+ * @author Scott
+ */
 public class ControllerDemoBay {
 		  
   public static void main (String[] args) {

@@ -77,16 +77,6 @@ public abstract class Scene implements Serializable {
 	      }
 	      return false;
   }
-  
-  public String processNav(double clickX, double clickY){
-		for(int i = 0; i < navObjects.size(); i++) {
-			if(navObjects.get(i).itemClicked(clickX, clickY)) {
-				return navObjects.get(i).navClick();
-			}
-		}	
-	    return "NONE";
-	}
-  
 	
   /**
    * Represents Scene as a String by printing its 
@@ -127,34 +117,5 @@ public abstract class Scene implements Serializable {
    */
   public ArrayList<SceneObject> getSceneItems() {
 	  return sceneItems;
-  }
-  
-  public ArrayList<NavObject> getNavObjects() {
-	  return navObjects;
-  }
-	
-  /**
-   * @return visible
-   */
-  public boolean getVisible() {
-    return visible;
-  }
-  
-  public Color getBackgroundColor() {
-	  return this.backgroundColor;
-  }
-	
-  /**
-   * Toggles visibility boolean
-   */
-  public void toggleVisible() {
-    visible = !this.visible;
-  }	
-	
-  /**
-   * Toggles clickablity boolean
-   */
-  public void toggleClickable() {
-    clickable = !clickable;
   }
 }

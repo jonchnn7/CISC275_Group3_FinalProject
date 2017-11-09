@@ -17,6 +17,17 @@ import cisc275.group3.utility.LayerCode;
 import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.SceneView;
 
+/**
+ * We should discuss this. 
+ * Should the display/JPanel be broken out into View?
+ * <p>
+ * Controller responsible for displaying the title scene 
+ * and getting user input.
+ * <p>
+ * ControllerTitle.java
+ * <p>
+ * @author Scott
+ */
 public class ControllerTitle extends ControllerScene {
 
   private JPanel titlePanel;

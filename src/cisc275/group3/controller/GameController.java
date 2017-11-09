@@ -10,7 +10,24 @@ import java.util.Arrays;
 import java.util.HashMap;
 import javax.swing.Timer;
 
-
+/**
+ * The main controller class.
+ * <p>
+ * This controller is responsible for constructing the
+ * game scene-by-scene. As the different scenes are 
+ * created, they are added to a hash map for easy 
+ * retrieval (No current need for this). 
+ * <p>
+ * This controller is also responsible for creating and
+ * acting on timer events. These events currently occur
+ * every 100ms and pass an update call to dynamic models.
+ * The implementation is rather ugly, and improvements
+ * should be investigated.
+ * <p>
+ * GameController.java
+ * <p>
+ * @author Scott
+ */
 public class GameController implements Serializable {
   
   // Game Parameters

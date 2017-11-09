@@ -18,10 +18,18 @@ import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.SceneView;
 
 /**
- * Map Controller is responsible for both the "model" and
- * control of the map. There are no objects in the map 
- * scene that aren't clickable (buttons/images/labels), so
- * this controller constructs the background panel.
+ * The Map controller is responsible for both the "model" 
+ * and control of the map. 
+ * <p>
+ * This controller is only responsible for taking user input
+ * and switching between game scenes. There is no
+ * underlying model to manipulate. Therefore, the controller
+ * also defines the JPanel and JButtons to display for
+ * input.
+ * <p>
+ * ControllerMap.java
+ * <p>
+ * @author Scott
  */
 public class ControllerMap extends ControllerScene {
 
