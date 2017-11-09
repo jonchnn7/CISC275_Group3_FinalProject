@@ -17,6 +17,8 @@ import java.util.Random;
  * interfaces.
  * <p>
  * Scene.java
+ * <p>
+ * @author Scott
  */
 public abstract class Scene implements Serializable {
 	

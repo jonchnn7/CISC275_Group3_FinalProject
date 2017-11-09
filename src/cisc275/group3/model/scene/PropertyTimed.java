@@ -7,6 +7,8 @@ package cisc275.group3.model.scene;
  * together in workspace browser.
  * <p>
  * PropertyTimed.java
+ * <p>
+ * @author Scott
  */
 public interface PropertyTimed {
   public int getTime();

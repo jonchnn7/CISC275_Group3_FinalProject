@@ -7,6 +7,8 @@ package cisc275.group3.model.scene;
  * together in workspace browser.
  * <p>
  * PropertyScored.java
+ * <p>
+ * @author Scott
  */
 public interface PropertyScored {
 	public int getScore();

@@ -12,9 +12,18 @@ import cisc275.group3.utility.ObjectId;
 import cisc275.group3.utility.SceneId;
 
 /**
- * Bay game scene. 
+ * Bay scene/model. 
+ * <p>
+ * The bay scene implements scoring and timing functions 
+ * via interface implementations. The ConstructFish 
+ * interface holds component definitions for fish objects,
+ * and static functions to return fish objects.
+ * <p>
+ * 
  * <p>
  * SceneBay.java
+ * <p>
+ * @author Scott
  */
 public class SceneBay extends Scene implements ConstructFish, PropertyScored, PropertyTimed {
 
