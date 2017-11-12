@@ -61,17 +61,16 @@ public abstract class Scene implements Serializable {
    * @param		clickY	double-y-axis coordinate of click
    * @return	boolean is click on clickable object?
    */
-  public boolean processClick(double clickX, double clickY) {
+  public boolean processClick(double clickX, double clickY, String cursorName) {
     for (Iterator<SceneObject> iterator = sceneItems.iterator(); iterator.hasNext();) {     
       SceneObject sceneItem = iterator.next();
 	    	
       // Compatibility Check
-      if ((sceneItem instanceof BetaFish) && (currentTool != null) && (SceneObjectType.BetaFish.searchCompatability(currentTool.getName()))) {
-        if (sceneItem.itemClicked(clickX, clickY)) {
-          System.out.println("Clicked on: " + sceneItem.getPassport().getName());
-          iterator.remove();
-          return true;
-        }
+      //if ((cursorName == "Crosshair Cursor") && (SceneObjectType.BetaFish.searchCompatability(currentTool.getName()))) {
+      if (sceneItem.itemClicked(clickX, clickY) && cursorName.equalsIgnoreCase("Net")) {
+        System.out.println("Clicked on: " + sceneItem.getPassport().getName());
+        iterator.remove();
+        return true;
       }
     }
     return false;

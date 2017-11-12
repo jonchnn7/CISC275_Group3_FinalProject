@@ -2,9 +2,13 @@ package cisc275.group3.controller;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Point;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
@@ -79,12 +83,18 @@ public class ControllerTools extends ControllerScene {
       @Override
       public void actionPerformed(ActionEvent e) {
         Component toolComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Tools")))[0];
-	        
+        
         mainPane.setLayer(toolComponent, LayerCode.Tools.getCode());
         if (Scene.getCurrentTool() instanceof ToolNet) {
           Scene.setCurrentTool(null);
+          mainPane.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
         } else {
           Scene.setCurrentTool(new ToolNet(0,0,0,0));
+          Toolkit toolkit = Toolkit.getDefaultToolkit();
+          Image image = toolkit.getImage("img/fence_net_mouse.png");
+          Cursor netCursor = toolkit.createCustomCursor(image , new Point(mainPane.getX()+50, 
+                     mainPane.getY()+50), "Net");
+          mainPane.setCursor(netCursor);
         }
       }
     });
