@@ -87,14 +87,14 @@ public class ControllerTools extends ControllerScene {
         mainPane.setLayer(toolComponent, LayerCode.Tools.getCode());
         if (Scene.getCurrentTool() instanceof ToolNet) {
           Scene.setCurrentTool(null);
-          mainPane.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+          mainPane.getComponentsInLayer(LayerCode.MainMapTools.getCode())[0].setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
         } else {
           Scene.setCurrentTool(new ToolNet(0,0,0,0));
           Toolkit toolkit = Toolkit.getDefaultToolkit();
           Image image = toolkit.getImage("img/fence_net_mouse.png");
           Cursor netCursor = toolkit.createCustomCursor(image , new Point(mainPane.getX()+50, 
                      mainPane.getY()+50), "Net");
-          mainPane.setCursor(netCursor);
+          mainPane.getComponentsInLayer(LayerCode.MainMapTools.getCode())[0].setCursor(netCursor);
         }
       }
     });
