@@ -23,26 +23,19 @@ import java.util.Random;
 public abstract class Scene implements Serializable {
 	
   // Scene Properties
-  protected boolean clickable;
   protected SceneId manifest;
   protected ArrayList<SceneObject> sceneItems;
   protected int score;
   protected int time;
-  protected boolean visible;
-  protected ArrayList<NavObject> navObjects;
-  protected Color backgroundColor;
 
 	
   // RNG
-  Random randGen = new Random();
+  protected Random randGen = new Random();
 	
-  public Scene(SceneId mani, boolean click, boolean vis) {
-    clickable = click;
+  public Scene(SceneId mani) {
     manifest = mani;
-    visible = vis;
 		
     sceneItems = new ArrayList<SceneObject>();
-    navObjects = new ArrayList<NavObject>();
   }
   
   /**
@@ -89,21 +82,13 @@ public abstract class Scene implements Serializable {
     String outString = "\nName: " + manifest.getName()
                       +"\nWidth: " + manifest.getWidth()
                       +"\nHeight: " + manifest.getHeight()
-                      +"\nClickable: " + clickable
-                      +"\nVisible: " + visible
                       +"\nScene Objects: " + sceneItems.size();
     return outString;
   }
+  // Alternate toString
   //public String toString() {
   //  return this.getManifest().getName();
   //}
-	
-  /**
-   * @return clickable
-   */
-  public boolean getClickable() {
-    return clickable;
-  }
   
   /**
    * @return manifest

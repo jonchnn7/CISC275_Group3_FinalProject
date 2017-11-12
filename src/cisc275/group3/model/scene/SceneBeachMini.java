@@ -6,8 +6,8 @@ import cisc275.group3.utility.SceneId;
 
 public class SceneBeachMini extends Scene implements ConstructCrab, PropertyTimed {
 
-  public SceneBeachMini(SceneId mani, boolean click, boolean vis) {
-	super(mani, click, vis);
+  public SceneBeachMini(SceneId mani) {
+	super(mani);
 	
 	time = 0;
 	fillScene();
@@ -16,8 +16,8 @@ public class SceneBeachMini extends Scene implements ConstructCrab, PropertyTime
   /**
    * Used when SceneId must also be created
    */ 
-  public SceneBeachMini(String n, double x, double y, double w, double h, String bg, boolean click, boolean vis) {
-    this(new SceneId(n, x, y, w, h, bg), click, vis);
+  public SceneBeachMini(String n, double x, double y, double w, double h, String bg) {
+    this(new SceneId(n, x, y, w, h, bg));
   }
 
   

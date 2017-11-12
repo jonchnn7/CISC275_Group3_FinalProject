@@ -27,12 +27,9 @@ import cisc275.group3.utility.SceneId;
  */
 public class SceneBay extends Scene implements ConstructFish, PropertyScored, PropertyTimed {
 
-  public SceneBay(SceneId mani, boolean click, boolean vis) {
-    super(mani, click, vis);
+  public SceneBay(SceneId mani) {
+    super(mani);
     time = 350;
-    
-    backgroundColor = Color.blue;    
-	navObjects.add(new NavObject(100,100, "Map"));
 
     fillScene();
   }
@@ -40,8 +37,8 @@ public class SceneBay extends Scene implements ConstructFish, PropertyScored, Pr
   /**
    * Used when SceneId must also be created
    */ 
-  public SceneBay(String n, double x, double y, double w, double h, String bg, boolean click, boolean vis) {
-    this(new SceneId(n, x, y, w, h, bg), click, vis);
+  public SceneBay(String n, double x, double y, double w, double h, String bg) {
+    this(new SceneId(n, x, y, w, h, bg));
   }
   
   /**

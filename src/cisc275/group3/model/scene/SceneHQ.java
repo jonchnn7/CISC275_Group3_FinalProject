@@ -10,15 +10,13 @@ import cisc275.group3.utility.SceneId;
 
 public class SceneHQ extends Scene implements PropertyScored, PropertyTimed {
 		
-  public SceneHQ(SceneId mani, boolean click, boolean vis) {
-    super(mani, click, vis);
-    navObjects.add(new NavObject(100,100, "Map"));
-    backgroundColor = Color.BLACK;
+  public SceneHQ(SceneId mani) {
+    super(mani);
     time = 300;
   }
 	
-  public SceneHQ(String n, double x, double y, double w, double h, boolean click, boolean vis) {
-    this(new SceneId(n, x, y, w, h), click, vis);
+  public SceneHQ(String n, double x, double y, double w, double h, String bg) {
+    this(new SceneId(n, x, y, w, h, bg));
   }
 	
   @Override

@@ -6,14 +6,12 @@ import cisc275.group3.model.sceneobject.NavObject;
 import cisc275.group3.utility.SceneId;
 
 public class SceneWetlands extends Scene{
-	public SceneWetlands(SceneId mani, boolean click, boolean vis) {
-		super(mani, click, vis);
-		navObjects.add(new NavObject(100,100, "Map"));
-		backgroundColor = Color.MAGENTA;
+	public SceneWetlands(SceneId mani) {
+		super(mani);
 	}
 
-	public SceneWetlands(String n, double x, double y, double w, double h, boolean click, boolean vis) {
-		this(new SceneId(n, x, y, w, h), click, vis);
+	public SceneWetlands(String n, double x, double y, double w, double h, String bg) {
+		this(new SceneId(n, x, y, w, h, bg));
 		
 	}
 	
