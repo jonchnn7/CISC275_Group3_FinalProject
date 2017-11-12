@@ -30,21 +30,19 @@ import cisc275.group3.view.SceneView;
  * @author Scott
  */
 public class ControllerBay extends ControllerScene implements LinkDynamics {
+  private final String BG_IMAGE = "img/bay_bg_1.jpg";
   
   public ControllerBay(int w, int h, GameWindow f, HashMap<String, Component> cl) {
     super(w, h, f, cl);
   }
 
   @Override
-  protected void createScene() {
-    String sceneBg = "img/bay_bg_1.jpg";
-    
-    scene = new SceneBay("Bay", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, sceneBg);
+  protected void createScene() {    
+    scene = new SceneBay("Bay", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, BG_IMAGE);
     viewGame = new ViewGame(SCREEN_WIDTH, SCREEN_HEIGHT, scene.getSceneItems(), scene.getManifest().getBG());
     
-    viewGame.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
+
     viewGame.setBounds(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-    viewGame.setDoubleBuffered(true);
     viewGame.setName("BayLayer");
     
     mainPane.setLayer(viewGame, LayerCode.Bay.getCode());
@@ -53,8 +51,6 @@ public class ControllerBay extends ControllerScene implements LinkDynamics {
     componentList.put("Bay", viewGame);
   
    addML();
-   // addMapMenuButton();
-   // addToolMenuButton();
   }
 
   @Override
@@ -77,7 +73,7 @@ public class ControllerBay extends ControllerScene implements LinkDynamics {
    * scene is the active pane, update the model and then pass 
    * the updated scene objects to the view.
    * <p>
-   * Overriden from interface LinkDynamics.java
+   * Overridden from interface LinkDynamics.java
    */
   @Override
   public void update() {

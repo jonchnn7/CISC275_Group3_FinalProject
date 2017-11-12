@@ -30,6 +30,7 @@ import cisc275.group3.view.SceneView;
  * @author Scott
  */
 public class ControllerBeachMini extends ControllerScene implements LinkDynamics {
+  private final String BG_IMAGE = "img/beach_sand_bg.png";
   
   public ControllerBeachMini(int w, int h, GameWindow f, HashMap<String, Component> cl) {
     super(w, h, f, cl);
@@ -37,8 +38,8 @@ public class ControllerBeachMini extends ControllerScene implements LinkDynamics
 
   @Override
   protected void createScene() {
-    scene = new SceneBeachMini("Bay", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, "img/beach_sand_bg.png", true, true);
-    viewGame = new ViewGame(SCREEN_WIDTH, SCREEN_HEIGHT, scene.getSceneItems(), Color.YELLOW, scene.getManifest().getBG());
+    scene = new SceneBeachMini("Bay", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, BG_IMAGE);
+    viewGame = new ViewGame(SCREEN_WIDTH, SCREEN_HEIGHT, scene.getSceneItems(), scene.getManifest().getBG());
     
     
     viewGame.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));

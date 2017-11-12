@@ -67,8 +67,4 @@ public class ControllerTools extends ControllerScene {
   @Override
   protected void addML() {
   }
-  
-  @Override
-  protected void addMapMenuButton() {
-  }
 }

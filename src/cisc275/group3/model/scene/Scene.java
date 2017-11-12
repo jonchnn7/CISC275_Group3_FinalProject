@@ -85,6 +85,7 @@ public abstract class Scene implements Serializable {
                       +"\nScene Objects: " + sceneItems.size();
     return outString;
   }
+  
   // Alternate toString
   //public String toString() {
   //  return this.getManifest().getName();
