@@ -80,7 +80,7 @@ public abstract class Scene implements Serializable {
   /**
    * Represents Scene as a String by printing its 
    * parameters.
-   * @return multi-line string of parameter states
+   * @return multiline string of parameter states
    */
   public String toString() {
     String outString = "\nName: " + manifest.getName()
