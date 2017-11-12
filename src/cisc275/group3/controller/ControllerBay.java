@@ -77,10 +77,10 @@ public class ControllerBay extends ControllerScene implements LinkDynamics {
    */
   @Override
   public void update() {
-   // if (mainPane.getLayer(componentList.get("Bay")) == LayerCode.Main.getCode()) {
+    if (mainPane.getLayer(componentList.get("Bay")) == LayerCode.Main.getCode()) {
       ((SceneBay)scene).update();
       viewGame.updatePanel(scene.getSceneItems());
-  //  }
+    }
   }
 
   /**
