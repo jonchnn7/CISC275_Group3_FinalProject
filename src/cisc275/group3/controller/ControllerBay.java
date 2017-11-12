@@ -12,7 +12,7 @@ import java.util.HashMap;
 import cisc275.group3.model.scene.SceneBay;
 import cisc275.group3.utility.LayerCode;
 import cisc275.group3.view.GameWindow;
-import cisc275.group3.view.SceneLayer;
+import cisc275.group3.view.ViewGame;
 import cisc275.group3.view.SceneView;
 
 /**
@@ -29,7 +29,7 @@ import cisc275.group3.view.SceneView;
  * <p>
  * @author Scott
  */
-public class ControllerBay extends ControllerScene implements LinkDynamics, LinkTime {
+public class ControllerBay extends ControllerScene implements LinkDynamics {
   
   public ControllerBay(int w, int h, GameWindow f, HashMap<String, Component> cl) {
     super(w, h, f, cl);
@@ -38,40 +38,38 @@ public class ControllerBay extends ControllerScene implements LinkDynamics, Link
   @Override
   protected void createScene() {
     scene = new SceneBay("Bay", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, "img/bay_bg_1.jpg", true, true);
-    sceneLayer = new SceneLayer(SCREEN_WIDTH, SCREEN_HEIGHT, scene.getSceneItems(), Color.BLUE, scene.getManifest().getBG());
-    sceneView = new SceneView(SCREEN_WIDTH, SCREEN_HEIGHT, sceneLayer, 
-        ((SceneBay)scene).getScore(), ((SceneBay)scene).getTime());
+    viewGame = new ViewGame(SCREEN_WIDTH, SCREEN_HEIGHT, scene.getSceneItems(), Color.BLUE, scene.getManifest().getBG());
     
-    sceneView.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
-    sceneView.setBounds(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-    sceneView.setDoubleBuffered(true);
-    sceneView.setName("BayLayer");
+    viewGame.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
+    viewGame.setBounds(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    viewGame.setDoubleBuffered(true);
+    viewGame.setName("BayLayer");
     
-    mainPane.setLayer(sceneView, LayerCode.Bay.getCode());
-    mainPane.add(sceneView, LayerCode.Bay.getCode());
+    mainPane.setLayer(viewGame, LayerCode.Bay.getCode());
+    mainPane.add(viewGame, LayerCode.Bay.getCode());
     
-    componentList.put("Bay", sceneView);
+    componentList.put("Bay", viewGame);
   
-    addML();
-    addMapMenuButton();
-    addToolMenuButton();
+   addML();
+   // addMapMenuButton();
+   // addToolMenuButton();
   }
 
   @Override
   protected void addML() {
-    sceneLayer.addMouseListener(new MouseAdapter() {
+    viewGame.addMouseListener(new MouseAdapter() {
       @Override
       public void mousePressed(MouseEvent e) {
         if (e.getButton() == MouseEvent.BUTTON1) {
           if ( scene.processClick(e.getX(), e.getY()) ) {
             ((SceneBay)scene).updateScore();
-            sceneView.updateScore(((SceneBay)scene).getScore());
+            //sceneView.updateScore(((SceneBay)scene).getScore());
           }
         }
       }
     });
   }
-  
+
   /**
    * Connects the Bay model and Bay view. So long as the Bay 
    * scene is the active pane, update the model and then pass 
@@ -81,20 +79,21 @@ public class ControllerBay extends ControllerScene implements LinkDynamics, Link
    */
   @Override
   public void update() {
-    if (mainPane.getLayer(componentList.get("Bay")) == LayerCode.Main.getCode()) {
+   // if (mainPane.getLayer(componentList.get("Bay")) == LayerCode.Main.getCode()) {
       ((SceneBay)scene).update();
-      sceneLayer.updatePanel(scene.getSceneItems());
-    }
+      viewGame.updatePanel(scene.getSceneItems());
+  //  }
   }
-  
+
   /**
    * Updates the model's time variable and shares it with
    * the view.
    * <p>
    * Overridden from interface LinkTime.java
    */
-  public void updateTime() {
+/*  public void updateTime() {
     ((SceneBay)scene).updateTime();
     sceneView.updateTime(((SceneBay)scene).getTime());
   }
+*/
 }

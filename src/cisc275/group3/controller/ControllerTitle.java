@@ -52,19 +52,14 @@ public class ControllerTitle extends ControllerScene {
     
     titlePanel.add(titleLabel);
     
-    sceneView = new SceneView(SCREEN_WIDTH, SCREEN_HEIGHT, titlePanel);
+    titlePanel.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
+    titlePanel.setBounds(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    titlePanel.setName("TitleLayer");
     
-    sceneView.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
-    sceneView.setBounds(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-    sceneView.setName("TitleLayer");
+    mainPane.setLayer(titlePanel, LayerCode.Title.getCode());
+    mainPane.add(titlePanel, LayerCode.Title.getCode());
     
-    mainPane.setLayer(sceneView, LayerCode.Title.getCode());
-    mainPane.add(sceneView, LayerCode.Title.getCode());
-    
-    componentList.put("Title", sceneView);
-  
-    addMapMenuButton();
-    addToolMenuButton();
+    componentList.put("Title", titlePanel);
   }
 
   @Override

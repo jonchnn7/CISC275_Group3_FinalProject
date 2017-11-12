@@ -17,7 +17,7 @@ import javax.swing.JPanel;
 import cisc275.group3.model.sceneobject.SceneObject;
 
 @SuppressWarnings("serial")
-public class SceneLayer extends JPanel {
+public class ViewGame extends JPanel {
   private final int FRAME_WIDTH;
   private final int FRAME_HEIGHT;
 	  
@@ -51,7 +51,7 @@ public class SceneLayer extends JPanel {
     g2d.dispose();
   }
 	  
-  public SceneLayer (int w, int h, ArrayList<SceneObject> obList, Color sc) {
+  public ViewGame (int w, int h, ArrayList<SceneObject> obList, Color sc) {
     super();
     // Display Parameters
     FRAME_HEIGHT = h;
@@ -64,7 +64,7 @@ public class SceneLayer extends JPanel {
     this.setDoubleBuffered(true);
   }
   
-  public SceneLayer (int w, int h, ArrayList<SceneObject> obList, Color sc, String bg) {
+  public ViewGame (int w, int h, ArrayList<SceneObject> obList, Color sc, String bg) {
     this(w, h, obList, sc);
     bgImage = bg;
   }

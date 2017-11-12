@@ -56,7 +56,7 @@ public class ControllerMap extends ControllerScene {
     
     mapPanel.setLayout(null);
     mapPanel.setPreferredSize(new Dimension(180, 429));
-    mapPanel.setBounds(66, 207, mapPanel.getPreferredSize().width, mapPanel.getPreferredSize().height);
+    mapPanel.setBounds(0, SCREEN_HEIGHT-mapPanel.getPreferredSize().height, mapPanel.getPreferredSize().width, SCREEN_HEIGHT);
     mapPanel.setBackground(Color.DARK_GRAY);
     mapPanel.setOpaque(true);
    
@@ -103,13 +103,5 @@ public class ControllerMap extends ControllerScene {
       }
     });
     mapPanel.add(beachMiniButton);
-  }
-
-  @Override
-  protected void addML() {
-  }
-  
-  @Override
-  protected void addMapMenuButton() {
   }
 }

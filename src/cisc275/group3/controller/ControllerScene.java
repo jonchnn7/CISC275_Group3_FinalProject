@@ -14,7 +14,7 @@ import java.io.Serializable;
 import cisc275.group3.model.scene.Scene;
 import cisc275.group3.utility.LayerCode;
 import cisc275.group3.view.GameWindow;
-import cisc275.group3.view.SceneLayer;
+import cisc275.group3.view.ViewGame;
 import cisc275.group3.view.SceneView;
 
 /**
@@ -34,8 +34,7 @@ public abstract class ControllerScene implements Serializable {
   
   // Scene Variables
   protected Scene scene;
-  protected SceneLayer sceneLayer;
-  protected SceneView sceneView;
+  protected ViewGame viewGame;
   protected static HashMap<String, Component> componentList;
   
   // Window Components
@@ -85,7 +84,7 @@ public abstract class ControllerScene implements Serializable {
    * Note: If the model implements scored, this must be overridden.
    */
   protected void addML() {
-    sceneLayer.addMouseListener(new MouseAdapter() {
+    viewGame.addMouseListener(new MouseAdapter() {
       public void mousePressed(MouseEvent e) {
         if (e.getButton() == MouseEvent.BUTTON1) {
           if ( scene.processClick(e.getX(), e.getY()) ) {
@@ -96,34 +95,13 @@ public abstract class ControllerScene implements Serializable {
     });
   }
   
-  /**
-   * Grabs the map menu button and adds an action. If the map is
-   * currently in the map layer, move it to the overlay layer.
-   * Otherwise, do the opposite to hide it.
-   */
-  protected void addMapMenuButton() {
-    mapButton = sceneView.getMapButton();
-	    
-    mapButton.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        Component mapComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Map")))[0];
-        
-        if (mainPane.getLayer(mapComponent) == LayerCode.Map.getCode()) {
-          mainPane.setLayer(mapComponent, LayerCode.OverlayMap.getCode()); 
-        } else {
-          mainPane.setLayer(mapComponent, LayerCode.Map.getCode());
-        }
-      }
-    });
-  }
   
   /**
    * Grabs the tool menu button and adds an action. If the toolbox 
    * is currently in the toolbox layer, move it to the overlay layer.
    * Otherwise, do the opposite to hide it.
    */
-  protected void addToolMenuButton() {
+/*  protected void addToolMenuButton() {
     toolButton = sceneView.getToolButton();
 	    
     toolButton.addActionListener(new ActionListener() {
@@ -140,4 +118,5 @@ public abstract class ControllerScene implements Serializable {
       }
     });
   }
+*/
 }

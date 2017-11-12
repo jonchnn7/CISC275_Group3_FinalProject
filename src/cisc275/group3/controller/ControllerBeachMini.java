@@ -12,7 +12,7 @@ import java.util.HashMap;
 import cisc275.group3.model.scene.SceneBeachMini;
 import cisc275.group3.utility.LayerCode;
 import cisc275.group3.view.GameWindow;
-import cisc275.group3.view.SceneLayer;
+import cisc275.group3.view.ViewGame;
 import cisc275.group3.view.SceneView;
 
 /**
@@ -29,7 +29,7 @@ import cisc275.group3.view.SceneView;
  * <p>
  * @author Scott
  */
-public class ControllerBeachMini extends ControllerScene implements LinkDynamics, LinkTime {
+public class ControllerBeachMini extends ControllerScene implements LinkDynamics {
   
   public ControllerBeachMini(int w, int h, GameWindow f, HashMap<String, Component> cl) {
     super(w, h, f, cl);
@@ -38,27 +38,25 @@ public class ControllerBeachMini extends ControllerScene implements LinkDynamics
   @Override
   protected void createScene() {
     scene = new SceneBeachMini("Bay", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, "img/beach_sand_bg.png", true, true);
-    sceneLayer = new SceneLayer(SCREEN_WIDTH, SCREEN_HEIGHT, scene.getSceneItems(), Color.YELLOW, scene.getManifest().getBG());
-    sceneView = new SceneView(SCREEN_WIDTH, SCREEN_HEIGHT, sceneLayer, ((SceneBeachMini)scene).getTime());
+    viewGame = new ViewGame(SCREEN_WIDTH, SCREEN_HEIGHT, scene.getSceneItems(), Color.YELLOW, scene.getManifest().getBG());
     
-    sceneView.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
-    sceneView.setBounds(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-    sceneView.setDoubleBuffered(true);
-    sceneView.setName("BeachMiniLayer");
     
-    mainPane.setLayer(sceneView, LayerCode.BeachMini.getCode());
-    mainPane.add(sceneView, LayerCode.BeachMini.getCode());
+    viewGame.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
+    viewGame.setBounds(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    viewGame.setDoubleBuffered(true);
+    viewGame.setName("BeachMiniLayer");
     
-    componentList.put("BeachMini", sceneView);
+    mainPane.setLayer(viewGame, LayerCode.BeachMini.getCode());
+    mainPane.add(viewGame, LayerCode.BeachMini.getCode());
+    
+    componentList.put("BeachMini", viewGame);
   
     addML();
-    addMapMenuButton();
-    addToolMenuButton();
   }
 
   @Override
   protected void addML() {
-    sceneLayer.addMouseMotionListener(new MouseAdapter() {
+    viewGame.addMouseMotionListener(new MouseAdapter() {
       int initialX;
       
       @Override
@@ -86,7 +84,7 @@ public class ControllerBeachMini extends ControllerScene implements LinkDynamics
   public void update() {
 	if (mainPane.getLayer(componentList.get("BeachMini")) == LayerCode.Main.getCode()) {
       ((SceneBeachMini)scene).update();
-      sceneLayer.updatePanel(scene.getSceneItems());
+      viewGame.updatePanel(scene.getSceneItems());
 	}
   }
   
@@ -96,9 +94,9 @@ public class ControllerBeachMini extends ControllerScene implements LinkDynamics
    * <p>
    * Overridden from interface LinkTime.java
    */
-  @Override
+ /* @Override
   public void updateTime() {
     ((SceneBeachMini)scene).updateTime();
-    sceneView.updateTime(((SceneBeachMini)scene).getTime());
-  }
+    viewGame.updateTime(((SceneBeachMini)scene).getTime());
+  }*/
 }
