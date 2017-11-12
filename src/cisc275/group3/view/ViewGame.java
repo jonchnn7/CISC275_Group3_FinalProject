@@ -1,6 +1,8 @@
 package cisc275.group3.view;
 
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -8,14 +10,17 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-
+import cisc275.group3.model.scene.Scene;
 import cisc275.group3.model.sceneobject.SceneObject;
 
-@SuppressWarnings("serial")
+/**
+ * @author Scott
+ * <p>
+ * @author Jolyne
+ */
 public class ViewGame extends JPanel {
   private final int FRAME_WIDTH;
   private final int FRAME_HEIGHT;
@@ -40,6 +45,14 @@ public class ViewGame extends JPanel {
         e.printStackTrace();
       }
       g2d.drawImage(currentImg, (int)item.getLocation().getX(), (int)item.getLocation().getY(), this);
+      
+      g2d.setColor(Color.white);
+      g2d.setFont(new Font("Roboto", Font.BOLD, 18));
+      if (Scene.getCurrentTool() != null) {
+        g2d.drawString(Scene.getCurrentTool().getName(), FRAME_WIDTH - 150, 70);
+      } else {
+        g2d.drawString("null", FRAME_WIDTH - 150, 70);
+      }
     });
     g2d.dispose();
   }

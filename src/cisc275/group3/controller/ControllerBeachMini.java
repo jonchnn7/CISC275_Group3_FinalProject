@@ -79,11 +79,11 @@ public class ControllerBeachMini extends ControllerScene implements LinkDynamics
    * long as the Beach Minigame is the active pane, update the 
    * model and then pass the updated scene objects to the view.
    * <p>
-   * Overriden from interface LinkDynamics.java
+   * Overridden from interface LinkDynamics.java
    */
   @Override
   public void update() {
-	if (mainPane.getLayer(componentList.get("BeachMini")) == LayerCode.Main.getCode()) {
+	if (mainPane.getLayer(componentList.get("BeachMini")) == LayerCode.MainMapTools.getCode()) {
       ((SceneBeachMini)scene).update();
       viewGame.updatePanel(scene.getSceneItems());
 	}

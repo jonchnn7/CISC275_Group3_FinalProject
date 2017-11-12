@@ -2,13 +2,12 @@ package cisc275.group3.utility;
 
 import java.util.ArrayList;
 
+/**
+ * @author Jolyne
+ */
 public enum SceneObjectType {
-	AlphaItem (new String[]{"camera"}),
-	AlphaFish (new String[]{"net"}),
-	CameraTool (null),
-	NetTool (null),
-	SampleTool (null),
-	TrimmerTool (null);
+	BetaItem (new String[]{"camera"}),
+	BetaFish (new String[]{"net"});
 	//Add in new sceneObjects here as they are created
 	
 	ArrayList<String> compatibleObjects;

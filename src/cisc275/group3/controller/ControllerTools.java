@@ -13,9 +13,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import cisc275.group3.model.scene.Scene;
+import cisc275.group3.model.sceneobject.ToolCamera;
+import cisc275.group3.model.sceneobject.ToolNet;
 import cisc275.group3.utility.LayerCode;
 import cisc275.group3.view.GameWindow;
-import cisc275.group3.view.SceneView;
 
 /**
  * The Tools controller is responsible for both the "model" and
@@ -29,10 +31,14 @@ import cisc275.group3.view.SceneView;
  * ControllerTool.java
  * <p>
  * @author Scott
+ * <p>
+ * @author Jolyne
  */
 public class ControllerTools extends ControllerScene {
 
   private JPanel toolPanel;
+  private JButton netButton;
+  private JButton cameraButton;
   private ImageIcon toolBg;
   
   public ControllerTools(int w, int h, GameWindow f, HashMap<String, Component> cl) {
@@ -44,11 +50,11 @@ public class ControllerTools extends ControllerScene {
   protected void createScene() {
     Dimension toolSize = new Dimension(75, 300);
     toolPanel = new JPanel(true) {
-    	 @Override
-         public void paintComponent(Graphics g) {
-           Dimension size = new Dimension(toolBg.getIconWidth(), toolBg.getIconHeight());
-           g.drawImage(toolBg.getImage(), 0, 0, size.width, size.height, this);
-         }
+      @Override
+      public void paintComponent(Graphics g) {
+        Dimension size = new Dimension(toolBg.getIconWidth(), toolBg.getIconHeight());
+        g.drawImage(toolBg.getImage(), 0, 0, size.width, size.height, this);
+      }
     };
     
     toolPanel.setLayout(null);
@@ -57,14 +63,50 @@ public class ControllerTools extends ControllerScene {
     toolPanel.setBackground(Color.orange);
     toolPanel.setOpaque(true);
    
-    //addMapButtons();
+    addToolButtons();
     
     mainPane.setLayer(toolPanel, LayerCode.Tools.getCode());
     mainPane.add(toolPanel, LayerCode.Tools.getCode());
     componentList.put("Tools", toolPanel);
   }
-
-  @Override
-  protected void addML() {
+  
+  private void addToolButtons() {
+    netButton = new JButton("NET");
+    netButton.setFont(new Font("Roboto", Font.BOLD, 18));
+    netButton.setBounds(0, 35, 75, 30);
+	    
+    netButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        Component toolComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Tools")))[0];
+	        
+        mainPane.setLayer(toolComponent, LayerCode.Tools.getCode());
+        if (Scene.getCurrentTool() instanceof ToolNet) {
+          Scene.setCurrentTool(null);
+        } else {
+          Scene.setCurrentTool(new ToolNet(0,0,0,0));
+        }
+      }
+    });
+    toolPanel.add(netButton);
+	    
+    cameraButton = new JButton("CMR");
+    cameraButton.setFont(new Font("Roboto", Font.BOLD, 18));
+    cameraButton.setBounds(0, 140, 75, 30);
+	    
+    cameraButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        Component toolComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Tools")))[0];
+	        
+        mainPane.setLayer(toolComponent, LayerCode.Tools.getCode());
+          if (Scene.getCurrentTool() instanceof ToolCamera) {
+            Scene.setCurrentTool(null);
+          } else {
+            Scene.setCurrentTool(new ToolCamera(0,0,0,0));
+          }
+        }
+      });
+      toolPanel.add(cameraButton);
+    }
   }
-}

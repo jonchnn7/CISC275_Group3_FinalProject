@@ -14,9 +14,7 @@ import cisc275.group3.utility.SceneId;
  * The bay scene implements scoring and timing functions 
  * via interface implementations. The ConstructFish 
  * interface holds component definitions for fish objects,
- * and static functions to return fish objects.
- * <p>
- * 
+ * and static functions to return fish objects. 
  * <p>
  * SceneBay.java
  * <p>

@@ -28,6 +28,8 @@ import cisc275.group3.view.SceneView;
  * ControllerBay.java
  * <p>
  * @author Scott
+ * <p>
+ * @author Jolyne
  */
 public class ControllerBay extends ControllerScene implements LinkDynamics {
   private final String BG_IMAGE = "img/bay_bg_1.jpg";
@@ -61,7 +63,6 @@ public class ControllerBay extends ControllerScene implements LinkDynamics {
         if (e.getButton() == MouseEvent.BUTTON1) {
           if ( scene.processClick(e.getX(), e.getY()) ) {
             ((SceneBay)scene).updateScore();
-            //sceneView.updateScore(((SceneBay)scene).getScore());
           }
         }
       }
@@ -77,7 +78,7 @@ public class ControllerBay extends ControllerScene implements LinkDynamics {
    */
   @Override
   public void update() {
-    if (mainPane.getLayer(componentList.get("Bay")) == LayerCode.Main.getCode()) {
+    if (mainPane.getLayer(componentList.get("Bay")) == LayerCode.MainMapTools.getCode()) {
       ((SceneBay)scene).update();
       viewGame.updatePanel(scene.getSceneItems());
     }

@@ -70,7 +70,7 @@ public class ControllerMap extends ControllerScene {
   private void addMapButtons() {
     bayButton = new JButton("BAY");
     bayButton.setFont(new Font("Roboto", Font.BOLD, 18));
-    bayButton.setBounds(95, 120, 70, 30);
+    bayButton.setBounds(95, 120, 75, 30);
     
     bayButton.addActionListener(new ActionListener() {
       @Override
@@ -80,7 +80,7 @@ public class ControllerMap extends ControllerScene {
         Component beachMiniComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("BeachMini")))[0];
         
         mainPane.setLayer(mapComponent, LayerCode.Map.getCode());
-        mainPane.setLayer(bayComponent, LayerCode.Main.getCode());
+        mainPane.setLayer(bayComponent, LayerCode.MainMapTools.getCode());
         mainPane.setLayer(beachMiniComponent, LayerCode.BeachMini.getCode());
       }
     });
@@ -99,7 +99,7 @@ public class ControllerMap extends ControllerScene {
         
         mainPane.setLayer(mapComponent, LayerCode.Map.getCode());
         mainPane.setLayer(bayComponent, LayerCode.Bay.getCode());
-        mainPane.setLayer(beachMiniComponent, LayerCode.Main.getCode());
+        mainPane.setLayer(beachMiniComponent, LayerCode.MainMapTools.getCode());
       }
     });
     mapPanel.add(beachMiniButton);
