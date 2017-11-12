@@ -37,8 +37,10 @@ public class ControllerBay extends ControllerScene implements LinkDynamics {
 
   @Override
   protected void createScene() {
-    scene = new SceneBay("Bay", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, "img/bay_bg_1.jpg", true, true);
-    viewGame = new ViewGame(SCREEN_WIDTH, SCREEN_HEIGHT, scene.getSceneItems(), Color.BLUE, scene.getManifest().getBG());
+    String sceneBg = "img/bay_bg_1.jpg";
+    
+    scene = new SceneBay("Bay", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, sceneBg);
+    viewGame = new ViewGame(SCREEN_WIDTH, SCREEN_HEIGHT, scene.getSceneItems(), scene.getManifest().getBG());
     
     viewGame.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
     viewGame.setBounds(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);

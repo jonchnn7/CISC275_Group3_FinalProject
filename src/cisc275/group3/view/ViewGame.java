@@ -1,6 +1,5 @@
 package cisc275.group3.view;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -23,20 +22,14 @@ public class ViewGame extends JPanel {
 	  
   private ArrayList<SceneObject> itemList;
   private BufferedImage currentImg;
-  private Color panelColor; 
   private String bgImage;
 	  
   @Override
   public void paint(Graphics g) {
     Graphics2D g2d = (Graphics2D) g.create();
-	    
-    // Draw Background
-    g2d.setColor(panelColor);
-    g2d.fillRect(0, 0, FRAME_WIDTH, FRAME_HEIGHT);
     
     // Draw Background Image
-    if (bgImage != "")
-      g2d.drawImage((new ImageIcon(bgImage).getImage()), 0, 0, FRAME_WIDTH, FRAME_HEIGHT, this);
+    g2d.drawImage((new ImageIcon(bgImage).getImage()), 0, 0, FRAME_WIDTH, FRAME_HEIGHT, this);
 	    
     // Draw SceneItems
     Collections.reverse(itemList);
@@ -51,22 +44,16 @@ public class ViewGame extends JPanel {
     g2d.dispose();
   }
 	  
-  public ViewGame (int w, int h, ArrayList<SceneObject> obList, Color sc) {
+  public ViewGame (int w, int h, ArrayList<SceneObject> obList, String bg) {
     super();
     // Display Parameters
     FRAME_HEIGHT = h;
     FRAME_WIDTH = w;
     itemList = obList;
-    panelColor = sc;
-    bgImage = "";
+    bgImage = bg;
     
     this.setPreferredSize(new Dimension(FRAME_WIDTH, FRAME_HEIGHT));
     this.setDoubleBuffered(true);
-  }
-  
-  public ViewGame (int w, int h, ArrayList<SceneObject> obList, Color sc, String bg) {
-    this(w, h, obList, sc);
-    bgImage = bg;
   }
 	  
   @SuppressWarnings("unchecked")
