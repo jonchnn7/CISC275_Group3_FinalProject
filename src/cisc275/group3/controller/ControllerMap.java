@@ -78,10 +78,13 @@ public class ControllerMap extends ControllerScene {
         Component mapComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Map")))[0];
         Component bayComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Bay")))[0];
         Component beachMiniComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("BeachMini")))[0];
+        Component titleComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Title")))[0];
         
         mainPane.setLayer(mapComponent, LayerCode.Map.getCode());
         mainPane.setLayer(bayComponent, LayerCode.MainMapTools.getCode());
         mainPane.setLayer(beachMiniComponent, LayerCode.BeachMini.getCode());
+        mainPane.setLayer(titleComponent, LayerCode.Title.getCode());
+
       }
     });
     mapPanel.add(bayButton);
@@ -96,10 +99,12 @@ public class ControllerMap extends ControllerScene {
         Component mapComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Map")))[0];
         Component bayComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Bay")))[0];
         Component beachMiniComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("BeachMini")))[0];
+        Component titleComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Title")))[0];
         
         mainPane.setLayer(mapComponent, LayerCode.Map.getCode());
         mainPane.setLayer(bayComponent, LayerCode.Bay.getCode());
         mainPane.setLayer(beachMiniComponent, LayerCode.MainMapTools.getCode());
+        mainPane.setLayer(titleComponent, LayerCode.Title.getCode());
       }
     });
     mapPanel.add(beachMiniButton);

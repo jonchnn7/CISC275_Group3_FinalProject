@@ -59,6 +59,9 @@ public class ControllerTitle extends ControllerScene {
     mainPane.setLayer(titlePanel, LayerCode.Title.getCode());
     mainPane.add(titlePanel, LayerCode.Title.getCode());
     
+    // Move title page to main layer
+    mainPane.setLayer(titlePanel, LayerCode.MainMapTools.getCode()); 
+    
     componentList.put("Title", titlePanel);
   }
 
