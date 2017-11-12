@@ -67,10 +67,13 @@ public abstract class Scene implements Serializable {
 	    	
       // Compatibility Check
       //if ((cursorName == "Crosshair Cursor") && (SceneObjectType.BetaFish.searchCompatability(currentTool.getName()))) {
-      if (sceneItem.itemClicked(clickX, clickY) && cursorName.equalsIgnoreCase("Net")) {
-        System.out.println("Clicked on: " + sceneItem.getPassport().getName());
-        iterator.remove();
-        return true;
+      if ((sceneItem instanceof BetaFish) && (currentTool != null) && (SceneObjectType.BetaFish.searchCompatability(currentTool.getName()))) {
+    	  if (sceneItem.itemClicked(clickX, clickY)) {
+    	  //if (sceneItem.itemClicked(clickX, clickY) && cursorName.equalsIgnoreCase("Net")) {
+    		  System.out.println("Clicked on: " + sceneItem.getPassport().getName());
+    		  iterator.remove();
+    		  return true;
+    	  }
       }
     }
     return false;
