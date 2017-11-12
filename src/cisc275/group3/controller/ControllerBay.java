@@ -61,7 +61,7 @@ public class ControllerBay extends ControllerScene implements LinkDynamics {
       @Override
       public void mousePressed(MouseEvent e) {
         if (e.getButton() == MouseEvent.BUTTON1) {
-          String cursorName = mainPane.getComponentsInLayer(LayerCode.MainMapTools.getCode())[0].getCursor().getName();
+          String cursorName = mainPane.getComponentsInLayer(LayerCode.MainAll.getCode())[0].getCursor().getName();
           if ( scene.processClick(e.getX(), e.getY(), cursorName) ) {
             ((SceneBay)scene).updateScore();
           }
@@ -79,7 +79,7 @@ public class ControllerBay extends ControllerScene implements LinkDynamics {
    */
   @Override
   public void update() {
-    if (mainPane.getLayer(componentList.get("Bay")) == LayerCode.MainMapTools.getCode()) {
+    if (mainPane.getLayer(componentList.get("Bay")) == LayerCode.MainAll.getCode()) {
       ((SceneBay)scene).update();
       viewGame.updatePanel(scene.getSceneItems());
     }

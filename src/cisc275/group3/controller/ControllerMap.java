@@ -81,7 +81,7 @@ public class ControllerMap extends ControllerScene {
         Component titleComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Title")))[0];
         
         mainPane.setLayer(mapComponent, LayerCode.Map.getCode());
-        mainPane.setLayer(bayComponent, LayerCode.MainMapTools.getCode());
+        mainPane.setLayer(bayComponent, LayerCode.MainAll.getCode());
         mainPane.setLayer(beachMiniComponent, LayerCode.BeachMini.getCode());
         mainPane.setLayer(titleComponent, LayerCode.Title.getCode());
 
@@ -103,7 +103,7 @@ public class ControllerMap extends ControllerScene {
         
         mainPane.setLayer(mapComponent, LayerCode.Map.getCode());
         mainPane.setLayer(bayComponent, LayerCode.Bay.getCode());
-        mainPane.setLayer(beachMiniComponent, LayerCode.MainMapTools.getCode());
+        mainPane.setLayer(beachMiniComponent, LayerCode.MainAll.getCode());
         mainPane.setLayer(titleComponent, LayerCode.Title.getCode());
       }
     });

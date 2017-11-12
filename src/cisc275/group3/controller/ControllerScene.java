@@ -87,7 +87,7 @@ public abstract class ControllerScene implements Serializable {
     viewGame.addMouseListener(new MouseAdapter() {
       public void mousePressed(MouseEvent e) {
         if (e.getButton() == MouseEvent.BUTTON1) {
-          String cursorName = mainPane.getComponentsInLayer(LayerCode.MainMapTools.getCode())[0].getCursor().getName();
+          String cursorName = mainPane.getComponentsInLayer(LayerCode.MainAll.getCode())[0].getCursor().getName();
           if ( scene.processClick(e.getX(), e.getY(), cursorName) ) {
             //scene.updateScore();
           }

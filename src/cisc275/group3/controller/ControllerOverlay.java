@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import cisc275.group3.utility.LayerCode;
 import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.ViewOverlayButton;
+import cisc275.group3.view.ViewOverlayLabel;
 
 /** 
  * Responsible for creating the interface overlay buttons/labels,
@@ -30,6 +31,13 @@ public class ControllerOverlay extends ControllerScene {
   private int toolsButtonWidth;
   private int toolsButtonHeight;
   private ViewOverlayButton toolsButtonPanel;
+  
+  private ImageIcon timeLabelBg;
+  private ImageIcon timeLabelImage;
+  private int timeLabelWidth;
+  private int timeLabelHeight;
+  private String timeLabelString;
+  private ViewOverlayLabel timeLabelPanel;
 
   /**
    * Default scene controller parameters. After they are 
@@ -54,6 +62,13 @@ public class ControllerOverlay extends ControllerScene {
     toolsButtonWidth = 107;
     toolsButtonHeight = 70;
     
+    timeLabelBg = new ImageIcon("img/time_bg.png");
+    timeLabelImage = new ImageIcon("img/clock_icon.png");
+    timeLabelWidth = 150;
+    timeLabelHeight = 85;
+    timeLabelString = "0";
+
+    
     createScene();
   }
 
@@ -67,6 +82,7 @@ public class ControllerOverlay extends ControllerScene {
   protected void createScene() {
     createMapButton();
     createToolsButton();
+    createTimeLabel();
   }
   
   /**
@@ -131,5 +147,21 @@ public class ControllerOverlay extends ControllerScene {
         }
       }
     });    
+  }
+  
+  /**
+   * Creates the time JPanel/JLabel combination
+   * and places it inside the game window at
+   * its defined layer. 
+   */
+  private void createTimeLabel() {
+    timeLabelPanel = new ViewOverlayLabel(timeLabelImage, timeLabelBg, timeLabelWidth, timeLabelHeight, timeLabelString);
+    timeLabelPanel.setBounds(SCREEN_WIDTH-2*timeLabelWidth, SCREEN_HEIGHT-timeLabelHeight, timeLabelWidth, timeLabelHeight);
+    timeLabelPanel.setName("TimeLabel");
+    
+    mainPane.setLayer(timeLabelPanel, LayerCode.TimeLabel.getCode());
+    mainPane.add(timeLabelPanel, LayerCode.TimeLabel.getCode());
+    
+    componentList.put("TimeLabel", timeLabelPanel);
   }
 }
