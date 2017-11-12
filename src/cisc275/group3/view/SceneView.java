@@ -28,7 +28,7 @@ import javax.swing.JToolBar;
 public class SceneView extends JPanel {
   private final int SCREEN_WIDTH;
   private final int SCREEN_HEIGHT;
-  private final SceneLayer SCENE_LAYER;
+  private final ViewGame SCENE_LAYER;
   
   private JButton mapButton;
   private JButton toolButton;
@@ -77,7 +77,7 @@ public class SceneView extends JPanel {
    * @param sl	SceneLayer-background
    * @param t	int-time
    */
-  public SceneView(int w, int h, SceneLayer sl, int t) {
+  public SceneView(int w, int h, ViewGame sl, int t) {
     super();
     this.setDoubleBuffered(true);
     
@@ -109,7 +109,7 @@ public class SceneView extends JPanel {
    * @param s	int-score
    * @param t	int-time
    */
-  public SceneView(int w, int h, SceneLayer sl, int s, int t) {
+  public SceneView(int w, int h, ViewGame sl, int s, int t) {
     super();
     this.setDoubleBuffered(true);
     
