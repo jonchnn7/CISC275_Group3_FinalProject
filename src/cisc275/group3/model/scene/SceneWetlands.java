@@ -1,8 +1,5 @@
 package cisc275.group3.model.scene;
 
-import java.awt.Color;
-
-import cisc275.group3.model.sceneobject.NavObject;
 import cisc275.group3.utility.SceneId;
 
 public class SceneWetlands extends Scene{

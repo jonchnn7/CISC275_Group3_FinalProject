@@ -1,11 +1,5 @@
 package cisc275.group3.model.scene;
 
-import java.awt.Color;
-import java.util.ArrayList;
-import java.util.Iterator;
-
-import cisc275.group3.model.sceneobject.NavObject;
-import cisc275.group3.model.sceneobject.SceneObject;
 import cisc275.group3.utility.SceneId;
 
 public class SceneHQ extends Scene implements PropertyScored, PropertyTimed {

@@ -1,14 +1,11 @@
 package cisc275.group3.model.scene;
 
-import java.awt.Color;
 import java.util.Collections;
 import java.util.Iterator;
 
 import cisc275.group3.model.sceneobject.BetaFish;
-import cisc275.group3.model.sceneobject.NavObject;
 import cisc275.group3.model.sceneobject.SceneObject;
 import cisc275.group3.utility.ConstructFish;
-import cisc275.group3.utility.ObjectId;
 import cisc275.group3.utility.SceneId;
 
 /**

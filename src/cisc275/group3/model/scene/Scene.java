@@ -1,10 +1,8 @@
 package cisc275.group3.model.scene;
 
-import cisc275.group3.model.sceneobject.NavObject;
 import cisc275.group3.model.sceneobject.SceneObject;
 import cisc275.group3.utility.SceneId;
 
-import java.awt.Color;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
