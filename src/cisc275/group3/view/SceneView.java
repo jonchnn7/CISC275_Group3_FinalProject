@@ -162,6 +162,7 @@ public class SceneView extends JPanel {
     scoreBar.setSize(150, 80);
     scoreBar.setBorder(null);
     scoreBar.setLocation(SCREEN_WIDTH-200, SCREEN_HEIGHT-90);
+    System.out.println("test");
   }
   
   /**

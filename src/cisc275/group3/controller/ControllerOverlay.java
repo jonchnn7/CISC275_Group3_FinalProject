@@ -74,7 +74,7 @@ public class ControllerOverlay extends ControllerScene {
     // Score Label Parameters
     scoreLabelBg = new ImageIcon("img/time_bg.png");
     scoreLabelImage = new ImageIcon("img/coins_icon.png");
-    scoreLabelWidth = 100;
+    scoreLabelWidth = 110;
     scoreLabelHeight = 70;
     scoreLabelString = "0";
     
