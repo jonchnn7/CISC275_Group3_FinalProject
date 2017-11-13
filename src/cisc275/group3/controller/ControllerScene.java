@@ -15,7 +15,6 @@ import cisc275.group3.model.scene.Scene;
 import cisc275.group3.utility.LayerCode;
 import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.ViewGame;
-import cisc275.group3.view.SceneView;
 
 /**
  * Abstract controller class for scene logic and actions. This
