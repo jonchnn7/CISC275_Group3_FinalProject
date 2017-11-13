@@ -10,6 +10,7 @@ import java.awt.event.MouseEvent;
 import java.util.HashMap;
 
 import cisc275.group3.model.scene.SceneBay;
+import cisc275.group3.model.scene.SceneWetland;
 import cisc275.group3.utility.LayerCode;
 import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.ViewGame;
@@ -41,7 +42,7 @@ public class ControllerWetland extends ControllerScene implements LinkDynamics, 
 
   @Override
   protected void createScene() {    
-    scene = new SceneBay("Wetland", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, BG_IMAGE);
+    scene = new SceneWetland("Wetland", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, BG_IMAGE);
     viewGame = new ViewGame(SCREEN_WIDTH, SCREEN_HEIGHT, scene.getSceneItems(), scene.getManifest().getBG());
     
 
@@ -67,7 +68,7 @@ public class ControllerWetland extends ControllerScene implements LinkDynamics, 
         	String cursorName = "";
 
           if ( scene.processClick(e.getX(), e.getY(), cursorName) ) {
-            ((SceneBay)scene).updateScore();
+            ((SceneWetland)scene).updateScore();
             displayScore();
           }
         }
@@ -86,7 +87,7 @@ public class ControllerWetland extends ControllerScene implements LinkDynamics, 
   public void update() {
     if (mainPane.getLayer(componentList.get("Wetland")) == LayerCode.MainAll.getCode()) {
       // Update Model
-      ((SceneBay)scene).update();
+      ((SceneWetland)scene).update();
       viewGame.updatePanel(scene.getSceneItems());
     }
   }
@@ -99,7 +100,7 @@ public class ControllerWetland extends ControllerScene implements LinkDynamics, 
    */
   @Override
   public void updateTime() {
-    ((SceneBay)scene).updateTime();
+    ((SceneWetland)scene).updateTime();
     
     if (mainPane.getLayer(componentList.get("Wetland")) == LayerCode.MainAll.getCode()) {
       displayTime();
@@ -116,7 +117,7 @@ public class ControllerWetland extends ControllerScene implements LinkDynamics, 
   public void displayTime() {
     String sceneTime;
     
-    sceneTime = Integer.toString(((SceneBay)scene).getTime());
+    sceneTime = Integer.toString(((SceneWetland)scene).getTime());
     ((ViewOverlayLabel)componentList.get("TimeLabel")).updateLabel(sceneTime);
   }
   
@@ -127,7 +128,7 @@ public class ControllerWetland extends ControllerScene implements LinkDynamics, 
   public void displayScore() {
     String sceneScore;
     
-    sceneScore = Integer.toString(((SceneBay)scene).getScore());
+    sceneScore = Integer.toString(((SceneWetland)scene).getScore());
     ((ViewOverlayLabel)componentList.get("ScoreLabel")).updateLabel(sceneScore);
   }
 }

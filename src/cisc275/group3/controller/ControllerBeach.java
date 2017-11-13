@@ -126,7 +126,7 @@ public class ControllerBeach extends ControllerScene implements LinkDynamics, Li
   public void displayScore() {
     String sceneScore;
     
-    sceneScore = Integer.toString(((SceneBay)scene).getScore());
+    sceneScore = Integer.toString(((SceneBeach)scene).getScore());
     ((ViewOverlayLabel)componentList.get("ScoreLabel")).updateLabel(sceneScore);
   }
 }

@@ -10,8 +10,8 @@ public enum LayerCode {
   ToolsButton(8), ToolsOverlay(7), MainMapTools(5), // Layers for Map + Tools + Game
   TimeLabel(4), MainMapToolsTime(3), // Layers for Map + Tools + Time + Game 
   ScoreLabel(2), MainAll(1), // Layers for Time + Score + Game with all the fixins
-  Bay(-1), Beach(-3), BeachMini(-4), HQ(-5), Inventory(-7), // "Hidden" Layers
-  Map(-9), Title(-10), Tools(-11), Wetland(-13); // "Hidden" Layers
+  Bay(-2), Beach(-3), BeachMini(-4), HQ(-5), Inventory(-7), // "Hidden" Layers
+  Map(-9), Title(-10), Tools(-11), Wetland(-1); // "Hidden" Layers
 
   private final int code;
   

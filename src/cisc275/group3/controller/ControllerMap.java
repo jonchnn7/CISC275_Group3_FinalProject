@@ -95,7 +95,7 @@ public class ControllerMap extends ControllerScene {
         Component beachMiniComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("BeachMini")))[0];
         Component titleComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Title")))[0];
         
-        mainPane.setLayer(mapCompbonent, LayerCode.Map.getCode());
+        mainPane.setLayer(mapComponent, LayerCode.Map.getCode());
         mainPane.setLayer(bayComponent, LayerCode.MainAll.getCode());
         mainPane.setLayer(beachComponent, LayerCode.MainAll.getCode());
         mainPane.setLayer(wetlandComponent, LayerCode.MainAll.getCode());
