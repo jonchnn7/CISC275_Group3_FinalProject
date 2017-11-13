@@ -94,7 +94,7 @@ public class ControllerMap extends ControllerScene {
         Component beachMiniComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("BeachMini")))[0];
         Component titleComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Title")))[0];
         
-        mainPane.setLayer(mapCompbonent, LayerCode.Map.getCode());
+        mainPane.setLayer(mapComponent, LayerCode.Map.getCode());
         mainPane.setLayer(bayComponent, LayerCode.MainAll.getCode());
         mainPane.setLayer(beachComponent, LayerCode.MainAll.getCode());
         mainPane.setLayer(wetlandComponent, LayerCode.MainAll.getCode());
@@ -105,6 +105,51 @@ public class ControllerMap extends ControllerScene {
 
       }
     });
+    
+    beachButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        Component mapComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Map")))[0];
+        Component bayComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Bay")))[0];
+        Component beachComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Beach")))[0];
+          Component wetlandComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Wetland")))[0];
+          Component beachMiniComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("BeachMini")))[0];
+          Component titleComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Title")))[0];
+          
+          mainPane.setLayer(mapComponent, LayerCode.Map.getCode());
+          mainPane.setLayer(bayComponent, LayerCode.Bay.getCode());
+          mainPane.setLayer(beachComponent, LayerCode.MainAll.getCode());
+          mainPane.setLayer(wetlandComponent, LayerCode.Wetland.getCode());
+          mainPane.setLayer(beachMiniComponent, LayerCode.BeachMini.getCode());
+          mainPane.setLayer(titleComponent, LayerCode.Title.getCode());
+          
+          Scene.setCurrentTool(null);
+
+        }
+      });
+    
+    wetlandButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+          Component mapComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Map")))[0];
+          Component bayComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Bay")))[0];
+          Component beachComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Beach")))[0];
+          Component wetlandComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Wetland")))[0];
+          Component beachMiniComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("BeachMini")))[0];
+          Component titleComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Title")))[0];
+          
+          mainPane.setLayer(mapComponent, LayerCode.Map.getCode());
+          mainPane.setLayer(bayComponent, LayerCode.Bay.getCode());
+          mainPane.setLayer(beachComponent, LayerCode.Beach.getCode());
+          mainPane.setLayer(wetlandComponent, LayerCode.MainAll.getCode());
+          mainPane.setLayer(beachMiniComponent, LayerCode.BeachMini.getCode());
+          mainPane.setLayer(titleComponent, LayerCode.Title.getCode());
+          
+          Scene.setCurrentTool(null);
+
+        }
+      });
+    
     mapPanel.add(bayButton);
     mapPanel.add(beachButton);
     mapPanel.add(wetlandButton);
