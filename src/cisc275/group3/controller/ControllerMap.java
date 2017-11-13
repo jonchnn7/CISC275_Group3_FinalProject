@@ -13,6 +13,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import cisc275.group3.model.scene.Scene;
 import cisc275.group3.model.scene.SceneBay;
 import cisc275.group3.utility.LayerCode;
 import cisc275.group3.view.GameWindow;
@@ -86,6 +87,8 @@ public class ControllerMap extends ControllerScene {
         mainPane.setLayer(bayComponent, LayerCode.MainAll.getCode());
         mainPane.setLayer(beachMiniComponent, LayerCode.BeachMini.getCode());
         mainPane.setLayer(titleComponent, LayerCode.Title.getCode());
+        
+        Scene.setCurrentTool(null);
 
       }
     });
@@ -107,6 +110,8 @@ public class ControllerMap extends ControllerScene {
         mainPane.setLayer(bayComponent, LayerCode.Bay.getCode());
         mainPane.setLayer(beachMiniComponent, LayerCode.MainMapToolsTime.getCode());
         mainPane.setLayer(titleComponent, LayerCode.Title.getCode());
+        
+        Scene.setCurrentTool(null);
       }
     });
     mapPanel.add(beachMiniButton);
