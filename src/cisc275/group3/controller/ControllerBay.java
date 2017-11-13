@@ -13,6 +13,7 @@ import cisc275.group3.model.scene.SceneBay;
 import cisc275.group3.utility.LayerCode;
 import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.ViewGame;
+import cisc275.group3.view.ViewOverlayLabel;
 import cisc275.group3.view.SceneView;
 
 /**
@@ -31,7 +32,7 @@ import cisc275.group3.view.SceneView;
  * <p>
  * @author Jolyne
  */
-public class ControllerBay extends ControllerScene implements LinkDynamics {
+public class ControllerBay extends ControllerScene implements LinkDynamics, LinkTime {
   private final String BG_IMAGE = "img/bay_bg_1.jpg";
   
   public ControllerBay(int w, int h, GameWindow f, HashMap<String, Component> cl) {
@@ -83,20 +84,38 @@ public class ControllerBay extends ControllerScene implements LinkDynamics {
   @Override
   public void update() {
     if (mainPane.getLayer(componentList.get("Bay")) == LayerCode.MainAll.getCode()) {
+      // Update Model
       ((SceneBay)scene).update();
       viewGame.updatePanel(scene.getSceneItems());
     }
   }
 
   /**
-   * Updates the model's time variable and shares it with
-   * the view.
+   * Updates the model's time variable and calls
+   * displayTime() to share it with the view.
    * <p>
    * Overridden from interface LinkTime.java
    */
-/*  public void updateTime() {
+  @Override
+  public void updateTime() {
     ((SceneBay)scene).updateTime();
-    sceneView.updateTime(((SceneBay)scene).getTime());
+    
+    if (mainPane.getLayer(componentList.get("Bay")) == LayerCode.MainAll.getCode()) {
+      displayTime();
+    }
   }
-*/
+  
+  /**
+   * Displays the model time in the shared time 
+   * label.
+   * <p>
+   * Overridden from interface LinkTime.java
+   */
+  @Override
+  public void displayTime() {
+    String sceneTime;
+    
+    sceneTime = Integer.toString(((SceneBay)scene).getTime());
+    ((ViewOverlayLabel)componentList.get("TimeLabel")).updateLabel(sceneTime);
+  }
 }

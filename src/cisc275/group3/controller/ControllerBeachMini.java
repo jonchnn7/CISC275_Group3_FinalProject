@@ -9,10 +9,12 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.HashMap;
 
+import cisc275.group3.model.scene.SceneBay;
 import cisc275.group3.model.scene.SceneBeachMini;
 import cisc275.group3.utility.LayerCode;
 import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.ViewGame;
+import cisc275.group3.view.ViewOverlayLabel;
 import cisc275.group3.view.SceneView;
 
 /**
@@ -29,7 +31,7 @@ import cisc275.group3.view.SceneView;
  * <p>
  * @author Scott
  */
-public class ControllerBeachMini extends ControllerScene implements LinkDynamics {
+public class ControllerBeachMini extends ControllerScene implements LinkDynamics, LinkTime {
   private final String BG_IMAGE = "img/beach_sand_bg.png";
   
   public ControllerBeachMini(int w, int h, GameWindow f, HashMap<String, Component> cl) {
@@ -95,9 +97,26 @@ public class ControllerBeachMini extends ControllerScene implements LinkDynamics
    * <p>
    * Overridden from interface LinkTime.java
    */
- /* @Override
+  @Override
   public void updateTime() {
     ((SceneBeachMini)scene).updateTime();
-    viewGame.updateTime(((SceneBeachMini)scene).getTime());
-  }*/
+      
+    if (mainPane.getLayer(componentList.get("BeachMini")) == LayerCode.MainAll.getCode()) {
+      displayTime();
+    }
+  }
+    
+  /**
+   * Displays the model time in the shared time 
+   * label.
+   * <p>
+   * Overridden from interface LinkTime.java
+   */
+  @Override
+  public void displayTime() {
+    String sceneTime;
+    
+    sceneTime = Integer.toString(((SceneBeachMini)scene).getTime());
+    ((ViewOverlayLabel)componentList.get("TimeLabel")).updateLabel(sceneTime);
+  }
 }

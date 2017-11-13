@@ -73,11 +73,11 @@ public class GameController implements Serializable {
         controlMap.forEach((k,v)->{
           if (k == "Bay") {
             ((ControllerBay)v).update();
-            //if (totalTime % 1000 == 0) { ((ControllerBay)v).updateTime(); }
+            if (totalTime % 1000 == 0) { ((ControllerBay)v).updateTime(); }
          
           } else if (k == "BeachMini") {
             ((ControllerBeachMini)v).update();
-            //if (totalTime % 1000 == 0) { ((ControllerBeachMini)v).updateTime(); }              
+            if (totalTime % 1000 == 0) { ((ControllerBeachMini)v).updateTime(); }              
           }  
         });
         totalTime += 100;

@@ -4,25 +4,16 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Insets;
-
-import javax.swing.Box;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
-import javax.swing.JToolBar;
 
 /**
- * Creates a JButton to be used in the construction
+ * Creates a JLabel to be used in the construction
  * of the game's overlay menu. The minimum requirements
- * are an ImageIcon to use as the button and its
- * corresponding width and height. Optionally, an
- * additional ImageIcon can be used as the button's
- * rollover icon.
+ * are an 
  * <p>
- * ViewOverlayButton.java
+ * ViewOverlayLabel.java
  * <p>
  * @author Scott
  */
@@ -72,7 +63,7 @@ public class ViewOverlayLabel extends JPanel {
     
     labelString = s;
     
-    overLabel = new JLabel(labelString, LABEL_IMAGE, JLabel.CENTER);
+    overLabel = new JLabel(labelString, LABEL_IMAGE, JLabel.LEFT);
     
     setLabelProperties();
   }
@@ -94,7 +85,7 @@ public class ViewOverlayLabel extends JPanel {
     
     labelString = s;
     
-    overLabel = new JLabel(labelString, LABEL_IMAGE, JLabel.CENTER){
+    overLabel = new JLabel(labelString, LABEL_IMAGE, JLabel.LEFT){
       public void paintComponent(Graphics g) {
         g.drawImage(LABEL_BG_IMAGE.getImage(), 0, 0, LABEL_WIDTH, LABEL_HEIGHT, this);
         super.paintComponent(g);
@@ -126,11 +117,10 @@ public class ViewOverlayLabel extends JPanel {
   }
   
   /**
-   * Returns pointer to the button. Allows the 
-   * controller to create the button action
-   * @return pointer to JButton
+   * Allows label text to be updated
+   * @param upText  String-new label text
    */
-  public JLabel getOverLabel() {
-    return overLabel;
+  public void updateLabel(String upText) {
+    overLabel.setText(upText);;
   }
 }

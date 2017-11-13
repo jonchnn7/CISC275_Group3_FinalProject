@@ -38,8 +38,6 @@ public abstract class ControllerScene implements Serializable {
   protected static HashMap<String, Component> componentList;
   
   // Window Components
-  private JButton mapButton;
-  private JButton toolButton;
   protected JLayeredPane mainPane;
   
   /**
@@ -95,29 +93,4 @@ public abstract class ControllerScene implements Serializable {
       }
     });
   }
-  
-  
-  /**
-   * Grabs the tool menu button and adds an action. If the toolbox 
-   * is currently in the toolbox layer, move it to the overlay layer.
-   * Otherwise, do the opposite to hide it.
-   */
-/*  protected void addToolMenuButton() {
-    toolButton = sceneView.getToolButton();
-	    
-    toolButton.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        Component toolComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Tools")))[0];
-        
-        
-        if (mainPane.getLayer(toolComponent) == LayerCode.Tools.getCode()) {
-          mainPane.setLayer(toolComponent, LayerCode.OverlayTools.getCode()); 
-        } else {
-          mainPane.setLayer(toolComponent, LayerCode.Tools.getCode());
-        }
-      }
-    });
-  }
-*/
 }
