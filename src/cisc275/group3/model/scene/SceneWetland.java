@@ -9,20 +9,20 @@ import cisc275.group3.utility.ConstructFish;
 import cisc275.group3.utility.SceneId;
 
 /**
- * Beach scene/model. 
+ * Wetland scene/model. 
  * <p>
- * The beach scene implements scoring and timing functions 
+ * The Wetland scene implements scoring and timing functions 
  * via interface implementations. The ConstructFish 
  * interface holds component definitions for fish objects,
  * and static functions to return fish objects. 
  * <p>
- * SceneBeach.java
+ * SceneWetland.java
  * <p>
- * @author Scott
+ * @author Ryan
  */
-public class SceneBeach extends Scene implements ConstructFish, PropertyScored, PropertyTimed {
+public class SceneWetland extends Scene implements ConstructFish, PropertyScored, PropertyTimed {
 
-  public SceneBeach(SceneId mani) {
+  public SceneWetland(SceneId mani) {
     super(mani);
     time = 350;
 
@@ -32,7 +32,7 @@ public class SceneBeach extends Scene implements ConstructFish, PropertyScored, 
   /**
    * Used when SceneId must also be created
    */ 
-  public SceneBeach(String n, double x, double y, double w, double h, String bg) {
+  public SceneWetland(String n, double x, double y, double w, double h, String bg) {
     this(new SceneId(n, x, y, w, h, bg));
   }
   

@@ -38,6 +38,8 @@ public class ControllerMap extends ControllerScene {
 
   private JPanel mapPanel;
   private JButton bayButton;
+  private JButton beachButton;
+  private JButton wetlandButton;
   private JButton beachMiniButton;
   private ImageIcon mapBg;
   
@@ -72,19 +74,31 @@ public class ControllerMap extends ControllerScene {
   
   private void addMapButtons() {
     bayButton = new JButton("BAY");
-    bayButton.setFont(new Font("Roboto", Font.BOLD, 18));
+    bayButton.setFont(new Font("Roboto", Font.BOLD, 10));
     bayButton.setBounds(95, 120, 75, 30);
+    
+    beachButton = new JButton("Beach");
+    beachButton.setFont(new Font("Roboto", Font.BOLD, 10));
+    beachButton.setBounds(95, 160, 75, 30);
+    
+    wetlandButton = new JButton("Wetland");
+    wetlandButton.setFont(new Font("Roboto", Font.BOLD, 10));
+    wetlandButton.setBounds(95, 200, 75, 30);
     
     bayButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
         Component mapComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Map")))[0];
         Component bayComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Bay")))[0];
+        Component beachComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Beach")))[0];
+        Component wetlandComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Wetland")))[0];
         Component beachMiniComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("BeachMini")))[0];
         Component titleComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Title")))[0];
         
-        mainPane.setLayer(mapComponent, LayerCode.Map.getCode());
+        mainPane.setLayer(mapCompbonent, LayerCode.Map.getCode());
         mainPane.setLayer(bayComponent, LayerCode.MainAll.getCode());
+        mainPane.setLayer(beachComponent, LayerCode.MainAll.getCode());
+        mainPane.setLayer(wetlandComponent, LayerCode.MainAll.getCode());
         mainPane.setLayer(beachMiniComponent, LayerCode.BeachMini.getCode());
         mainPane.setLayer(titleComponent, LayerCode.Title.getCode());
         
@@ -93,6 +107,8 @@ public class ControllerMap extends ControllerScene {
       }
     });
     mapPanel.add(bayButton);
+    mapPanel.add(beachButton);
+    mapPanel.add(wetlandButton);
     
     beachMiniButton = new JButton("BEACH MINIGAME");
     beachMiniButton.setFont(new Font("Roboto", Font.BOLD, 14));
@@ -103,11 +119,15 @@ public class ControllerMap extends ControllerScene {
       public void actionPerformed(ActionEvent e) {
         Component mapComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Map")))[0];
         Component bayComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Bay")))[0];
+        Component beachComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Beach")))[0];
+        Component wetlandComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Wetland")))[0];
         Component beachMiniComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("BeachMini")))[0];
         Component titleComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Title")))[0];
         
         mainPane.setLayer(mapComponent, LayerCode.Map.getCode());
         mainPane.setLayer(bayComponent, LayerCode.Bay.getCode());
+        mainPane.setLayer(beachComponent, LayerCode.Beach.getCode());
+        mainPane.setLayer(wetlandComponent, LayerCode.Wetland.getCode());
         mainPane.setLayer(beachMiniComponent, LayerCode.MainMapToolsTime.getCode());
         mainPane.setLayer(titleComponent, LayerCode.Title.getCode());
         

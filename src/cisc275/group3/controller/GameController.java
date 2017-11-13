@@ -64,6 +64,8 @@ public class GameController implements Serializable {
   private void initGame() {
     controlMap.put("Title", new ControllerTitle(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap));
     controlMap.put("Bay", new ControllerBay(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap));
+    controlMap.put("Beach", new ControllerBeach(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap));
+    controlMap.put("Wetland", new ControllerWetland(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap));
     controlMap.put("BeachMini", new ControllerBeachMini(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap));
     controlMap.put("Map", new ControllerMap(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap));
     controlMap.put("Overlay", new ControllerOverlay(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap));
@@ -83,7 +85,17 @@ public class GameController implements Serializable {
             ((ControllerBay)v).update();
             if (totalTime % 1000 == 0) { ((ControllerBay)v).updateTime(); }
          
-          } else if (k == "BeachMini") {
+          }
+          if (k == "Beach") {
+              ((ControllerBeach)v).update();
+              if (totalTime % 1000 == 0) { ((ControllerBeach)v).updateTime(); }
+           
+            }
+          if (k == "Wetland") {
+              ((ControllerWetland)v).update();
+              if (totalTime % 1000 == 0) { ((ControllerWetland)v).updateTime(); }
+           
+            }else if (k == "BeachMini") {
             ((ControllerBeachMini)v).update();
             if (totalTime % 1000 == 0) { ((ControllerBeachMini)v).updateTime(); }              
           }  
