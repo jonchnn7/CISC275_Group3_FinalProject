@@ -93,8 +93,8 @@ public class ControllerTools extends ControllerScene {
           Toolkit toolkit = Toolkit.getDefaultToolkit();
           Image image = toolkit.getImage("img/fence_net_mouse.png");
 
-          Cursor netCursor = toolkit.createCustomCursor(image , new Point(mainPane.getX()+50, 
-                     mainPane.getY()+50), "Net");
+          Cursor netCursor = toolkit.createCustomCursor(image , new Point(mainPane.getX()+image.getWidth(null)/2, 
+                     mainPane.getY()+image.getHeight(null)/2), "Net");
           mainPane.getComponentsInLayer(LayerCode.MainAll.getCode())[0].setCursor(netCursor);
 
         }

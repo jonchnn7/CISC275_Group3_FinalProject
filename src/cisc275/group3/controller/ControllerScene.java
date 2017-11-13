@@ -1,8 +1,9 @@
 package cisc275.group3.controller;
 
-import javax.swing.JButton;
-import javax.swing.JLayeredPane;
-
+import cisc275.group3.model.scene.Scene;
+import cisc275.group3.utility.LayerCode;
+import cisc275.group3.view.GameWindow;
+import cisc275.group3.view.ViewGame;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,12 +11,8 @@ import java.awt.event.MouseAdapter;
 import java.util.HashMap;
 import java.awt.event.MouseEvent;
 import java.io.Serializable;
-
-import cisc275.group3.model.scene.Scene;
-import cisc275.group3.utility.LayerCode;
-import cisc275.group3.view.GameWindow;
-import cisc275.group3.view.ViewGame;
-import cisc275.group3.view.SceneView;
+import javax.swing.JButton;
+import javax.swing.JLayeredPane;
 
 /**
  * Abstract controller class for scene logic and actions. This

@@ -14,7 +14,6 @@ import cisc275.group3.utility.LayerCode;
 import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.ViewGame;
 import cisc275.group3.view.ViewOverlayLabel;
-import cisc275.group3.view.SceneView;
 
 /**
  * Contains the controller actions and logic for SceneBay.java.

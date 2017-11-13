@@ -60,7 +60,11 @@ public class GameController implements Serializable {
     layerMap = new HashMap<String, Component>();
     initGame();
   }
-    
+  
+  /**
+   * Initializes the game by creating the 
+   * individual scenes and p
+   */
   private void initGame() {
     controlMap.put("Title", new ControllerTitle(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap));
     controlMap.put("Bay", new ControllerBay(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap));
@@ -70,6 +74,8 @@ public class GameController implements Serializable {
     controlMap.put("Map", new ControllerMap(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap));
     controlMap.put("Overlay", new ControllerOverlay(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap));
     controlMap.put("Tools", new ControllerTools(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap));
+
+ 
     gameTime();
   }
     
