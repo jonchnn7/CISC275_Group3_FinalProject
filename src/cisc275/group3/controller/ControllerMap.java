@@ -105,7 +105,7 @@ public class ControllerMap extends ControllerScene {
         
         mainPane.setLayer(mapComponent, LayerCode.Map.getCode());
         mainPane.setLayer(bayComponent, LayerCode.Bay.getCode());
-        mainPane.setLayer(beachMiniComponent, LayerCode.MainToolsTime.getCode());
+        mainPane.setLayer(beachMiniComponent, LayerCode.MainMapToolsTime.getCode());
         mainPane.setLayer(titleComponent, LayerCode.Title.getCode());
       }
     });

@@ -85,7 +85,7 @@ public class ControllerBeachMini extends ControllerScene implements LinkDynamics
    */
   @Override
   public void update() {
-	if (mainPane.getLayer(componentList.get("BeachMini")) == LayerCode.MainToolsTime.getCode()) {
+	if (mainPane.getLayer(componentList.get("BeachMini")) == LayerCode.MainMapToolsTime.getCode()) {
       ((SceneBeachMini)scene).update();
       viewGame.updatePanel(scene.getSceneItems());
 	}
@@ -101,7 +101,7 @@ public class ControllerBeachMini extends ControllerScene implements LinkDynamics
   public void updateTime() {
     ((SceneBeachMini)scene).updateTime();
       
-    if (mainPane.getLayer(componentList.get("BeachMini")) == LayerCode.MainToolsTime.getCode()) {
+    if (mainPane.getLayer(componentList.get("BeachMini")) == LayerCode.MainMapToolsTime.getCode()) {
       displayTime();
     }
   }
