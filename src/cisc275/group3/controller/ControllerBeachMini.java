@@ -85,7 +85,7 @@ public class ControllerBeachMini extends ControllerScene implements LinkDynamics
    */
   @Override
   public void update() {
-	if (mainPane.getLayer(componentList.get("BeachMini")) == LayerCode.MainAll.getCode()) {
+	if (mainPane.getLayer(componentList.get("BeachMini")) == LayerCode.MainToolsTime.getCode()) {
       ((SceneBeachMini)scene).update();
       viewGame.updatePanel(scene.getSceneItems());
 	}
@@ -101,7 +101,7 @@ public class ControllerBeachMini extends ControllerScene implements LinkDynamics
   public void updateTime() {
     ((SceneBeachMini)scene).updateTime();
       
-    if (mainPane.getLayer(componentList.get("BeachMini")) == LayerCode.MainAll.getCode()) {
+    if (mainPane.getLayer(componentList.get("BeachMini")) == LayerCode.MainToolsTime.getCode()) {
       displayTime();
     }
   }
@@ -119,4 +119,15 @@ public class ControllerBeachMini extends ControllerScene implements LinkDynamics
     sceneTime = Integer.toString(((SceneBeachMini)scene).getTime());
     ((ViewOverlayLabel)componentList.get("TimeLabel")).updateLabel(sceneTime);
   }
+  
+  /**
+   * Displays the model score in the shared score 
+   * label.
+   */
+  /*public void displayScore() {
+    String sceneScore;
+    
+    sceneScore = Integer.toString(((SceneBeachMini)scene).getScore());
+    ((ViewOverlayLabel)componentList.get("ScoreLabel")).updateLabel(sceneScore);
+  }*/
 }

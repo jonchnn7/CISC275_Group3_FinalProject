@@ -38,6 +38,13 @@ public class ControllerOverlay extends ControllerScene {
   private int timeLabelHeight;
   private String timeLabelString;
   private ViewOverlayLabel timeLabelPanel;
+  
+  private ImageIcon scoreLabelBg;
+  private ImageIcon scoreLabelImage;
+  private int scoreLabelWidth;
+  private int scoreLabelHeight;
+  private String scoreLabelString;
+  private ViewOverlayLabel scoreLabelPanel;
 
   /**
    * Default scene controller parameters. After they are 
@@ -52,16 +59,26 @@ public class ControllerOverlay extends ControllerScene {
   public ControllerOverlay(int w, int h, GameWindow f, HashMap<String, Component> cl) {
     super(w, h, f, cl);
     
+    // Map Button Parameters
     mapButtonImage = new ImageIcon("img/map_icon.png");
     mapButtonRolloverImage = new ImageIcon("img/map_icon_invert.png");
     mapButtonWidth = 75;
     mapButtonHeight = 75;
     
+    // Tool Button Parameters
     toolsButtonImage = new ImageIcon("img/toolbox_menu.png");
     toolsButtonRolloverImage = new ImageIcon("img/toolbox_menu_invert.png");
     toolsButtonWidth = 107;
     toolsButtonHeight = 70;
     
+    // Score Label Parameters
+    scoreLabelBg = new ImageIcon("img/time_bg.png");
+    scoreLabelImage = new ImageIcon("img/coins_icon.png");
+    scoreLabelWidth = 100;
+    scoreLabelHeight = 70;
+    scoreLabelString = "0";
+    
+    // Time Label Parameters
     timeLabelBg = new ImageIcon("img/time_bg.png");
     timeLabelImage = new ImageIcon("img/clock_icon.png");
     timeLabelWidth = 150;
@@ -80,8 +97,12 @@ public class ControllerOverlay extends ControllerScene {
    */
   @Override
   protected void createScene() {
+    // Create Buttons
     createMapButton();
     createToolsButton();
+    
+    // Create Labels
+    createScoreLabel();
     createTimeLabel();
   }
   
@@ -150,13 +171,29 @@ public class ControllerOverlay extends ControllerScene {
   }
   
   /**
+   * Creates the score JPanel/JLabel combination
+   * and places it inside the game window at
+   * its defined layer. 
+   */
+  private void createScoreLabel() {
+    scoreLabelPanel = new ViewOverlayLabel(scoreLabelImage, scoreLabelBg, scoreLabelWidth, scoreLabelHeight, scoreLabelString);
+    scoreLabelPanel.setBounds(SCREEN_WIDTH-2*scoreLabelWidth, SCREEN_HEIGHT-scoreLabelHeight, scoreLabelWidth, scoreLabelHeight);
+    scoreLabelPanel.setName("ScoreLabel");
+    
+    mainPane.setLayer(scoreLabelPanel, LayerCode.ScoreLabel.getCode());
+    mainPane.add(scoreLabelPanel, LayerCode.ScoreLabel.getCode());
+    
+    componentList.put("ScoreLabel", scoreLabelPanel);
+  }
+  
+  /**
    * Creates the time JPanel/JLabel combination
    * and places it inside the game window at
    * its defined layer. 
    */
   private void createTimeLabel() {
     timeLabelPanel = new ViewOverlayLabel(timeLabelImage, timeLabelBg, timeLabelWidth, timeLabelHeight, timeLabelString);
-    timeLabelPanel.setBounds(SCREEN_WIDTH-2*timeLabelWidth, SCREEN_HEIGHT-timeLabelHeight, timeLabelWidth, timeLabelHeight);
+    timeLabelPanel.setBounds((SCREEN_WIDTH-timeLabelWidth)/2, SCREEN_HEIGHT-timeLabelHeight, timeLabelWidth, timeLabelHeight);
     timeLabelPanel.setName("TimeLabel");
     
     mainPane.setLayer(timeLabelPanel, LayerCode.TimeLabel.getCode());

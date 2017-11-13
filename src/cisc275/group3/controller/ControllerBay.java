@@ -68,6 +68,7 @@ public class ControllerBay extends ControllerScene implements LinkDynamics, Link
 
           if ( scene.processClick(e.getX(), e.getY(), cursorName) ) {
             ((SceneBay)scene).updateScore();
+            displayScore();
           }
         }
       }
@@ -117,5 +118,16 @@ public class ControllerBay extends ControllerScene implements LinkDynamics, Link
     
     sceneTime = Integer.toString(((SceneBay)scene).getTime());
     ((ViewOverlayLabel)componentList.get("TimeLabel")).updateLabel(sceneTime);
+  }
+  
+  /**
+   * Displays the model score in the shared score 
+   * label.
+   */
+  public void displayScore() {
+    String sceneScore;
+    
+    sceneScore = Integer.toString(((SceneBay)scene).getScore());
+    ((ViewOverlayLabel)componentList.get("ScoreLabel")).updateLabel(sceneScore);
   }
 }
