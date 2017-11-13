@@ -40,6 +40,14 @@ public class GameController implements Serializable {
   private HashMap<String, ControllerScene> controlMap;
   private HashMap<String, Component> layerMap;
   
+  /**
+   * Creates the overarching controller responsible for
+   * tracking the individual game scenes. The input 
+   * parameters set the screen dimensions, which can
+   * then be passed to each scene.
+   * @param x   int-Window width
+   * @param y   int-Window height
+   */
   public GameController(int x, int y) {
     SCREEN_WIDTH = x;
     SCREEN_HEIGHT = y;

@@ -66,7 +66,6 @@ public abstract class Scene implements Serializable {
       SceneObject sceneItem = iterator.next();
 	    	
       // Compatibility Check
-      //if ((cursorName == "Crosshair Cursor") && (SceneObjectType.BetaFish.searchCompatability(currentTool.getName()))) {
       if ((sceneItem instanceof BetaFish) && (currentTool != null) && (SceneObjectType.BetaFish.searchCompatability(currentTool.getName()))) {
     	  if (sceneItem.itemClicked(clickX, clickY)) {
     	  //if (sceneItem.itemClicked(clickX, clickY) && cursorName.equalsIgnoreCase("Net")) {
