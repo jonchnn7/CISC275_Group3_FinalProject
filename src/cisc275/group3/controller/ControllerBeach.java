@@ -31,7 +31,8 @@ import cisc275.group3.view.ViewOverlayLabel;
  * @author Ryan
  */
 public class ControllerBeach extends ControllerScene implements LinkDynamics, LinkTime {
-  private final String BG_IMAGE = "img/beachBackground.png";
+  private final String BG_IMAGE = "img/beach_bg.jpg";
+
   
   public ControllerBeach(int w, int h, GameWindow f, HashMap<String, Component> cl) {
     super(w, h, f, cl);
