@@ -33,7 +33,7 @@ import cisc275.group3.view.ViewOverlayLabel;
  * @author Jolyne
  */
 public class ControllerWetland extends ControllerScene implements LinkDynamics, LinkTime {
-  private final String BG_IMAGE = "img/bay_bg_1.jpg";
+  private final String BG_IMAGE = "img/wetland_bg.jpg";
   
   public ControllerWetland(int w, int h, GameWindow f, HashMap<String, Component> cl) {
     super(w, h, f, cl);
