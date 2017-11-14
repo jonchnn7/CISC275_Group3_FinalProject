@@ -78,7 +78,7 @@ public class ControllerTools extends ControllerScene {
     netButton = new JButton("NET");
     netButton.setFont(new Font("Roboto", Font.BOLD, 18));
     netButton.setBounds(0, 35, 75, 30);
-	    
+	
     netButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
@@ -88,13 +88,16 @@ public class ControllerTools extends ControllerScene {
         if (Scene.getCurrentTool() instanceof ToolNet) {
           Scene.setCurrentTool(null);
           mainPane.getComponentsInLayer(LayerCode.MainAll.getCode())[0].setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-        } else {
+        }
+        else {
           Scene.setCurrentTool(new ToolNet(0,0,0,0));
           Toolkit toolkit = Toolkit.getDefaultToolkit();
           Image image = toolkit.getImage("img/fence_net_mouse.png");
-
-          Cursor netCursor = toolkit.createCustomCursor(image , new Point(mainPane.getX()+image.getWidth(null)/2, 
-                     mainPane.getY()+image.getHeight(null)/2), "Net");
+          //attempting to calculate hotspot off of image size (does not work for windows)
+//          Cursor netCursor = toolkit.createCustomCursor(image , new Point(mainPane.getX()+image.getWidth(null)/2, 
+//                     mainPane.getY()+image.getHeight(null)/2), "Net");
+          //Set hotspot point to 16,16 because default size is 32,32
+          Cursor netCursor = toolkit.createCustomCursor(image , new Point(16,16), "Net");
           mainPane.getComponentsInLayer(LayerCode.MainAll.getCode())[0].setCursor(netCursor);
 
         }
@@ -114,9 +117,15 @@ public class ControllerTools extends ControllerScene {
         mainPane.setLayer(toolComponent, LayerCode.Tools.getCode());
           if (Scene.getCurrentTool() instanceof ToolCamera) {
             Scene.setCurrentTool(null);
-          } else {
-            Scene.setCurrentTool(new ToolCamera(0,0,0,0));
-          }
+            mainPane.getComponentsInLayer(LayerCode.MainAll.getCode())[0].setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+          } 
+          else {
+              Scene.setCurrentTool(new ToolCamera(0,0,0,0));
+              Toolkit toolkit = Toolkit.getDefaultToolkit();
+              Image image = toolkit.getImage("img/hammer.png");
+              //Hotspot/Point values were calculated off of image size
+              Cursor cmrCursor = toolkit.createCustomCursor(image , new Point(16,16), "Camera");
+              mainPane.getComponentsInLayer(LayerCode.MainAll.getCode())[0].setCursor(cmrCursor);          }
         }
       });
       toolPanel.add(cameraButton);
