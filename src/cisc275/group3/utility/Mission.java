@@ -70,7 +70,11 @@ public class Mission {
 				s += objectName;
 			}
 		} else if (targetObject.equals("BetaCrab")) {
-			s += "BetaCrab";
+			if (objectName.equals("")) {
+				s += "BetaCrab";
+			} else {
+				s += objectName;
+			}
 		} else if (targetObject.equals("BetaVegetation")) {
 			s += "BetaVegetation";
 		}

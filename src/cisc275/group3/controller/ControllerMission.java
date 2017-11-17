@@ -51,8 +51,8 @@ public class ControllerMission extends ControllerScene implements LinkDynamics, 
 	    missionButton.addActionListener(new ActionListener() {
 	    	@Override
 	    	public void actionPerformed(ActionEvent e) {
-	    		if (Scene.getCurrentMission().getTargetObject() == null) {
-	    			int tmp = randGen.nextInt(6);
+	    		//if (Scene.getCurrentMission().getTargetObject() == null) {
+	    			int tmp = randGen.nextInt(8);
 	    			String s = "";
 	    			switch(tmp) {
 		    			case 0: s = "Butterflyfish";
@@ -73,14 +73,26 @@ public class ControllerMission extends ControllerScene implements LinkDynamics, 
 		    			case 5: s = "Sergeant Major";
     							((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/fish_right_3.png"));
 								break;
+		    			case 6: s = "Cristmas Island Red Crab";
+								((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/crabLeft_red_icon.png"));
+								break;
+		    			case 7: s = "Atlantic Blue Crab";
+								((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/crab_blue_icon.png"));
+								break;
 	    			}
 	    			
-	    			Scene.setCurrentMission(new Mission("BetaFish", randGen.nextInt(10) + 1));
+	    			if (tmp <= 5) {
+	    				Scene.setCurrentMission(new Mission("BetaFish", randGen.nextInt(5) + 1));
+	    			} else if ((tmp >= 6) && (tmp <= 7)) {
+	    				Scene.setCurrentMission(new Mission("BetaCrab", randGen.nextInt(5) + 1));
+	    			} else {
+	    				Scene.setCurrentMission(new Mission("BetaVegetation", randGen.nextInt(5) + 1));
+	    			}
 	    			Scene.getCurrentMission().setObjectName(s);
 	    			
 	    			displayMission();
 	    		}
-	    	}
+	    	//}
 	    });
 	    missionPanel.add(missionButton);
 	}

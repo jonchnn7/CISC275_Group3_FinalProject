@@ -69,6 +69,7 @@ public class ControllerWetland extends ControllerScene implements LinkDynamics, 
           if ( scene.processClick(e.getX(), e.getY(), cursorName) ) {
             ((SceneWetland)scene).updateScore();
             displayScore();
+            displayMission();
           }
         }
       }

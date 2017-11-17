@@ -68,6 +68,7 @@ public class ControllerBeach extends ControllerScene implements LinkDynamics, Li
           if ( scene.processClick(e.getX(), e.getY(), cursorName) ) {
             ((SceneBeach)scene).updateScore();
             displayScore();
+            displayMission();
           }
         }
       }

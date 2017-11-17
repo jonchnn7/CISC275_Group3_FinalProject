@@ -78,31 +78,29 @@ public abstract class Scene implements Serializable {
     	  if (sceneItem.itemClicked(clickX, clickY)) {
     	  //if (sceneItem.itemClicked(clickX, clickY) && cursorName.equalsIgnoreCase("Net")) {
     		  System.out.println("Clicked on: " + sceneItem.getPassport().getName());
-    		  if ((Scene.getCurrentMission().getTargetObject() != null) &&(Scene.getCurrentMission().getTargetObject().equals("BetaFish")) && (Scene.getCurrentMission().getObjectName().equals(sceneItem.getPassport().getName()))) {
+    		  if ((Scene.getCurrentMission().getTargetObject() != null) && (Scene.getCurrentMission().getTargetObject().equals("BetaFish")) && (Scene.getCurrentMission().getObjectName().equals(sceneItem.getPassport().getName()))) {
     			  Scene.getCurrentMission().decreaseNum();
     		  }
     		  ControllerInventory.addItem(sceneItem);
     		  iterator.remove();
     		  return true;
     	  }
-      }
-      if ((sceneItem instanceof BetaCrab) && (currentTool != null) && (SceneObjectType.BetaCrab.searchCompatability(currentTool.getName()))) {
+      } else if ((sceneItem instanceof BetaCrab) && (currentTool != null) && (SceneObjectType.BetaCrab.searchCompatability(currentTool.getName()))) {
     	  if (sceneItem.itemClicked(clickX, clickY)) {
     	  //if (sceneItem.itemClicked(clickX, clickY) && cursorName.equalsIgnoreCase("Net")) {
     		  System.out.println("Clicked on: " + sceneItem.getPassport().getName());
-    		  if ((Scene.getCurrentMission().getTargetObject() != null) &&(Scene.getCurrentMission().getTargetObject().equals("BetaCrab")) && (Scene.getCurrentMission().getObjectName().equals(sceneItem.getPassport().getName()))) {
+    		  if ((Scene.getCurrentMission().getTargetObject() != null) && (Scene.getCurrentMission().getTargetObject().equals("BetaCrab")) && (Scene.getCurrentMission().getObjectName().equals(sceneItem.getPassport().getName()))) {
     			  Scene.getCurrentMission().decreaseNum();
     		  }
     		  ControllerInventory.addItem(sceneItem);
     		  iterator.remove();
     		  return true;
     	  }
-      }
-      if ((sceneItem instanceof BetaVegetation) && (currentTool != null) && (SceneObjectType.BetaVegetation.searchCompatability(currentTool.getName()))) {
+      } else if ((sceneItem instanceof BetaVegetation) && (currentTool != null) && (SceneObjectType.BetaVegetation.searchCompatability(currentTool.getName()))) {
     	  if (sceneItem.itemClicked(clickX, clickY)) {
     	  //if (sceneItem.itemClicked(clickX, clickY) && cursorName.equalsIgnoreCase("Net")) {
     		  System.out.println("Clicked on: " + sceneItem.getPassport().getName());
-    		  if ((Scene.getCurrentMission().getTargetObject() != null) &&(Scene.getCurrentMission().getTargetObject().equals("BetaVegetation")) && (Scene.getCurrentMission().getObjectName().equals(sceneItem.getPassport().getName()))) {
+    		  if ((Scene.getCurrentMission().getTargetObject() != null) && (Scene.getCurrentMission().getTargetObject().equals("BetaVegetation")) && (Scene.getCurrentMission().getObjectName().equals(sceneItem.getPassport().getName()))) {
     			  Scene.getCurrentMission().decreaseNum();
     		  }
     		  ControllerInventory.addItem(sceneItem);
