@@ -6,7 +6,6 @@ import java.util.Iterator;
 import cisc275.group3.model.sceneobject.BetaCrab;
 import cisc275.group3.model.sceneobject.SceneObject;
 import cisc275.group3.utility.ConstructCrab;
-import cisc275.group3.utility.ConstructFish;
 import cisc275.group3.utility.SceneId;
 
 /**
@@ -47,14 +46,13 @@ public class SceneBeach extends Scene implements ConstructCrab, PropertyScored, 
 	@Override
 	protected void fillScene() {
 		for (int i = 0; i < 10; i++) {
-			System.out.println("Adding crab");
-			sceneItems.add(ConstructCrab.constructRightCrab(randGen.nextInt(20) - 10,
+			sceneItems.add(ConstructCrab.constructRightCrab(randGen.nextInt(20) - 10, // depth
 					randGen.nextInt(2), manifest.getWidth() + randGen.nextInt(500), // x location
-					i * 140 + manifest.getStartY() + 10));
-			sceneItems.add(ConstructCrab.constructLeftCrab(randGen.nextInt(20) - 10, 
-			 
+					i * 140 + manifest.getStartY() + 10)); // y location
+			
+			sceneItems.add(ConstructCrab.constructLeftCrab(randGen.nextInt(20) - 10, // depth
 					randGen.nextInt(2), manifest.getWidth() + randGen.nextInt(500), // x location
-					i * 140 + manifest.getStartY() + 10));
+					i * 140 + manifest.getStartY() + 10)); // y location
 
 			int crabType = randGen.nextInt(2);
 
@@ -98,7 +96,6 @@ public class SceneBeach extends Scene implements ConstructCrab, PropertyScored, 
 		    }
     // Move Crab
     for (SceneObject crab : sceneItems) {
-    	System.out.println(crab);
       ((BetaCrab)crab).move();
     }	
 	
