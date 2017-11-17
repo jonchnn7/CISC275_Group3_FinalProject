@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.io.Serializable;
 import java.util.HashMap;
 import javax.swing.Timer;
+import javax.swing.event.MouseInputListener;
 
 /**
  * The main controller class.
@@ -80,7 +81,12 @@ public class GameController implements Serializable {
  
     gameTime();
   }
-    
+  
+  /**
+   * Set window mouse listener for tool
+   * updates.
+   */
+
    
   /**
    * Updates the model and display every 100ms
