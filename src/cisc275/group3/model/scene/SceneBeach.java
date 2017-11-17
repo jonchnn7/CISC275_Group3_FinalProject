@@ -80,8 +80,8 @@ public class SceneBeach extends Scene implements ConstructCrab, PropertyScored, 
   @Override
   public void update() {
 	  if(this.getManifest().getSceneType() == 2) {
-		    // Generate new crab on ~4% of calls
-		    if (randGen.nextInt(100) <= 4) {
+		    // Generate new crab on ~7% of calls
+		    if (randGen.nextInt(100) <= 7) {
 		      sceneItems.add(ConstructCrab.constructLeftCrab(
 		                     randGen.nextInt(20)-10, // depth
 		                     randGen.nextInt(2),
