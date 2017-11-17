@@ -54,7 +54,7 @@ public class ControllerMission extends ControllerScene implements LinkDynamics, 
 	    			switch(tmp) {
 		    			case 0: s = "Butterflyfish";
 		    					break;
-		    			case 1: s = "Rainbow Chichlid";
+		    			case 1: s = "Rainbow Cichlid";
 								break;
 		    			case 2: s = "Goldfish";
 								break;

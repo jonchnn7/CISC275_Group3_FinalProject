@@ -7,7 +7,9 @@ import java.util.ArrayList;
  */
 public enum SceneObjectType {
 	BetaItem (new String[]{"Camera"}),
-	BetaFish (new String[]{"Net"});
+	BetaFish (new String[]{"Net"}),
+	BetaCrab (new String[] {"Cage"}),
+	BetaVegetation (new String[] {"Trimmer"});
 	//Add in new sceneObjects here as they are created
 	
 	ArrayList<String> compatibleObjects;

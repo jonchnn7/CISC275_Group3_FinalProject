@@ -38,12 +38,12 @@ public class BetaCrab extends SceneObject implements ActionMove {
 	
   @Override
   public void move() {
-	double dx = speedX - speedX*0.1 + randGen.nextGaussian()*speedX*0.2 + randGen.nextInt(7);
-	double dy = 0;
-	
+	  double dx = speedX - speedX*0.1 + randGen.nextGaussian()*speedX*0.2;
+		double dy = 1*(randGen.nextGaussian() - randGen.nextGaussian());
+		
 	int dir = (leftCrab) ? -1 : 1;
-    double x = location.getX() + dx;
-    double y = location.getY() + dy;
+    double x = location.getX() + dir*dx;
+    double y = location.getY() + dir*dy;
 		  
     location = new Point2D.Double(x,y);
   }  
