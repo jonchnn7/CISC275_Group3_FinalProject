@@ -62,7 +62,7 @@ public class ControllerInventory extends ControllerScene {
 	 viewGame = new ViewGame(300, 300, scene.getSceneItems(), scene.getManifest().getBG());
 	    
 
-	 viewGame.setBounds(300, 0, 300, 300);
+	 viewGame.setBounds(100, 0, 300, 300);
 	 viewGame.setName("InventoryLayer");
 	  
 /*	  
