@@ -7,6 +7,8 @@ import cisc275.group3.model.sceneobject.ToolObject;
 import cisc275.group3.utility.Mission;
 import cisc275.group3.utility.SceneId;
 import cisc275.group3.utility.SceneObjectType;
+import cisc275.group3.view.ViewOverlayLabel;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;

@@ -8,13 +8,16 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Random;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import cisc275.group3.model.scene.Scene;
+import cisc275.group3.model.scene.SceneBay;
 import cisc275.group3.utility.LayerCode;
 import cisc275.group3.utility.Mission;
 import cisc275.group3.view.GameWindow;
+import cisc275.group3.view.ViewOverlayLabel;
 
 public class ControllerMission extends ControllerScene implements LinkDynamics, LinkTime {
 	private JPanel missionPanel;
@@ -53,21 +56,29 @@ public class ControllerMission extends ControllerScene implements LinkDynamics, 
 	    			String s = "";
 	    			switch(tmp) {
 		    			case 0: s = "Butterflyfish";
+		    					((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/fish_left_1.png"));
 		    					break;
 		    			case 1: s = "Rainbow Cichlid";
+    							((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/fish_left_2.png"));
 								break;
 		    			case 2: s = "Goldfish";
+    							((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/fish_left_3.png"));
 								break;
 		    			case 3: s = "Angelfish";
+    							((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/fish_right_1.png"));
 								break;
 		    			case 4: s = "Threadfin Butterflyfish";
+    							((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/fish_right_2.png"));
 								break;
 		    			case 5: s = "Sergeant Major";
+    							((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/fish_right_3.png"));
 								break;
 	    			}
 	    			
 	    			Scene.setCurrentMission(new Mission("BetaFish", randGen.nextInt(10) + 1));
 	    			Scene.getCurrentMission().setObjectName(s);
+	    			
+	    			displayMission();
 	    		}
 	    	}
 	    });
@@ -85,6 +96,23 @@ public class ControllerMission extends ControllerScene implements LinkDynamics, 
 		// TODO Auto-generated method stub
 		
 	}
+	
+	/**
+	   * Displays the model mission in the shared mission 
+	   * label.
+	   */
+	  public void displayMission() {
+	    String missionNum;
+	    
+	    
+	    missionNum = Integer.toString(Scene.getCurrentMission().getObjectNum());
+	    
+	    if (missionNum.equals("0")) {
+	    	missionNum = "";
+	    }
+	    
+	    ((ViewOverlayLabel)componentList.get("MissionLabel")).updateLabel(missionNum);
+	  }
 
 	@Override
 	public void update() {

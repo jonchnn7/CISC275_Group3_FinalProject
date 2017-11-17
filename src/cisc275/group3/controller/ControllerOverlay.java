@@ -45,6 +45,13 @@ public class ControllerOverlay extends ControllerScene {
   private int scoreLabelHeight;
   private String scoreLabelString;
   private ViewOverlayLabel scoreLabelPanel;
+  
+  private ImageIcon missionLabelBg;
+  private ImageIcon missionLabelImage;
+  private int missionLabelWidth;
+  private int missionLabelHeight;
+  private String missionLabelString;
+  private ViewOverlayLabel missionLabelPanel;
 
   /**
    * Default scene controller parameters. After they are 
@@ -84,7 +91,12 @@ public class ControllerOverlay extends ControllerScene {
     timeLabelWidth = 150;
     timeLabelHeight = 85;
     timeLabelString = "0";
-
+    
+    // Mission Label Parameters
+    missionLabelBg = new ImageIcon("img/time_bg.png");
+    missionLabelWidth = 150;
+    missionLabelHeight = 85;
+    missionLabelString = "0";
     
     createScene(sceneType);
   }
@@ -104,6 +116,7 @@ public class ControllerOverlay extends ControllerScene {
     // Create Labels
     createScoreLabel();
     createTimeLabel();
+    createMissionLabel();
     
   }
   
@@ -201,5 +214,21 @@ public class ControllerOverlay extends ControllerScene {
     mainPane.add(timeLabelPanel, LayerCode.TimeLabel.getCode());
     
     componentList.put("TimeLabel", timeLabelPanel);
+  }
+  
+  /**
+   * Creates the mission JPanel/JLabel combination
+   * and places it inside the game window at
+   * its defined layer. 
+   */
+  private void createMissionLabel() {
+	    missionLabelPanel = new ViewOverlayLabel(missionLabelImage, missionLabelBg, missionLabelWidth, missionLabelHeight, missionLabelString);
+	    missionLabelPanel.setBounds(missionLabelWidth/2, 0, missionLabelWidth, missionLabelHeight);
+	    missionLabelPanel.setName("MissionLabel");
+	    
+	    mainPane.setLayer(missionLabelPanel, LayerCode.MissionLabel.getCode());
+	    mainPane.add(missionLabelPanel, LayerCode.MissionLabel.getCode());
+	    
+	    componentList.put("MissionLabel", missionLabelPanel);
   }
 }

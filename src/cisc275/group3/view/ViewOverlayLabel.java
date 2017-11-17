@@ -19,7 +19,7 @@ import javax.swing.JPanel;
  */
 @SuppressWarnings("serial")
 public class ViewOverlayLabel extends JPanel {
-  private final ImageIcon LABEL_IMAGE;
+  private ImageIcon label_image;
   private final ImageIcon LABEL_BG_IMAGE;
   private final int LABEL_WIDTH;
   private final int LABEL_HEIGHT;
@@ -35,7 +35,7 @@ public class ViewOverlayLabel extends JPanel {
    */
   public ViewOverlayLabel(int w, int h, String s) {
     super();
-    LABEL_IMAGE = null;
+    label_image = null;
     LABEL_BG_IMAGE = null;
     LABEL_WIDTH = w;
     LABEL_HEIGHT = h;
@@ -56,14 +56,14 @@ public class ViewOverlayLabel extends JPanel {
    */
   public ViewOverlayLabel(ImageIcon li, int w, int h, String s) {
     super();
-    LABEL_IMAGE = li;
+    label_image = li;
     LABEL_BG_IMAGE = null;
     LABEL_WIDTH = w;
     LABEL_HEIGHT = h;
     
     labelString = s;
     
-    overLabel = new JLabel(labelString, LABEL_IMAGE, JLabel.LEFT);
+    overLabel = new JLabel(labelString, label_image, JLabel.LEFT);
     
     setLabelProperties();
   }
@@ -78,14 +78,14 @@ public class ViewOverlayLabel extends JPanel {
    */
   public ViewOverlayLabel(ImageIcon li, ImageIcon bgi, int w, int h, String s) {
     super();
-    LABEL_IMAGE = li;
+    label_image = li;
     LABEL_BG_IMAGE = bgi;
     LABEL_WIDTH = w;
     LABEL_HEIGHT = h;
     
     labelString = s;
     
-    overLabel = new JLabel(labelString, LABEL_IMAGE, JLabel.LEFT){
+    overLabel = new JLabel(labelString, label_image, JLabel.LEFT){
       public void paintComponent(Graphics g) {
         g.drawImage(LABEL_BG_IMAGE.getImage(), 0, 0, LABEL_WIDTH, LABEL_HEIGHT, this);
         super.paintComponent(g);
@@ -121,6 +121,10 @@ public class ViewOverlayLabel extends JPanel {
    * @param upText  String-new label text
    */
   public void updateLabel(String upText) {
-    overLabel.setText(upText);;
+    overLabel.setText(upText);
   }
+  
+  public void updateIcon(ImageIcon i) {
+	    overLabel.setIcon(i);
+	  }
 }

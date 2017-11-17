@@ -9,6 +9,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.HashMap;
 
+import cisc275.group3.model.scene.Scene;
 import cisc275.group3.model.scene.SceneBay;
 import cisc275.group3.utility.LayerCode;
 import cisc275.group3.view.GameWindow;
@@ -66,6 +67,7 @@ public class ControllerBay extends ControllerScene implements LinkDynamics, Link
           if ( scene.processClick(e.getX(), e.getY(), cursorName) ) {
             ((SceneBay)scene).updateScore();
             displayScore();
+            displayMission();
           }
         }
       }
@@ -126,5 +128,18 @@ public class ControllerBay extends ControllerScene implements LinkDynamics, Link
     
     sceneScore = Integer.toString(((SceneBay)scene).getScore());
     ((ViewOverlayLabel)componentList.get("ScoreLabel")).updateLabel(sceneScore);
+  }
+  
+  public void displayMission() {
+	    String missionNum;
+	    
+	    
+	    missionNum = Integer.toString(Scene.getCurrentMission().getObjectNum());
+	    
+	    if (missionNum.equals("0")) {
+	    	missionNum = "";
+	    }
+	    
+	    ((ViewOverlayLabel)componentList.get("MissionLabel")).updateLabel(missionNum);
   }
 }
