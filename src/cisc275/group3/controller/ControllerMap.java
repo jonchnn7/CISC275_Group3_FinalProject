@@ -15,10 +15,8 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import cisc275.group3.model.scene.Scene;
-import cisc275.group3.model.scene.SceneBay;
 import cisc275.group3.utility.LayerCode;
 import cisc275.group3.view.GameWindow;
-import cisc275.group3.view.ViewOverlayLabel;
 
 /**
  * The Map controller is responsible for both the "model" 
