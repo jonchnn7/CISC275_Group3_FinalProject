@@ -1,4 +1,4 @@
-/*package cisc275.group3.model.scene;
+package cisc275.group3.model.scene;
 
 import cisc275.group3.model.sceneobject.BetaCrab;
 import cisc275.group3.utility.ConstructCrab;
@@ -15,17 +15,17 @@ public class SceneBeachMini extends Scene implements ConstructCrab, PropertyTime
     }  
   }
   
-  *//**
+  /**
    * Used when SceneId must also be created
-   *//* 
+   */ 
   public SceneBeachMini(String n, double x, double y, double w, double h, int sceneType, String bg) {
     this(new SceneId(n, x, y, w, h, sceneType, bg));
   }
 
   
-  *//**
+  /**
    * Creates three NPC crabs and a Player Crab
-   *//*
+   */
   @Override
   protected void fillScene() {
     for (int i=1; i<3; i++) {
@@ -72,4 +72,4 @@ public class SceneBeachMini extends Scene implements ConstructCrab, PropertyTime
   public void updateTime() {
     time += 1;
   }
-}*/
+}
