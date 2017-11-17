@@ -1,5 +1,6 @@
 package cisc275.group3.model.scene;
 
+import cisc275.group3.controller.ControllerInventory;
 import cisc275.group3.model.sceneobject.BetaCrab;
 import cisc275.group3.model.sceneobject.BetaFish;
 import cisc275.group3.model.sceneobject.SceneObject;
@@ -77,6 +78,7 @@ public abstract class Scene implements Serializable {
     		  if ((Scene.getCurrentMission().getTargetObject() != null) &&(Scene.getCurrentMission().getTargetObject().equals("BetaFish")) && (Scene.getCurrentMission().getObjectName().equals(sceneItem.getPassport().getName()))) {
     			  Scene.getCurrentMission().decreaseNum();
     		  }
+    		  ControllerInventory.addItem(sceneItem);
     		  iterator.remove();
     		  return true;
     	  }
@@ -88,6 +90,7 @@ public abstract class Scene implements Serializable {
     		  if ((Scene.getCurrentMission().getTargetObject() != null) &&(Scene.getCurrentMission().getTargetObject().equals("BetaCrab")) && (Scene.getCurrentMission().getObjectName().equals(sceneItem.getPassport().getName()))) {
     			  Scene.getCurrentMission().decreaseNum();
     		  }
+    		  ControllerInventory.addItem(sceneItem);
     		  iterator.remove();
     		  return true;
     	  }
