@@ -88,30 +88,39 @@ public class GameController implements Serializable {
     Timer timer = new Timer(100, new ActionListener() {
       public void actionPerformed(ActionEvent e) { 
         controlMap.forEach((k,v)->{
-        	if (k == "HQ") {
-                ((ControllerHQ)v).update();
-                if (totalTime % 1000 == 0) { ((ControllerHQ)v).updateTime(); }
-             
-              }
-          if (k == "Bay") {
-            ((ControllerBay)v).update();
-            if (totalTime % 1000 == 0) { ((ControllerBay)v).updateTime(); }
-         
+        
+          // Model Object Updates
+          switch (k) {
+          case "HQ":		((ControllerHQ)v).update();
+          break;
+          case "Bay": 		((ControllerBay)v).update();
+          break;
+          case "Beach":		((ControllerBeach)v).update();
+          break;
+          case "Wetland":	((ControllerWetland)v).update();
+          break;
+          case "BeachMini":	((ControllerBeachMini)v).update();
+		  break;
           }
-          if (k == "Beach") {
-              ((ControllerBeach)v).update();
-              if (totalTime % 1000 == 0) { ((ControllerBeach)v).updateTime(); }
-           
+        
+          // Time Updates
+          if (totalTime % 1000 == 0) {
+            switch (k) {
+            case "HQ":		((ControllerHQ)v).updateTime();
+        	break;
+            case "Bay": 	((ControllerBay)v).updateTime();
+        	break;
+            case "Beach":	((ControllerBeach)v).updateTime();
+            break;
+            case "Wetland":	((ControllerWetland)v).updateTime();
+            break;
+            case "BeachMini":((ControllerBeachMini)v).updateTime();
+			break;
             }
-          if (k == "Wetland") {
-              ((ControllerWetland)v).update();
-              if (totalTime % 1000 == 0) { ((ControllerWetland)v).updateTime(); }
-           
-            }else if (k == "BeachMini") {
-            ((ControllerBeachMini)v).update();
-            if (totalTime % 1000 == 0) { ((ControllerBeachMini)v).updateTime(); }              
-          }  
+          }
         });
+        
+        // Update Time Counter
         totalTime += 100;
       }
     });
