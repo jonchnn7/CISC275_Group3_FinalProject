@@ -45,6 +45,12 @@ public class ControllerOverlay extends ControllerScene {
   private int scoreLabelHeight;
   private String scoreLabelString;
   private ViewOverlayLabel scoreLabelPanel;
+  
+  private ImageIcon inventoryButtonImage;
+  private ImageIcon inventoryButtonRolloverImage;
+  private int inventoryButtonWidth;
+  private int inventoryButtonHeight;
+  private ViewOverlayButton inventoryButtonPanel;
 
   /**
    * Default scene controller parameters. After they are 
@@ -84,6 +90,12 @@ public class ControllerOverlay extends ControllerScene {
     timeLabelWidth = 150;
     timeLabelHeight = 85;
     timeLabelString = "0";
+    
+    //Inventory Button Parameters
+    inventoryButtonImage = new ImageIcon("img/inventory.png");
+    inventoryButtonRolloverImage = new ImageIcon("img/inventory.png");
+    inventoryButtonWidth = 100;
+    inventoryButtonHeight = 130;
 
     
     createScene(sceneType);
