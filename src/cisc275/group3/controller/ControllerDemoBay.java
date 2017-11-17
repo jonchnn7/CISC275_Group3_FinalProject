@@ -18,7 +18,7 @@ import cisc275.group3.model.scene.SceneBay;
 public class ControllerDemoBay {
 		  
   public static void main (String[] args) {
-    SceneBay testBay = new SceneBay("Bay", 0, 0, 1280, 720, "null");
+    SceneBay testBay = new SceneBay("Bay", 0, 0, 1280, 720, "null", 2);
 	  
     // Print Bay
     System.out.println(testBay);

@@ -21,12 +21,12 @@ public class ControllerMission extends ControllerScene implements LinkDynamics, 
 	private JButton missionButton;
 	private Random randGen = new Random();
 	
-    public ControllerMission(int w, int h, GameWindow f, HashMap<String, Component> cl) {
-        super(w, h, f, cl);
+    public ControllerMission(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType) {
+        super(w, h, f, cl, sceneType);
     }
     
 	@Override
-	protected void createScene() {
+	protected void createScene(int sceneType) {
 		 missionPanel = new JPanel(true);
 		 
 		 missionPanel.setLayout(null);

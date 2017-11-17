@@ -34,13 +34,13 @@ public class ControllerBeach extends ControllerScene implements LinkDynamics, Li
   private final String BG_IMAGE = "img/beach_bg.jpg";
 
   
-  public ControllerBeach(int w, int h, GameWindow f, HashMap<String, Component> cl) {
-    super(w, h, f, cl);
+  public ControllerBeach(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType) {
+    super(w, h, f, cl, sceneType);
   }
 
   @Override
-  protected void createScene() {    
-    scene = new SceneBeach("Beach", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, BG_IMAGE);
+  protected void createScene(int sceneType) {    
+    scene = new SceneBeach("Beach", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, sceneType, BG_IMAGE);
     viewGame = new ViewGame(SCREEN_WIDTH, SCREEN_HEIGHT, scene.getSceneItems(), scene.getManifest().getBG());
     
 

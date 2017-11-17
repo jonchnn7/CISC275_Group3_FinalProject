@@ -27,20 +27,18 @@ import cisc275.group3.view.ViewOverlayLabel;
  * <p>
  * ControllerBay.java
  * <p>
- * @author Scott
- * <p>
- * @author Jolyne
+ * @author Scott, Jon, Jolyne
  */
 public class ControllerBay extends ControllerScene implements LinkDynamics, LinkTime {
   private final String BG_IMAGE = "img/bay_bg_1.jpg";
   
-  public ControllerBay(int w, int h, GameWindow f, HashMap<String, Component> cl) {
-    super(w, h, f, cl);
+  public ControllerBay(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType) {
+    super(w, h, f, cl, sceneType);
   }
 
   @Override
-  protected void createScene() {    
-    scene = new SceneBay("Bay", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, BG_IMAGE);
+  protected void createScene(int sceneType) {    
+    scene = new SceneBay("Bay", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, BG_IMAGE, sceneType);
     viewGame = new ViewGame(SCREEN_WIDTH, SCREEN_HEIGHT, scene.getSceneItems(), scene.getManifest().getBG());
     
 

@@ -26,14 +26,17 @@ public class SceneWetland extends Scene implements PropertyScored, PropertyTimed
     super(mani);
     time = 350;
 
-    fillScene();
+    //Fill scene with mission objects
+    if(this.getManifest().getSceneType() == 2) {
+        fillScene();	
+    }
   }
   
   /**
    * Used when SceneId must also be created
    */ 
-  public SceneWetland(String n, double x, double y, double w, double h, String bg) {
-    this(new SceneId(n, x, y, w, h, bg));
+  public SceneWetland(String n, double x, double y, double w, double h, int sceneType, String bg) {
+    this(new SceneId(n, x, y, w, h, sceneType, bg));
   }
 
   

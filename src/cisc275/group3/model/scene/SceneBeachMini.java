@@ -10,14 +10,16 @@ public class SceneBeachMini extends Scene implements ConstructCrab, PropertyTime
 	super(mani);
 	
 	time = 0;
-	fillScene();
+    if(this.getManifest().getSceneType() == 2) {
+        fillScene();	
+    }  
   }
   
   /**
    * Used when SceneId must also be created
    */ 
-  public SceneBeachMini(String n, double x, double y, double w, double h, String bg) {
-    this(new SceneId(n, x, y, w, h, bg));
+  public SceneBeachMini(String n, double x, double y, double w, double h, int sceneType, String bg) {
+    this(new SceneId(n, x, y, w, h, sceneType, bg));
   }
 
   

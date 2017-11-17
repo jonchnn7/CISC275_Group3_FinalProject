@@ -45,13 +45,13 @@ public class ControllerTools extends ControllerScene {
   private JButton cameraButton;
   private ImageIcon toolBg;
   
-  public ControllerTools(int w, int h, GameWindow f, HashMap<String, Component> cl) {
-    super(w, h, f, cl);
+  public ControllerTools(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType) {
+    super(w, h, f, cl, sceneType);
     toolBg = new ImageIcon("img/toolbox_vert_menu.png");
   }
   
   @Override
-  protected void createScene() {
+  protected void createScene(int sceneType) {
     Dimension toolSize = new Dimension(75, 300);
     toolPanel = new JPanel(true) {
       @Override

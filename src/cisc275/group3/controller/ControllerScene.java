@@ -21,7 +21,7 @@ import javax.swing.JLayeredPane;
  * <p>
  * ControllerScene.java
  * <p>
- * @author Scott
+ * @author Jon, Scott
  */
 public abstract class ControllerScene implements Serializable {
   // Window Parameters
@@ -49,15 +49,16 @@ public abstract class ControllerScene implements Serializable {
    * @param h 	int-scene height
    * @param f 	GameWindow-JFrame container
    * @param cl 	HashMap-associations of scene controllers and layers
+   * @param sceneType int- indicates how the scene should be initialized/updated
    */
-  public ControllerScene(int w, int h, GameWindow f, HashMap<String, Component> cl) {
+  public ControllerScene(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType) {
     SCREEN_WIDTH = w;
     SCREEN_HEIGHT = h;
     GAME_FRAME = f;
  
     componentList = cl;
     mainPane = GAME_FRAME.getMainPane();
-    createScene();
+    createScene(sceneType);
   }
   
   /**
@@ -69,8 +70,10 @@ public abstract class ControllerScene implements Serializable {
    * in the foreground and the game panel in the background.
    * <p>
    * Note: This method must be overridden
+   * 
+   * @param sceneType int- indicates how the scene should be initialized/updated
    */
-  abstract protected void createScene();
+  abstract protected void createScene(int sceneType);
   
   /**
    * Adds a mouse listener to the scene background and passes clicks
