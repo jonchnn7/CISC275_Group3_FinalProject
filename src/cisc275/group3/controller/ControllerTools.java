@@ -95,7 +95,7 @@ public class ControllerTools extends ControllerScene {
         else {
           Scene.setCurrentTool(new ToolNet(0,0,0,0));
           Toolkit toolkit = Toolkit.getDefaultToolkit();
-          Image image = toolkit.getImage("img/fence_net_mouse.png");
+          Image image = toolkit.getImage("img/mouse_net.png");
           //attempting to calculate hotspot off of image size (does not work for windows)
 //          Cursor netCursor = toolkit.createCustomCursor(image , new Point(mainPane.getX()+image.getWidth(null)/2, 
 //                     mainPane.getY()+image.getHeight(null)/2), "Net");
@@ -150,7 +150,7 @@ public class ControllerTools extends ControllerScene {
           else {
             Scene.setCurrentTool(new ToolCage(0,0,0,0));
             Toolkit toolkit = Toolkit.getDefaultToolkit();
-            Image image = toolkit.getImage("img/fence_net_mouse.png");
+            Image image = toolkit.getImage("img/mouse_net.png");
             //attempting to calculate hotspot off of image size (does not work for windows)
 //            Cursor netCursor = toolkit.createCustomCursor(image , new Point(mainPane.getX()+image.getWidth(null)/2, 
 //                       mainPane.getY()+image.getHeight(null)/2), "Net");

@@ -1,4 +1,4 @@
-/*package cisc275.group3.controller;
+package cisc275.group3.controller;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -16,7 +16,7 @@ import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.ViewGame;
 import cisc275.group3.view.ViewOverlayLabel;
 
-*//**
+/**
  * Contains the controller actions and logic for SceneBeachMini.java.
  * <p>
  * Extends the abstract ConstrollerScene class and adds dynamics
@@ -29,7 +29,7 @@ import cisc275.group3.view.ViewOverlayLabel;
  * ControllerBeachMini.java
  * <p>
  * @author Scott
- *//*
+ */
 public class ControllerBeachMini extends ControllerScene implements LinkDynamics, LinkTime {
   private final String BG_IMAGE = "img/beach_sand_bg.png";
   
@@ -75,13 +75,13 @@ public class ControllerBeachMini extends ControllerScene implements LinkDynamics
     });
   }
   
-  *//**
+  /**
    * Connects the BeachMinigame model and BeachMinigame view. So
    * long as the Beach Minigame is the active pane, update the 
    * model and then pass the updated scene objects to the view.
    * <p>
    * Overridden from interface LinkDynamics.java
-   *//*
+   */
   @Override
   public void update() {
 	if (mainPane.getLayer(componentList.get("BeachMini")) == LayerCode.MainMapToolsTime.getCode()) {
@@ -90,12 +90,12 @@ public class ControllerBeachMini extends ControllerScene implements LinkDynamics
 	}
   }
   
-  *//**
+  /**
    * Updates the model's time variable and shares it with
    * the view.
    * <p>
    * Overridden from interface LinkTime.java
-   *//*
+   */
   @Override
   public void updateTime() {
     ((SceneBeachMini)scene).updateTime();
@@ -105,12 +105,12 @@ public class ControllerBeachMini extends ControllerScene implements LinkDynamics
     }
   }
     
-  *//**
+  /**
    * Displays the model time in the shared time 
    * label.
    * <p>
    * Overridden from interface LinkTime.java
-   *//*
+   */
   @Override
   public void displayTime() {
     String sceneTime;
@@ -119,15 +119,14 @@ public class ControllerBeachMini extends ControllerScene implements LinkDynamics
     ((ViewOverlayLabel)componentList.get("TimeLabel")).updateLabel(sceneTime);
   }
   
-  *//**
+  /**
    * Displays the model score in the shared score 
    * label.
-   *//*
+   */
   public void displayScore() {
     String sceneScore;
     
-    sceneScore = Integer.toString(((SceneBeachMini)scene).getScore());
-    ((ViewOverlayLabel)componentList.get("ScoreLabel")).updateLabel(sceneScore);
+    //sceneScore = Integer.toString(((SceneBeachMini)scene).getScore());
+    //((ViewOverlayLabel)componentList.get("ScoreLabel")).updateLabel(sceneScore);
   }
 }
-*/

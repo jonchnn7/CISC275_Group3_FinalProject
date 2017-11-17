@@ -96,23 +96,6 @@ public class ControllerMission extends ControllerScene implements LinkDynamics, 
 		// TODO Auto-generated method stub
 		
 	}
-	
-	/**
-	   * Displays the model mission in the shared mission 
-	   * label.
-	   */
-	  public void displayMission() {
-	    String missionNum;
-	    
-	    
-	    missionNum = Integer.toString(Scene.getCurrentMission().getObjectNum());
-	    
-	    if (missionNum.equals("0")) {
-	    	missionNum = "";
-	    }
-	    
-	    ((ViewOverlayLabel)componentList.get("MissionLabel")).updateLabel(missionNum);
-	  }
 
 	@Override
 	public void update() {

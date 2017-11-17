@@ -4,6 +4,8 @@ import cisc275.group3.model.scene.Scene;
 import cisc275.group3.utility.LayerCode;
 import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.ViewGame;
+import cisc275.group3.view.ViewOverlayLabel;
+
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -93,4 +95,18 @@ public abstract class ControllerScene implements Serializable {
       }
     });
   }
+  
+  public void displayMission() {
+	    String missionNum;
+	    
+	    
+	    missionNum = Integer.toString(Scene.getCurrentMission().getObjectNum());
+	    
+	    if (missionNum.equals("0")) {
+	    	missionNum = "";
+	    	((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(null);
+	    }
+	    
+	    ((ViewOverlayLabel)componentList.get("MissionLabel")).updateLabel(missionNum);
+}
 }

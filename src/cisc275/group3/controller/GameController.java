@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.io.Serializable;
 import java.util.HashMap;
 import javax.swing.Timer;
+import javax.swing.event.MouseInputListener;
 
 /**
  * The main controller class.
@@ -71,15 +72,21 @@ public class GameController implements Serializable {
     controlMap.put("Bay", new ControllerBay(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 2));
     controlMap.put("Beach", new ControllerBeach(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 2));
     controlMap.put("Wetland", new ControllerWetland(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 2));
- //   controlMap.put("BeachMini", new ControllerBeachMini(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 2));
+    controlMap.put("BeachMini", new ControllerBeachMini(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 2));
     controlMap.put("Map", new ControllerMap(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 3));
     controlMap.put("Overlay", new ControllerOverlay(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 3));
     controlMap.put("Tools", new ControllerTools(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 3));
+    controlMap.put("Inventory", new ControllerInventory(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 3));
 
  
     gameTime();
   }
-    
+  
+  /**
+   * Set window mouse listener for tool
+   * updates.
+   */
+
    
   /**
    * Updates the model and display every 100ms
@@ -99,8 +106,8 @@ public class GameController implements Serializable {
           break;
           case "Wetland":	((ControllerWetland)v).update();
           break;
-         // case "BeachMini":	((ControllerBeachMini)v).update();
-		 // break;
+          case "BeachMini":	((ControllerBeachMini)v).update();
+		  break;
           }
         
           // Time Updates
@@ -114,8 +121,8 @@ public class GameController implements Serializable {
             break;
             case "Wetland":	((ControllerWetland)v).updateTime();
             break;
-          //  case "BeachMini":((ControllerBeachMini)v).updateTime();
-		//	break;
+            case "BeachMini":((ControllerBeachMini)v).updateTime();
+			break;
             }
           }
         });

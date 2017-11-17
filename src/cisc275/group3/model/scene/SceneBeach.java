@@ -6,7 +6,6 @@ import java.util.Iterator;
 import cisc275.group3.model.sceneobject.BetaCrab;
 import cisc275.group3.model.sceneobject.SceneObject;
 import cisc275.group3.utility.ConstructCrab;
-import cisc275.group3.utility.ConstructFish;
 import cisc275.group3.utility.SceneId;
 
 /**
@@ -47,26 +46,25 @@ public class SceneBeach extends Scene implements ConstructCrab, PropertyScored, 
 	@Override
 	protected void fillScene() {
 		for (int i = 0; i < 10; i++) {
-			System.out.println("Adding crab");
-			sceneItems.add(ConstructCrab.constructRightCrab(randGen.nextInt(20) - 10,
+			sceneItems.add(ConstructCrab.constructRightCrab(randGen.nextInt(20) - 10, // depth
 					randGen.nextInt(2), manifest.getWidth() + randGen.nextInt(500), // x location
-					i * 140 + manifest.getStartY() + 10));
-			sceneItems.add(ConstructCrab.constructLeftCrab(randGen.nextInt(20) - 10, 
-			 
+					((i * 140 + manifest.getStartY() + 10))+370)); // y location
+			
+			sceneItems.add(ConstructCrab.constructLeftCrab(randGen.nextInt(20) - 10, // depth
 					randGen.nextInt(2), manifest.getWidth() + randGen.nextInt(500), // x location
-					i * 140 + manifest.getStartY() + 10));
+					((i * 140 + manifest.getStartY() + 10))+370)); // y location
 
 			int crabType = randGen.nextInt(2);
 
 			// Add Left Crab
 			sceneItems.add(ConstructCrab.constructLeftCrab(randGen.nextInt(20) - 10, // depth
 					crabType, manifest.getWidth() + randGen.nextInt(500), // x location
-					i * 140 + manifest.getStartY() + 10)); // y location
+					((i * 140 + manifest.getStartY() + 10))+370)); // y location
 
 			// Add Right Crab
 			sceneItems.add(ConstructCrab.constructRightCrab(randGen.nextInt(20) - 10, // depth
 					crabType, 0 - randGen.nextInt(500), // x location
-					i * 140 + manifest.getStartY() + 10)); // y location
+					((i * 140 + manifest.getStartY() + 10))+370)); // y location
 		}
 		Collections.sort(sceneItems); // sort by depth
 	}
@@ -82,23 +80,22 @@ public class SceneBeach extends Scene implements ConstructCrab, PropertyScored, 
   @Override
   public void update() {
 	  if(this.getManifest().getSceneType() == 2) {
-		    // Generate new crab on ~4% of calls
-		    if (randGen.nextInt(100) <= 4) {
+		    // Generate new crab on ~7% of calls
+		    if (randGen.nextInt(100) <= 7) {
 		      sceneItems.add(ConstructCrab.constructLeftCrab(
 		                     randGen.nextInt(20)-10, // depth
 		                     randGen.nextInt(2),
 		                     manifest.getWidth()+randGen.nextInt(500), // x location
-		                     randGen.nextDouble()*manifest.getHeight() + manifest.getStartY())); // y location
+		                    (( randGen.nextDouble()*manifest.getHeight() + manifest.getStartY())+370))); // y location
 		      
 		      sceneItems.add(ConstructCrab.constructRightCrab(
 		                     randGen.nextInt(20)-10, // depth
 		                     randGen.nextInt(2),
 		                     0 - randGen.nextInt(75), // x location
-		                     randGen.nextDouble()*manifest.getHeight() + manifest.getStartY())); // y location
+		                     ((randGen.nextDouble()*manifest.getHeight() + manifest.getStartY())+370))); // y location
 		    }
     // Move Crab
     for (SceneObject crab : sceneItems) {
-    	System.out.println(crab);
       ((BetaCrab)crab).move();
     }	
 	

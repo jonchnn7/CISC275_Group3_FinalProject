@@ -52,6 +52,12 @@ public class ControllerOverlay extends ControllerScene {
   private int missionLabelHeight;
   private String missionLabelString;
   private ViewOverlayLabel missionLabelPanel;
+  
+  private ImageIcon inventoryButtonImage;
+  private ImageIcon inventoryButtonRolloverImage;
+  private int inventoryButtonWidth;
+  private int inventoryButtonHeight;
+  private ViewOverlayButton inventoryButtonPanel;
 
   /**
    * Default scene controller parameters. After they are 
@@ -96,7 +102,13 @@ public class ControllerOverlay extends ControllerScene {
     missionLabelBg = new ImageIcon("img/time_bg.png");
     missionLabelWidth = 150;
     missionLabelHeight = 85;
-    missionLabelString = "0";
+    missionLabelString = "";
+    
+    //Inventory Button Parameters
+    inventoryButtonImage = new ImageIcon("img/inventory.png");
+    inventoryButtonRolloverImage = new ImageIcon("img/inventory.png");
+    inventoryButtonWidth = 100;
+    inventoryButtonHeight = 130;
     
     createScene(sceneType);
   }
@@ -112,6 +124,7 @@ public class ControllerOverlay extends ControllerScene {
     // Create Buttons
     createMapButton();
     createToolsButton();
+    createInventoryButton();
     
     // Create Labels
     createScoreLabel();
@@ -185,6 +198,40 @@ public class ControllerOverlay extends ControllerScene {
   }
   
   /**
+   * Creates the tools JPanel/JButton combination
+   * and places it inside the game window at
+   * its defined layer. An action is then created
+   * to toggle moving the toolbox 
+   * (ControllerTools.java) between the overlay 
+   * layer and its hidden storage layer.
+   */
+  private void createInventoryButton() {
+	  inventoryButtonPanel = new ViewOverlayButton(inventoryButtonImage, inventoryButtonRolloverImage, inventoryButtonWidth, inventoryButtonHeight);
+	  inventoryButtonPanel.setBounds(0, 0, inventoryButtonWidth, inventoryButtonHeight);
+	  inventoryButtonPanel.setName("InventoryButton");
+	    
+	    mainPane.setLayer(inventoryButtonPanel, LayerCode.InventoryButton.getCode());
+	    mainPane.add(inventoryButtonPanel, LayerCode.InventoryButton.getCode());
+		    
+	    componentList.put("InventoryButton", inventoryButtonPanel);
+	    
+	    inventoryButtonPanel.getOverButton().addActionListener(new ActionListener() {
+	      @Override
+	      public void actionPerformed(ActionEvent e) {
+	        Component inventoryComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Inventory")))[0];
+	         
+	        if (mainPane.getLayer(inventoryComponent) == LayerCode.Inventory.getCode()) {
+	          mainPane.setLayer(inventoryComponent, LayerCode.InventoryOverlay.getCode()); 
+	        } else {
+	          mainPane.setLayer(inventoryComponent, LayerCode.Inventory.getCode());
+	        }
+	      }
+	    });
+	   
+  }
+  
+  
+  /**
    * Creates the score JPanel/JLabel combination
    * and places it inside the game window at
    * its defined layer. 
@@ -223,7 +270,7 @@ public class ControllerOverlay extends ControllerScene {
    */
   private void createMissionLabel() {
 	    missionLabelPanel = new ViewOverlayLabel(missionLabelImage, missionLabelBg, missionLabelWidth, missionLabelHeight, missionLabelString);
-	    missionLabelPanel.setBounds(missionLabelWidth/2, 0, missionLabelWidth, missionLabelHeight);
+	    missionLabelPanel.setBounds((SCREEN_WIDTH - missionLabelWidth)/2, 0, missionLabelWidth, missionLabelHeight);
 	    missionLabelPanel.setName("MissionLabel");
 	    
 	    mainPane.setLayer(missionLabelPanel, LayerCode.MissionLabel.getCode());
