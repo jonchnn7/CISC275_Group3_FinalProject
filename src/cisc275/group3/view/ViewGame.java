@@ -53,6 +53,7 @@ public class ViewGame extends JPanel {
       } else {
         g2d.drawString("null", FRAME_WIDTH - 150, 70);
       }
+      g2d.drawString(Scene.getCurrentMission().toString(), 150, 70);
     });
     g2d.dispose();
   }

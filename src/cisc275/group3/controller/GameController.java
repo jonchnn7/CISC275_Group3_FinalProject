@@ -67,6 +67,8 @@ public class GameController implements Serializable {
    */
   private void initGame() {
     controlMap.put("Title", new ControllerTitle(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap));
+    controlMap.put("Mission", new ControllerMission(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap));
+    controlMap.put("HQ", new ControllerHQ(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap));
     controlMap.put("Bay", new ControllerBay(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap));
     controlMap.put("Beach", new ControllerBeach(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap));
     controlMap.put("Wetland", new ControllerWetland(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap));
@@ -87,6 +89,11 @@ public class GameController implements Serializable {
     Timer timer = new Timer(100, new ActionListener() {
       public void actionPerformed(ActionEvent e) { 
         controlMap.forEach((k,v)->{
+        	if (k == "HQ") {
+                ((ControllerHQ)v).update();
+                if (totalTime % 1000 == 0) { ((ControllerHQ)v).updateTime(); }
+             
+              }
           if (k == "Bay") {
             ((ControllerBay)v).update();
             if (totalTime % 1000 == 0) { ((ControllerBay)v).updateTime(); }

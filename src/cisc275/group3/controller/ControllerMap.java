@@ -36,6 +36,7 @@ import cisc275.group3.view.ViewOverlayLabel;
 public class ControllerMap extends ControllerScene {
 
   private JPanel mapPanel;
+  private JButton hqButton;
   private JButton bayButton;
   private JButton beachButton;
   private JButton wetlandButton;
@@ -72,7 +73,24 @@ public class ControllerMap extends ControllerScene {
   }
   
   private void addMapButtons() {
-    bayButton = new JButton("BAY");
+	  hqButton = new JButton("HQ");
+	  hqButton.setFont(new Font("Roboto", Font.BOLD, 10));
+	  hqButton.setBounds(95, 80, 75, 30);
+	  
+	  hqButton.addActionListener(new ActionListener() {
+	      @Override
+	      public void actionPerformed(ActionEvent e) {
+	        Component hqComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("HQ")))[0];
+	        
+	        setDefaultLayers();
+	        mainPane.setLayer(hqComponent, LayerCode.MainAll.getCode());
+	        Component missionComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Mission")))[0];
+	        mainPane.setLayer(missionComponent, LayerCode.Mission.getCode());
+	      }
+	    });
+	    mapPanel.add(hqButton);
+	  
+    bayButton = new JButton("Bay");
     bayButton.setFont(new Font("Roboto", Font.BOLD, 10));
     bayButton.setBounds(95, 120, 75, 30);
     
@@ -83,6 +101,8 @@ public class ControllerMap extends ControllerScene {
         
         setDefaultLayers();
         mainPane.setLayer(bayComponent, LayerCode.MainAll.getCode());
+        Component missionComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Mission")))[0];
+        mainPane.setLayer(missionComponent, -20);
       }
     });
     mapPanel.add(bayButton);
@@ -98,6 +118,8 @@ public class ControllerMap extends ControllerScene {
 
         setDefaultLayers();
         mainPane.setLayer(beachComponent, LayerCode.MainAll.getCode());
+        Component missionComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Mission")))[0];
+        mainPane.setLayer(missionComponent, -20);
       }
     });
     mapPanel.add(beachButton);
@@ -113,6 +135,8 @@ public class ControllerMap extends ControllerScene {
           
         setDefaultLayers();
         mainPane.setLayer(wetlandComponent, LayerCode.MainAll.getCode());
+        Component missionComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Mission")))[0];
+        mainPane.setLayer(missionComponent, -20);
       }
     });
     mapPanel.add(wetlandButton);
@@ -128,6 +152,8 @@ public class ControllerMap extends ControllerScene {
         
         setDefaultLayers();
         mainPane.setLayer(beachMiniComponent, LayerCode.MainMapToolsTime.getCode());
+        Component missionComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Mission")))[0];
+        mainPane.setLayer(missionComponent, -20);
       }
     });
     mapPanel.add(beachMiniButton);
@@ -140,6 +166,7 @@ public class ControllerMap extends ControllerScene {
    */
   private void setDefaultLayers() {
     Component mapComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Map")))[0];
+    Component hqComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("HQ")))[0];
     Component bayComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Bay")))[0];
     Component beachComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Beach")))[0];
     Component wetlandComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Wetland")))[0];
@@ -147,6 +174,7 @@ public class ControllerMap extends ControllerScene {
     Component titleComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Title")))[0];
       
     mainPane.setLayer(mapComponent, LayerCode.Map.getCode());
+    mainPane.setLayer(hqComponent, LayerCode.HQ.getCode());
     mainPane.setLayer(bayComponent, LayerCode.Bay.getCode());
     mainPane.setLayer(beachComponent, LayerCode.Beach.getCode());
     mainPane.setLayer(wetlandComponent, LayerCode.Wetland.getCode());

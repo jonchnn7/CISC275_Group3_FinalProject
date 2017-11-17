@@ -2,58 +2,78 @@ package cisc275.group3.utility;
 
 import java.awt.Color;
 
+import cisc275.group3.model.sceneobject.BetaCrab;
+import cisc275.group3.model.sceneobject.BetaFish;
+import cisc275.group3.model.sceneobject.BetaVegetation;
 import cisc275.group3.model.sceneobject.SceneObject;
 
 public class Mission {
-  private Color targetObjectColor;
-  private boolean doneMission;
+	private String targetObject;
+	private String objectName;
+	private int objectNum;
+	private boolean doneMission;
 	
-  public Mission(Color c) {
-    targetObjectColor = c;
-    doneMission = false;
-  }
-
-  public Color getTargetObjectColor() {
-    return targetObjectColor;
-  }
-
-  public void setTargetObject(Color targetObjectColor) {
-    this.targetObjectColor = targetObjectColor;
-}
-
-  public boolean isDoneMission() {
-    return doneMission;
-  }
-
-  public void setDoneMission(boolean doneMission) {
-    this.doneMission = doneMission;
-  }
+	public Mission(String o, int num) {
+		targetObject = o;
+		objectNum = num;
+		objectName = "";
+		doneMission = false;
+	}
 	
-  public String toString() {
-    if (targetObjectColor == null) {
-      return "None";
-    }
+	public void decreaseNum() {
+		objectNum--;
+		if (objectNum == 0) {
+			doneMission = true;
+			targetObject = null;
+		}
+	}
+
+	public String getTargetObject() {
+		return targetObject;
+	}
+	
+	public int getObjectNum() {
+		return objectNum;
+	}
+	
+	public String getObjectName() {
+		return objectName;
+	}
+	
+	public void setObjectName(String n) {
+		objectName = n;
+	}
+
+	public boolean isDoneMission() {
+		return doneMission;
+	}
+
+	public void setDoneMission(boolean doneMission) {
+		this.doneMission = doneMission;
+	}
+	
+	public String toString() {
+		if (doneMission) {
+			return "Completed!";
+		}
 		
-    if (doneMission) {
-      return "Completed!";
-    }
+		if (targetObject == null) {
+			return "None";
+		}
 		
-    if (targetObjectColor.equals(Color.black)) {
-      return "Black";
-    } else if (targetObjectColor.equals(Color.cyan)) {
-      return "Cyan";
-    } else if (targetObjectColor.equals(Color.darkGray)) {
-      return "Dark grey";
-    } else if (targetObjectColor.equals(Color.magenta)) {
-      return "Magenta";
-    } else if (targetObjectColor.equals(Color.red)) {
-      return "Red";
-    } else if (targetObjectColor.equals(Color.yellow)) {
-      return "Yellow";
-    } else if (targetObjectColor.equals(Color.orange)) {
-      return "Orange";
-    } else {
-      return "";
-  }
-}
+		String s = objectNum + " ";
+    
+		if (targetObject.equals("BetaFish")) {
+			if (objectName.equals("")) {
+				s += "BetaFish";
+			} else {
+				s += objectName;
+			}
+		} else if (targetObject.equals("BetaCrab")) {
+			s += "BetaCrab";
+		} else if (targetObject.equals("BetaVegetation")) {
+			s += "BetaVegetation";
+		}
+		return s;
+	}
 }

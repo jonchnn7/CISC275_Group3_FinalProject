@@ -104,6 +104,7 @@ public class ControllerOverlay extends ControllerScene {
     // Create Labels
     createScoreLabel();
     createTimeLabel();
+    
   }
   
   /**
@@ -130,7 +131,7 @@ public class ControllerOverlay extends ControllerScene {
         Component mapComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Map")))[0];
          
         if (mainPane.getLayer(mapComponent) == LayerCode.Map.getCode()) {
-          mainPane.setLayer(mapComponent, LayerCode.MapOverlay.getCode()); 
+          mainPane.setLayer(mapComponent, LayerCode.MapOverlay.getCode());
         } else {
           mainPane.setLayer(mapComponent, LayerCode.Map.getCode());
         }

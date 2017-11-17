@@ -3,6 +3,7 @@ package cisc275.group3.model.scene;
 import cisc275.group3.model.sceneobject.BetaFish;
 import cisc275.group3.model.sceneobject.SceneObject;
 import cisc275.group3.model.sceneobject.ToolObject;
+import cisc275.group3.utility.Mission;
 import cisc275.group3.utility.SceneId;
 import cisc275.group3.utility.SceneObjectType;
 import java.io.Serializable;
@@ -31,6 +32,7 @@ public abstract class Scene implements Serializable {
   protected int score;
   protected int time;
   protected static ToolObject currentTool;
+  protected static Mission currentMission;
 
 	
   // RNG
@@ -39,6 +41,7 @@ public abstract class Scene implements Serializable {
   public Scene(SceneId mani) {
     manifest = mani;
     currentTool = null;
+    currentMission = new Mission(null, 0);
     sceneItems = new ArrayList<SceneObject>();
   }
   
@@ -70,6 +73,9 @@ public abstract class Scene implements Serializable {
     	  if (sceneItem.itemClicked(clickX, clickY)) {
     	  //if (sceneItem.itemClicked(clickX, clickY) && cursorName.equalsIgnoreCase("Net")) {
     		  System.out.println("Clicked on: " + sceneItem.getPassport().getName());
+    		  if ((Scene.getCurrentMission().getTargetObject().equals("BetaFish")) && (Scene.getCurrentMission().getObjectName().equals(sceneItem.getPassport().getName()))) {
+    			  Scene.getCurrentMission().decreaseNum();
+    		  }
     		  iterator.remove();
     		  return true;
     	  }
@@ -116,6 +122,21 @@ public abstract class Scene implements Serializable {
    */
   public static void setCurrentTool(ToolObject t) {
     currentTool = t;
+  }
+  
+  /**
+   * @return currentTool
+   */
+  public static Mission getCurrentMission() {
+    return currentMission;
+  }
+  
+  /**
+   * Updates the current tool to the input parameter
+   * @param t ToolObject-new tool
+   */
+  public static void setCurrentMission(Mission m) {
+    currentMission = m;
   }
   
   /**
