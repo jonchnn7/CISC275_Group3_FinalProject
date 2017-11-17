@@ -100,13 +100,8 @@ public class GameController implements Serializable {
           break;
           case "Wetland":	((ControllerWetland)v).update();
           break;
-
-//          case "BeachMini":	((ControllerBeachMini)v).update();
-//		  break;
-
-         // case "BeachMini":	((ControllerBeachMini)v).update();
-		 // break;
-
+          case "BeachMini":	((ControllerBeachMini)v).update();
+		  break;
           }
         
           // Time Updates
@@ -120,13 +115,8 @@ public class GameController implements Serializable {
             break;
             case "Wetland":	((ControllerWetland)v).updateTime();
             break;
-
-//            case "BeachMini":((ControllerBeachMini)v).updateTime();
-//			break;
-
-          //  case "BeachMini":((ControllerBeachMini)v).updateTime();
-		//	break;
-
+            case "BeachMini":((ControllerBeachMini)v).updateTime();
+			break;
             }
           }
         });
