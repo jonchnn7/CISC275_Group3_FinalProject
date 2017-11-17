@@ -58,14 +58,14 @@ public class ControllerInventory extends ControllerScene {
   @Override
   protected void createScene(int sceneType) {
 	  
-	 //scene = new SceneInventory("Inventory", 0, 0, 300, 300, "null");
-	 //viewGame = new ViewGame(SCREEN_WIDTH, SCREEN_HEIGHT, scene.getSceneItems(), scene.getManifest().getBG());
+	 scene = new SceneInventory("Inventory", 0, 0, 300, 300, 3, "img/inventory_menu_small.png");
+	 viewGame = new ViewGame(300, 300, scene.getSceneItems(), scene.getManifest().getBG());
 	    
 
-	  //viewGame.setBounds(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-	  //viewGame.setName("InventoryLayer");
+	 viewGame.setBounds(300, 0, 300, 300);
+	 viewGame.setName("InventoryLayer");
 	  
-	  
+/*	  
     Dimension inventorySize = new Dimension(300, 300);
     inventoryPanel = new JPanel(true) {
       @Override
@@ -80,13 +80,14 @@ public class ControllerInventory extends ControllerScene {
     inventoryPanel.setBounds(100, 0, inventorySize.width, inventorySize.height);
     inventoryPanel.setBackground(Color.orange);
     inventoryPanel.setOpaque(true);
-   
+  */ 
     //addToolButtons();
     
-    mainPane.setLayer(inventoryPanel, LayerCode.Inventory.getCode());
-    mainPane.add(inventoryPanel, LayerCode.Inventory.getCode());
-    //mainPane.add(viewGame, LayerCode.InventoryOverlay.getCode());
-    componentList.put("Inventory", inventoryPanel);
+    //mainPane.setLayer(inventoryPanel, LayerCode.Inventory.getCode());
+    //mainPane.add(inventoryPanel, LayerCode.Inventory.getCode());
+    mainPane.setLayer(viewGame, LayerCode.Inventory.getCode());
+    mainPane.add(viewGame, LayerCode.Inventory.getCode());
+    componentList.put("Inventory", viewGame);
     //componentList.put("InventoryOverlay", viewGame);
   }
   
