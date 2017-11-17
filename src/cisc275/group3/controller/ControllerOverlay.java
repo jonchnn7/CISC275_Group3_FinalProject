@@ -112,6 +112,7 @@ public class ControllerOverlay extends ControllerScene {
     // Create Buttons
     createMapButton();
     createToolsButton();
+    createInventoryButton();
     
     // Create Labels
     createScoreLabel();
@@ -182,6 +183,40 @@ public class ControllerOverlay extends ControllerScene {
       }
     });    
   }
+  
+  /**
+   * Creates the tools JPanel/JButton combination
+   * and places it inside the game window at
+   * its defined layer. An action is then created
+   * to toggle moving the toolbox 
+   * (ControllerTools.java) between the overlay 
+   * layer and its hidden storage layer.
+   */
+  private void createInventoryButton() {
+	  inventoryButtonPanel = new ViewOverlayButton(inventoryButtonImage, inventoryButtonRolloverImage, inventoryButtonWidth, inventoryButtonHeight);
+	  inventoryButtonPanel.setBounds(0, 0, inventoryButtonWidth, inventoryButtonHeight);
+	  inventoryButtonPanel.setName("InventoryButton");
+	    
+	    mainPane.setLayer(inventoryButtonPanel, LayerCode.InventoryButton.getCode());
+	    mainPane.add(inventoryButtonPanel, LayerCode.InventoryButton.getCode());
+		    
+	    componentList.put("InventoryButton", inventoryButtonPanel);
+	    
+	    inventoryButtonPanel.getOverButton().addActionListener(new ActionListener() {
+	      @Override
+	      public void actionPerformed(ActionEvent e) {
+	        Component inventoryComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Inventory")))[0];
+	         
+	        if (mainPane.getLayer(inventoryComponent) == LayerCode.Inventory.getCode()) {
+	          mainPane.setLayer(inventoryComponent, LayerCode.InventoryOverlay.getCode()); 
+	        } else {
+	          mainPane.setLayer(inventoryComponent, LayerCode.Inventory.getCode());
+	        }
+	      }
+	    });
+	   
+  }
+  
   
   /**
    * Creates the score JPanel/JLabel combination
