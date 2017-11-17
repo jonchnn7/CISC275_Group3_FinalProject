@@ -18,8 +18,10 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import cisc275.group3.model.scene.Scene;
+import cisc275.group3.model.sceneobject.ToolCage;
 import cisc275.group3.model.sceneobject.ToolCamera;
 import cisc275.group3.model.sceneobject.ToolNet;
+import cisc275.group3.model.sceneobject.ToolTrimmer;
 import cisc275.group3.utility.LayerCode;
 import cisc275.group3.view.GameWindow;
 
@@ -43,6 +45,7 @@ public class ControllerTools extends ControllerScene {
   private JPanel toolPanel;
   private JButton netButton;
   private JButton cameraButton;
+  private JButton cageButton;
   private ImageIcon toolBg;
   
   public ControllerTools(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType) {
@@ -129,5 +132,35 @@ public class ControllerTools extends ControllerScene {
         }
       });
       toolPanel.add(cameraButton);
+      
+      cageButton = new JButton("CGE");
+      cageButton.setFont(new Font("Roboto", Font.BOLD, 18));
+      cageButton.setBounds(0, 245, 75, 30);
+  	
+      cageButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+          Component toolComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Tools")))[0];
+          
+          mainPane.setLayer(toolComponent, LayerCode.Tools.getCode());
+          if (Scene.getCurrentTool() instanceof ToolCage) {
+            Scene.setCurrentTool(null);
+            mainPane.getComponentsInLayer(LayerCode.MainAll.getCode())[0].setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+          }
+          else {
+            Scene.setCurrentTool(new ToolCage(0,0,0,0));
+            Toolkit toolkit = Toolkit.getDefaultToolkit();
+            Image image = toolkit.getImage("img/fence_net_mouse.png");
+            //attempting to calculate hotspot off of image size (does not work for windows)
+//            Cursor netCursor = toolkit.createCustomCursor(image , new Point(mainPane.getX()+image.getWidth(null)/2, 
+//                       mainPane.getY()+image.getHeight(null)/2), "Net");
+            //Set hotspot point to 16,16 because default size is 32,32
+            Cursor cageCursor = toolkit.createCustomCursor(image , new Point(16,16), "Cage");
+            mainPane.getComponentsInLayer(LayerCode.MainAll.getCode())[0].setCursor(cageCursor);
+
+          }
+        }
+      });
+      toolPanel.add(cageButton);
     }
   }

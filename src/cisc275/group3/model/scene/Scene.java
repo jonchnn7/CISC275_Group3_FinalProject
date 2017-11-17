@@ -1,5 +1,6 @@
 package cisc275.group3.model.scene;
 
+import cisc275.group3.model.sceneobject.BetaCrab;
 import cisc275.group3.model.sceneobject.BetaFish;
 import cisc275.group3.model.sceneobject.SceneObject;
 import cisc275.group3.model.sceneobject.ToolObject;
@@ -74,6 +75,17 @@ public abstract class Scene implements Serializable {
     	  //if (sceneItem.itemClicked(clickX, clickY) && cursorName.equalsIgnoreCase("Net")) {
     		  System.out.println("Clicked on: " + sceneItem.getPassport().getName());
     		  if ((Scene.getCurrentMission().getTargetObject() != null) &&(Scene.getCurrentMission().getTargetObject().equals("BetaFish")) && (Scene.getCurrentMission().getObjectName().equals(sceneItem.getPassport().getName()))) {
+    			  Scene.getCurrentMission().decreaseNum();
+    		  }
+    		  iterator.remove();
+    		  return true;
+    	  }
+      }
+      if ((sceneItem instanceof BetaCrab) && (currentTool != null) && (SceneObjectType.BetaCrab.searchCompatability(currentTool.getName()))) {
+    	  if (sceneItem.itemClicked(clickX, clickY)) {
+    	  //if (sceneItem.itemClicked(clickX, clickY) && cursorName.equalsIgnoreCase("Net")) {
+    		  System.out.println("Clicked on: " + sceneItem.getPassport().getName());
+    		  if ((Scene.getCurrentMission().getTargetObject() != null) &&(Scene.getCurrentMission().getTargetObject().equals("BetaCrab")) && (Scene.getCurrentMission().getObjectName().equals(sceneItem.getPassport().getName()))) {
     			  Scene.getCurrentMission().decreaseNum();
     		  }
     		  iterator.remove();

@@ -4,7 +4,9 @@ import cisc275.group3.model.sceneobject.BetaCrab;
 
 public interface ConstructCrab {
   // Crab File Location
-  static final String[] CRAB_FILE = 
+  static final String[] LEFT_FILE = 
+	  {"img/crab_red_icon.png", "img/crab_blue_icon.png"};
+  static final String[] RIGHT_FILE = 
 	  {"img/crab_red_icon.png", "img/crab_blue_icon.png"};
 
   // Crab Names
@@ -35,7 +37,7 @@ public interface ConstructCrab {
     BetaCrab leftCrab = new BetaCrab(depth, 
                                      (int)(CRAB_WIDTH[type]*CRAB_AR[type]), // height
                                      CRAB_ID[type], // id
-                                     CRAB_FILE[type], // image file
+                                     LEFT_FILE[type], // image file
                                      CRAB_NAME[type], // name
                                      (int)CRAB_WIDTH[type], // width
                                      x, // x position
@@ -43,6 +45,7 @@ public interface ConstructCrab {
                                      CRAB_SPEED[type], // x-axis speed
                                      0, // y-axis speed
                                      true);
+
     return leftCrab;
   }
   
@@ -50,7 +53,7 @@ public interface ConstructCrab {
     BetaCrab rightCrab = new BetaCrab(depth, 
 	                                  (int)(CRAB_WIDTH[type]*CRAB_AR[type]), // height
 	                                  CRAB_ID[type], // id
-	                                  CRAB_FILE[type], // image file
+	                                  RIGHT_FILE[type], // image file
 	                                  CRAB_NAME[type], // name
 	                                  (int)CRAB_WIDTH[type], // width
 	                                  x, // x position
@@ -65,7 +68,7 @@ public interface ConstructCrab {
     BetaCrab crab = new BetaCrab(depth, 
 	                             (int)(CRAB_WIDTH[type]*CRAB_AR[type]), // height
 	                             CRAB_ID[type], // id
-	                             CRAB_FILE[type], // image file
+	                             RIGHT_FILE[type], // image file
 	                             CRAB_NAME[type], // name
 	                             (int)CRAB_WIDTH[type], // width
 	                             x, // x position
