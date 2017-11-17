@@ -33,13 +33,13 @@ import cisc275.group3.view.ViewOverlayLabel;
 public class ControllerBeachMini extends ControllerScene implements LinkDynamics, LinkTime {
   private final String BG_IMAGE = "img/beach_sand_bg.png";
   
-  public ControllerBeachMini(int w, int h, GameWindow f, HashMap<String, Component> cl) {
-    super(w, h, f, cl);
+  public ControllerBeachMini(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType) {
+    super(w, h, f, cl, sceneType);
   }
 
   @Override
-  protected void createScene() {
-    scene = new SceneBeachMini("Bay", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, BG_IMAGE);
+  protected void createScene(int sceneType) {
+    scene = new SceneBeachMini("Bay", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, sceneType, BG_IMAGE);
     viewGame = new ViewGame(SCREEN_WIDTH, SCREEN_HEIGHT, scene.getSceneItems(), scene.getManifest().getBG());
     
     

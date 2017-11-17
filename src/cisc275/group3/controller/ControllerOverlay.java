@@ -56,8 +56,8 @@ public class ControllerOverlay extends ControllerScene {
    * @param f   GameWindow-main game window
    * @param cl  HashMap-map of component name to component
    */
-  public ControllerOverlay(int w, int h, GameWindow f, HashMap<String, Component> cl) {
-    super(w, h, f, cl);
+  public ControllerOverlay(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType) {
+    super(w, h, f, cl, sceneType);
     
     // Map Button Parameters
     mapButtonImage = new ImageIcon("img/map_icon.png");
@@ -86,7 +86,7 @@ public class ControllerOverlay extends ControllerScene {
     timeLabelString = "0";
 
     
-    createScene();
+    createScene(sceneType);
   }
 
   /**
@@ -96,7 +96,7 @@ public class ControllerOverlay extends ControllerScene {
    * Overridden from ControllerScene.java
    */
   @Override
-  protected void createScene() {
+  protected void createScene(int sceneType) {
     // Create Buttons
     createMapButton();
     createToolsButton();

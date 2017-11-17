@@ -32,12 +32,12 @@ public class ControllerTitle extends ControllerScene {
   private JPanel titlePanel;
   private JLabel titleLabel;
   
-  public ControllerTitle(int w, int h, GameWindow f, HashMap<String, Component> cl) {
-    super(w, h, f, cl);
+  public ControllerTitle(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType) {
+    super(w, h, f, cl, sceneType);
   }
   
   @Override
-  protected void createScene() {
+  protected void createScene(int sceneType) {
     titlePanel = new JPanel(new BorderLayout(), true);
     titlePanel.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
     titlePanel.setBounds(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);

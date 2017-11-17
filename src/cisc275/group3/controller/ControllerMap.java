@@ -44,14 +44,14 @@ public class ControllerMap extends ControllerScene {
   private JButton beachMiniButton;
   private ImageIcon mapBg;
   
-  public ControllerMap(int w, int h, GameWindow f, HashMap<String, Component> cl) {
-    super(w, h, f, cl);
+  public ControllerMap(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType) {
+    super(w, h, f, cl, sceneType);
     
     mapBg = new ImageIcon("img/map_menu_icon.png");
   }
   
   @Override
-  protected void createScene() {
+  protected void createScene(int sceneType) {
     mapPanel = new JPanel(true) {
       @Override
       public void paintComponent(Graphics g) {
