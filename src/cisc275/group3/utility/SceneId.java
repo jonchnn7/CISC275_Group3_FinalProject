@@ -13,6 +13,7 @@ import java.io.Serializable;
  * @param	startX		double-top left x coordinate
  * @param 	startY		double-top left y coordinate
  * @param	width		double-scene width
+ * @param	sceneType   int-0 = empty scene, 1 = non-mission, 2 = mission, 3 = misc. scene (interface/menu)
  */
 public class SceneId implements Serializable{
   private String bgImage;    // CHANGE TO FINAL ONCE ALL BG IMAGES FOUND
@@ -21,19 +22,21 @@ public class SceneId implements Serializable{
   private final double startX;
   private final double startY;
   private final double width;
+  private final int sceneType;
   
-  public SceneId (String n, double x, double y, double w, double h) {
+  public SceneId (String n, double x, double y, double w, double h, int t) {
     height = h;
     name = n;
     startX = x;
     startY = y;
     width = w;
+    sceneType = t;
     bgImage = "";
     
   }
   
-  public SceneId (String n, double x, double y, double w, double h, String bg) {	
-    this(n, x, y, w, h);
+  public SceneId (String n, double x, double y, double w, double h, int t, String bg) {	
+    this(n, x, y, w, h, t);
     bgImage = bg;
   }
   
@@ -43,7 +46,9 @@ public class SceneId implements Serializable{
 			            +"\nStart X: " + startX
 			            +"\nStart Y: " + startY
 			            +"\nWidth: " + width
-			            +"\nHeight: " + height;
+			            +"\nHeight: " + height
+			            +"\nSceneType: " + sceneType;
+    
     return outString;
   }
   
@@ -87,5 +92,12 @@ public class SceneId implements Serializable{
    */
   public double getWidth() {
     return width;
+  }
+  
+  /**
+   * @return the sceneType 
+   */  
+  public int getSceneType() {
+	  return sceneType;
   }
 }

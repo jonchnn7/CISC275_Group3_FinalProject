@@ -3,9 +3,9 @@ package cisc275.group3.model.scene;
 import java.util.Collections;
 import java.util.Iterator;
 
-import cisc275.group3.model.sceneobject.BetaFish;
+import cisc275.group3.model.sceneobject.BetaCrab;
 import cisc275.group3.model.sceneobject.SceneObject;
-import cisc275.group3.utility.ConstructFish;
+import cisc275.group3.utility.ConstructCrab;
 import cisc275.group3.utility.SceneId;
 
 /**
@@ -20,20 +20,23 @@ import cisc275.group3.utility.SceneId;
  * <p>
  * @author Scott
  */
-public class SceneBeach extends Scene implements ConstructFish, PropertyScored, PropertyTimed {
+public class SceneBeach extends Scene implements ConstructCrab, PropertyScored, PropertyTimed {
 
   public SceneBeach(SceneId mani) {
     super(mani);
     time = 350;
 
-    fillScene();
+    //Fill scene with mission objects
+    if(this.getManifest().getSceneType() == 2) {
+        fillScene();	
+    }
   }
   
   /**
    * Used when SceneId must also be created
    */ 
-  public SceneBeach(String n, double x, double y, double w, double h, String bg) {
-    this(new SceneId(n, x, y, w, h, bg));
+  public SceneBeach(String n, double x, double y, double w, double h, int sceneType, String bg) {
+    this(new SceneId(n, x, y, w, h, sceneType, bg));
   }
   
   /**
@@ -43,23 +46,30 @@ public class SceneBeach extends Scene implements ConstructFish, PropertyScored, 
    */
   @Override
   protected void fillScene() {
-    for (int i=0; i<5; i++) {
-      int fishType = randGen.nextInt(3);
-      
-      // Add Left Fish
-      sceneItems.add(ConstructFish.constructLeftFish(
-                     randGen.nextInt(20)-10, // depth
-                     fishType,
-                     manifest.getWidth()+randGen.nextInt(500), // x location
-                     i*140 + manifest.getStartY() + 10)); // y location
-      
-      // Add Right Fish
-      sceneItems.add(ConstructFish.constructRightFish(
-                     randGen.nextInt(20)-10, // depth
-                     fishType,
-                     0 - randGen.nextInt(500), // x location
-                     i*140 + manifest.getStartY() + 10)); // y location
+    for (int i=0; i<1; i++) {
+    	System.out.println("Adding crab");
+    	sceneItems.add(ConstructCrab.constructCrab(
+              randGen.nextInt(20)-10, // depth
+              randGen.nextInt(2),
+              manifest.getWidth()+randGen.nextInt(500), // x location
+              i*140 + manifest.getStartY() + 10));
     }
+//      int fishType = randGen.nextInt(3);
+//      
+//      // Add Left Fish
+//      sceneItems.add(ConstructFish.constructLeftFish(
+//                     randGen.nextInt(20)-10, // depth
+//                     fishType,
+//                     manifest.getWidth()+randGen.nextInt(500), // x location
+//                     i*140 + manifest.getStartY() + 10)); // y location
+//      
+//      // Add Right Fish
+//      sceneItems.add(ConstructFish.constructRightFish(
+//                     randGen.nextInt(20)-10, // depth
+//                     fishType,
+//                     0 - randGen.nextInt(500), // x location
+//                     i*140 + manifest.getStartY() + 10)); // y location
+//    }
     Collections.sort(sceneItems); // sort by depth
   }
   
@@ -75,22 +85,16 @@ public class SceneBeach extends Scene implements ConstructFish, PropertyScored, 
   public void update() {
     // Generate new fish on ~4% of calls
     if (randGen.nextInt(100) <= 4) {
-      sceneItems.add(ConstructFish.constructLeftFish(
-                     randGen.nextInt(20)-10, // depth
-                     randGen.nextInt(3),
-                     manifest.getWidth()+randGen.nextInt(500), // x location
-                     randGen.nextDouble()*manifest.getHeight() + manifest.getStartY())); // y location
-      
-      sceneItems.add(ConstructFish.constructRightFish(
-                     randGen.nextInt(20)-10, // depth
-                     randGen.nextInt(3),
-                     0 - randGen.nextInt(75), // x location
-                     randGen.nextDouble()*manifest.getHeight() + manifest.getStartY())); // y location
+      sceneItems.add(ConstructCrab.constructCrab(
+    		  randGen.nextInt(20)-10, // depth
+              randGen.nextInt(2),
+              manifest.getWidth()+randGen.nextInt(500), // x location
+              randGen.nextDouble()*manifest.getHeight() + manifest.getStartY())); // y location
     }
-    
     // Move Fish
-    for (SceneObject fish : sceneItems) {
-      ((BetaFish)fish).move();
+    for (SceneObject crab : sceneItems) {
+    	System.out.println(crab);
+      ((BetaCrab)crab).move();
     }	
 	
     // Remove Off-screen Fish
@@ -105,11 +109,12 @@ public class SceneBeach extends Scene implements ConstructFish, PropertyScored, 
    */
   private void removeFish() {
     for (Iterator<SceneObject> iterator = sceneItems.iterator(); iterator.hasNext();) {
-      BetaFish fish = (BetaFish)iterator.next();
+      BetaCrab crab = (BetaCrab)iterator.next();
       
-      if ( !fish.getLeftFish() && fish.getLocation().getX() >= (manifest.getWidth()+fish.getPassport().getWidth()) ) {
+      if (crab.getLocation().getX() >= (manifest.getWidth()+crab.getPassport().getWidth()) ) {
         iterator.remove();
-      } else if ( fish.getLeftFish() && fish.getLocation().getX() <= (0-fish.getPassport().getWidth()) ) { 
+      } 
+      else if (crab.getLocation().getX() <= (0-crab.getPassport().getWidth()) ) { 
         iterator.remove();
       }
     }

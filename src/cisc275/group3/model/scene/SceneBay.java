@@ -18,7 +18,7 @@ import cisc275.group3.utility.SceneId;
  * <p>
  * SceneBay.java
  * <p>
- * @author Scott
+ * @author Scott, Jon
  */
 public class SceneBay extends Scene implements ConstructFish, PropertyScored, PropertyTimed {
 
@@ -26,14 +26,16 @@ public class SceneBay extends Scene implements ConstructFish, PropertyScored, Pr
     super(mani);
     time = 350;
 
-    fillScene();
+    if(this.getManifest().getSceneType() == 2) {
+        fillScene();	
+    }
   }
   
   /**
    * Used when SceneId must also be created
    */ 
-  public SceneBay(String n, double x, double y, double w, double h, String bg) {
-    this(new SceneId(n, x, y, w, h, bg));
+  public SceneBay(String n, double x, double y, double w, double h, String bg, int sceneType) {
+    this(new SceneId(n, x, y, w, h, sceneType, bg));
   }
   
   /**
@@ -64,8 +66,12 @@ public class SceneBay extends Scene implements ConstructFish, PropertyScored, Pr
   }
   
   /**
-   * Overridden from Scene.java abstract method. On approx. 4% of calls,
-   * a new left-to-right and right-to-left fish is created. The new fish
+   * Overridden from Scene.java abstract method. sceneType from manifest
+   * is used to determine how to update each scene model
+   * 
+   * <p>
+   * For mission related scene models: On approx. 4% of calls, a new
+   * left-to-right and right-to-left fish is created. The new fish
    * can occur anywhere on the y-axis with a random depth [5,15).
    * <p>
    * Every fish in the scene is then asked to move it along, and then removed
@@ -73,31 +79,33 @@ public class SceneBay extends Scene implements ConstructFish, PropertyScored, Pr
    */
   @Override
   public void update() {
-    // Generate new fish on ~4% of calls
-    if (randGen.nextInt(100) <= 4) {
-      sceneItems.add(ConstructFish.constructLeftFish(
-                     randGen.nextInt(20)-10, // depth
-                     randGen.nextInt(3),
-                     manifest.getWidth()+randGen.nextInt(500), // x location
-                     randGen.nextDouble()*manifest.getHeight() + manifest.getStartY())); // y location
-      
-      sceneItems.add(ConstructFish.constructRightFish(
-                     randGen.nextInt(20)-10, // depth
-                     randGen.nextInt(3),
-                     0 - randGen.nextInt(75), // x location
-                     randGen.nextDouble()*manifest.getHeight() + manifest.getStartY())); // y location
-    }
-    
-    // Move Fish
-    for (SceneObject fish : sceneItems) {
-      ((BetaFish)fish).move();
-    }	
-	
-    // Remove Off-screen Fish
-    removeFish();
-    
-    // Sort by depth
-    Collections.sort(sceneItems);
+	if(this.getManifest().getSceneType() == 2) {
+	    // Generate new fish on ~4% of calls
+	    if (randGen.nextInt(100) <= 4) {
+	      sceneItems.add(ConstructFish.constructLeftFish(
+	                     randGen.nextInt(20)-10, // depth
+	                     randGen.nextInt(3),
+	                     manifest.getWidth()+randGen.nextInt(500), // x location
+	                     randGen.nextDouble()*manifest.getHeight() + manifest.getStartY())); // y location
+	      
+	      sceneItems.add(ConstructFish.constructRightFish(
+	                     randGen.nextInt(20)-10, // depth
+	                     randGen.nextInt(3),
+	                     0 - randGen.nextInt(75), // x location
+	                     randGen.nextDouble()*manifest.getHeight() + manifest.getStartY())); // y location
+	    }
+	    
+	    // Move Fish
+	    for (SceneObject fish : sceneItems) {
+	    	((BetaFish)fish).move();
+	    }	
+		
+	    // Remove Off-screen Fish
+	    removeFish();
+	    
+	    // Sort by depth
+	    Collections.sort(sceneItems);
+	}
   }
   
   /**

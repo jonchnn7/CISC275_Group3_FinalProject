@@ -9,8 +9,8 @@ public class SceneHQ extends Scene implements PropertyScored, PropertyTimed {
     time = 300;
   }
 	
-  public SceneHQ(String n, double x, double y, double w, double h, String bg) {
-    this(new SceneId(n, x, y, w, h, bg));
+  public SceneHQ(String n, double x, double y, double w, double h, int sceneType, String bg) {
+    this(new SceneId(n, x, y, w, h, sceneType, bg));
   }
 	
   @Override

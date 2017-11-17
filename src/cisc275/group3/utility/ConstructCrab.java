@@ -5,8 +5,8 @@ import cisc275.group3.model.sceneobject.BetaCrab;
 public interface ConstructCrab {
   // Crab File Location
   static final String[] CRAB_FILE = 
-	    {"img/crab_red_icon.png", "img/crab_blue_icon.png"};
-	  
+	  {"img/crab_red_icon.png", "img/crab_blue_icon.png"};
+
   // Crab Names
   static final String[] CRAB_NAME = 
     {"Cristmas Island Red Crab", "Atlantic Blue Crab"};
