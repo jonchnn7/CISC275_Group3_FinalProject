@@ -2,6 +2,7 @@ package cisc275.group3.controller;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -86,6 +87,8 @@ public class ControllerMap extends ControllerScene {
 	        mainPane.setLayer(hqComponent, LayerCode.MainAll.getCode());
 	        Component missionComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Mission")))[0];
 	        mainPane.setLayer(missionComponent, LayerCode.Mission.getCode());
+	        Scene.setCurrentTool(null);
+	        mainPane.getComponentsInLayer(LayerCode.MainAll.getCode())[0].setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 	      }
 	    });
 	    mapPanel.add(hqButton);
@@ -103,6 +106,8 @@ public class ControllerMap extends ControllerScene {
         mainPane.setLayer(bayComponent, LayerCode.MainAll.getCode());
         Component missionComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Mission")))[0];
         mainPane.setLayer(missionComponent, -20);
+        Scene.setCurrentTool(null);
+        mainPane.getComponentsInLayer(LayerCode.MainAll.getCode())[0].setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
       }
     });
     mapPanel.add(bayButton);
@@ -120,6 +125,8 @@ public class ControllerMap extends ControllerScene {
         mainPane.setLayer(beachComponent, LayerCode.MainAll.getCode());
         Component missionComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Mission")))[0];
         mainPane.setLayer(missionComponent, -20);
+        Scene.setCurrentTool(null);
+        mainPane.getComponentsInLayer(LayerCode.MainAll.getCode())[0].setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
       }
     });
     mapPanel.add(beachButton);
@@ -137,6 +144,8 @@ public class ControllerMap extends ControllerScene {
         mainPane.setLayer(wetlandComponent, LayerCode.MainAll.getCode());
         Component missionComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Mission")))[0];
         mainPane.setLayer(missionComponent, -20);
+        Scene.setCurrentTool(null);
+        mainPane.getComponentsInLayer(LayerCode.MainAll.getCode())[0].setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
       }
     });
     mapPanel.add(wetlandButton);
@@ -154,6 +163,8 @@ public class ControllerMap extends ControllerScene {
         mainPane.setLayer(beachMiniComponent, LayerCode.MainMapToolsTime.getCode());
         Component missionComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Mission")))[0];
         mainPane.setLayer(missionComponent, -20);
+        Scene.setCurrentTool(null);
+        mainPane.getComponentsInLayer(LayerCode.MainAll.getCode())[0].setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
       }
     });
     mapPanel.add(beachMiniButton);
@@ -180,7 +191,5 @@ public class ControllerMap extends ControllerScene {
     mainPane.setLayer(wetlandComponent, LayerCode.Wetland.getCode());
     mainPane.setLayer(beachMiniComponent, LayerCode.BeachMini.getCode());
     mainPane.setLayer(titleComponent, LayerCode.Title.getCode());
-    
-    Scene.setCurrentTool(null);
   }
 }
