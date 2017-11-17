@@ -46,6 +46,7 @@ public class ControllerTools extends ControllerScene {
   private JButton netButton;
   private JButton cameraButton;
   private JButton cageButton;
+  private JButton trimmerButton;
   private ImageIcon toolBg;
   
   public ControllerTools(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType) {
@@ -80,7 +81,7 @@ public class ControllerTools extends ControllerScene {
   private void addToolButtons() {
     netButton = new JButton("NET");
     netButton.setFont(new Font("Roboto", Font.BOLD, 18));
-    netButton.setBounds(0, 35, 75, 30);
+    netButton.setBounds(0, 20, 75, 30);
 	
     netButton.addActionListener(new ActionListener() {
       @Override
@@ -110,7 +111,7 @@ public class ControllerTools extends ControllerScene {
 	    
     cameraButton = new JButton("CMR");
     cameraButton.setFont(new Font("Roboto", Font.BOLD, 18));
-    cameraButton.setBounds(0, 140, 75, 30);
+    cameraButton.setBounds(0, 95, 75, 30);
 	    
     cameraButton.addActionListener(new ActionListener() {
       @Override
@@ -135,7 +136,7 @@ public class ControllerTools extends ControllerScene {
       
       cageButton = new JButton("CGE");
       cageButton.setFont(new Font("Roboto", Font.BOLD, 18));
-      cageButton.setBounds(0, 245, 75, 30);
+      cageButton.setBounds(0, 170, 75, 30);
   	
       cageButton.addActionListener(new ActionListener() {
         @Override
@@ -162,5 +163,35 @@ public class ControllerTools extends ControllerScene {
         }
       });
       toolPanel.add(cageButton);
+      
+      trimmerButton = new JButton("TRM");
+      trimmerButton.setFont(new Font("Roboto", Font.BOLD, 18));
+      trimmerButton.setBounds(0, 245, 75, 30);
+  	
+      trimmerButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+          Component toolComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Tools")))[0];
+          
+          mainPane.setLayer(toolComponent, LayerCode.Tools.getCode());
+          if (Scene.getCurrentTool() instanceof ToolTrimmer) {
+            Scene.setCurrentTool(null);
+            mainPane.getComponentsInLayer(LayerCode.MainAll.getCode())[0].setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+          }
+          else {
+            Scene.setCurrentTool(new ToolTrimmer(0,0,0,0));
+            Toolkit toolkit = Toolkit.getDefaultToolkit();
+            Image image = toolkit.getImage("img/mouse_net.png");
+            //attempting to calculate hotspot off of image size (does not work for windows)
+//            Cursor netCursor = toolkit.createCustomCursor(image , new Point(mainPane.getX()+image.getWidth(null)/2, 
+//                       mainPane.getY()+image.getHeight(null)/2), "Net");
+            //Set hotspot point to 16,16 because default size is 32,32
+            Cursor trimmerCursor = toolkit.createCustomCursor(image , new Point(16,16), "Cage");
+            mainPane.getComponentsInLayer(LayerCode.MainAll.getCode())[0].setCursor(trimmerCursor);
+
+          }
+        }
+      });
+      toolPanel.add(trimmerButton);
     }
   }

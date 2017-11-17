@@ -3,6 +3,7 @@ package cisc275.group3.model.scene;
 import cisc275.group3.controller.ControllerInventory;
 import cisc275.group3.model.sceneobject.BetaCrab;
 import cisc275.group3.model.sceneobject.BetaFish;
+import cisc275.group3.model.sceneobject.BetaVegetation;
 import cisc275.group3.model.sceneobject.SceneObject;
 import cisc275.group3.model.sceneobject.ToolObject;
 import cisc275.group3.utility.Mission;
@@ -90,6 +91,18 @@ public abstract class Scene implements Serializable {
     	  //if (sceneItem.itemClicked(clickX, clickY) && cursorName.equalsIgnoreCase("Net")) {
     		  System.out.println("Clicked on: " + sceneItem.getPassport().getName());
     		  if ((Scene.getCurrentMission().getTargetObject() != null) &&(Scene.getCurrentMission().getTargetObject().equals("BetaCrab")) && (Scene.getCurrentMission().getObjectName().equals(sceneItem.getPassport().getName()))) {
+    			  Scene.getCurrentMission().decreaseNum();
+    		  }
+    		  ControllerInventory.addItem(sceneItem);
+    		  iterator.remove();
+    		  return true;
+    	  }
+      }
+      if ((sceneItem instanceof BetaVegetation) && (currentTool != null) && (SceneObjectType.BetaVegetation.searchCompatability(currentTool.getName()))) {
+    	  if (sceneItem.itemClicked(clickX, clickY)) {
+    	  //if (sceneItem.itemClicked(clickX, clickY) && cursorName.equalsIgnoreCase("Net")) {
+    		  System.out.println("Clicked on: " + sceneItem.getPassport().getName());
+    		  if ((Scene.getCurrentMission().getTargetObject() != null) &&(Scene.getCurrentMission().getTargetObject().equals("BetaVegetation")) && (Scene.getCurrentMission().getObjectName().equals(sceneItem.getPassport().getName()))) {
     			  Scene.getCurrentMission().decreaseNum();
     		  }
     		  ControllerInventory.addItem(sceneItem);
