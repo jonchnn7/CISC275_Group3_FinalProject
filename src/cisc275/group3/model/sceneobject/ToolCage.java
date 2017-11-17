@@ -9,12 +9,12 @@ import java.awt.geom.Ellipse2D;
 import java.util.Random;
 import java.lang.Object;
 
-public class ToolSample extends ToolObject {
+public class ToolCage extends ToolObject {
 
-  public ToolSample(int x, int y, int width, int height) {
+  public ToolCage(int x, int y, int width, int height) {
     super(x, y, width, height);
-    clickType = "Sample";
-    toolName = "Sample";
+    clickType = "Cage";
+    toolName = "Cage";
   }
 
   @Override
