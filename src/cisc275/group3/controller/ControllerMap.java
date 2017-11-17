@@ -181,7 +181,7 @@ public class ControllerMap extends ControllerScene {
     Component bayComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Bay")))[0];
     Component beachComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Beach")))[0];
     Component wetlandComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Wetland")))[0];
-    Component beachMiniComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("BeachMini")))[0];
+  //  Component beachMiniComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("BeachMini")))[0];
     Component titleComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Title")))[0];
       
     mainPane.setLayer(mapComponent, LayerCode.Map.getCode());
@@ -189,7 +189,7 @@ public class ControllerMap extends ControllerScene {
     mainPane.setLayer(bayComponent, LayerCode.Bay.getCode());
     mainPane.setLayer(beachComponent, LayerCode.Beach.getCode());
     mainPane.setLayer(wetlandComponent, LayerCode.Wetland.getCode());
-    mainPane.setLayer(beachMiniComponent, LayerCode.BeachMini.getCode());
+  //  mainPane.setLayer(beachMiniComponent, LayerCode.BeachMini.getCode());
     mainPane.setLayer(titleComponent, LayerCode.Title.getCode());
   }
 }

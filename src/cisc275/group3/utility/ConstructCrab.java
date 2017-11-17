@@ -21,7 +21,7 @@ public interface ConstructCrab {
   static final int[] CRAB_ID = {100, 200};
 		  
   // Crab x-axis Speed
-  static final int[] CRAB_SPEED = {10, 0};
+  static final int[] CRAB_SPEED = {10, 10};
   
   /**
    * Returns a constructed BetaCrab object
@@ -31,8 +31,8 @@ public interface ConstructCrab {
    * @param		y		double-y-axis location
    * @return	BetaCrab
    */
-  static public BetaCrab constructCrab(int depth, int type, double x, double y) {
-    BetaCrab crab = new BetaCrab(depth, 
+  static public BetaCrab constructLeftCrab(int depth, int type, double x, double y) {
+    BetaCrab leftCrab = new BetaCrab(depth, 
                                  (int)(CRAB_WIDTH[type]*CRAB_AR[type]), // height
                                  CRAB_ID[type], // id
                                  CRAB_FILE[type], // image file
@@ -43,6 +43,21 @@ public interface ConstructCrab {
                                  CRAB_SPEED[type], // x-axis speed
                                  0, // y-axis speed
                                  true);
-    return crab;
+    return leftCrab;
   }
+  
+  static public BetaCrab constructRightCrab(int depth, int type, double x, double y) {
+	    BetaCrab rightCrab = new BetaCrab(depth, 
+	                                 (int)(CRAB_WIDTH[type]*CRAB_AR[type]), // height
+	                                 CRAB_ID[type], // id
+	                                 CRAB_FILE[type], // image file
+	                                 CRAB_NAME[type], // name
+	                                 (int)CRAB_WIDTH[type], // width
+	                                 x, // x position
+	                                 y, // y position
+	                                 CRAB_SPEED[type], // x-axis speed
+	                                 0, // y-axis speed
+	                                 false);
+	    return rightCrab;
+	  }
 }
