@@ -75,6 +75,7 @@ public class GameController implements Serializable {
     controlMap.put("Map", new ControllerMap(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 3));
     controlMap.put("Overlay", new ControllerOverlay(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 3));
     controlMap.put("Tools", new ControllerTools(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 3));
+    controlMap.put("Inventory", new ControllerInventory(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 3));
 
  
     gameTime();
@@ -99,8 +100,8 @@ public class GameController implements Serializable {
           break;
           case "Wetland":	((ControllerWetland)v).update();
           break;
-          case "BeachMini":	((ControllerBeachMini)v).update();
-		  break;
+//          case "BeachMini":	((ControllerBeachMini)v).update();
+//		  break;
           }
         
           // Time Updates
@@ -114,8 +115,8 @@ public class GameController implements Serializable {
             break;
             case "Wetland":	((ControllerWetland)v).updateTime();
             break;
-            case "BeachMini":((ControllerBeachMini)v).updateTime();
-			break;
+//            case "BeachMini":((ControllerBeachMini)v).updateTime();
+//			break;
             }
           }
         });
