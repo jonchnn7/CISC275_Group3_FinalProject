@@ -20,30 +20,40 @@ import cisc275.group3.utility.ObjectId;
 public class BetaCrab extends SceneObject implements ActionMove {
   private double speedX; // x-axis speed
   private double speedY; // y-axis speed
+  private boolean leftCrab; //moving right to left?
 
-  public BetaCrab(ObjectId id, double x, double y, double sx, double sy) {
+  public BetaCrab(ObjectId id, double x, double y, double sx, double sy, boolean lc) {
     super(id, x, y);
     speedX = sx; 
     speedY = sy;  // Not actually used?...
+    leftCrab = lc;
   }
 	  
   /**
    * Constructor also creates an ObjectId
    */
-  public BetaCrab(int d, int h, int id, String imFi, String n, int w, double x, double y, double sx, double sy) {
-    this(new ObjectId(d, h, id, imFi, n, w), x, y, sx, sy);
+  public BetaCrab(int d, int h, int id, String imFi, String n, int w, double x, double y, double sx, double sy, boolean lc) {
+    this(new ObjectId(d, h, id, imFi, n, w), x, y, sx, sy, lc);
   }
 	
   @Override
   public void move() {
 	double dx = speedX - speedX*0.1 + randGen.nextGaussian()*speedX*0.2 + randGen.nextInt(7);
 	double dy = 0;
-		
+	
+	int dir = (leftCrab) ? -1 : 1;
     double x = location.getX() + dx;
     double y = location.getY() + dy;
 		  
     location = new Point2D.Double(x,y);
   }  
+  
+  /**
+   * @return leftFish	returns fish moving left?
+   */
+  public boolean getLeftCrab() {
+    return leftCrab;
+  }
   
   public void move(double dx) {		
     double x = location.getX() + dx;

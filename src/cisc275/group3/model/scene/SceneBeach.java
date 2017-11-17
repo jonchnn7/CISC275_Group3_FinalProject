@@ -12,13 +12,13 @@ import cisc275.group3.utility.SceneId;
  * Beach scene/model. 
  * <p>
  * The beach scene implements scoring and timing functions 
- * via interface implementations. The ConstructFish 
- * interface holds component definitions for fish objects,
- * and static functions to return fish objects. 
+ * via interface implementations. The ConstructCrab
+ * interface holds component definitions for crab objects,
+ * and static functions to return  objects. 
  * <p>
  * SceneBeach.java
  * <p>
- * @author Scott
+ * @author Ryan
  */
 public class SceneBeach extends Scene implements ConstructCrab, PropertyScored, PropertyTimed {
 
@@ -41,49 +41,49 @@ public class SceneBeach extends Scene implements ConstructCrab, PropertyScored, 
   
   /**
    * Creates initial screen of five left-to-right and
-   * right-to left fish at different depths. List of 
-   * fish is then sorted by depth.
+   * right-to left crabs at different depths. List of 
+   * crabs is then sorted by depth.
    */
   @Override
   protected void fillScene() {
-    for (int i=0; i<1; i++) {
+    for (int i=0; i<10; i++) {
     	System.out.println("Adding crab");
     	sceneItems.add(ConstructCrab.constructCrab(
               randGen.nextInt(20)-10, // depth
               randGen.nextInt(2),
               manifest.getWidth()+randGen.nextInt(500), // x location
               i*140 + manifest.getStartY() + 10));
+    
+      int crabType = randGen.nextInt(2);
+      
+      // Add Left Crab
+      sceneItems.add(ConstructCrab.constructCrab(
+                     randGen.nextInt(20)-10, // depth
+                     crabType,
+                     manifest.getWidth()+randGen.nextInt(500), // x location
+                     i*140 + manifest.getStartY() + 10)); // y location
+      
+      // Add Right Crab
+      sceneItems.add(ConstructCrab.constructCrab(
+                     randGen.nextInt(20)-10, // depth
+                     crabType,
+                     0 - randGen.nextInt(500), // x location
+                     i*140 + manifest.getStartY() + 10)); // y location
     }
-//      int fishType = randGen.nextInt(3);
-//      
-//      // Add Left Fish
-//      sceneItems.add(ConstructFish.constructLeftFish(
-//                     randGen.nextInt(20)-10, // depth
-//                     fishType,
-//                     manifest.getWidth()+randGen.nextInt(500), // x location
-//                     i*140 + manifest.getStartY() + 10)); // y location
-//      
-//      // Add Right Fish
-//      sceneItems.add(ConstructFish.constructRightFish(
-//                     randGen.nextInt(20)-10, // depth
-//                     fishType,
-//                     0 - randGen.nextInt(500), // x location
-//                     i*140 + manifest.getStartY() + 10)); // y location
-//    }
     Collections.sort(sceneItems); // sort by depth
   }
   
   /**
    * Overridden from Scene.java abstract method. On approx. 4% of calls,
-   * a new left-to-right and right-to-left fish is created. The new fish
+   * a new left-to-right and right-to-left crab is created. The new crab
    * can occur anywhere on the y-axis with a random depth [5,15).
    * <p>
-   * Every fish in the scene is then asked to move it along, and then removed
+   * Every crab in the scene is then asked to move it along, and then removed
    * if they're off-screen.
    */
   @Override
   public void update() {
-    // Generate new fish on ~4% of calls
+    // Generate new crab on ~4% of calls
     if (randGen.nextInt(100) <= 4) {
       sceneItems.add(ConstructCrab.constructCrab(
     		  randGen.nextInt(20)-10, // depth
@@ -91,23 +91,23 @@ public class SceneBeach extends Scene implements ConstructCrab, PropertyScored, 
               manifest.getWidth()+randGen.nextInt(500), // x location
               randGen.nextDouble()*manifest.getHeight() + manifest.getStartY())); // y location
     }
-    // Move Fish
+    // Move Crab
     for (SceneObject crab : sceneItems) {
     	System.out.println(crab);
       ((BetaCrab)crab).move();
     }	
 	
-    // Remove Off-screen Fish
-    removeFish();
+    // Remove Off-screen crabs
+    removeCrab();
     
     // Sort by depth
     Collections.sort(sceneItems);
   }
   
   /**
-   * Removes fish that are off-screen 
+   * Removes crab that are off-screen 
    */
-  private void removeFish() {
+  private void removeCrab() {
     for (Iterator<SceneObject> iterator = sceneItems.iterator(); iterator.hasNext();) {
       BetaCrab crab = (BetaCrab)iterator.next();
       

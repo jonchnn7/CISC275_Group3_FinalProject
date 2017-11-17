@@ -41,7 +41,8 @@ public interface ConstructCrab {
                                  x, // x position
                                  y, // y position
                                  CRAB_SPEED[type], // x-axis speed
-                                 0); // y-axis speed
+                                 0, // y-axis speed
+                                 true);
     return crab;
   }
 }
