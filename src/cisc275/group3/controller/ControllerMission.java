@@ -91,10 +91,10 @@ public class ControllerMission extends ControllerScene implements LinkDynamics, 
 	    			Scene.getCurrentMission().setObjectName(s);
 	    			displayMission();
 	    		} else if ((Scene.getCurrentMission().getTargetObject() == null) && !(Scene.getCurrentMission().isDoneMission())) {
-	    			Scene.getCurrentMission().setObjectNum(-1);
+	    			Scene.getCurrentMission().setObjectNum(-5);
 	    			Scene.getCurrentMission().setDoneMission(true);
 	    			displayMission();
-	    			System.out.println("turned in mission");
+	    			System.out.println(Scene.getCurrentFact());
 	    		}
 	    	}
 	    });

@@ -87,6 +87,9 @@ public class ControllerMap extends ControllerScene {
 	        mainPane.setLayer(missionComponent, LayerCode.Mission.getCode());
 	        Scene.setCurrentTool(null);
 	        mainPane.getComponentsInLayer(LayerCode.MainAll.getCode())[0].setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+	        if (Scene.getCurrentMission().getObjectNum() == -1) {
+	        	Scene.getCurrentMission().setObjectNum(-5);
+	        }
 	      }
 	    });
 	    mapPanel.add(hqButton);
@@ -106,6 +109,9 @@ public class ControllerMap extends ControllerScene {
         mainPane.setLayer(missionComponent, -20);
         Scene.setCurrentTool(null);
         mainPane.getComponentsInLayer(LayerCode.MainAll.getCode())[0].setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        if (Scene.getCurrentMission().getObjectNum() == -5) {
+        	Scene.getCurrentMission().setObjectNum(-1);
+        }
       }
     });
     mapPanel.add(bayButton);
@@ -125,6 +131,9 @@ public class ControllerMap extends ControllerScene {
         mainPane.setLayer(missionComponent, -20);
         Scene.setCurrentTool(null);
         mainPane.getComponentsInLayer(LayerCode.MainAll.getCode())[0].setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        if (Scene.getCurrentMission().getObjectNum() == -5) {
+        	Scene.getCurrentMission().setObjectNum(-1);
+        }
       }
     });
     mapPanel.add(beachButton);
@@ -144,6 +153,9 @@ public class ControllerMap extends ControllerScene {
         mainPane.setLayer(missionComponent, -20);
         Scene.setCurrentTool(null);
         mainPane.getComponentsInLayer(LayerCode.MainAll.getCode())[0].setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        if (Scene.getCurrentMission().getObjectNum() == -5) {
+        	Scene.getCurrentMission().setObjectNum(-1);
+        }
       }
     });
     mapPanel.add(wetlandButton);
@@ -163,6 +175,9 @@ public class ControllerMap extends ControllerScene {
         mainPane.setLayer(missionComponent, -20);
         Scene.setCurrentTool(null);
         mainPane.getComponentsInLayer(LayerCode.MainAll.getCode())[0].setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        if (Scene.getCurrentMission().getObjectNum() == -5) {
+        	Scene.getCurrentMission().setObjectNum(-1);
+        }
       }
     });
     mapPanel.add(beachMiniButton);

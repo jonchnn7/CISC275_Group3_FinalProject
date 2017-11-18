@@ -38,6 +38,7 @@ public abstract class Scene implements Serializable {
   protected int time;
   protected static ToolObject currentTool;
   protected static Mission currentMission;
+  protected static String currentFact;
 
 	
   // RNG
@@ -48,6 +49,7 @@ public abstract class Scene implements Serializable {
     currentTool = null;
     currentMission = new Mission(null, -1);
     currentMission.setDoneMission(true);
+    currentFact = "null fact";
     sceneItems = new ArrayList<SceneObject>();
   }
   
@@ -166,6 +168,14 @@ public abstract class Scene implements Serializable {
    */
   public static void setCurrentMission(Mission m) {
     currentMission = m;
+  }
+  
+  public static String getCurrentFact() {
+	  return currentFact;
+  }
+  
+  public static void setCurrentFact(String s) {
+	  currentFact = s;
   }
   
   /**
