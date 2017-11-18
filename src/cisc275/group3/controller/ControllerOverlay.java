@@ -100,7 +100,7 @@ public class ControllerOverlay extends ControllerScene {
     
     // Mission Label Parameters
     missionLabelBg = new ImageIcon("img/time_bg.png");
-    missionLabelWidth = 150;
+    missionLabelWidth = 175;
     missionLabelHeight = 85;
     missionLabelString = "";
     

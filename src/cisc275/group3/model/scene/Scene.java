@@ -46,7 +46,8 @@ public abstract class Scene implements Serializable {
   public Scene(SceneId mani) {
     manifest = mani;
     currentTool = null;
-    currentMission = new Mission(null, 0);
+    currentMission = new Mission(null, -1);
+    currentMission.setDoneMission(true);
     sceneItems = new ArrayList<SceneObject>();
   }
   

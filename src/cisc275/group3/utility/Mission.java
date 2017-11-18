@@ -22,18 +22,22 @@ public class Mission {
 	
 	public void decreaseNum() {
 		objectNum--;
-		if (objectNum == 0) {
-			doneMission = true;
-			targetObject = null;
-		}
 	}
 
 	public String getTargetObject() {
 		return targetObject;
 	}
 	
+	public void setTargetObject(String o) {
+		targetObject = o;
+	}
+	
 	public int getObjectNum() {
 		return objectNum;
+	}
+	
+	public void setObjectNum(int i) {
+		objectNum = i;
 	}
 	
 	public String getObjectName() {
@@ -76,7 +80,11 @@ public class Mission {
 				s += objectName;
 			}
 		} else if (targetObject.equals("BetaVegetation")) {
-			s += "BetaVegetation";
+			if (objectName.equals("")) {
+				s += "BetaVegetation";
+			} else {
+				s += objectName;
+			}
 		}
 		return s;
 	}

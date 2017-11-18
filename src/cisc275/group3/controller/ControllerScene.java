@@ -7,6 +7,7 @@ import cisc275.group3.view.ViewGame;
 import cisc275.group3.view.ViewOverlayLabel;
 
 import java.awt.Component;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -102,9 +103,13 @@ public abstract class ControllerScene implements Serializable {
 	    
 	    missionNum = Integer.toString(Scene.getCurrentMission().getObjectNum());
 	    
-	    if (missionNum.equals("0")) {
-	    	missionNum = "";
+	    if (((missionNum.equals("0")) && (Scene.getCurrentMission().getTargetObject() != null)) || (missionNum.equals("-2"))) {
+	    	missionNum = "Complete!";
+	    	Scene.getCurrentMission().setTargetObject(null);
+	    	Scene.getCurrentMission().setObjectNum(-2);
 	    	((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(null);
+	    } else if (missionNum.equals("-1")) {
+	    	missionNum = "";
 	    }
 	    
 	    ((ViewOverlayLabel)componentList.get("MissionLabel")).updateLabel(missionNum);

@@ -51,7 +51,7 @@ public class ControllerMission extends ControllerScene implements LinkDynamics, 
 	    missionButton.addActionListener(new ActionListener() {
 	    	@Override
 	    	public void actionPerformed(ActionEvent e) {
-	    		//if (Scene.getCurrentMission().getTargetObject() == null) {
+	    		if ((Scene.getCurrentMission().getTargetObject() == null) && (Scene.getCurrentMission().isDoneMission())) {
 	    			int tmp = randGen.nextInt(8);
 	    			String s = "";
 	    			switch(tmp) {
@@ -89,10 +89,14 @@ public class ControllerMission extends ControllerScene implements LinkDynamics, 
 	    				Scene.setCurrentMission(new Mission("BetaVegetation", randGen.nextInt(5) + 1));
 	    			}
 	    			Scene.getCurrentMission().setObjectName(s);
-	    			
 	    			displayMission();
+	    		} else if ((Scene.getCurrentMission().getTargetObject() == null) && !(Scene.getCurrentMission().isDoneMission())) {
+	    			Scene.getCurrentMission().setObjectNum(-1);
+	    			Scene.getCurrentMission().setDoneMission(true);
+	    			displayMission();
+	    			System.out.println("turned in mission");
 	    		}
-	    	//}
+	    	}
 	    });
 	    missionPanel.add(missionButton);
 	}
