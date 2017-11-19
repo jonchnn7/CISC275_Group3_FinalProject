@@ -6,6 +6,7 @@ import cisc275.group3.model.sceneobject.BetaFish;
 import cisc275.group3.model.sceneobject.BetaVegetation;
 import cisc275.group3.model.sceneobject.SceneObject;
 import cisc275.group3.model.sceneobject.ToolObject;
+import cisc275.group3.utility.ConstructVegetation;
 import cisc275.group3.utility.Mission;
 import cisc275.group3.utility.SceneId;
 import cisc275.group3.utility.SceneObjectType;
@@ -26,7 +27,7 @@ import java.util.Random;
  * Scene.java
  * <p>
  * @author Scott
- * <p>
+ * @author Jon
  * @author Jolyne
  */
 public abstract class Scene implements Serializable {
@@ -103,13 +104,25 @@ public abstract class Scene implements Serializable {
     	  if (sceneItem.itemClicked(clickX, clickY)) {
     	  //if (sceneItem.itemClicked(clickX, clickY) && cursorName.equalsIgnoreCase("Net")) {
     		  System.out.println("Clicked on: " + sceneItem.getPassport().getName());
-    		  if ((Scene.getCurrentMission().getTargetObject() != null) && (Scene.getCurrentMission().getTargetObject().equals("BetaVegetation")) && (Scene.getCurrentMission().getObjectName().equals(sceneItem.getPassport().getName()))) {
-    			  Scene.getCurrentMission().decreaseNum();
+    		  BetaVegetation vegetation = null;
+    		  if(sceneItem.getPassport().getId() > 0) {
+    			  vegetation = ConstructVegetation.constructVegetation(sceneItem.getPassport().getDepth(),
+    					  sceneItem.getPassport().getId()-1,//GetID
+    					  sceneItem.getLocation().getX(),
+    					  sceneItem.getLocation().getY());
+    			  iterator.remove();
+        		  sceneItems.add(vegetation);
+        		  return true;
     		  }
-    		  ControllerInventory.addItem(sceneItem);
-    		  iterator.remove();
-    		  return true;
-    	  }
+    		  else {
+        		  ControllerInventory.addItem(sceneItem);
+    			  iterator.remove();
+    			  if ((Scene.getCurrentMission().getTargetObject() != null) && (Scene.getCurrentMission().getTargetObject().equals("BetaVegetation")) && (Scene.getCurrentMission().getObjectName().equals(sceneItem.getPassport().getName()))) {
+         			  Scene.getCurrentMission().decreaseNum();
+    			  }
+        		  return true;
+    		  }
+ 	    	}
       }
     }
     return false;

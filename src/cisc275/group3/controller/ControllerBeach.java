@@ -28,6 +28,7 @@ import cisc275.group3.view.ViewOverlayLabel;
  * <p>
  * ControllerBay.java
  * <p>
+ * @author Jon
  * @author Ryan
  */
 public class ControllerBeach extends ControllerScene implements LinkDynamics, LinkTime {

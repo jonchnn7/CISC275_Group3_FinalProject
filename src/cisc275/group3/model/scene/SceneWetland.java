@@ -1,11 +1,14 @@
 package cisc275.group3.model.scene;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 
 import cisc275.group3.model.sceneobject.BetaFish;
+import cisc275.group3.model.sceneobject.BetaVegetation;
 import cisc275.group3.model.sceneobject.SceneObject;
 import cisc275.group3.utility.ConstructFish;
+import cisc275.group3.utility.ConstructVegetation;
 import cisc275.group3.utility.SceneId;
 
 /**
@@ -18,6 +21,7 @@ import cisc275.group3.utility.SceneId;
  * <p>
  * SceneWetland.java
  * <p>
+ * @author Jon
  * @author Ryan
  */
 public class SceneWetland extends Scene implements PropertyScored, PropertyTimed {
@@ -73,16 +77,59 @@ public class SceneWetland extends Scene implements PropertyScored, PropertyTimed
   public void updateTime() {
 	time -= 1;
   }
-
+  
+  /**
+   * Creates the initial mission scene with 7 BetaVegetation placed randomly on the screen.
+   * The BetaVegetation is then sorted by depth.
+   */
 @Override
 protected void fillScene() {
-	// TODO Auto-generated method stub
+	for (int i=0; i<8; i++) {
+		sceneItems.add(ConstructVegetation.constructVegetation(
+				randGen.nextInt(20)-10, // depth
+				2,
+				randGen.nextInt(1280), // x location
+		         i*140 + manifest.getStartY() + 10)); // y location		
+		
+	    Collections.sort(sceneItems); // sort by depth
+	  }
 	
 }
 
+/**
+ * Overridden from Scene.java abstract method. sceneType from manifest
+ * is used to determine how to update each scene model
+ * 
+ * <p>
+ * For mission related scene models: On approx. 2% of calls, a new
+ * instance of a BetaVegetation will be added. The new BetaVegetation
+ * can occur anywhere.
+ * <p>
+ * On approx. 5% of calls, the current BetaVegetation will be grown
+ */
 @Override
 public void update() {
-	// TODO Auto-generated method stub
-	
+	if(this.getManifest().getSceneType() == 2) {
+	    // Generate new vegetation on ~1% of calls
+		if(sceneItems.size() < 10) {
+			if (randGen.nextInt(100) <= 2) {
+		      sceneItems.add(ConstructVegetation.constructVegetation(
+		                     randGen.nextInt(20)-10, // depth
+		                     0,
+		     				randGen.nextInt(1280), // x location
+		     				randGen.nextInt(650)+70));
+		    }
+		}
+	    
+	    if(randGen.nextInt(100) <= 5) {
+		    // Grow vegetation
+	    	ArrayList<SceneObject> tempVegetation = (ArrayList<SceneObject>)sceneItems.clone(); 
+	    	sceneItems.clear();
+		    for (SceneObject vegetation : tempVegetation) {
+		    	sceneItems.add(((BetaVegetation)vegetation).grow());
+		    }	
+	    }
+	    	    Collections.sort(sceneItems);
+	}	
 }
 }
