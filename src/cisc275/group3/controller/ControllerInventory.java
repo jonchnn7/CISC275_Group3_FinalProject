@@ -58,50 +58,26 @@ public class ControllerInventory extends ControllerScene {
   @Override
   protected void createScene(int sceneType) {
 	  
-	 scene = new SceneInventory("Inventory", 0, 0, 300, 300, 3, "img/inventory_menu_small.png");
-	 viewGame = new ViewGame(300, 300, scene.getSceneItems(), scene.getManifest().getBG());
+    scene = new SceneInventory("Inventory", 0, 0, 300, 300, 3, "img/inventory_menu_small.png");
+    viewGame = new ViewGame(300, 300, scene.getSceneItems(), scene.getManifest().getBG());
 	    
 
-	 viewGame.setBounds(100, 0, 300, 300);
-	 viewGame.setName("InventoryLayer");
-	  
-/*	  
-    Dimension inventorySize = new Dimension(300, 300);
-    inventoryPanel = new JPanel(true) {
-      @Override
-      public void paintComponent(Graphics g) {
-        Dimension size = new Dimension(inventoryBg.getIconWidth(), inventoryBg.getIconHeight());
-        g.drawImage(inventoryBg.getImage(), 0, 0, size.width, size.height, this);
-      }
-    };
-    
-    inventoryPanel.setLayout(null);
-    inventoryPanel.setPreferredSize(inventorySize);
-    inventoryPanel.setBounds(100, 0, inventorySize.width, inventorySize.height);
-    inventoryPanel.setBackground(Color.orange);
-    inventoryPanel.setOpaque(true);
-  */ 
-    //addToolButtons();
-    
-    //mainPane.setLayer(inventoryPanel, LayerCode.Inventory.getCode());
-    //mainPane.add(inventoryPanel, LayerCode.Inventory.getCode());
+    viewGame.setBounds(100, 0, 300, 300);
+    viewGame.setName("InventoryLayer");
+
     mainPane.setLayer(viewGame, LayerCode.Inventory.getCode());
     mainPane.add(viewGame, LayerCode.Inventory.getCode());
     componentList.put("Inventory", viewGame);
-    //componentList.put("InventoryOverlay", viewGame);
   }
   
   public static void addItem(SceneObject tmp)
   {
-	  //create new fish
-	  //System.out.println("Add Item");
-	  sceneFillItems.add(tmp);
-	  //System.out.println(sceneFillItems);
+    // Add Item
+    sceneFillItems.add(tmp);
   }
   
   public static ArrayList<SceneObject> getSceneItems()
   {
-	  //System.out.println("Get Item");
 	  return sceneFillItems;
   }
  
