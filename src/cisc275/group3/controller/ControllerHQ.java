@@ -31,6 +31,22 @@ import cisc275.group3.utility.Mission;
 import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.ViewGame;
 
+/**
+ * Contains the controller actions and logic for SceneHQ.java.
+ * <p>
+ * Extends the abstract ConstrollerScene class and adds dynamics
+ * and timing attributes. Those interfaces require the controller
+ * to pass an update call to the model on every timer tick, and
+ * to update the time every second.
+ * <p>
+ * @see ControllerScene.java
+ * <p>
+ * ControllerHQ.java
+ * <p>
+ * @author Scott
+ * @author Jon
+ * @author Jolyne
+ */
 public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkTime {
 	private final String BG_IMAGE = "img/bay_bg_2.jpg";
 	  
@@ -59,6 +75,13 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 	  protected void addML() {
 	  }
 	
+	  /**
+	   * Connects the HQ model and HQ view. So long as the HQ 
+	   * scene is the active pane, update the model and then pass 
+	   * the updated scene objects to the view.
+	   * <p>
+	   * Overridden from interface LinkDynamics.java
+	   */
 	@Override
 	  public void update() {
 	    if (mainPane.getLayer(componentList.get("HQ")) == LayerCode.MainAll.getCode()) {

@@ -26,7 +26,8 @@ import javax.swing.event.MouseInputListener;
  * <p>
  * GameController.java
  * <p>
- * @author Scott, Jon
+ * @author Scott
+ * @author Jon
  */
 public class GameController implements Serializable {
   
