@@ -21,6 +21,8 @@ import javax.swing.JPanel;
 import cisc275.group3.model.scene.Scene;
 import cisc275.group3.model.scene.SceneBay;
 import cisc275.group3.model.scene.SceneInventory;
+import cisc275.group3.model.sceneobject.BetaCrab;
+import cisc275.group3.model.sceneobject.BetaFish;
 import cisc275.group3.model.sceneobject.SceneObject;
 import cisc275.group3.model.sceneobject.ToolCamera;
 import cisc275.group3.model.sceneobject.ToolNet;
@@ -49,6 +51,9 @@ public class ControllerInventory extends ControllerScene {
   private ImageIcon inventoryBg;
   private static ArrayList<SceneObject> sceneFillItems = new ArrayList<SceneObject>();
   
+  private static int inventory_x = 0;
+  private static int inventory_y = 0;
+  
   
   public ControllerInventory(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType) {
 	    super(w, h, f, cl, sceneType);
@@ -73,7 +78,40 @@ public class ControllerInventory extends ControllerScene {
   public static void addItem(SceneObject tmp)
   {
     // Add Item
-    sceneFillItems.add(tmp);
+	  if (tmp instanceof BetaFish)
+	  {
+		  sceneFillItems.add(new BetaFish(tmp.getPassport(), inventory_x, inventory_y, 0, 0, true));
+	  }
+	  else if (tmp instanceof BetaCrab)
+	  {
+		  sceneFillItems.add(new BetaCrab(tmp.getPassport(), inventory_x, inventory_y, 0, 0, true));
+	  }
+	  
+	  inventory_x = inventory_x + 120;
+	  if (inventory_x > 300)
+	  {
+		  inventory_x = 0;
+		  inventory_y = inventory_y + 100;
+	  }
+	  
+    //sceneFillItems.add(tmp);
+  }
+  
+  //Takes a type of sceneObject and removes the amount of that particular object you want to remove from the inventory 
+  public static void removeItem(SceneObject tmp, int count)
+  {
+	  int found_count = 0; //how many have been found
+	  int index = 0;
+	  while((found_count < count) && index < sceneFillItems.size())
+	  {
+		  if(sceneFillItems.get(index).getPassport() == tmp.getPassport())
+		  {
+			  sceneFillItems.remove(index);
+			  found_count ++;
+		  }
+		  index ++;
+	  }
+	  //need to resort and reorder
   }
   
   public static ArrayList<SceneObject> getSceneItems()
