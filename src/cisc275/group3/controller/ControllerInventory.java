@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -100,18 +101,44 @@ public class ControllerInventory extends ControllerScene {
   //Takes a type of sceneObject and removes the amount of that particular object you want to remove from the inventory 
   public static void removeItem(SceneObject tmp, int count)
   {
-	  int found_count = 0; //how many have been found
-	  int index = 0;
-	  while((found_count < count) && index < sceneFillItems.size())
-	  {
-		  if(sceneFillItems.get(index).getPassport() == tmp.getPassport())
-		  {
-			  sceneFillItems.remove(index);
-			  found_count ++;
-		  }
-		  index ++;
+	  int found_count = 0;
+  
+	  for (Iterator<SceneObject> iterator = sceneFillItems.iterator(); iterator.hasNext();) {     
+	      SceneObject sceneItem = iterator.next();
+	      
+	      //System.out.println(sceneItem.getShortName() + " " + tmp.getShortName() + " " + found_count+ " " + count);
+	      if(sceneItem.getShortName().equals(tmp.getShortName()) && found_count < count)
+	      {
+	    	  iterator.remove();
+	    	  found_count++;
+	    	  //System.out.println("found " + found_count + " of " + tmp.getShortName());
+	      }
+	      //System.out.println("looping");
 	  }
-	  //need to resort and reorder
+
+	  /*now basically redraw the inventory
+	  * basically create a new tmp list that hold all remaining fish in inventory
+	  * clears the inventory
+	  * readds to the inventory clones of the old objects but with new location attributes
+	  * clears tmp list
+	  * Harvey will probably kill me for this
+	  */
+	   ArrayList<SceneObject> tmp_list = new ArrayList<SceneObject>();
+	   
+	  for (SceneObject tmp_object : sceneFillItems)
+	  {
+		  tmp_list.add(tmp_object);
+	  }
+	  sceneFillItems.clear();
+	  inventory_x = 0;
+	  inventory_y = 0;
+	  for(SceneObject tmp_object : tmp_list)
+	  {
+		  addItem(tmp_object);
+	  }
+	  tmp_list.clear();
+	  
+	  
   }
   
   public static ArrayList<SceneObject> getSceneItems()
