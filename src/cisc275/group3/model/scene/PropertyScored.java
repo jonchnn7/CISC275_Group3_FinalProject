@@ -8,7 +8,7 @@ package cisc275.group3.model.scene;
  * <p>
  * PropertyScored.java
  * <p>
- * @author Scott
+ * @author Scott <p>
  */
 public interface PropertyScored {
 	public int getScore();

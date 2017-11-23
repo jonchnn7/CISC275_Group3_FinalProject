@@ -28,9 +28,9 @@ import cisc275.group3.view.ViewOverlayLabel;
  * <p>
  * ControllerBay.java
  * <p>
- * @author Scott
- * @author Jolyne
- * @author Jon
+ * @author Scott <p>
+ * @author Jolyne <p>
+ * @author Jon <p>
  */
 public class ControllerWetland extends ControllerScene implements LinkDynamics, LinkTime {
   private final String BG_IMAGE = "img/wetland_bg.jpg";

@@ -4,6 +4,19 @@ import cisc275.group3.model.sceneobject.BetaCrab;
 import cisc275.group3.utility.ConstructCrab;
 import cisc275.group3.utility.SceneId;
 
+/**
+ * Bonus Beach mini-game to be unlocked after completing a
+ * beach mission. Primarily used to introduce fun, 
+ * alternative play mechanics with little to no educational
+ * value. 
+ * <p>
+ * The objective of this game is to "drag" your crab across 
+ * the screen in a race against two npc crabs.
+ * <p>
+ * SceneBeachMini.java
+ * <p>
+ * @author Scott <p> 
+ */
 public class SceneBeachMini extends Scene implements ConstructCrab, PropertyTimed {
 
   public SceneBeachMini(SceneId mani) {

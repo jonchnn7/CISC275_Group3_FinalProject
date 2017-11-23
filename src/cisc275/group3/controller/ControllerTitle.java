@@ -25,7 +25,7 @@ import cisc275.group3.view.GameWindow;
  * <p>
  * ControllerTitle.java
  * <p>
- * @author Scott
+ * @author Scott <p>
  */
 public class ControllerTitle extends ControllerScene {
 

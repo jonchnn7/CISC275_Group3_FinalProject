@@ -8,7 +8,7 @@ package cisc275.group3.model.scene;
  * <p>
  * PropertyTimed.java
  * <p>
- * @author Scott
+ * @author Scott <p>
  */
 public interface PropertyTimed {
   public int getTime();

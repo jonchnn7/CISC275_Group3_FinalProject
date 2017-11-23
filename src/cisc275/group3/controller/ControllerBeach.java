@@ -17,7 +17,7 @@ import cisc275.group3.view.ViewGame;
 import cisc275.group3.view.ViewOverlayLabel;
 
 /**
- * Contains the controller actions and logic for SceneBay.java.
+ * Contains the controller actions and logic for SceneBeach.java.
  * <p>
  * Extends the abstract ConstrollerScene class and adds dynamics
  * and timing attributes. Those interfaces require the controller
@@ -26,10 +26,10 @@ import cisc275.group3.view.ViewOverlayLabel;
  * <p>
  * @see ControllerScene.java
  * <p>
- * ControllerBay.java
+ * ControllerBeach.java
  * <p>
- * @author Jon
- * @author Ryan
+ * @author Jon <p>
+ * @author Ryan <p>
  */
 public class ControllerBeach extends ControllerScene implements LinkDynamics, LinkTime {
   private final String BG_IMAGE = "img/beach_bg.jpg";

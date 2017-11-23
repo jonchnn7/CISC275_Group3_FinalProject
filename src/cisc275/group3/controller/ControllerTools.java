@@ -36,9 +36,8 @@ import cisc275.group3.view.GameWindow;
  * <p>
  * ControllerTool.java
  * <p>
- * @author Scott
- * <p>
- * @author Jolyne
+ * @author Scott <p>
+ * @author Jolyne <p>
  */
 public class ControllerTools extends ControllerScene {
 

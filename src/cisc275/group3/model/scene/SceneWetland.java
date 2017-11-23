@@ -18,9 +18,8 @@ import cisc275.group3.utility.SceneId;
  * <p>
  * SceneWetland.java
  * <p>
- * 
- * @author Jon
- * @author Ryan
+ * @author Jon <p>
+ * @author Ryan <p>
  */
 public class SceneWetland extends Scene implements PropertyScored, PropertyTimed {
 

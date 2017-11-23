@@ -17,7 +17,10 @@ import cisc275.group3.view.ViewOverlayLabel;
  * After the button has been added, the associated action listener 
  * and action is added.
  * <p>
- * @author Scott
+ * @author Scott <p>
+ * @author Jolyne <p>
+ * @author Thomas <p>
+ * @author Ryan <p>
  */
 public class ControllerOverlay extends ControllerScene {
   private ImageIcon mapButtonImage;

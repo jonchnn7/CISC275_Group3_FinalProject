@@ -10,9 +10,8 @@ import cisc275.group3.utility.SceneId;
  * <p>
  * SceneHQ.java
  * <p>
- * 
- * @author Scott
- * @author Jon
+ * @author Scott <p>
+ * @author Jon <p>
  */
 public class SceneHQ extends Scene implements PropertyScored, PropertyTimed {
 
@@ -46,7 +45,7 @@ public class SceneHQ extends Scene implements PropertyScored, PropertyTimed {
 	/**
 	 * Overridden from PropertyScored.java
 	 * 
-	 * @return score
+	 * @return the score
 	 */
 	@Override
 	public int getScore() {
@@ -54,9 +53,9 @@ public class SceneHQ extends Scene implements PropertyScored, PropertyTimed {
 	}
 
 	/**
+	 * Increases the static score by 1
+	 * <p>
 	 * Overridden from PropertyScored.java
-	 * 
-	 * Updates the static score by 1
 	 */
 	@Override
 	public void updateScore() {
@@ -64,9 +63,9 @@ public class SceneHQ extends Scene implements PropertyScored, PropertyTimed {
 	}
 
 	/**
+	 * Updates the static score with the time left in the mission
+	 * <p>
 	 * Overridden from PropertyScored.java
-	 * 
-	 * Updates the static score by how much time is left in the mission
 	 */
 	@Override
 	public void missionScore() {
@@ -75,7 +74,6 @@ public class SceneHQ extends Scene implements PropertyScored, PropertyTimed {
 
 	/**
 	 * Overridden from PropertyTimed.java
-	 * 
 	 * @return time
 	 */
 	@Override
@@ -84,9 +82,9 @@ public class SceneHQ extends Scene implements PropertyScored, PropertyTimed {
 	}
 
 	/**
+	 * Updates the static time by subtracting 1
+	 * <p> 
 	 * Overridden from PropertyTimed.java
-	 * 
-	 * Updates the static time by 1
 	 */
 	@Override
 	public void updateTime() {
@@ -94,9 +92,9 @@ public class SceneHQ extends Scene implements PropertyScored, PropertyTimed {
 	}
 
 	/**
+	 * Resets the static time to 0
+	 * <p>
 	 * Overridden from PropertyTimed.java
-	 * 
-	 * Updates the static time by setting it to 0
 	 */
 	@Override
 	public void resetTime() {

@@ -13,9 +13,9 @@ import cisc275.group3.utility.ObjectId;
  * objects, they appear next to each other in the workspace window.
  * <p>
  * BetaCrab.java
- * 
- * @param	speedX	double-speed along x-axis
- * @param	speedY	double-speed along y-axis
+ * <p>
+ * @author Scott <p>
+ * @author Ryan <p>
  */
 public class BetaCrab extends SceneObject implements ActionMove {
   private double speedX; // x-axis speed
@@ -55,6 +55,12 @@ public class BetaCrab extends SceneObject implements ActionMove {
     return leftCrab;
   }
   
+  /**
+   * Defines the dx/dy changes and updates
+   * the crab's location accordingly.
+   * <p>
+   * @param dx	double-delta x offset
+   */
   public void move(double dx) {		
     double x = location.getX() + dx;
     double y = location.getY();
@@ -62,6 +68,14 @@ public class BetaCrab extends SceneObject implements ActionMove {
     location = new Point2D.Double(x,y);
   }
   
+  /**
+   * Provides a string-based representation
+   * of the crab by using its location and
+   * then printing the crab's ObjectId, 
+   * held in the passport variable.
+   * <p>
+   * @see ObjectID.java
+   */
   public String toString() {
 	    String outString = "\nBeta Crab" 
                           +"\n========="

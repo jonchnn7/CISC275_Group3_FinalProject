@@ -42,9 +42,8 @@ import cisc275.group3.view.ViewGame;
  * <p>
  * ControllerTool.java
  * <p>
- * @author Scott
- * <p>
- * @author Jolyne
+ * @author Scott <p>
+ * @author Jolyne <p>
  */
 public class ControllerInventory extends ControllerScene {
 
