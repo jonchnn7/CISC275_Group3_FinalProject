@@ -19,7 +19,7 @@ import cisc275.group3.view.ViewOverlayLabel;
  * to pass an update call to the model on every timer tick, and
  * to update the time every second.
  * <p>
- * @see ControllerScene.java
+ * See cisc275.group3.controller.ControllerScene.java
  * <p>
  * ControllerBeachMini.java
  * <p>

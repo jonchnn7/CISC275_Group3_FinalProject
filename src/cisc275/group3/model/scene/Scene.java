@@ -189,8 +189,7 @@ public abstract class Scene implements Serializable {
 	/**
 	 * Updates the current tool to the input parameter
 	 * 
-	 * @param t
-	 *            ToolObject-new tool
+	 * @param m	Mission-mission object
 	 */
 	public static void setCurrentMission(Mission m) {
 		currentMission = m;

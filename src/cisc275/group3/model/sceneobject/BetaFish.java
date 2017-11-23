@@ -40,7 +40,8 @@ public class BetaFish extends SceneObject implements ActionMove {
   /**
    * Creates a Beta Fish as well as its ObjectID
    * <p>
-   * @see ObjectId.java
+   * See ObjectId.java
+   * <p>
    * @param d		int-depth
    * @param h		int-object height
    * @param id		int-(deprecated) object type
@@ -108,7 +109,7 @@ public class BetaFish extends SceneObject implements ActionMove {
    * then printing the fish's ObjectId, 
    * held in the passport variable.
    * <p>
-   * @see ObjectID.java
+   * See ObjectID.java
    */
   public String toString() {
     String outString = "\nBeta Fish" 

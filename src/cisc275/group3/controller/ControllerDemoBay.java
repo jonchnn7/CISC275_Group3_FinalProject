@@ -11,7 +11,7 @@ import cisc275.group3.model.scene.SceneBay;
  * <p>
  * ControllerDemoBay.java
  * <p>
- * @see SceneBay.java
+ * See SceneBay.java
  * <p>
  * @author Scott 
  */
