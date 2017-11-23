@@ -8,7 +8,7 @@ package cisc275.group3.model.sceneobject;
  * <p>
  * ActionMove.java
  * <p>
- * @author Scott <p>
+ * @author Scott 
  */
 public interface ActionMove {
   public void move();

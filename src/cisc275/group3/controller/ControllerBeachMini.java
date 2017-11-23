@@ -1,15 +1,10 @@
 package cisc275.group3.controller;
 
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.HashMap;
-
-import cisc275.group3.model.scene.SceneBay;
 import cisc275.group3.model.scene.SceneBeachMini;
 import cisc275.group3.utility.LayerCode;
 import cisc275.group3.view.GameWindow;
@@ -28,7 +23,7 @@ import cisc275.group3.view.ViewOverlayLabel;
  * <p>
  * ControllerBeachMini.java
  * <p>
- * @author Scott <p>
+ * @author Scott 
  */
 public class ControllerBeachMini extends ControllerScene implements LinkDynamics, LinkTime {
   private final String BG_IMAGE = "img/beach_sand_bg.png";

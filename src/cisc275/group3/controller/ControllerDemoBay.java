@@ -13,7 +13,7 @@ import cisc275.group3.model.scene.SceneBay;
  * <p>
  * @see SceneBay.java
  * <p>
- * @author Scott <p>
+ * @author Scott 
  */
 public class ControllerDemoBay {
 		  

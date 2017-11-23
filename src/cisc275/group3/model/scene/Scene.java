@@ -25,9 +25,9 @@ import java.util.Random;
  * <p>
  * Scene.java
  * <p>
- * @author Scott <p>
- * @author Jon <p>
- * @author Jolyne <p>
+ * @author Scott 
+ * @author Jon 
+ * @author Jolyne 
  */
 public abstract class Scene implements Serializable {
 

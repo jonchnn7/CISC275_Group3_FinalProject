@@ -15,7 +15,7 @@ import cisc275.group3.utility.SceneId;
  * <p>
  * SceneBeachMini.java
  * <p>
- * @author Scott <p> 
+ * @author Scott  
  */
 public class SceneBeachMini extends Scene implements ConstructCrab, PropertyTimed {
 

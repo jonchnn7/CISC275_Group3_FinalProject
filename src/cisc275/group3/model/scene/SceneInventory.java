@@ -2,12 +2,7 @@ package cisc275.group3.model.scene;
 
 
 import java.util.Collections;
-import java.util.Iterator;
-
 import cisc275.group3.controller.ControllerInventory;
-import cisc275.group3.model.sceneobject.BetaFish;
-import cisc275.group3.model.sceneobject.SceneObject;
-import cisc275.group3.utility.ConstructFish;
 import cisc275.group3.utility.SceneId;
 
 /**
@@ -21,8 +16,8 @@ import cisc275.group3.utility.SceneId;
  * <p>
  * SceneInventory.java
  * <p>
- * @author Thomas <p>
- * @author Scott <p>
+ * @author Thomas 
+ * @author Scott 
  */
 @SuppressWarnings("serial")
 public class SceneInventory extends Scene  {

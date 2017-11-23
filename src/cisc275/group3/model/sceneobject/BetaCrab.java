@@ -14,8 +14,8 @@ import cisc275.group3.utility.ObjectId;
  * <p>
  * BetaCrab.java
  * <p>
- * @author Scott <p>
- * @author Ryan <p>
+ * @author Scott 
+ * @author Ryan 
  */
 public class BetaCrab extends SceneObject implements ActionMove {
   private double speedX; // x-axis speed

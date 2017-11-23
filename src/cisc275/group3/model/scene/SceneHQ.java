@@ -10,8 +10,8 @@ import cisc275.group3.utility.SceneId;
  * <p>
  * SceneHQ.java
  * <p>
- * @author Scott <p>
- * @author Jon <p>
+ * @author Jon 
+ * @author Scott
  */
 public class SceneHQ extends Scene implements PropertyScored, PropertyTimed {
 

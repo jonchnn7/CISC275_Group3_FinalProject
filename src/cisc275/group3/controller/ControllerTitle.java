@@ -5,8 +5,6 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.HashMap;
 
 import javax.swing.JLabel;
@@ -25,7 +23,7 @@ import cisc275.group3.view.GameWindow;
  * <p>
  * ControllerTitle.java
  * <p>
- * @author Scott <p>
+ * @author Scott 
  */
 public class ControllerTitle extends ControllerScene {
 

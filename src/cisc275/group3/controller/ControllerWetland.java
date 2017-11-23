@@ -1,15 +1,9 @@
 package cisc275.group3.controller;
 
-import java.awt.Color;
 import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.HashMap;
-
-import cisc275.group3.model.scene.SceneBay;
 import cisc275.group3.model.scene.SceneWetland;
 import cisc275.group3.utility.LayerCode;
 import cisc275.group3.view.GameWindow;
@@ -28,9 +22,9 @@ import cisc275.group3.view.ViewOverlayLabel;
  * <p>
  * ControllerBay.java
  * <p>
- * @author Scott <p>
- * @author Jolyne <p>
- * @author Jon <p>
+ * @author Scott 
+ * @author Jolyne 
+ * @author Jon 
  */
 public class ControllerWetland extends ControllerScene implements LinkDynamics, LinkTime {
   private final String BG_IMAGE = "img/wetland_bg.jpg";

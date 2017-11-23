@@ -17,8 +17,8 @@ import cisc275.group3.utility.SceneId;
  * <p>
  * SceneBay.java
  * <p>
- * @author Scott <p>
- * @author Jon <p>
+ * @author Scott
+ * @author Jon 
  */
 public class SceneBay extends Scene implements ConstructFish, PropertyScored, PropertyTimed {
 

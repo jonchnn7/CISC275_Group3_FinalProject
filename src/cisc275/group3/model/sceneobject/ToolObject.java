@@ -1,11 +1,6 @@
 package cisc275.group3.model.sceneobject;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Shape;
-import java.awt.Graphics2D;
 import java.awt.MouseInfo;
-import java.awt.geom.Ellipse2D;
 
 /** 
  * Abstract class that defines the properties and methods of all the ToolObjects

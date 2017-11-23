@@ -24,7 +24,7 @@ import java.util.Random;
  * https://docs.oracle.com/javase/tutorial/uiswing/index.html  # swing tutorial <p>
  * http://www.badlogicgames.com/wordpress/?p=2668 # general design <p>
  * <p>
- * @author Scott <p>
+ * @author Scott 
  */
 public abstract class SceneObject implements Comparable<SceneObject>, Serializable {
   protected ObjectId passport;
