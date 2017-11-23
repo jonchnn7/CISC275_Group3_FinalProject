@@ -1,35 +1,13 @@
 package cisc275.group3.controller;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Component;
-import java.awt.Cursor;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.Point;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.HashMap;
-import java.util.Random;
-
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
-
-import cisc275.group3.model.scene.Scene;
-import cisc275.group3.model.scene.SceneBeach;
 import cisc275.group3.model.scene.SceneHQ;
-import cisc275.group3.model.sceneobject.BetaFish;
-import cisc275.group3.model.sceneobject.ToolCamera;
-import cisc275.group3.model.sceneobject.ToolNet;
 import cisc275.group3.utility.LayerCode;
-import cisc275.group3.utility.Mission;
 import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.ViewGame;
+import cisc275.group3.view.ViewOverlayLabel;
+
 
 /**
  * Contains the controller actions and logic for SceneHQ.java.
@@ -91,15 +69,52 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 	    }
 	  }
 
+	
+	/**
+	   * Updates the linked time through the SceneHQ. If there
+	   * is an active mission, the time is incremented and if
+	   * the Mission is turned in, the time is reset, and
+	   * mission is scored appropriately
+	   */
 	@Override
 	public void updateTime() {
-		// TODO Auto-generated method stub
-		
+		if(((SceneHQ)scene).getCurrentMission().isDoneMission() == false){
+			  ((SceneHQ)scene).updateTime();	
+		  }	    
+		  else {
+			  if(((SceneHQ)scene).getTime() != 0){
+				  ((SceneHQ)scene).missionScore();	
+				  ((SceneHQ)scene).resetTime();	
+			  }
+		  }
+	    if (mainPane.getLayer(componentList.get("HQ")) == LayerCode.MainAll.getCode()) {
+	      displayTime();
+	    }
+	    displayScore();		
 	}
 
-	@Override
-	public void displayTime() {
-		// TODO Auto-generated method stub
-		
-	}
+	/**
+	   * Displays the model time in the shared time 
+	   * label.
+	   * <p>
+	   * Overridden from interface LinkTime.java
+	   */
+	  @Override
+	  public void displayTime() {
+	    String sceneTime;
+	    
+	    sceneTime = Integer.toString(((SceneHQ)scene).getTime());
+	    ((ViewOverlayLabel)componentList.get("TimeLabel")).updateLabel(sceneTime);
+	  }
+	
+	  /**
+	   * Displays the model score in the shared score 
+	   * label.
+	   */
+	  public void displayScore() {
+		    String sceneScore;
+		    
+		    sceneScore = Integer.toString(((SceneHQ)scene).getScore());
+		    ((ViewOverlayLabel)componentList.get("ScoreLabel")).updateLabel(sceneScore);
+		  }
 }

@@ -72,4 +72,12 @@ public class SceneBeachMini extends Scene implements ConstructCrab, PropertyTime
   public void updateTime() {
     time += 1;
   }
+  
+  /**
+   * Overridden from PropertyTimed.java
+   */
+  @Override
+  public void resetTime() {
+	  time = 0;
+  }
 }

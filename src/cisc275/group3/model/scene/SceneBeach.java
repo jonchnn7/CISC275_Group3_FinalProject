@@ -25,7 +25,7 @@ public class SceneBeach extends Scene implements ConstructCrab, PropertyScored, 
 
 	public SceneBeach(SceneId mani) {
 		super(mani);
-		time = 350;
+		time = 0;
 
 		// Fill scene with mission objects
 		if (this.getManifest().getSceneType() == 2) {
@@ -49,63 +49,60 @@ public class SceneBeach extends Scene implements ConstructCrab, PropertyScored, 
 		for (int i = 0; i < 10; i++) {
 			sceneItems.add(ConstructCrab.constructRightCrab(randGen.nextInt(20) - 10, // depth
 					randGen.nextInt(2), manifest.getWidth() + randGen.nextInt(500), // x location
-					((i * 140 + manifest.getStartY() + 10))+370)); // y location
-			
+					((i * 140 + manifest.getStartY() + 10)) + 370)); // y location
+
 			sceneItems.add(ConstructCrab.constructLeftCrab(randGen.nextInt(20) - 10, // depth
 					randGen.nextInt(2), manifest.getWidth() + randGen.nextInt(500), // x location
-					((i * 140 + manifest.getStartY() + 10))+370)); // y location
+					((i * 140 + manifest.getStartY() + 10)) + 370)); // y location
 
 			int crabType = randGen.nextInt(2);
 
 			// Add Left Crab
 			sceneItems.add(ConstructCrab.constructLeftCrab(randGen.nextInt(20) - 10, // depth
 					crabType, manifest.getWidth() + randGen.nextInt(500), // x location
-					((i * 140 + manifest.getStartY() + 10))+370)); // y location
+					((i * 140 + manifest.getStartY() + 10)) + 370)); // y location
 
 			// Add Right Crab
 			sceneItems.add(ConstructCrab.constructRightCrab(randGen.nextInt(20) - 10, // depth
 					crabType, 0 - randGen.nextInt(500), // x location
-					((i * 140 + manifest.getStartY() + 10))+370)); // y location
+					((i * 140 + manifest.getStartY() + 10)) + 370)); // y location
 		}
 		Collections.sort(sceneItems); // sort by depth
 	}
 
 	/**
-   * Overridden from Scene.java abstract method. On approx. 4% of calls,
-   * a new left-to-right and right-to-left crab is created. The new crab
-   * can occur anywhere on the y-axis with a random depth [5,15).
-   * <p>
-   * Every crab in the scene is then asked to move it along, and then removed
-   * if they're off-screen.
-   */
-  @Override
-  public void update() {
-	  if(this.getManifest().getSceneType() == 2) {
-		    // Generate new crab on ~7% of calls
-		    if (randGen.nextInt(100) <= 7) {
-		      sceneItems.add(ConstructCrab.constructLeftCrab(
-		                     randGen.nextInt(20)-10, // depth
-		                     randGen.nextInt(2),
-		                     manifest.getWidth()+randGen.nextInt(500), // x location
-		                    (( randGen.nextDouble()*manifest.getHeight() + manifest.getStartY())+370))); // y location
-		      
-		      sceneItems.add(ConstructCrab.constructRightCrab(
-		                     randGen.nextInt(20)-10, // depth
-		                     randGen.nextInt(2),
-		                     0 - randGen.nextInt(75), // x location
-		                     ((randGen.nextDouble()*manifest.getHeight() + manifest.getStartY())+370))); // y location
-		    }
-    // Move Crab
-    for (SceneObject crab : sceneItems) {
-      ((BetaCrab)crab).move();
-    }	
-	
-    // Remove Off-screen crabs
-    removeCrab();
-    
-    // Sort by depth
-    Collections.sort(sceneItems);
-  }}
+	 * Overridden from Scene.java abstract method. On approx. 7% of calls, a new
+	 * left-to-right and right-to-left crab is created. The new crab can occur
+	 * anywhere on the y-axis with a random depth [5,15).
+	 * <p>
+	 * Every crab in the scene is then asked to move it along, and then removed if
+	 * they're off-screen.
+	 */
+	@Override
+	public void update() {
+		if (this.getManifest().getSceneType() == 2) {
+			// Generate new crab on ~7% of calls
+			if (randGen.nextInt(100) <= 7) {
+				sceneItems.add(ConstructCrab.constructLeftCrab(randGen.nextInt(20) - 10, // depth
+						randGen.nextInt(2), manifest.getWidth() + randGen.nextInt(500), // x location
+						((randGen.nextDouble() * manifest.getHeight() + manifest.getStartY()) + 370))); // y location
+
+				sceneItems.add(ConstructCrab.constructRightCrab(randGen.nextInt(20) - 10, // depth
+						randGen.nextInt(2), 0 - randGen.nextInt(75), // x location
+						((randGen.nextDouble() * manifest.getHeight() + manifest.getStartY()) + 370))); // y location
+			}
+			// Move Crab
+			for (SceneObject crab : sceneItems) {
+				((BetaCrab) crab).move();
+			}
+
+			// Remove Off-screen crabs
+			removeCrab();
+
+			// Sort by depth
+			Collections.sort(sceneItems);
+		}
+	}
 
 	/**
 	 * Removes crab that are off-screen
@@ -156,5 +153,21 @@ public class SceneBeach extends Scene implements ConstructCrab, PropertyScored, 
 	@Override
 	public void updateTime() {
 		time -= 1;
+	}
+
+	/**
+	 * Overridden from PropertyTimed.java
+	 */
+	@Override
+	public void resetTime() {
+		time = 0;
+	}
+
+	/**
+	 * Overridden from PropertyScored.java
+	 */
+	@Override
+	public void missionScore() {
+		score += this.getTime();
 	}
 }
