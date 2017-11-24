@@ -90,41 +90,25 @@ public class GameController implements Serializable {
 					// Model Object Updates
 					switch (k) {
 					case "HQ":
-						((ControllerHQ) v).update();
-						break;
 					case "Bay":
-						((ControllerBay) v).update();
-						break;
 					case "Beach":
-						((ControllerBeach) v).update();
-						break;
 					case "Wetland":
-						((ControllerWetland) v).update();
-						break;
 					case "BeachMini":
-						((ControllerBeachMini) v).update();
-						break;
+					  ((LinkDynamics)v).update();
+					break;
 					}
 
 					// Time Update
 					if (totalTime % 1000 == 0) {
 						switch (k) {
 						case "HQ":
-							((ControllerHQ) v).updateTime();
-							((ControllerHQ) v).displayTime();
-							break;
+							((LinkTime)v).updateTime();
 						case "Bay":
-							((ControllerBay) v).displayTime();
-							break;
 						case "Beach":
-							((ControllerBeach) v).displayTime();
-							break;
 						case "Wetland":
-							((ControllerWetland) v).displayTime();
-							break;
 						case "BeachMini":
-							((ControllerBeachMini) v).displayTime();
-							break;
+						  ((LinkTime)v).displayTime();
+						break;
 						}
 					}
 				});
