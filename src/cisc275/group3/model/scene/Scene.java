@@ -4,6 +4,7 @@ import cisc275.group3.controller.ControllerInventory;
 import cisc275.group3.exceptions.InsufficientDataException;
 import cisc275.group3.model.sceneobject.BetaCrab;
 import cisc275.group3.model.sceneobject.BetaFish;
+import cisc275.group3.model.sceneobject.BetaHeron;
 import cisc275.group3.model.sceneobject.BetaVegetation;
 import cisc275.group3.model.sceneobject.SceneObject;
 import cisc275.group3.model.sceneobject.ToolObject;
@@ -110,6 +111,19 @@ public abstract class Scene implements Serializable {
 					}
 					ControllerInventory.addItem(sceneItem);
 					iterator.remove();
+					return true;
+				}
+			} else if ((sceneItem instanceof BetaHeron) && (currentTool != null)
+					&& (SceneObjectType.BetaHeron.searchCompatability(currentTool.getName()))) {
+				if (sceneItem.itemClicked(clickX, clickY)) {
+					System.out.println("Clicked on: " + sceneItem.getPassport().getName());
+					if ((Scene.getCurrentMission().getTargetObject() != null)
+							&& (Scene.getCurrentMission().getTargetObject().equals("BetaHeron"))
+							&& (Scene.getCurrentMission().getObjectName().equals(sceneItem.getPassport().getName()))) {
+						Scene.getCurrentMission().decreaseNum();
+					}
+					ControllerInventory.addItem(sceneItem);
+					//iterator.remove();
 					return true;
 				}
 			} else if ((sceneItem instanceof BetaVegetation) && (currentTool != null)

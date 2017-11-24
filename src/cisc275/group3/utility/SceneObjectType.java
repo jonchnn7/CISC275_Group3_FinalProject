@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * @author Jolyne
  */
 public enum SceneObjectType {
-	BetaItem (new String[]{"Camera"}),
+	BetaHeron (new String[]{"Camera"}),
 	BetaFish (new String[]{"Net"}),
 	BetaCrab (new String[] {"Cage"}),
 	BetaVegetation (new String[] {"Trimmer"});
