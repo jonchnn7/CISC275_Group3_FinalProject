@@ -81,7 +81,7 @@ public abstract class Scene implements Serializable {
 	 *            double-y-axis coordinate of click
 	 * @return boolean is click on clickable object?
 	 */
-	public boolean processClick(double clickX, double clickY, String cursorName) {
+	public boolean processClick(double clickX, double clickY) {
 		for (Iterator<SceneObject> iterator = sceneItems.iterator(); iterator.hasNext();) {
 			SceneObject sceneItem = iterator.next();
 

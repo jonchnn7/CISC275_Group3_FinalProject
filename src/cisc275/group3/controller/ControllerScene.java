@@ -1,6 +1,7 @@
 package cisc275.group3.controller;
 
 import cisc275.group3.model.scene.Scene;
+import cisc275.group3.model.scene.SceneBay;
 import cisc275.group3.utility.LayerCode;
 import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.ViewGame;
@@ -83,11 +84,13 @@ public abstract class ControllerScene implements Serializable {
    */
   protected void addML() {
     viewGame.addMouseListener(new MouseAdapter() {
+      @Override
       public void mousePressed(MouseEvent e) {
         if (e.getButton() == MouseEvent.BUTTON1) {
-          String cursorName = mainPane.getComponentsInLayer(LayerCode.MainAll.getCode())[0].getCursor().getName();
-          if ( scene.processClick(e.getX(), e.getY(), cursorName) ) {
-            //scene.updateScore();
+          if ( scene.processClick(e.getX(), e.getY()) ) {
+            scene.updateScore();
+            displayScore();
+            displayMission();
           }
         }
       }
@@ -111,5 +114,16 @@ public abstract class ControllerScene implements Serializable {
 	    }
 	    
 	    ((ViewOverlayLabel)componentList.get("MissionLabel")).updateLabel(missionNum);
-}
+  }
+  
+  /**
+   * Displays the model score in the shared score 
+   * label.
+   */
+  public void displayScore() {
+    String sceneScore;
+    
+    sceneScore = Integer.toString(scene.getScore());
+    ((ViewOverlayLabel)componentList.get("ScoreLabel")).updateLabel(sceneScore);
+  }
 }

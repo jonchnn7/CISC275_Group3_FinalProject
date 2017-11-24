@@ -108,15 +108,4 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 	    sceneTime = Integer.toString(((SceneHQ)scene).getTime());
 	    ((ViewOverlayLabel)componentList.get("TimeLabel")).updateLabel(sceneTime);
 	  }
-	
-	  /**
-	   * Displays the model score in the shared score 
-	   * label.
-	   */
-	  public void displayScore() {
-		    String sceneScore;
-		    
-		    sceneScore = Integer.toString(((SceneHQ)scene).getScore());
-		    ((ViewOverlayLabel)componentList.get("ScoreLabel")).updateLabel(sceneScore);
-		  }
 }

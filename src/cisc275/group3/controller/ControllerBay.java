@@ -50,26 +50,6 @@ public class ControllerBay extends ControllerScene implements LinkDynamics, Link
    addML();
   }
 
-  @Override
-  protected void addML() {
-    viewGame.addMouseListener(new MouseAdapter() {
-      @Override
-      public void mousePressed(MouseEvent e) {
-        if (e.getButton() == MouseEvent.BUTTON1) {
-
-          //String cursorName = mainPane.getComponentsInLayer(LayerCode.MainMapTools.getCode())[0].getCursor().getName();
-        	String cursorName = "";
-
-          if ( scene.processClick(e.getX(), e.getY(), cursorName) ) {
-            ((SceneBay)scene).updateScore();
-            displayScore();
-            displayMission();
-          }
-        }
-      }
-    });
-  }
-
   /**
    * Connects the Bay model and Bay view. So long as the Bay 
    * scene is the active pane, update the model and then pass 
@@ -113,16 +93,5 @@ public class ControllerBay extends ControllerScene implements LinkDynamics, Link
     
     sceneTime = Integer.toString(((SceneBay)scene).getTime());
     ((ViewOverlayLabel)componentList.get("TimeLabel")).updateLabel(sceneTime);
-  }
-  
-  /**
-   * Displays the model score in the shared score 
-   * label.
-   */
-  public void displayScore() {
-    String sceneScore;
-    
-    sceneScore = Integer.toString(((SceneBay)scene).getScore());
-    ((ViewOverlayLabel)componentList.get("ScoreLabel")).updateLabel(sceneScore);
   }
 }

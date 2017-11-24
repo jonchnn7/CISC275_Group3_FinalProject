@@ -48,7 +48,7 @@ public class ViewOverlayLabel extends JPanel {
   }
   
   /**
-   * Image Label Constructor
+   * String Image Label Constructor
    * @param li  ImageIcon-label image
    * @param w   int-label width
    * @param h   int-label height

@@ -51,26 +51,6 @@ public class ControllerBeach extends ControllerScene implements LinkDynamics, Li
    addML();
   }
 
-  @Override
-  protected void addML() {
-    viewGame.addMouseListener(new MouseAdapter() {
-      @Override
-      public void mousePressed(MouseEvent e) {
-        if (e.getButton() == MouseEvent.BUTTON1) {
-
-          //String cursorName = mainPane.getComponentsInLayer(LayerCode.MainMapTools.getCode())[0].getCursor().getName();
-        	String cursorName = "";
-
-          if ( scene.processClick(e.getX(), e.getY(), cursorName) ) {
-            ((SceneBeach)scene).updateScore();
-            displayScore();
-            displayMission();
-          }
-        }
-      }
-    });
-  }
-
   /**
    * Connects the Beach model and Beach view. So long as the Beach
    * scene is the active pane, update the model and then pass 
@@ -114,16 +94,5 @@ public class ControllerBeach extends ControllerScene implements LinkDynamics, Li
     
     sceneTime = Integer.toString(((SceneBeach)scene).getTime());
     ((ViewOverlayLabel)componentList.get("TimeLabel")).updateLabel(sceneTime);
-  }
-  
-  /**
-   * Displays the model score in the shared score 
-   * label.
-   */
-  public void displayScore() {
-    String sceneScore;
-    
-    sceneScore = Integer.toString(((SceneBeach)scene).getScore());
-    ((ViewOverlayLabel)componentList.get("ScoreLabel")).updateLabel(sceneScore);
   }
 }
