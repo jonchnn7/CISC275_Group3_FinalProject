@@ -48,14 +48,15 @@ public class SceneBeach extends Scene implements ConstructCrab, PropertyScored, 
 	protected void fillScene() {
 		for (int i = 0; i < 10; i++) {
 			sceneItems.add(ConstructCrab.constructRightCrab(randGen.nextInt(20) - 10, // depth
-					randGen.nextInt(2), manifest.getWidth() + randGen.nextInt(500), // x location
+					randGen.nextInt(1), manifest.getWidth() + randGen.nextInt(500), // x location
 					((i * 140 + manifest.getStartY() + 10)) + 370)); // y location
 
 			sceneItems.add(ConstructCrab.constructLeftCrab(randGen.nextInt(20) - 10, // depth
-					randGen.nextInt(2), manifest.getWidth() + randGen.nextInt(500), // x location
+					randGen.nextInt(1), manifest.getWidth() + randGen.nextInt(500), // x location
 					((i * 140 + manifest.getStartY() + 10)) + 370)); // y location
+			
 
-			int crabType = randGen.nextInt(2);
+			int crabType = randGen.nextInt(1);
 
 			// Add Left Crab
 			sceneItems.add(ConstructCrab.constructLeftCrab(randGen.nextInt(20) - 10, // depth
@@ -66,6 +67,9 @@ public class SceneBeach extends Scene implements ConstructCrab, PropertyScored, 
 			sceneItems.add(ConstructCrab.constructRightCrab(randGen.nextInt(20) - 10, // depth
 					crabType, 0 - randGen.nextInt(500), // x location
 					((i * 140 + manifest.getStartY() + 10)) + 370)); // y location
+			
+			
+			
 		}
 		Collections.sort(sceneItems); // sort by depth
 	}

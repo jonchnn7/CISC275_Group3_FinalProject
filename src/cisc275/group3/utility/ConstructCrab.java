@@ -5,25 +5,25 @@ import cisc275.group3.model.sceneobject.BetaCrab;
 public interface ConstructCrab {
   // Crab File Location
   static final String[] LEFT_FILE = 
-	  {"img/crabLeft_red_icon.png", "img/crab_blue_icon.png"};
+	  {"img/crabLeft_red_icon.png", "img/horeshoeCrabLeft.png", "img/crab_blue_icon.png"};
   static final String[] RIGHT_FILE = 
-	  {"img/crabRight_red_icon.png", "img/crab_blue_icon.png"};
+	  {"img/crabRight_red_icon.png", "img/horeshoeCrabRight.png", "img/crab_blue_icon.png"};
 
   // Crab Names
   static final String[] CRAB_NAME = 
-    {"Cristmas Island Red Crab", "Atlantic Blue Crab"};
+    {"Cristmas Island Red Crab", "Atlantic Blue Crab", "Horseshoe Crab"};
 		  
   // Crab Width
-  static final double[] CRAB_WIDTH = {100, 125};
+  static final double[] CRAB_WIDTH = {100, 177, 125};
 	  
   // Crab Aspect Ratios (multiply by width for height)
-  static final double[] CRAB_AR = {1.442, 0.5988};
+  static final double[] CRAB_AR = {1.442, 0.8475, 0.5988};
 		  
   // Crab ID Numbers
-  static final int[] CRAB_ID = {100, 200};
+  static final int[] CRAB_ID = {100, 300, 200};
 		  
   // Crab x-axis Speed
-  static final int[] CRAB_SPEED = {10, 10};
+  static final int[] CRAB_SPEED = {10, 10, 10};
   
   /**
    * Returns a constructed BetaCrab object

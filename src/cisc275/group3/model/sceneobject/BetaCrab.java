@@ -49,7 +49,7 @@ public class BetaCrab extends SceneObject implements ActionMove {
   }  
   
   /**
-   * @return leftFish	returns fish moving left?
+   * @return leftFish	returns crab moving left?
    */
   public boolean getLeftCrab() {
     return leftCrab;
