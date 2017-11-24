@@ -73,8 +73,7 @@ public class SceneBay extends Scene implements ConstructFish {
 
 	/**
 	 * Overridden from Scene.java abstract method. sceneType from manifest is used
-	 * to determine how to update each scene model
-	 * 
+	 * to determine how to update each scene model.
 	 * <p>
 	 * For mission related scene models: On approx. 4% of calls, a new left-to-right
 	 * and right-to-left fish is created. The new fish can occur anywhere on the
@@ -85,15 +84,19 @@ public class SceneBay extends Scene implements ConstructFish {
 	 */
 	@Override
 	public void update() {
-		if (this.getManifest().getSceneType() == 2) {
+		if (manifest.getSceneType() == 2) {
 			// Generate new fish on ~4% of calls
 			if (randGen.nextInt(100) <= 4) {
-				sceneItems.add(ConstructFish.constructLeftFish(randGen.nextInt(20) - 10, // depth
-						randGen.nextInt(3), manifest.getWidth() + randGen.nextInt(500), // x location
+				sceneItems.add(ConstructFish.constructLeftFish(
+						randGen.nextInt(20) - 10, // depth
+						randGen.nextInt(3), // type
+						manifest.getWidth() + randGen.nextInt(500), // x location
 						randGen.nextDouble() * manifest.getHeight() + manifest.getStartY())); // y location
 
-				sceneItems.add(ConstructFish.constructRightFish(randGen.nextInt(20) - 10, // depth
-						randGen.nextInt(3), 0 - randGen.nextInt(75), // x location
+				sceneItems.add(ConstructFish.constructRightFish(
+						randGen.nextInt(20) - 10, // depth
+						randGen.nextInt(3), // type
+						0 - randGen.nextInt(75), // x location
 						randGen.nextDouble() * manifest.getHeight() + manifest.getStartY())); // y location
 			}
 
