@@ -2,6 +2,8 @@ package cisc275.group3.controller;
 
 import java.awt.Component;
 import java.util.HashMap;
+
+import cisc275.group3.model.scene.Scene;
 import cisc275.group3.model.scene.SceneHQ;
 import cisc275.group3.utility.LayerCode;
 import cisc275.group3.view.GameWindow;
@@ -17,13 +19,13 @@ import cisc275.group3.view.ViewOverlayLabel;
  * to pass an update call to the model on every timer tick, and
  * to update the time every second.
  * <p>
- * @see ControllerScene.java
+ * See cisc275.group3.controller.ControllerScene.java
  * <p>
  * ControllerHQ.java
  * <p>
- * @author Scott
- * @author Jon
- * @author Jolyne
+ * @author Scott 
+ * @author Jon 
+ * @author Jolyne 
  */
 public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkTime {
 	private final String BG_IMAGE = "img/bay_bg_2.jpg";
@@ -34,7 +36,7 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 	  
 	@Override
 	protected void createScene(int sceneType) {
-		scene = new SceneHQ("HQ", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, sceneType, BG_IMAGE);
+		scene = new SceneHQ("HQ", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, BG_IMAGE, sceneType);
 	    viewGame = new ViewGame(SCREEN_WIDTH, SCREEN_HEIGHT, scene.getSceneItems(), scene.getManifest().getBG());
 	    
 
@@ -78,7 +80,7 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 	   */
 	@Override
 	public void updateTime() {
-		if(((SceneHQ)scene).getCurrentMission().isDoneMission() == false){
+		if(!Scene.getCurrentMission().isDoneMission()){
 			  ((SceneHQ)scene).updateTime();	
 		  }	    
 		  else {
@@ -106,15 +108,4 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 	    sceneTime = Integer.toString(((SceneHQ)scene).getTime());
 	    ((ViewOverlayLabel)componentList.get("TimeLabel")).updateLabel(sceneTime);
 	  }
-	
-	  /**
-	   * Displays the model score in the shared score 
-	   * label.
-	   */
-	  public void displayScore() {
-		    String sceneScore;
-		    
-		    sceneScore = Integer.toString(((SceneHQ)scene).getScore());
-		    ((ViewOverlayLabel)componentList.get("ScoreLabel")).updateLabel(sceneScore);
-		  }
 }

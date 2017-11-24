@@ -15,16 +15,16 @@ import java.util.Random;
  * <p>
  * SceneObject.java
  * <p>
- * Style Changes
- * https://google.github.io/styleguide/javaguide.html 
- * http://www.oracle.com/technetwork/articles/java/index-137868.html # javadoc
+ * Style Changes <p>
+ * <a href="https://google.github.io/styleguide/javaguide.html">Google Style Guide</a> <p>
+ * <a href="http://www.oracle.com/technetwork/articles/java/index-137868.html">Javadoc</a> <p>
  * <p>
- * Code Changes
- * https://docs.oracle.com/javase/tutorial/java/javaOO/thiskey.html  # when to use this <p>
- * https://docs.oracle.com/javase/tutorial/uiswing/index.html  # swing tutorial <p>
- * http://www.badlogicgames.com/wordpress/?p=2668 # general design <p>
+ * Code Changes <p>
+ * <a href="https://docs.oracle.com/javase/tutorial/java/javaOO/thiskey.html">when to use this</a> <p>
+ * <a href="https://docs.oracle.com/javase/tutorial/uiswing/index.html">swing tutorial </a> <p>
+ * <a href="http://www.badlogicgames.com/wordpress/?p=2668">general design</a> <p>
  * <p>
- * @author Scott
+ * @author Scott 
  */
 public abstract class SceneObject implements Comparable<SceneObject>, Serializable {
   protected ObjectId passport;

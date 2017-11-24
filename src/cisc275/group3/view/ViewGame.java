@@ -18,7 +18,6 @@ import cisc275.group3.model.sceneobject.SceneObject;
 
 /**
  * @author Scott
- * <p>
  * @author Jolyne
  */
 public class ViewGame extends JPanel {

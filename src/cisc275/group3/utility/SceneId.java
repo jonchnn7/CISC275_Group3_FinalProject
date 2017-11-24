@@ -6,17 +6,19 @@ import java.io.Serializable;
  * Data structure to hold immutable Scene parameters. Can also
  * be used to more cleanly pass Scene information.
  * <p>
+ * sceneType is an integer that encodes the type of scene
+ * <p>\t 0 = empty scene
+ * <p>\t 1 = non-mission
+ * <p>\t 2 = mission
+ * <p>\t 3 = misc. (interface/menu)
+ * <p>
  * SceneId.java
- * 
- * @param	height		double-scene height
- * @param	name		String-name of scene
- * @param	startX		double-top left x coordinate
- * @param 	startY		double-top left y coordinate
- * @param	width		double-scene width
- * @param	sceneType   int-0 = empty scene, 1 = non-mission, 2 = mission, 3 = misc. scene (interface/menu)
+ * <p>
+ * @author Scott
+ * @author Jon
  */
 public class SceneId implements Serializable{
-  private String bgImage;    // CHANGE TO FINAL ONCE ALL BG IMAGES FOUND
+  private final String bgImage;  
   private final double height;
   private final String name;
   private final double startX;
@@ -24,20 +26,24 @@ public class SceneId implements Serializable{
   private final double width;
   private final int sceneType;
   
-  public SceneId (String n, double x, double y, double w, double h, int t) {
+  /**
+   * 
+   * @param n	String-name of scene
+   * @param x	double-top left x coordinate
+   * @param y	double-top left y coordinate
+   * @param w	double-scene width
+   * @param h	double-scene height
+   * @param t	int-scene type
+   */
+  public SceneId (String n, double x, double y, double w, double h, int t, String bg) {
     height = h;
     name = n;
     startX = x;
     startY = y;
     width = w;
     sceneType = t;
-    bgImage = "";
-    
-  }
-  
-  public SceneId (String n, double x, double y, double w, double h, int t, String bg) {	
-    this(n, x, y, w, h, t);
     bgImage = bg;
+    
   }
   
   @Override

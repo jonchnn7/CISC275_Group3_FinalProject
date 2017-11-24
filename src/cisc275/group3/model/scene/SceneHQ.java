@@ -1,5 +1,6 @@
 package cisc275.group3.model.scene;
 
+import cisc275.group3.exceptions.InsufficientDataException;
 import cisc275.group3.utility.SceneId;
 
 /**
@@ -10,12 +11,19 @@ import cisc275.group3.utility.SceneId;
  * <p>
  * SceneHQ.java
  * <p>
- * 
+ * @author Jon 
  * @author Scott
- * @author Jon
  */
-public class SceneHQ extends Scene implements PropertyScored, PropertyTimed {
+public class SceneHQ extends Scene {
 
+  /**
+   * Empty Constructor should throw error
+   * @throws InsufficientDataException 
+   */
+  public SceneHQ() throws InsufficientDataException {
+    super();
+  }
+  
 	public SceneHQ(SceneId mani) {
 		super(mani);
 		time = 0;
@@ -23,8 +31,15 @@ public class SceneHQ extends Scene implements PropertyScored, PropertyTimed {
 
 	/**
 	 * Used when SceneId must also be created
+	 * @param n		String-scene name
+	 * @param x		double-x-coordinate of upper left corner
+	 * @param y		double-y-coordinate of upper left corner
+	 * @param w		double-scene width
+	 * @param h		double-scene height
+	 * @param bg	String-file location of bg image
+	 * @param sceneType	int-type of scene
 	 */
-	public SceneHQ(String n, double x, double y, double w, double h, int sceneType, String bg) {
+	public SceneHQ(String n, double x, double y, double w, double h, String bg, int sceneType) {
 		this(new SceneId(n, x, y, w, h, sceneType, bg));
 	}
 
@@ -41,65 +56,5 @@ public class SceneHQ extends Scene implements PropertyScored, PropertyTimed {
 	 */
 	public void update() {
 		// TODO Auto-generated method stub
-	}
-
-	/**
-	 * Overridden from PropertyScored.java
-	 * 
-	 * @return score
-	 */
-	@Override
-	public int getScore() {
-		return score;
-	}
-
-	/**
-	 * Overridden from PropertyScored.java
-	 * 
-	 * Updates the static score by 1
-	 */
-	@Override
-	public void updateScore() {
-		score += 1;
-	}
-
-	/**
-	 * Overridden from PropertyScored.java
-	 * 
-	 * Updates the static score by how much time is left in the mission
-	 */
-	@Override
-	public void missionScore() {
-		score += this.getTime();
-	}
-
-	/**
-	 * Overridden from PropertyTimed.java
-	 * 
-	 * @return time
-	 */
-	@Override
-	public int getTime() {
-		return time;
-	}
-
-	/**
-	 * Overridden from PropertyTimed.java
-	 * 
-	 * Updates the static time by 1
-	 */
-	@Override
-	public void updateTime() {
-		time -= 1;
-	}
-
-	/**
-	 * Overridden from PropertyTimed.java
-	 * 
-	 * Updates the static time by setting it to 0
-	 */
-	@Override
-	public void resetTime() {
-		time = 0;
 	}
 }

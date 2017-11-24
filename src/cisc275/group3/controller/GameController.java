@@ -14,7 +14,7 @@ import javax.swing.Timer;
  * <p>
  * This controller is responsible for constructing the game scene-by-scene. As
  * the different scenes are created, they are added to a hash map for easy
- * retrieval (No current need for this).
+ * retrieval.
  * <p>
  * This controller is also responsible for creating and acting on timer events.
  * These events currently occur every 100ms and pass an update call to dynamic
@@ -43,10 +43,8 @@ public class GameController implements Serializable {
 	 * game scenes. The input parameters set the screen dimensions, which can then
 	 * be passed to each scene.
 	 * 
-	 * @param x
-	 *            int-Window width
-	 * @param y
-	 *            int-Window height
+	 * @param x	int-Window width
+	 * @param y	int-Window height
 	 */
 	public GameController(int x, int y) {
 		SCREEN_WIDTH = x;
@@ -62,7 +60,8 @@ public class GameController implements Serializable {
 	}
 
 	/**
-	 * Initializes the game by creating the individual scenes and p
+	 * Initializes the game by creating the individual scenes and placing them 
+	 * in the controller map.
 	 */
 	private void initGame() {
 		controlMap.put("Title", new ControllerTitle(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 3));
@@ -81,7 +80,7 @@ public class GameController implements Serializable {
 	}
 
 	/**
-	 * Updates the model and display every 100ms
+	 * Updates dynamic models every 100ms and the time every 1000ms
 	 */
 	private void gameTime() {
 		Timer timer = new Timer(100, new ActionListener() {
@@ -91,45 +90,25 @@ public class GameController implements Serializable {
 					// Model Object Updates
 					switch (k) {
 					case "HQ":
-						((ControllerHQ) v).update();
-						break;
 					case "Bay":
-						((ControllerBay) v).update();
-						break;
 					case "Beach":
-						((ControllerBeach) v).update();
-						break;
 					case "Wetland":
-						((ControllerWetland) v).update();
-						break;
 					case "BeachMini":
-						((ControllerBeachMini) v).update();
-						break;
+					  ((LinkDynamics)v).update();
+					break;
 					}
 
-					// Model Time Update
-					if ((totalTime % 1000 == 0) && (k == "HQ")) {
-						((ControllerHQ) v).updateTime();
-					}
-
-					// Display Time Update
+					// Time Update
 					if (totalTime % 1000 == 0) {
 						switch (k) {
 						case "HQ":
-							((ControllerHQ) v).displayTime();
-							break;
+							((LinkTime)v).updateTime();
 						case "Bay":
-							((ControllerBay) v).displayTime();
-							break;
 						case "Beach":
-							((ControllerBeach) v).displayTime();
-							break;
 						case "Wetland":
-							((ControllerWetland) v).displayTime();
-							break;
 						case "BeachMini":
-							((ControllerBeachMini) v).displayTime();
-							break;
+						  ((LinkTime)v).displayTime();
+						break;
 						}
 					}
 				});
@@ -138,6 +117,6 @@ public class GameController implements Serializable {
 				totalTime += 100;
 			}
 		});
-		timer.start();
+		timer.start(); // Start it up!
 	}
 }

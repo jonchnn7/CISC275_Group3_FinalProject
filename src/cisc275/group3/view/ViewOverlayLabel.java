@@ -1,6 +1,7 @@
 package cisc275.group3.view;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -48,7 +49,7 @@ public class ViewOverlayLabel extends JPanel {
   }
   
   /**
-   * Image Label Constructor
+   * String Image Label Constructor
    * @param li  ImageIcon-label image
    * @param w   int-label width
    * @param h   int-label height
@@ -106,6 +107,7 @@ public class ViewOverlayLabel extends JPanel {
     overLabel.setMinimumSize(new Dimension(LABEL_WIDTH, LABEL_HEIGHT));
     overLabel.setPreferredSize(new Dimension(LABEL_WIDTH, LABEL_HEIGHT));
     overLabel.setMaximumSize(new Dimension(LABEL_WIDTH, LABEL_HEIGHT));
+    overLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
    
     this.setPreferredSize(new Dimension(LABEL_WIDTH, LABEL_HEIGHT));

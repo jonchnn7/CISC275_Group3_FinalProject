@@ -4,7 +4,7 @@ import java.awt.geom.Point2D;
 import cisc275.group3.utility.ObjectId;
 
 /**
- * Beta release mockup for fish. Handles right-to-left and left-to-right
+ * Beta release mock-up for fish. Handles right-to-left and left-to-right
  * moving fish via a boolean. If leftFish is true, fish moving left-to-right.
  * Currently, speedY isn't being used. It's still here, whenever we find a 
  * use for it.
@@ -13,16 +13,23 @@ import cisc275.group3.utility.ObjectId;
  * objects, they appear next to each other in the workspace window.
  * <p>
  * BetaFish.java
- * 
- * @param	speedX		double-speed along x-axis
- * @param	speedY		double-speed along y-axis
- * @param	leftFish	boolean-fish moving to the left?
+ * <p>
+ * @author Scott
  */
 public class BetaFish extends SceneObject implements ActionMove {
   protected double speedX; // x-axis speed
   protected double speedY; // y-axis speed
   protected boolean leftFish; // moving right to left?
 
+  /**
+   * Creates a Beta Fish
+   * @param id		ObjectID-fish's object id
+   * @param x		double-x-axis location
+   * @param y		double-y-axis location
+   * @param sx		double-speed on x-axis
+   * @param sy		double-speed on y-axis
+   * @param lf		boolean-left moving fish?
+   */
   public BetaFish(ObjectId id, double x, double y, double sx, double sy, boolean lf) {
     super(id, x, y);
     speedX = sx; 
@@ -31,23 +38,37 @@ public class BetaFish extends SceneObject implements ActionMove {
   }
   
   /**
-   * Constructor also creates an ObjectId
+   * Creates a Beta Fish as well as its ObjectID
+   * <p>
+   * See ObjectId.java
+   * <p>
+   * @param d		int-depth
+   * @param h		int-object height
+   * @param id		int-(deprecated) object type
+   * @param imFi	String-Image file string
+   * @param n		String-name for object
+   * @param w		int-object width
+   * @param x		double-x-axis location
+   * @param y		double-y-axis location
+   * @param sx		double-speed on x-axis
+   * @param sy		double-speed on y-axis
+   * @param lf		boolean-left moving fish?
    */
   public BetaFish(int d, int h, int id, String imFi, String n, int w, double x, double y, double sx, double sy, boolean lf) {
 	  this(new ObjectId(d, h, id, imFi, n, w), x, y, sx, sy, lf);
   }
 
   /**
-   * Overridden from action interface.
-   * <p>
    * Calculates an offset, dx and dy, from the current location. The x-axis
    * offset takes 10% off speedX, and adds up to 20% based on a normal
    * distribution. This should keep the x-axis speed somewhat predictable, 
    * but add enough variability that movement doesn't look synchronized. The
    * y-axis offset is similar, defined by the sum of a positive and negative
-   * gaussian distribution times a scaling factor.
+   * Gaussian distribution times a scaling factor.
    * <p>
    * The offsets are used to update the location by component.
+   * <p>
+   * Overridden from action interface.
    */
   @Override
   public void move() {
@@ -82,6 +103,14 @@ public class BetaFish extends SceneObject implements ActionMove {
     return speedY;
   }
   
+  /**
+   * Provides a string-based representation
+   * of the fish by using its location and
+   * then printing the fish's ObjectId, 
+   * held in the passport variable.
+   * <p>
+   * See ObjectID.java
+   */
   public String toString() {
     String outString = "\nBeta Fish" 
                       +"\n========="

@@ -1,5 +1,6 @@
 package cisc275.group3.model.scene;
 
+import cisc275.group3.exceptions.InsufficientDataException;
 import cisc275.group3.model.sceneobject.BetaFish;
 import cisc275.group3.model.sceneobject.SceneObject;
 
@@ -17,12 +18,23 @@ import cisc275.group3.utility.SceneId;
  * <p>
  * SceneBay.java
  * <p>
- * 
  * @author Scott
- * @author Jon
+ * @author Jon 
  */
-public class SceneBay extends Scene implements ConstructFish, PropertyScored, PropertyTimed {
+public class SceneBay extends Scene implements ConstructFish {
 
+  /**
+   * Empty Constructor should throw error
+   * @throws InsufficientDataException 
+   */
+  public SceneBay() throws InsufficientDataException {
+    super();
+  }
+  
+	/**
+	 * Creates a new Bay scene given a SceneID.
+	 * @param mani	SceneId-scene properties
+	 */
 	public SceneBay(SceneId mani) {
 		super(mani);
 		time = 0;
@@ -34,6 +46,13 @@ public class SceneBay extends Scene implements ConstructFish, PropertyScored, Pr
 
 	/**
 	 * Used when SceneId must also be created
+	 * @param n		String-scene name
+	 * @param x		double-x-coordinate of upper left corner
+	 * @param y		double-y-coordinate of upper left corner
+	 * @param w		double-scene width
+	 * @param h		double-scene height
+	 * @param bg	String-file location of bg image
+	 * @param sceneType	int-type of scene
 	 */
 	public SceneBay(String n, double x, double y, double w, double h, String bg, int sceneType) {
 		this(new SceneId(n, x, y, w, h, sceneType, bg));
@@ -49,13 +68,17 @@ public class SceneBay extends Scene implements ConstructFish, PropertyScored, Pr
 			int fishType = randGen.nextInt(3);
 
 			// Add Left Fish
-			sceneItems.add(ConstructFish.constructLeftFish(randGen.nextInt(20) - 10, // depth
-					fishType, manifest.getWidth() + randGen.nextInt(500), // x location
+			sceneItems.add(ConstructFish.constructLeftFish(
+					randGen.nextInt(20) - 10, // depth
+					fishType, // type
+					manifest.getWidth() + randGen.nextInt(500), // x location
 					i * 140 + manifest.getStartY() + 10)); // y location
 
 			// Add Right Fish
-			sceneItems.add(ConstructFish.constructRightFish(randGen.nextInt(20) - 10, // depth
-					fishType, 0 - randGen.nextInt(500), // x location
+			sceneItems.add(ConstructFish.constructRightFish(
+					randGen.nextInt(20) - 10, // depth
+					fishType, // type
+					0 - randGen.nextInt(500), // x location
 					i * 140 + manifest.getStartY() + 10)); // y location
 		}
 		Collections.sort(sceneItems); // sort by depth
@@ -63,8 +86,7 @@ public class SceneBay extends Scene implements ConstructFish, PropertyScored, Pr
 
 	/**
 	 * Overridden from Scene.java abstract method. sceneType from manifest is used
-	 * to determine how to update each scene model
-	 * 
+	 * to determine how to update each scene model.
 	 * <p>
 	 * For mission related scene models: On approx. 4% of calls, a new left-to-right
 	 * and right-to-left fish is created. The new fish can occur anywhere on the
@@ -75,15 +97,19 @@ public class SceneBay extends Scene implements ConstructFish, PropertyScored, Pr
 	 */
 	@Override
 	public void update() {
-		if (this.getManifest().getSceneType() == 2) {
+		if (manifest.getSceneType() == 2) {
 			// Generate new fish on ~4% of calls
 			if (randGen.nextInt(100) <= 4) {
-				sceneItems.add(ConstructFish.constructLeftFish(randGen.nextInt(20) - 10, // depth
-						randGen.nextInt(3), manifest.getWidth() + randGen.nextInt(500), // x location
+				sceneItems.add(ConstructFish.constructLeftFish(
+						randGen.nextInt(20) - 10, // depth
+						randGen.nextInt(3), // type
+						manifest.getWidth() + randGen.nextInt(500), // x location
 						randGen.nextDouble() * manifest.getHeight() + manifest.getStartY())); // y location
 
-				sceneItems.add(ConstructFish.constructRightFish(randGen.nextInt(20) - 10, // depth
-						randGen.nextInt(3), 0 - randGen.nextInt(75), // x location
+				sceneItems.add(ConstructFish.constructRightFish(
+						randGen.nextInt(20) - 10, // depth
+						randGen.nextInt(3), // type
+						0 - randGen.nextInt(75), // x location
 						randGen.nextDouble() * manifest.getHeight() + manifest.getStartY())); // y location
 			}
 
@@ -114,57 +140,5 @@ public class SceneBay extends Scene implements ConstructFish, PropertyScored, Pr
 				iterator.remove();
 			}
 		}
-	}
-
-	/**
-	 * Overridden from PropertyTimed.java
-	 * 
-	 * @return time
-	 */
-	@Override
-	public int getTime() {
-		return time;
-	}
-
-	/**
-	 * Overridden from PropertyScored.java
-	 * 
-	 * @return score
-	 */
-	@Override
-	public int getScore() {
-		return score;
-	}
-
-	/**
-	 * Overridden from PropertyScored.java
-	 */
-	@Override
-	public void updateScore() {
-		score += 1;
-	}
-
-	/**
-	 * Overridden from PropertyTimed.java
-	 */
-	@Override
-	public void updateTime() {
-		time -= 1;
-	}
-
-	/**
-	 * Overridden from PropertyTimed.java
-	 */
-	@Override
-	public void resetTime() {
-		time = 0;
-	}
-
-	/**
-	 * Overridden from PropertyScored.java
-	 */
-	@Override
-	public void missionScore() {
-		score += this.getTime();
 	}
 }

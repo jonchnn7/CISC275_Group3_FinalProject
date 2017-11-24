@@ -3,6 +3,7 @@ package cisc275.group3.model.scene;
 import java.util.Collections;
 import java.util.Iterator;
 
+import cisc275.group3.exceptions.InsufficientDataException;
 import cisc275.group3.model.sceneobject.BetaCrab;
 import cisc275.group3.model.sceneobject.SceneObject;
 import cisc275.group3.utility.ConstructCrab;
@@ -17,12 +18,20 @@ import cisc275.group3.utility.SceneId;
  * <p>
  * SceneBeach.java
  * <p>
- * 
- * @author Jon
- * @author Ryan
+ * @author Jon 
+ * @author Ryan 
+ * @author Scott
  */
-public class SceneBeach extends Scene implements ConstructCrab, PropertyScored, PropertyTimed {
+public class SceneBeach extends Scene implements ConstructCrab {
 
+  /**
+   * Empty Constructor should throw error
+   * @throws InsufficientDataException 
+   */
+  public SceneBeach() throws InsufficientDataException {
+    super();
+  }
+  
 	public SceneBeach(SceneId mani) {
 		super(mani);
 		time = 0;
@@ -35,8 +44,15 @@ public class SceneBeach extends Scene implements ConstructCrab, PropertyScored, 
 
 	/**
 	 * Used when SceneId must also be created
+	 * @param n		String-scene name
+	 * @param x		double-x-coordinate of upper left corner
+	 * @param y		double-y-coordinate of upper left corner
+	 * @param w		double-scene width
+	 * @param h		double-scene height
+	 * @param bg	String-file location of bg image
+	 * @param sceneType	int-type of scene
 	 */
-	public SceneBeach(String n, double x, double y, double w, double h, int sceneType, String bg) {
+	public SceneBeach(String n, double x, double y, double w, double h, String bg, int sceneType) {
 		this(new SceneId(n, x, y, w, h, sceneType, bg));
 	}
 
@@ -121,57 +137,5 @@ public class SceneBeach extends Scene implements ConstructCrab, PropertyScored, 
 				iterator.remove();
 			}
 		}
-	}
-
-	/**
-	 * Overridden from PropertyTimed.java
-	 * 
-	 * @return time
-	 */
-	@Override
-	public int getTime() {
-		return time;
-	}
-
-	/**
-	 * Overridden from PropertyScored.java
-	 * 
-	 * @return score
-	 */
-	@Override
-	public int getScore() {
-		return score;
-	}
-
-	/**
-	 * Overridden from PropertyScored.java
-	 */
-	@Override
-	public void updateScore() {
-		score += 1;
-	}
-
-	/**
-	 * Overridden from PropertyTimed.java
-	 */
-	@Override
-	public void updateTime() {
-		time -= 1;
-	}
-
-	/**
-	 * Overridden from PropertyTimed.java
-	 */
-	@Override
-	public void resetTime() {
-		time = 0;
-	}
-
-	/**
-	 * Overridden from PropertyScored.java
-	 */
-	@Override
-	public void missionScore() {
-		score += this.getTime();
 	}
 }

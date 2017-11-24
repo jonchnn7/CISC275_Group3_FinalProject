@@ -1,7 +1,7 @@
 package cisc275.group3.model.scene;
 
 import cisc275.group3.controller.ControllerInventory;
-
+import cisc275.group3.exceptions.InsufficientDataException;
 import cisc275.group3.model.sceneobject.BetaCrab;
 import cisc275.group3.model.sceneobject.BetaFish;
 import cisc275.group3.model.sceneobject.BetaVegetation;
@@ -25,10 +25,9 @@ import java.util.Random;
  * <p>
  * Scene.java
  * <p>
- * 
- * @author Scott
- * @author Jon
- * @author Jolyne
+ * @author Scott 
+ * @author Jon 
+ * @author Jolyne 
  */
 public abstract class Scene implements Serializable {
 
@@ -44,6 +43,14 @@ public abstract class Scene implements Serializable {
 	// RNG
 	protected Random randGen = new Random();
 
+	/**
+	 * Empty constructor calls should throw an error.
+	 * @throws InsufficientDataException
+	 */
+	public Scene() throws InsufficientDataException {
+		throw new InsufficientDataException();
+	}
+	
 	public Scene(SceneId mani) {
 		manifest = mani;
 		currentTool = null;
@@ -74,7 +81,7 @@ public abstract class Scene implements Serializable {
 	 *            double-y-axis coordinate of click
 	 * @return boolean is click on clickable object?
 	 */
-	public boolean processClick(double clickX, double clickY, String cursorName) {
+	public boolean processClick(double clickX, double clickY) {
 		for (Iterator<SceneObject> iterator = sceneItems.iterator(); iterator.hasNext();) {
 			SceneObject sceneItem = iterator.next();
 
@@ -82,8 +89,6 @@ public abstract class Scene implements Serializable {
 			if ((sceneItem instanceof BetaFish) && (currentTool != null)
 					&& (SceneObjectType.BetaFish.searchCompatability(currentTool.getName()))) {
 				if (sceneItem.itemClicked(clickX, clickY)) {
-					// if (sceneItem.itemClicked(clickX, clickY) &&
-					// cursorName.equalsIgnoreCase("Net")) {
 					System.out.println("Clicked on: " + sceneItem.getPassport().getName());
 					if ((Scene.getCurrentMission().getTargetObject() != null)
 							&& (Scene.getCurrentMission().getTargetObject().equals("BetaFish"))
@@ -97,8 +102,6 @@ public abstract class Scene implements Serializable {
 			} else if ((sceneItem instanceof BetaCrab) && (currentTool != null)
 					&& (SceneObjectType.BetaCrab.searchCompatability(currentTool.getName()))) {
 				if (sceneItem.itemClicked(clickX, clickY)) {
-					// if (sceneItem.itemClicked(clickX, clickY) &&
-					// cursorName.equalsIgnoreCase("Net")) {
 					System.out.println("Clicked on: " + sceneItem.getPassport().getName());
 					if ((Scene.getCurrentMission().getTargetObject() != null)
 							&& (Scene.getCurrentMission().getTargetObject().equals("BetaCrab"))
@@ -112,8 +115,6 @@ public abstract class Scene implements Serializable {
 			} else if ((sceneItem instanceof BetaVegetation) && (currentTool != null)
 					&& (SceneObjectType.BetaVegetation.searchCompatability(currentTool.getName()))) {
 				if (sceneItem.itemClicked(clickX, clickY)) {
-					// if (sceneItem.itemClicked(clickX, clickY) &&
-					// cursorName.equalsIgnoreCase("Net")) {
 					System.out.println("Clicked on: " + sceneItem.getPassport().getName());
 					BetaVegetation vegetation = null;
 					if (sceneItem.getPassport().getId() > 0) {
@@ -146,15 +147,12 @@ public abstract class Scene implements Serializable {
 	 * @return multiline string of parameter states
 	 */
 	public String toString() {
-		String outString = "\nName: " + manifest.getName() + "\nWidth: " + manifest.getWidth() + "\nHeight: "
-				+ manifest.getHeight() + "\nScene Objects: " + sceneItems.size();
+		String outString = "\nName: " + manifest.getName() 
+	                      +"\nWidth: " + manifest.getWidth() 
+	                      +"\nHeight: "+ manifest.getHeight() 
+	                      +"\nScene Objects: " + sceneItems.size();
 		return outString;
 	}
-
-	// Alternate toString
-	// public String toString() {
-	// return this.getManifest().getName();
-	// }
 
 	/** 
 	 * @return manifest
@@ -190,8 +188,7 @@ public abstract class Scene implements Serializable {
 	/**
 	 * Updates the current tool to the input parameter
 	 * 
-	 * @param t
-	 *            ToolObject-new tool
+	 * @param m	Mission-mission object
 	 */
 	public static void setCurrentMission(Mission m) {
 		currentMission = m;
@@ -224,5 +221,29 @@ public abstract class Scene implements Serializable {
 	 */
 	public ArrayList<SceneObject> getSceneItems() {
 		return sceneItems;
+	}
+	
+	public int getTime() {
+		return time;
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void updateScore() {
+		score += 1;
+	}
+
+	public void updateTime() {
+		time -= 1;
+	}
+
+	public void resetTime() {
+		time = 0;
+	}
+
+	public void missionScore() {
+		score += this.getTime();
 	}
 }

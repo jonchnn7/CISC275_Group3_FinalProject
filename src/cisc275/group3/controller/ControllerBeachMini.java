@@ -1,15 +1,10 @@
 package cisc275.group3.controller;
 
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.HashMap;
-
-import cisc275.group3.model.scene.SceneBay;
 import cisc275.group3.model.scene.SceneBeachMini;
 import cisc275.group3.utility.LayerCode;
 import cisc275.group3.view.GameWindow;
@@ -24,11 +19,11 @@ import cisc275.group3.view.ViewOverlayLabel;
  * to pass an update call to the model on every timer tick, and
  * to update the time every second.
  * <p>
- * @see ControllerScene.java
+ * See cisc275.group3.controller.ControllerScene.java
  * <p>
  * ControllerBeachMini.java
  * <p>
- * @author Scott
+ * @author Scott 
  */
 public class ControllerBeachMini extends ControllerScene implements LinkDynamics, LinkTime {
   private final String BG_IMAGE = "img/beach_sand_bg.png";
@@ -39,7 +34,7 @@ public class ControllerBeachMini extends ControllerScene implements LinkDynamics
 
   @Override
   protected void createScene(int sceneType) {
-    scene = new SceneBeachMini("Bay", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, sceneType, BG_IMAGE);
+    scene = new SceneBeachMini("Bay", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, BG_IMAGE, sceneType);
     viewGame = new ViewGame(SCREEN_WIDTH, SCREEN_HEIGHT, scene.getSceneItems(), scene.getManifest().getBG());
     
     

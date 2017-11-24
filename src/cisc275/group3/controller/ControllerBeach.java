@@ -1,15 +1,10 @@
 package cisc275.group3.controller;
 
-import java.awt.Color;
 import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.HashMap;
 
-import cisc275.group3.model.scene.SceneBay;
 import cisc275.group3.model.scene.SceneBeach;
 import cisc275.group3.utility.LayerCode;
 import cisc275.group3.view.GameWindow;
@@ -17,19 +12,19 @@ import cisc275.group3.view.ViewGame;
 import cisc275.group3.view.ViewOverlayLabel;
 
 /**
- * Contains the controller actions and logic for SceneBay.java.
+ * Contains the controller actions and logic for SceneBeach.java.
  * <p>
  * Extends the abstract ConstrollerScene class and adds dynamics
  * and timing attributes. Those interfaces require the controller
  * to pass an update call to the model on every timer tick, and
  * to update the time every second.
  * <p>
- * @see ControllerScene.java
+ * See cisc275.group3.controller.ControllerScene.java
  * <p>
- * ControllerBay.java
+ * ControllerBeach.java
  * <p>
- * @author Jon
- * @author Ryan
+ * @author Jon 
+ * @author Ryan 
  */
 public class ControllerBeach extends ControllerScene implements LinkDynamics, LinkTime {
   private final String BG_IMAGE = "img/beach_bg.jpg";
@@ -41,7 +36,7 @@ public class ControllerBeach extends ControllerScene implements LinkDynamics, Li
 
   @Override
   protected void createScene(int sceneType) {    
-    scene = new SceneBeach("Beach", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, sceneType, BG_IMAGE);
+    scene = new SceneBeach("Beach", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, BG_IMAGE, sceneType);
     viewGame = new ViewGame(SCREEN_WIDTH, SCREEN_HEIGHT, scene.getSceneItems(), scene.getManifest().getBG());
     
 
@@ -54,26 +49,6 @@ public class ControllerBeach extends ControllerScene implements LinkDynamics, Li
     componentList.put("Beach", viewGame);
   
    addML();
-  }
-
-  @Override
-  protected void addML() {
-    viewGame.addMouseListener(new MouseAdapter() {
-      @Override
-      public void mousePressed(MouseEvent e) {
-        if (e.getButton() == MouseEvent.BUTTON1) {
-
-          //String cursorName = mainPane.getComponentsInLayer(LayerCode.MainMapTools.getCode())[0].getCursor().getName();
-        	String cursorName = "";
-
-          if ( scene.processClick(e.getX(), e.getY(), cursorName) ) {
-            ((SceneBeach)scene).updateScore();
-            displayScore();
-            displayMission();
-          }
-        }
-      }
-    });
   }
 
   /**
@@ -119,16 +94,5 @@ public class ControllerBeach extends ControllerScene implements LinkDynamics, Li
     
     sceneTime = Integer.toString(((SceneBeach)scene).getTime());
     ((ViewOverlayLabel)componentList.get("TimeLabel")).updateLabel(sceneTime);
-  }
-  
-  /**
-   * Displays the model score in the shared score 
-   * label.
-   */
-  public void displayScore() {
-    String sceneScore;
-    
-    sceneScore = Integer.toString(((SceneBeach)scene).getScore());
-    ((ViewOverlayLabel)componentList.get("ScoreLabel")).updateLabel(sceneScore);
   }
 }

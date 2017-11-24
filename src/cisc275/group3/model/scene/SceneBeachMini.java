@@ -1,11 +1,33 @@
 package cisc275.group3.model.scene;
 
+import cisc275.group3.exceptions.InsufficientDataException;
 import cisc275.group3.model.sceneobject.BetaCrab;
 import cisc275.group3.utility.ConstructCrab;
 import cisc275.group3.utility.SceneId;
 
-public class SceneBeachMini extends Scene implements ConstructCrab, PropertyTimed {
+/**
+ * Bonus Beach mini-game to be unlocked after completing a
+ * beach mission. Primarily used to introduce fun, 
+ * alternative play mechanics with little to no educational
+ * value. 
+ * <p>
+ * The objective of this game is to "drag" your crab across 
+ * the screen in a race against two npc crabs.
+ * <p>
+ * SceneBeachMini.java
+ * <p>
+ * @author Scott  
+ */
+public class SceneBeachMini extends Scene implements ConstructCrab {
 
+  /**
+   * Empty Constructor should throw error
+   * @throws InsufficientDataException 
+   */
+  public SceneBeachMini() throws InsufficientDataException {
+    super();
+  }
+  
   public SceneBeachMini(SceneId mani) {
 	super(mani);
 	
@@ -15,10 +37,17 @@ public class SceneBeachMini extends Scene implements ConstructCrab, PropertyTime
     }  
   }
   
-  /**
-   * Used when SceneId must also be created
-   */ 
-  public SceneBeachMini(String n, double x, double y, double w, double h, int sceneType, String bg) {
+	/**
+	 * Used when SceneId must also be created
+	 * @param n		String-scene name
+	 * @param x		double-x-coordinate of upper left corner
+	 * @param y		double-y-coordinate of upper left corner
+	 * @param w		double-scene width
+	 * @param h		double-scene height
+	 * @param bg	String-file location of bg image
+	 * @param sceneType	int-type of scene
+	 */
+  public SceneBeachMini(String n, double x, double y, double w, double h, String bg, int sceneType) {
     this(new SceneId(n, x, y, w, h, sceneType, bg));
   }
 
@@ -61,23 +90,5 @@ public class SceneBeachMini extends Scene implements ConstructCrab, PropertyTime
 	    ((BetaCrab)crab).move(dx);
 	  }
 	});	 
-  }
-
-  @Override
-  public int getTime() {
-    return time;
-  }
-
-  @Override
-  public void updateTime() {
-    time += 1;
-  }
-  
-  /**
-   * Overridden from PropertyTimed.java
-   */
-  @Override
-  public void resetTime() {
-	  time = 0;
   }
 }

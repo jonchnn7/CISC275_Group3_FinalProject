@@ -2,32 +2,38 @@ package cisc275.group3.model.scene;
 
 
 import java.util.Collections;
-import java.util.Iterator;
-
 import cisc275.group3.controller.ControllerInventory;
-import cisc275.group3.model.sceneobject.BetaFish;
-import cisc275.group3.model.sceneobject.SceneObject;
-import cisc275.group3.utility.ConstructFish;
+import cisc275.group3.exceptions.InsufficientDataException;
 import cisc275.group3.utility.SceneId;
 
 /**
- * Bay scene/model. 
+ *Inventory scene/model. 
  * <p>
- * The bay scene implements scoring and timing functions 
- * via interface implementations. The ConstructFish 
- * interface holds component definitions for fish objects,
- * and static functions to return fish objects. 
+ * The inventory scene tracks the items collected during 
+ * missions and provides mechanisms for their retrieval.
  * <p>
- * SceneBay.java
+ * The primary purpose of the inventory is to provide the
+ * player with a list of items collected.
  * <p>
- * @author Thomas
+ * SceneInventory.java
+ * <p>
+ * @author Thomas 
+ * @author Scott 
  */
 @SuppressWarnings("serial")
 public class SceneInventory extends Scene  {
 
+  /**
+   * Empty Constructor should throw error
+   * @throws InsufficientDataException 
+   */
+  public SceneInventory() throws InsufficientDataException {
+    super();
+  }
+  
   public SceneInventory(SceneId mani) {
     super(mani);
-    System.out.println("Created");
+    //System.out.println("Created");
     fillScene();
   }
   
@@ -46,14 +52,14 @@ public class SceneInventory extends Scene  {
   @Override
   protected void fillScene() {
     sceneItems = ControllerInventory.getSceneItems();
-    System.out.println("Filling");
+    //System.out.println("Filling");
     Collections.sort(sceneItems); // sort by depth
   }
   
   
   @Override
   public void update() {
-	  System.out.println("Inventory Called");
+	  //System.out.println("Inventory Called");
   }
 
 }

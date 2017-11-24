@@ -1,20 +1,21 @@
 package cisc275.group3.controller;
 
 import cisc275.group3.model.scene.Scene;
+import cisc275.group3.model.scene.SceneBay;
 import cisc275.group3.utility.LayerCode;
 import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.ViewGame;
 import cisc275.group3.view.ViewOverlayLabel;
 
 import java.awt.Component;
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.Cursor;
 import java.awt.event.MouseAdapter;
 import java.util.HashMap;
 import java.awt.event.MouseEvent;
 import java.io.Serializable;
-import javax.swing.JButton;
+
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 
 /**
@@ -24,8 +25,8 @@ import javax.swing.JLayeredPane;
  * <p>
  * ControllerScene.java
  * <p>
- * @author Jon
- * @author Scott
+ * @author Jon 
+ * @author Scott 
  */
 public abstract class ControllerScene implements Serializable {
   // Window Parameters
@@ -36,6 +37,7 @@ public abstract class ControllerScene implements Serializable {
   // Scene Variables
   protected Scene scene;
   protected ViewGame viewGame;
+  protected static JLabel mouseLabel;
   protected static HashMap<String, Component> componentList;
   
   // Window Components
@@ -87,11 +89,13 @@ public abstract class ControllerScene implements Serializable {
    */
   protected void addML() {
     viewGame.addMouseListener(new MouseAdapter() {
+      @Override
       public void mousePressed(MouseEvent e) {
         if (e.getButton() == MouseEvent.BUTTON1) {
-          String cursorName = mainPane.getComponentsInLayer(LayerCode.MainAll.getCode())[0].getCursor().getName();
-          if ( scene.processClick(e.getX(), e.getY(), cursorName) ) {
-            //scene.updateScore();
+          if ( scene.processClick(e.getX(), e.getY()) ) {
+            scene.updateScore();
+            displayScore();
+            displayMission();
           }
         }
       }
@@ -115,5 +119,16 @@ public abstract class ControllerScene implements Serializable {
 	    }
 	    
 	    ((ViewOverlayLabel)componentList.get("MissionLabel")).updateLabel(missionNum);
-}
+  }
+  
+  /**
+   * Displays the model score in the shared score 
+   * label.
+   */
+  public void displayScore() {
+    String sceneScore;
+    
+    sceneScore = Integer.toString(scene.getScore());
+    ((ViewOverlayLabel)componentList.get("ScoreLabel")).updateLabel(sceneScore);
+  }
 }

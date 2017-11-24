@@ -30,7 +30,8 @@ import cisc275.group3.view.GameWindow;
  * <p>
  * ControllerMap.java
  * <p>
- * @author Scott
+ * @author Scott 
+ * @author Ryan 
  */
 public class ControllerMap extends ControllerScene {
 

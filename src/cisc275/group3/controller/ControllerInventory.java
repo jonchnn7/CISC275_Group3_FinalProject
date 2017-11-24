@@ -1,32 +1,17 @@
 package cisc275.group3.controller;
 
-import java.awt.Color;
 import java.awt.Component;
-import java.awt.Cursor;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.Point;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import cisc275.group3.model.scene.Scene;
-import cisc275.group3.model.scene.SceneBay;
 import cisc275.group3.model.scene.SceneInventory;
 import cisc275.group3.model.sceneobject.BetaCrab;
 import cisc275.group3.model.sceneobject.BetaFish;
 import cisc275.group3.model.sceneobject.SceneObject;
-import cisc275.group3.model.sceneobject.ToolCamera;
-import cisc275.group3.model.sceneobject.ToolNet;
 import cisc275.group3.utility.LayerCode;
 import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.ViewGame;
@@ -42,9 +27,8 @@ import cisc275.group3.view.ViewGame;
  * <p>
  * ControllerTool.java
  * <p>
- * @author Scott
- * <p>
- * @author Jolyne
+ * @author Scott 
+ * @author Jolyne 
  */
 public class ControllerInventory extends ControllerScene {
 

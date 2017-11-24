@@ -11,13 +11,18 @@ import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.HashMap;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
 import cisc275.group3.model.scene.Scene;
+import cisc275.group3.model.scene.SceneBeachMini;
 import cisc275.group3.model.sceneobject.ToolCage;
 import cisc275.group3.model.sceneobject.ToolCamera;
 import cisc275.group3.model.sceneobject.ToolNet;
@@ -36,9 +41,8 @@ import cisc275.group3.view.GameWindow;
  * <p>
  * ControllerTool.java
  * <p>
- * @author Scott
- * <p>
- * @author Jolyne
+ * @author Scott 
+ * @author Jolyne 
  */
 public class ControllerTools extends ControllerScene {
 
@@ -76,6 +80,8 @@ public class ControllerTools extends ControllerScene {
     mainPane.setLayer(toolPanel, LayerCode.Tools.getCode());
     mainPane.add(toolPanel, LayerCode.Tools.getCode());
     componentList.put("Tools", toolPanel);
+    
+    toolOverlay();
   }
   
   private void addToolButtons() {
@@ -91,19 +97,13 @@ public class ControllerTools extends ControllerScene {
         mainPane.setLayer(toolComponent, LayerCode.Tools.getCode());
         if (Scene.getCurrentTool() instanceof ToolNet) {
           Scene.setCurrentTool(null);
-          mainPane.getComponentsInLayer(LayerCode.MainAll.getCode())[0].setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+          mouseLabel.setIcon(new ImageIcon("img/mouse_empty.png"));
+          mouseLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
         }
         else {
           Scene.setCurrentTool(new ToolNet(0,0,0,0));
-          Toolkit toolkit = Toolkit.getDefaultToolkit();
-          Image image = toolkit.getImage("img/mouse_net.png");
-          //attempting to calculate hotspot off of image size (does not work for windows)
-//          Cursor netCursor = toolkit.createCustomCursor(image , new Point(mainPane.getX()+image.getWidth(null)/2, 
-//                     mainPane.getY()+image.getHeight(null)/2), "Net");
-          //Set hotspot point to 16,16 because default size is 32,32
-          Cursor netCursor = toolkit.createCustomCursor(image , new Point(16,16), "Net");
-          mainPane.getComponentsInLayer(LayerCode.MainAll.getCode())[0].setCursor(netCursor);
-
+          mouseLabel.setIcon(new ImageIcon("img/mouse_net.png"));
+          mouseLabel.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
         }
       }
     });
@@ -121,15 +121,14 @@ public class ControllerTools extends ControllerScene {
         mainPane.setLayer(toolComponent, LayerCode.Tools.getCode());
           if (Scene.getCurrentTool() instanceof ToolCamera) {
             Scene.setCurrentTool(null);
-            mainPane.getComponentsInLayer(LayerCode.MainAll.getCode())[0].setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+            mouseLabel.setIcon(new ImageIcon("img/mouse_empty.png"));
+            mouseLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
           } 
           else {
-              Scene.setCurrentTool(new ToolCamera(0,0,0,0));
-              Toolkit toolkit = Toolkit.getDefaultToolkit();
-              Image image = toolkit.getImage("img/hammer.png");
-              //Hotspot/Point values were calculated off of image size
-              Cursor cmrCursor = toolkit.createCustomCursor(image , new Point(16,16), "Camera");
-              mainPane.getComponentsInLayer(LayerCode.MainAll.getCode())[0].setCursor(cmrCursor);          }
+            Scene.setCurrentTool(new ToolCamera(0,0,0,0));
+            mouseLabel.setIcon(new ImageIcon("img/mouse_cam.png"));
+            mouseLabel.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
+          }
         }
       });
       toolPanel.add(cameraButton);
@@ -146,18 +145,13 @@ public class ControllerTools extends ControllerScene {
           mainPane.setLayer(toolComponent, LayerCode.Tools.getCode());
           if (Scene.getCurrentTool() instanceof ToolCage) {
             Scene.setCurrentTool(null);
-            mainPane.getComponentsInLayer(LayerCode.MainAll.getCode())[0].setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+            mouseLabel.setIcon(new ImageIcon("img/mouse_empty.png"));
+            mouseLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
           }
           else {
             Scene.setCurrentTool(new ToolCage(0,0,0,0));
-            Toolkit toolkit = Toolkit.getDefaultToolkit();
-            Image image = toolkit.getImage("img/mouse_net.png");
-            //attempting to calculate hotspot off of image size (does not work for windows)
-//            Cursor netCursor = toolkit.createCustomCursor(image , new Point(mainPane.getX()+image.getWidth(null)/2, 
-//                       mainPane.getY()+image.getHeight(null)/2), "Net");
-            //Set hotspot point to 16,16 because default size is 32,32
-            Cursor cageCursor = toolkit.createCustomCursor(image , new Point(16,16), "Cage");
-            mainPane.getComponentsInLayer(LayerCode.MainAll.getCode())[0].setCursor(cageCursor);
+            mouseLabel.setIcon(new ImageIcon("img/mouse_cage.png"));
+            mouseLabel.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
 
           }
         }
@@ -176,22 +170,46 @@ public class ControllerTools extends ControllerScene {
           mainPane.setLayer(toolComponent, LayerCode.Tools.getCode());
           if (Scene.getCurrentTool() instanceof ToolTrimmer) {
             Scene.setCurrentTool(null);
-            mainPane.getComponentsInLayer(LayerCode.MainAll.getCode())[0].setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+            mouseLabel.setIcon(new ImageIcon("img/mouse_empty.png"));
+            mouseLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
           }
           else {
             Scene.setCurrentTool(new ToolTrimmer(0,0,0,0));
-            Toolkit toolkit = Toolkit.getDefaultToolkit();
-            Image image = toolkit.getImage("img/mouse_net.png");
-            //attempting to calculate hotspot off of image size (does not work for windows)
-//            Cursor netCursor = toolkit.createCustomCursor(image , new Point(mainPane.getX()+image.getWidth(null)/2, 
-//                       mainPane.getY()+image.getHeight(null)/2), "Net");
-            //Set hotspot point to 16,16 because default size is 32,32
-            Cursor trimmerCursor = toolkit.createCustomCursor(image , new Point(16,16), "Cage");
-            mainPane.getComponentsInLayer(LayerCode.MainAll.getCode())[0].setCursor(trimmerCursor);
-
+            mouseLabel.setIcon(new ImageIcon("img/mouse_trim.png"));
+            mouseLabel.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
           }
         }
       });
       toolPanel.add(trimmerButton);
     }
+  
+  private void toolOverlay() {
+    mouseLabel = new JLabel(new ImageIcon("img/mouse_empty.png"));
+    mouseLabel.setBounds(0, 0, 100, 100);
+    mouseLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    
+    mainPane.setLayer(mouseLabel, JLayeredPane.MODAL_LAYER);
+    mainPane.add(mouseLabel, JLayeredPane.MODAL_LAYER);
+    
+    componentList.get("Bay").addMouseMotionListener(new MouseAdapter() {
+      @Override 
+      public void mouseMoved(MouseEvent e) {
+        mouseLabel.setLocation(e.getX()-50, e.getY()-50);
+      }
+    });
+    
+    componentList.get("Beach").addMouseMotionListener(new MouseAdapter() {
+      @Override 
+      public void mouseMoved(MouseEvent e) {
+        mouseLabel.setLocation(e.getX()-50, e.getY()-50);
+      }
+    });
+    
+    componentList.get("Wetland").addMouseMotionListener(new MouseAdapter() {
+      @Override 
+      public void mouseMoved(MouseEvent e) {
+        mouseLabel.setLocation(e.getX()-50, e.getY()-50);
+      }
+    });
   }
+ }

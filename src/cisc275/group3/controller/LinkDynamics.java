@@ -9,7 +9,7 @@ package cisc275.group3.controller;
  * <p>
  * LinkDynamics.java
  * <p>
- * @author Scott
+ * @author Scott 
  */
 public interface LinkDynamics {
   void update();

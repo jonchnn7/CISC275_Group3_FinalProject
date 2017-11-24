@@ -9,7 +9,7 @@ package cisc275.group3.controller;
  * <p>
  * LinkTime.java
  * <p>
- * @author Scott
+ * @author Scott 
  */
 public interface LinkTime {
   void updateTime();
