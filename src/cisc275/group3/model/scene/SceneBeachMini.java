@@ -17,7 +17,7 @@ import cisc275.group3.utility.SceneId;
  * <p>
  * @author Scott  
  */
-public class SceneBeachMini extends Scene implements ConstructCrab, PropertyTimed {
+public class SceneBeachMini extends Scene implements ConstructCrab {
 
   public SceneBeachMini(SceneId mani) {
 	super(mani);
@@ -74,23 +74,5 @@ public class SceneBeachMini extends Scene implements ConstructCrab, PropertyTime
 	    ((BetaCrab)crab).move(dx);
 	  }
 	});	 
-  }
-
-  @Override
-  public int getTime() {
-    return time;
-  }
-
-  @Override
-  public void updateTime() {
-    time += 1;
-  }
-  
-  /**
-   * Overridden from PropertyTimed.java
-   */
-  @Override
-  public void resetTime() {
-	  time = 0;
   }
 }

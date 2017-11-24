@@ -20,7 +20,7 @@ import cisc275.group3.utility.SceneId;
  * @author Scott
  * @author Jon 
  */
-public class SceneBay extends Scene implements ConstructFish, PropertyScored, PropertyTimed {
+public class SceneBay extends Scene implements ConstructFish {
 
 	/**
 	 * Creates a new Bay scene given a SceneID.
@@ -124,57 +124,5 @@ public class SceneBay extends Scene implements ConstructFish, PropertyScored, Pr
 				iterator.remove();
 			}
 		}
-	}
-
-	/**
-	 * Overridden from PropertyTimed.java
-	 * 
-	 * @return time
-	 */
-	@Override
-	public int getTime() {
-		return time;
-	}
-
-	/**
-	 * Overridden from PropertyScored.java
-	 * 
-	 * @return score
-	 */
-	@Override
-	public int getScore() {
-		return score;
-	}
-
-	/**
-	 * Overridden from PropertyScored.java
-	 */
-	@Override
-	public void updateScore() {
-		score += 1;
-	}
-
-	/**
-	 * Overridden from PropertyTimed.java
-	 */
-	@Override
-	public void updateTime() {
-		time -= 1;
-	}
-
-	/**
-	 * Overridden from PropertyTimed.java
-	 */
-	@Override
-	public void resetTime() {
-		time = 0;
-	}
-
-	/**
-	 * Overridden from PropertyScored.java
-	 */
-	@Override
-	public void missionScore() {
-		score += this.getTime();
 	}
 }

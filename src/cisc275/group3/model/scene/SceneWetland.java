@@ -21,7 +21,7 @@ import cisc275.group3.utility.SceneId;
  * @author Jon 
  * @author Ryan 
  */
-public class SceneWetland extends Scene implements PropertyScored, PropertyTimed {
+public class SceneWetland extends Scene {
 
 	public SceneWetland(SceneId mani) {
 		super(mani);
@@ -90,57 +90,5 @@ public class SceneWetland extends Scene implements PropertyScored, PropertyTimed
 			}
 			Collections.sort(sceneItems);
 		}
-	}
-
-	/**
-	 * Overridden from PropertyTimed.java
-	 * 
-	 * @return time
-	 */
-	@Override
-	public int getTime() {
-		return time;
-	}
-
-	/**
-	 * Overridden from PropertyScored.java
-	 * 
-	 * @return score
-	 */
-	@Override
-	public int getScore() {
-		return score;
-	}
-
-	/**
-	 * Overridden from PropertyScored.java
-	 */
-	@Override
-	public void updateScore() {
-		score += 1;
-	}
-
-	/**
-	 * Overridden from PropertyScored.java
-	 */
-	@Override
-	public void missionScore() {
-		score += this.getTime();
-	}
-
-	/**
-	 * Overridden from PropertyTimed.java
-	 */
-	@Override
-	public void updateTime() {
-		time -= 1;
-	}
-
-	/**
-	 * Overridden from PropertyTimed.java
-	 */
-	@Override
-	public void resetTime() {
-		time = 0;
 	}
 }

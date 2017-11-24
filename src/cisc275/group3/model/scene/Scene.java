@@ -146,11 +146,6 @@ public abstract class Scene implements Serializable {
 		return outString;
 	}
 
-	// Alternate toString
-	// public String toString() {
-	// return this.getManifest().getName();
-	// }
-
 	/** 
 	 * @return manifest
 	 */
@@ -218,5 +213,29 @@ public abstract class Scene implements Serializable {
 	 */
 	public ArrayList<SceneObject> getSceneItems() {
 		return sceneItems;
+	}
+	
+	public int getTime() {
+		return time;
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void updateScore() {
+		score += 1;
+	}
+
+	public void updateTime() {
+		time -= 1;
+	}
+
+	public void resetTime() {
+		time = 0;
+	}
+
+	public void missionScore() {
+		score += this.getTime();
 	}
 }
