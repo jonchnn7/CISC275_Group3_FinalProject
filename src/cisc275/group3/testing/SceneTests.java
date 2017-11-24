@@ -3,7 +3,6 @@ package cisc275.group3.testing;
 import static org.junit.Assert.*;
 
 import java.util.HashMap;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -20,6 +19,7 @@ import cisc275.group3.model.sceneobject.ToolTrimmer;
 import cisc275.group3.utility.ConstructCrab;
 import cisc275.group3.utility.ConstructFish;
 import cisc275.group3.utility.ConstructVegetation;
+import cisc275.group3.utility.ConstructHeron;
 import cisc275.group3.utility.Mission;
 
 /**
@@ -41,9 +41,9 @@ public class SceneTests implements ConstructCrab, ConstructFish, ConstructVegeta
 	  testList = new HashMap<String, Scene>();
 	  
 	  testList.put("Bay", new SceneBay("Bay Test", 0, 0, SCENE_WIDTH, SCENE_HEIGHT, "img/bay_bg_1.png", 0));
-	  testList.put("Beach", new SceneBeach("Beach Test", 0, 0, SCENE_WIDTH, SCENE_HEIGHT, "img/bay_bg_1.png", 0));
-	  testList.put("BeachMini", new SceneBeachMini("Beach Mini Test", 0, 0, SCENE_WIDTH, SCENE_HEIGHT, "img/bay_bg_1.png", 0));
-	  testList.put("Wetland", new SceneWetland("Wetland Test", 0, 0, SCENE_WIDTH, SCENE_HEIGHT, "img/bay_bg_1.png", 0));
+	  testList.put("Beach", new SceneBeach("Beach Test", 0, 0, SCENE_WIDTH, SCENE_HEIGHT, "img/beach_bg.jpg", 0));
+	  testList.put("BeachMini", new SceneBeachMini("Beach Mini Test", 0, 0, SCENE_WIDTH, SCENE_HEIGHT, "img/beach_bg.jpg", 0));
+	  testList.put("Wetland", new SceneWetland("Wetland Test", 0, 0, SCENE_WIDTH, SCENE_HEIGHT, "img/wetland_bg.jpg", 0));
 	  
 	  baySetup();
 	  beachSetup();
@@ -97,40 +97,128 @@ public class SceneTests implements ConstructCrab, ConstructFish, ConstructVegeta
   }
   
   /**
+   * Test manifest (SceneId) objects are 
+   * created correctly
+   */
+  @Test
+  public void testManifests() {
+    System.out.println("  Testing Manifests");
+    
+    System.out.println("    Bay Manifest");
+    assertEquals("BG Image = img/bay_bg_1.png", "img/bay_bg_1.png", testList.get("Bay").getManifest().getBG());
+    assertEquals("Name = Bay Test", "Bay Test", testList.get("Bay").getManifest().getName());
+    assertEquals("Initial X = 0", 0, testList.get("Bay").getManifest().getStartX(), 1);
+    assertEquals("Initial Y = 0", 0, testList.get("Bay").getManifest().getStartY(), 1);
+    assertEquals("Width = " + SCENE_WIDTH, SCENE_WIDTH, testList.get("Bay").getManifest().getWidth(), 1);
+    assertEquals("Height = " + SCENE_HEIGHT, SCENE_HEIGHT, testList.get("Bay").getManifest().getHeight(), 1);
+    assertEquals("Scene Type = 0", 0, testList.get("Bay").getManifest().getSceneType());
+    
+    System.out.println("    Beach Manifest");
+    assertEquals("BG Image = img/beach_bg.jpg", "img/beach_bg.jpg", testList.get("Beach").getManifest().getBG());
+    assertEquals("Name = Beach Test", "Beach Test", testList.get("Beach").getManifest().getName());
+    assertEquals("Initial X = 0", 0, testList.get("Beach").getManifest().getStartX(), 1);
+    assertEquals("Initial Y = 0", 0, testList.get("Beach").getManifest().getStartY(), 1);
+    assertEquals("Width = " + SCENE_WIDTH, SCENE_WIDTH, testList.get("Beach").getManifest().getWidth(), 1);
+    assertEquals("Height = " + SCENE_HEIGHT, SCENE_HEIGHT, testList.get("Beach").getManifest().getHeight(), 1);
+    assertEquals("Scene Type = 0", 0, testList.get("Beach").getManifest().getSceneType());
+     
+    System.out.println("    Beach Mini Manifest");
+    assertEquals("BG Image = img/beach_bg.jpg", "img/beach_bg.jpg", testList.get("BeachMini").getManifest().getBG());
+    assertEquals("Name = Beach Mini Test", "Beach Mini Test", testList.get("BeachMini").getManifest().getName());
+    assertEquals("Initial X = 0", 0, testList.get("BeachMini").getManifest().getStartX(), 1);
+    assertEquals("Initial Y = 0", 0, testList.get("BeachMini").getManifest().getStartY(), 1);
+    assertEquals("Width = " + SCENE_WIDTH, SCENE_WIDTH, testList.get("BeachMini").getManifest().getWidth(), 1);
+    assertEquals("Height = " + SCENE_HEIGHT, SCENE_HEIGHT, testList.get("BeachMini").getManifest().getHeight(), 1);
+    assertEquals("Scene Type = 0", 0, testList.get("BeachMini").getManifest().getSceneType());
+    
+    System.out.println("    Wetland Manifest");
+    assertEquals("BG Image = img/wetland_bg.jpg", "img/wetland_bg.jpg", testList.get("Wetland").getManifest().getBG());
+    assertEquals("Name = Wetland Test", "Wetland Test", testList.get("Wetland").getManifest().getName());
+    assertEquals("Initial X = 0", 0, testList.get("Wetland").getManifest().getStartX(), 1);
+    assertEquals("Initial Y = 0", 0, testList.get("Wetland").getManifest().getStartY(), 1);
+    assertEquals("Width = " + SCENE_WIDTH, SCENE_WIDTH, testList.get("Wetland").getManifest().getWidth(), 1);
+    assertEquals("Height = " + SCENE_HEIGHT, SCENE_HEIGHT, testList.get("Wetland").getManifest().getHeight(), 1);
+    assertEquals("Scene Type = 0", 0, testList.get("Wetland").getManifest().getSceneType());
+  }
+  
+  /**
    * Tests processClick() by setting tools and
    * clicking in the appropriate areas.
    */
   @Test
   public void testProcessClick() {
+    // X and Y locations from setups()
+    int[] clickX = {SCENE_WIDTH+5, 5, 5, SCENE_WIDTH+5, 5, 5, 5, 
+                    SCENE_HEIGHT/2, SCENE_WIDTH/3, SCENE_WIDTH*2/3, 
+                    SCENE_WIDTH/3, SCENE_WIDTH*2/3};
+    int[] clickY = {SCENE_HEIGHT/3+5, SCENE_HEIGHT/3+5, SCENE_HEIGHT/3+5, 
+                    SCENE_HEIGHT/2+5, SCENE_HEIGHT/2+5, SCENE_HEIGHT*2/3,
+                    SCENE_HEIGHT*2/3, SCENE_HEIGHT/2, 5, 5, 
+                    SCENE_HEIGHT-95, SCENE_HEIGHT-95};
+    
     System.out.println("  Testing Process Click");
     // Net Tool
     Scene.setCurrentTool(new ToolNet(0,0,0,0));
     testList.forEach((k,v)->{
       System.out.println("    Clicking with Net on " + k);
-      v.processClick(5, SCENE_HEIGHT/2+5);
+      for(int i=0; i < clickX.length; i++) {
+        v.processClick(clickX[i],clickY[i]);
+      }
     });
     
     // Camera Tool
     Scene.setCurrentTool(new ToolCamera(0,0,0,0));
     testList.forEach((k,v)->{
       System.out.println("    Clicking with Camera on " + k);
-      v.processClick(5, SCENE_HEIGHT/2+5);
+      for(int i=0; i < clickX.length; i++) {
+        v.processClick(clickX[i],clickY[i]);
+      }    
     });
     
     // Cage Tool
     Scene.setCurrentTool(new ToolCage(0,0,0,0));
     testList.forEach((k,v)->{
       System.out.println("    Clicking with Cage on " + k);
-      v.processClick(5, SCENE_HEIGHT/2+5);
+      for(int i=0; i < clickX.length; i++) {
+        v.processClick(clickX[i],clickY[i]);
+      }
     });
     
     // Trimmer Tool
     Scene.setCurrentTool(new ToolTrimmer(0,0,0,0));
     testList.forEach((k,v)->{
       System.out.println("    Clicking with Trimmer on " + k);
-      v.processClick(5, SCENE_HEIGHT/2+5);
+      for(int i=0; i < clickX.length; i++) {
+        v.processClick(clickX[i],clickY[i]);
+      }
+    });   
+  }
+  
+  /**
+   * Tests updatable variables: score, time
+   */
+  @Test
+  public void testUpdates() {
+    System.out.println("  Testing Score and Time Updates");
+    
+    testList.get("Beach").updateScore();
+    testList.get("Wetland").updateTime();
+    
+    
+    testList.forEach((k,v)->{
+      System.out.println("    Update Testing " + k);      
+      assertEquals("Score = 1", 1, v.getScore());
+      assertEquals("Time = 99", 99, v.getTime());
     });
     
+    testList.get("BeachMini").missionScore();
+    testList.get("Bay").resetTime();
+    
+    testList.forEach((k,v)->{
+      System.out.println("    Final Testing " + k);  
+      assertEquals("Mission Score = 100", 100, v.getScore());
+      assertEquals("Reset Time = 0", 0, v.getTime());
+    });
   }
   
   /**
@@ -199,9 +287,9 @@ public class SceneTests implements ConstructCrab, ConstructFish, ConstructVegeta
    * Initial setup for bay scene.
    */
   private static void baySetup() {
-    testList.get("Bay").getSceneItems().add(ConstructFish.constructLeftFish(-5, 0, SCENE_WIDTH, SCENE_HEIGHT/2));
-    testList.get("Bay").getSceneItems().add(ConstructFish.constructRightFish(5, 1, 0, SCENE_HEIGHT/2));
-    testList.get("Bay").getSceneItems().add(ConstructFish.constructRightFish(5, 2, 0, SCENE_HEIGHT/2));
+    testList.get("Bay").getSceneItems().add(ConstructFish.constructLeftFish(-5, 0, SCENE_WIDTH, SCENE_HEIGHT/3));
+    testList.get("Bay").getSceneItems().add(ConstructFish.constructRightFish(5, 1, 0, SCENE_HEIGHT/3));
+    testList.get("Bay").getSceneItems().add(ConstructFish.constructRightFish(5, 2, 0, SCENE_HEIGHT/3));
     
     System.out.println("## Created Scene ##" + testList.get("Bay").toString() + "\n");
   }
@@ -220,7 +308,8 @@ public class SceneTests implements ConstructCrab, ConstructFish, ConstructVegeta
    * Initial setup for beach minigame.
    */
   private static void beachMiniSetup() {
-    testList.get("BeachMini").getSceneItems().add(ConstructCrab.constructRightCrab(5, 1, 0, SCENE_HEIGHT/2));
+    testList.get("BeachMini").getSceneItems().add(ConstructCrab.constructRightCrab(5, 1, 0, SCENE_HEIGHT*2/3));
+    testList.get("BeachMini").getSceneItems().add(ConstructCrab.constructCrab(5, 1, 0, SCENE_HEIGHT*2/3));
     
     System.out.println("## Created Scene ##" + testList.get("BeachMini").toString() + "\n");
   }
@@ -229,7 +318,16 @@ public class SceneTests implements ConstructCrab, ConstructFish, ConstructVegeta
    * Initial setup for wetland scene.
    */
   private static void wetlandSetup() {
+    // Weed
     testList.get("Wetland").getSceneItems().add(ConstructVegetation.constructVegetation(5, 1, SCENE_WIDTH/2, SCENE_HEIGHT/2));
+    
+    // Right Heron
+    testList.get("Wetland").getSceneItems().add(ConstructHeron.constructRightHeron(5, 0, SCENE_WIDTH/3, 0, true, true));
+    testList.get("Wetland").getSceneItems().add(ConstructHeron.constructRightHeron(5, 1, SCENE_WIDTH*2/3, 0, true, true));
+    
+    // Left Heron
+    testList.get("Wetland").getSceneItems().add(ConstructHeron.constructLeftHeron(5, 0, SCENE_WIDTH/3, SCENE_HEIGHT-100, true, true));
+    testList.get("Wetland").getSceneItems().add(ConstructHeron.constructLeftHeron(5, 1, SCENE_WIDTH*2/3, SCENE_HEIGHT-100, true, true));
     
     System.out.println("## Created Scene ##" + testList.get("Wetland").toString() + "\n");
   }
