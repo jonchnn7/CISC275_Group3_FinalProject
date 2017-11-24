@@ -1,7 +1,7 @@
 package cisc275.group3.model.scene;
 
 import cisc275.group3.controller.ControllerInventory;
-
+import cisc275.group3.exceptions.InsufficientDataException;
 import cisc275.group3.model.sceneobject.BetaCrab;
 import cisc275.group3.model.sceneobject.BetaFish;
 import cisc275.group3.model.sceneobject.BetaVegetation;
@@ -43,6 +43,10 @@ public abstract class Scene implements Serializable {
 	// RNG
 	protected Random randGen = new Random();
 
+	public Scene() throws InsufficientDataException {
+		throw new InsufficientDataException();
+	}
+	
 	public Scene(SceneId mani) {
 		manifest = mani;
 		currentTool = null;
