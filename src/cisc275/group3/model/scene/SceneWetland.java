@@ -72,8 +72,10 @@ public class SceneWetland extends Scene implements PropertyScored, PropertyTimed
 			// Generate new vegetation on ~1% of calls
 			if (sceneItems.size() < 10) {
 				if (randGen.nextInt(100) <= 2) {
-					sceneItems.add(ConstructVegetation.constructVegetation(randGen.nextInt(20) - 10, // depth
-							0, randGen.nextInt(1280), // x location
+					sceneItems.add(ConstructVegetation.constructVegetation(
+							randGen.nextInt(20) - 10, // depth
+							0, 
+							randGen.nextInt(1280), // x location
 							randGen.nextInt(650) + 70));
 				}
 			}

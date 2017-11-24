@@ -22,6 +22,10 @@ import cisc275.group3.utility.SceneId;
  */
 public class SceneBay extends Scene implements ConstructFish, PropertyScored, PropertyTimed {
 
+	/**
+	 * Creates a new Bay scene given a SceneID.
+	 * @param mani	SceneId-scene properties
+	 */
 	public SceneBay(SceneId mani) {
 		super(mani);
 		time = 0;
@@ -33,6 +37,13 @@ public class SceneBay extends Scene implements ConstructFish, PropertyScored, Pr
 
 	/**
 	 * Used when SceneId must also be created
+	 * @param n		String-scene name
+	 * @param x		double-x-coordinate of upper left corner
+	 * @param y		double-y-coordinate of upper left corner
+	 * @param w		double-scene width
+	 * @param h		double-scene height
+	 * @param bg	String-file location of bg image
+	 * @param sceneType	int-type of scene
 	 */
 	public SceneBay(String n, double x, double y, double w, double h, String bg, int sceneType) {
 		this(new SceneId(n, x, y, w, h, sceneType, bg));

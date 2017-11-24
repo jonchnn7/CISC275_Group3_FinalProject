@@ -81,8 +81,6 @@ public abstract class Scene implements Serializable {
 			if ((sceneItem instanceof BetaFish) && (currentTool != null)
 					&& (SceneObjectType.BetaFish.searchCompatability(currentTool.getName()))) {
 				if (sceneItem.itemClicked(clickX, clickY)) {
-					// if (sceneItem.itemClicked(clickX, clickY) &&
-					// cursorName.equalsIgnoreCase("Net")) {
 					System.out.println("Clicked on: " + sceneItem.getPassport().getName());
 					if ((Scene.getCurrentMission().getTargetObject() != null)
 							&& (Scene.getCurrentMission().getTargetObject().equals("BetaFish"))
@@ -96,8 +94,6 @@ public abstract class Scene implements Serializable {
 			} else if ((sceneItem instanceof BetaCrab) && (currentTool != null)
 					&& (SceneObjectType.BetaCrab.searchCompatability(currentTool.getName()))) {
 				if (sceneItem.itemClicked(clickX, clickY)) {
-					// if (sceneItem.itemClicked(clickX, clickY) &&
-					// cursorName.equalsIgnoreCase("Net")) {
 					System.out.println("Clicked on: " + sceneItem.getPassport().getName());
 					if ((Scene.getCurrentMission().getTargetObject() != null)
 							&& (Scene.getCurrentMission().getTargetObject().equals("BetaCrab"))
@@ -111,8 +107,6 @@ public abstract class Scene implements Serializable {
 			} else if ((sceneItem instanceof BetaVegetation) && (currentTool != null)
 					&& (SceneObjectType.BetaVegetation.searchCompatability(currentTool.getName()))) {
 				if (sceneItem.itemClicked(clickX, clickY)) {
-					// if (sceneItem.itemClicked(clickX, clickY) &&
-					// cursorName.equalsIgnoreCase("Net")) {
 					System.out.println("Clicked on: " + sceneItem.getPassport().getName());
 					BetaVegetation vegetation = null;
 					if (sceneItem.getPassport().getId() > 0) {
@@ -145,8 +139,10 @@ public abstract class Scene implements Serializable {
 	 * @return multiline string of parameter states
 	 */
 	public String toString() {
-		String outString = "\nName: " + manifest.getName() + "\nWidth: " + manifest.getWidth() + "\nHeight: "
-				+ manifest.getHeight() + "\nScene Objects: " + sceneItems.size();
+		String outString = "\nName: " + manifest.getName() 
+	                      +"\nWidth: " + manifest.getWidth() 
+	                      +"\nHeight: "+ manifest.getHeight() 
+	                      +"\nScene Objects: " + sceneItems.size();
 		return outString;
 	}
 
