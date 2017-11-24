@@ -2,6 +2,8 @@ package cisc275.group3.controller;
 
 import java.awt.Component;
 import java.util.HashMap;
+
+import cisc275.group3.model.scene.Scene;
 import cisc275.group3.model.scene.SceneHQ;
 import cisc275.group3.utility.LayerCode;
 import cisc275.group3.view.GameWindow;
@@ -34,7 +36,7 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 	  
 	@Override
 	protected void createScene(int sceneType) {
-		scene = new SceneHQ("HQ", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, sceneType, BG_IMAGE);
+		scene = new SceneHQ("HQ", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, BG_IMAGE, sceneType);
 	    viewGame = new ViewGame(SCREEN_WIDTH, SCREEN_HEIGHT, scene.getSceneItems(), scene.getManifest().getBG());
 	    
 
@@ -78,7 +80,7 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 	   */
 	@Override
 	public void updateTime() {
-		if(((SceneHQ)scene).getCurrentMission().isDoneMission() == false){
+		if(!Scene.getCurrentMission().isDoneMission()){
 			  ((SceneHQ)scene).updateTime();	
 		  }	    
 		  else {

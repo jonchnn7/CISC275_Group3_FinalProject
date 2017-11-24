@@ -3,6 +3,7 @@ package cisc275.group3.model.scene;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import cisc275.group3.exceptions.InsufficientDataException;
 import cisc275.group3.model.sceneobject.BetaVegetation;
 import cisc275.group3.model.sceneobject.SceneObject;
 import cisc275.group3.utility.ConstructVegetation;
@@ -20,9 +21,18 @@ import cisc275.group3.utility.SceneId;
  * <p>
  * @author Jon 
  * @author Ryan 
+ * @author Scott
  */
 public class SceneWetland extends Scene {
 
+  /**
+   * Empty Constructor should throw error
+   * @throws InsufficientDataException 
+   */
+  public SceneWetland() throws InsufficientDataException {
+    super();
+  }
+  
 	public SceneWetland(SceneId mani) {
 		super(mani);
 		time = 0;
@@ -35,8 +45,15 @@ public class SceneWetland extends Scene {
 
 	/**
 	 * Used when SceneId must also be created
+	 * @param n		String-scene name
+	 * @param x		double-x-coordinate of upper left corner
+	 * @param y		double-y-coordinate of upper left corner
+	 * @param w		double-scene width
+	 * @param h		double-scene height
+	 * @param bg	String-file location of bg image
+	 * @param sceneType	int-type of scene
 	 */
-	public SceneWetland(String n, double x, double y, double w, double h, int sceneType, String bg) {
+	public SceneWetland(String n, double x, double y, double w, double h, String bg, int sceneType) {
 		this(new SceneId(n, x, y, w, h, sceneType, bg));
 	}
 

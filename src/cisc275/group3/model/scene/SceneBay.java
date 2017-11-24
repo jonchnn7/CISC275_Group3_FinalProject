@@ -1,5 +1,6 @@
 package cisc275.group3.model.scene;
 
+import cisc275.group3.exceptions.InsufficientDataException;
 import cisc275.group3.model.sceneobject.BetaFish;
 import cisc275.group3.model.sceneobject.SceneObject;
 
@@ -22,6 +23,14 @@ import cisc275.group3.utility.SceneId;
  */
 public class SceneBay extends Scene implements ConstructFish {
 
+  /**
+   * Empty Constructor should throw error
+   * @throws InsufficientDataException 
+   */
+  public SceneBay() throws InsufficientDataException {
+    super();
+  }
+  
 	/**
 	 * Creates a new Bay scene given a SceneID.
 	 * @param mani	SceneId-scene properties

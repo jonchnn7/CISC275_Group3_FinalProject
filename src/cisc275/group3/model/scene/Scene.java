@@ -43,6 +43,10 @@ public abstract class Scene implements Serializable {
 	// RNG
 	protected Random randGen = new Random();
 
+	/**
+	 * Empty constructor calls should throw an error.
+	 * @throws InsufficientDataException
+	 */
 	public Scene() throws InsufficientDataException {
 		throw new InsufficientDataException();
 	}

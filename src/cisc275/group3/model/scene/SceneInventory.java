@@ -3,6 +3,7 @@ package cisc275.group3.model.scene;
 
 import java.util.Collections;
 import cisc275.group3.controller.ControllerInventory;
+import cisc275.group3.exceptions.InsufficientDataException;
 import cisc275.group3.utility.SceneId;
 
 /**
@@ -22,6 +23,14 @@ import cisc275.group3.utility.SceneId;
 @SuppressWarnings("serial")
 public class SceneInventory extends Scene  {
 
+  /**
+   * Empty Constructor should throw error
+   * @throws InsufficientDataException 
+   */
+  public SceneInventory() throws InsufficientDataException {
+    super();
+  }
+  
   public SceneInventory(SceneId mani) {
     super(mani);
     //System.out.println("Created");

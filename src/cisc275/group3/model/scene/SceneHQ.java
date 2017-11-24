@@ -1,5 +1,6 @@
 package cisc275.group3.model.scene;
 
+import cisc275.group3.exceptions.InsufficientDataException;
 import cisc275.group3.utility.SceneId;
 
 /**
@@ -15,6 +16,14 @@ import cisc275.group3.utility.SceneId;
  */
 public class SceneHQ extends Scene {
 
+  /**
+   * Empty Constructor should throw error
+   * @throws InsufficientDataException 
+   */
+  public SceneHQ() throws InsufficientDataException {
+    super();
+  }
+  
 	public SceneHQ(SceneId mani) {
 		super(mani);
 		time = 0;
@@ -22,8 +31,15 @@ public class SceneHQ extends Scene {
 
 	/**
 	 * Used when SceneId must also be created
+	 * @param n		String-scene name
+	 * @param x		double-x-coordinate of upper left corner
+	 * @param y		double-y-coordinate of upper left corner
+	 * @param w		double-scene width
+	 * @param h		double-scene height
+	 * @param bg	String-file location of bg image
+	 * @param sceneType	int-type of scene
 	 */
-	public SceneHQ(String n, double x, double y, double w, double h, int sceneType, String bg) {
+	public SceneHQ(String n, double x, double y, double w, double h, String bg, int sceneType) {
 		this(new SceneId(n, x, y, w, h, sceneType, bg));
 	}
 
