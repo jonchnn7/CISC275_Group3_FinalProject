@@ -24,6 +24,14 @@ public final class EstuaryFacts {
 		facts[0][2] = "Blue Herons feed on a variety of things such as fish, amphibians, reptiles, and small mammals";
 		facts[0][3] = "Blue Herons hunt by standing silently along the shore until their prey comes within lunging distance";
 		facts[0][4] = "Blue Herons nest in colonies called Heronries, which can be up to 500 seperate nests in total";
+		
+		//1 - vegetation
+		facts[1][0] = "Approximately 42% of all endangered species are at risk due to invasive plants and animals";
+		facts[1][1] = "Most invasive species have been introduced into the enviornment by humans";
+		facts[1][2] = "Invasive plants can spread quickly due to being more aggressive than native plants";
+		facts[1][3] = "Hand removal, cutting, burning, and herbicides are all tactics used in reducing invasice plants";
+		facts[1][4] = "Problems due to invasive species result in damage totalling over one billion dollars a year worldwide";		
+		
 	}
 
 	  /**

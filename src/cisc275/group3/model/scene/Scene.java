@@ -123,7 +123,6 @@ public abstract class Scene implements Serializable {
 						Scene.getCurrentMission().decreaseNum();
 					}
 					ControllerInventory.addItem(sceneItem);
-					//iterator.remove();
 					return true;
 				}
 			} else if ((sceneItem instanceof BetaVegetation) && (currentTool != null)
