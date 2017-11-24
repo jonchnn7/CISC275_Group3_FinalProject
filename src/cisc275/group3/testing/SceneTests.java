@@ -13,8 +13,10 @@ import cisc275.group3.model.scene.SceneBay;
 import cisc275.group3.model.scene.SceneBeach;
 import cisc275.group3.model.scene.SceneBeachMini;
 import cisc275.group3.model.scene.SceneWetland;
+import cisc275.group3.model.sceneobject.ToolCage;
 import cisc275.group3.model.sceneobject.ToolCamera;
 import cisc275.group3.model.sceneobject.ToolNet;
+import cisc275.group3.model.sceneobject.ToolTrimmer;
 import cisc275.group3.utility.ConstructCrab;
 import cisc275.group3.utility.ConstructFish;
 import cisc275.group3.utility.ConstructVegetation;
@@ -100,8 +102,34 @@ public class SceneTests implements ConstructCrab, ConstructFish, ConstructVegeta
    */
   @Test
   public void testProcessClick() {
+    System.out.println("  Testing Process Click");
     // Net Tool
     Scene.setCurrentTool(new ToolNet(0,0,0,0));
+    testList.forEach((k,v)->{
+      System.out.println("    Clicking with Net on " + k);
+      v.processClick(5, SCENE_HEIGHT/2+5);
+    });
+    
+    // Camera Tool
+    Scene.setCurrentTool(new ToolCamera(0,0,0,0));
+    testList.forEach((k,v)->{
+      System.out.println("    Clicking with Camera on " + k);
+      v.processClick(5, SCENE_HEIGHT/2+5);
+    });
+    
+    // Cage Tool
+    Scene.setCurrentTool(new ToolCage(0,0,0,0));
+    testList.forEach((k,v)->{
+      System.out.println("    Clicking with Cage on " + k);
+      v.processClick(5, SCENE_HEIGHT/2+5);
+    });
+    
+    // Trimmer Tool
+    Scene.setCurrentTool(new ToolTrimmer(0,0,0,0));
+    testList.forEach((k,v)->{
+      System.out.println("    Clicking with Trimmer on " + k);
+      v.processClick(5, SCENE_HEIGHT/2+5);
+    });
     
   }
   
@@ -174,6 +202,8 @@ public class SceneTests implements ConstructCrab, ConstructFish, ConstructVegeta
     testList.get("Bay").getSceneItems().add(ConstructFish.constructLeftFish(-5, 0, SCENE_WIDTH, SCENE_HEIGHT/2));
     testList.get("Bay").getSceneItems().add(ConstructFish.constructRightFish(5, 1, 0, SCENE_HEIGHT/2));
     testList.get("Bay").getSceneItems().add(ConstructFish.constructRightFish(5, 2, 0, SCENE_HEIGHT/2));
+    
+    System.out.println("## Created Scene ##" + testList.get("Bay").toString() + "\n");
   }
   
   /**
@@ -182,6 +212,8 @@ public class SceneTests implements ConstructCrab, ConstructFish, ConstructVegeta
   private static void beachSetup() {
     testList.get("Beach").getSceneItems().add(ConstructCrab.constructLeftCrab(-5, 0, SCENE_WIDTH, SCENE_HEIGHT/2));
     testList.get("Beach").getSceneItems().add(ConstructCrab.constructRightCrab(5, 1, 0, SCENE_HEIGHT/2));
+    
+    System.out.println("## Created Scene ##" + testList.get("Beach").toString() + "\n");
   }
   
   /**
@@ -189,6 +221,8 @@ public class SceneTests implements ConstructCrab, ConstructFish, ConstructVegeta
    */
   private static void beachMiniSetup() {
     testList.get("BeachMini").getSceneItems().add(ConstructCrab.constructRightCrab(5, 1, 0, SCENE_HEIGHT/2));
+    
+    System.out.println("## Created Scene ##" + testList.get("BeachMini").toString() + "\n");
   }
   
   /**
@@ -196,5 +230,7 @@ public class SceneTests implements ConstructCrab, ConstructFish, ConstructVegeta
    */
   private static void wetlandSetup() {
     testList.get("Wetland").getSceneItems().add(ConstructVegetation.constructVegetation(5, 1, SCENE_WIDTH/2, SCENE_HEIGHT/2));
+    
+    System.out.println("## Created Scene ##" + testList.get("Wetland").toString() + "\n");
   }
 }
