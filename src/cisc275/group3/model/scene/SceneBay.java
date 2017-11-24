@@ -59,13 +59,17 @@ public class SceneBay extends Scene implements ConstructFish {
 			int fishType = randGen.nextInt(3);
 
 			// Add Left Fish
-			sceneItems.add(ConstructFish.constructLeftFish(randGen.nextInt(20) - 10, // depth
-					fishType, manifest.getWidth() + randGen.nextInt(500), // x location
+			sceneItems.add(ConstructFish.constructLeftFish(
+					randGen.nextInt(20) - 10, // depth
+					fishType, // type
+					manifest.getWidth() + randGen.nextInt(500), // x location
 					i * 140 + manifest.getStartY() + 10)); // y location
 
 			// Add Right Fish
-			sceneItems.add(ConstructFish.constructRightFish(randGen.nextInt(20) - 10, // depth
-					fishType, 0 - randGen.nextInt(500), // x location
+			sceneItems.add(ConstructFish.constructRightFish(
+					randGen.nextInt(20) - 10, // depth
+					fishType, // type
+					0 - randGen.nextInt(500), // x location
 					i * 140 + manifest.getStartY() + 10)); // y location
 		}
 		Collections.sort(sceneItems); // sort by depth
