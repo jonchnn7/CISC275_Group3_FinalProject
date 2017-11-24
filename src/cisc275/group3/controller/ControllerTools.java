@@ -53,8 +53,6 @@ public class ControllerTools extends ControllerScene {
   private JButton trimmerButton;
   private ImageIcon toolBg;
   
-  private JLabel mouseLabel;
-  
   public ControllerTools(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType) {
     super(w, h, f, cl, sceneType);
     toolBg = new ImageIcon("img/toolbox_vert_menu.png");
@@ -199,6 +197,19 @@ public class ControllerTools extends ControllerScene {
         mouseLabel.setLocation(e.getX()-50, e.getY()-50);
       }
     });
+    
+    componentList.get("Beach").addMouseMotionListener(new MouseAdapter() {
+      @Override 
+      public void mouseMoved(MouseEvent e) {
+        mouseLabel.setLocation(e.getX()-50, e.getY()-50);
+      }
+    });
+    
+    componentList.get("Wetland").addMouseMotionListener(new MouseAdapter() {
+      @Override 
+      public void mouseMoved(MouseEvent e) {
+        mouseLabel.setLocation(e.getX()-50, e.getY()-50);
+      }
+    });
   }
-  
-  }
+ }

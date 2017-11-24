@@ -8,10 +8,14 @@ import cisc275.group3.view.ViewGame;
 import cisc275.group3.view.ViewOverlayLabel;
 
 import java.awt.Component;
+import java.awt.Cursor;
 import java.awt.event.MouseAdapter;
 import java.util.HashMap;
 import java.awt.event.MouseEvent;
 import java.io.Serializable;
+
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 
 /**
@@ -33,6 +37,7 @@ public abstract class ControllerScene implements Serializable {
   // Scene Variables
   protected Scene scene;
   protected ViewGame viewGame;
+  protected static JLabel mouseLabel;
   protected static HashMap<String, Component> componentList;
   
   // Window Components
