@@ -1,5 +1,6 @@
 package cisc275.group3.view;
 
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Insets;
 
@@ -73,6 +74,7 @@ public class ViewOverlayButton extends JPanel {
     overButton.setContentAreaFilled(false);
     overButton.setIcon(BUTTON_IMAGE);
     overButton.setRolloverIcon(BUTTON_ROLL_IMAGE);
+    overButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
   }
   
   /**
