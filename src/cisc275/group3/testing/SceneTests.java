@@ -103,15 +103,15 @@ public class SceneTests implements ConstructCrab, ConstructFish, ConstructVegeta
   @Test
   public void testProcessClick() {
     // X and Y locations from setups()
-    int[] clickX = {SCENE_WIDTH+5, 5, 5, SCENE_WIDTH+5, 5, 5, 5, 
-                    SCENE_HEIGHT/2, SCENE_WIDTH/3, SCENE_WIDTH*2/3, 
-                    SCENE_WIDTH/3, SCENE_WIDTH*2/3};
-    int[] clickY = {SCENE_HEIGHT/3+5, SCENE_HEIGHT/3+5, SCENE_HEIGHT/3+5, 
-                    SCENE_HEIGHT/2+5, SCENE_HEIGHT/2+5, SCENE_HEIGHT*2/3,
-                    SCENE_HEIGHT*2/3, SCENE_HEIGHT/2, 5, 5, 
-                    SCENE_HEIGHT-95, SCENE_HEIGHT-95};
+    int[] clickX = {5, 105, 205, 305, 405, 
+                    5, 105, 205, 305, 405, 
+                    5, 105};
+    int[] clickY = {5, 5, 5, 5, 5,
+                    305, 305, 305, 305, 305,
+                    605, 605};
     
     System.out.println("  Testing Process Click");
+    
     // Net Tool
     Scene.setCurrentTool(new ToolNet(0,0,0,0));
     testList.forEach((k,v)->{
@@ -242,9 +242,9 @@ public class SceneTests implements ConstructCrab, ConstructFish, ConstructVegeta
    * Initial setup for bay scene.
    */
   private static void baySetup() {
-    testList.get("Bay").getSceneItems().add(ConstructFish.constructLeftFish(-5, 0, SCENE_WIDTH, SCENE_HEIGHT/3));
-    testList.get("Bay").getSceneItems().add(ConstructFish.constructRightFish(5, 1, 0, SCENE_HEIGHT/3));
-    testList.get("Bay").getSceneItems().add(ConstructFish.constructRightFish(5, 2, 0, SCENE_HEIGHT/3));
+    testList.get("Bay").getSceneItems().add(ConstructFish.constructLeftFish(-5, 0, 0, 0));
+    testList.get("Bay").getSceneItems().add(ConstructFish.constructRightFish(5, 1, 100, 0));
+    testList.get("Bay").getSceneItems().add(ConstructFish.constructRightFish(5, 2, 200, 0));
     
     System.out.println("## Created Scene ##" + testList.get("Bay").toString() + "\n");
   }
@@ -253,8 +253,8 @@ public class SceneTests implements ConstructCrab, ConstructFish, ConstructVegeta
    * Initial setup for beach scene.
    */
   private static void beachSetup() {
-    testList.get("Beach").getSceneItems().add(ConstructCrab.constructLeftCrab(-5, 0, SCENE_WIDTH, SCENE_HEIGHT/2));
-    testList.get("Beach").getSceneItems().add(ConstructCrab.constructRightCrab(5, 1, 0, SCENE_HEIGHT/2));
+    testList.get("Beach").getSceneItems().add(ConstructCrab.constructLeftCrab(-5, 0, 300, 0));
+    testList.get("Beach").getSceneItems().add(ConstructCrab.constructRightCrab(5, 1, 400, 0));
     
     System.out.println("## Created Scene ##" + testList.get("Beach").toString() + "\n");
   }
@@ -263,8 +263,8 @@ public class SceneTests implements ConstructCrab, ConstructFish, ConstructVegeta
    * Initial setup for beach minigame.
    */
   private static void beachMiniSetup() {
-    testList.get("BeachMini").getSceneItems().add(ConstructCrab.constructRightCrab(5, 1, 0, SCENE_HEIGHT*2/3));
-    testList.get("BeachMini").getSceneItems().add(ConstructCrab.constructCrab(5, 1, 0, SCENE_HEIGHT*2/3));
+    testList.get("BeachMini").getSceneItems().add(ConstructCrab.constructRightCrab(5, 1, 0, 300));
+    testList.get("BeachMini").getSceneItems().add(ConstructCrab.constructCrab(5, 1, 100, 300));
     
     System.out.println("## Created Scene ##" + testList.get("BeachMini").toString() + "\n");
   }
@@ -274,15 +274,15 @@ public class SceneTests implements ConstructCrab, ConstructFish, ConstructVegeta
    */
   private static void wetlandSetup() {
     // Weed
-    testList.get("Wetland").getSceneItems().add(ConstructVegetation.constructVegetation(5, 1, SCENE_WIDTH/2, SCENE_HEIGHT/2));
+    testList.get("Wetland").getSceneItems().add(ConstructVegetation.constructVegetation(5, 1, 200, 300));
     
     // Right Heron
-    testList.get("Wetland").getSceneItems().add(ConstructHeron.constructRightHeron(5, 0, SCENE_WIDTH/3, 0, true, true));
-    testList.get("Wetland").getSceneItems().add(ConstructHeron.constructRightHeron(5, 1, SCENE_WIDTH*2/3, 0, true, true));
+    testList.get("Wetland").getSceneItems().add(ConstructHeron.constructRightHeron(5, 0, 300, 300, true, true));
+    testList.get("Wetland").getSceneItems().add(ConstructHeron.constructRightHeron(5, 1, 400, 300, true, true));
     
     // Left Heron
-    testList.get("Wetland").getSceneItems().add(ConstructHeron.constructLeftHeron(5, 0, SCENE_WIDTH/3, SCENE_HEIGHT-100, true, true));
-    testList.get("Wetland").getSceneItems().add(ConstructHeron.constructLeftHeron(5, 1, SCENE_WIDTH*2/3, SCENE_HEIGHT-100, true, true));
+    testList.get("Wetland").getSceneItems().add(ConstructHeron.constructLeftHeron(5, 0, 0, 600, true, true));
+    testList.get("Wetland").getSceneItems().add(ConstructHeron.constructLeftHeron(5, 1, 100, 600, true, true));
     
     System.out.println("## Created Scene ##" + testList.get("Wetland").toString() + "\n");
   }
