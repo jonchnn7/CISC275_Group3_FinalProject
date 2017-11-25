@@ -103,12 +103,12 @@ public class SceneTests implements ConstructCrab, ConstructFish, ConstructVegeta
   @Test
   public void testProcessClick() {
     // X and Y locations from setups()
-    int[] clickX = {5, 105, 205, 305, 405, 
-                    5, 105, 205, 305, 405, 
-                    5, 105};
-    int[] clickY = {5, 5, 5, 5, 5,
-                    305, 305, 305, 305, 305,
-                    605, 605};
+    int[] clickX = {10, 110, 210, 310, 410, 
+                    10, 110, 210, 310, 410, 
+                    10, 110};
+    int[] clickY = {10, 10, 10, 10, 10,
+                    310, 310, 310, 310, 310,
+                    610, 610};
     
     System.out.println("  Testing Process Click");
     
