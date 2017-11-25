@@ -19,14 +19,6 @@ import cisc275.group3.utility.SceneId;
  * @author Scott  
  */
 public class SceneBeachMini extends Scene implements ConstructCrab {
-
-  /**
-   * Empty Constructor should throw error
-   * @throws InsufficientDataException 
-   */
-  public SceneBeachMini() throws InsufficientDataException {
-    super();
-  }
   
   public SceneBeachMini(SceneId mani) {
 	super(mani);

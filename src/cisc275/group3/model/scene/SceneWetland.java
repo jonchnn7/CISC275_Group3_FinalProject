@@ -22,20 +22,11 @@ import cisc275.group3.utility.SceneId;
  * <p>
  * SceneWetland.java
  * <p>
-<<<<<<< HEAD
  * @author Jon 
  * @author Ryan 
  * @author Scott
  */
 public class SceneWetland extends Scene {
-
-  /**
-   * Empty Constructor should throw error
-   * @throws InsufficientDataException 
-   */
-  public SceneWetland() throws InsufficientDataException {
-    super();
-  }
   
 	public SceneWetland(SceneId mani) {
 		super(mani);
@@ -136,7 +127,8 @@ public class SceneWetland extends Scene {
 	 * Implicitly updates BetaHeron by calling the modifyHeron() method
 	 */
 	private void modifySceneItems() {
-		ArrayList<SceneObject> tempSceneObjects = (ArrayList<SceneObject>) sceneItems.clone();
+		@SuppressWarnings("unchecked")
+    ArrayList<SceneObject> tempSceneObjects = (ArrayList<SceneObject>)sceneItems.clone();
 		sceneItems.clear();
 
 		for (Iterator<SceneObject> iterator = tempSceneObjects.iterator(); iterator.hasNext();) {

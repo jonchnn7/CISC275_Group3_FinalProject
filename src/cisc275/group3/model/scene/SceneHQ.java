@@ -15,14 +15,6 @@ import cisc275.group3.utility.SceneId;
  * @author Scott
  */
 public class SceneHQ extends Scene {
-
-  /**
-   * Empty Constructor should throw error
-   * @throws InsufficientDataException 
-   */
-  public SceneHQ() throws InsufficientDataException {
-    super();
-  }
   
 	public SceneHQ(SceneId mani) {
 		super(mani);

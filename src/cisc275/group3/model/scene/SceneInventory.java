@@ -22,14 +22,6 @@ import cisc275.group3.utility.SceneId;
  */
 @SuppressWarnings("serial")
 public class SceneInventory extends Scene  {
-
-  /**
-   * Empty Constructor should throw error
-   * @throws InsufficientDataException 
-   */
-  public SceneInventory() throws InsufficientDataException {
-    super();
-  }
   
   public SceneInventory(SceneId mani) {
     super(mani);

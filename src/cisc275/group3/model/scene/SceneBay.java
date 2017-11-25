@@ -22,14 +22,6 @@ import cisc275.group3.utility.SceneId;
  * @author Jon 
  */
 public class SceneBay extends Scene implements ConstructFish {
-
-  /**
-   * Empty Constructor should throw error
-   * @throws InsufficientDataException 
-   */
-  public SceneBay() throws InsufficientDataException {
-    super();
-  }
   
 	/**
 	 * Creates a new Bay scene given a SceneID.

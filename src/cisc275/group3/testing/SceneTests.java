@@ -52,51 +52,6 @@ public class SceneTests implements ConstructCrab, ConstructFish, ConstructVegeta
   }  
   
   /**
-   * Tests that empty constructor calls throw
-   * the appropriate error.
-   */
-  @Test
-  public void testEmptyCall() {
-    System.out.println("  Testing Empty Constructor");
-    
-    // Bay Test
-    System.out.println("    Testing Bay");
-    try {
-      new SceneBay();
-      fail();
-    } catch (InsufficientDataException e) {
-      // Expected 
-    }
-    
-    // Beach Test
-    System.out.println("    Testing Beach");
-    try {
-      new SceneBeach();
-      fail();
-    } catch (InsufficientDataException e) {
-      // Expected 
-    }
-    
-    // BeachMini Test
-    System.out.println("    Testing BeachMini");
-    try {
-      new SceneBeachMini();
-      fail();
-    } catch (InsufficientDataException e) {
-      // Expected 
-    }
-    
-    // Wetland Test
-    System.out.println("    Testing Wetland");
-    try {
-      new SceneWetland();
-      fail();
-    } catch (InsufficientDataException e) {
-      // Expected 
-    }
-  }
-  
-  /**
    * Test manifest (SceneId) objects are 
    * created correctly
    */
