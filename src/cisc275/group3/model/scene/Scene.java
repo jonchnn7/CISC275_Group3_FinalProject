@@ -79,72 +79,92 @@ public abstract class Scene implements Serializable {
 			SceneObject sceneItem = iterator.next();
 
 			// Compatibility Check
-			if ((sceneItem instanceof BetaFish) && (currentTool != null)
-					&& (SceneObjectType.BetaFish.searchCompatability(currentTool.getName()))) {
-				if (sceneItem.itemClicked(clickX, clickY)) {
-					System.out.println("Clicked on: " + sceneItem.getPassport().getName());
-					if ((Scene.getCurrentMission().getTargetObject() != null)
-							&& (Scene.getCurrentMission().getTargetObject().equals("BetaFish"))
-							&& (Scene.getCurrentMission().getObjectName().equals(sceneItem.getPassport().getName()))) {
-						Scene.getCurrentMission().decreaseNum();
-					}
-					ControllerInventory.addItem(sceneItem);
-					iterator.remove();
-					return true;
-				}
-			} else if ((sceneItem instanceof BetaCrab) && (currentTool != null)
-					&& (SceneObjectType.BetaCrab.searchCompatability(currentTool.getName()))) {
-				if (sceneItem.itemClicked(clickX, clickY)) {
-					System.out.println("Clicked on: " + sceneItem.getPassport().getName());
-					if ((Scene.getCurrentMission().getTargetObject() != null)
-							&& (Scene.getCurrentMission().getTargetObject().equals("BetaCrab"))
-							&& (Scene.getCurrentMission().getObjectName().equals(sceneItem.getPassport().getName()))) {
-						Scene.getCurrentMission().decreaseNum();
-					}
-					ControllerInventory.addItem(sceneItem);
-					iterator.remove();
-					return true;
-				}
-			} else if ((sceneItem instanceof BetaHeron) && (currentTool != null)
-					&& (SceneObjectType.BetaHeron.searchCompatability(currentTool.getName()))) {
-				if (sceneItem.itemClicked(clickX, clickY)) {
-					System.out.println("Clicked on: " + sceneItem.getPassport().getName());
-					if ((Scene.getCurrentMission().getTargetObject() != null)
-							&& (Scene.getCurrentMission().getTargetObject().equals("BetaHeron"))
-							&& (Scene.getCurrentMission().getObjectName().equals(sceneItem.getPassport().getName()))) {
-						Scene.getCurrentMission().decreaseNum();
-					}
-					ControllerInventory.addItem(sceneItem);
-					return true;
-				}
-			} else if ((sceneItem instanceof BetaVegetation) && (currentTool != null)
-					&& (SceneObjectType.BetaVegetation.searchCompatability(currentTool.getName()))) {
-				if (sceneItem.itemClicked(clickX, clickY)) {
-					System.out.println("Clicked on: " + sceneItem.getPassport().getName());
-					BetaVegetation vegetation = null;
-					if (sceneItem.getPassport().getId() > 0) {
-						vegetation = ConstructVegetation.constructVegetation(sceneItem.getPassport().getDepth(),
-								sceneItem.getPassport().getId() - 1, // GetID
-								sceneItem.getLocation().getX(), sceneItem.getLocation().getY());
-						iterator.remove();
-						sceneItems.add(vegetation);
-						return true;
-					} else {
-						ControllerInventory.addItem(sceneItem);
-						iterator.remove();
-						if ((Scene.getCurrentMission().getTargetObject() != null)
-								&& (Scene.getCurrentMission().getTargetObject().equals("BetaVegetation"))
-								&& (Scene.getCurrentMission().getObjectName()
-										.equals(sceneItem.getPassport().getName()))) {
-							Scene.getCurrentMission().decreaseNum();
-						}
-						return true;
-					}
-				}
+			if (currentTool == null) {
+			  return false;
 			}
-		}
+			
+			switch (sceneItem.getPassport().getName()) {
+			// Beta Crabs
+			case "Cristmas Island Red Crab":
+			case "Atlantic Blue Crab":
+			case "Horseshoe Crab":
+			  if (SceneObjectType.BetaCrab.searchCompatability(currentTool.getName())) {
+			    if (compatClick(sceneItem, clickX, clickY)) {
+			      iterator.remove();
+			      return true;
+			    }
+			  }
+			break;
+			
+			// Beta Fishies
+			case "Butterflyfish":
+			case "Rainbow Cichlid":
+			case "Goldfish":
+			case "Angelfish":
+			case "Threadfin Butterflyfish":
+			case "Sergeant Major":
+			  if (SceneObjectType.BetaFish.searchCompatability(currentTool.getName())) {
+			    if (compatClick(sceneItem, clickX, clickY)) {
+            iterator.remove();
+            return true;
+          }
+        }
+      break;
+      
+			// Beta Heronz
+			case "Great Blue Heron: standing":
+			case "Great Blue Heron: flying":
+			  if (SceneObjectType.BetaHeron.searchCompatability(currentTool.getName())) {
+			    if (compatClick(sceneItem, clickX, clickY)) {
+            iterator.remove();
+            return true;
+          }
+        }
+			break;
+			
+			// Beta Veggies
+			case "Plant: 1/3":
+			case "Plant: 2/3":
+			case "Plant: 3/3":
+			  if (SceneObjectType.BetaVegetation.searchCompatability(currentTool.getName())) {
+			    if (compatClick(sceneItem, clickX, clickY)) {
+            iterator.remove();
+            return true;
+          }
+        }
+      break;
+			}
+		}	
 		return false;
 	}
+
+	/**
+	 * Helper method for processClick()
+	 * <p>
+	 * Takes a SceneObject and a click location to determine 
+	 * whether the object has been clicked on. If so, it further 
+	 * processes whether the object is a mission requirement. 
+	 * <p>
+	 * Returns true so long as an object has been clicked.
+	 * 
+	 * @param item   SceneObject-current object in question
+	 * @param clickX double-x axis coordinate
+	 * @param clickY double-y axis coordinate
+	 * @return boolean has the object been clicked
+	 */
+  private boolean compatClick(SceneObject item, double clickX, double clickY) {
+    if (item.itemClicked(clickX, clickY)) {
+      System.out.println("Clicked on: " + item.getPassport().getName());
+      
+      if (Scene.getCurrentMission().getObjectName().equals(item.getPassport().getName())) {
+        Scene.getCurrentMission().decreaseNum();
+        ControllerInventory.addItem(item);
+      }
+      return true;
+    }
+    
+    return false;
+  }
 
 	/**
 	 * Represents Scene as a String by printing its parameters.
