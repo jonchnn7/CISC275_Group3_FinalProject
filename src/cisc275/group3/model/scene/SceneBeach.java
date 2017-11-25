@@ -55,25 +55,33 @@ public class SceneBeach extends Scene implements ConstructCrab {
 	@Override
 	protected void fillScene() {
 		for (int i = 0; i < 10; i++) {
-			sceneItems.add(ConstructCrab.constructRightCrab(randGen.nextInt(20) - 10, // depth
-					randGen.nextInt(1), manifest.getWidth() + randGen.nextInt(500), // x location
-					((i * 140 + manifest.getStartY() + 10)) + 370)); // y location
+			sceneItems.add(ConstructCrab.constructRightCrab(
+			    randGen.nextInt(20) - 10, // depth
+					randGen.nextInt(1), // type
+					manifest.getWidth() + randGen.nextInt(500), // x location
+					i * 140 + manifest.getStartY() + 10 + 370)); // y location
 
-			sceneItems.add(ConstructCrab.constructLeftCrab(randGen.nextInt(20) - 10, // depth
-					randGen.nextInt(1), manifest.getWidth() + randGen.nextInt(500), // x location
-					((i * 140 + manifest.getStartY() + 10)) + 370)); // y location
+			sceneItems.add(ConstructCrab.constructLeftCrab(
+			    randGen.nextInt(20) - 10, // depth
+					randGen.nextInt(1), // type
+					manifest.getWidth() + randGen.nextInt(500), // x location
+					i * 140 + manifest.getStartY() + 10 + 370)); // y location
 			
 
 			int crabType = randGen.nextInt(1);
 
 			// Add Left Crab
-			sceneItems.add(ConstructCrab.constructLeftCrab(randGen.nextInt(20) - 10, // depth
-					crabType, manifest.getWidth() + randGen.nextInt(500), // x location
+			sceneItems.add(ConstructCrab.constructLeftCrab(
+			    randGen.nextInt(20) - 10, // depth
+					crabType, // type
+					manifest.getWidth() + randGen.nextInt(500), // x location
 					((i * 140 + manifest.getStartY() + 10)) + 370)); // y location
 
 			// Add Right Crab
-			sceneItems.add(ConstructCrab.constructRightCrab(randGen.nextInt(20) - 10, // depth
-					crabType, 0 - randGen.nextInt(500), // x location
+			sceneItems.add(ConstructCrab.constructRightCrab(
+			    randGen.nextInt(20) - 10, // depth
+					crabType, // type
+					0 - randGen.nextInt(500), // x location
 					((i * 140 + manifest.getStartY() + 10)) + 370)); // y location
 			
 			
@@ -85,7 +93,7 @@ public class SceneBeach extends Scene implements ConstructCrab {
 	/**
 	 * Overridden from Scene.java abstract method. On approx. 7% of calls, a new
 	 * left-to-right and right-to-left crab is created. The new crab can occur
-	 * anywhere on the y-axis with a random depth [5,15).
+	 * anywhere on the y-axis with a random depth [-10,10).
 	 * <p>
 	 * Every crab in the scene is then asked to move it along, and then removed if
 	 * they're off-screen.
@@ -95,12 +103,16 @@ public class SceneBeach extends Scene implements ConstructCrab {
 		if (this.getManifest().getSceneType() == 2) {
 			// Generate new crab on ~7% of calls
 			if (randGen.nextInt(100) <= 7) {
-				sceneItems.add(ConstructCrab.constructLeftCrab(randGen.nextInt(20) - 10, // depth
-						randGen.nextInt(2), manifest.getWidth() + randGen.nextInt(500), // x location
+				sceneItems.add(ConstructCrab.constructLeftCrab(
+				    randGen.nextInt(20) - 10, // depth
+						randGen.nextInt(2), // type
+						manifest.getWidth() + randGen.nextInt(500), // x location
 						((randGen.nextDouble() * manifest.getHeight() + manifest.getStartY()) + 370))); // y location
 
-				sceneItems.add(ConstructCrab.constructRightCrab(randGen.nextInt(20) - 10, // depth
-						randGen.nextInt(2), 0 - randGen.nextInt(75), // x location
+				sceneItems.add(ConstructCrab.constructRightCrab(
+				    randGen.nextInt(20) - 10, // depth
+						randGen.nextInt(2), // type
+						0 - randGen.nextInt(75), // x location
 						((randGen.nextDouble() * manifest.getHeight() + manifest.getStartY()) + 370))); // y location
 			}
 			// Move Crab
