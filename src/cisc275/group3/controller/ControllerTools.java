@@ -191,6 +191,8 @@ public class ControllerTools extends ControllerScene {
     mainPane.setLayer(mouseLabel, JLayeredPane.MODAL_LAYER);
     mainPane.add(mouseLabel, JLayeredPane.MODAL_LAYER);
     
+    componentList.put("MouseLabel", mouseLabel);
+    
     componentList.get("Bay").addMouseMotionListener(new MouseAdapter() {
       @Override 
       public void mouseMoved(MouseEvent e) {

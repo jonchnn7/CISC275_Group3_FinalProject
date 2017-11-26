@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import cisc275.group3.model.scene.Scene;
 import cisc275.group3.utility.LayerCode;
 import cisc275.group3.view.GameWindow;
+import cisc275.group3.view.ViewOverlayLabel;
 
 /**
  * The Map controller is responsible for both the "model" 
@@ -32,6 +33,7 @@ import cisc275.group3.view.GameWindow;
  * <p>
  * @author Scott 
  * @author Ryan 
+ * @author Jolyne
  */
 public class ControllerMap extends ControllerScene {
 
@@ -59,6 +61,7 @@ public class ControllerMap extends ControllerScene {
       }
     };
     
+    // Set Map Panel Properties
     mapPanel.setLayout(null);
     mapPanel.setPreferredSize(new Dimension(180, 429));
     mapPanel.setBounds(0, SCREEN_HEIGHT-mapPanel.getPreferredSize().height, mapPanel.getPreferredSize().width, SCREEN_HEIGHT);
@@ -67,6 +70,8 @@ public class ControllerMap extends ControllerScene {
    
     addMapButtons();
     
+    // Add Map to Layered Pane 
+    // and Component List
     mainPane.setLayer(mapPanel, LayerCode.Map.getCode());
     mainPane.add(mapPanel, LayerCode.Map.getCode());
     componentList.put("Map", mapPanel);
@@ -81,13 +86,14 @@ public class ControllerMap extends ControllerScene {
 	      @Override
 	      public void actionPerformed(ActionEvent e) {
 	        Component hqComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("HQ")))[0];
+	        Component missionComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Mission")))[0];
 	        
+	        // Reset all layers and mouse, then 
+	        // move hq and mission layer forward
 	        setDefaultLayers();
 	        mainPane.setLayer(hqComponent, LayerCode.MainAll.getCode());
-	        Component missionComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Mission")))[0];
 	        mainPane.setLayer(missionComponent, LayerCode.Mission.getCode());
-	        Scene.setCurrentTool(null);
-	        mainPane.getComponentsInLayer(LayerCode.MainAll.getCode())[0].setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+	        
 	        if (Scene.getCurrentMission().getObjectNum() == -1) {
 	        	Scene.getCurrentMission().setObjectNum(-5);
 	        }
@@ -104,12 +110,11 @@ public class ControllerMap extends ControllerScene {
       public void actionPerformed(ActionEvent e) {
         Component bayComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Bay")))[0];
         
+        // Reset all layers and mouse, 
+        // then move bay layer forward
         setDefaultLayers();
         mainPane.setLayer(bayComponent, LayerCode.MainAll.getCode());
-        Component missionComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Mission")))[0];
-        mainPane.setLayer(missionComponent, -20);
-        Scene.setCurrentTool(null);
-        mainPane.getComponentsInLayer(LayerCode.MainAll.getCode())[0].setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        
         if (Scene.getCurrentMission().getObjectNum() == -5) {
         	Scene.getCurrentMission().setObjectNum(-1);
         }
@@ -126,12 +131,11 @@ public class ControllerMap extends ControllerScene {
       public void actionPerformed(ActionEvent e) {
         Component beachComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Beach")))[0];
 
+        // Reset all layers and mouse, then 
+        // move beach layer forward
         setDefaultLayers();
         mainPane.setLayer(beachComponent, LayerCode.MainAll.getCode());
-        Component missionComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Mission")))[0];
-        mainPane.setLayer(missionComponent, -20);
-        Scene.setCurrentTool(null);
-        mainPane.getComponentsInLayer(LayerCode.MainAll.getCode())[0].setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        
         if (Scene.getCurrentMission().getObjectNum() == -5) {
         	Scene.getCurrentMission().setObjectNum(-1);
         }
@@ -147,13 +151,12 @@ public class ControllerMap extends ControllerScene {
       @Override
       public void actionPerformed(ActionEvent e) {
         Component wetlandComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Wetland")))[0];
-          
+         
+        // Reset all layers and mouse, then 
+        // move wetland layer forward
         setDefaultLayers();
         mainPane.setLayer(wetlandComponent, LayerCode.MainAll.getCode());
-        Component missionComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Mission")))[0];
-        mainPane.setLayer(missionComponent, -20);
-        Scene.setCurrentTool(null);
-        mainPane.getComponentsInLayer(LayerCode.MainAll.getCode())[0].setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        
         if (Scene.getCurrentMission().getObjectNum() == -5) {
         	Scene.getCurrentMission().setObjectNum(-1);
         }
@@ -170,12 +173,11 @@ public class ControllerMap extends ControllerScene {
       public void actionPerformed(ActionEvent e) {
         Component beachMiniComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("BeachMini")))[0];
         
-        setDefaultLayers();
+        // Reset all layers and mouse, then 
+        // move beach mini layer forward
+        setDefaultLayers(); 
         mainPane.setLayer(beachMiniComponent, LayerCode.MainMapToolsTime.getCode());
-        Component missionComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Mission")))[0];
-        mainPane.setLayer(missionComponent, -20);
-        Scene.setCurrentTool(null);
-        mainPane.getComponentsInLayer(LayerCode.MainAll.getCode())[0].setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        
         if (Scene.getCurrentMission().getObjectNum() == -5) {
         	Scene.getCurrentMission().setObjectNum(-1);
         }
@@ -185,9 +187,15 @@ public class ControllerMap extends ControllerScene {
   }
 
   /**
-   * Every button press sets all but one layer
-   * to its default layer. This method 
-   * condenses that code.
+   * Every map button initially resets all the
+   * layers to their default locations before 
+   * placing the appropriate layer up front.
+   * This method appropriates all the 
+   * repeated code.
+   * <p>
+   * Each layer is set to its default position, 
+   * and the mouse is reset to its default
+   * configuration.
    */
   private void setDefaultLayers() {
     Component mapComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Map")))[0];
@@ -197,7 +205,9 @@ public class ControllerMap extends ControllerScene {
     Component wetlandComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Wetland")))[0];
     Component beachMiniComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("BeachMini")))[0];
     Component titleComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Title")))[0];
-      
+    Component missionComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Mission")))[0];
+        
+    // Set Scenes to Default Layer Position
     mainPane.setLayer(mapComponent, LayerCode.Map.getCode());
     mainPane.setLayer(hqComponent, LayerCode.HQ.getCode());
     mainPane.setLayer(bayComponent, LayerCode.Bay.getCode());
@@ -205,5 +215,11 @@ public class ControllerMap extends ControllerScene {
     mainPane.setLayer(wetlandComponent, LayerCode.Wetland.getCode());
     mainPane.setLayer(beachMiniComponent, LayerCode.BeachMini.getCode());
     mainPane.setLayer(titleComponent, LayerCode.Title.getCode());
+    mainPane.setLayer(missionComponent, -20);
+    
+    // Reset Mouse
+    Scene.setCurrentTool(null);
+    mouseLabel.setIcon(new ImageIcon("img/mouse_empty.png"));
+    mouseLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
   }
 }
