@@ -50,7 +50,8 @@ public class AbstractSceneTests implements ConstructCrab, ConstructFish, Constru
   private static HashMap<String, Scene> testList;
   
   /**
-   * Create a set of scenes to test
+   * Create a set of scenes to test before
+   * any tests are run
    */
   @BeforeClass
   public static void sceneSetup() {
