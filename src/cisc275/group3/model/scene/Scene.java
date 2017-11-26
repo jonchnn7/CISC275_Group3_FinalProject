@@ -130,14 +130,21 @@ public abstract class Scene implements Serializable {
 			  if (SceneObjectType.BetaVegetation.searchCompatability(currentTool.getName())) {
 			    if (compatClick(sceneItem, clickX, clickY)) {
 			    	BetaVegetation vegetation = null;
+			    	
 			    	if(sceneItem.getPassport().getId() > 0) {
-			    		vegetation = ConstructVegetation.constructVegetation(sceneItem.getPassport().getDepth(),
-						sceneItem.getPassport().getId() - 1, // GetID
-			    		sceneItem.getLocation().getX(), sceneItem.getLocation().getY());
-			            iterator.remove();
+			    	  // Vegetation needs mowed down
+			    	  // Swap current veg object for mowed down version
+			    		vegetation = ConstructVegetation.constructVegetation(
+			    		    sceneItem.getPassport().getDepth(),
+			    		    sceneItem.getPassport().getId() - 1, // GetID
+			    		    sceneItem.getLocation().getX(), 
+			    		    sceneItem.getLocation().getY());
+			        
+			    		iterator.remove();
 			    		sceneItems.add(vegetation);
-			    	}
-			    	else {
+			    	
+			    	} else {
+			    	  // Vegetation already mowed down
 			    		iterator.remove();
 			    	}
             return true;
@@ -259,26 +266,45 @@ public abstract class Scene implements Serializable {
 		return sceneItems;
 	}
 	
+	/**
+	 * @return the time
+	 */
 	public int getTime() {
 		return time;
 	}
 
+	/**
+	 * @return the score
+	 */
 	public int getScore() {
 		return score;
 	}
 
+	/**
+	 * Update score by adding 1
+	 */
 	public void updateScore() {
 		score += 1;
 	}
 
+	/**
+	 * Update time by subtracting 1
+	 */
 	public void updateTime() {
 		time -= 1;
 	}
 
+	/**
+	 * Reset time to zero
+	 */
 	public void resetTime() {
 		time = 0;
 	}
 
+	/**
+	 * Update score by adding 
+	 * remaining time
+	 */
 	public void missionScore() {
 		score += this.getTime();
 	}
