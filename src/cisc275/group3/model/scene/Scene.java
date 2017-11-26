@@ -126,9 +126,20 @@ public abstract class Scene implements Serializable {
 			case "Plant: 1/3":
 			case "Plant: 2/3":
 			case "Plant: 3/3":
+			
 			  if (SceneObjectType.BetaVegetation.searchCompatability(currentTool.getName())) {
 			    if (compatClick(sceneItem, clickX, clickY)) {
-            iterator.remove();
+			    	BetaVegetation vegetation = null;
+			    	if(sceneItem.getPassport().getId() > 0) {
+			    		vegetation = ConstructVegetation.constructVegetation(sceneItem.getPassport().getDepth(),
+						sceneItem.getPassport().getId() - 1, // GetID
+			    		sceneItem.getLocation().getX(), sceneItem.getLocation().getY());
+			            iterator.remove();
+			    		sceneItems.add(vegetation);
+			    	}
+			    	else {
+			    		iterator.remove();
+			    	}
             return true;
           }
         }
