@@ -25,8 +25,8 @@ import javax.swing.JLayeredPane;
  * <p>
  * ControllerScene.java
  * <p>
- * @author Jon 
- * @author Scott 
+ * @author Scott
+ * @author Jon  
  */
 public abstract class ControllerScene implements Serializable {
   // Window Parameters
@@ -74,8 +74,6 @@ public abstract class ControllerScene implements Serializable {
    * <p>
    * The view overlay uses JLayeredPane to place the toolbar items 
    * in the foreground and the game panel in the background.
-   * <p>
-   * Note: This method must be overridden
    * 
    * @param sceneType int- indicates how the scene should be initialized/updated
    */
