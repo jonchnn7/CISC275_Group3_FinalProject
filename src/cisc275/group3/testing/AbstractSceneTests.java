@@ -2,12 +2,10 @@ package cisc275.group3.testing;
 
 import static org.junit.Assert.*;
 
-import java.awt.Point;
 import java.util.HashMap;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import cisc275.group3.exceptions.InsufficientDataException;
 import cisc275.group3.model.scene.Scene;
 import cisc275.group3.model.scene.SceneBay;
 import cisc275.group3.model.scene.SceneBeach;
