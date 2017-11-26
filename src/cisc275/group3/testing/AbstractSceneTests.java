@@ -27,7 +27,7 @@ import cisc275.group3.utility.Mission;
  * functionality across all dynamic scenes.
  * @author Scott
  */
-public class SceneTests implements ConstructCrab, ConstructFish, ConstructVegetation {
+public class AbstractSceneTests implements ConstructCrab, ConstructFish, ConstructVegetation {
   private static final int SCENE_WIDTH = 1280;
   private static final int SCENE_HEIGHT = 720;
   

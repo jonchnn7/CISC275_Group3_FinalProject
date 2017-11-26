@@ -10,7 +10,7 @@ public class TestRunner {
 		  // Board Tests
 	  System.out.println("Running Generic Scene Tests...");
 		  
-	  Result result = JUnitCore.runClasses(SceneTests.class);
+	  Result result = JUnitCore.runClasses(AbstractSceneTests.class);
 
 	  for (Failure failure : result.getFailures()) {
 	     System.out.println("Failure: " + failure.toString());
