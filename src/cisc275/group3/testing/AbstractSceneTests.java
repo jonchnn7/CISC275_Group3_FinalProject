@@ -2,6 +2,7 @@ package cisc275.group3.testing;
 
 import static org.junit.Assert.*;
 
+import java.awt.Point;
 import java.util.HashMap;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -28,9 +29,26 @@ import cisc275.group3.utility.Mission;
  * @author Scott
  */
 public class AbstractSceneTests implements ConstructCrab, ConstructFish, ConstructVegetation {
+  // Scene Dimensions
   private static final int SCENE_WIDTH = 1280;
   private static final int SCENE_HEIGHT = 720;
   
+  // Object Locations
+  private static final int[] FISH_LOC_1 = {0,0};
+  private static final int[] FISH_LOC_2 = {100, 0};
+  private static final int[] FISH_LOC_3 = {200,0};
+  private static final int[] CRAB_LOC_1 = {300, 0};
+  private static final int[] CRAB_LOC_2 = {400, 0};
+  private static final int[] CRAB_LOC_3 = {0, 300};
+  private static final int[] CRAB_LOC_4 = {100, 300};
+  private static final int[] WEED_LOC_1 = {200, 300};
+  private static final int[] HERON_LOC_1 = {300, 300};
+  private static final int[] HERON_LOC_2 = {400, 300};
+  private static final int[] HERON_LOC_3 = {0, 600};
+  private static final int[] HERON_LOC_4 = {100, 600};
+  
+  // List of concrete scenes 
+  // that extend abstract scene
   private static HashMap<String, Scene> testList;
   
   /**
@@ -101,52 +119,52 @@ public class AbstractSceneTests implements ConstructCrab, ConstructFish, Constru
    * clicking in the appropriate areas.
    */
   @Test
-  public void testProcessClick() {
-    // X and Y locations from setups()
-    int[] clickX = {10, 110, 210, 310, 410, 
-                    10, 110, 210, 310, 410, 
-                    10, 110};
-    int[] clickY = {10, 10, 10, 10, 10,
-                    310, 310, 310, 310, 310,
-                    610, 610};
+  public void testProcessClick() { 
+    int co = 30; // click offset
     
     System.out.println("  Testing Process Click");
     
+    // Null Tool
+    Scene.setCurrentTool(null);
+    System.out.println("    Null Tool");
+    assertEquals("Click: Null on Fish in Bay", false, testList.get("Bay").processClick(FISH_LOC_1[0]+co, FISH_LOC_1[1]+co));
+    assertEquals("Click: Null on Crab in Beach", false, testList.get("Beach").processClick(CRAB_LOC_1[0]+co, CRAB_LOC_1[1]+co));
+    assertEquals("Click: Null on Vegetation in Wetland", false, testList.get("Wetland").processClick(WEED_LOC_1[0]+co, WEED_LOC_1[1]+co));
+    assertEquals("Click: Null on Heron in Wetland", false, testList.get("Wetland").processClick(HERON_LOC_1[0]+co, HERON_LOC_1[1]+co));
+    
     // Net Tool
     Scene.setCurrentTool(new ToolNet(0,0,0,0));
-    testList.forEach((k,v)->{
-      System.out.println("    Clicking with Net on " + k);
-      for(int i=0; i < clickX.length; i++) {
-        v.processClick(clickX[i],clickY[i]);
-      }
-    });
+    System.out.println("    Net Tool");
+    assertEquals("Click: Net on Fish in Bay", true, testList.get("Bay").processClick(FISH_LOC_1[0]+co, FISH_LOC_1[1]+co));
+    assertEquals("Click: Net on Crab in Beach", false, testList.get("Beach").processClick(CRAB_LOC_1[0]+co, CRAB_LOC_1[1]+co));
+    assertEquals("Click: Net on Vegetation in Wetland", false, testList.get("Wetland").processClick(WEED_LOC_1[0]+co, WEED_LOC_1[1]+co));
+    assertEquals("Click: Net on Heron in Wetland", false, testList.get("Wetland").processClick(HERON_LOC_1[0]+co, HERON_LOC_1[1]+co));
     
     // Camera Tool
     Scene.setCurrentTool(new ToolCamera(0,0,0,0));
-    testList.forEach((k,v)->{
-      System.out.println("    Clicking with Camera on " + k);
-      for(int i=0; i < clickX.length; i++) {
-        v.processClick(clickX[i],clickY[i]);
-      }    
-    });
+    System.out.println("    Camera Tool");
+    assertEquals("Click: Camera on Fish in Bay", false, testList.get("Bay").processClick(FISH_LOC_2[0]+co, FISH_LOC_2[1]+co));
+    assertEquals("Click: Camera on Crab in Beach", false, testList.get("Beach").processClick(CRAB_LOC_1[0]+co, CRAB_LOC_1[1]+co));
+    assertEquals("Click: Camera on Vegetation in Wetland", false, testList.get("Wetland").processClick(WEED_LOC_1[0]+co, WEED_LOC_1[1]+co));
+    assertEquals("Click: Camera on Heron in Wetland", true, testList.get("Wetland").processClick(HERON_LOC_1[0]+co, HERON_LOC_1[1]+co));
     
     // Cage Tool
     Scene.setCurrentTool(new ToolCage(0,0,0,0));
-    testList.forEach((k,v)->{
-      System.out.println("    Clicking with Cage on " + k);
-      for(int i=0; i < clickX.length; i++) {
-        v.processClick(clickX[i],clickY[i]);
-      }
-    });
+    System.out.println("    Cage Tool");
+    assertEquals("Click: Cage on Fish in Bay", false, testList.get("Bay").processClick(FISH_LOC_2[0]+co, FISH_LOC_2[1]+co));
+    assertEquals("Click: Cage on Crab in Beach", true, testList.get("Beach").processClick(CRAB_LOC_1[0]+co, CRAB_LOC_1[1]+co));
+    assertEquals("Click: Cage on Vegetation in Wetland", false, testList.get("Wetland").processClick(WEED_LOC_1[0]+co, WEED_LOC_1[1]+co));
+    assertEquals("Click: Cage on Heron in Wetland", false, testList.get("Wetland").processClick(HERON_LOC_2[0]+co, HERON_LOC_2[1]+co));
     
     // Trimmer Tool
     Scene.setCurrentTool(new ToolTrimmer(0,0,0,0));
-    testList.forEach((k,v)->{
-      System.out.println("    Clicking with Trimmer on " + k);
-      for(int i=0; i < clickX.length; i++) {
-        v.processClick(clickX[i],clickY[i]);
-      }
-    });   
+    System.out.println("    Trimmer Tool");
+    assertEquals("Click: Trimmer on Fish in Bay", false, testList.get("Bay").processClick(FISH_LOC_2[0]+co, FISH_LOC_2[1]+co));
+    assertEquals("Click: Trimmer on Crab in Beach", false, testList.get("Beach").processClick(CRAB_LOC_2[0]+co, CRAB_LOC_2[1]+co));
+    assertEquals("Click: Trimmer on Vegetation in Wetland", true, testList.get("Wetland").processClick(WEED_LOC_1[0]+co, WEED_LOC_1[1]+co));
+    assertEquals("Click: Trimmer on Vegetation in Wetland", true, testList.get("Wetland").processClick(WEED_LOC_1[0]+co, WEED_LOC_1[1]+co));
+    assertEquals("Click: Trimmer on Vegetation in Wetland", true, testList.get("Wetland").processClick(WEED_LOC_1[0]+co, WEED_LOC_1[1]+co));
+    assertEquals("Click: Trimmer on Heron in Wetland", false, testList.get("Wetland").processClick(HERON_LOC_2[0]+co, HERON_LOC_2[1]+co));
   }
   
   /**
@@ -242,9 +260,9 @@ public class AbstractSceneTests implements ConstructCrab, ConstructFish, Constru
    * Initial setup for bay scene.
    */
   private static void baySetup() {
-    testList.get("Bay").getSceneItems().add(ConstructFish.constructLeftFish(-5, 0, 0, 0));
-    testList.get("Bay").getSceneItems().add(ConstructFish.constructRightFish(5, 1, 100, 0));
-    testList.get("Bay").getSceneItems().add(ConstructFish.constructRightFish(5, 2, 200, 0));
+    testList.get("Bay").getSceneItems().add(ConstructFish.constructLeftFish(-5, 0, FISH_LOC_1[0], FISH_LOC_1[1]));
+    testList.get("Bay").getSceneItems().add(ConstructFish.constructRightFish(5, 1, FISH_LOC_2[0], FISH_LOC_2[1]));
+    testList.get("Bay").getSceneItems().add(ConstructFish.constructRightFish(5, 2, FISH_LOC_3[0], FISH_LOC_3[1]));
     
     System.out.println("## Created Scene ##" + testList.get("Bay").toString() + "\n");
   }
@@ -253,8 +271,8 @@ public class AbstractSceneTests implements ConstructCrab, ConstructFish, Constru
    * Initial setup for beach scene.
    */
   private static void beachSetup() {
-    testList.get("Beach").getSceneItems().add(ConstructCrab.constructLeftCrab(-5, 0, 300, 0));
-    testList.get("Beach").getSceneItems().add(ConstructCrab.constructRightCrab(5, 1, 400, 0));
+    testList.get("Beach").getSceneItems().add(ConstructCrab.constructLeftCrab(-5, 0, CRAB_LOC_1[0], CRAB_LOC_1[1]));
+    testList.get("Beach").getSceneItems().add(ConstructCrab.constructRightCrab(5, 1, CRAB_LOC_2[0], CRAB_LOC_2[1]));
     
     System.out.println("## Created Scene ##" + testList.get("Beach").toString() + "\n");
   }
@@ -263,8 +281,8 @@ public class AbstractSceneTests implements ConstructCrab, ConstructFish, Constru
    * Initial setup for beach minigame.
    */
   private static void beachMiniSetup() {
-    testList.get("BeachMini").getSceneItems().add(ConstructCrab.constructRightCrab(5, 1, 0, 300));
-    testList.get("BeachMini").getSceneItems().add(ConstructCrab.constructCrab(5, 1, 100, 300));
+    testList.get("BeachMini").getSceneItems().add(ConstructCrab.constructRightCrab(5, 1, CRAB_LOC_3[0], CRAB_LOC_3[1]));
+    testList.get("BeachMini").getSceneItems().add(ConstructCrab.constructCrab(5, 1, CRAB_LOC_4[0], CRAB_LOC_4[1]));
     
     System.out.println("## Created Scene ##" + testList.get("BeachMini").toString() + "\n");
   }
@@ -274,15 +292,15 @@ public class AbstractSceneTests implements ConstructCrab, ConstructFish, Constru
    */
   private static void wetlandSetup() {
     // Weed
-    testList.get("Wetland").getSceneItems().add(ConstructVegetation.constructVegetation(5, 1, 200, 300));
+    testList.get("Wetland").getSceneItems().add(ConstructVegetation.constructVegetation(5, 2, WEED_LOC_1[0], WEED_LOC_1[1]));
     
     // Right Heron
-    testList.get("Wetland").getSceneItems().add(ConstructHeron.constructRightHeron(5, 0, 300, 300, true, true));
-    testList.get("Wetland").getSceneItems().add(ConstructHeron.constructRightHeron(5, 1, 400, 300, true, true));
+    testList.get("Wetland").getSceneItems().add(ConstructHeron.constructRightHeron(5, 0, HERON_LOC_1[0], HERON_LOC_1[1], true, true));
+    testList.get("Wetland").getSceneItems().add(ConstructHeron.constructRightHeron(5, 1, HERON_LOC_2[0], HERON_LOC_2[1], false, true));
     
     // Left Heron
-    testList.get("Wetland").getSceneItems().add(ConstructHeron.constructLeftHeron(5, 0, 0, 600, true, true));
-    testList.get("Wetland").getSceneItems().add(ConstructHeron.constructLeftHeron(5, 1, 100, 600, true, true));
+    testList.get("Wetland").getSceneItems().add(ConstructHeron.constructLeftHeron(5, 0, HERON_LOC_3[0], HERON_LOC_3[1], true, false));
+    testList.get("Wetland").getSceneItems().add(ConstructHeron.constructLeftHeron(5, 1, HERON_LOC_4[0], HERON_LOC_4[1], false, false));
     
     System.out.println("## Created Scene ##" + testList.get("Wetland").toString() + "\n");
   }
