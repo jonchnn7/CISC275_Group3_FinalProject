@@ -95,13 +95,13 @@ public class SceneBay extends Scene implements ConstructFish {
 				sceneItems.add(ConstructFish.constructLeftFish(
 						randGen.nextInt(20) - 10, // depth
 						randGen.nextInt(3), // type
-						manifest.getWidth() + randGen.nextInt(500), // x location
+						manifest.getWidth() + randGen.nextInt(100), // x location
 						randGen.nextDouble() * manifest.getHeight() + manifest.getStartY())); // y location
 
 				sceneItems.add(ConstructFish.constructRightFish(
 						randGen.nextInt(20) - 10, // depth
 						randGen.nextInt(3), // type
-						0 - randGen.nextInt(75), // x location
+						0 - randGen.nextInt(100), // x location
 						randGen.nextDouble() * manifest.getHeight() + manifest.getStartY())); // y location
 			}
 
