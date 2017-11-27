@@ -174,7 +174,7 @@ public abstract class Scene implements Serializable {
     if (item.itemClicked(clickX, clickY)) {
       System.out.println("Clicked on: " + item.getPassport().getName());
       
-      if (Scene.getCurrentMission().getObjectName().equals(item.getPassport().getName())) {
+      if (Scene.getCurrentMission().getObjectName().equals(item.getPassport().getName()) && (Scene.getCurrentMission().getObjectNum() > 0)) {
         Scene.getCurrentMission().decreaseNum();
         ControllerInventory.addItem(item);
       }
