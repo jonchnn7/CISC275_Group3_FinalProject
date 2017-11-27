@@ -38,7 +38,7 @@ public abstract class SceneObject implements Comparable<SceneObject>, Serializab
    * @param y	double-yaxis location
    */
   public SceneObject(ObjectId id, double x, double y) {
-	passport = id;
+	  passport = id;
     location = new Point2D.Double(x,y);
   }
 
