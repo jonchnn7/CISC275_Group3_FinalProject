@@ -124,18 +124,18 @@ public class ControllerInventory extends ControllerScene {
   }
   
   //Takes a type of sceneObject and removes the amount of that particular object you want to remove from the inventory 
-  public static void removeItem(String tmp, int count) //SceneObject tmp
+  public static void removeItem(String tmp) //SceneObject tmp , int count
   {
-	  int found_count = 0;
+	  //int found_count = 0;
   
 	  for (Iterator<SceneObject> iterator = sceneFillItems.iterator(); iterator.hasNext();) {     
 	      SceneObject sceneItem = iterator.next();
 	      
 	      //System.out.println(sceneItem.getShortName() + " " + tmp.getShortName() + " " + found_count+ " " + count);
-	      if(sceneItem.getPassport().getName() == tmp && found_count < count)
+	      if(sceneItem.getPassport().getName() == tmp) // && found_count < count
 	      {
 	    	  iterator.remove();
-	    	  found_count++;
+	    	  //found_count++;
 	    	  //System.out.println("found " + found_count + " of " + tmp.getShortName());
 	      }
 	      //System.out.println("looping");

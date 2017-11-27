@@ -21,6 +21,9 @@ public class ControllerMission extends ControllerScene implements LinkDynamics, 
 	private JButton missionButton;
 	private Random randGen = new Random();
 	
+	protected int lastMission = -1;
+	protected boolean newMission = false;
+	
     public ControllerMission(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType) {
         super(w, h, f, cl, sceneType);
     }
@@ -49,38 +52,62 @@ public class ControllerMission extends ControllerScene implements LinkDynamics, 
 	    	@Override
 	    	public void actionPerformed(ActionEvent e) {
 	    		if ((Scene.getCurrentMission().getTargetObject() == null) && (Scene.getCurrentMission().isDoneMission())) {
-	    			int tmp = randGen.nextInt(8);
+	    			int tmp = randGen.nextInt(9);
+	    			
+	    			while (newMission == false)
+	    			{
+	    				tmp = randGen.nextInt(9);
+	    				if (tmp <= 5 && lastMission != 0)
+	    					newMission = true;
+	    				else if (tmp>5 && tmp <= 8 && lastMission != 1)
+	    					newMission = true;
+	    			}
+	    			
+	    			newMission = false;
+	    			
 	    			String s = "";
 	    			switch(tmp) {
 		    			case 0: s = "Butterflyfish";
 		    					((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/fish_left_1.png"));
+		    					lastMission = 0;
 		    					break;
 		    			case 1: s = "Rainbow Cichlid";
     							((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/fish_left_2.png"));
+    							lastMission = 0;
 								break;
 		    			case 2: s = "Goldfish";
     							((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/fish_left_3.png"));
+    							lastMission = 0;
 								break;
 		    			case 3: s = "Angelfish";
     							((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/fish_right_1.png"));
+    							lastMission = 0;
 								break;
 		    			case 4: s = "Threadfin Butterflyfish";
     							((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/fish_right_2.png"));
+    							lastMission = 0;
 								break;
 		    			case 5: s = "Sergeant Major";
     							((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/fish_right_3.png"));
+    							lastMission = 0;
 								break;
 		    			case 6: s = "Cristmas Island Red Crab";
 								((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/crabLeft_red_icon.png"));
+								lastMission = 1;
 								break;
 		    			case 7: s = "Atlantic Blue Crab";
 								((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/crab_blue_icon.png"));
+								lastMission = 1;
+								break;
+		    			case 8: s = "Horseshoe Crab";
+								((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/horeshoeCrab.png"));
+								lastMission = 1;
 								break;
 	    			}
 	    			
 	    			if (tmp <= 5) {
 	    				Scene.setCurrentMission(new Mission("BetaFish", randGen.nextInt(5) + 1));
-	    			} else if ((tmp >= 6) && (tmp <= 7)) {
+	    			} else if ((tmp >= 6) && (tmp <= 8)) {
 	    				Scene.setCurrentMission(new Mission("BetaCrab", randGen.nextInt(5) + 1));
 	    			} else {
 	    				Scene.setCurrentMission(new Mission("BetaVegetation", randGen.nextInt(5) + 1));
@@ -91,7 +118,7 @@ public class ControllerMission extends ControllerScene implements LinkDynamics, 
 	    			Scene.getCurrentMission().setObjectNum(-5);
 	    			Scene.getCurrentMission().setDoneMission(true);
 	    			displayMission();
-	    			ControllerInventory.removeItem(Scene.getCurrentMission().getObjectName(), Scene.getCurrentMission().getTotalObjectNum());
+	    			ControllerInventory.removeItem(Scene.getCurrentMission().getObjectName());
 	    			System.out.println(Scene.getCurrentFact());
 	    		}
 	    	}

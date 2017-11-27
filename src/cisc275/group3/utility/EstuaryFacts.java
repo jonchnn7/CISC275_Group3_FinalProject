@@ -9,6 +9,7 @@ import java.util.Random;
  * EstuaryFacts.java
  * 
  * @author Jon
+ * @author Thomas
  */
 public final class EstuaryFacts {
 	private String[][] facts = new String[5][5];
@@ -41,7 +42,14 @@ public final class EstuaryFacts {
 						"crab one of the most consumed seafood in the United States!";
 		facts[2][3] = "Commercial fishing has generated millions of dollars and is one of many ways\r\n" + 
 						"that the estuary helps our region prosper! ";
-		facts[2][4] = "Blue crab females only mate once in their lifetime!";	
+		facts[2][4] = "Blue crab females only mate once in their lifetime!";
+		
+		//3 - Horsesoe Crab  https://s3.amazonaws.com/delawareestuary/publications/factsheets/HORSECRA.PDF
+		facts[3][0] = "The Delaware Estraury is home to the largest population of horshoe crabs.";
+		facts[3][1] = "Adult horseshoe crabs migrate from the Atlanic Ocean to the Delaware beaches to spawn every spring!";
+		facts[3][2] = "The female digs several inches into the sand and lays a series of “clusters” of eggs.";
+		facts[3][3] = "Female horshoe crabs lay eggs in clusters that can contain upwards of 4,000 eggs.";
+		facts[3][4] = "The male crab attaches to the back of a female crab’s shell as she comes ashore to spawn.";
 		
 	}
 
