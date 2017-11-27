@@ -13,6 +13,7 @@ import cisc275.group3.model.sceneobject.BetaCrab;
 import cisc275.group3.model.sceneobject.BetaFish;
 import cisc275.group3.model.sceneobject.BetaHeron;
 import cisc275.group3.model.sceneobject.SceneObject;
+import cisc275.group3.utility.ConstructHeron;
 import cisc275.group3.utility.LayerCode;
 import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.ViewGame;
@@ -109,7 +110,9 @@ public class ControllerInventory extends ControllerScene {
 			  inventory_y += inventory_y_max;
 			  inventory_y_max = 0;
 		  }
-		  sceneFillItems.add(new BetaHeron(tmp.getPassport(), inventory_x, inventory_y, 0, 0, true));
+		  tmp.getPassport().getImageFile();
+		  BetaHeron tmpHeron = ConstructHeron.constructLeftHeron(0, 1, inventory_x , inventory_y, false, false);
+		  sceneFillItems.add(tmpHeron);//new BetaHeron(tmp.getPassport(), inventory_x, inventory_y, 0, 0, true)
 		  inventory_x = inventory_x + tmp.getPassport().getWidth();
 	  }
 	  
