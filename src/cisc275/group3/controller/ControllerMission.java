@@ -70,69 +70,54 @@ public class ControllerMission extends ControllerScene implements LinkDynamics, 
 	    			switch(tmpScene)
 	    			{
 	    				case 0:
-	    					tmp = randGen.nextInt(6);
+	    					tmp = randGen.nextInt(3);
 	    					break;
 	    				case 1:
-	    					tmp = randGen.nextInt(3)+6;
+	    					tmp = randGen.nextInt(2)+3;
 	    					break;
 	    				case 2:
-	    					tmp = randGen.nextInt(2)+ 9;
+	    					tmp = randGen.nextInt(2)+ 5;
 	    					break;
 	    			}
 	    			
 	    			String s = "";
+	    			tmp = 2;
 	    			switch(tmp) {
-		    			case 0: s = "Butterflyfish";
-		    					((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/fish_left_1.png"));
+		    			case 0: s = "Striped Bass";
+		    					((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/striped_bass_left.png"));
 		    					lastMission = 0;
 		    					break;
-		    			case 1: s = "Rainbow Cichlid";
-    							((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/fish_left_2.png"));
+		    			case 1: s = "American Shad";
+    							((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/shad_left.png"));
     							lastMission = 0;
 								break;
-		    			case 2: s = "Goldfish";
-    							((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/fish_left_3.png"));
+		    			case 2: s = "Shortnose Sturgeon";
+    							((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/shortnose_left.png"));
     							lastMission = 0;
 								break;
-		    			case 3: s = "Angelfish";
-    							((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/fish_right_1.png"));
-    							lastMission = 0;
-								break;
-		    			case 4: s = "Threadfin Butterflyfish";
-    							((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/fish_right_2.png"));
-    							lastMission = 0;
-								break;
-		    			case 5: s = "Sergeant Major";
-    							((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/fish_right_3.png"));
-    							lastMission = 0;
-								break;
-		    			case 6: s = "Cristmas Island Red Crab";
-								((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/crabLeft_red_icon.png"));
-								lastMission = 1;
-								break;
-		    			case 7: s = "Atlantic Blue Crab";
+		    			case 3: s = "Atlantic Blue Crab";
 								((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/crab_blue_icon.png"));
 								lastMission = 1;
 								break;
-		    			case 8: s = "Horseshoe Crab";
+		    			case 4: s = "Horseshoe Crab";
 								((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/horeshoe_mission_icon.png"));
 								lastMission = 1;
 								break;
-		    			case 9: s = "Great Blue Heron";
+		    			case 5: s = "Great Blue Heron";
 		    					((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/heron_mission_icon.png"));
 		    					lastMission = 2;
 		    					break;
-		    			case 10: s = "Plant: 1/3";
+		    			case 6: s = "Plant: 1/3";
 		    					((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/weeds_mission_icon.png"));
 		    					lastMission = 2;
 		    					break;
 	    			}
 	    			
-	    			if (tmp <= 5) {
+	    			if (tmp <= 2) {
 	    				Scene.setCurrentMission(new Mission("BetaFish", randGen.nextInt(5) + 1));
-	    			} else if ((tmp >= 6) && (tmp <= 8)) {
+	    			} else if ((tmp > 2) && (tmp <= 4)) {
 	    				Scene.setCurrentMission(new Mission("BetaCrab", randGen.nextInt(5) + 1));
-	    			} else if(tmp == 9){
+	    			} else if(tmp == 5){
 	    				Scene.setCurrentMission(new Mission("BetaHeron", randGen.nextInt(5) + 1));
 	    			} else {
 	    				Scene.setCurrentMission(new Mission("BetaVegetation", randGen.nextInt(5) + 1));

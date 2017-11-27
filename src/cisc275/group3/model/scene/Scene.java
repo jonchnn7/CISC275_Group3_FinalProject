@@ -97,12 +97,9 @@ public abstract class Scene implements Serializable {
 			break;
 			
 			// Beta Fishies
-			case "Butterflyfish":
-			case "Rainbow Cichlid":
-			case "Goldfish":
-			case "Angelfish":
-			case "Threadfin Butterflyfish":
-			case "Sergeant Major":
+			case "Striped Bass":
+			case "Shortnose Sturgeon":
+			case "American Shad":
 			  if (SceneObjectType.BetaFish.searchCompatability(currentTool.getName())) {
 			    if (compatClick(sceneItem, clickX, clickY)) {
             iterator.remove();
