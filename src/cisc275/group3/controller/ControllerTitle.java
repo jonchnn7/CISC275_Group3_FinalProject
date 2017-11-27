@@ -70,8 +70,11 @@ public class ControllerTitle extends ControllerScene implements LinkDynamics, Li
 			  System.out.println("Title Start");
 			  Component titleComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Title")))[0];
 		    Component hqComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("HQ")))[0];
+		    Component missionComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Mission")))[0];
+
 				mainPane.setLayer(hqComponent, LayerCode.MainAll.getCode());			
-				mainPane.setLayer(titleComponent, LayerCode.MainAll.getCode());
+				mainPane.setLayer(titleComponent, LayerCode.Title.getCode());
+				mainPane.setLayer(missionComponent, LayerCode.Mission.getCode());
 			}
 		});
 		titlePanel.add(startButton);
