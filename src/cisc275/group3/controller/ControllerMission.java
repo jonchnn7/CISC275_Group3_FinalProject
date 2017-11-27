@@ -56,10 +56,11 @@ public class ControllerMission extends ControllerScene implements LinkDynamics, 
 	    			
 	    			while (newMission == false)
 	    			{
-	    				tmp = randGen.nextInt(11);
+	    				//tmp = randGen.nextInt(11);
+	    				tmp = 11;
 	    				if (tmp <= 5 && lastMission != 0)
 	    					newMission = true;
-	    				else if (tmp>5 && tmp <= 10 && lastMission != 1)
+	    				else if (tmp>5 && tmp <= 11 && lastMission != 1)
 	    					newMission = true;
 	    			}
 	    			
@@ -109,6 +110,10 @@ public class ControllerMission extends ControllerScene implements LinkDynamics, 
 		    					break;
 		    			case 10: s = "Great Blue Heron: flying";
 		    					((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/heron_flying_left.png"));
+		    					lastMission = 1;
+		    					break;
+		    			case 11: s = "Plant: 1/3";
+		    					((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/weeds1_resized.png"));
 		    					lastMission = 1;
 		    					break;
 	    			}
