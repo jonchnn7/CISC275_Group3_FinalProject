@@ -115,7 +115,7 @@ public class ControllerMission extends ControllerScene implements LinkDynamics, 
 								lastMission = 1;
 								break;
 		    			case 8: s = "Horseshoe Crab";
-								((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/horeshoeCrab.png"));
+								((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/horeshoe_mission_icon.png"));
 								lastMission = 1;
 								break;
 		    			case 9: s = "Great Blue Heron";
@@ -123,7 +123,7 @@ public class ControllerMission extends ControllerScene implements LinkDynamics, 
 		    					lastMission = 2;
 		    					break;
 		    			case 10: s = "Plant: 1/3";
-		    					((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/weeds1_resized.png"));
+		    					((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/weeds_mission_icon.png"));
 		    					lastMission = 2;
 		    					break;
 	    			}
