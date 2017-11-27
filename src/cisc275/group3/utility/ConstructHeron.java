@@ -14,7 +14,7 @@ public interface ConstructHeron {
 	static final String[] RIGHT_FILE = { "img/heron_standing_right.png", "img/heron_flying_right.png" };
 
 	// Heron Names
-	static final String[] HERON_NAME = { "Great Blue Heron: standing", "Great Blue Heron: flying" };
+	static final String HERON_NAME = "Great Blue Heron";
 
 	// Heron Width
 	static final double[] HERON_WIDTH = { 155, 177 };
@@ -48,7 +48,7 @@ public interface ConstructHeron {
 		BetaHeron leftHeron = new BetaHeron(depth, (int) (HERON_WIDTH[type] * HERON_AR[type]), // height
 				HERON_ID[type], // id
 				LEFT_FILE[type], // image file
-				HERON_NAME[type], // name
+				HERON_NAME, // name
 				(int) HERON_WIDTH[type], // width
 				x, // x position
 				y, // y position
@@ -64,7 +64,7 @@ public interface ConstructHeron {
 		BetaHeron rightHeron = new BetaHeron(depth, (int) (HERON_WIDTH[type] * HERON_AR[type]), // height
 				HERON_ID[type], // id
 				RIGHT_FILE[type], // image file
-				HERON_NAME[type], // name
+				HERON_NAME, // name
 				(int) HERON_WIDTH[type], // width
 				x, // x position
 				y, // y position

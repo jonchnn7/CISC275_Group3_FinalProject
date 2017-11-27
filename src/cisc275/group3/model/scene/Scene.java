@@ -112,8 +112,7 @@ public abstract class Scene implements Serializable {
       break;
       
 			// Beta Heronz
-			case "Great Blue Heron: standing":
-			case "Great Blue Heron: flying":
+			case "Great Blue Heron":
 			  if (SceneObjectType.BetaHeron.searchCompatability(currentTool.getName())) {
 			    if (compatClick(sceneItem, clickX, clickY)) {
             iterator.remove();

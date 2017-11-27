@@ -118,15 +118,11 @@ public class ControllerMission extends ControllerScene implements LinkDynamics, 
 								((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/horeshoeCrab.png"));
 								lastMission = 1;
 								break;
-		    			case 9: s = "Great Blue Heron: standing";
-		    					((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/heron_standing_left.png"));
+		    			case 9: s = "Great Blue Heron";
+		    					((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/heron_mission_icon.png"));
 		    					lastMission = 2;
 		    					break;
-		    			case 10: s = "Great Blue Heron: flying";
-		    					((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/heron_flying_left.png"));
-		    					lastMission = 2;
-		    					break;
-		    			case 11: s = "Plant: 1/3";
+		    			case 10: s = "Plant: 1/3";
 		    					((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/weeds1_resized.png"));
 		    					lastMission = 2;
 		    					break;
@@ -136,7 +132,7 @@ public class ControllerMission extends ControllerScene implements LinkDynamics, 
 	    				Scene.setCurrentMission(new Mission("BetaFish", randGen.nextInt(5) + 1));
 	    			} else if ((tmp >= 6) && (tmp <= 8)) {
 	    				Scene.setCurrentMission(new Mission("BetaCrab", randGen.nextInt(5) + 1));
-	    			} else if((tmp > 8) && (tmp <=10)){
+	    			} else if(tmp == 9){
 	    				Scene.setCurrentMission(new Mission("BetaHeron", randGen.nextInt(5) + 1));
 	    			} else {
 	    				Scene.setCurrentMission(new Mission("BetaVegetation", randGen.nextInt(5) + 1));
