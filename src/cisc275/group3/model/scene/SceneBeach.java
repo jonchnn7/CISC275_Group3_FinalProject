@@ -21,6 +21,7 @@ import cisc275.group3.utility.SceneId;
  * @author Jon 
  * @author Ryan 
  * @author Scott
+ * @author Thomas
  */
 public class SceneBeach extends Scene implements ConstructCrab {
   
@@ -57,18 +58,18 @@ public class SceneBeach extends Scene implements ConstructCrab {
 		for (int i = 0; i < 10; i++) {
 			sceneItems.add(ConstructCrab.constructRightCrab(
 			    randGen.nextInt(20) - 10, // depth
-					randGen.nextInt(1), // type
+					randGen.nextInt(3), // type
 					manifest.getWidth() + randGen.nextInt(500), // x location
 					i * 140 + manifest.getStartY() + 10 + 370)); // y location
 
 			sceneItems.add(ConstructCrab.constructLeftCrab(
 			    randGen.nextInt(20) - 10, // depth
-					randGen.nextInt(1), // type
+					randGen.nextInt(3), // type
 					manifest.getWidth() + randGen.nextInt(500), // x location
 					i * 140 + manifest.getStartY() + 10 + 370)); // y location
 			
 
-			int crabType = randGen.nextInt(1);
+			int crabType = randGen.nextInt(3);
 
 			// Add Left Crab
 			sceneItems.add(ConstructCrab.constructLeftCrab(
@@ -105,13 +106,13 @@ public class SceneBeach extends Scene implements ConstructCrab {
 			if (randGen.nextInt(100) <= 7) {
 				sceneItems.add(ConstructCrab.constructLeftCrab(
 				    randGen.nextInt(20) - 10, // depth
-						randGen.nextInt(2), // type
+						randGen.nextInt(3), // type
 						manifest.getWidth() + randGen.nextInt(500), // x location
 						((randGen.nextDouble() * manifest.getHeight() + manifest.getStartY()) + 370))); // y location
 
 				sceneItems.add(ConstructCrab.constructRightCrab(
 				    randGen.nextInt(20) - 10, // depth
-						randGen.nextInt(2), // type
+						randGen.nextInt(3), // type
 						0 - randGen.nextInt(75), // x location
 						((randGen.nextDouble() * manifest.getHeight() + manifest.getStartY()) + 370))); // y location
 			}
