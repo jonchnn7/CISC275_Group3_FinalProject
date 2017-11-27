@@ -72,12 +72,12 @@ public final class EstuaryFacts {
 		facts[5][4] = "American Shad have supported valuable commercial fisheries along the entire Atlantic coast!";
 		
 		//6 - Striped Bass  
-		facts[5][0] = "Striped Bass females migrate in and out of the estraury, but males can be foundd in the estraury year round!";
-		facts[5][1] = "The Delaware Division of Fish and Wildlife (DFW) conduct tag-recapture studies\n\n"
+		facts[6][0] = "Striped Bass females migrate in and out of the estraury, but males can be foundd in the estraury year round!";
+		facts[6][1] = "The Delaware Division of Fish and Wildlife (DFW) conduct tag-recapture studies\n\n"
 				+ "in the spring on the Delaware River providing researchers with value information on their spawning grounds!";
-		facts[5][2] = "Commercial fishing for Stripped Bass has brought Delaware fisheries over $500,000 in revenue a year!";
-		facts[5][3] = "Striped bass feed primarily on fish, but also consume larger invertebrates!";
-		facts[5][4] = "Striped bass don't exceed more than 4 inches in their first growing seasson!";
+		facts[6][2] = "Commercial fishing for Stripped Bass has brought Delaware fisheries over $500,000 in revenue a year!";
+		facts[6][3] = "Striped bass feed primarily on fish, but also consume larger invertebrates!";
+		facts[6][4] = "Striped bass don't exceed more than 4 inches in their first growing seasson!";
 }
 
 	  /**
