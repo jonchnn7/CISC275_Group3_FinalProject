@@ -92,6 +92,12 @@ public class Mission {
 			} else {
 				s += objectName;
 			}
+		} else if (targetObject.equals("BetaHeron")) {
+			if (objectName.equals("")) {
+				s += "BetaHeron";
+			} else {
+				s += objectName;
+			}
 		}
 		return s;
 	}
