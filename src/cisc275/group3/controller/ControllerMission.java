@@ -52,14 +52,16 @@ public class ControllerMission extends ControllerScene implements LinkDynamics, 
 	    	@Override
 	    	public void actionPerformed(ActionEvent e) {
 	    		if ((Scene.getCurrentMission().getTargetObject() == null) && (Scene.getCurrentMission().isDoneMission())) {
-	    			int tmp = randGen.nextInt(9);
+	    			int tmp = randGen.nextInt(12);
 	    			
 	    			while (newMission == false)
 	    			{
 	    				tmp = randGen.nextInt(11);
 	    				if (tmp <= 5 && lastMission != 0)
 	    					newMission = true;
-	    				else if (tmp>5 && tmp <= 11 && lastMission != 1)
+	    				else if (tmp>5 && tmp <= 8 && lastMission != 1)
+	    					newMission = true;
+	    				else if (tmp > 8 && tmp <= 11 && lastMission != 2)
 	    					newMission = true;
 	    			}
 	    			
@@ -105,15 +107,15 @@ public class ControllerMission extends ControllerScene implements LinkDynamics, 
 								break;
 		    			case 9: s = "Great Blue Heron: standing";
 		    					((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/heron_standing_left.png"));
-		    					lastMission = 1;
+		    					lastMission = 2;
 		    					break;
 		    			case 10: s = "Great Blue Heron: flying";
 		    					((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/heron_flying_left.png"));
-		    					lastMission = 1;
+		    					lastMission = 2;
 		    					break;
 		    			case 11: s = "Plant: 1/3";
 		    					((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/weeds1_resized.png"));
-		    					lastMission = 1;
+		    					lastMission = 2;
 		    					break;
 	    			}
 	    			
@@ -121,7 +123,7 @@ public class ControllerMission extends ControllerScene implements LinkDynamics, 
 	    				Scene.setCurrentMission(new Mission("BetaFish", randGen.nextInt(5) + 1));
 	    			} else if ((tmp >= 6) && (tmp <= 8)) {
 	    				Scene.setCurrentMission(new Mission("BetaCrab", randGen.nextInt(5) + 1));
-	    			} else if((tmp >= 8) && (tmp <=10)){
+	    			} else if((tmp > 8) && (tmp <=10)){
 	    				Scene.setCurrentMission(new Mission("BetaHeron", randGen.nextInt(5) + 1));
 	    			} else {
 	    				Scene.setCurrentMission(new Mission("BetaVegetation", randGen.nextInt(5) + 1));
