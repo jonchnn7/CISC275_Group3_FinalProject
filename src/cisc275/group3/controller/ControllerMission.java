@@ -56,8 +56,7 @@ public class ControllerMission extends ControllerScene implements LinkDynamics, 
 	    			
 	    			while (newMission == false)
 	    			{
-	    				//tmp = randGen.nextInt(11);
-	    				tmp = 8;
+	    				tmp = randGen.nextInt(11);
 	    				if (tmp <= 5 && lastMission != 0)
 	    					newMission = true;
 	    				else if (tmp>5 && tmp <= 10 && lastMission != 1)
