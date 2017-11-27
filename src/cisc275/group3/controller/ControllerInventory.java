@@ -12,6 +12,7 @@ import cisc275.group3.model.scene.SceneInventory;
 import cisc275.group3.model.sceneobject.BetaCrab;
 import cisc275.group3.model.sceneobject.BetaFish;
 import cisc275.group3.model.sceneobject.BetaHeron;
+import cisc275.group3.model.sceneobject.BetaVegetation;
 import cisc275.group3.model.sceneobject.SceneObject;
 import cisc275.group3.utility.ConstructHeron;
 import cisc275.group3.utility.LayerCode;
@@ -110,9 +111,24 @@ public class ControllerInventory extends ControllerScene {
 			  inventory_y += inventory_y_max;
 			  inventory_y_max = 0;
 		  }
-		  tmp.getPassport().getImageFile();
 		  BetaHeron tmpHeron = ConstructHeron.constructLeftHeron(0, 1, inventory_x , inventory_y, false, false);
 		  sceneFillItems.add(tmpHeron);//new BetaHeron(tmp.getPassport(), inventory_x, inventory_y, 0, 0, true)
+		  inventory_x = inventory_x + tmp.getPassport().getWidth();
+	  }
+	  
+	  else if (tmp instanceof BetaVegetation)
+	  {
+		  if(tmp.getPassport().getHeight() > inventory_y_max)
+		  {
+			  inventory_y_max = tmp.getPassport().getHeight();
+		  }
+		  if(inventory_x + tmp.getPassport().getWidth() > 300)
+		  {
+			  inventory_x = 0;
+			  inventory_y += inventory_y_max;
+			  inventory_y_max = 0;
+		  }
+		  sceneFillItems.add(new BetaVegetation(tmp.getPassport(), inventory_x, inventory_y));
 		  inventory_x = inventory_x + tmp.getPassport().getWidth();
 	  }
 	  

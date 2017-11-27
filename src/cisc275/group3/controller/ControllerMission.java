@@ -81,7 +81,6 @@ public class ControllerMission extends ControllerScene implements LinkDynamics, 
 	    			}
 	    			
 	    			String s = "";
-	    			tmp = 2;
 	    			switch(tmp) {
 		    			case 0: s = "Striped Bass";
 		    					((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/striped_bass_left.png"));
