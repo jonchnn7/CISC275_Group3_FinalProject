@@ -62,8 +62,9 @@ public class ControllerTitle extends ControllerScene implements LinkDynamics, Li
 	private void addTitleButton() {
 		startButton = new JButton("Start");
 		startButton.setFont(new Font("Roboto", Font.BOLD, 30));
-		startButton.setBounds(600, 500, 100, 100);
-		startButton.setSize(100, 100);
+		startButton.setBounds(500, 600, 330, 120);
+		startButton.setIcon(new ImageIcon("img/startButtonTwo.png"));
+		startButton.setSize(330, 120);
 		startButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
