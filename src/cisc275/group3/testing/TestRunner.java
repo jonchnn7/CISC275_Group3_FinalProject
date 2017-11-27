@@ -24,8 +24,6 @@ public class TestRunner {
 		
 		abstractTests(); 
 		printSeparator();
-		
-		
 	}
 	
 	 /**
