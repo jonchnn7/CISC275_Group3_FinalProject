@@ -2,9 +2,11 @@ package cisc275.group3.controller;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
@@ -62,13 +64,18 @@ public class ControllerTitle extends ControllerScene implements LinkDynamics, Li
 	private void addTitleButton() {
 		startButton = new JButton("Start");
 		startButton.setFont(new Font("Roboto", Font.BOLD, 30));
-		startButton.setBounds(500, 600, 330, 120);
-		startButton.setIcon(new ImageIcon("img/startButtonTwo.png"));
-		startButton.setSize(330, 120);
+		startButton.setBounds(500, 600, 300, 96);
+		startButton.setIcon(new ImageIcon("img/startButton.png"));
+		startButton.setOpaque(false);
+    startButton.setBorderPainted(false);
+    startButton.setBorder(null);
+    startButton.setMargin(new Insets(0, 0, 0, 0));
+    startButton.setContentAreaFilled(false);
+    startButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		startButton.setSize(330, 96);
 		startButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-			  System.out.println("Title Start");
 			  Component titleComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Title")))[0];
 		    Component hqComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("HQ")))[0];
 		    Component missionComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Mission")))[0];
