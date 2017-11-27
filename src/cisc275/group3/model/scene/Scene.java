@@ -49,7 +49,7 @@ public abstract class Scene implements Serializable {
 		currentTool = null;
 		currentMission = new Mission(null, -1);
 		currentMission.setDoneMission(true);
-		currentFact = "null fact";
+		currentFact = "";
 		sceneItems = new ArrayList<SceneObject>();
 	}
 

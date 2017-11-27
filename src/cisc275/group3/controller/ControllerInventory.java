@@ -113,14 +113,6 @@ public class ControllerInventory extends ControllerScene {
 		  inventory_x = inventory_x + tmp.getPassport().getWidth();
 	  }
 	  
-	  //inventory_x = inventory_x + 120;
-	  //if (inventory_x > 300)
-	  //{
-		//  inventory_x = 0;
-		//  inventory_y = inventory_y + 100;
-	 // }
-	  
-    //sceneFillItems.add(tmp);
   }
   
   //Takes a type of sceneObject and removes the amount of that particular object you want to remove from the inventory 
@@ -135,19 +127,12 @@ public class ControllerInventory extends ControllerScene {
 	      if(sceneItem.getPassport().getName() == tmp) // && found_count < count
 	      {
 	    	  iterator.remove();
-	    	  //found_count++;
-	    	  //System.out.println("found " + found_count + " of " + tmp.getShortName());
 	      }
-	      //System.out.println("looping");
 	  }
 
-	  /*now basically redraw the inventory
-	  * basically create a new tmp list that hold all remaining fish in inventory
-	  * clears the inventory
-	  * readds to the inventory clones of the old objects but with new location attributes
-	  * clears tmp list
-	  * Harvey will probably kill me for this
-	  */
+	  //now basically redraw the inventory
+	 
+	  
 	   ArrayList<SceneObject> tmp_list = new ArrayList<SceneObject>();
 	   
 	  for (SceneObject tmp_object : sceneFillItems)
