@@ -11,9 +11,9 @@ import cisc275.group3.model.sceneobject.BetaFish;
 public interface ConstructFish {
   // Fish File Locations
   static final String[] LEFT_FILE = 
-	    {"img/fish_left_1.png", "img/fish_left_2.png", "img/fish_left_3.png"};
+	    {"img/shad_left.png", "img/fish_left_2.png", "img/fish_left_3.png"};
   static final String[] RIGHT_FILE = 
-	    {"img/fish_right_1.png", "img/fish_right_2.png", "img/fish_right_3.png"};
+	    {"img/shad_right.png", "img/fish_right_2.png", "img/fish_right_3.png"};
 	  
   // Fish Names
   static final String[] LEFT_NAME = 
