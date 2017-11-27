@@ -34,48 +34,51 @@ public interface ConstructCrab {
    * @return	BetaCrab
    */
   static public BetaCrab constructLeftCrab(int depth, int type, double x, double y) {
-    BetaCrab leftCrab = new BetaCrab(depth, 
-                                     (int)(CRAB_WIDTH[type]*CRAB_AR[type]), // height
-                                     CRAB_ID[type], // id
-                                     LEFT_FILE[type], // image file
-                                     CRAB_NAME[type], // name
-                                     (int)CRAB_WIDTH[type], // width
-                                     x, // x position
-                                     y, // y position
-                                     CRAB_SPEED[type], // x-axis speed
-                                     0, // y-axis speed
-                                     true);
+    BetaCrab leftCrab = new BetaCrab(
+        depth, 
+        (int)(CRAB_WIDTH[type]*CRAB_AR[type]), // height
+        CRAB_ID[type], // id
+        LEFT_FILE[type], // image file
+        CRAB_NAME[type], // name
+        (int)CRAB_WIDTH[type], // width
+        x, // x position
+        y, // y position
+        CRAB_SPEED[type], // x-axis speed
+        0, // y-axis speed
+        true);
 
     return leftCrab;
   }
   
   static public BetaCrab constructRightCrab(int depth, int type, double x, double y) {
-    BetaCrab rightCrab = new BetaCrab(depth, 
-	                                  (int)(CRAB_WIDTH[type]*CRAB_AR[type]), // height
-	                                  CRAB_ID[type], // id
-	                                  RIGHT_FILE[type], // image file
-	                                  CRAB_NAME[type], // name
-	                                  (int)CRAB_WIDTH[type], // width
-	                                  x, // x position
-	                                  y, // y position
-	                                  CRAB_SPEED[type], // x-axis speed
-	                                  0, // y-axis speed
-	                                  false);
+    BetaCrab rightCrab = new BetaCrab(
+        depth, 
+        (int)(CRAB_WIDTH[type]*CRAB_AR[type]), // height
+        CRAB_ID[type], // id
+        RIGHT_FILE[type], // image file
+        CRAB_NAME[type], // name
+        (int)CRAB_WIDTH[type], // width
+        x, // x position
+        y, // y position
+        CRAB_SPEED[type], // x-axis speed
+        0, // y-axis speed
+        false);
     return rightCrab;
   }
   
   static public BetaCrab constructCrab(int depth, int type, double x, double y) {
-    BetaCrab crab = new BetaCrab(depth, 
-	                             (int)(CRAB_WIDTH[type]*CRAB_AR[type]), // height
-	                             CRAB_ID[type], // id
-	                             RIGHT_FILE[type], // image file
-	                             CRAB_NAME[type], // name
-	                             (int)CRAB_WIDTH[type], // width
-	                             x, // x position
-	                             y, // y position
-	                             CRAB_SPEED[type], // x-axis speed
-	                             0, // y-axis speed
-	                             false);
+    BetaCrab crab = new BetaCrab(
+        depth, 
+        (int)(CRAB_WIDTH[type]*CRAB_AR[type]), // height
+        CRAB_ID[type], // id
+        RIGHT_FILE[type], // image file
+        CRAB_NAME[type], // name
+        (int)CRAB_WIDTH[type], // width
+        x, // x position
+        y, // y position
+        CRAB_SPEED[type], // x-axis speed
+        0, // y-axis speed
+        false);
     return crab;
   }
 }
