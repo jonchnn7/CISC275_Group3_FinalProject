@@ -22,6 +22,15 @@ public class BetaCrab extends SceneObject implements ActionMove {
   private double speedY; // y-axis speed
   private boolean leftCrab; //moving right to left?
 
+  /**
+   * Creates a Beta Fish
+   * @param id  ObjectID-fish's object id
+   * @param x   double-x-axis location
+   * @param y   double-y-axis location
+   * @param sx  double-speed on x-axis
+   * @param sy  double-speed on y-axis
+   * @param lc  boolean-left moving fish?
+   */
   public BetaCrab(ObjectId id, double x, double y, double sx, double sy, boolean lc) {
     super(id, x, y);
     speedX = sx; 
@@ -30,7 +39,21 @@ public class BetaCrab extends SceneObject implements ActionMove {
   }
 	  
   /**
-   * Constructor also creates an ObjectId
+   * Creates a Beta Crab as well as its ObjectID
+   * <p>
+   * See ObjectId.java
+   * <p>
+   * @param d   int-depth
+   * @param h   int-object height
+   * @param id    int-(deprecated) object type
+   * @param imFi  String-Image file string
+   * @param n   String-name for object
+   * @param w   int-object width
+   * @param x   double-x-axis location
+   * @param y   double-y-axis location
+   * @param sx    double-speed on x-axis
+   * @param sy    double-speed on y-axis
+   * @param lc    boolean-left moving crab?
    */
   public BetaCrab(int d, int h, int id, String imFi, String n, int w, double x, double y, double sx, double sy, boolean lc) {
     this(new ObjectId(d, h, id, imFi, n, w), x, y, sx, sy, lc);
