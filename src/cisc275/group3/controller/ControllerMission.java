@@ -52,20 +52,33 @@ public class ControllerMission extends ControllerScene implements LinkDynamics, 
 	    	@Override
 	    	public void actionPerformed(ActionEvent e) {
 	    		if ((Scene.getCurrentMission().getTargetObject() == null) && (Scene.getCurrentMission().isDoneMission())) {
+	    			int tmpScene = randGen.nextInt(3);
 	    			int tmp = randGen.nextInt(12);
 	    			
 	    			while (newMission == false)
 	    			{
-	    				tmp = randGen.nextInt(11);
-	    				if (tmp <= 5 && lastMission != 0)
+	    				tmpScene = randGen.nextInt(3);
+	    				if (tmpScene == 0 && lastMission != 0)
 	    					newMission = true;
-	    				else if (tmp>5 && tmp <= 8 && lastMission != 1)
+	    				else if (tmpScene == 1 && lastMission != 1)
 	    					newMission = true;
-	    				else if (tmp > 8 && tmp <= 11 && lastMission != 2)
+	    				else if (tmpScene == 2 && lastMission != 2)
 	    					newMission = true;
 	    			}
-	    			
 	    			newMission = false;
+	    			
+	    			switch(tmpScene)
+	    			{
+	    				case 0:
+	    					tmp = randGen.nextInt(6);
+	    					break;
+	    				case 1:
+	    					tmp = randGen.nextInt(3)+6;
+	    					break;
+	    				case 2:
+	    					tmp = randGen.nextInt(2)+ 9;
+	    					break;
+	    			}
 	    			
 	    			String s = "";
 	    			switch(tmp) {
