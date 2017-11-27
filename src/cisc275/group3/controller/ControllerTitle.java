@@ -1,68 +1,74 @@
 package cisc275.group3.controller;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.HashMap;
-
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
-
+import javax.swing.JButton;
+import cisc275.group3.model.scene.Scene;
+import cisc275.group3.model.scene.SceneBay;
+import cisc275.group3.model.scene.SceneTitle;
 import cisc275.group3.utility.LayerCode;
 import cisc275.group3.view.GameWindow;
+import cisc275.group3.view.ViewGame;
 
 /**
- * We should discuss this. 
- * Should the display/JPanel be broken out into View?
- * <p>
- * Controller responsible for displaying the title scene 
- * and getting user input.
- * <p>
- * ControllerTitle.java
- * <p>
- * @author Scott 
+ * 
+ * @author Ryan
  */
-public class ControllerTitle extends ControllerScene {
 
-  private JPanel titlePanel;
-  private JLabel titleLabel;
-  
-  public ControllerTitle(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType) {
-    super(w, h, f, cl, sceneType);
-  }
-  
-  @Override
-  protected void createScene(int sceneType) {
-    titlePanel = new JPanel(new BorderLayout(), true);
-    titlePanel.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
-    titlePanel.setBounds(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-    titlePanel.setBackground(Color.black);
-    titlePanel.setOpaque(true);
-    
-    titleLabel = new JLabel("Estuary Click Adventure");
-    titleLabel.setFont(new Font("Roboto", Font.BOLD, 64));
-    titleLabel.setForeground(Color.white);
-    titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
-    
-    titlePanel.add(titleLabel);
-    
-    titlePanel.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
-    titlePanel.setBounds(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-    titlePanel.setName("TitleLayer");
-    
-    mainPane.setLayer(titlePanel, LayerCode.Title.getCode());
-    mainPane.add(titlePanel, LayerCode.Title.getCode());
-    
-    // Move title page to main layer
-    mainPane.setLayer(titlePanel, LayerCode.MainMapTools.getCode()); 
-    
-    componentList.put("Title", titlePanel);
-  }
+public class ControllerTitle extends ControllerScene implements LinkDynamics, LinkTime {
+	private final String BG_IMAGE = ("img/EstuaryTitle.png");
+	private JButton startButton;
 
-  @Override
-  protected void addML() {
-  }
+	public ControllerTitle(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType) {
+		super(w, h, f, cl, sceneType);
+	}
+
+	@Override
+	protected void createScene(int sceneType) {
+		scene = new SceneTitle("Title", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, BG_IMAGE, sceneType);
+		viewGame = new ViewGame(SCREEN_WIDTH, SCREEN_HEIGHT, scene.getSceneItems(), scene.getManifest().getBG());
+		viewGame.setBounds(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+		viewGame.setName("TitleLayer");
+
+		addTitleButton();
+
+		mainPane.setLayer(viewGame, LayerCode.Title.getCode());
+		mainPane.add(viewGame, LayerCode.Title.getCode());
+		componentList.put("Title", viewGame);
+
+	}
+
+	private void addTitleButton() {
+		startButton = new JButton("Start");
+		startButton.setFont(new Font("Roboto", Font.BOLD, 30));
+		startButton.setBounds(640, 500, 100, 100);
+		startButton.setSize(100, 100);
+		startButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Component startComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("HQ")))[0];
+				mainPane.setLayer(startComponent, LayerCode.MainAll.getCode());
+			}
+		});
+		SceneTitle.add(startButton);
+	}
+
+	@Override
+	protected void addML() {
+	}
+
+	@Override
+	public void updateTime() {
+	}
+
+	@Override
+	public void displayTime() {
+	}
+
+	@Override
+	public void update() {
+	}
 }
