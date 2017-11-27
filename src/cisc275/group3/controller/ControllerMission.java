@@ -91,6 +91,7 @@ public class ControllerMission extends ControllerScene implements LinkDynamics, 
 	    			Scene.getCurrentMission().setObjectNum(-5);
 	    			Scene.getCurrentMission().setDoneMission(true);
 	    			displayMission();
+	    			ControllerInventory.removeItem(Scene.getCurrentMission().getObjectName(), Scene.getCurrentMission().getTotalObjectNum());
 	    			System.out.println(Scene.getCurrentFact());
 	    		}
 	    	}

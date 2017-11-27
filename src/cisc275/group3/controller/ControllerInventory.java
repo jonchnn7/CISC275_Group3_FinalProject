@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import cisc275.group3.model.scene.SceneInventory;
 import cisc275.group3.model.sceneobject.BetaCrab;
 import cisc275.group3.model.sceneobject.BetaFish;
+import cisc275.group3.model.sceneobject.BetaHeron;
 import cisc275.group3.model.sceneobject.SceneObject;
 import cisc275.group3.utility.LayerCode;
 import cisc275.group3.view.GameWindow;
@@ -36,8 +37,9 @@ public class ControllerInventory extends ControllerScene {
   private ImageIcon inventoryBg;
   private static ArrayList<SceneObject> sceneFillItems = new ArrayList<SceneObject>();
   
-  private static int inventory_x = 0;
-  private static int inventory_y = 0;
+  private static double inventory_x = 0;
+  private static double inventory_y = 0;
+  private static double inventory_y_max = 0;
   
   
   public ControllerInventory(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType) {
@@ -65,25 +67,64 @@ public class ControllerInventory extends ControllerScene {
     // Add Item
 	  if (tmp instanceof BetaFish)
 	  {
+		  if(tmp.getPassport().getHeight() > inventory_y_max)
+		  {
+			  inventory_y_max = tmp.getPassport().getHeight();
+		  }
+		  if(inventory_x + tmp.getPassport().getWidth() > 300)
+		  {
+			  inventory_x = 0;
+			  inventory_y += inventory_y_max;
+			  inventory_y_max = 0;
+		  }
 		  sceneFillItems.add(new BetaFish(tmp.getPassport(), inventory_x, inventory_y, 0, 0, true));
-	  }
-	  else if (tmp instanceof BetaCrab)
-	  {
-		  sceneFillItems.add(new BetaCrab(tmp.getPassport(), inventory_x, inventory_y, 0, 0, true));
+		  inventory_x = inventory_x + tmp.getPassport().getWidth();	
 	  }
 	  
-	  inventory_x = inventory_x + 120;
-	  if (inventory_x > 300)
+	  else if (tmp instanceof BetaCrab)
 	  {
-		  inventory_x = 0;
-		  inventory_y = inventory_y + 100;
+		  if(tmp.getPassport().getHeight() > inventory_y_max)
+		  {
+			  inventory_y_max = tmp.getPassport().getHeight();
+		  }
+		  if(inventory_x + tmp.getPassport().getWidth() > 300)
+		  {
+			  inventory_x = 0;
+			  inventory_y += inventory_y_max;
+			  inventory_y_max = 0;
+		  }
+		  sceneFillItems.add(new BetaCrab(tmp.getPassport(), inventory_x, inventory_y, 0, 0, true));
+		  inventory_x = inventory_x + tmp.getPassport().getWidth();
 	  }
+	  
+	  else if (tmp instanceof BetaHeron)
+	  {
+		  if(tmp.getPassport().getHeight() > inventory_y_max)
+		  {
+			  inventory_y_max = tmp.getPassport().getHeight();
+		  }
+		  if(inventory_x + tmp.getPassport().getWidth() > 300)
+		  {
+			  inventory_x = 0;
+			  inventory_y += inventory_y_max;
+			  inventory_y_max = 0;
+		  }
+		  sceneFillItems.add(new BetaHeron(tmp.getPassport(), inventory_x, inventory_y, 0, 0, true));
+		  inventory_x = inventory_x + tmp.getPassport().getWidth();
+	  }
+	  
+	  //inventory_x = inventory_x + 120;
+	  //if (inventory_x > 300)
+	  //{
+		//  inventory_x = 0;
+		//  inventory_y = inventory_y + 100;
+	 // }
 	  
     //sceneFillItems.add(tmp);
   }
   
   //Takes a type of sceneObject and removes the amount of that particular object you want to remove from the inventory 
-  public static void removeItem(SceneObject tmp, int count)
+  public static void removeItem(String tmp, int count) //SceneObject tmp
   {
 	  int found_count = 0;
   
@@ -91,7 +132,7 @@ public class ControllerInventory extends ControllerScene {
 	      SceneObject sceneItem = iterator.next();
 	      
 	      //System.out.println(sceneItem.getShortName() + " " + tmp.getShortName() + " " + found_count+ " " + count);
-	      if(sceneItem.getShortName().equals(tmp.getShortName()) && found_count < count)
+	      if(sceneItem.getPassport().getName() == tmp && found_count < count)
 	      {
 	    	  iterator.remove();
 	    	  found_count++;
