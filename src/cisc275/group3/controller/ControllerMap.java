@@ -215,7 +215,7 @@ public class ControllerMap extends ControllerScene {
     mainPane.setLayer(wetlandComponent, LayerCode.Wetland.getCode());
     mainPane.setLayer(beachMiniComponent, LayerCode.BeachMini.getCode());
     mainPane.setLayer(titleComponent, LayerCode.Title.getCode());
-    mainPane.setLayer(missionComponent, LayerCode.Mission.getCode());
+    mainPane.setLayer(missionComponent, LayerCode.MissionHide.getCode());
     
     // Reset Mouse
     Scene.setCurrentTool(null);
