@@ -32,197 +32,216 @@ import cisc275.group3.utility.LayerCode;
 import cisc275.group3.view.GameWindow;
 
 /**
- * The Tools controller is responsible for both the "model" and
- * control of the toolbox. 
+ * The Tools controller is responsible for both the "model" and control of the
+ * toolbox.
  * <p>
- * The toolbox augments the mouse and sets a "click type" that
- * can be checked against the object type to determine compatibility.
- * Because there is no underlying model, the controller implements
- * the corresponding logic.
+ * The toolbox augments the mouse and sets a "click type" that can be checked
+ * against the object type to determine compatibility. Because there is no
+ * underlying model, the controller implements the corresponding logic.
  * <p>
  * ControllerTool.java
  * <p>
- * @author Scott 
- * @author Jolyne 
+ * 
+ * @author Scott
+ * @author Jolyne
  */
 public class ControllerTools extends ControllerScene {
 
-  private JPanel toolPanel;
-  private JButton netButton;
-  private JButton cameraButton;
-  private JButton cageButton;
-  private JButton trimmerButton;
-  private ImageIcon toolBg;
-  
-  public ControllerTools(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType) {
-    super(w, h, f, cl, sceneType);
-    toolBg = new ImageIcon("img/toolbox_vert_menu.png");
-  }
-  
-  @Override
-  protected void createScene(int sceneType) {
-    Dimension toolSize = new Dimension(75, 300);
-    toolPanel = new JPanel(true) {
-      @Override
-      public void paintComponent(Graphics g) {
-        Dimension size = new Dimension(toolBg.getIconWidth(), toolBg.getIconHeight());
-        g.drawImage(toolBg.getImage(), 0, 0, size.width, size.height, this);
-      }
-    };
-    
-    toolPanel.setLayout(null);
-    toolPanel.setPreferredSize(toolSize);
-    toolPanel.setBounds(SCREEN_WIDTH-toolSize.width, 5, toolSize.width, toolSize.height);
-    toolPanel.setBackground(Color.orange);
-    toolPanel.setOpaque(true);
-   
-    addToolButtons();
-    
-    mainPane.setLayer(toolPanel, LayerCode.Tools.getCode());
-    mainPane.add(toolPanel, LayerCode.Tools.getCode());
-    componentList.put("Tools", toolPanel);
-    
-    toolOverlay();
-  }
-  
-  private void addToolButtons() {
-    netButton = new JButton("NET");
-    netButton.setFont(new Font("Roboto", Font.BOLD, 18));
-    netButton.setBounds(0, 20, 75, 30);
-	
-    netButton.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        Component toolComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Tools")))[0];
-        
-        mainPane.setLayer(toolComponent, LayerCode.Tools.getCode());
-        if (Scene.getCurrentTool() instanceof ToolNet) {
-          Scene.setCurrentTool(null);
-          mouseLabel.setIcon(new ImageIcon("img/mouse_empty.png"));
-          mouseLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        }
-        else {
-          Scene.setCurrentTool(new ToolNet(0,0,0,0));
-          mouseLabel.setIcon(new ImageIcon("img/mouse_net.png"));
-          mouseLabel.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
-        }
-      }
-    });
-    toolPanel.add(netButton);
-	  /*
-    cameraButton = new JButton("CMR");
-    cameraButton.setFont(new Font("Roboto", Font.BOLD, 18));
-    cameraButton.setBounds(0, 95, 75, 30);
-    */
-    cameraButton = new JButton();
-    cameraButton.setBorderPainted(false);
-    cameraButton.setBorder(null);
-    cameraButton.setMargin(new Insets(0, 0, 0, 0));
-    cameraButton.setContentAreaFilled(false);
-    cameraButton.setIcon(new ImageIcon("img/toolbar_cam.png"));
-    cameraButton.setSize(50,50);
-    cameraButton.setBounds(13, 97, 50, 50);;
-    cameraButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
-	    
-    cameraButton.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        Component toolComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Tools")))[0];
-	        
-        mainPane.setLayer(toolComponent, LayerCode.Tools.getCode());
-          if (Scene.getCurrentTool() instanceof ToolCamera) {
-            Scene.setCurrentTool(null);
-            mouseLabel.setIcon(new ImageIcon("img/mouse_empty.png"));
-            mouseLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
-          } 
-          else {
-            Scene.setCurrentTool(new ToolCamera(0,0,0,0));
-            mouseLabel.setIcon(new ImageIcon("img/mouse_cam.png"));
-            mouseLabel.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
-          }
-        }
-      });
-      toolPanel.add(cameraButton);
-      
-      cageButton = new JButton("CGE");
-      cageButton.setFont(new Font("Roboto", Font.BOLD, 18));
-      cageButton.setBounds(0, 170, 75, 30);
-  	
-      cageButton.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-          Component toolComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Tools")))[0];
-          
-          mainPane.setLayer(toolComponent, LayerCode.Tools.getCode());
-          if (Scene.getCurrentTool() instanceof ToolCage) {
-            Scene.setCurrentTool(null);
-            mouseLabel.setIcon(new ImageIcon("img/mouse_empty.png"));
-            mouseLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
-          }
-          else {
-            Scene.setCurrentTool(new ToolCage(0,0,0,0));
-            mouseLabel.setIcon(new ImageIcon("img/mouse_cage.png"));
-            mouseLabel.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
+	private JPanel toolPanel;
+	private JButton netButton;
+	private JButton cameraButton;
+	private JButton cageButton;
+	private JButton trimmerButton;
+	private ImageIcon toolBg;
 
-          }
-        }
-      });
-      toolPanel.add(cageButton);
-      
-      trimmerButton = new JButton("TRM");
-      trimmerButton.setFont(new Font("Roboto", Font.BOLD, 18));
-      trimmerButton.setBounds(0, 245, 75, 30);
-  	
-      trimmerButton.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-          Component toolComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Tools")))[0];
-          
-          mainPane.setLayer(toolComponent, LayerCode.Tools.getCode());
-          if (Scene.getCurrentTool() instanceof ToolTrimmer) {
-            Scene.setCurrentTool(null);
-            mouseLabel.setIcon(new ImageIcon("img/mouse_empty.png"));
-            mouseLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
-          }
-          else {
-            Scene.setCurrentTool(new ToolTrimmer(0,0,0,0));
-            mouseLabel.setIcon(new ImageIcon("img/mouse_trim.png"));
-            mouseLabel.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
-          }
-        }
-      });
-      toolPanel.add(trimmerButton);
-    }
-  
-  private void toolOverlay() {
-    mouseLabel = new JLabel(new ImageIcon("img/mouse_empty.png"));
-    mouseLabel.setBounds(0, 0, 100, 100);
-    mouseLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
-    
-    mainPane.setLayer(mouseLabel, JLayeredPane.MODAL_LAYER);
-    mainPane.add(mouseLabel, JLayeredPane.MODAL_LAYER);
-    
-    componentList.put("MouseLabel", mouseLabel);
-    
-    componentList.get("Bay").addMouseMotionListener(new MouseAdapter() {
-      @Override 
-      public void mouseMoved(MouseEvent e) {
-        mouseLabel.setLocation(e.getX()-50, e.getY()-50);
-      }
-    });
-    
-    componentList.get("Beach").addMouseMotionListener(new MouseAdapter() {
-      @Override 
-      public void mouseMoved(MouseEvent e) {
-        mouseLabel.setLocation(e.getX()-50, e.getY()-50);
-      }
-    });
-    
-    componentList.get("Wetland").addMouseMotionListener(new MouseAdapter() {
-      @Override 
-      public void mouseMoved(MouseEvent e) {
-        mouseLabel.setLocation(e.getX()-50, e.getY()-50);
-      }
-    });
-  }
- }
+	public ControllerTools(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType) {
+		super(w, h, f, cl, sceneType);
+		toolBg = new ImageIcon("img/toolbox_vert_menu.png");
+	}
+
+	@Override
+	protected void createScene(int sceneType) {
+		Dimension toolSize = new Dimension(75, 300);
+		toolPanel = new JPanel(true) {
+			@Override
+			public void paintComponent(Graphics g) {
+				Dimension size = new Dimension(toolBg.getIconWidth(), toolBg.getIconHeight());
+				g.drawImage(toolBg.getImage(), 0, 0, size.width, size.height, this);
+			}
+		};
+
+		toolPanel.setLayout(null);
+		toolPanel.setPreferredSize(toolSize);
+		toolPanel.setBounds(SCREEN_WIDTH - toolSize.width, 5, toolSize.width, toolSize.height);
+		toolPanel.setBackground(Color.orange);
+		toolPanel.setOpaque(true);
+
+		addToolButtons();
+
+		mainPane.setLayer(toolPanel, LayerCode.Tools.getCode());
+		mainPane.add(toolPanel, LayerCode.Tools.getCode());
+		componentList.put("Tools", toolPanel);
+
+		toolOverlay();
+	}
+
+	private void addToolButtons() {
+
+		netButton = new JButton();
+		netButton.setBorderPainted(false);
+		netButton.setBorder(null);
+		netButton.setMargin(new Insets(0, 0, 0, 0));
+		netButton.setContentAreaFilled(false);
+		netButton.setIcon(new ImageIcon("img/toolbar_net.png"));
+		netButton.setSize(50, 50);
+		netButton.setBounds(15, 20, 50, 50);
+		;
+		netButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
+		netButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Component toolComponent = mainPane
+						.getComponentsInLayer(mainPane.getLayer(componentList.get("Tools")))[0];
+
+				mainPane.setLayer(toolComponent, LayerCode.Tools.getCode());
+				if (Scene.getCurrentTool() instanceof ToolNet) {
+					Scene.setCurrentTool(null);
+					mouseLabel.setIcon(new ImageIcon("img/mouse_empty.png"));
+					mouseLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+				} else {
+					Scene.setCurrentTool(new ToolNet(0, 0, 0, 0));
+					mouseLabel.setIcon(new ImageIcon("img/mouse_net.png"));
+					mouseLabel.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
+				}
+			}
+		});
+		toolPanel.add(netButton);
+
+		cameraButton = new JButton();
+		cameraButton.setBorderPainted(false);
+		cameraButton.setBorder(null);
+		cameraButton.setMargin(new Insets(0, 0, 0, 0));
+		cameraButton.setContentAreaFilled(false);
+		cameraButton.setIcon(new ImageIcon("img/toolbar_cam.png"));
+		cameraButton.setSize(50, 50);
+		cameraButton.setBounds(15, 85, 50, 50);
+		;
+		cameraButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
+		cameraButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Component toolComponent = mainPane
+						.getComponentsInLayer(mainPane.getLayer(componentList.get("Tools")))[0];
+
+				mainPane.setLayer(toolComponent, LayerCode.Tools.getCode());
+				if (Scene.getCurrentTool() instanceof ToolCamera) {
+					Scene.setCurrentTool(null);
+					mouseLabel.setIcon(new ImageIcon("img/mouse_empty.png"));
+					mouseLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+				} else {
+					Scene.setCurrentTool(new ToolCamera(0, 0, 0, 0));
+					mouseLabel.setIcon(new ImageIcon("img/mouse_cam.png"));
+					mouseLabel.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
+				}
+			}
+		});
+		toolPanel.add(cameraButton);
+
+		cageButton = new JButton();
+		cageButton.setBorderPainted(false);
+		cageButton.setBorder(null);
+		cageButton.setMargin(new Insets(0, 0, 0, 0));
+		cageButton.setContentAreaFilled(false);
+		cageButton.setIcon(new ImageIcon("img/toolbar_cage.png"));
+		cageButton.setSize(50, 50);
+		cageButton.setBounds(15, 160, 50, 50);
+		;
+		cageButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
+		cageButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Component toolComponent = mainPane
+						.getComponentsInLayer(mainPane.getLayer(componentList.get("Tools")))[0];
+
+				mainPane.setLayer(toolComponent, LayerCode.Tools.getCode());
+				if (Scene.getCurrentTool() instanceof ToolCage) {
+					Scene.setCurrentTool(null);
+					mouseLabel.setIcon(new ImageIcon("img/mouse_empty.png"));
+					mouseLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+				} else {
+					Scene.setCurrentTool(new ToolCage(0, 0, 0, 0));
+					mouseLabel.setIcon(new ImageIcon("img/mouse_cage.png"));
+					mouseLabel.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
+
+				}
+			}
+		});
+		toolPanel.add(cageButton);
+
+		trimmerButton = new JButton();
+		trimmerButton.setBorderPainted(false);
+		trimmerButton.setBorder(null);
+		trimmerButton.setMargin(new Insets(0, 0, 0, 0));
+		trimmerButton.setContentAreaFilled(false);
+		trimmerButton.setIcon(new ImageIcon("img/toolbar_trim.png"));
+		trimmerButton.setSize(50, 50);
+		trimmerButton.setBounds(15, 230, 50, 50);
+		;
+		trimmerButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
+		trimmerButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Component toolComponent = mainPane
+						.getComponentsInLayer(mainPane.getLayer(componentList.get("Tools")))[0];
+
+				mainPane.setLayer(toolComponent, LayerCode.Tools.getCode());
+				if (Scene.getCurrentTool() instanceof ToolTrimmer) {
+					Scene.setCurrentTool(null);
+					mouseLabel.setIcon(new ImageIcon("img/mouse_empty.png"));
+					mouseLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+				} else {
+					Scene.setCurrentTool(new ToolTrimmer(0, 0, 0, 0));
+					mouseLabel.setIcon(new ImageIcon("img/mouse_trim.png"));
+					mouseLabel.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
+				}
+			}
+		});
+		toolPanel.add(trimmerButton);
+	}
+
+	private void toolOverlay() {
+		mouseLabel = new JLabel(new ImageIcon("img/mouse_empty.png"));
+		mouseLabel.setBounds(0, 0, 100, 100);
+		mouseLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
+		mainPane.setLayer(mouseLabel, JLayeredPane.MODAL_LAYER);
+		mainPane.add(mouseLabel, JLayeredPane.MODAL_LAYER);
+
+		componentList.put("MouseLabel", mouseLabel);
+
+		componentList.get("Bay").addMouseMotionListener(new MouseAdapter() {
+			@Override
+			public void mouseMoved(MouseEvent e) {
+				mouseLabel.setLocation(e.getX() - 50, e.getY() - 50);
+			}
+		});
+
+		componentList.get("Beach").addMouseMotionListener(new MouseAdapter() {
+			@Override
+			public void mouseMoved(MouseEvent e) {
+				mouseLabel.setLocation(e.getX() - 50, e.getY() - 50);
+			}
+		});
+
+		componentList.get("Wetland").addMouseMotionListener(new MouseAdapter() {
+			@Override
+			public void mouseMoved(MouseEvent e) {
+				mouseLabel.setLocation(e.getX() - 50, e.getY() - 50);
+			}
+		});
+	}
+}
