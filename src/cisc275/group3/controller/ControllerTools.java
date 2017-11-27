@@ -7,6 +7,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Insets;
 import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -108,10 +109,20 @@ public class ControllerTools extends ControllerScene {
       }
     });
     toolPanel.add(netButton);
-	    
+	  /*
     cameraButton = new JButton("CMR");
     cameraButton.setFont(new Font("Roboto", Font.BOLD, 18));
     cameraButton.setBounds(0, 95, 75, 30);
+    */
+    cameraButton = new JButton();
+    cameraButton.setBorderPainted(false);
+    cameraButton.setBorder(null);
+    cameraButton.setMargin(new Insets(0, 0, 0, 0));
+    cameraButton.setContentAreaFilled(false);
+    cameraButton.setIcon(new ImageIcon("img/toolbar_cam.png"));
+    cameraButton.setSize(50,50);
+    cameraButton.setBounds(13, 97, 50, 50);;
+    cameraButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
 	    
     cameraButton.addActionListener(new ActionListener() {
       @Override
