@@ -58,7 +58,7 @@ public class ControllerTutorial extends ControllerScene implements LinkDynamics,
    */
   @Override
   public void update() {
-    if (mainPane.getLayer(componentList.get("Bay")) == LayerCode.MainAll.getCode()) {
+    if (mainPane.getLayer(componentList.get("Tutorial")) == LayerCode.MainTop.getCode()) {
       // Update Model
       scene.update();
       viewGame.updatePanel(scene.getSceneItems());
@@ -75,7 +75,7 @@ public class ControllerTutorial extends ControllerScene implements LinkDynamics,
   public void updateTime() {
     ((LinkTime)scene).updateTime();
     
-    if (mainPane.getLayer(componentList.get("Tutorial")) == LayerCode.MainAll.getCode()) {
+    if (mainPane.getLayer(componentList.get("Tutorial")) == LayerCode.MainTop.getCode()) {
       displayTime();
     }
   }

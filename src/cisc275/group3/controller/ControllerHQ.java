@@ -62,6 +62,7 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 		statusLabel.setName("MissionFact");
 		mainPane.setLayer(statusLabel, LayerCode.MissionFact.getCode());
 		mainPane.add(statusLabel, LayerCode.MissionFact.getCode());
+
 		componentList.put("MissionFact", statusLabel);
 
 	}
