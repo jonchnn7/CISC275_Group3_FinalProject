@@ -101,35 +101,26 @@ public class ControllerInventory extends ControllerScene {
 	  
 	  else if (tmp instanceof BetaHeron)
 	  {
-		  if(tmp.getPassport().getHeight() > inventory_y_max)
-		  {
-			  inventory_y_max = tmp.getPassport().getHeight();
-		  }
-		  if(inventory_x + tmp.getPassport().getWidth() > 300)
+		  
+		  if(inventory_x + 150 > 300)
 		  {
 			  inventory_x = 0;
-			  inventory_y += inventory_y_max;
-			  inventory_y_max = 0;
+			  inventory_y += inventory_y += 100;
 		  }
-		  BetaHeron tmpHeron = ConstructHeron.constructLeftHeron(0, 1, inventory_x , inventory_y, false, false);
+		  BetaHeron tmpHeron = ConstructHeron.constructLeftHeron(0, 1, inventory_x-10 , inventory_y, false, false);
 		  sceneFillItems.add(tmpHeron);//new BetaHeron(tmp.getPassport(), inventory_x, inventory_y, 0, 0, true)
-		  inventory_x = inventory_x + tmp.getPassport().getWidth();
+		  inventory_x = inventory_x + 150;
 	  }
 	  
 	  else if (tmp instanceof BetaVegetation)
 	  {
-		  if(tmp.getPassport().getHeight() > inventory_y_max)
-		  {
-			  inventory_y_max = tmp.getPassport().getHeight();
-		  }
-		  if(inventory_x + tmp.getPassport().getWidth() > 300)
+		  if(inventory_x + 100 > 300)
 		  {
 			  inventory_x = 0;
-			  inventory_y += inventory_y_max;
-			  inventory_y_max = 0;
+			  inventory_y += 100;
 		  }
-		  sceneFillItems.add(new BetaVegetation(tmp.getPassport(), inventory_x, inventory_y));
-		  inventory_x = inventory_x + tmp.getPassport().getWidth();
+		  sceneFillItems.add(new BetaVegetation(tmp.getPassport(), inventory_x-40, inventory_y-60));
+		  inventory_x = inventory_x + 100;
 	  }
 	  
   }
