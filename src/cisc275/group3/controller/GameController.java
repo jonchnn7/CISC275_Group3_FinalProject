@@ -37,10 +37,9 @@ public class GameController implements Serializable {
 	// Game Variables
 	private int totalTime;
 	private boolean loopRun;
-	private String endGame;
 	private HashMap<String, ControllerScene> controlMap;
 	private HashMap<String, Component> layerMap;
-	private boolean playTutorial = true;
+	private boolean playTutorial = false;
 
 	/**
 	 * Creates the overarching controller responsible for tracking the individual
@@ -63,17 +62,16 @@ public class GameController implements Serializable {
 		controlMap = new HashMap<String, ControllerScene>();
 		layerMap = new HashMap<String, Component>();
 		loopRun = true;
-		endGame = "playing";
-		
+
 		if (playTutorial) {
-		  initTutorial();
+			initTutorial();
 		} else {
-		  initGame();
+			initGame();
 		}
 		gameTime();
 
 	}
-	
+
 	private void initTutorial() {
 		controlMap.put("Tutorial", new ControllerTutorial(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 2));
 	}
@@ -103,8 +101,8 @@ public class GameController implements Serializable {
 	private void gameTime() {
 		Timer timer = new Timer(100, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(loopRun) {
-				controlMap.forEach((k, v) -> {
+				if (loopRun) {
+					controlMap.forEach((k, v) -> {
 						// Model Object Updates
 						switch (k) {
 						case "HQ":
@@ -134,17 +132,15 @@ public class GameController implements Serializable {
 
 					// Update Time Counter
 					totalTime += 100;
-					// 5 sec
-					if (totalTime == 20000) {
-						// 5 min
-						// if(totalTime == 300000) {
+					// 5 min
+					if (totalTime == 300000) {
 						loopRun = false;
-						GAME_FRAME.getMainPane().setLayer(GAME_FRAME.getMainPane().getComponentsInLayer(-16)[0], LayerCode.EndGame.getCode());
+						GAME_FRAME.getMainPane().setLayer(GAME_FRAME.getMainPane().getComponentsInLayer(-16)[0],
+								LayerCode.EndGame.getCode());
 					}
-				}
-				else {
+				} else {
 					loopRun = true;
-					totalTime = -1000;			
+					totalTime = -1000;
 				}
 			}
 		});

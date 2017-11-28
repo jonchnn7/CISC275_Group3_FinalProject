@@ -13,7 +13,7 @@ EndGame(25), MainTop(20),
   TimeLabel(4), MainMapToolsTime(3), // Layers for Map + Tools + Time + Game 
   ScoreLabel(2), MissionLabel(1), MainAll(0), // Layers for Time + Score + Game with all the fixins
   Bay(-2), Beach(-3), BeachMini(-4), HQ(-6), Inventory(-7), // "Hidden" Layers
-  Map(-9), Title(-10), Tools(-11), Wetland(-13), MissionHide(-15), EndGameHide(-16);  // "Hidden" Layers
+  Map(-9), Title(-10), Tools(-11), Wetland(-13), Tutorial(-14), MissionHide(-15), EndGameHide(-16);  // "Hidden" Layers
 
   private final int code;
   
