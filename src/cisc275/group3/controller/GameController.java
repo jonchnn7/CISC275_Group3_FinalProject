@@ -1,5 +1,6 @@
 package cisc275.group3.controller;
 
+import cisc275.group3.utility.LayerCode;
 import cisc275.group3.view.GameWindow;
 
 import java.awt.Component;
@@ -35,6 +36,8 @@ public class GameController implements Serializable {
 
 	// Game Variables
 	private int totalTime;
+	private boolean loopRun;
+	private String endGame;
 	private HashMap<String, ControllerScene> controlMap;
 	private HashMap<String, Component> layerMap;
 
@@ -43,8 +46,10 @@ public class GameController implements Serializable {
 	 * game scenes. The input parameters set the screen dimensions, which can then
 	 * be passed to each scene.
 	 * 
-	 * @param x	int-Window width
-	 * @param y	int-Window height
+	 * @param x
+	 *            int-Window width
+	 * @param y
+	 *            int-Window height
 	 */
 	public GameController(int x, int y) {
 		SCREEN_WIDTH = x;
@@ -56,12 +61,15 @@ public class GameController implements Serializable {
 		// Initialize Game
 		controlMap = new HashMap<String, ControllerScene>();
 		layerMap = new HashMap<String, Component>();
+		loopRun = true;
+		endGame = "playing";
 		initGame();
+		gameTime();
 	}
 
 	/**
-	 * Initializes the game by creating the individual scenes and placing them 
-	 * in the controller map.
+	 * Initializes the game by creating the individual scenes and placing them in
+	 * the controller map.
 	 */
 	private void initGame() {
 		controlMap.put("Title", new ControllerTitle(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 3));
@@ -75,8 +83,7 @@ public class GameController implements Serializable {
 		controlMap.put("Overlay", new ControllerOverlay(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 3));
 		controlMap.put("Tools", new ControllerTools(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 3));
 		controlMap.put("Inventory", new ControllerInventory(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 3));
-
-		gameTime();
+		controlMap.put("EndGame", new ControllerEndGame(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 3));
 	}
 
 	/**
@@ -85,36 +92,49 @@ public class GameController implements Serializable {
 	private void gameTime() {
 		Timer timer = new Timer(100, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(loopRun) {
 				controlMap.forEach((k, v) -> {
-
-					// Model Object Updates
-					switch (k) {
-					case "HQ":
-					case "Bay":
-					case "Beach":
-					case "Wetland":
-					case "BeachMini":
-					  ((LinkDynamics)v).update();
-					break;
-					}
-
-					// Time Update
-					if (totalTime % 1000 == 0) {
+						// Model Object Updates
 						switch (k) {
 						case "HQ":
-							((LinkTime)v).updateTime();
 						case "Bay":
 						case "Beach":
 						case "Wetland":
 						case "BeachMini":
-						  ((LinkTime)v).displayTime();
-						break;
+						case "EndGame":
+							((LinkDynamics) v).update();
+							break;
 						}
-					}
-				});
 
-				// Update Time Counter
-				totalTime += 100;
+						// Time Update
+						if (totalTime % 1000 == 0) {
+							switch (k) {
+							case "HQ":
+								((LinkTime) v).updateTime();
+							case "Bay":
+							case "Beach":
+							case "Wetland":
+							case "BeachMini":
+								((LinkTime) v).displayTime();
+								break;
+							}
+						}
+					});
+
+					// Update Time Counter
+					totalTime += 100;
+					// 5 sec
+					if (totalTime == 20000) {
+						// 5 min
+						// if(totalTime == 300000) {
+						loopRun = false;
+						GAME_FRAME.getMainPane().setLayer(GAME_FRAME.getMainPane().getComponentsInLayer(-16)[0], LayerCode.EndGame.getCode());
+					}
+				}
+				else {
+					loopRun = true;
+					totalTime = -1000;			
+				}
 			}
 		});
 		timer.start(); // Start it up!
