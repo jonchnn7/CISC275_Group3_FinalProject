@@ -41,6 +41,7 @@ public class ViewGame extends JPanel {
       try {
         currentImg = ImageIO.read(new File(item.getPassport().getImageFile()));
       } catch (IOException e) {
+        System.out.println(item.getPassport().getImageFile());
         e.printStackTrace();
       }
       g2d.drawImage(currentImg, (int)item.getLocation().getX(), (int)item.getLocation().getY(), this);
