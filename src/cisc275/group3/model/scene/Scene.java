@@ -280,7 +280,7 @@ public abstract class Scene implements Serializable {
 	/**
 	 * @return the score
 	 */
-	public int getScore() {
+	public static int getScore() {
 		return score;
 	}
 
@@ -324,6 +324,13 @@ public abstract class Scene implements Serializable {
 	 */
 	public void missionScoreFail() {
 		score -= 50;
+	}
+	
+	/**
+	 * Reset Score to 0
+	 */
+	public void resetScore() {
+		score = 0;
 	}
 	
 	
