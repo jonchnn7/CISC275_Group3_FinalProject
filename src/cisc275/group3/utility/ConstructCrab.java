@@ -5,7 +5,7 @@ import cisc275.group3.model.sceneobject.BetaCrab;
 public interface ConstructCrab {
   // Crab File Location
   static final String[] LEFT_FILE = 
-	  {"img/crab_blue_icon.png" , "img/horseshoe_crab_Left.png"};
+	  {"img/crab_blue_icon.png" , "img/horseshoe_crab_left.png"};
   static final String[] RIGHT_FILE = 
 	  {"img/crab_blue_icon.png", "img/horseshoe_crab_right.png" };
 
