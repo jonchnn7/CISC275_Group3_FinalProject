@@ -12,7 +12,7 @@ import java.util.Random;
  * @author Thomas
  */
 public final class EstuaryFacts {
-	private String[][] facts = new String[6][5];
+	private String[][] facts = new String[7][5];
 	private Random randGen = new Random();
 
 	  /**

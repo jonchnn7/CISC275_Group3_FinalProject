@@ -11,13 +11,12 @@ public class Mission {
 	private String targetObject;
 	private String objectName;
 	private int objectNum;
-	private int objectNumFinal;// Passed to the remove function, since decreaseNum() always decrements we need to set and not change objectNumFinal
 	private boolean doneMission;
+	private String targetNameForFact = "";
 	
 	public Mission(String o, int num) {
 		targetObject = o;
 		objectNum = num;
-		objectNumFinal = num;
 		objectName = "";
 		doneMission = false;
 	}
@@ -58,11 +57,15 @@ public class Mission {
 		this.doneMission = doneMission;
 	}
 	
-	public int getTotalObjectNum()
+	public void setTargetNameForFact(String s)
 	{
-		return objectNumFinal;
+		targetNameForFact = s;
 	}
 	
+	public String getTargetNameForFact()
+	{
+		return targetNameForFact;
+	}
 	public String toString() {
 		if (doneMission) {
 			return "Completed!";

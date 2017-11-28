@@ -77,7 +77,7 @@ public class SceneHQ extends Scene {
 						1280, // x location
 						75)); // y location
 			}
-			// Move Crab
+			// Move Person
 			for (SceneObject person : sceneItems) {
 				if ((person.getLocation().getX() < 600) && ((((BetaPerson) person).getStatus()) == 1)) {
 					((BetaPerson) person).setStatus(0);
@@ -87,7 +87,7 @@ public class SceneHQ extends Scene {
 				((BetaPerson) person).move();
 			}
 
-			// Remove Off-screen crabs
+			// Remove Off-screen Person
 			removePerson();
 
 			// Sort by depth

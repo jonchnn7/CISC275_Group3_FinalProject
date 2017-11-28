@@ -122,6 +122,7 @@ public class ControllerMission extends ControllerScene implements LinkDynamics, 
 	    				Scene.setCurrentMission(new Mission("BetaVegetation", randGen.nextInt(5) + 1));
 	    			}
 	    			Scene.getCurrentMission().setObjectName(s);
+	    			Scene.getCurrentMission().setTargetNameForFact(s);
 	    			displayMission();
 	    		} else if ((Scene.getCurrentMission().getTargetObject() == null) && !(Scene.getCurrentMission().isDoneMission())) {
 	    			Scene.getCurrentMission().setObjectNum(-5);
