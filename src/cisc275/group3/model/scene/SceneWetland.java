@@ -137,8 +137,8 @@ public class SceneWetland extends Scene {
 			if ((tempObject.getPassport().getId() == 100) || (tempObject.getPassport().getId() == 200)) {
 				modifyHeron((BetaHeron) tempObject);
 				// Determine if tempObject is a Vegetation
-			} else if ((tempObject.getPassport().getId() == 0) || (tempObject.getPassport().getId() == 1)
-					|| (tempObject.getPassport().getId() == 2)) {
+			} else if ((tempObject.getPassport().getId() == 70) || (tempObject.getPassport().getId() == 71)
+					|| (tempObject.getPassport().getId() == 72)) {
 				if (randGen.nextInt(100) < 5) {
 					sceneItems.add(((BetaVegetation) tempObject).grow());
 				} else {

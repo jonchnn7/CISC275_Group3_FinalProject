@@ -26,9 +26,10 @@ import java.util.Random;
  * <p>
  * Scene.java
  * <p>
- * @author Scott 
- * @author Jon 
- * @author Jolyne 
+ * 
+ * @author Scott
+ * @author Jon
+ * @author Jolyne
  */
 public abstract class Scene implements Serializable {
 
@@ -43,7 +44,7 @@ public abstract class Scene implements Serializable {
 
 	// RNG
 	protected Random randGen = new Random();
-	
+
 	public Scene(SceneId mani) {
 		manifest = mani;
 		currentTool = null;
@@ -80,105 +81,114 @@ public abstract class Scene implements Serializable {
 
 			// Compatibility Check
 			if (currentTool == null) {
-			  return false;
+				return false;
 			}
-			
+
 			switch (sceneItem.getPassport().getName()) {
 			// Beta Crabs
 			case "Cristmas Island Red Crab":
 			case "Atlantic Blue Crab":
 			case "Horseshoe Crab":
-			  if (SceneObjectType.BetaCrab.searchCompatability(currentTool.getName())) {
-			    if (compatClick(sceneItem, clickX, clickY)) {
-			      iterator.remove();
-			      return true;
-			    }
-			  }
-			break;
-			
+				if (SceneObjectType.BetaCrab.searchCompatability(currentTool.getName())) {
+					if (compatClick(sceneItem, clickX, clickY)) {
+						iterator.remove();
+						return true;
+					}
+				}
+				break;
+
 			// Beta Fishies
 			case "Striped Bass":
 			case "Shortnose Sturgeon":
 			case "American Shad":
-			  if (SceneObjectType.BetaFish.searchCompatability(currentTool.getName())) {
-			    if (compatClick(sceneItem, clickX, clickY)) {
-            iterator.remove();
-            return true;
-          }
-        }
-      break;
-      
+				if (SceneObjectType.BetaFish.searchCompatability(currentTool.getName())) {
+					if (compatClick(sceneItem, clickX, clickY)) {
+						iterator.remove();
+						return true;
+					}
+				}
+				break;
+
 			// Beta Heronz
 			case "Great Blue Heron":
-			  if (SceneObjectType.BetaHeron.searchCompatability(currentTool.getName())) {
-			    if (compatClick(sceneItem, clickX, clickY)) {
-            iterator.remove();
-            return true;
-          }
-        }
-			break;
-			
+				if (SceneObjectType.BetaHeron.searchCompatability(currentTool.getName())) {
+					if (compatClick(sceneItem, clickX, clickY)) {
+						iterator.remove();
+						return true;
+					}
+				}
+				break;
+
 			// Beta Veggies
-			case "Plant: 1/3":
-			case "Plant: 2/3":
-			case "Plant: 3/3":
-			
-			  if (SceneObjectType.BetaVegetation.searchCompatability(currentTool.getName())) {
-			    if (compatClick(sceneItem, clickX, clickY)) {
-			    	BetaVegetation vegetation = null;
-			    	
-			    	if(sceneItem.getPassport().getId() > 0) {
-			    	  // Vegetation needs mowed down
-			    	  // Swap current veg object for mowed down version
-			    		vegetation = ConstructVegetation.constructVegetation(
-			    		    sceneItem.getPassport().getDepth(),
-			    		    sceneItem.getPassport().getId() - 1, // GetID
-			    		    sceneItem.getLocation().getX(), 
-			    		    sceneItem.getLocation().getY());
-			        
-			    		iterator.remove();
-			    		sceneItems.add(vegetation);
-			    	
-			    	} else {
-			    	  // Vegetation already mowed down
-			    		iterator.remove();
-			    	}
-            return true;
-          }
-        }
-      break;
+			case "Invasive Plant":
+
+				if (SceneObjectType.BetaVegetation.searchCompatability(currentTool.getName())) {
+					if (compatClick(sceneItem, clickX, clickY)) {
+						BetaVegetation vegetation = null;
+
+						if (sceneItem.getPassport().getId() > 70) {
+							// Vegetation needs mowed down
+							// Swap current veg object for mowed down version
+							vegetation = ConstructVegetation.constructVegetation(sceneItem.getPassport().getDepth(),
+									(sceneItem.getPassport().getId() % 10) - 1, // GetID
+									sceneItem.getLocation().getX(), sceneItem.getLocation().getY());
+
+							iterator.remove();
+							sceneItems.add(vegetation);
+
+						} else {
+							// Vegetation already mowed down
+							iterator.remove();
+						}
+						return true;
+					}
+				}
+				break;
 			}
-		}	
+		}
 		return false;
 	}
 
 	/**
 	 * Helper method for processClick()
 	 * <p>
-	 * Takes a SceneObject and a click location to determine 
-	 * whether the object has been clicked on. If so, it further 
-	 * processes whether the object is a mission requirement. 
+	 * Takes a SceneObject and a click location to determine whether the object has
+	 * been clicked on. If so, it further processes whether the object is a mission
+	 * requirement.
 	 * <p>
 	 * Returns true so long as an object has been clicked.
 	 * 
-	 * @param item   SceneObject-current object in question
-	 * @param clickX double-x axis coordinate
-	 * @param clickY double-y axis coordinate
+	 * @param item
+	 *            SceneObject-current object in question
+	 * @param clickX
+	 *            double-x axis coordinate
+	 * @param clickY
+	 *            double-y axis coordinate
 	 * @return boolean has the object been clicked
 	 */
-  private boolean compatClick(SceneObject item, double clickX, double clickY) {
-    if (item.itemClicked(clickX, clickY)) {
-      System.out.println("Clicked on: " + item.getPassport().getName());
-      
-      if (Scene.getCurrentMission().getObjectName().equals(item.getPassport().getName()) && (Scene.getCurrentMission().getObjectNum() > 0)) {
-        Scene.getCurrentMission().decreaseNum();
-        ControllerInventory.addItem(item);
-      }
-      return true;
-    }
-    
-    return false;
-  }
+	private boolean compatClick(SceneObject item, double clickX, double clickY) {
+		if (item.itemClicked(clickX, clickY)) {
+			System.out.println("Clicked on: " + item.getPassport().getName());
+
+			if (Scene.getCurrentMission().getObjectName().equals(item.getPassport().getName())
+					&& (Scene.getCurrentMission().getObjectNum() > 0)) {
+				if ((item.getPassport().getId() == 71) || (item.getPassport().getId() == 72)) {
+					return true;
+				}
+				
+				Scene.getCurrentMission().decreaseNum();
+				ControllerInventory.addItem(item);
+				return true;
+
+			} else {
+				updateScoreMinus();
+				return false;
+			}
+			// return true;
+		}
+
+		return false;
+	}
 
 	/**
 	 * Represents Scene as a String by printing its parameters.
@@ -186,14 +196,12 @@ public abstract class Scene implements Serializable {
 	 * @return multiline string of parameter states
 	 */
 	public String toString() {
-		String outString = "\nName: " + manifest.getName() 
-	                      +"\nWidth: " + manifest.getWidth() 
-	                      +"\nHeight: "+ manifest.getHeight() 
-	                      +"\nScene Objects: " + sceneItems.size();
+		String outString = "\nName: " + manifest.getName() + "\nWidth: " + manifest.getWidth() + "\nHeight: "
+				+ manifest.getHeight() + "\nScene Objects: " + sceneItems.size();
 		return outString;
 	}
 
-	/** 
+	/**
 	 * @return manifest
 	 */
 	public SceneId getManifest() {
@@ -227,7 +235,8 @@ public abstract class Scene implements Serializable {
 	/**
 	 * Updates the current tool to the input parameter
 	 * 
-	 * @param m	Mission-mission object
+	 * @param m
+	 *            Mission-mission object
 	 */
 	public static void setCurrentMission(Mission m) {
 		currentMission = m;
@@ -241,12 +250,11 @@ public abstract class Scene implements Serializable {
 		return currentFact;
 	}
 
-	
 	/**
 	 * Updates the current fact to the input parameter
 	 * 
 	 * @param s
-	 * 			String-s
+	 *            String-s
 	 */
 	public static void setCurrentFact(String s) {
 		currentFact = s;
@@ -261,7 +269,7 @@ public abstract class Scene implements Serializable {
 	public ArrayList<SceneObject> getSceneItems() {
 		return sceneItems;
 	}
-	
+
 	/**
 	 * @return the time
 	 */
@@ -284,6 +292,13 @@ public abstract class Scene implements Serializable {
 	}
 
 	/**
+	 * Update score by subtracting 1
+	 */
+	public void updateScoreMinus() {
+		score -= 1;
+	}
+
+	/**
 	 * Update time by subtracting 1
 	 */
 	public void updateTime() {
@@ -298,8 +313,7 @@ public abstract class Scene implements Serializable {
 	}
 
 	/**
-	 * Update score by adding 
-	 * remaining time
+	 * Update score by adding remaining time
 	 */
 	public void missionScore() {
 		score += this.getTime();

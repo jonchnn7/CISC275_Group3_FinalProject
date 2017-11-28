@@ -106,7 +106,7 @@ public class ControllerMission extends ControllerScene implements LinkDynamics, 
 		    					((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/heron_mission_icon.png"));
 		    					lastMission = 2;
 		    					break;
-		    			case 6: s = "Plant: 1/3";
+		    			case 6: s = "Invasive Plant";
 		    					((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/weeds_mission_icon.png"));
 		    					lastMission = 2;
 		    					break;

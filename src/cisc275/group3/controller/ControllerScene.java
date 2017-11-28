@@ -91,7 +91,7 @@ public abstract class ControllerScene implements Serializable {
       public void mousePressed(MouseEvent e) {
         if (e.getButton() == MouseEvent.BUTTON1) {
           if ( scene.processClick(e.getX(), e.getY()) ) {
-            scene.updateScore();
+            //scene.updateScore();
             displayScore();
             displayMission();
           }

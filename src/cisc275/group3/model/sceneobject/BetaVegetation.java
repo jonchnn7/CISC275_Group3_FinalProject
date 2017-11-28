@@ -33,9 +33,9 @@ public class BetaVegetation extends SceneObject {
   }
   
   public BetaVegetation grow() {
-	  if(this.getPassport().getId() < 2) {
+	  if(this.getPassport().getId() < 72) {
 		  BetaVegetation vegetation =  ConstructVegetation.constructVegetation(this.getPassport().getDepth(),
-				  this.getPassport().getId()+1,
+				  (this.getPassport().getId()%10) +1,
 				  this.getLocation().getX(),
 				  this.getLocation().getY());;
 		 return vegetation;
