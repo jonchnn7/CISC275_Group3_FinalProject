@@ -37,6 +37,7 @@ public class GameController implements Serializable {
 	private int totalTime;
 	private HashMap<String, ControllerScene> controlMap;
 	private HashMap<String, Component> layerMap;
+	private boolean playTutorial = true;
 
 	/**
 	 * Creates the overarching controller responsible for tracking the individual
@@ -56,7 +57,16 @@ public class GameController implements Serializable {
 		// Initialize Game
 		controlMap = new HashMap<String, ControllerScene>();
 		layerMap = new HashMap<String, Component>();
-		initGame();
+		
+		if (playTutorial) {
+		  initTutorial();
+		} else {
+		  initGame();
+		}
+	}
+	
+	private void initTutorial() {
+	  
 	}
 
 	/**
