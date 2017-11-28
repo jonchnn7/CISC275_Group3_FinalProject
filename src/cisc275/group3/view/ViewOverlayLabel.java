@@ -128,5 +128,9 @@ public class ViewOverlayLabel extends JPanel {
   
   public void updateIcon(ImageIcon i) {
 	    overLabel.setIcon(i);
-	  }
+  }
+  
+  public JLabel getLabel() {
+    return overLabel;
+  }
 }

@@ -17,7 +17,7 @@ public class ClickAdventure {
     javax.swing.SwingUtilities.invokeLater(new Runnable() {
       public void run() {
         new GameController(1280, 720);
-      }
+      } 
     });
   }
 }

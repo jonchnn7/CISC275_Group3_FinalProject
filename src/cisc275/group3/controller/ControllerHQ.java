@@ -1,9 +1,14 @@
 package cisc275.group3.controller;
 
+import java.awt.Color;
 import java.awt.Component;
+import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.util.HashMap;
 
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 import cisc275.group3.model.scene.Scene;
 import cisc275.group3.model.scene.SceneHQ;
@@ -31,9 +36,11 @@ import cisc275.group3.view.ViewOverlayLabel;
  */
 public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkTime {
 	private final String BG_IMAGE = "img/HQ_bg_v3.jpg";
-
+	private ViewOverlayLabel statusLabel;
+	
 	public ControllerHQ(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType) {
 		super(w, h, f, cl, sceneType);
+
 	}
 
 	@Override
@@ -43,15 +50,21 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 
 		viewGame.setBounds(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 		viewGame.setName("HQLayer");
-
+		
 		mainPane.setLayer(viewGame, LayerCode.HQ.getCode());
 		mainPane.add(viewGame, LayerCode.HQ.getCode());
 
 		componentList.put("HQ", viewGame);
 
-		addML();
+		statusLabel = new ViewOverlayLabel(200, 200, "");
+		statusLabel.setBounds(200, 400, 200, 200);
+		statusLabel.setName("MissionFact");
+		mainPane.setLayer(statusLabel, LayerCode.MissionFact.getCode());
+		mainPane.add(statusLabel, LayerCode.MissionFact.getCode());
+
 	}
 
+	
 	@Override
 	protected void addML() {
 	}
@@ -68,6 +81,7 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 			// Update Model
 			((SceneHQ) scene).update();
 			viewGame.updatePanel(scene.getSceneItems());
+			statusLabel.updateLabel(Scene.getCurrentFact());
 		}
 	}
 
@@ -79,10 +93,14 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 	@Override
 	public void updateTime() {
 		if ((scene.getTime() < 1) && !(Scene.getCurrentMission().isDoneMission()) && !(Scene.getCurrentMission().getTargetObject() == null)) {
-			Scene.setCurrentMission(new Mission(null, -1));
 			((SceneHQ) scene).missionScoreFail();
 			((SceneHQ) scene).resetTime();
-			((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/blank.png"));
+			Scene.getCurrentMission().setObjectNum(-5);
+			Scene.getCurrentMission().setDoneMission(true);
+			Scene.getCurrentMission().setTargetObject(null);
+			displayMission();
+			ControllerInventory.removeItem(Scene.getCurrentMission().getObjectName());
+			((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(null);
 		} if ((!Scene.getCurrentMission().isDoneMission()) && !(Scene.getCurrentMission().getTargetObject() == null)){
 			((SceneHQ) scene).updateTime();
 		} else {

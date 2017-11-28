@@ -1,6 +1,7 @@
 package cisc275.group3.controller;
 
 import java.awt.Component;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
@@ -274,7 +275,9 @@ public class ControllerOverlay extends ControllerScene {
   private void createMissionLabel() {
 	    missionLabelPanel = new ViewOverlayLabel(missionLabelImage, missionLabelBg, missionLabelWidth, missionLabelHeight, missionLabelString);
 	    missionLabelPanel.setBounds((SCREEN_WIDTH - missionLabelWidth)/2, 0, missionLabelWidth, missionLabelHeight);
-	    missionLabelPanel.setName("MissionLabel");
+      missionLabelPanel.setName("MissionLabel");
+	    
+	    //missionLabelPanel.getLabel().setFont(new Font("Roboto", Font.BOLD, 16));
 	    
 	    mainPane.setLayer(missionLabelPanel, LayerCode.MissionLabel.getCode());
 	    mainPane.add(missionLabelPanel, LayerCode.MissionLabel.getCode());

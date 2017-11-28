@@ -2,6 +2,7 @@ package cisc275.group3.controller;
 
 import cisc275.group3.model.scene.Scene;
 import cisc275.group3.model.scene.SceneBay;
+import cisc275.group3.utility.EstuaryFacts;
 import cisc275.group3.utility.LayerCode;
 import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.ViewGame;
@@ -39,6 +40,7 @@ public abstract class ControllerScene implements Serializable {
   protected ViewGame viewGame;
   protected static JLabel mouseLabel;
   protected static HashMap<String, Component> componentList;
+
   
   // Window Components
   protected JLayeredPane mainPane;
@@ -102,12 +104,35 @@ public abstract class ControllerScene implements Serializable {
   public void displayMission() {
 	    String missionNum;
 	    
+	    EstuaryFacts facts = new EstuaryFacts(); //facts.getRandomFact(1);
 	    
 	    missionNum = Integer.toString(Scene.getCurrentMission().getObjectNum());
 	    
 	    if (((missionNum.equals("0")) && (Scene.getCurrentMission().getTargetObject() != null)) || (missionNum.equals("-2"))) {
 	    	missionNum = "Complete!";
-	    	Scene.setCurrentFact("Fact about " + Scene.getCurrentMission().getObjectName());
+	    	switch(Scene.getCurrentMission().getTargetNameForFact()) {
+		    	case "Striped Bass": 
+		    		Scene.setCurrentFact(facts.getRandomFact(6));
+		    		break;
+			    case "American Shad":
+			    	Scene.setCurrentFact(facts.getRandomFact(5));
+			    	break;
+			    case "Shortnose Sturgeon":
+			    	Scene.setCurrentFact(facts.getRandomFact(4));
+			    	break;
+			    case "Atlantic Blue Crab":
+			    	Scene.setCurrentFact(facts.getRandomFact(2));
+			    	break;
+			    case "Horseshoe Crab":
+			    	Scene.setCurrentFact(facts.getRandomFact(3));
+			    	break;
+			    case "Great Blue Heron":
+			    	Scene.setCurrentFact(facts.getRandomFact(0));
+			    	break;
+			    case "Invasive Plant":
+			    	Scene.setCurrentFact(facts.getRandomFact(1));
+			    	break;
+	    	}
 	    	Scene.getCurrentMission().setTargetObject(null);
 	    	Scene.getCurrentMission().setObjectNum(-2);
 	    	((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(null);

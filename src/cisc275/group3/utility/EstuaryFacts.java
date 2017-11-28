@@ -12,7 +12,7 @@ import java.util.Random;
  * @author Thomas
  */
 public final class EstuaryFacts {
-	private String[][] facts = new String[6][5];
+	private String[][] facts = new String[7][5];
 	private Random randGen = new Random();
 
 	  /**
@@ -47,9 +47,9 @@ public final class EstuaryFacts {
 		//3 - Horsesoe Crab  https://s3.amazonaws.com/delawareestuary/publications/factsheets/HORSECRA.PDF
 		facts[3][0] = "The Delaware Estraury is home to the largest population of horshoe crabs!";
 		facts[3][1] = "Adult horseshoe crabs migrate from the Atlanic Ocean to the Delaware beaches to spawn every spring!";
-		facts[3][2] = "The female digs several inches into the sand and lays a series of “clusters” of eggs!";
+		facts[3][2] = "The female digs several inches into the sand and lays a series of \"clusters\" of eggs!";
 		facts[3][3] = "Female horshoe crabs lay eggs in clusters that can contain upwards of 4,000 eggs!";
-		facts[3][4] = "The male crab attaches to the back of a female crab’s shell as she comes ashore to spawn!";
+		facts[3][4] = "The male crab attaches to the back of a female crab's shell as she comes ashore to spawn!";
 		
 		//4- Shortnosed Sturgeon
 		facts[4][0] = "Shortnosed Sturgeon have been known to breach, or jump out of the water. Scientists\r\n " +
