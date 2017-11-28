@@ -33,7 +33,7 @@ public class GameController implements Serializable {
 	private final int SCREEN_WIDTH;
 	private final int SCREEN_HEIGHT;
 	private final GameWindow GAME_FRAME;
-	private final boolean PLAY_TUTORIAL = true;
+	private boolean tutorial;
 
 	// Game Variables
 	private int totalTime;
@@ -54,6 +54,8 @@ public class GameController implements Serializable {
 	public GameController(int x, int y) {
 		SCREEN_WIDTH = x;
 		SCREEN_HEIGHT = y;
+		
+		tutorial = true;
 
 		// Create game window
 		GAME_FRAME = new GameWindow(SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -63,8 +65,9 @@ public class GameController implements Serializable {
 		layerMap = new HashMap<String, Component>();
 		loopRun = true;
 
-		if (PLAY_TUTORIAL) {
+		if (tutorial) {
 			initTutorial();
+			gameTime();
 		} else {
 			initGame();
 			gameTime();
@@ -107,6 +110,16 @@ public class GameController implements Serializable {
 		Timer timer = new Timer(100, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (loopRun) {
+					if(tutorial == true) {
+						if(((ControllerTutorial)controlMap.get("Tutorial")).tutorialDone()) {
+							controlMap.clear();
+							layerMap.clear();
+							GAME_FRAME.getMainPane().removeAll();
+							tutorial = false;
+							initGame();
+							gameTime();
+						}						
+					}
 					controlMap.forEach((k, v) -> {
 						// Model Object Updates
 						switch (k) {
@@ -116,6 +129,7 @@ public class GameController implements Serializable {
 						case "Wetland":
 						case "BeachMini":
 						case "EndGame":
+						case "Tutorial":
 							((LinkDynamics) v).update();
 							break;
 						}

@@ -46,7 +46,7 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 	// Tutorial Layer Variables
 	ViewOverlayButton tutorialButton;
 	ViewOverlayLabel tutorialLabel;
-	
+
 	public ControllerHQ(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType) {
 		super(w, h, f, cl, sceneType);
 
@@ -59,32 +59,31 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 
 		viewGame.setBounds(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 		viewGame.setName("HQLayer");
-		
-    // Set Cursor
-    viewGame.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		
+
+		// Set Cursor
+		viewGame.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
 		mainPane.setLayer(viewGame, LayerCode.HQ.getCode());
 		mainPane.add(viewGame, LayerCode.HQ.getCode());
 
 		componentList.put("HQ", viewGame);
 
-		statusLabel = new ViewOverlayLabel((SCREEN_WIDTH/4)+300, (SCREEN_HEIGHT/4)-100, "  ");
-		statusLabel.setBounds((SCREEN_WIDTH/4)+300, (SCREEN_HEIGHT/4)-100, 700, 400);
+		statusLabel = new ViewOverlayLabel((SCREEN_WIDTH / 4) + 300, (SCREEN_HEIGHT / 4) - 100, "  ");
+		statusLabel.setBounds((SCREEN_WIDTH / 4) + 300, (SCREEN_HEIGHT / 4) - 100, 700, 400);
 
 		statusLabel.setName("MissionFact");
 		mainPane.setLayer(statusLabel, LayerCode.MissionFact.getCode());
 		mainPane.add(statusLabel, LayerCode.MissionFact.getCode());
 
 		componentList.put("MissionFact", statusLabel);
-		
-    if (sceneType == 1) {
-      //mainPane.setLayer(statusLabel, LayerCode.MainTop.getCode());
-      
-      tutorialStepOne();
-    }
+
+		if (sceneType == 1) {
+			// mainPane.setLayer(statusLabel, LayerCode.MainTop.getCode());
+
+			tutorialStepOne();
+		}
 	}
 
-	
 	@Override
 	protected void addML() {
 	}
@@ -114,7 +113,8 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 	 */
 	@Override
 	public void updateTime() {
-		if ((scene.getTime() < 1) && !(Scene.getCurrentMission().isDoneMission()) && !(Scene.getCurrentMission().getTargetObject() == null)) {
+		if ((scene.getTime() < 1) && !(Scene.getCurrentMission().isDoneMission())
+				&& !(Scene.getCurrentMission().getTargetObject() == null)) {
 			((SceneHQ) scene).missionScoreFail();
 			scene.resetTime();
 			Scene.getCurrentMission().setObjectNum(-5);
@@ -122,10 +122,10 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 			Scene.getCurrentMission().setTargetObject(null);
 			displayMission();
 			ControllerInventory.removeItem(Scene.getCurrentMission().getObjectName());
-			((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(null);
-		} 
-		
-		if ((!Scene.getCurrentMission().isDoneMission()) && !(Scene.getCurrentMission().getTargetObject() == null)){
+			((ViewOverlayLabel) componentList.get("MissionLabel")).updateIcon(null);
+		}
+
+		if ((!Scene.getCurrentMission().isDoneMission()) && !(Scene.getCurrentMission().getTargetObject() == null)) {
 			((SceneHQ) scene).updateTime();
 		} else {
 			if (((SceneHQ) scene).getTime() != 0) {
@@ -155,7 +155,7 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 	/**
 	 * Demonstrate Getting a Mission
 	 */
-	private void tutorialStepOne() { 		
+	private void tutorialStepOne() {
 		// Get Mission Label
 		ImageIcon getMissionLabelIcon = new ImageIcon("img/tutorial_arrow_upLeft.png");
 		ImageIcon getMissionLabelBG = new ImageIcon("img/tutorial_labelLeft_bg.png");
@@ -163,184 +163,195 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 		tutorialLabel.setBounds(480, 100, 780, 300);
 		tutorialLabel.setName("GetMissionLabel");
 		tutorialLabel.getLabel().setFont(new Font("Roboto", Font.BOLD, 48));
-		
+
 		mainPane.setLayer(tutorialLabel, LayerCodeTutorial.LabelGetMissionHidden.getCode());
 		mainPane.add(tutorialLabel, LayerCodeTutorial.LabelGetMissionHidden.getCode());
-    componentList.put("GetMissionLabel", tutorialLabel);
-    
-    // Get Mission Button
-    ImageIcon getMissionButtonIcon = new ImageIcon("img/tutorial_getMission_button.png");
-    tutorialButton = new ViewOverlayButton(getMissionButtonIcon, 400, 600);
-    tutorialButton.setBounds(100, 0, 400, 600);
-    tutorialButton.setName("GetMissionButton");   
-    
-    mainPane.setLayer(tutorialButton, LayerCodeTutorial.ButtonGetMissionHidden.getCode());
-    mainPane.add(tutorialButton, LayerCodeTutorial.ButtonGetMissionHidden.getCode());
-    componentList.put("GetMissionButton", tutorialButton);
-    
-    tutorialButton.getOverButton().addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        mainPane.setLayer(componentList.get("GetMissionButton"), LayerCodeTutorial.ButtonGetMissionHidden.getCode());
-        mainPane.setLayer(componentList.get("GetMissionLabel"), LayerCodeTutorial.LabelGetMissionHidden.getCode());
+		componentList.put("GetMissionLabel", tutorialLabel);
 
-        tutorialStepTwo();
-        
-        mainPane.setLayer(componentList.get("ObjectiveLabel"), LayerCodeTutorial.LabelObjective.getCode());
-        mainPane.setLayer(componentList.get("ObjectiveArrow"), LayerCodeTutorial.LabelObjectiveArrow.getCode());
-        mainPane.setLayer(componentList.get("ObjectiveLabelSpeech"), LayerCodeTutorial.LabelObjectiveSpeech.getCode());
-        mainPane.setLayer(componentList.get("ContinueButton"), LayerCodeTutorial.ButtonContinue.getCode());
-      }
-    });
+		// Get Mission Button
+		ImageIcon getMissionButtonIcon = new ImageIcon("img/tutorial_getMission_button.png");
+		tutorialButton = new ViewOverlayButton(getMissionButtonIcon, 400, 600);
+		tutorialButton.setBounds(100, 0, 400, 600);
+		tutorialButton.setName("GetMissionButton");
+
+		mainPane.setLayer(tutorialButton, LayerCodeTutorial.ButtonGetMissionHidden.getCode());
+		mainPane.add(tutorialButton, LayerCodeTutorial.ButtonGetMissionHidden.getCode());
+		componentList.put("GetMissionButton", tutorialButton);
+
+		tutorialButton.getOverButton().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mainPane.setLayer(componentList.get("GetMissionButton"),
+						LayerCodeTutorial.ButtonGetMissionHidden.getCode());
+				mainPane.setLayer(componentList.get("GetMissionLabel"),
+						LayerCodeTutorial.LabelGetMissionHidden.getCode());
+
+				tutorialStepTwo();
+
+				mainPane.setLayer(componentList.get("ObjectiveLabel"), LayerCodeTutorial.LabelObjective.getCode());
+				mainPane.setLayer(componentList.get("ObjectiveArrow"), LayerCodeTutorial.LabelObjectiveArrow.getCode());
+				mainPane.setLayer(componentList.get("ObjectiveLabelSpeech"),
+						LayerCodeTutorial.LabelObjectiveSpeech.getCode());
+				mainPane.setLayer(componentList.get("ContinueButton"), LayerCodeTutorial.ButtonContinue.getCode());
+			}
+		});
 	}
-	
+
 	/**
 	 * Demonstrate Objectives
 	 */
 	private void tutorialStepTwo() {
-	   // Objective Label
-    ImageIcon labelIcon = new ImageIcon("img/tutorial_mission_objectives.png");
-    tutorialLabel = new ViewOverlayLabel(labelIcon, 200, 85, "");
-    tutorialLabel.setBounds(SCREEN_WIDTH/2-100, -5, 200, 85);
-    tutorialLabel.setName("ObjectiveLabel");
-    tutorialLabel.getLabel().setFont(new Font("Roboto", Font.BOLD, 48));
-    
-    mainPane.setLayer(tutorialLabel, LayerCodeTutorial.LabelObjectiveHidden.getCode());
-    mainPane.add(tutorialLabel, LayerCodeTutorial.LabelObjectiveHidden.getCode());
-    componentList.put("ObjectiveLabel", tutorialLabel);
-    
-    // Objective Arrow Label
-    labelIcon = new ImageIcon("img/tutorial_arrow_upLeft.png");
-    tutorialLabel = new ViewOverlayLabel(null, labelIcon, 150, 120,"");
-    tutorialLabel.setBounds(SCREEN_WIDTH/2+110, -5, 150, 120);
-    tutorialLabel.setName("ObjectiveArrow");
-    
-    mainPane.setLayer(tutorialLabel, LayerCodeTutorial.LabelObjectiveArrowHidden.getCode());
-    mainPane.add(tutorialLabel, LayerCodeTutorial.LabelObjectiveArrowHidden.getCode());
-    componentList.put("ObjectiveArrow", tutorialLabel); 
-    
-    // Objective Speech Label
-    labelIcon = new ImageIcon("img/tutorial_speechBubble_bg.png");
-    ImageIcon offsetIcon = new ImageIcon("img/tutorial_speechBubble_offset.png");
-    tutorialLabel = new ViewOverlayLabel(offsetIcon, labelIcon, 400, 250, "<html><br><br>Your mission objectives are up top.<br><br>We could really use a Horseshoe Crab, a Heron, and a Striped Bass!<html>");
-    tutorialLabel.setBounds(470, 110, 400, 250);
-    tutorialLabel.setName("ObjectiveSpeech");
-    tutorialLabel.getLabel().setFont(new Font("Roboto", Font.BOLD, 22));
-    tutorialLabel.getLabel().setHorizontalAlignment(JLabel.LEFT);
-    tutorialLabel.getLabel().setVerticalAlignment(JLabel.TOP);
-    
-    mainPane.setLayer(tutorialLabel, LayerCodeTutorial.LabelObjectiveSpeechHidden.getCode());
-    mainPane.add(tutorialLabel, LayerCodeTutorial.LabelObjectiveSpeechHidden.getCode());
-    componentList.put("ObjectiveLabelSpeech", tutorialLabel); 
-    
-    // Objective Continue Button
-    ImageIcon tutorialButtonIcon = new ImageIcon("img/tutorial_continue_button.png");
-    tutorialButton = new ViewOverlayButton(tutorialButtonIcon, 100, 100);
-    tutorialButton.setBounds(SCREEN_WIDTH-150, SCREEN_HEIGHT-200, 100, 100);
-    tutorialButton.setName("Continue");   
-    
-    mainPane.setLayer(tutorialButton, LayerCodeTutorial.ButtonContinueHidden.getCode());
-    mainPane.add(tutorialButton, LayerCodeTutorial.ButtonContinueHidden.getCode());
-    componentList.put("ContinueButton", tutorialButton);
-    
-    tutorialButton.getOverButton().addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {  
-        mainPane.setLayer(componentList.get("ObjectiveLabelSpeech"), LayerCodeTutorial.LabelObjectiveSpeechHidden.getCode());
-        mainPane.setLayer(componentList.get("ObjectiveArrow"), LayerCodeTutorial.LabelObjectiveArrowHidden.getCode());
+		// Objective Label
+		ImageIcon labelIcon = new ImageIcon("img/tutorial_mission_objectives.png");
+		tutorialLabel = new ViewOverlayLabel(labelIcon, 200, 85, "");
+		tutorialLabel.setBounds(SCREEN_WIDTH / 2 - 100, -5, 200, 85);
+		tutorialLabel.setName("ObjectiveLabel");
+		tutorialLabel.getLabel().setFont(new Font("Roboto", Font.BOLD, 48));
 
-        tutorialStepThree();
-        
-        mainPane.setLayer(componentList.get("InventoryButton"), LayerCodeTutorial.ButtonInventory.getCode());
-        mainPane.setLayer(componentList.get("InventoryArrow"), LayerCodeTutorial.LabelInventoryArrow.getCode());
-        mainPane.setLayer(componentList.get("InventorySpeech"), LayerCodeTutorial.LabelInventorySpeech.getCode());
-      }
-    });
+		mainPane.setLayer(tutorialLabel, LayerCodeTutorial.LabelObjectiveHidden.getCode());
+		mainPane.add(tutorialLabel, LayerCodeTutorial.LabelObjectiveHidden.getCode());
+		componentList.put("ObjectiveLabel", tutorialLabel);
+
+		// Objective Arrow Label
+		labelIcon = new ImageIcon("img/tutorial_arrow_upLeft.png");
+		tutorialLabel = new ViewOverlayLabel(null, labelIcon, 150, 120, "");
+		tutorialLabel.setBounds(SCREEN_WIDTH / 2 + 110, -5, 150, 120);
+		tutorialLabel.setName("ObjectiveArrow");
+
+		mainPane.setLayer(tutorialLabel, LayerCodeTutorial.LabelObjectiveArrowHidden.getCode());
+		mainPane.add(tutorialLabel, LayerCodeTutorial.LabelObjectiveArrowHidden.getCode());
+		componentList.put("ObjectiveArrow", tutorialLabel);
+
+		// Objective Speech Label
+		labelIcon = new ImageIcon("img/tutorial_speechBubble_bg.png");
+		ImageIcon offsetIcon = new ImageIcon("img/tutorial_speechBubble_offset.png");
+		tutorialLabel = new ViewOverlayLabel(offsetIcon, labelIcon, 400, 250,
+				"<html><br><br>Your mission objectives are up top.<br><br>We could really use a Horseshoe Crab, a Heron, and a Striped Bass!<html>");
+		tutorialLabel.setBounds(470, 110, 400, 250);
+		tutorialLabel.setName("ObjectiveSpeech");
+		tutorialLabel.getLabel().setFont(new Font("Roboto", Font.BOLD, 22));
+		tutorialLabel.getLabel().setHorizontalAlignment(JLabel.LEFT);
+		tutorialLabel.getLabel().setVerticalAlignment(JLabel.TOP);
+
+		mainPane.setLayer(tutorialLabel, LayerCodeTutorial.LabelObjectiveSpeechHidden.getCode());
+		mainPane.add(tutorialLabel, LayerCodeTutorial.LabelObjectiveSpeechHidden.getCode());
+		componentList.put("ObjectiveLabelSpeech", tutorialLabel);
+
+		// Objective Continue Button
+		ImageIcon tutorialButtonIcon = new ImageIcon("img/tutorial_continue_button.png");
+		tutorialButton = new ViewOverlayButton(tutorialButtonIcon, 100, 100);
+		tutorialButton.setBounds(SCREEN_WIDTH - 150, SCREEN_HEIGHT - 200, 100, 100);
+		tutorialButton.setName("Continue");
+
+		mainPane.setLayer(tutorialButton, LayerCodeTutorial.ButtonContinueHidden.getCode());
+		mainPane.add(tutorialButton, LayerCodeTutorial.ButtonContinueHidden.getCode());
+		componentList.put("ContinueButton", tutorialButton);
+
+		tutorialButton.getOverButton().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mainPane.setLayer(componentList.get("ObjectiveLabelSpeech"),
+						LayerCodeTutorial.LabelObjectiveSpeechHidden.getCode());
+				mainPane.setLayer(componentList.get("ObjectiveArrow"),
+						LayerCodeTutorial.LabelObjectiveArrowHidden.getCode());
+
+				tutorialStepThree();
+
+				mainPane.setLayer(componentList.get("InventoryButton"), LayerCodeTutorial.ButtonInventory.getCode());
+				mainPane.setLayer(componentList.get("InventoryArrow"), LayerCodeTutorial.LabelInventoryArrow.getCode());
+				mainPane.setLayer(componentList.get("InventorySpeech"),
+						LayerCodeTutorial.LabelInventorySpeech.getCode());
+			}
+		});
 	}
-	
+
 	/**
 	 * Demonstrate Inventory
 	 */
 	private void tutorialStepThree() {
-	  // Objective Arrow Label
-    ImageIcon labelIcon = new ImageIcon("img/tutorial_arrow_rightUp.png");
-    tutorialLabel = new ViewOverlayLabel(null, labelIcon, 150, 120,"");
-    tutorialLabel.setBounds(20, 120, 150, 120);
-    tutorialLabel.setName("InventoryArrow");
-    
-    mainPane.setLayer(tutorialLabel, LayerCodeTutorial.LabelInventoryArrowHidden.getCode());
-    mainPane.add(tutorialLabel, LayerCodeTutorial.LabelInventoryArrowHidden.getCode());
-    componentList.put("InventoryArrow", tutorialLabel); 
-    
-    // Objective Speech Label
-    labelIcon = new ImageIcon("img/tutorial_speechBubble_bg.png");
-    ImageIcon offsetIcon = new ImageIcon("img/tutorial_speechBubble_offset.png");
-    tutorialLabel = new ViewOverlayLabel(offsetIcon, labelIcon, 400, 250, "<html><br><br>That's your inventory.<br><br>Once you've collected an item, it'll appear in your bag.<html>");
-    tutorialLabel.setBounds(470, 110, 400, 250);
-    tutorialLabel.setName("InventorySpeech");
-    tutorialLabel.getLabel().setFont(new Font("Roboto", Font.BOLD, 22));
-    tutorialLabel.getLabel().setHorizontalAlignment(JLabel.LEFT);
-    tutorialLabel.getLabel().setVerticalAlignment(JLabel.TOP);
-    
-    mainPane.setLayer(tutorialLabel, LayerCodeTutorial.LabelInventorySpeechHidden.getCode());
-    mainPane.add(tutorialLabel, LayerCodeTutorial.LabelInventorySpeechHidden.getCode());
-    componentList.put("InventorySpeech", tutorialLabel); 
-    
-    // Continue Button
-    tutorialButton.getOverButton().removeActionListener(tutorialButton.getOverButton().getActionListeners()[0]);
-    tutorialButton.getOverButton().addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) { 
-        mainPane.setLayer(componentList.get("InventorySpeech"), LayerCodeTutorial.LabelInventorySpeechHidden.getCode());
-        mainPane.setLayer(componentList.get("InventoryArrow"), LayerCodeTutorial.LabelInventoryArrowHidden.getCode());
+		// Objective Arrow Label
+		ImageIcon labelIcon = new ImageIcon("img/tutorial_arrow_rightUp.png");
+		tutorialLabel = new ViewOverlayLabel(null, labelIcon, 150, 120, "");
+		tutorialLabel.setBounds(20, 120, 150, 120);
+		tutorialLabel.setName("InventoryArrow");
 
-        tutorialStepFour();
-        
-        mainPane.setLayer(componentList.get("ToolsButton"), LayerCodeTutorial.ButtonTools.getCode());
-        mainPane.setLayer(componentList.get("ToolsArrow"), LayerCodeTutorial.LabelToolsArrow.getCode());
-        mainPane.setLayer(componentList.get("ToolsSpeech"), LayerCodeTutorial.LabelToolsSpeech.getCode());
-      }
-    });
-  }
-	
+		mainPane.setLayer(tutorialLabel, LayerCodeTutorial.LabelInventoryArrowHidden.getCode());
+		mainPane.add(tutorialLabel, LayerCodeTutorial.LabelInventoryArrowHidden.getCode());
+		componentList.put("InventoryArrow", tutorialLabel);
+
+		// Objective Speech Label
+		labelIcon = new ImageIcon("img/tutorial_speechBubble_bg.png");
+		ImageIcon offsetIcon = new ImageIcon("img/tutorial_speechBubble_offset.png");
+		tutorialLabel = new ViewOverlayLabel(offsetIcon, labelIcon, 400, 250,
+				"<html><br><br>That's your inventory.<br><br>Once you've collected an item, it'll appear in your bag.<html>");
+		tutorialLabel.setBounds(470, 110, 400, 250);
+		tutorialLabel.setName("InventorySpeech");
+		tutorialLabel.getLabel().setFont(new Font("Roboto", Font.BOLD, 22));
+		tutorialLabel.getLabel().setHorizontalAlignment(JLabel.LEFT);
+		tutorialLabel.getLabel().setVerticalAlignment(JLabel.TOP);
+
+		mainPane.setLayer(tutorialLabel, LayerCodeTutorial.LabelInventorySpeechHidden.getCode());
+		mainPane.add(tutorialLabel, LayerCodeTutorial.LabelInventorySpeechHidden.getCode());
+		componentList.put("InventorySpeech", tutorialLabel);
+
+		// Continue Button
+		tutorialButton.getOverButton().removeActionListener(tutorialButton.getOverButton().getActionListeners()[0]);
+		tutorialButton.getOverButton().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mainPane.setLayer(componentList.get("InventorySpeech"),
+						LayerCodeTutorial.LabelInventorySpeechHidden.getCode());
+				mainPane.setLayer(componentList.get("InventoryArrow"),
+						LayerCodeTutorial.LabelInventoryArrowHidden.getCode());
+
+				tutorialStepFour();
+
+				mainPane.setLayer(componentList.get("ToolsButton"), LayerCodeTutorial.ButtonTools.getCode());
+				mainPane.setLayer(componentList.get("ToolsArrow"), LayerCodeTutorial.LabelToolsArrow.getCode());
+				mainPane.setLayer(componentList.get("ToolsSpeech"), LayerCodeTutorial.LabelToolsSpeech.getCode());
+			}
+		});
+	}
+
 	/**
 	 * Demonstrate Tools
 	 */
 	private void tutorialStepFour() {
-    // Objective Arrow Label
-    ImageIcon labelIcon = new ImageIcon("img/tutorial_arrow_leftUp.png");
-    tutorialLabel = new ViewOverlayLabel(null, labelIcon, 150, 120,"");
-    tutorialLabel.setBounds(SCREEN_WIDTH-220, 80, 150, 120);
-    tutorialLabel.setName("ToolsArrow");
-    
-    mainPane.setLayer(tutorialLabel, LayerCodeTutorial.LabelToolsArrowHidden.getCode());
-    mainPane.add(tutorialLabel, LayerCodeTutorial.LabelToolsArrowHidden.getCode());
-    componentList.put("ToolsArrow", tutorialLabel); 
-    
-    // Objective Speech Label
-    labelIcon = new ImageIcon("img/tutorial_speechBubble_bg.png");
-    ImageIcon offsetIcon = new ImageIcon("img/tutorial_speechBubble_offset.png");
-    tutorialLabel = new ViewOverlayLabel(offsetIcon, labelIcon, 400, 250, "<html><br><br>Your tools are all over here.<br><br>Make sure you choose the right tool for the job.<html>");
-    tutorialLabel.setBounds(470, 110, 400, 250);
-    tutorialLabel.setName("ToolsSpeech");
-    tutorialLabel.getLabel().setFont(new Font("Roboto", Font.BOLD, 22));
-    tutorialLabel.getLabel().setHorizontalAlignment(JLabel.LEFT);
-    tutorialLabel.getLabel().setVerticalAlignment(JLabel.TOP);
-    
-    mainPane.setLayer(tutorialLabel, LayerCodeTutorial.LabelToolsSpeechHidden.getCode());
-    mainPane.add(tutorialLabel, LayerCodeTutorial.LabelToolsSpeechHidden.getCode());
-    componentList.put("ToolsSpeech", tutorialLabel); 
-    
-    // Continue Button
-    tutorialButton.getOverButton().removeActionListener(tutorialButton.getOverButton().getActionListeners()[0]);
-    tutorialButton.getOverButton().addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) { 
-        mainPane.setLayer(componentList.get("ToolsSpeech"), LayerCodeTutorial.LabelToolsSpeechHidden.getCode());
-        mainPane.setLayer(componentList.get("ToolsArrow"), LayerCodeTutorial.LabelToolsArrowHidden.getCode());
+		// Objective Arrow Label
+		ImageIcon labelIcon = new ImageIcon("img/tutorial_arrow_leftUp.png");
+		tutorialLabel = new ViewOverlayLabel(null, labelIcon, 150, 120, "");
+		tutorialLabel.setBounds(SCREEN_WIDTH - 220, 80, 150, 120);
+		tutorialLabel.setName("ToolsArrow");
 
-        mainPane.setLayer(componentList.get("MapButton"), LayerCodeTutorial.ButtonMap.getCode());
-      }
-    });
-  }
+		mainPane.setLayer(tutorialLabel, LayerCodeTutorial.LabelToolsArrowHidden.getCode());
+		mainPane.add(tutorialLabel, LayerCodeTutorial.LabelToolsArrowHidden.getCode());
+		componentList.put("ToolsArrow", tutorialLabel);
+
+		// Objective Speech Label
+		labelIcon = new ImageIcon("img/tutorial_speechBubble_bg.png");
+		ImageIcon offsetIcon = new ImageIcon("img/tutorial_speechBubble_offset.png");
+		tutorialLabel = new ViewOverlayLabel(offsetIcon, labelIcon, 400, 250,
+				"<html><br><br>Your tools are all over here.<br><br>Make sure you choose the right tool for the job.<html>");
+		tutorialLabel.setBounds(470, 110, 400, 250);
+		tutorialLabel.setName("ToolsSpeech");
+		tutorialLabel.getLabel().setFont(new Font("Roboto", Font.BOLD, 22));
+		tutorialLabel.getLabel().setHorizontalAlignment(JLabel.LEFT);
+		tutorialLabel.getLabel().setVerticalAlignment(JLabel.TOP);
+
+		mainPane.setLayer(tutorialLabel, LayerCodeTutorial.LabelToolsSpeechHidden.getCode());
+		mainPane.add(tutorialLabel, LayerCodeTutorial.LabelToolsSpeechHidden.getCode());
+		componentList.put("ToolsSpeech", tutorialLabel);
+
+		// Continue Button
+		tutorialButton.getOverButton().removeActionListener(tutorialButton.getOverButton().getActionListeners()[0]);
+		tutorialButton.getOverButton().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mainPane.setLayer(componentList.get("ToolsSpeech"), LayerCodeTutorial.LabelToolsSpeechHidden.getCode());
+				mainPane.setLayer(componentList.get("ToolsArrow"), LayerCodeTutorial.LabelToolsArrowHidden.getCode());
+				tutorialButton.setBounds(1, 1, 2, 2);
+				mainPane.setLayer(componentList.get("MapButton"), LayerCodeTutorial.ButtonMap.getCode());
+			}
+		});
+	}
 }

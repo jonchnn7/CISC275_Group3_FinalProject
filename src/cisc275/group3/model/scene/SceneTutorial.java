@@ -73,5 +73,8 @@ public class SceneTutorial extends Scene implements ConstructCrab, ConstructFish
   
   @Override
   public void update() {
+	  if(sceneItems.size() == 0) {
+		  System.out.println("Tutorial Done");
+	  }
   }
 }

@@ -63,6 +63,49 @@ public abstract class Scene implements Serializable {
 	 * Every subclass must define how to update itself
 	 */
 	abstract public void update();
+	
+	public boolean tutClick(double clickX, double clickY) {
+		for (Iterator<SceneObject> iterator = sceneItems.iterator(); iterator.hasNext();) {
+			SceneObject sceneItem = iterator.next();
+
+			// Compatibility Check
+			if (currentTool == null) {
+				return false;
+			}
+
+			switch (sceneItem.getPassport().getName()) {
+			// Beta Crabs
+			case "Cristmas Island Red Crab":
+			case "Atlantic Blue Crab":
+			case "Horseshoe Crab":
+				if (SceneObjectType.BetaCrab.searchCompatability(currentTool.getName())) {
+						iterator.remove();
+						return true;
+				}
+				break;
+
+			// Beta Fishies
+			case "Striped Bass":
+			case "Shortnose Sturgeon":
+			case "American Shad":
+				if (SceneObjectType.BetaFish.searchCompatability(currentTool.getName())) {
+						iterator.remove();
+						return true;
+				}
+				break;
+
+			// Beta Heronz
+			case "Great Blue Heron":
+				if (SceneObjectType.BetaHeron.searchCompatability(currentTool.getName())) {
+						iterator.remove();
+						return true;
+				}
+				break;
+			}
+		}
+		return false;
+	}
+
 
 	/**
 	 * Process Click Events from Controller. If a scene object is clicked on, its

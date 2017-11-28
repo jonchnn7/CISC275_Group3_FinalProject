@@ -47,7 +47,7 @@ public class ControllerTutorial extends ControllerScene implements LinkDynamics,
     
     componentList.put("Tutorial", viewGame);
   
-   addML();
+   addML(true);
   }
 
   /**
@@ -59,11 +59,11 @@ public class ControllerTutorial extends ControllerScene implements LinkDynamics,
    */
   @Override
   public void update() {
-    if (mainPane.getLayer(componentList.get("Tutorial")) == LayerCode.MainTop.getCode()) {
+    //if (mainPane.getLayer(componentList.get("Tutorial")) == LayerCode.MainTop.getCode()) {
       // Update Model
       scene.update();
       viewGame.updatePanel(scene.getSceneItems());
-    }
+    //}
   }
 
   /**
@@ -94,4 +94,12 @@ public class ControllerTutorial extends ControllerScene implements LinkDynamics,
     sceneTime = Integer.toString(scene.getTime());
     ((ViewOverlayLabel)componentList.get("TimeLabel")).updateLabel(sceneTime);
   }
+  
+  public boolean tutorialDone() {
+	  if(scene.getSceneItems().size() == 0) {
+		  return true;
+	  }
+	  return false;
+  }
+  
 }
