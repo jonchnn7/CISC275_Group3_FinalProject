@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import cisc275.group3.model.scene.Scene;
+import cisc275.group3.utility.LayerCode;
 import cisc275.group3.utility.Mission;
 import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.ViewOverlayLabel;
@@ -38,7 +39,7 @@ public class ControllerMission extends ControllerScene implements LinkDynamics, 
 		 
 		 addMissionButton();
 		 
-		 mainPane.setLayer(missionPanel, -20);
+		 mainPane.setLayer(missionPanel, LayerCode.MissionHide.getCode());
 		 mainPane.add(missionPanel, -20);
 		 componentList.put("Mission", missionPanel);
 	}

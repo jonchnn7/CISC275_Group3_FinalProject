@@ -70,8 +70,6 @@ public class SceneTutorial extends Scene implements ConstructCrab, ConstructFish
                    getManifest().getHeight()*4/5 - 80, // y location
                    true,
                    true)); 
-
-    System.out.println(sceneItems);
   }
   
   @Override

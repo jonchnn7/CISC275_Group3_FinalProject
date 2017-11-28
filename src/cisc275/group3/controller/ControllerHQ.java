@@ -16,6 +16,7 @@ import cisc275.group3.utility.LayerCode;
 import cisc275.group3.utility.Mission;
 import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.ViewGame;
+import cisc275.group3.view.ViewOverlayButton;
 import cisc275.group3.view.ViewOverlayLabel;
 
 /**
@@ -37,6 +38,10 @@ import cisc275.group3.view.ViewOverlayLabel;
 public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkTime {
 	private final String BG_IMAGE = "img/HQ_bg_v3.jpg";
 	private ViewOverlayLabel statusLabel;
+
+	// Tutorial Layer Variables
+	ViewOverlayButton getMissionButton;
+	ViewOverlayLabel getMissionLabel;
 	
 	public ControllerHQ(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType) {
 		super(w, h, f, cl, sceneType);
@@ -61,6 +66,12 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 		statusLabel.setName("MissionFact");
 		mainPane.setLayer(statusLabel, LayerCode.MissionFact.getCode());
 		mainPane.add(statusLabel, LayerCode.MissionFact.getCode());
+
+		if (sceneType == 1) {
+			//mainPane.setLayer(statusLabel, LayerCode.MainTop.getCode());
+			
+			tutorialStepOne();
+		}
 	}
 
 	
@@ -125,5 +136,10 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 
 		sceneTime = Integer.toString(((SceneHQ) scene).getTime());
 		((ViewOverlayLabel) componentList.get("TimeLabel")).updateLabel(sceneTime);
+	}
+
+	private void tutorialStepOne() {
+		ImageIcon getMissionIcon = new ImageIcon("img/tutorial_GetMission_Button.png");
+		getMissionButton = new ViewOverlayButton(getMissionIcon, 400, 600);
 	}
 }
