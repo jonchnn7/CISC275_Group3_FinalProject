@@ -318,4 +318,13 @@ public abstract class Scene implements Serializable {
 	public void missionScore() {
 		score += this.getTime();
 	}
+
+	/**
+	 * Update score by subtracting 50
+	 */
+	public void missionScoreFail() {
+		score -= 50;
+	}
+	
+	
 }
