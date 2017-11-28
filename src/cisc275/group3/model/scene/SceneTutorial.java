@@ -1,6 +1,5 @@
 package cisc275.group3.model.scene;
 
-import cisc275.group3.model.sceneobject.BetaCrab;
 import cisc275.group3.utility.ConstructCrab;
 import cisc275.group3.utility.ConstructFish;
 import cisc275.group3.utility.ConstructHeron;
