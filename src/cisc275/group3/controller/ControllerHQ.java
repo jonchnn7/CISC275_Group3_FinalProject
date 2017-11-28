@@ -56,11 +56,12 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 
 		componentList.put("HQ", viewGame);
 
-		statusLabel = new ViewOverlayLabel(200, 200, "TEST");
-		statusLabel.setBounds(200, 400, 200, 200);
+		statusLabel = new ViewOverlayLabel((SCREEN_WIDTH/4)+300, (SCREEN_HEIGHT/4)-100, "  ");
+		statusLabel.setBounds((SCREEN_WIDTH/4)+300, (SCREEN_HEIGHT/4)-100, 700, 400);
 		statusLabel.setName("MissionFact");
 		mainPane.setLayer(statusLabel, LayerCode.MissionFact.getCode());
 		mainPane.add(statusLabel, LayerCode.MissionFact.getCode());
+		componentList.put("MissionFact", statusLabel);
 
 	}
 
@@ -81,6 +82,8 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 			// Update Model
 			((SceneHQ) scene).update();
 			viewGame.updatePanel(scene.getSceneItems());
+			statusLabel.getLabel().setFont(new Font("Roboto", Font.BOLD, 18));
+			statusLabel.getLabel().setForeground(Color.PINK);
 			statusLabel.updateLabel(Scene.getCurrentFact());
 		}
 	}

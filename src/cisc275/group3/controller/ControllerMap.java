@@ -87,12 +87,14 @@ public class ControllerMap extends ControllerScene {
 	      public void actionPerformed(ActionEvent e) {
 	        Component hqComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("HQ")))[0];
 	        Component missionComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Mission")))[0];
+	        Component factComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("MissionFact")))[0];
 	        
 	        // Reset all layers and mouse, then 
 	        // move hq and mission layer forward
 	        setDefaultLayers();
 	        mainPane.setLayer(hqComponent, LayerCode.MainAll.getCode());
 	        mainPane.setLayer(missionComponent, LayerCode.Mission.getCode());
+	        mainPane.setLayer(factComponent, LayerCode.MissionFact.getCode());
 	        
 	        if (Scene.getCurrentMission().getObjectNum() == -1) {
 	        	Scene.getCurrentMission().setObjectNum(-5);
