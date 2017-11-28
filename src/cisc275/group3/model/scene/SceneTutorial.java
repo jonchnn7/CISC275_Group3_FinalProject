@@ -1,6 +1,5 @@
 package cisc275.group3.model.scene;
 
-import cisc275.group3.model.sceneobject.BetaCrab;
 import cisc275.group3.utility.ConstructCrab;
 import cisc275.group3.utility.ConstructFish;
 import cisc275.group3.utility.ConstructHeron;
@@ -70,8 +69,6 @@ public class SceneTutorial extends Scene implements ConstructCrab, ConstructFish
                    getManifest().getHeight()*4/5 - 80, // y location
                    true,
                    true)); 
-
-    System.out.println(sceneItems);
   }
   
   @Override

@@ -5,6 +5,7 @@ import java.util.HashMap;
 import cisc275.group3.model.scene.SceneTutorial;
 import cisc275.group3.model.scene.Scene;
 import cisc275.group3.utility.LayerCode;
+import cisc275.group3.utility.LayerCodeTutorial;
 import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.ViewGame;
 import cisc275.group3.view.ViewOverlayLabel;
@@ -33,7 +34,7 @@ public class ControllerTutorial extends ControllerScene implements LinkDynamics,
   }
 
   @Override
-  protected void createScene(int sceneType) {    
+  protected void createScene() {    
     scene = new SceneTutorial("Tutorial", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, BG_IMAGE, sceneType);
     viewGame = new ViewGame(SCREEN_WIDTH, SCREEN_HEIGHT, scene.getSceneItems(), scene.getManifest().getBG());
     
@@ -41,8 +42,8 @@ public class ControllerTutorial extends ControllerScene implements LinkDynamics,
     viewGame.setBounds(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     viewGame.setName("TutorialLayer");
     
-    mainPane.setLayer(viewGame, LayerCode.Tutorial.getCode());
-    mainPane.add(viewGame, LayerCode.Tutorial.getCode());
+    mainPane.setLayer(viewGame, LayerCodeTutorial.TutorialScreen.getCode());
+    mainPane.add(viewGame, LayerCodeTutorial.TutorialScreen.getCode());
     
     componentList.put("Tutorial", viewGame);
   

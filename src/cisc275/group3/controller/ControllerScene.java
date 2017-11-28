@@ -37,6 +37,7 @@ public abstract class ControllerScene implements Serializable {
   
   // Scene Variables
   protected Scene scene;
+  protected int sceneType;
   protected ViewGame viewGame;
   protected static JLabel mouseLabel;
   protected static HashMap<String, Component> componentList;
@@ -57,7 +58,7 @@ public abstract class ControllerScene implements Serializable {
    * @param h 	int-scene height
    * @param f 	GameWindow-JFrame container
    * @param cl 	HashMap-associations of scene controllers and layers
-   * @param sceneType int- indicates how the scene should be initialized/updated
+   * @param sceneType int-indicates how the scene should be initialized/updated
    */
   public ControllerScene(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType) {
     SCREEN_WIDTH = w;
@@ -65,8 +66,9 @@ public abstract class ControllerScene implements Serializable {
     GAME_FRAME = f;
  
     componentList = cl;
+    this.sceneType = sceneType;
     mainPane = GAME_FRAME.getMainPane();
-    createScene(sceneType);
+    createScene();
   }
   
   /**
@@ -76,10 +78,8 @@ public abstract class ControllerScene implements Serializable {
    * <p>
    * The view overlay uses JLayeredPane to place the toolbar items 
    * in the foreground and the game panel in the background.
-   * 
-   * @param sceneType int- indicates how the scene should be initialized/updated
    */
-  abstract protected void createScene(int sceneType);
+  abstract protected void createScene();
   
   /**
    * Adds a mouse listener to the scene background and passes clicks

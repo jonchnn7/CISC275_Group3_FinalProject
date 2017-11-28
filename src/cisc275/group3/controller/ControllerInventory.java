@@ -16,6 +16,7 @@ import cisc275.group3.model.sceneobject.BetaVegetation;
 import cisc275.group3.model.sceneobject.SceneObject;
 import cisc275.group3.utility.ConstructHeron;
 import cisc275.group3.utility.LayerCode;
+import cisc275.group3.utility.LayerCodeTutorial;
 import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.ViewGame;
 
@@ -50,7 +51,7 @@ public class ControllerInventory extends ControllerScene {
   }
   
   @Override
-  protected void createScene(int sceneType) {
+  protected void createScene() {
 	  
     scene = new SceneInventory("Inventory", 0, 0, 300, 300, 3, "img/inventory_menu_small.png");
     viewGame = new ViewGame(300, 300, scene.getSceneItems(), scene.getManifest().getBG());
@@ -59,8 +60,14 @@ public class ControllerInventory extends ControllerScene {
     viewGame.setBounds(100, 0, 300, 300);
     viewGame.setName("InventoryLayer");
 
-    mainPane.setLayer(viewGame, LayerCode.Inventory.getCode());
-    mainPane.add(viewGame, LayerCode.Inventory.getCode());
+    if (sceneType == 1) {
+      mainPane.setLayer(viewGame, LayerCodeTutorial.InventoryHidden.getCode());
+      mainPane.add(viewGame, LayerCodeTutorial.InventoryHidden.getCode());
+    } else {
+      mainPane.setLayer(viewGame, LayerCode.Inventory.getCode());
+      mainPane.add(viewGame, LayerCode.Inventory.getCode());
+    }
+    
     componentList.put("Inventory", viewGame);
   }
   

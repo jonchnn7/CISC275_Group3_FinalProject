@@ -47,7 +47,7 @@ public class ControllerEndGame extends ControllerScene implements LinkDynamics{
 	}
 
 	@Override
-	protected void createScene(int sceneType) {
+	protected void createScene() {
 		endGamePanel = new JPanel() {};
 		scene = new SceneHQ("EndGame", 0, 0, 1, 1, "", 3);
 		

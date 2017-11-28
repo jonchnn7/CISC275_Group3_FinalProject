@@ -28,6 +28,10 @@ public class SceneHQ extends Scene {
 	public SceneHQ(SceneId mani) {
 		super(mani);
 		time = 0;
+
+		if (getManifest().getSceneType() == 1) {
+			tutorialFill();
+		}
 	}
 
 	/**
@@ -58,6 +62,10 @@ public class SceneHQ extends Scene {
 	@Override
 	protected void fillScene() {
 		// TODO Auto-generated method stub
+	}
+
+	private void tutorialFill() {
+		
 	}
 
 	/**

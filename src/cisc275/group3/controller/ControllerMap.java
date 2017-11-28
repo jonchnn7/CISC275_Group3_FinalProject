@@ -52,7 +52,7 @@ public class ControllerMap extends ControllerScene {
   }
   
   @Override
-  protected void createScene(int sceneType) {
+  protected void createScene() {
     mapPanel = new JPanel(true) {
       @Override
       public void paintComponent(Graphics g) {
