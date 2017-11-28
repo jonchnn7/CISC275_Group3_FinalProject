@@ -1,6 +1,7 @@
 package cisc275.group3.utility;
 
 public enum LayerCodeTutorial {
+  ButtonMap(70),
   LabelToolsSpeech(70), ToolsPanel(71),
   ButtonTools(60), LabelToolsArrow(61),
   LabelInventoryArrow(50), LabelInventorySpeech(51),
@@ -16,7 +17,8 @@ public enum LayerCodeTutorial {
   ButtonInventoryHidden(-30), InventoryHidden(-31),
   LabelInventoryArrowHidden(-40), LabelInventorySpeechHidden(-41),
   ButtonToolsHidden(-50), LabelToolsArrowHidden(-51),
-  LabelToolsSpeechHidden(-52), ToolsPanelHidden(-53);
+  LabelToolsSpeechHidden(-52), ToolsPanelHidden(-53),
+  ButtonMapHidden(-60);
   
   private final int code;
   

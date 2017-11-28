@@ -151,20 +151,30 @@ public class ControllerOverlay extends ControllerScene {
     mapButtonPanel.setBounds(180, SCREEN_HEIGHT-mapButtonHeight, mapButtonWidth, mapButtonHeight);
     mapButtonPanel.setName("MapButton");
     
-    mainPane.setLayer(mapButtonPanel, LayerCode.MapButton.getCode());
-    mainPane.add(mapButtonPanel, LayerCode.MapButton.getCode());
-	    
+    if (sceneType == 1) {
+      mainPane.setLayer(mapButtonPanel, LayerCodeTutorial.ButtonMapHidden.getCode());
+      mainPane.add(mapButtonPanel, LayerCodeTutorial.ButtonMapHidden.getCode());
+    } else {
+      mainPane.setLayer(mapButtonPanel, LayerCode.MapButton.getCode());
+      mainPane.add(mapButtonPanel, LayerCode.MapButton.getCode());
+    }
     componentList.put("MapButton", mapButtonPanel);
     
     mapButtonPanel.getOverButton().addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        Component mapComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Map")))[0];
-         
-        if (mainPane.getLayer(mapComponent) == LayerCode.Map.getCode()) {
-          mainPane.setLayer(mapComponent, LayerCode.MapOverlay.getCode());
-        } else {
-          mainPane.setLayer(mapComponent, LayerCode.Map.getCode());
+        if (sceneType == 1) {
+          mainPane.setLayer(componentList.get("HQ"), -100);
+          mainPane.setLayer(componentList.get("Tutorial"), LayerCodeTutorial.MainTop.getCode());
+        } else {  
+          Component mapComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Map")))[0];
+          
+           
+          if (mainPane.getLayer(mapComponent) == LayerCode.Map.getCode()) {
+            mainPane.setLayer(mapComponent, LayerCode.MapOverlay.getCode());
+          } else {
+            mainPane.setLayer(mapComponent, LayerCode.Map.getCode());
+          }
         }
       }
     });

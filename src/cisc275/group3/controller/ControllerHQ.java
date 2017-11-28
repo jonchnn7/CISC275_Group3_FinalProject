@@ -339,6 +339,7 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
         mainPane.setLayer(componentList.get("ToolsSpeech"), LayerCodeTutorial.LabelToolsSpeechHidden.getCode());
         mainPane.setLayer(componentList.get("ToolsArrow"), LayerCodeTutorial.LabelToolsArrowHidden.getCode());
 
+        mainPane.setLayer(componentList.get("MapButton"), LayerCodeTutorial.ButtonMap.getCode());
       }
     });
   }
