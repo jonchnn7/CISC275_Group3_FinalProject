@@ -8,6 +8,7 @@ import java.util.HashMap;
 import javax.swing.ImageIcon;
 
 import cisc275.group3.utility.LayerCode;
+import cisc275.group3.utility.LayerCodeTutorial;
 import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.ViewOverlayButton;
 import cisc275.group3.view.ViewOverlayLabel;
@@ -114,7 +115,7 @@ public class ControllerOverlay extends ControllerScene {
     inventoryButtonWidth = 100;
     inventoryButtonHeight = 130;
     
-    createScene(sceneType);
+    createScene();    
   }
 
   /**
@@ -124,7 +125,7 @@ public class ControllerOverlay extends ControllerScene {
    * Overridden from ControllerScene.java
    */
   @Override
-  protected void createScene(int sceneType) {
+  protected void createScene() {
     // Create Buttons
     createMapButton();
     createToolsButton();
@@ -190,12 +191,12 @@ public class ControllerOverlay extends ControllerScene {
     toolsButtonPanel.getOverButton().addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        Component mapComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Tools")))[0];
+        Component toolsComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Tools")))[0];
            
-        if (mainPane.getLayer(mapComponent) == LayerCode.Tools.getCode()) {
-          mainPane.setLayer(mapComponent, LayerCode.ToolsOverlay.getCode()); 
+        if (mainPane.getLayer(toolsComponent) == LayerCode.Tools.getCode()) {
+          mainPane.setLayer(toolsComponent, LayerCode.ToolsOverlay.getCode()); 
         } else {
-          mainPane.setLayer(mapComponent, LayerCode.Tools.getCode());
+          mainPane.setLayer(toolsComponent, LayerCode.Tools.getCode());
         }
       }
     });    
@@ -214,23 +215,27 @@ public class ControllerOverlay extends ControllerScene {
 	  inventoryButtonPanel.setBounds(0, 0, inventoryButtonWidth, inventoryButtonHeight);
 	  inventoryButtonPanel.setName("InventoryButton");
 	    
+	  if (sceneType == 1) {
+	    mainPane.setLayer(inventoryButtonPanel, LayerCodeTutorial.ButtonInventoryHidden.getCode());
+	    mainPane.add(inventoryButtonPanel, LayerCodeTutorial.ButtonInventoryHidden.getCode());
+	  } else {
 	    mainPane.setLayer(inventoryButtonPanel, LayerCode.InventoryButton.getCode());
 	    mainPane.add(inventoryButtonPanel, LayerCode.InventoryButton.getCode());
-		    
-	    componentList.put("InventoryButton", inventoryButtonPanel);
+	  }    
+	  componentList.put("InventoryButton", inventoryButtonPanel);
 	    
-	    inventoryButtonPanel.getOverButton().addActionListener(new ActionListener() {
-	      @Override
-	      public void actionPerformed(ActionEvent e) {
-	        Component inventoryComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Inventory")))[0];
-	         
-	        if (mainPane.getLayer(inventoryComponent) == LayerCode.Inventory.getCode()) {
-	          mainPane.setLayer(inventoryComponent, LayerCode.InventoryOverlay.getCode()); 
-	        } else {
-	          mainPane.setLayer(inventoryComponent, LayerCode.Inventory.getCode());
-	        }
-	      }
-	    });
+	  inventoryButtonPanel.getOverButton().addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        Component inventoryComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Inventory")))[0];
+         
+        if (mainPane.getLayer(inventoryComponent) == LayerCode.Inventory.getCode()) {
+          mainPane.setLayer(inventoryComponent, LayerCode.InventoryOverlay.getCode()); 
+        } else {
+          mainPane.setLayer(inventoryComponent, LayerCode.Inventory.getCode());
+        }
+      }
+    });
 	   
   }
   

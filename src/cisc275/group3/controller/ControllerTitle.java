@@ -45,7 +45,7 @@ public class ControllerTitle extends ControllerScene implements LinkDynamics, Li
 	}
 
 	@Override
-	protected void createScene(int sceneType) {
+	protected void createScene() {
 		titlePanel = new JPanel(true) {
 			@Override
 			public void paintComponent(Graphics g) {

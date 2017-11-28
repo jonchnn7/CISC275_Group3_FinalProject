@@ -60,7 +60,7 @@ public class ControllerTools extends ControllerScene {
 	}
 
 	@Override
-	protected void createScene(int sceneType) {
+	protected void createScene() {
 		Dimension toolSize = new Dimension(75, 300);
 		toolPanel = new JPanel(true) {
 			@Override

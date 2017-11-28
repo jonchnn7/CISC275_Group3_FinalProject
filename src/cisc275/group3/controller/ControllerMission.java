@@ -30,7 +30,7 @@ public class ControllerMission extends ControllerScene implements LinkDynamics, 
     }
     
 	@Override
-	protected void createScene(int sceneType) {
+	protected void createScene() {
 		 missionPanel = new JPanel(true);
 		 
 		 missionPanel.setLayout(null);

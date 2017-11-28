@@ -34,7 +34,7 @@ public class ControllerBay extends ControllerScene implements LinkDynamics, Link
   }
 
   @Override
-  protected void createScene(int sceneType) {    
+  protected void createScene() {    
     scene = new SceneBay("Bay", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, BG_IMAGE, sceneType);
     viewGame = new ViewGame(SCREEN_WIDTH, SCREEN_HEIGHT, scene.getSceneItems(), scene.getManifest().getBG());
     
