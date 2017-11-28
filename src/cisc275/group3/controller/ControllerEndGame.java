@@ -32,7 +32,6 @@ import cisc275.group3.view.GameWindow;
  * 
  * @author Scott
  * @author Ryan
- * @author Jolyne
  */
 public class ControllerEndGame extends ControllerScene implements LinkDynamics{
 

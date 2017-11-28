@@ -23,8 +23,7 @@ import cisc275.group3.view.ViewOverlayLabel;
  * ControllerBay.java
  * <p>
  * @author Scott 
- * @author Jon 
- * @author Jolyne 
+ * @author Jon  
  */
 public class ControllerTutorial extends ControllerScene implements LinkDynamics, LinkTime {
   private final String BG_IMAGE = "img/tutorial_bg.jpg";

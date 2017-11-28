@@ -1,5 +1,14 @@
 package cisc275.group3.utility;
 
+/**
+ * This is where the information for the mission is kept.  This is where the target object for 
+ * the mision is stored, as well as how many of that object and if the mission is done. 
+ * <p>
+ * Mission.java
+ * <p>
+ * @author Jolyne
+ */
+
 import java.awt.Color;
 
 import cisc275.group3.model.sceneobject.BetaCrab;

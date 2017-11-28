@@ -17,6 +17,15 @@ import cisc275.group3.utility.Mission;
 import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.ViewOverlayLabel;
 
+/**
+ * The Mission controller deals with the controller aspect of missions. This is where we are actually 
+ * able to see the mission 
+ * <p>
+ * ControllerMission.java
+ * <p> 
+ * @author Jolyne
+ */
+
 public class ControllerMission extends ControllerScene implements LinkDynamics, LinkTime {
 	private JPanel missionPanel;
 	private JButton missionButton;
