@@ -110,28 +110,35 @@ public abstract class ControllerScene implements Serializable {
 	    
 	    if (((missionNum.equals("0")) && (Scene.getCurrentMission().getTargetObject() != null)) || (missionNum.equals("-2"))) {
 	    	missionNum = "Complete!";
-	    	String s = "";
+	    	System.out.println(Scene.getCurrentMission().getTargetNameForFact());
 	    	switch(Scene.getCurrentMission().getTargetNameForFact()) {
 		    	case "Striped Bass": 
-		    		Scene.setCurrentFact(facts.getRandomFact(1));
+		    		Scene.setCurrentFact(facts.getRandomFact(6));
+		    		System.out.println("1");
 		    		break;
 			    case "American Shad":
-			    	Scene.setCurrentFact(facts.getRandomFact(1));
+			    	Scene.setCurrentFact(facts.getRandomFact(5));
+			    	System.out.println("2");
 			    	break;
 			    case "Shortnose Sturgeon":
-			    	Scene.setCurrentFact(facts.getRandomFact(1));
+			    	Scene.setCurrentFact(facts.getRandomFact(4));
+			    	System.out.println("3");
 			    	break;
 			    case "Atlantic Blue Crab":
-			    	Scene.setCurrentFact(facts.getRandomFact(1));
+			    	Scene.setCurrentFact(facts.getRandomFact(2));
+			    	System.out.println("4");
 			    	break;
 			    case "Horseshoe Crab":
-			    	Scene.setCurrentFact(facts.getRandomFact(1));
+			    	Scene.setCurrentFact(facts.getRandomFact(3));
+			    	System.out.println("5");
 			    	break;
 			    case "Great Blue Heron":
-			    	Scene.setCurrentFact(facts.getRandomFact(1));
+			    	Scene.setCurrentFact(facts.getRandomFact(0));
+			    	System.out.println("6");
 			    	break;
 			    case "Invasive Plant":
 			    	Scene.setCurrentFact(facts.getRandomFact(1));
+			    	System.out.println("7");
 			    	break;
 	    	}
 	    	Scene.getCurrentMission().setTargetObject(null);
