@@ -39,10 +39,15 @@ public class ControllerInventory extends ControllerScene {
   private static double inventory_y = 0;
   private static double inventory_y_max = 0;
   
-  /**
-   * Constructor that calls ControllerScene super
-   * and places proper background image
-   */
+ /**
+  * Constructor that calls ControllerScene super
+  * and places proper background image
+  * @param w width
+  * @param h height
+  * @param f gamewindow
+  * @param cl component in hashmap
+  * @param sceneType integer of what scenetype
+  */
   public ControllerInventory(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType) {
 	    super(w, h, f, cl, sceneType);
 	    inventoryBg = new ImageIcon("img/inventory_menu.png");
