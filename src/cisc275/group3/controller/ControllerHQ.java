@@ -1,9 +1,14 @@
 package cisc275.group3.controller;
 
+import java.awt.Color;
 import java.awt.Component;
+import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.util.HashMap;
 
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 import cisc275.group3.model.scene.Scene;
 import cisc275.group3.model.scene.SceneHQ;
@@ -31,9 +36,14 @@ import cisc275.group3.view.ViewOverlayLabel;
  */
 public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkTime {
 	private final String BG_IMAGE = "img/HQ_bg_v3.jpg";
-
+	private JLabel statusLabel;
+	
+	private int LABEL_WIDTH;
+	private int LABEL_HEIGHT;
+	
 	public ControllerHQ(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType) {
 		super(w, h, f, cl, sceneType);
+
 	}
 
 	@Override
@@ -49,9 +59,34 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 
 		componentList.put("HQ", viewGame);
 
-		addML();
+		makeStatusLabel();
+		viewGame.add(statusLabel);
 	}
 
+	protected void makeStatusLabel()
+	{
+		LABEL_WIDTH = 500;
+	    LABEL_HEIGHT = 500;
+	     
+	    String labelString = "HIIIIIIIIIIIIIIIIIII";
+	     
+	    statusLabel = new JLabel(labelString);
+	      
+	    statusLabel.setBounds(SCREEN_WIDTH/4,SCREEN_HEIGHT/4, LABEL_WIDTH, LABEL_HEIGHT);
+	    statusLabel.setSize(LABEL_WIDTH, LABEL_HEIGHT);
+	    statusLabel.setFont(new Font("Roboto", Font.BOLD, 40));
+	    statusLabel.setForeground(Color.black);
+	    statusLabel.setFocusable(false);
+	    statusLabel.setMinimumSize(new Dimension(LABEL_WIDTH, LABEL_HEIGHT));
+	    statusLabel.setPreferredSize(new Dimension(LABEL_WIDTH, LABEL_HEIGHT));
+	    statusLabel.setMaximumSize(new Dimension(LABEL_WIDTH, LABEL_HEIGHT));
+	    statusLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+	    statusLabel.setBackground(Color.BLUE);
+	    statusLabel.setOpaque(true);
+	    
+	    viewGame.add(statusLabel);
+	}
+	
 	@Override
 	protected void addML() {
 	}
@@ -68,6 +103,12 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 			// Update Model
 			((SceneHQ) scene).update();
 			viewGame.updatePanel(scene.getSceneItems());
+			statusLabel.setText(Scene.getCurrentFact());
+			statusLabel.setBounds(SCREEN_WIDTH/4,SCREEN_HEIGHT/4, LABEL_WIDTH, LABEL_HEIGHT);
+			statusLabel.setSize(LABEL_WIDTH, LABEL_HEIGHT);
+			statusLabel.setFont(new Font("Roboto", Font.BOLD, 40));
+			statusLabel.setForeground(Color.black);
+			//System.out.println(statusLabel.getText());
 		}
 	}
 
@@ -79,10 +120,14 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 	@Override
 	public void updateTime() {
 		if ((scene.getTime() < 1) && !(Scene.getCurrentMission().isDoneMission()) && !(Scene.getCurrentMission().getTargetObject() == null)) {
-			Scene.setCurrentMission(new Mission(null, -1));
 			((SceneHQ) scene).missionScoreFail();
 			((SceneHQ) scene).resetTime();
-			((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/blank.png"));
+			Scene.getCurrentMission().setObjectNum(-5);
+			Scene.getCurrentMission().setDoneMission(true);
+			Scene.getCurrentMission().setTargetObject(null);
+			displayMission();
+			ControllerInventory.removeItem(Scene.getCurrentMission().getObjectName());
+			((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(null);
 		} if ((!Scene.getCurrentMission().isDoneMission()) && !(Scene.getCurrentMission().getTargetObject() == null)){
 			((SceneHQ) scene).updateTime();
 		} else {

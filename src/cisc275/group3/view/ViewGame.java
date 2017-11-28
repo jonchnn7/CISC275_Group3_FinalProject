@@ -45,11 +45,12 @@ public class ViewGame extends JPanel {
       }
       g2d.drawImage(currentImg, (int)item.getLocation().getX(), (int)item.getLocation().getY(), this);
     });
+    /*
     if (Scene.getCurrentMission().isDoneMission() && (Scene.getCurrentMission().getObjectNum() == -5) && (Scene.getCurrentMission().getTargetObject() == null)) {
     	g2d.setColor(Color.WHITE);
-    	g2d.setFont(new Font("Roboto", Font.BOLD, 40));
+    	g2d.setFont(new Font("Roboto", Font.BOLD, 20));
     	g2d.drawString(Scene.getCurrentFact(), FRAME_WIDTH/4, FRAME_HEIGHT/4);
-    }
+    }*/
     g2d.dispose();
   }
 	  
