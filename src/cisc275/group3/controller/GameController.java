@@ -66,7 +66,7 @@ public class GameController implements Serializable {
 	}
 	
 	private void initTutorial() {
-	  
+		controlMap.put("Tutorial", new ControllerTutorial(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 2));
 	}
 
 	/**
