@@ -73,7 +73,7 @@ public class SceneHQ extends Scene {
 		if (this.getManifest().getSceneType() == 2) {
 			if (sceneItems.size() < 1) {
 				sceneItems.add(ConstructPerson.constructPerson(randGen.nextInt(20) - 10, // depth
-						1, // type
+						0, // type
 						1280, // x location
 						75)); // y location
 			}
