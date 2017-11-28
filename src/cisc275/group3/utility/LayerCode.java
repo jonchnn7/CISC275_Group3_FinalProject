@@ -7,7 +7,7 @@ package cisc275.group3.utility;
  */
 public enum LayerCode {
   MainTop(20),
-  Mission(12), MapButton(11), MapOverlay(10), MainMap(9), // Layers for Map + Game Only
+  MissionFact(13),  Mission(12), MapButton(11), MapOverlay(10), MainMap(9), // Layers for Map + Game Only
   ToolsButton(8), ToolsOverlay(7), MainMapTools(5), // Layers for Map + Tools + Game
   TimeLabel(4), MainMapToolsTime(3), // Layers for Map + Tools + Time + Game 
   ScoreLabel(2), MissionLabel(1), MainAll(0), // Layers for Time + Score + Game with all the fixins

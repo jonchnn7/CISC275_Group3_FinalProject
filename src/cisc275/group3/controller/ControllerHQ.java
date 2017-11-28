@@ -36,10 +36,7 @@ import cisc275.group3.view.ViewOverlayLabel;
  */
 public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkTime {
 	private final String BG_IMAGE = "img/HQ_bg_v3.jpg";
-	private JLabel statusLabel;
-	
-	private int LABEL_WIDTH;
-	private int LABEL_HEIGHT;
+	private ViewOverlayLabel statusLabel;
 	
 	public ControllerHQ(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType) {
 		super(w, h, f, cl, sceneType);
@@ -53,39 +50,20 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 
 		viewGame.setBounds(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 		viewGame.setName("HQLayer");
-
+		
 		mainPane.setLayer(viewGame, LayerCode.HQ.getCode());
 		mainPane.add(viewGame, LayerCode.HQ.getCode());
 
 		componentList.put("HQ", viewGame);
 
-		makeStatusLabel();
-		viewGame.add(statusLabel);
+		statusLabel = new ViewOverlayLabel(200, 200, "TEST");
+		statusLabel.setBounds(200, 400, 200, 200);
+		statusLabel.setName("MissionFact");
+		mainPane.setLayer(statusLabel, LayerCode.MissionFact.getCode());
+		mainPane.add(statusLabel, LayerCode.MissionFact.getCode());
+
 	}
 
-	protected void makeStatusLabel()
-	{
-		LABEL_WIDTH = 500;
-	    LABEL_HEIGHT = 500;
-	     
-	    String labelString = "HIIIIIIIIIIIIIIIIIII";
-	     
-	    statusLabel = new JLabel(labelString);
-	      
-	    statusLabel.setBounds(SCREEN_WIDTH/4,SCREEN_HEIGHT/4, LABEL_WIDTH, LABEL_HEIGHT);
-	    statusLabel.setSize(LABEL_WIDTH, LABEL_HEIGHT);
-	    statusLabel.setFont(new Font("Roboto", Font.BOLD, 40));
-	    statusLabel.setForeground(Color.black);
-	    statusLabel.setFocusable(false);
-	    statusLabel.setMinimumSize(new Dimension(LABEL_WIDTH, LABEL_HEIGHT));
-	    statusLabel.setPreferredSize(new Dimension(LABEL_WIDTH, LABEL_HEIGHT));
-	    statusLabel.setMaximumSize(new Dimension(LABEL_WIDTH, LABEL_HEIGHT));
-	    statusLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
-	    statusLabel.setBackground(Color.BLUE);
-	    statusLabel.setOpaque(true);
-	    
-	    viewGame.add(statusLabel);
-	}
 	
 	@Override
 	protected void addML() {
@@ -103,12 +81,7 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 			// Update Model
 			((SceneHQ) scene).update();
 			viewGame.updatePanel(scene.getSceneItems());
-			statusLabel.setText(Scene.getCurrentFact());
-			statusLabel.setBounds(SCREEN_WIDTH/4,SCREEN_HEIGHT/4, LABEL_WIDTH, LABEL_HEIGHT);
-			statusLabel.setSize(LABEL_WIDTH, LABEL_HEIGHT);
-			statusLabel.setFont(new Font("Roboto", Font.BOLD, 40));
-			statusLabel.setForeground(Color.black);
-			//System.out.println(statusLabel.getText());
+			statusLabel.updateLabel(Scene.getCurrentFact());
 		}
 	}
 
