@@ -33,13 +33,13 @@ public class GameController implements Serializable {
 	private final int SCREEN_WIDTH;
 	private final int SCREEN_HEIGHT;
 	private final GameWindow GAME_FRAME;
+	private final boolean PLAY_TUTORIAL = false;
 
 	// Game Variables
 	private int totalTime;
 	private boolean loopRun;
 	private HashMap<String, ControllerScene> controlMap;
 	private HashMap<String, Component> layerMap;
-	private boolean playTutorial = true;
 
 	/**
 	 * Creates the overarching controller responsible for tracking the individual
@@ -63,7 +63,7 @@ public class GameController implements Serializable {
 		layerMap = new HashMap<String, Component>();
 		loopRun = true;
 
-		if (playTutorial) {
+		if (PLAY_TUTORIAL) {
 			initTutorial();
 		} else {
 			initGame();
@@ -72,7 +72,7 @@ public class GameController implements Serializable {
 	}
 
 	private void initTutorial() {
-		controlMap.put("Title", new ControllerTitle(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 3));
+		controlMap.put("Title", new ControllerTitle(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 1));
 		controlMap.put("Tutorial", new ControllerTutorial(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 1));
 		controlMap.put("HQ", new ControllerHQ(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 1));
 	}

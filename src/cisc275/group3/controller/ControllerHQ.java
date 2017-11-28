@@ -5,6 +5,8 @@ import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.HashMap;
 
 import javax.swing.ImageIcon;
@@ -13,6 +15,7 @@ import javax.swing.JLabel;
 import cisc275.group3.model.scene.Scene;
 import cisc275.group3.model.scene.SceneHQ;
 import cisc275.group3.utility.LayerCode;
+import cisc275.group3.utility.LayerCodeTutorial;
 import cisc275.group3.utility.Mission;
 import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.ViewGame;
@@ -92,7 +95,7 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 	public void update() {
 		if (mainPane.getLayer(componentList.get("HQ")) == LayerCode.MainAll.getCode()) {
 			// Update Model
-			((SceneHQ) scene).update();
+			scene.update();
 			viewGame.updatePanel(scene.getSceneItems());
 			statusLabel.getLabel().setFont(new Font("Roboto", Font.BOLD, 18));
 			statusLabel.getLabel().setForeground(Color.PINK);
@@ -109,19 +112,21 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 	public void updateTime() {
 		if ((scene.getTime() < 1) && !(Scene.getCurrentMission().isDoneMission()) && !(Scene.getCurrentMission().getTargetObject() == null)) {
 			((SceneHQ) scene).missionScoreFail();
-			((SceneHQ) scene).resetTime();
+			scene.resetTime();
 			Scene.getCurrentMission().setObjectNum(-5);
 			Scene.getCurrentMission().setDoneMission(true);
 			Scene.getCurrentMission().setTargetObject(null);
 			displayMission();
 			ControllerInventory.removeItem(Scene.getCurrentMission().getObjectName());
 			((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(null);
-		} if ((!Scene.getCurrentMission().isDoneMission()) && !(Scene.getCurrentMission().getTargetObject() == null)){
+		} 
+		
+		if ((!Scene.getCurrentMission().isDoneMission()) && !(Scene.getCurrentMission().getTargetObject() == null)){
 			((SceneHQ) scene).updateTime();
 		} else {
 			if (((SceneHQ) scene).getTime() != 0) {
-				((SceneHQ) scene).missionScore();
-				((SceneHQ) scene).resetTime();
+				scene.missionScore();
+				scene.resetTime();
 			}
 		}
 		if (mainPane.getLayer(componentList.get("HQ")) == LayerCode.MainAll.getCode()) {
@@ -139,12 +144,46 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 	public void displayTime() {
 		String sceneTime;
 
-		sceneTime = Integer.toString(((SceneHQ) scene).getTime());
+		sceneTime = Integer.toString(scene.getTime());
 		((ViewOverlayLabel) componentList.get("TimeLabel")).updateLabel(sceneTime);
 	}
 
 	private void tutorialStepOne() {
-		ImageIcon getMissionIcon = new ImageIcon("img/tutorial_GetMission_Button.png");
-		getMissionButton = new ViewOverlayButton(getMissionIcon, 400, 600);
+	  // Set Cursor
+	  viewGame.setCursor(new Cursor(Cursor.HAND_CURSOR));
+	  		
+		// Label
+		ImageIcon getMissionLabelIcon = new ImageIcon("img/tutorial_arrow_upLeft.png");
+		ImageIcon getMissionLabelBG = new ImageIcon("img/tutorial_labelLeft_bg.png");
+		getMissionLabel = new ViewOverlayLabel(getMissionLabelIcon, getMissionLabelBG, 780, 300, "Click for mission!");
+		getMissionLabel.setBounds(480, 100, 780, 300);
+		getMissionLabel.setName("GetMissionLabel");
+		getMissionLabel.getLabel().setFont(new Font("Roboto", Font.BOLD, 48));
+		
+		mainPane.setLayer(getMissionLabel, LayerCodeTutorial.LabelGetMissionHidden.getCode());
+		mainPane.add(getMissionLabel, LayerCodeTutorial.LabelGetMissionHidden.getCode());
+    componentList.put("GetMissionLabel", getMissionLabel);
+    
+    // Button
+    ImageIcon getMissionButtonIcon = new ImageIcon("img/tutorial_GetMission_Button.png");
+    getMissionButton = new ViewOverlayButton(getMissionButtonIcon, 400, 600);
+    getMissionButton.setBounds(100, 0, 400, 600);
+    getMissionButton.setName("GetMissionButton");   
+    
+    mainPane.setLayer(getMissionButton, LayerCodeTutorial.ButtonGetMissionHidden.getCode());
+    mainPane.add(getMissionButton, LayerCodeTutorial.ButtonGetMissionHidden.getCode());
+    componentList.put("GetMissionButton", getMissionButton);
+    
+    getMissionButton.getOverButton().addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        mainPane.setLayer(getMissionButton, LayerCodeTutorial.ButtonGetMissionHidden.getCode());
+        mainPane.setLayer(getMissionLabel, LayerCodeTutorial.LabelGetMissionHidden.getCode());
+        
+      
+        
+      }
+    });
+		
 	}
 }
