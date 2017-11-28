@@ -22,7 +22,7 @@ public class SceneTutorial extends Scene implements ConstructCrab, ConstructFish
 	super(mani);
 	
 	time = 0;
-    if(this.getManifest().getSceneType() == 2) {
+    if(this.getManifest().getSceneType() == 1) {
         fillScene();	
     }  
   }
@@ -60,16 +60,18 @@ public class SceneTutorial extends Scene implements ConstructCrab, ConstructFish
                    5, // depth
                    1, // type
                    getManifest().getWidth()*2/3-200 - 50, // x location 
-                   getManifest().getHeight()*4/5-50)); // y location    
+                   getManifest().getHeight()*4/5 - 60)); // y location    
     
     // Add Heron 
     sceneItems.add(ConstructHeron.constructRightHeron(
                    5, // depth
                    1, // type
                    getManifest().getWidth() - 200 - 50, // x location 
-                   getManifest().getHeight()*4/5-50, // y location
+                   getManifest().getHeight()*4/5 - 80, // y location
                    true,
                    true)); 
+
+    System.out.println(sceneItems);
   }
   
   @Override
