@@ -110,16 +110,29 @@ public class ControllerTools extends ControllerScene {
 			public void actionPerformed(ActionEvent e) {
 				Component toolComponent = mainPane
 						.getComponentsInLayer(mainPane.getLayer(componentList.get("Tools")))[0];
-
-				mainPane.setLayer(toolComponent, LayerCode.Tools.getCode());
-				if (Scene.getCurrentTool() instanceof ToolNet) {
-					Scene.setCurrentTool(null);
-					mouseLabel.setIcon(new ImageIcon("img/mouse_empty.png"));
-					mouseLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+				
+				if (sceneType == 1) {
+          mainPane.setLayer(toolComponent, LayerCodeTutorial.Tools.getCode());
+          if (Scene.getCurrentTool() instanceof ToolNet) {
+            Scene.setCurrentTool(null);
+            mouseLabel.setIcon(new ImageIcon("img/mouse_empty.png"));
+            mouseLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+          } else {
+            Scene.setCurrentTool(new ToolNet(0, 0, 0, 0));
+            mouseLabel.setIcon(new ImageIcon("img/mouse_net.png"));
+            mouseLabel.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
+          }
 				} else {
-					Scene.setCurrentTool(new ToolNet(0, 0, 0, 0));
-					mouseLabel.setIcon(new ImageIcon("img/mouse_net.png"));
-					mouseLabel.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
+  				mainPane.setLayer(toolComponent, LayerCode.Tools.getCode());
+  				if (Scene.getCurrentTool() instanceof ToolNet) {
+  					Scene.setCurrentTool(null);
+  					mouseLabel.setIcon(new ImageIcon("img/mouse_empty.png"));
+  					mouseLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+  				} else {
+  					Scene.setCurrentTool(new ToolNet(0, 0, 0, 0));
+  					mouseLabel.setIcon(new ImageIcon("img/mouse_net.png"));
+  					mouseLabel.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
+  				}
 				}
 			}
 		});
@@ -141,16 +154,29 @@ public class ControllerTools extends ControllerScene {
 			public void actionPerformed(ActionEvent e) {
 				Component toolComponent = mainPane
 						.getComponentsInLayer(mainPane.getLayer(componentList.get("Tools")))[0];
-
-				mainPane.setLayer(toolComponent, LayerCode.Tools.getCode());
-				if (Scene.getCurrentTool() instanceof ToolCamera) {
-					Scene.setCurrentTool(null);
-					mouseLabel.setIcon(new ImageIcon("img/mouse_empty.png"));
-					mouseLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+				
+				if (sceneType == 1) {
+          mainPane.setLayer(toolComponent, LayerCodeTutorial.Tools.getCode());
+          if (Scene.getCurrentTool() instanceof ToolCamera) {
+            Scene.setCurrentTool(null);
+            mouseLabel.setIcon(new ImageIcon("img/mouse_empty.png"));
+            mouseLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+          } else {
+            Scene.setCurrentTool(new ToolCamera(0, 0, 0, 0));
+            mouseLabel.setIcon(new ImageIcon("img/mouse_cam.png"));
+            mouseLabel.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
+          }
 				} else {
-					Scene.setCurrentTool(new ToolCamera(0, 0, 0, 0));
-					mouseLabel.setIcon(new ImageIcon("img/mouse_cam.png"));
-					mouseLabel.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
+  				mainPane.setLayer(toolComponent, LayerCode.Tools.getCode());
+  				if (Scene.getCurrentTool() instanceof ToolCamera) {
+  					Scene.setCurrentTool(null);
+  					mouseLabel.setIcon(new ImageIcon("img/mouse_empty.png"));
+  					mouseLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+  				} else {
+  					Scene.setCurrentTool(new ToolCamera(0, 0, 0, 0));
+  					mouseLabel.setIcon(new ImageIcon("img/mouse_cam.png"));
+  					mouseLabel.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
+  				}
 				}
 			}
 		});
@@ -172,17 +198,29 @@ public class ControllerTools extends ControllerScene {
 			public void actionPerformed(ActionEvent e) {
 				Component toolComponent = mainPane
 						.getComponentsInLayer(mainPane.getLayer(componentList.get("Tools")))[0];
-
-				mainPane.setLayer(toolComponent, LayerCode.Tools.getCode());
-				if (Scene.getCurrentTool() instanceof ToolCage) {
-					Scene.setCurrentTool(null);
-					mouseLabel.setIcon(new ImageIcon("img/mouse_empty.png"));
-					mouseLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+				
+				if (sceneType == 1) {
+          mainPane.setLayer(toolComponent, LayerCodeTutorial.Tools.getCode());
+          if (Scene.getCurrentTool() instanceof ToolCage) {
+            Scene.setCurrentTool(null);
+            mouseLabel.setIcon(new ImageIcon("img/mouse_empty.png"));
+            mouseLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+          } else {
+            Scene.setCurrentTool(new ToolCage(0, 0, 0, 0));
+            mouseLabel.setIcon(new ImageIcon("img/mouse_cage.png"));
+            mouseLabel.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
+          }
 				} else {
-					Scene.setCurrentTool(new ToolCage(0, 0, 0, 0));
-					mouseLabel.setIcon(new ImageIcon("img/mouse_cage.png"));
-					mouseLabel.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
-
+  				mainPane.setLayer(toolComponent, LayerCode.Tools.getCode());
+  				if (Scene.getCurrentTool() instanceof ToolCage) {
+  					Scene.setCurrentTool(null);
+  					mouseLabel.setIcon(new ImageIcon("img/mouse_empty.png"));
+  					mouseLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+  				} else {
+  					Scene.setCurrentTool(new ToolCage(0, 0, 0, 0));
+  					mouseLabel.setIcon(new ImageIcon("img/mouse_cage.png"));
+  					mouseLabel.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
+  				}
 				}
 			}
 		});

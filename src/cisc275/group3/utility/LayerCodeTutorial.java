@@ -18,7 +18,7 @@ public enum LayerCodeTutorial {
   LabelInventoryArrowHidden(-40), LabelInventorySpeechHidden(-41),
   ButtonToolsHidden(-50), LabelToolsArrowHidden(-51),
   LabelToolsSpeechHidden(-52), ToolsPanelHidden(-53),
-  ButtonMapHidden(-60);
+  ButtonMapHidden(-60), Tools(-70);
   
   private final int code;
   
