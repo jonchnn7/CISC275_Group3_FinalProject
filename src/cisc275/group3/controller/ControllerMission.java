@@ -83,7 +83,7 @@ public class ControllerMission extends ControllerScene implements LinkDynamics, 
 	    			String s = "";
 	    			switch(tmp) {
 		    			case 0: s = "Striped Bass";
-		    					((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/striped_bass_left.png"));
+		    					((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/striped_bass_icon.png"));
 		    					lastMission = 0;
 		    					break;
 		    			case 1: s = "American Shad";
