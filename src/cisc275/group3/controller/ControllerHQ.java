@@ -58,6 +58,7 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 
 		statusLabel = new ViewOverlayLabel((SCREEN_WIDTH/4)+300, (SCREEN_HEIGHT/4)-100, "  ");
 		statusLabel.setBounds((SCREEN_WIDTH/4)+300, (SCREEN_HEIGHT/4)-100, 700, 400);
+
 		statusLabel.setName("MissionFact");
 		mainPane.setLayer(statusLabel, LayerCode.MissionFact.getCode());
 		mainPane.add(statusLabel, LayerCode.MissionFact.getCode());

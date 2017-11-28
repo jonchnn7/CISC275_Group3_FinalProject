@@ -21,7 +21,7 @@ public interface ConstructPerson {
 	static final double AR = 0.66;
 
 	// Person ID Numbers
-	static final int[] ID = { 1, 2, 3 };
+	static final int[] ID = {50 , 51, 52 };
 
 	// Person x-axis Speed
 	static final int SPEED = 15;
