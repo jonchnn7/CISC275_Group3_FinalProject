@@ -183,20 +183,35 @@ public class ControllerOverlay extends ControllerScene {
     toolsButtonPanel.setBounds(SCREEN_WIDTH-75-toolsButtonWidth, 0, toolsButtonWidth, toolsButtonHeight);
     toolsButtonPanel.setName("ToolsButton");
       
-    mainPane.setLayer(toolsButtonPanel, LayerCode.ToolsButton.getCode());
-    mainPane.add(toolsButtonPanel, LayerCode.ToolsButton.getCode());
-          
+    if (sceneType == 1) {
+      mainPane.setLayer(toolsButtonPanel, LayerCodeTutorial.ButtonToolsHidden.getCode());
+      mainPane.add(toolsButtonPanel,LayerCodeTutorial.ButtonToolsHidden.getCode());
+    } else {
+      mainPane.setLayer(toolsButtonPanel, LayerCode.ToolsButton.getCode());
+      mainPane.add(toolsButtonPanel, LayerCode.ToolsButton.getCode());
+    }
+    
     componentList.put("ToolsButton", toolsButtonPanel);
       
     toolsButtonPanel.getOverButton().addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        Component toolsComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Tools")))[0];
-           
-        if (mainPane.getLayer(toolsComponent) == LayerCode.Tools.getCode()) {
-          mainPane.setLayer(toolsComponent, LayerCode.ToolsOverlay.getCode()); 
+        if (sceneType == 1) {
+          Component toolsComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Tools")))[0];
+        
+          if (mainPane.getLayer(toolsComponent) == LayerCodeTutorial.ToolsPanel.getCode()) {
+            mainPane.setLayer(toolsComponent, LayerCodeTutorial.ToolsPanelHidden.getCode()); 
+          } else {
+            mainPane.setLayer(toolsComponent, LayerCodeTutorial.ToolsPanel.getCode());
+          }
         } else {
-          mainPane.setLayer(toolsComponent, LayerCode.Tools.getCode());
+          Component toolsComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Tools")))[0];
+
+          if (mainPane.getLayer(toolsComponent) == LayerCode.Tools.getCode()) {
+            mainPane.setLayer(toolsComponent, LayerCode.ToolsOverlay.getCode()); 
+          } else {
+            mainPane.setLayer(toolsComponent, LayerCode.Tools.getCode());
+          }
         }
       }
     });    

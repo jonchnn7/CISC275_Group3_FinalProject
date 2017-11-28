@@ -29,6 +29,7 @@ import cisc275.group3.model.sceneobject.ToolCamera;
 import cisc275.group3.model.sceneobject.ToolNet;
 import cisc275.group3.model.sceneobject.ToolTrimmer;
 import cisc275.group3.utility.LayerCode;
+import cisc275.group3.utility.LayerCodeTutorial;
 import cisc275.group3.view.GameWindow;
 
 /**
@@ -78,11 +79,17 @@ public class ControllerTools extends ControllerScene {
 
 		addToolButtons();
 
-		mainPane.setLayer(toolPanel, LayerCode.Tools.getCode());
-		mainPane.add(toolPanel, LayerCode.Tools.getCode());
+		if (sceneType == 1) {
+      mainPane.setLayer(toolPanel, LayerCodeTutorial.ToolsPanelHidden.getCode());
+      mainPane.add(toolPanel, LayerCodeTutorial.ToolsPanelHidden.getCode());
+      tutorialToolOverlay();
+		} else {
+  		mainPane.setLayer(toolPanel, LayerCode.Tools.getCode());
+  		mainPane.add(toolPanel, LayerCode.Tools.getCode());
+  		toolOverlay();
+		}
+		
 		componentList.put("Tools", toolPanel);
-
-		toolOverlay();
 	}
 
 	private void addToolButtons() {
@@ -244,4 +251,29 @@ public class ControllerTools extends ControllerScene {
 			}
 		});
 	}
+	
+	 private void tutorialToolOverlay() {
+	    mouseLabel = new JLabel(new ImageIcon("img/mouse_empty.png"));
+	    mouseLabel.setBounds(0, 0, 100, 100);
+	    mouseLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
+	    mainPane.setLayer(mouseLabel, JLayeredPane.MODAL_LAYER);
+	    mainPane.add(mouseLabel, JLayeredPane.MODAL_LAYER);
+
+	    componentList.put("MouseLabel", mouseLabel);
+
+	    componentList.get("HQ").addMouseMotionListener(new MouseAdapter() {
+	      @Override
+	      public void mouseMoved(MouseEvent e) {
+	        mouseLabel.setLocation(e.getX() - 50, e.getY() - 50);
+	      }
+	    });
+
+	    componentList.get("Tutorial").addMouseMotionListener(new MouseAdapter() {
+	      @Override
+	      public void mouseMoved(MouseEvent e) {
+	        mouseLabel.setLocation(e.getX() - 50, e.getY() - 50);
+	      }
+	    });
+	  }
 }
