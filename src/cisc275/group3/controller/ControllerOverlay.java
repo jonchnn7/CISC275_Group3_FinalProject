@@ -274,7 +274,7 @@ public class ControllerOverlay extends ControllerScene {
   private void createMissionLabel() {
 	    missionLabelPanel = new ViewOverlayLabel(missionLabelImage, missionLabelBg, missionLabelWidth, missionLabelHeight, missionLabelString);
 	    missionLabelPanel.setBounds((SCREEN_WIDTH - missionLabelWidth)/2, 0, missionLabelWidth, missionLabelHeight);
-	    missionLabelPanel.setName("MissionLabel");
+      missionLabelPanel.setName("MissionLabel");
 	    
 	    mainPane.setLayer(missionLabelPanel, LayerCode.MissionLabel.getCode());
 	    mainPane.add(missionLabelPanel, LayerCode.MissionLabel.getCode());
