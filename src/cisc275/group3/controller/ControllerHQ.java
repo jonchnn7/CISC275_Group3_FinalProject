@@ -120,10 +120,14 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 	@Override
 	public void updateTime() {
 		if ((scene.getTime() < 1) && !(Scene.getCurrentMission().isDoneMission()) && !(Scene.getCurrentMission().getTargetObject() == null)) {
-			Scene.setCurrentMission(new Mission(null, -1));
 			((SceneHQ) scene).missionScoreFail();
 			((SceneHQ) scene).resetTime();
-			((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(new ImageIcon("img/blank.png"));
+			Scene.getCurrentMission().setObjectNum(-5);
+			Scene.getCurrentMission().setDoneMission(true);
+			Scene.getCurrentMission().setTargetObject(null);
+			displayMission();
+			ControllerInventory.removeItem(Scene.getCurrentMission().getObjectName());
+			((ViewOverlayLabel)componentList.get("MissionLabel")).updateIcon(null);
 		} if ((!Scene.getCurrentMission().isDoneMission()) && !(Scene.getCurrentMission().getTargetObject() == null)){
 			((SceneHQ) scene).updateTime();
 		} else {
