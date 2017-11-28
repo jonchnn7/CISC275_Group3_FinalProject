@@ -16,6 +16,7 @@ import cisc275.group3.utility.ObjectId;
  * <p>
  * @author Scott 
  * @author Ryan 
+ * @author Thomas
  */
 public class BetaCrab extends SceneObject implements ActionMove {
   private double speedX; // x-axis speed
@@ -58,7 +59,10 @@ public class BetaCrab extends SceneObject implements ActionMove {
   public BetaCrab(int d, int h, int id, String imFi, String n, int w, double x, double y, double sx, double sy, boolean lc) {
     this(new ObjectId(d, h, id, imFi, n, w), x, y, sx, sy, lc);
   }
-	
+
+  /**
+   * Move the crab
+   */
   @Override
   public void move() {
 	  double dx = speedX - speedX*0.1 + randGen.nextGaussian()*speedX*0.2;

@@ -1,5 +1,13 @@
 package cisc275.group3.model.sceneobject;
 
+/**
+ * Creating a trimmer tool 
+ * <p>
+ * ToolTrimmer.java
+ * <p>
+ * @author Jolyne
+ */
+
 public class ToolTrimmer extends ToolObject {
 
   public ToolTrimmer(int x, int y, int width, int height) {

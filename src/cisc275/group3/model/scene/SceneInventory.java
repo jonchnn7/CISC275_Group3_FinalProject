@@ -23,15 +23,27 @@ import cisc275.group3.utility.SceneId;
 @SuppressWarnings("serial")
 public class SceneInventory extends Scene  {
   
+/**
+ * Constructor
+ * 
+ * @param mani sceneid to identify inventory
+ */
   public SceneInventory(SceneId mani) {
     super(mani);
-    //System.out.println("Created");
     fillScene();
   }
   
   /**
-   * Used when SceneId must also be created
-   */ 
+   * Constructor for SceneInventory
+   * 
+   * @param n name
+   * @param x x-coordinate
+   * @param y y-coordinate
+   * @param w width
+   * @param h height
+   * @param sceneType type of scene
+   * @param bg backround image
+   */
   public SceneInventory(String n, double x, double y, double w, double h, int sceneType, String bg) {
 	    this(new SceneId(n, x, y, w, h, sceneType, bg));
 	  }
@@ -44,14 +56,15 @@ public class SceneInventory extends Scene  {
   @Override
   protected void fillScene() {
     sceneItems = ControllerInventory.getSceneItems();
-    //System.out.println("Filling");
     Collections.sort(sceneItems); // sort by depth
   }
   
-  
+  /**
+   * Update nothing, needed for abstract class
+   */
   @Override
   public void update() {
-	  //System.out.println("Inventory Called");
+
   }
 
 }

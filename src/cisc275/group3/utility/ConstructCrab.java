@@ -2,6 +2,16 @@ package cisc275.group3.utility;
 
 import cisc275.group3.model.sceneobject.BetaCrab;
 
+/**
+ * Class to construct a crab randomly.
+ * It chooses if the crab is a right or left crab, 
+ * selects it image, and sets its parameters.
+ *
+ * @author Scott
+ * @Author Ryan
+ * @author Thomas
+ *
+ */
 public interface ConstructCrab {
   // Crab File Location
   static final String[] LEFT_FILE = 
@@ -50,6 +60,14 @@ public interface ConstructCrab {
     return leftCrab;
   }
   
+  /**
+   * 
+   * @param 	depth	int-crab depth
+   * @param		type	int-crab type [0,1]
+   * @param 	x		double-x-axis location
+   * @param		y		double-y-axis location
+   * @return BetaCrab
+   */
   static public BetaCrab constructRightCrab(int depth, int type, double x, double y) {
     BetaCrab rightCrab = new BetaCrab(
         depth, 
@@ -66,6 +84,14 @@ public interface ConstructCrab {
     return rightCrab;
   }
   
+  /**
+   * 
+   * @param 	depth	int-crab depth
+   * @param		type	int-crab type [0,1]
+   * @param 	x		double-x-axis location
+   * @param		y		double-y-axis location
+   * @return BetaCrab
+   */
   static public BetaCrab constructCrab(int depth, int type, double x, double y) {
     BetaCrab crab = new BetaCrab(
         depth, 

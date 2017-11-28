@@ -21,35 +21,43 @@ import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.ViewGame;
 
 /**
- * The Tools controller is responsible for both the "model" and
- * control of the toolbox. 
- * <p>
- * The toolbox augments the mouse and sets a "click type" that
- * can be checked against the object type to determine compatibility.
- * Because there is no underlying model, the controller implements
- * the corresponding logic.
- * <p>
- * ControllerTool.java
- * <p>
- * @author Scott 
- * @author Jolyne 
+ * The Inventory controller is responsible for both the "model" and
+ * control of the inventory. 
+ * ControllerInventory.java
+ * @author Thomas
+ * @author Scott
  */
 public class ControllerInventory extends ControllerScene {
 
+//Parameter and sizes for JPanel and images
   private JPanel inventoryPanel;
   private ImageIcon inventoryBg;
   private static ArrayList<SceneObject> sceneFillItems = new ArrayList<SceneObject>();
   
+ //Variables to keep track of next inventory slot
   private static double inventory_x = 0;
   private static double inventory_y = 0;
   private static double inventory_y_max = 0;
   
-  
+ /**
+  * Constructor that calls ControllerScene super
+  * and places proper background image
+  * @param w width
+  * @param h height
+  * @param f gamewindow
+  * @param cl component in hashmap
+  * @param sceneType integer of what scenetype
+  */
   public ControllerInventory(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType) {
 	    super(w, h, f, cl, sceneType);
 	    inventoryBg = new ImageIcon("img/inventory_menu.png");
   }
   
+  /**
+   * Creates the scene and adds it to
+   * the main pain. Sets the layers and component list
+   * for the inventory. 
+   */
   @Override
   protected void createScene() {
 	  
@@ -71,6 +79,13 @@ public class ControllerInventory extends ControllerScene {
     componentList.put("Inventory", viewGame);
   }
   
+  /**
+   * Takes in an object and adds a new instance
+   * of it to the inventory
+   * 
+   * @param tmp sceneobject that is passed to inventory and cloned/placed in inventory
+   * 	
+   */
   public static void addItem(SceneObject tmp)
   {
     // Add Item
@@ -107,8 +122,7 @@ public class ControllerInventory extends ControllerScene {
 	  }
 	  
 	  else if (tmp instanceof BetaHeron)
-	  {
-		  
+	  { 
 		  if(inventory_x + 150 > 300)
 		  {
 			  inventory_x = 0;
@@ -132,25 +146,23 @@ public class ControllerInventory extends ControllerScene {
 	  
   }
   
-  //Takes a type of sceneObject and removes the amount of that particular object you want to remove from the inventory 
-  public static void removeItem(String tmp) //SceneObject tmp , int count
+  /**
+   * Removes a given item from inventory and redraws it.
+   * 
+   * @param tmp string that is used to find an object in the inventory
+   */
+  public static void removeItem(String tmp)
   {
-	  //int found_count = 0;
-  
 	  for (Iterator<SceneObject> iterator = sceneFillItems.iterator(); iterator.hasNext();) {     
 	      SceneObject sceneItem = iterator.next();
-	      
-	      //System.out.println(sceneItem.getShortName() + " " + tmp.getShortName() + " " + found_count+ " " + count);
-	      if(sceneItem.getPassport().getName() == tmp) // && found_count < count
+	     
+	      if(sceneItem.getPassport().getName() == tmp)
 	      {
 	    	  iterator.remove();
 	      }
 	  }
-
-	  //now basically redraw the inventory
-	 
-	  
-	   ArrayList<SceneObject> tmp_list = new ArrayList<SceneObject>();
+  
+	  ArrayList<SceneObject> tmp_list = new ArrayList<SceneObject>();
 	   
 	  for (SceneObject tmp_object : sceneFillItems)
 	  {
@@ -164,15 +176,22 @@ public class ControllerInventory extends ControllerScene {
 		  addItem(tmp_object);
 	  }
 	  tmp_list.clear();
-	  
-	  
+
   }
   
+  /**
+   * returns the scene items to be drawn
+   * 
+   * @return array list of the sceneitems
+   */
   public static ArrayList<SceneObject> getSceneItems()
   {
 	  return sceneFillItems;
   }
  
+  /**
+   * Update inventory/repaint it
+   */
   public void update()
   {
 	  inventoryPanel.repaint();
@@ -181,4 +200,4 @@ public class ControllerInventory extends ControllerScene {
   }
 
   
-  }
+ }

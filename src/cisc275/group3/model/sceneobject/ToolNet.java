@@ -1,5 +1,13 @@
 package cisc275.group3.model.sceneobject;
 
+/**
+ * Creating a net tool 
+ * <p>
+ * ToolNet.java
+ * <p>
+ * @author Jolyne
+ */
+
 public class ToolNet extends ToolObject {
 
   public ToolNet(int x, int y, int width, int height) {

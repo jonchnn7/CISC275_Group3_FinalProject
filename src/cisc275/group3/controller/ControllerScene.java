@@ -28,6 +28,7 @@ import javax.swing.JLayeredPane;
  * 
  * @author Scott
  * @author Jon
+ * @author Jolyne
  */
 public abstract class ControllerScene implements Serializable {
 	// Window Parameters

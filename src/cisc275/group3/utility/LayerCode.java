@@ -4,6 +4,7 @@ package cisc275.group3.utility;
  * Defines layer/depth codes for the main JLayeredPane.
  * <p>
  * @author Scott
+ * @author Jolyne
  */
 public enum LayerCode {
 
