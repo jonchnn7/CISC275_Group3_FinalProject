@@ -1,5 +1,11 @@
 package cisc275.group3.utility;
 
+/**
+ * Defines tutorial layer/depth codes
+ * for the main JLayeredPane.
+ * <p>
+ * @author Scott
+ */
 public enum LayerCodeTutorial {
   ButtonMap(70),
   LabelToolsSpeech(70), ToolsPanel(71),
