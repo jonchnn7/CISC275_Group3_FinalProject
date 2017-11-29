@@ -1,6 +1,5 @@
 package cisc275.group3.model.scene;
 
-import cisc275.group3.exceptions.InsufficientDataException;
 import cisc275.group3.model.sceneobject.BetaCrab;
 import cisc275.group3.utility.ConstructCrab;
 import cisc275.group3.utility.SceneId;
@@ -72,6 +71,10 @@ public class SceneBeachMini extends Scene implements ConstructCrab {
 				600)); // y location
 	}
 
+	/**
+	 * Movement for npc crabs. NPC crabs are
+	 * differentiated by their ID.
+	 */
 	@Override
 	public void update() {
 		sceneItems.forEach((crab) -> {
@@ -81,6 +84,11 @@ public class SceneBeachMini extends Scene implements ConstructCrab {
 		});
 	}
 
+	/**
+	 * Overloaded movement for user controlled 
+	 * crab. User crab differentiated by ID.
+	 * @param dx double-displacment along x-axis
+	 */
 	public void update(double dx) {
 		sceneItems.forEach((crab) -> {
 			if (crab.getPassport().getId() == 200) {
