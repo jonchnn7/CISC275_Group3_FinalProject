@@ -1,6 +1,5 @@
 package cisc275.group3.model.scene;
 
-import cisc275.group3.exceptions.InsufficientDataException;
 import cisc275.group3.model.sceneobject.BetaFish;
 import cisc275.group3.model.sceneobject.SceneObject;
 

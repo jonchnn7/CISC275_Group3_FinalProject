@@ -3,7 +3,6 @@ package cisc275.group3.controller;
 import java.awt.Component;
 import java.util.HashMap;
 import cisc275.group3.model.scene.SceneTutorial;
-import cisc275.group3.model.scene.Scene;
 import cisc275.group3.utility.LayerCode;
 import cisc275.group3.utility.LayerCodeTutorial;
 import cisc275.group3.view.GameWindow;
