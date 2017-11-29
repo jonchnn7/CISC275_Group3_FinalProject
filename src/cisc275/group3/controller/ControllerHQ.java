@@ -37,7 +37,7 @@ import cisc275.group3.view.ViewOverlayLabel;
  * @author Thomas
  */
 public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkTime {
-	private final String BG_IMAGE = "img/HQ_bg_v3.jpg";
+	private final String BG_IMAGE = "img/backgrounds/HQ_bg.jpg";
 	private ViewOverlayLabel statusLabel;
 
 	// Tutorial Layer Variables

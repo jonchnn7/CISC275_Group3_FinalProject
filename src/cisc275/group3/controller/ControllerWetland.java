@@ -27,7 +27,7 @@ import cisc275.group3.view.ViewOverlayLabel;
  * @author Jon 
  */
 public class ControllerWetland extends ControllerScene implements LinkDynamics, LinkTime {
-  private final String BG_IMAGE = "img/wetland_bg.jpg";
+  private final String BG_IMAGE = "img/backgrounds/wetland_bg.jpg";
   
   /**
 	 * Constructor

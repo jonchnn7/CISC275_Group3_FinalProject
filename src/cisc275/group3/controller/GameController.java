@@ -33,7 +33,8 @@ public class GameController implements Serializable {
 	private final int SCREEN_WIDTH;
 	private final int SCREEN_HEIGHT;
 	private final GameWindow GAME_FRAME;
-	private boolean tutorial;
+	private int gameState; // 0 = main menu, 1 = initialize tutorial, 2 = in tutorial, 3 = initialize game,
+							// 4 = in game, 5 = endgame
 
 	// Game Variables
 	private int totalTime;
@@ -55,7 +56,7 @@ public class GameController implements Serializable {
 		SCREEN_WIDTH = x;
 		SCREEN_HEIGHT = y;
 
-		tutorial = true;
+		gameState = 0;
 
 		// Create game window
 		GAME_FRAME = new GameWindow(SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -64,26 +65,22 @@ public class GameController implements Serializable {
 		controlMap = new HashMap<String, ControllerScene>();
 		layerMap = new HashMap<String, Component>();
 		loopRun = true;
+		
+		controlMap.put("Title", new ControllerTitle(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 3));
 
-		if (tutorial) {
-			initTutorial();
-			gameTime();
-		} else {
-			initGame();
-			gameTime();
-		}
+		gameTime();
 	}
 
 	/**
 	 * Initializes scene to the controller map only for scenes needed for tutorial
 	 */
 	private void initTutorial() {
-		controlMap.put("Title", new ControllerTitle(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 1));
 		controlMap.put("Tutorial", new ControllerTutorial(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 1));
 		controlMap.put("Overlay", new ControllerOverlay(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 1));
 		controlMap.put("Inventory", new ControllerInventory(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 1));
 		controlMap.put("HQ", new ControllerHQ(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 1));
 		controlMap.put("Tools", new ControllerTools(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 1));
+		
 
 	}
 
@@ -92,7 +89,6 @@ public class GameController implements Serializable {
 	 * the controller map.
 	 */
 	private void initGame() {
-		controlMap.put("Title", new ControllerTitle(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 3));
 		controlMap.put("Mission", new ControllerMission(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 3));
 		controlMap.put("HQ", new ControllerHQ(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 2));
 		controlMap.put("Bay", new ControllerBay(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 2));
@@ -113,16 +109,41 @@ public class GameController implements Serializable {
 		Timer timer = new Timer(100, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (loopRun) {
-					if (tutorial == true) {
+					System.out.println(controlMap.size());
+					if(gameState == 0) {
+						if (((ControllerTitle) controlMap.get("Title")).getAction() == 1){
+							gameState = 1;
+						}
+						else if (((ControllerTitle) controlMap.get("Title")).getAction() == 2){
+							gameState = 3;
+						}
+					}
+					else if (gameState == 1) {
+						initTutorial();
+						gameState = 2;
+					} else if (gameState == 2) {
 						if (((ControllerTutorial) controlMap.get("Tutorial")).tutorialDone()) {
 							controlMap.clear();
 							layerMap.clear();
 							GAME_FRAME.getMainPane().removeAll();
-							tutorial = false;
-							initGame();
-							gameTime();
+							controlMap.put("Title", new ControllerTitle(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 3));
+							gameState = 0;
 						}
+					} else if (gameState == 3) {
+						initGame();
+						gameState = 4;
+					} else if (gameState == 4) {
+						// Update Time Counter
+						totalTime += 100;
+						// 5 min
+						if (totalTime == 300000) {
+							loopRun = false;
+							GAME_FRAME.getMainPane().setLayer(GAME_FRAME.getMainPane().getComponentsInLayer(-16)[0],
+									LayerCode.EndGame.getCode());
+						}
+
 					}
+					
 					controlMap.forEach((k, v) -> {
 						// Model Object Updates
 						switch (k) {
@@ -152,14 +173,6 @@ public class GameController implements Serializable {
 						}
 					});
 
-					// Update Time Counter
-					totalTime += 100;
-					// 5 min
-					if (totalTime == 300000) {
-						loopRun = false;
-						GAME_FRAME.getMainPane().setLayer(GAME_FRAME.getMainPane().getComponentsInLayer(-16)[0],
-								LayerCode.EndGame.getCode());
-					}
 				} else {
 					loopRun = true;
 					totalTime = -1000;

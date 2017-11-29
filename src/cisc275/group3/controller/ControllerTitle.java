@@ -36,9 +36,11 @@ import cisc275.group3.view.ViewGame;
  */
 
 public class ControllerTitle extends ControllerScene implements LinkDynamics, LinkTime {
-	private final ImageIcon BG_IMAGE = new ImageIcon("img/CloudTitleScreen.png");
+	private final ImageIcon BG_IMAGE = new ImageIcon("img/backgrounds/titleScreen_bg.png");
 	private JPanel titlePanel;
 	private JButton startButton;
+	private JButton tutorialButton;
+	private int action; // 0 = none, 1 = tutorial, 2 = game
 
 	/**
 	 * 
@@ -82,11 +84,9 @@ public class ControllerTitle extends ControllerScene implements LinkDynamics, Li
 		titlePanel.setName("TitleLayer");
 		addTitleButton();
 		addTutorialButton();
-	/*	if (sceneType == 1) {
-			addTutorialButton();
-		} else {
-			addTitleButton();
-		}*/
+		/*
+		 * if (sceneType == 1) { addTutorialButton(); } else { addTitleButton(); }
+		 */
 
 		mainPane.setLayer(titlePanel, LayerCode.MainTop.getCode());
 		mainPane.add(titlePanel, LayerCode.MainTop.getCode());
@@ -111,15 +111,17 @@ public class ControllerTitle extends ControllerScene implements LinkDynamics, Li
 		startButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Component titleComponent = mainPane
-						.getComponentsInLayer(mainPane.getLayer(componentList.get("Title")))[0];
-				Component hqComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("HQ")))[0];
-				Component missionComponent = mainPane
-						.getComponentsInLayer(mainPane.getLayer(componentList.get("Mission")))[0];
-
-				mainPane.setLayer(hqComponent, LayerCode.MainAll.getCode());
-				mainPane.setLayer(titleComponent, LayerCode.Title.getCode());
-				mainPane.setLayer(missionComponent, LayerCode.Mission.getCode());
+				action = 2;
+				 Component titleComponent = mainPane
+				 .getComponentsInLayer(mainPane.getLayer(componentList.get("Title")))[0];
+				 Component hqComponent =
+				 mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("HQ")))[0];
+				 Component missionComponent = mainPane
+				 .getComponentsInLayer(mainPane.getLayer(componentList.get("Mission")))[0];
+				
+				 mainPane.setLayer(hqComponent, LayerCode.MainAll.getCode());
+				 mainPane.setLayer(titleComponent, LayerCode.Title.getCode());
+				 mainPane.setLayer(missionComponent, LayerCode.Mission.getCode());
 			}
 		});
 		titlePanel.add(startButton);
@@ -129,35 +131,49 @@ public class ControllerTitle extends ControllerScene implements LinkDynamics, Li
 	 * Adds a tutorial button to initialize the tutorial phase
 	 */
 	private void addTutorialButton() {
-		startButton = new JButton("Start");
-		startButton.setFont(new Font("Roboto", Font.BOLD, 1));
-		startButton.setBounds(800, 500, 300, 96);
-		startButton.setIcon(new ImageIcon("img/Yellow Tutorialbutton.png"));
-		startButton.setOpaque(false);
-		startButton.setBorderPainted(false);
-		startButton.setBorder(null);
-		startButton.setMargin(new Insets(0, 0, 0, 0));
-		startButton.setContentAreaFilled(false);
-		startButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		startButton.setSize(330, 96);
-		startButton.addActionListener(new ActionListener() {
+		tutorialButton = new JButton("Tutorial");
+		tutorialButton.setFont(new Font("Roboto", Font.BOLD, 1));
+		tutorialButton.setBounds(800, 500, 300, 96);
+		tutorialButton.setIcon(new ImageIcon("img/Yellow Tutorialbutton.png"));
+		tutorialButton.setOpaque(false);
+		tutorialButton.setBorderPainted(false);
+		tutorialButton.setBorder(null);
+		tutorialButton.setMargin(new Insets(0, 0, 0, 0));
+		tutorialButton.setContentAreaFilled(false);
+		tutorialButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		tutorialButton.setSize(330, 96);
+		tutorialButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Component titleComponent = mainPane
-						.getComponentsInLayer(mainPane.getLayer(componentList.get("Title")))[0];
-				Component hqComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("HQ")))[0];
-				Component getMissionButton = mainPane
-						.getComponentsInLayer(mainPane.getLayer(componentList.get("GetMissionButton")))[0];
-				Component getMissionLabel = mainPane
-						.getComponentsInLayer(mainPane.getLayer(componentList.get("GetMissionLabel")))[0];
-
-				mainPane.setLayer(hqComponent, LayerCodeTutorial.MainTop.getCode());
-				mainPane.setLayer(titleComponent, LayerCodeTutorial.TitleScreen.getCode());
-				mainPane.setLayer(getMissionButton, LayerCodeTutorial.ButtonGetMission.getCode());
-				mainPane.setLayer(getMissionLabel, LayerCodeTutorial.LabelGetMission.getCode());
+				action = 1;
+				 Component titleComponent = mainPane
+				 .getComponentsInLayer(mainPane.getLayer(componentList.get("Title")))[0];
+				 Component hqComponent =
+				 mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("HQ")))[0];
+				 Component getMissionButton = mainPane
+				 .getComponentsInLayer(mainPane.getLayer(componentList.get("GetMissionButton")))[0];
+				 Component getMissionLabel = mainPane
+				 .getComponentsInLayer(mainPane.getLayer(componentList.get("GetMissionLabel")))[0];
+				
+				 mainPane.setLayer(hqComponent, LayerCodeTutorial.MainTop.getCode());
+				 mainPane.setLayer(titleComponent, LayerCodeTutorial.TitleScreen.getCode());
+				 mainPane.setLayer(getMissionButton,
+				 LayerCodeTutorial.ButtonGetMission.getCode());
+				 mainPane.setLayer(getMissionLabel,
+				 LayerCodeTutorial.LabelGetMission.getCode());
 			}
 		});
-		titlePanel.add(startButton);
+		titlePanel.add(tutorialButton);
+	}
+
+	/**
+	 * Returns the user input from the start and tutorial buttons. 0 = none, 1 =
+	 * tutorial, 2 = game
+	 * 
+	 * @return action
+	 */
+	public int getAction() {
+		return action;
 	}
 
 	/**

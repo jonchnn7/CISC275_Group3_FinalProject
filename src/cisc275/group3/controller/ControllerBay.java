@@ -27,7 +27,7 @@ import cisc275.group3.view.ViewOverlayLabel;
  * @author Jolyne
  */
 public class ControllerBay extends ControllerScene implements LinkDynamics, LinkTime {
-	private final String BG_IMAGE = "img/bay_bg_1.jpg";
+	private final String BG_IMAGE = "img/backgrounds/bay_bg.jpg";
 
 	/**
 	 * Constructor
