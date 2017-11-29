@@ -16,6 +16,7 @@ import cisc275.group3.utility.ObjectId;
  * <p>
  * @author Scott
  * @author Thomas
+ * @author Ryan
  */
 public class BetaFish extends SceneObject implements ActionMove {
   protected double speedX; // x-axis speed
