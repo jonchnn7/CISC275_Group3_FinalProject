@@ -136,11 +136,4 @@ public class ControllerBeachMini extends ControllerScene implements LinkDynamics
 		sceneTime = Integer.toString(((SceneBeachMini) scene).getTime());
 		((ViewOverlayLabel) componentList.get("TimeLabel")).updateLabel(sceneTime);
 	}
-
-	/**
-	 * Displays the model score in the shared score label.
-	 */
-	public void displayScore() {
-		String sceneScore;
-	}
 }
