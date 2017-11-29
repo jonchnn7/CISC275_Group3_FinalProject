@@ -49,7 +49,9 @@ public class SceneTitle extends Scene {
 	}
 
 	/**
-	 * in abstract, must have
+	 * Abstract method must be defined
+	 * <p>
+	 * Overridden from Scene.java
 	 */
 	@Override
 	protected void fillScene() {
@@ -57,21 +59,14 @@ public class SceneTitle extends Scene {
 
 	}
 
-	/**
-	 * in abstract must have
-	 */
+  /**
+   * Abstract method must be defined
+   * <p>
+   * Overridden from Scene.java
+   */
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
 
 	}
-
-	/**
-	 * in abstract must have
-	 */
-	public static void add(JButton hqButton) {
-		// TODO Auto-generated method stub
-
-	}
-
 }

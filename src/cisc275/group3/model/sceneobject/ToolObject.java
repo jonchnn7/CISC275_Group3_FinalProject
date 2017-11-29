@@ -8,7 +8,7 @@ import java.awt.MouseInfo;
  * <p>
  * ToolObject.java Class
  * <p>
- * @author FILLmeIN
+ * @author Ryan
  */
 public abstract class ToolObject implements Comparable<ToolObject> {
 
@@ -20,7 +20,14 @@ public abstract class ToolObject implements Comparable<ToolObject> {
   protected String clickType;
   protected String toolName;
 	
-
+  /**
+   * Sets required parameters for 
+   * an abstract scene object
+   * @param x      int-x position
+   * @param y      int-y position
+   * @param width  int-object width
+   * @param height int-object height
+   */
   public ToolObject(int x, int y, int width, int height) {
     itemX = x;
     itemY = y;
@@ -28,11 +35,17 @@ public abstract class ToolObject implements Comparable<ToolObject> {
     itemHeight = height;
   }
 	
+  /**
+   * Grabs the current mouse location
+   */
   public void mouseLocator() {
     itemX = MouseInfo.getPointerInfo().getLocation().x;
     itemY = MouseInfo.getPointerInfo().getLocation().y;
   }
 	
+  /**
+   * @return the object name
+   */
   public String getName() {
     return toolName;
   }
