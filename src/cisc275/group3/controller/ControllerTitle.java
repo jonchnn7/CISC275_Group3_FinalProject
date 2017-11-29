@@ -98,7 +98,7 @@ public class ControllerTitle extends ControllerScene implements LinkDynamics, Li
 	 */
 	private void addTitleButton() {
 		startButton = new JButton("Start");
-		startButton.setFont(new Font("Roboto", Font.BOLD, 30));
+		startButton.setFont(new Font("Roboto", Font.BOLD, 1));
 		startButton.setBounds(200, 500, 300, 96);
 		startButton.setIcon(new ImageIcon("img/Yellow startbutton.png"));
 		startButton.setOpaque(false);
@@ -130,7 +130,7 @@ public class ControllerTitle extends ControllerScene implements LinkDynamics, Li
 	 */
 	private void addTutorialButton() {
 		startButton = new JButton("Start");
-		startButton.setFont(new Font("Roboto", Font.BOLD, 30));
+		startButton.setFont(new Font("Roboto", Font.BOLD, 1));
 		startButton.setBounds(800, 500, 300, 96);
 		startButton.setIcon(new ImageIcon("img/Yellow Tutorialbutton.png"));
 		startButton.setOpaque(false);
