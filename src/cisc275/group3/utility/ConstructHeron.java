@@ -14,8 +14,8 @@ import cisc275.group3.model.sceneobject.BetaHeron;
  */
 public interface ConstructHeron {
 	// Heron File Location
-	static final String[] LEFT_FILE = { "img/heron_standing_left.png", "img/heron_flying_left.png" };
-	static final String[] RIGHT_FILE = { "img/heron_standing_right.png", "img/heron_flying_right.png" };
+	static final String[] LEFT_FILE = { "img/betaHeronPics/heron_standing_left.png", "img/betaHeronPics/heron_flying_left.png" };
+	static final String[] RIGHT_FILE = { "img/betaHeronPics/heron_standing_right.png", "img/betaHeronPics/heron_flying_right.png" };
 
 	// Heron Names
 	static final String HERON_NAME = "Great Blue Heron";

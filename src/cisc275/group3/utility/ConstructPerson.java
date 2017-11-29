@@ -14,7 +14,8 @@ import cisc275.group3.model.sceneobject.BetaPerson;
  */
 public interface ConstructPerson {
 	// Person File Locations
-	static final String[] FILE = { "img/birdWatcher_v2.png", "img/parkRangerPerson_v2.png", "img/scientistPerson.png" };
+	static final String[] FILE = { "img/betaPersonPics/birdWatcher.png", "img/betaPersonPics/parkRanger.png",
+			"img/betaPersonPics/scientist.png" };
 
 	// Person Names
 	static final String[] NAME = { "Bird Watcher", "Park Ranger", "Scientist" };

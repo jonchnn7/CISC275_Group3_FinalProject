@@ -14,7 +14,8 @@ import cisc275.group3.model.sceneobject.BetaVegetation;
  */
 public interface ConstructVegetation {
 	// Veg File Locations
-	static final String[] VEG_FILE = { "img/weeds3_resized.png", "img/weeds2_resized.png", "img/weeds1_resized.png" };
+	static final String[] VEG_FILE = { "img/betaVegetationPics/weeds3.png", "img/betaVegetationPics/weeds2.png",
+			"img/betaVegetationPics/weeds1.png" };
 
 	// Veg Names
 	static final String VEG_NAME = "Invasive Plant";

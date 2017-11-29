@@ -109,7 +109,6 @@ public class GameController implements Serializable {
 		Timer timer = new Timer(100, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (loopRun) {
-					System.out.println(controlMap.size());
 					if(gameState == 0) {
 						if (((ControllerTitle) controlMap.get("Title")).getAction() == 1){
 							gameState = 1;

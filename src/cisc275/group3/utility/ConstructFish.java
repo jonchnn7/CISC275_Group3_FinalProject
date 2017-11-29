@@ -14,9 +14,10 @@ import cisc275.group3.model.sceneobject.BetaFish;
  */
 public interface ConstructFish {
 	// Fish File Locations
-	static final String[] LEFT_FILE = { "img/shad_left.png", "img/striped_bass_left.png", "img/shortnose_left.png" };
-	static final String[] RIGHT_FILE = { "img/shad_right.png", "img/striped_bass_right.png",
-			"img/shortnose_right.png" };
+	static final String[] LEFT_FILE = { "img/betaFishPics/shad_left.png", "img/betaFishPics/striped_bass_left.png",
+			"img/betaFishPics/shortnose_left.png" };
+	static final String[] RIGHT_FILE = { "img/betaFishPics/shad_right.png", "img/betaFishPics/striped_bass_right.png",
+			"img/betaFishPics/shortnose_right.png" };
 
 	// Fish Names
 	static final String[] NAME = { "American Shad", "Striped Bass", "Shortnose Sturgeon" };
@@ -42,7 +43,8 @@ public interface ConstructFish {
 	 * @param depth
 	 *            int - fish depth
 	 * @param type
-	 *            int - fish type [0,2] (0 = Shad, 1 = Striped Bass, 2 = Shortnosed Sturgeon)
+	 *            int - fish type [0,2] (0 = Shad, 1 = Striped Bass, 2 = Shortnosed
+	 *            Sturgeon)
 	 * @param x
 	 *            double - x-axis location
 	 * @param y

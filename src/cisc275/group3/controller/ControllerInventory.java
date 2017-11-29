@@ -58,7 +58,7 @@ public class ControllerInventory extends ControllerScene {
 	 */
 	public ControllerInventory(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType) {
 		super(w, h, f, cl, sceneType);
-		inventoryBg = new ImageIcon("img/inventory_menu.png");
+		inventoryBg = new ImageIcon("img/inventoryPics/inventory_menu.png");
 	}
 
 	/**
@@ -68,7 +68,7 @@ public class ControllerInventory extends ControllerScene {
 	@Override
 	protected void createScene() {
 
-		scene = new SceneInventory("Inventory", 0, 0, 300, 300, 3, "img/inventory_menu_small.png");
+		scene = new SceneInventory("Inventory", 0, 0, 300, 300, 3, "img/inventoryPics/inventory_menu_small.png");
 		viewGame = new ViewGame(300, 300, scene.getSceneItems(), scene.getManifest().getBG());
 
 		viewGame.setBounds(100, 0, 300, 300);

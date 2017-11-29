@@ -119,43 +119,43 @@ public class ControllerMission extends ControllerScene {
 					case 0:
 						s = "Striped Bass";
 						((ViewOverlayLabel) componentList.get("MissionLabel"))
-								.updateIcon(new ImageIcon("img/striped_bass_icon.png"));
+								.updateIcon(new ImageIcon("img/missionIconPics/striped_bass_icon.png"));
 						lastMission = 0;
 						break;
 					case 1:
 						s = "American Shad";
 						((ViewOverlayLabel) componentList.get("MissionLabel"))
-								.updateIcon(new ImageIcon("img/shad_left.png"));
+								.updateIcon(new ImageIcon("img/missionIconPics/shad_icon.png"));
 						lastMission = 0;
 						break;
 					case 2:
 						s = "Shortnose Sturgeon";
 						((ViewOverlayLabel) componentList.get("MissionLabel"))
-								.updateIcon(new ImageIcon("img/shortnose_left.png"));
+								.updateIcon(new ImageIcon("img/missionIconPics/shortnose_icon.png"));
 						lastMission = 0;
 						break;
 					case 3:
 						s = "Atlantic Blue Crab";
 						((ViewOverlayLabel) componentList.get("MissionLabel"))
-								.updateIcon(new ImageIcon("img/crab_blue_icon.png"));
+								.updateIcon(new ImageIcon("img/missionIconPics/crab_blue_icon.png"));
 						lastMission = 1;
 						break;
 					case 4:
 						s = "Horseshoe Crab";
 						((ViewOverlayLabel) componentList.get("MissionLabel"))
-								.updateIcon(new ImageIcon("img/horeshoe_mission_icon.png"));
+								.updateIcon(new ImageIcon("img/missionIconPics/horeshoe_icon.png"));
 						lastMission = 1;
 						break;
 					case 5:
 						s = "Great Blue Heron";
 						((ViewOverlayLabel) componentList.get("MissionLabel"))
-								.updateIcon(new ImageIcon("img/heron_mission_icon.png"));
+								.updateIcon(new ImageIcon("img/missionIconPics/heron_mission_icon.png"));
 						lastMission = 2;
 						break;
 					case 6:
 						s = "Invasive Plant";
 						((ViewOverlayLabel) componentList.get("MissionLabel"))
-								.updateIcon(new ImageIcon("img/weeds_mission_icon.png"));
+								.updateIcon(new ImageIcon("img/missionIconPics/weeds_mission_icon.png"));
 						lastMission = 2;
 						break;
 					}
