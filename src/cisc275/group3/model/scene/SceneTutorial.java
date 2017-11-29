@@ -55,7 +55,8 @@ public class SceneTutorial extends Scene implements ConstructCrab, ConstructFish
 	}
 
 	/**
-	 * Creates three NPC crabs and a Player Crab
+	 * Creates a crab, fish and heron 
+	 * for the tutorial.
 	 */
 	@Override
 	protected void fillScene() {
@@ -81,7 +82,9 @@ public class SceneTutorial extends Scene implements ConstructCrab, ConstructFish
 	}
 
 	/**
-	 * update scene
+	 * Monitors the number of scene items. If
+	 * the number of items is zero, the tutorial
+	 * has been completed.
 	 */
 	@Override
 	public void update() {
