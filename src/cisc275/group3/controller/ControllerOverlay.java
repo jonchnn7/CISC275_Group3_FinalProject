@@ -13,305 +13,307 @@ import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.ViewOverlayButton;
 import cisc275.group3.view.ViewOverlayLabel;
 
-/** 
- * Responsible for creating the interface overlay buttons/labels,
- * and adding them to the main JLayeredPane (from GameWindow.java).
- * After the button has been added, the associated action listener 
- * and action is added.
+/**
+ * Responsible for creating the interface overlay buttons/labels, and adding
+ * them to the main JLayeredPane (from GameWindow.java). After the button has
+ * been added, the associated action listener and action is added.
  * <p>
- * @author Scott 
- * @author Jolyne 
- * @author Thomas 
- * @author Ryan 
+ * 
+ * @author Scott
+ * @author Jolyne
+ * @author Thomas
+ * @author Ryan
  */
 public class ControllerOverlay extends ControllerScene {
-  private ImageIcon mapButtonImage;
-  private ImageIcon mapButtonRolloverImage;
-  private int mapButtonWidth;
-  private int mapButtonHeight;
-  private ViewOverlayButton mapButtonPanel;
-  
-  private ImageIcon toolsButtonImage;
-  private ImageIcon toolsButtonRolloverImage;
-  private int toolsButtonWidth;
-  private int toolsButtonHeight;
-  private ViewOverlayButton toolsButtonPanel;
-  
-  private ImageIcon timeLabelBg;
-  private ImageIcon timeLabelImage;
-  private int timeLabelWidth;
-  private int timeLabelHeight;
-  private String timeLabelString;
-  private ViewOverlayLabel timeLabelPanel;
-  
-  private ImageIcon scoreLabelBg;
-  private ImageIcon scoreLabelImage;
-  private int scoreLabelWidth;
-  private int scoreLabelHeight;
-  private String scoreLabelString;
-  private ViewOverlayLabel scoreLabelPanel;
-  
-  private ImageIcon missionLabelBg;
-  private ImageIcon missionLabelImage;
-  private int missionLabelWidth;
-  private int missionLabelHeight;
-  private String missionLabelString;
-  private ViewOverlayLabel missionLabelPanel;
-  
-  private ImageIcon inventoryButtonImage;
-  private ImageIcon inventoryButtonRolloverImage;
-  private int inventoryButtonWidth;
-  private int inventoryButtonHeight;
-  private ViewOverlayButton inventoryButtonPanel;
+	private ImageIcon mapButtonImage;
+	private ImageIcon mapButtonRolloverImage;
+	private int mapButtonWidth;
+	private int mapButtonHeight;
+	private ViewOverlayButton mapButtonPanel;
 
-  /**
-   * Default scene controller parameters. After they are 
-   * passed to super(), the menu button/label parameters
-   * are set.
-   * <p>
-   * @param w   int-width
-   * @param h   int-height
-   * @param f   GameWindow-main game window
-   * @param cl  HashMap-map of component name to component
-   */
-  public ControllerOverlay(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType) {
-    super(w, h, f, cl, sceneType);
-    
-    // Map Button Parameters
-    mapButtonImage = new ImageIcon("img/map_icon.png");
-    mapButtonRolloverImage = new ImageIcon("img/map_icon_invert.png");
-    mapButtonWidth = 75;
-    mapButtonHeight = 75;
-    
-    // Tool Button Parameters
-    toolsButtonImage = new ImageIcon("img/toolbox_menu.png");
-    toolsButtonRolloverImage = new ImageIcon("img/toolbox_menu_invert.png");
-    toolsButtonWidth = 107;
-    toolsButtonHeight = 70;
-    
-    // Score Label Parameters
-    scoreLabelBg = new ImageIcon("img/time_bg.png");
-    scoreLabelImage = new ImageIcon("img/coins_icon.png");
-    scoreLabelWidth = 170;
-    scoreLabelHeight = 70;
-    scoreLabelString = "0";
-    
-    // Time Label Parameters
-    timeLabelBg = new ImageIcon("img/time_bg.png");
-    timeLabelImage = new ImageIcon("img/clock_icon.png");
-    timeLabelWidth = 150;
-    timeLabelHeight = 85;
-    timeLabelString = "0";
-    
-    // Mission Label Parameters
-    missionLabelBg = new ImageIcon("img/time_bg.png");
-    missionLabelWidth = 175;
-    missionLabelHeight = 85;
-    missionLabelString = "";
-    
-    //Inventory Button Parameters
-    inventoryButtonImage = new ImageIcon("img/inventory.png");
-    inventoryButtonRolloverImage = new ImageIcon("img/inventory.png");
-    inventoryButtonWidth = 100;
-    inventoryButtonHeight = 130;
-    
-    createScene();    
-  }
+	private ImageIcon toolsButtonImage;
+	private ImageIcon toolsButtonRolloverImage;
+	private int toolsButtonWidth;
+	private int toolsButtonHeight;
+	private ViewOverlayButton toolsButtonPanel;
 
-  /**
-   * Call private functions to create and 
-   * add individual interface buttons.
-   * <p>
-   * Overridden from ControllerScene.java
-   */
-  @Override
-  protected void createScene() {
-    // Create Buttons
-    createMapButton();
-    createToolsButton();
-    createInventoryButton();
-    
-    // Create Labels
-    createScoreLabel();
-    createTimeLabel();
-    createMissionLabel();
-    
-  }
-  
-  /**
-   * Creates the map JPanel/JButton combination
-   * and places it inside the game window at
-   * its defined layer. An action is then created
-   * to toggle moving the map (ControllerMap.java)
-   * between the overlay layer and its hidden 
-   * storage layer.
-   */
-  private void createMapButton() {
-    mapButtonPanel = new ViewOverlayButton(mapButtonImage, mapButtonRolloverImage, mapButtonWidth, mapButtonHeight);
-    mapButtonPanel.setBounds(180, SCREEN_HEIGHT-mapButtonHeight, mapButtonWidth, mapButtonHeight);
-    mapButtonPanel.setName("MapButton");
-    
-    if (sceneType == 1) {
-      mainPane.setLayer(mapButtonPanel, LayerCodeTutorial.ButtonMapHidden.getCode());
-      mainPane.add(mapButtonPanel, LayerCodeTutorial.ButtonMapHidden.getCode());
-    } else {
-      mainPane.setLayer(mapButtonPanel, LayerCode.MapButton.getCode());
-      mainPane.add(mapButtonPanel, LayerCode.MapButton.getCode());
-    }
-    componentList.put("MapButton", mapButtonPanel);
-    
-    mapButtonPanel.getOverButton().addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        if (sceneType == 1) {
-          mainPane.setLayer(componentList.get("HQ"), -100);
-          mainPane.setLayer(componentList.get("Tutorial"), LayerCodeTutorial.MainTop.getCode());
-        } else {  
-          Component mapComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Map")))[0];
-          
-           
-          if (mainPane.getLayer(mapComponent) == LayerCode.Map.getCode()) {
-            mainPane.setLayer(mapComponent, LayerCode.MapOverlay.getCode());
-          } else {
-            mainPane.setLayer(mapComponent, LayerCode.Map.getCode());
-          }
-        }
-      }
-    });
-  }
-  
-  /**
-   * Creates the tools JPanel/JButton combination
-   * and places it inside the game window at
-   * its defined layer. An action is then created
-   * to toggle moving the toolbox 
-   * (ControllerTools.java) between the overlay 
-   * layer and its hidden storage layer.
-   */
-  private void createToolsButton() {
-    toolsButtonPanel = new ViewOverlayButton(toolsButtonImage, toolsButtonRolloverImage, toolsButtonWidth, toolsButtonHeight);
-    toolsButtonPanel.setBounds(SCREEN_WIDTH-75-toolsButtonWidth, 0, toolsButtonWidth, toolsButtonHeight);
-    toolsButtonPanel.setName("ToolsButton");
-      
-    if (sceneType == 1) {
-      mainPane.setLayer(toolsButtonPanel, LayerCodeTutorial.ButtonToolsHidden.getCode());
-      mainPane.add(toolsButtonPanel,LayerCodeTutorial.ButtonToolsHidden.getCode());
-    } else {
-      mainPane.setLayer(toolsButtonPanel, LayerCode.ToolsButton.getCode());
-      mainPane.add(toolsButtonPanel, LayerCode.ToolsButton.getCode());
-    }
-    
-    componentList.put("ToolsButton", toolsButtonPanel);
-      
-    toolsButtonPanel.getOverButton().addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        if (sceneType == 1) {
-          Component toolsComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Tools")))[0];
-        
-          if (mainPane.getLayer(toolsComponent) == LayerCodeTutorial.ToolsPanel.getCode()) {
-            mainPane.setLayer(toolsComponent, LayerCodeTutorial.ToolsPanelHidden.getCode()); 
-          } else {
-            mainPane.setLayer(toolsComponent, LayerCodeTutorial.ToolsPanel.getCode());
-          }
-        } else {
-          Component toolsComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Tools")))[0];
+	private ImageIcon timeLabelBg;
+	private ImageIcon timeLabelImage;
+	private int timeLabelWidth;
+	private int timeLabelHeight;
+	private String timeLabelString;
+	private ViewOverlayLabel timeLabelPanel;
 
-          if (mainPane.getLayer(toolsComponent) == LayerCode.Tools.getCode()) {
-            mainPane.setLayer(toolsComponent, LayerCode.ToolsOverlay.getCode()); 
-          } else {
-            mainPane.setLayer(toolsComponent, LayerCode.Tools.getCode());
-          }
-        }
-      }
-    });    
-  }
-  
-  /**
-   * Creates the tools JPanel/JButton combination
-   * and places it inside the game window at
-   * its defined layer. An action is then created
-   * to toggle moving the toolbox 
-   * (ControllerTools.java) between the overlay 
-   * layer and its hidden storage layer.
-   */
-  private void createInventoryButton() {
-	  inventoryButtonPanel = new ViewOverlayButton(inventoryButtonImage, inventoryButtonRolloverImage, inventoryButtonWidth, inventoryButtonHeight);
-	  inventoryButtonPanel.setBounds(0, 0, inventoryButtonWidth, inventoryButtonHeight);
-	  inventoryButtonPanel.setName("InventoryButton");
-	    
-	  if (sceneType == 1) {
-	    mainPane.setLayer(inventoryButtonPanel, LayerCodeTutorial.ButtonInventoryHidden.getCode());
-	    mainPane.add(inventoryButtonPanel, LayerCodeTutorial.ButtonInventoryHidden.getCode());
-	  } else {
-	    mainPane.setLayer(inventoryButtonPanel, LayerCode.InventoryButton.getCode());
-	    mainPane.add(inventoryButtonPanel, LayerCode.InventoryButton.getCode());
-	  }    
-	  componentList.put("InventoryButton", inventoryButtonPanel);
-	    
-	  inventoryButtonPanel.getOverButton().addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        Component inventoryComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Inventory")))[0];
-         
-        if (mainPane.getLayer(inventoryComponent) == LayerCode.Inventory.getCode()) {
-          mainPane.setLayer(inventoryComponent, LayerCode.InventoryOverlay.getCode()); 
-        } else {
-          mainPane.setLayer(inventoryComponent, LayerCode.Inventory.getCode());
-        }
-      }
-    });
-	   
-  }
-  
-  
-  /**
-   * Creates the score JPanel/JLabel combination
-   * and places it inside the game window at
-   * its defined layer. 
-   */
-  private void createScoreLabel() {
-    scoreLabelPanel = new ViewOverlayLabel(scoreLabelImage, scoreLabelBg, scoreLabelWidth, scoreLabelHeight, scoreLabelString);
-    scoreLabelPanel.setBounds(SCREEN_WIDTH-2*scoreLabelWidth, SCREEN_HEIGHT-scoreLabelHeight, scoreLabelWidth, scoreLabelHeight);
-    scoreLabelPanel.setName("ScoreLabel");
-    
-    mainPane.setLayer(scoreLabelPanel, LayerCode.ScoreLabel.getCode());
-    mainPane.add(scoreLabelPanel, LayerCode.ScoreLabel.getCode());
-    
-    componentList.put("ScoreLabel", scoreLabelPanel);
-  }
-  
-  /**
-   * Creates the time JPanel/JLabel combination
-   * and places it inside the game window at
-   * its defined layer. 
-   */
-  private void createTimeLabel() {
-    timeLabelPanel = new ViewOverlayLabel(timeLabelImage, timeLabelBg, timeLabelWidth, timeLabelHeight, timeLabelString);
-    timeLabelPanel.setBounds((SCREEN_WIDTH-timeLabelWidth)/2, SCREEN_HEIGHT-timeLabelHeight, timeLabelWidth, timeLabelHeight);
-    timeLabelPanel.setName("TimeLabel");
-    
-    mainPane.setLayer(timeLabelPanel, LayerCode.TimeLabel.getCode());
-    mainPane.add(timeLabelPanel, LayerCode.TimeLabel.getCode());
-    
-    componentList.put("TimeLabel", timeLabelPanel);
-  }
-  
-  /**
-   * Creates the mission JPanel/JLabel combination
-   * and places it inside the game window at
-   * its defined layer. 
-   */
-  private void createMissionLabel() {
-	    missionLabelPanel = new ViewOverlayLabel(missionLabelImage, missionLabelBg, missionLabelWidth, missionLabelHeight, missionLabelString);
-	    missionLabelPanel.setBounds((SCREEN_WIDTH - missionLabelWidth)/2, 0, missionLabelWidth, missionLabelHeight);
-      missionLabelPanel.setName("MissionLabel");
-	    
-	    //missionLabelPanel.getLabel().setFont(new Font("Roboto", Font.BOLD, 16));
-	    
-	    mainPane.setLayer(missionLabelPanel, LayerCode.MissionLabel.getCode());
-	    mainPane.add(missionLabelPanel, LayerCode.MissionLabel.getCode());
-	    
-	    componentList.put("MissionLabel", missionLabelPanel);
-  }
+	private ImageIcon scoreLabelBg;
+	private ImageIcon scoreLabelImage;
+	private int scoreLabelWidth;
+	private int scoreLabelHeight;
+	private String scoreLabelString;
+	private ViewOverlayLabel scoreLabelPanel;
+
+	private ImageIcon missionLabelBg;
+	private ImageIcon missionLabelImage;
+	private int missionLabelWidth;
+	private int missionLabelHeight;
+	private String missionLabelString;
+	private ViewOverlayLabel missionLabelPanel;
+
+	private ImageIcon inventoryButtonImage;
+	private ImageIcon inventoryButtonRolloverImage;
+	private int inventoryButtonWidth;
+	private int inventoryButtonHeight;
+	private ViewOverlayButton inventoryButtonPanel;
+
+	/**
+	 * Default scene controller parameters. After they are passed to super(), the
+	 * menu button/label parameters are set.
+	 * <p>
+	 * 
+	 * @param w
+	 *            int-width
+	 * @param h
+	 *            int-height
+	 * @param f
+	 *            GameWindow-main game window
+	 * @param cl
+	 *            HashMap-map of component name to component
+	 */
+	public ControllerOverlay(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType) {
+		super(w, h, f, cl, sceneType);
+
+		// Map Button Parameters
+		mapButtonImage = new ImageIcon("img/map_icon.png");
+		mapButtonRolloverImage = new ImageIcon("img/map_icon_invert.png");
+		mapButtonWidth = 75;
+		mapButtonHeight = 75;
+
+		// Tool Button Parameters
+		toolsButtonImage = new ImageIcon("img/toolbox_menu.png");
+		toolsButtonRolloverImage = new ImageIcon("img/toolbox_menu_invert.png");
+		toolsButtonWidth = 107;
+		toolsButtonHeight = 70;
+
+		// Score Label Parameters
+		scoreLabelBg = new ImageIcon("img/time_bg.png");
+		scoreLabelImage = new ImageIcon("img/coins_icon.png");
+		scoreLabelWidth = 170;
+		scoreLabelHeight = 70;
+		scoreLabelString = "0";
+
+		// Time Label Parameters
+		timeLabelBg = new ImageIcon("img/time_bg.png");
+		timeLabelImage = new ImageIcon("img/clock_icon.png");
+		timeLabelWidth = 150;
+		timeLabelHeight = 85;
+		timeLabelString = "0";
+
+		// Mission Label Parameters
+		missionLabelBg = new ImageIcon("img/time_bg.png");
+		missionLabelWidth = 175;
+		missionLabelHeight = 85;
+		missionLabelString = "";
+
+		// Inventory Button Parameters
+		inventoryButtonImage = new ImageIcon("img/inventory.png");
+		inventoryButtonRolloverImage = new ImageIcon("img/inventory.png");
+		inventoryButtonWidth = 100;
+		inventoryButtonHeight = 130;
+
+		createScene();
+	}
+
+	/**
+	 * Call private functions to create and add individual interface buttons.
+	 * <p>
+	 * Overridden from ControllerScene.java
+	 */
+	@Override
+	protected void createScene() {
+		// Create Buttons
+		createMapButton();
+		createToolsButton();
+		createInventoryButton();
+
+		// Create Labels
+		createScoreLabel();
+		createTimeLabel();
+		createMissionLabel();
+	}
+
+	/**
+	 * Creates the map JPanel/JButton combination and places it inside the game
+	 * window at its defined layer. An action is then created to toggle moving the
+	 * map (ControllerMap.java) between the overlay layer and its hidden storage
+	 * layer.
+	 */
+	private void createMapButton() {
+		mapButtonPanel = new ViewOverlayButton(mapButtonImage, mapButtonRolloverImage, mapButtonWidth, mapButtonHeight);
+		mapButtonPanel.setBounds(180, SCREEN_HEIGHT - mapButtonHeight, mapButtonWidth, mapButtonHeight);
+		mapButtonPanel.setName("MapButton");
+
+		if (sceneType == 1) {
+			mainPane.setLayer(mapButtonPanel, LayerCodeTutorial.ButtonMapHidden.getCode());
+			mainPane.add(mapButtonPanel, LayerCodeTutorial.ButtonMapHidden.getCode());
+		} else {
+			mainPane.setLayer(mapButtonPanel, LayerCode.MapButton.getCode());
+			mainPane.add(mapButtonPanel, LayerCode.MapButton.getCode());
+		}
+		componentList.put("MapButton", mapButtonPanel);
+
+		mapButtonPanel.getOverButton().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (sceneType == 1) {
+					mainPane.setLayer(componentList.get("HQ"), -100);
+					mainPane.setLayer(componentList.get("Tutorial"), LayerCodeTutorial.MainTop.getCode());
+				} else {
+					Component mapComponent = mainPane
+							.getComponentsInLayer(mainPane.getLayer(componentList.get("Map")))[0];
+
+					if (mainPane.getLayer(mapComponent) == LayerCode.Map.getCode()) {
+						mainPane.setLayer(mapComponent, LayerCode.MapOverlay.getCode());
+					} else {
+						mainPane.setLayer(mapComponent, LayerCode.Map.getCode());
+					}
+				}
+			}
+		});
+	}
+
+	/**
+	 * Creates the tools JPanel/JButton combination and places it inside the game
+	 * window at its defined layer. An action is then created to toggle moving the
+	 * toolbox (ControllerTools.java) between the overlay layer and its hidden
+	 * storage layer.
+	 */
+	private void createToolsButton() {
+		toolsButtonPanel = new ViewOverlayButton(toolsButtonImage, toolsButtonRolloverImage, toolsButtonWidth,
+				toolsButtonHeight);
+		toolsButtonPanel.setBounds(SCREEN_WIDTH - 75 - toolsButtonWidth, 0, toolsButtonWidth, toolsButtonHeight);
+		toolsButtonPanel.setName("ToolsButton");
+
+		if (sceneType == 1) {
+			mainPane.setLayer(toolsButtonPanel, LayerCodeTutorial.ButtonToolsHidden.getCode());
+			mainPane.add(toolsButtonPanel, LayerCodeTutorial.ButtonToolsHidden.getCode());
+		} else {
+			mainPane.setLayer(toolsButtonPanel, LayerCode.ToolsButton.getCode());
+			mainPane.add(toolsButtonPanel, LayerCode.ToolsButton.getCode());
+		}
+
+		componentList.put("ToolsButton", toolsButtonPanel);
+
+		toolsButtonPanel.getOverButton().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (sceneType == 1) {
+					Component toolsComponent = mainPane
+							.getComponentsInLayer(mainPane.getLayer(componentList.get("Tools")))[0];
+
+					if (mainPane.getLayer(toolsComponent) == LayerCodeTutorial.ToolsPanel.getCode()) {
+						mainPane.setLayer(toolsComponent, LayerCodeTutorial.ToolsPanelHidden.getCode());
+					} else {
+						mainPane.setLayer(toolsComponent, LayerCodeTutorial.ToolsPanel.getCode());
+					}
+				} else {
+					Component toolsComponent = mainPane
+							.getComponentsInLayer(mainPane.getLayer(componentList.get("Tools")))[0];
+
+					if (mainPane.getLayer(toolsComponent) == LayerCode.Tools.getCode()) {
+						mainPane.setLayer(toolsComponent, LayerCode.ToolsOverlay.getCode());
+					} else {
+						mainPane.setLayer(toolsComponent, LayerCode.Tools.getCode());
+					}
+				}
+			}
+		});
+	}
+
+	/**
+	 * Creates the inventory JPanel/JButton combination and places it inside the
+	 * game window at its defined layer. An action is then created to toggle moving
+	 * the inventory (SceneInventory.java) between the overlay layer and its hidden
+	 * storage layer.
+	 */
+	private void createInventoryButton() {
+		inventoryButtonPanel = new ViewOverlayButton(inventoryButtonImage, inventoryButtonRolloverImage,
+				inventoryButtonWidth, inventoryButtonHeight);
+		inventoryButtonPanel.setBounds(0, 0, inventoryButtonWidth, inventoryButtonHeight);
+		inventoryButtonPanel.setName("InventoryButton");
+
+		if (sceneType == 1) {
+			mainPane.setLayer(inventoryButtonPanel, LayerCodeTutorial.ButtonInventoryHidden.getCode());
+			mainPane.add(inventoryButtonPanel, LayerCodeTutorial.ButtonInventoryHidden.getCode());
+		} else {
+			mainPane.setLayer(inventoryButtonPanel, LayerCode.InventoryButton.getCode());
+			mainPane.add(inventoryButtonPanel, LayerCode.InventoryButton.getCode());
+		}
+		componentList.put("InventoryButton", inventoryButtonPanel);
+
+		inventoryButtonPanel.getOverButton().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Component inventoryComponent = mainPane
+						.getComponentsInLayer(mainPane.getLayer(componentList.get("Inventory")))[0];
+
+				if (mainPane.getLayer(inventoryComponent) == LayerCode.Inventory.getCode()) {
+					mainPane.setLayer(inventoryComponent, LayerCode.InventoryOverlay.getCode());
+				} else {
+					mainPane.setLayer(inventoryComponent, LayerCode.Inventory.getCode());
+				}
+			}
+		});
+
+	}
+
+	/**
+	 * Creates the score JPanel/JLabel combination and places it inside the game
+	 * window at its defined layer.
+	 */
+	private void createScoreLabel() {
+		scoreLabelPanel = new ViewOverlayLabel(scoreLabelImage, scoreLabelBg, scoreLabelWidth, scoreLabelHeight,
+				scoreLabelString);
+		scoreLabelPanel.setBounds(SCREEN_WIDTH - 2 * scoreLabelWidth, SCREEN_HEIGHT - scoreLabelHeight, scoreLabelWidth,
+				scoreLabelHeight);
+		scoreLabelPanel.setName("ScoreLabel");
+
+		mainPane.setLayer(scoreLabelPanel, LayerCode.ScoreLabel.getCode());
+		mainPane.add(scoreLabelPanel, LayerCode.ScoreLabel.getCode());
+
+		componentList.put("ScoreLabel", scoreLabelPanel);
+	}
+
+	/**
+	 * Creates the time JPanel/JLabel combination and places it inside the game
+	 * window at its defined layer.
+	 */
+	private void createTimeLabel() {
+		timeLabelPanel = new ViewOverlayLabel(timeLabelImage, timeLabelBg, timeLabelWidth, timeLabelHeight,
+				timeLabelString);
+		timeLabelPanel.setBounds((SCREEN_WIDTH - timeLabelWidth) / 2, SCREEN_HEIGHT - timeLabelHeight, timeLabelWidth,
+				timeLabelHeight);
+		timeLabelPanel.setName("TimeLabel");
+
+		mainPane.setLayer(timeLabelPanel, LayerCode.TimeLabel.getCode());
+		mainPane.add(timeLabelPanel, LayerCode.TimeLabel.getCode());
+
+		componentList.put("TimeLabel", timeLabelPanel);
+	}
+
+	/**
+	 * Creates the mission JPanel/JLabel combination and places it inside the game
+	 * window at its defined layer.
+	 */
+	private void createMissionLabel() {
+		missionLabelPanel = new ViewOverlayLabel(missionLabelImage, missionLabelBg, missionLabelWidth,
+				missionLabelHeight, missionLabelString);
+		missionLabelPanel.setBounds((SCREEN_WIDTH - missionLabelWidth) / 2, 0, missionLabelWidth, missionLabelHeight);
+		missionLabelPanel.setName("MissionLabel");
+
+		// missionLabelPanel.getLabel().setFont(new Font("Roboto", Font.BOLD, 16));
+
+		mainPane.setLayer(missionLabelPanel, LayerCode.MissionLabel.getCode());
+		mainPane.add(missionLabelPanel, LayerCode.MissionLabel.getCode());
+
+		componentList.put("MissionLabel", missionLabelPanel);
+	}
 }

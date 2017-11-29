@@ -1,21 +1,17 @@
 package cisc275.group3.controller;
 
 import cisc275.group3.model.scene.Scene;
-import cisc275.group3.model.scene.SceneBay;
 import cisc275.group3.utility.EstuaryFacts;
-import cisc275.group3.utility.LayerCode;
 import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.ViewGame;
 import cisc275.group3.view.ViewOverlayLabel;
 
 import java.awt.Component;
-import java.awt.Cursor;
 import java.awt.event.MouseAdapter;
 import java.util.HashMap;
 import java.awt.event.MouseEvent;
 import java.io.Serializable;
 
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 
@@ -50,7 +46,7 @@ public abstract class ControllerScene implements Serializable {
 	/**
 	 * Abstract Scene Controller Constructor
 	 * <p>
-	 * Sets the with, height and frame variables.
+	 * Sets the width, height and frame variables.
 	 * <p>
 	 * Updates the static componentList that holds the layer depths for the
 	 * JComponentLayer. This is necessary to retrieve layer information.
@@ -64,13 +60,15 @@ public abstract class ControllerScene implements Serializable {
 	 * @param cl
 	 *            HashMap-associations of scene controllers and layers
 	 * @param sceneType
-	 *            int-indicates how the scene should be initialized/updated
+	 *            int-indicates how the scene should be initialized/updated 0 =
+	 *            empty/no update, 1 = special update (ex. tutorial HQ), 2 =
+	 *            standard update, 3 = menus/interfaces
 	 */
 	public ControllerScene(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType) {
 		SCREEN_WIDTH = w;
 		SCREEN_HEIGHT = h;
 		GAME_FRAME = f;
-		
+
 		tutorial = false;
 
 		componentList = cl;
@@ -78,63 +76,56 @@ public abstract class ControllerScene implements Serializable {
 		mainPane = GAME_FRAME.getMainPane();
 		createScene();
 	}
-	
-	public ControllerScene(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType, boolean tut) {
-		SCREEN_WIDTH = w;
-		SCREEN_HEIGHT = h;
-		GAME_FRAME = f;
-		
-		tutorial = true;
-
-		componentList = cl;
-		this.sceneType = sceneType;
-		mainPane = GAME_FRAME.getMainPane();
-		createScene();
-	}
 
 	/**
-	 * Constructs a scene by creating the model, view background, and overlay. A
-	 * mouse listener is then added to the view background to pass clicks through to
-	 * the scene model.
+	 * Constructs a scene by creating the model, view background, and overlay. It is
+	 * then added to its specified layer in the JLayerdPane. A mouse listener is
+	 * then added to the view background to pass clicks through to the scene model.
 	 * <p>
-	 * The view overlay uses JLayeredPane to place the toolbar items in the
-	 * foreground and the game panel in the background.
+	 * The view overlay uses JLayeredPane to determine what interfaces, buttons and
+	 * scenes are displayed by moving the scenes into specified layers
+	 * (LayerCode.java).
 	 */
 	abstract protected void createScene();
 
 	/**
-   * Adds a mouse listener to the scene background and passes clicks
-   * through to the model. 
-   * <p>
-   * Note: If the model implements scored, this must be overridden.
-   */
-  protected void addML() {
-    viewGame.addMouseListener(new MouseAdapter() {
-      @Override
-      public void mousePressed(MouseEvent e) {
-        if (e.getButton() == MouseEvent.BUTTON1) {
-        	if(tutorial == true) {
-        		scene.tutClick(e.getX(), e.getY());
-        	}
-          if ( scene.processClick(e.getX(), e.getY()) ) {
-            displayScore();
-            displayMission();
-          }
-        }
-      }
-    });
-  }
-  
-  protected void addML(boolean i) {
-	    viewGame.addMouseListener(new MouseAdapter() {
-	      @Override
-	      public void mousePressed(MouseEvent e) {
-	        if (e.getButton() == MouseEvent.BUTTON1) {
-	        		scene.tutClick(e.getX(), e.getY());
-	        }
-	      }
-	    });
-	  }
+	 * Adds a mouse listener to the scene background and passes clicks through to
+	 * the model.
+	 * <p>
+	 * Note: If the model implements scored, this must be overridden.
+	 */
+	protected void addML() {
+		viewGame.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				if (e.getButton() == MouseEvent.BUTTON1) {
+					if (tutorial == true) {
+						scene.tutClick(e.getX(), e.getY());
+					}
+					if (scene.processClick(e.getX(), e.getY())) {
+						displayScore();
+						displayMission();
+					}
+				}
+			}
+		});
+	}
+
+	/**
+	 * Adds a mouse listener to the scene background and passes clicks through to
+	 * the model.This ML implements tutClick which is used in the tutorial to remove
+	 * sceneObjects.
+	 */
+	protected void addML(boolean i) {
+		viewGame.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				if (e.getButton() == MouseEvent.BUTTON1) {
+					scene.tutClick(e.getX(), e.getY());
+				}
+			}
+		});
+	}
 
 	public void displayMission() {
 		String missionNum;

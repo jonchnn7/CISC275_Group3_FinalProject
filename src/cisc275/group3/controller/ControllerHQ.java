@@ -3,7 +3,6 @@ package cisc275.group3.controller;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,13 +10,10 @@ import java.util.HashMap;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-
 import cisc275.group3.model.scene.Scene;
 import cisc275.group3.model.scene.SceneHQ;
 import cisc275.group3.utility.LayerCode;
 import cisc275.group3.utility.LayerCodeTutorial;
-import cisc275.group3.utility.Mission;
 import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.ViewGame;
 import cisc275.group3.view.ViewOverlayButton;
@@ -53,6 +49,11 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 
 	}
 
+	  /**
+	   * Creates the scene and adds it to
+	   * the main pain. Sets the layers and component list
+	   * for the HQ. 
+	   */
 	@Override
 	protected void createScene() {
 		scene = new SceneHQ("HQ", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, BG_IMAGE, sceneType);
@@ -83,10 +84,6 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 
 			tutorialStepOne();
 		}
-	}
-
-	@Override
-	protected void addML() {
 	}
 
 	/**
@@ -154,13 +151,16 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 	}
 
 	/**
-	 * Demonstrate Getting a Mission
+	 * Adds various components of the first step in the tutorial (The mission). This
+	 * includes: Arrow to point to get mission, label, sets next button click to go
+	 * to step two
 	 */
 	private void tutorialStepOne() {
 		// Get Mission Label
 		ImageIcon getMissionLabelIcon = new ImageIcon("img/tutorial_arrow_upLeft.png");
 		ImageIcon getMissionLabelBG = new ImageIcon("img/tutorial_labelLeft_bg.png");
-		tutorialLabel = new ViewOverlayLabel(getMissionLabelIcon, getMissionLabelBG, (int)(SCREEN_WIDTH*.6), SCREEN_HEIGHT/2, "Click for mission!");
+		tutorialLabel = new ViewOverlayLabel(getMissionLabelIcon, getMissionLabelBG, (int) (SCREEN_WIDTH * .6),
+				SCREEN_HEIGHT / 2, "Click for mission!");
 		tutorialLabel.setBounds(480, 100, 780, 300);
 		tutorialLabel.setName("GetMissionLabel");
 		tutorialLabel.getLabel().setFont(new Font("Roboto", Font.BOLD, 48));
@@ -199,7 +199,9 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 	}
 
 	/**
-	 * Demonstrate Objectives
+	 * Adds various components of the second step in the tutorial(The objectives).
+	 * This includes: Arrow to point to the mission, speech label, mission text,
+	 * sets next button click to go to step three
 	 */
 	private void tutorialStepTwo() {
 		// Objective Label
@@ -267,7 +269,9 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 	}
 
 	/**
-	 * Demonstrate Inventory
+	 * Adds various components of the third step in the tutorial(The inventory).
+	 * This includes: Arrow to point to the inventory, inventory interface, speech
+	 * text, sets next button click to go to step four
 	 */
 	private void tutorialStepThree() {
 		// Objective Arrow Label
@@ -315,7 +319,9 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 	}
 
 	/**
-	 * Demonstrate Tools
+	 * Adds various components of the second step in the tutorial(The tools). This
+	 * includes: Arrow to point to the tools, tool interface, speech text, sets next
+	 * button click to add the map button
 	 */
 	private void tutorialStepFour() {
 		// Objective Arrow Label

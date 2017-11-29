@@ -18,13 +18,13 @@ import cisc275.group3.controller.GameController;
 public class ClickAdventure {
 		 
   public static void main(String[] args) {
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		final int HEIGHT = (int)screenSize.getHeight() - 50;
-		final int WIDTH = (int)screenSize.getWidth();
+		//Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		//final int HEIGHT = (int)screenSize.getHeight() - 50;
+		//final int WIDTH = (int)screenSize.getWidth();
 
     javax.swing.SwingUtilities.invokeLater(new Runnable() {
       public void run() {
-        new GameController(HEIGHT, WIDTH);
+        new GameController(1280, 720);
       } 
     });
   }
