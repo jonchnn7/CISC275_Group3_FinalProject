@@ -1,3 +1,8 @@
+
 cisc275.group3.controller
+cisc275.group3.exceptions
 cisc275.group3.model.scene
+cisc275.group3.model.sceneobject
+cisc275.group3.testing
+cisc275.group3.utility
 cisc275.group3.view
