@@ -8,7 +8,7 @@ import java.awt.MouseInfo;
  * <p>
  * ToolObject.java Class
  * <p>
- * @author Ryan
+ * @author Jolyne
  */
 public abstract class ToolObject implements Comparable<ToolObject> {
 
