@@ -207,7 +207,7 @@ public class AbstractSceneTests implements ConstructCrab, ConstructFish, Constru
       assertEquals("Current Tool = null", null, Scene.getCurrentTool()); 
       //assertEquals("Current Mission = Completed!", "Completed!", Scene.getCurrentMission());
       assertEquals("Set Done Mission = true", true, Scene.getCurrentMission().isDoneMission());
-      assertEquals("Current Fact = null fact", "null fact", Scene.getCurrentFact());
+      assertEquals("Current Fact = ", "", Scene.getCurrentFact());
     });
     
     // Update Static Variables
