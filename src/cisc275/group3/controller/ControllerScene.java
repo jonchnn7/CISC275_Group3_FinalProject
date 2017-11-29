@@ -179,7 +179,7 @@ public abstract class ControllerScene implements Serializable {
 	public void displayScore() {
 		String sceneScore;
 
-		sceneScore = Integer.toString(scene.getScore());
+		sceneScore = Integer.toString(Scene.getScore());
 		((ViewOverlayLabel) componentList.get("ScoreLabel")).updateLabel(sceneScore);
 	}
 }
