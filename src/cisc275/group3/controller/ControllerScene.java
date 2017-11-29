@@ -127,6 +127,9 @@ public abstract class ControllerScene implements Serializable {
 		});
 	}
 
+	/**
+	 * Displays a random fact about the given mission
+	 */
 	public void displayMission() {
 		String missionNum;
 

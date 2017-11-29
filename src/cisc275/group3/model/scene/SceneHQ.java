@@ -65,7 +65,7 @@ public class SceneHQ extends Scene {
 	}
 
 	private void tutorialFill() {
-		
+
 	}
 
 	/**

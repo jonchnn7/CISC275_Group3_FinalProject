@@ -26,7 +26,7 @@ import cisc275.group3.view.ViewGame;
 /**
  * The Title Controller is responsible for the control of the title screen.
  * 
- * The title screen is the first interface that is visible for the user and 
+ * The title screen is the first interface that is visible for the user and
  * provides a start button that sends the user to the hq upon clicking.
  * 
  * ControllerTitle.java
@@ -40,10 +40,29 @@ public class ControllerTitle extends ControllerScene implements LinkDynamics, Li
 	private JPanel titlePanel;
 	private JButton startButton;
 
+	/**
+	 * 
+	 * @param w
+	 *            int-scene width
+	 * @param h
+	 *            int-scene height
+	 * @param f
+	 *            GameWindow-JFrame container
+	 * @param cl
+	 *            HashMap-associations of scene controllers and layers
+	 * @param sceneType
+	 *            int-indicates how the scene should be initialized/updated 0 =
+	 *            empty/no update, 1 = special update (ex. tutorial HQ), 2 =
+	 *            standard update, 3 = menus/interfaces
+	 */
 	public ControllerTitle(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType) {
 		super(w, h, f, cl, sceneType);
 	}
 
+	/**
+	 * Creates the scene and adds it to the main pain. Sets the layers and component
+	 * list for the ControllerTitle.
+	 */
 	@Override
 	protected void createScene() {
 		titlePanel = new JPanel(true) {
@@ -63,16 +82,19 @@ public class ControllerTitle extends ControllerScene implements LinkDynamics, Li
 		titlePanel.setName("TitleLayer");
 
 		if (sceneType == 1) {
-		  addTutorialButton();
+			addTutorialButton();
 		} else {
-		  addTitleButton();
+			addTitleButton();
 		}
-		
+
 		mainPane.setLayer(titlePanel, LayerCode.MainTop.getCode());
 		mainPane.add(titlePanel, LayerCode.MainTop.getCode());
 		componentList.put("Title", titlePanel);
 	}
 
+	/**
+	 * Adds title button to controller scene
+	 */
 	private void addTitleButton() {
 		startButton = new JButton("Start");
 		startButton.setFont(new Font("Roboto", Font.BOLD, 30));
@@ -101,49 +123,66 @@ public class ControllerTitle extends ControllerScene implements LinkDynamics, Li
 		});
 		titlePanel.add(startButton);
 	}
-	
+
+	/**
+	 * Adds a tutorial button to initialize the tutorial phase
+	 */
 	private void addTutorialButton() {
-    startButton = new JButton("Start");
-    startButton.setFont(new Font("Roboto", Font.BOLD, 30));
-    startButton.setBounds(500, 600, 300, 96);
-    startButton.setIcon(new ImageIcon("img/startButton.png"));
-    startButton.setOpaque(false);
-    startButton.setBorderPainted(false);
-    startButton.setBorder(null);
-    startButton.setMargin(new Insets(0, 0, 0, 0));
-    startButton.setContentAreaFilled(false);
-    startButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
-    startButton.setSize(330, 96);
-    startButton.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        Component titleComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Title")))[0];
-        Component hqComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("HQ")))[0];
-        Component getMissionButton = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("GetMissionButton")))[0];
-        Component getMissionLabel = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("GetMissionLabel")))[0];
+		startButton = new JButton("Start");
+		startButton.setFont(new Font("Roboto", Font.BOLD, 30));
+		startButton.setBounds(500, 600, 300, 96);
+		startButton.setIcon(new ImageIcon("img/startButton.png"));
+		startButton.setOpaque(false);
+		startButton.setBorderPainted(false);
+		startButton.setBorder(null);
+		startButton.setMargin(new Insets(0, 0, 0, 0));
+		startButton.setContentAreaFilled(false);
+		startButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		startButton.setSize(330, 96);
+		startButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Component titleComponent = mainPane
+						.getComponentsInLayer(mainPane.getLayer(componentList.get("Title")))[0];
+				Component hqComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("HQ")))[0];
+				Component getMissionButton = mainPane
+						.getComponentsInLayer(mainPane.getLayer(componentList.get("GetMissionButton")))[0];
+				Component getMissionLabel = mainPane
+						.getComponentsInLayer(mainPane.getLayer(componentList.get("GetMissionLabel")))[0];
 
-
-        mainPane.setLayer(hqComponent, LayerCodeTutorial.MainTop.getCode());
-        mainPane.setLayer(titleComponent, LayerCodeTutorial.TitleScreen.getCode());
-        mainPane.setLayer(getMissionButton, LayerCodeTutorial.ButtonGetMission.getCode());
-        mainPane.setLayer(getMissionLabel, LayerCodeTutorial.LabelGetMission.getCode());
-      }
-    });
-    titlePanel.add(startButton);
+				mainPane.setLayer(hqComponent, LayerCodeTutorial.MainTop.getCode());
+				mainPane.setLayer(titleComponent, LayerCodeTutorial.TitleScreen.getCode());
+				mainPane.setLayer(getMissionButton, LayerCodeTutorial.ButtonGetMission.getCode());
+				mainPane.setLayer(getMissionLabel, LayerCodeTutorial.LabelGetMission.getCode());
+			}
+		});
+		titlePanel.add(startButton);
 	}
 
+	/**
+	 * Needed by abstract class
+	 */
 	@Override
 	protected void addML() {
 	}
 
+	/**
+	 * Needed by abstract class
+	 */
 	@Override
 	public void updateTime() {
 	}
 
+	/**
+	 * Needed by abstract class
+	 */
 	@Override
 	public void displayTime() {
 	}
 
+	/**
+	 * Needed by abstract class
+	 */
 	@Override
 	public void update() {
 	}

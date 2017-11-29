@@ -54,7 +54,7 @@ public class GameController implements Serializable {
 	public GameController(int x, int y) {
 		SCREEN_WIDTH = x;
 		SCREEN_HEIGHT = y;
-		
+
 		tutorial = true;
 
 		// Create game window
@@ -74,13 +74,16 @@ public class GameController implements Serializable {
 		}
 	}
 
+	/**
+	 * Initializes scene to the controller map only for scenes needed for tutorial
+	 */
 	private void initTutorial() {
 		controlMap.put("Title", new ControllerTitle(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 1));
 		controlMap.put("Tutorial", new ControllerTutorial(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 1));
-    controlMap.put("Overlay", new ControllerOverlay(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 1));
-    controlMap.put("Inventory", new ControllerInventory(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 1));
-    controlMap.put("HQ", new ControllerHQ(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 1));
-    controlMap.put("Tools", new ControllerTools(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 1));
+		controlMap.put("Overlay", new ControllerOverlay(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 1));
+		controlMap.put("Inventory", new ControllerInventory(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 1));
+		controlMap.put("HQ", new ControllerHQ(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 1));
+		controlMap.put("Tools", new ControllerTools(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 1));
 
 	}
 
@@ -110,15 +113,15 @@ public class GameController implements Serializable {
 		Timer timer = new Timer(100, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (loopRun) {
-					if(tutorial == true) {
-						if(((ControllerTutorial)controlMap.get("Tutorial")).tutorialDone()) {
+					if (tutorial == true) {
+						if (((ControllerTutorial) controlMap.get("Tutorial")).tutorialDone()) {
 							controlMap.clear();
 							layerMap.clear();
 							GAME_FRAME.getMainPane().removeAll();
 							tutorial = false;
 							initGame();
 							gameTime();
-						}						
+						}
 					}
 					controlMap.forEach((k, v) -> {
 						// Model Object Updates
