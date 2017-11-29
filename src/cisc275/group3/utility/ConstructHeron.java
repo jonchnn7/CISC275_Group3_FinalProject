@@ -3,10 +3,14 @@ package cisc275.group3.utility;
 import cisc275.group3.model.sceneobject.BetaHeron;
 
 /**
- * Interface to simplify the construction of heron objects. This
- * code used to be within SceneWetland.java, but was transitioned
- * into an interface to reduce code size and increase 
- * extensibility.
+ * Interface to simplify the construction of heron objects. This code used to be
+ * within SceneWetland.java, but is transitioned into an interface to reduce
+ * code size and increase extensibility.
+ * <p>
+ * ConstructHeron.java
+ * <p>
+ * 
+ * @author Jon
  */
 public interface ConstructHeron {
 	// Heron File Location
@@ -32,16 +36,21 @@ public interface ConstructHeron {
 	static final int HERON_YSPEED = 10;
 
 	/**
-	 * Returns a constructed Beta Heron object
+	 * Returns a constructed Beta Heron object. This heron will move left
 	 * 
 	 * @param depth
 	 *            int-heron depth
 	 * @param type
-	 *            int-heron type [0,1]
+	 *            int-heron type [0,1] (0 = landed , 1 = flying)
 	 * @param x
 	 *            double-x-axis location
 	 * @param y
 	 *            double-y-axis location
+	 * @param land
+	 *            boolean-determines if the heron has landed (is not moving)
+	 * @param hasLand
+	 *            boolean-determines if the heron has ever landed. If it has landed,
+	 *            it will not land again
 	 * @return BetaHeron
 	 */
 	static public BetaHeron constructLeftHeron(int depth, int type, double x, double y, boolean land, boolean hasland) {
@@ -54,13 +63,31 @@ public interface ConstructHeron {
 				y, // y position
 				HERON_XSPEED, // x-axis speed
 				HERON_YSPEED, // y-axis speed
-				land, hasland,
-				true);
+				land, hasland, true);
 
 		return leftHeron;
 	}
 
-	static public BetaHeron constructRightHeron(int depth, int type, double x, double y, boolean land, boolean hasland) {
+	/**
+	 * Returns a constructed Beta Heron object. This heron will move right
+	 * 
+	 * @param depth
+	 *            int-heron depth
+	 * @param type
+	 *            int-heron type [0,1]
+	 * @param x
+	 *            double-x-axis location
+	 * @param y
+	 *            double-y-axis location
+	 * @param land
+	 *            boolean-determines if the heron has landed (is not moving)
+	 * @param hasLand
+	 *            boolean-determines if the heron has ever landed. If it has landed,
+	 *            it will not land again
+	 * @return BetaHeron
+	 */
+	static public BetaHeron constructRightHeron(int depth, int type, double x, double y, boolean land,
+			boolean hasland) {
 		BetaHeron rightHeron = new BetaHeron(depth, (int) (HERON_WIDTH[type] * HERON_AR[type]), // height
 				HERON_ID[type], // id
 				RIGHT_FILE[type], // image file
@@ -70,8 +97,7 @@ public interface ConstructHeron {
 				y, // y position
 				HERON_XSPEED, // x-axis speed
 				HERON_YSPEED, // y-axis speed
-				land, hasland,
-				false);
+				land, hasland, false);
 		return rightHeron;
 	}
 }

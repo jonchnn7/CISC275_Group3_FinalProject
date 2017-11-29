@@ -3,13 +3,18 @@ package cisc275.group3.utility;
 import cisc275.group3.model.sceneobject.BetaPerson;
 
 /**
- * Interface to simplify the construction of person objects. This code used to be
- * within SceneHQ.java, but was transitioned into an interface to reduce code
+ * Interface to simplify the construction of person objects. This code used to
+ * be within SceneHQ.java, but is transitioned into an interface to reduce code
  * size and increase extensibility.
+ * <p>
+ * ConstructPerson.java
+ * <p>
+ * 
+ * @author Jon
  */
 public interface ConstructPerson {
 	// Person File Locations
-	static final String[] FILE = { "img/birdWatcher_v2.png",  "img/parkRangerPerson_v2.png", "img/scientistPerson.png"};
+	static final String[] FILE = { "img/birdWatcher_v2.png", "img/parkRangerPerson_v2.png", "img/scientistPerson.png" };
 
 	// Person Names
 	static final String[] NAME = { "Bird Watcher", "Park Ranger", "Scientist" };
@@ -17,11 +22,11 @@ public interface ConstructPerson {
 	// Person Dimensions
 	static final int LENGTH = 358;
 
-	// Person Aspect Ratios
+	// Person Aspect Ratios (multiply by width for height)
 	static final double AR = 0.66;
 
 	// Person ID Numbers
-	static final int[] ID = {50 , 51, 52 };
+	static final int[] ID = { 50, 51, 52 };
 
 	// Person x-axis Speed
 	static final int SPEED = 15;
@@ -32,7 +37,8 @@ public interface ConstructPerson {
 	 * @param depth
 	 *            int - Person depth
 	 * @param type
-	 *            int - Person type [0,2]
+	 *            int - Person type [0,2] (0 = BirdWatcher, 1 = Park Ranger, 2 =
+	 *            Scientist)
 	 * @param x
 	 *            double - x-axis location
 	 * @param y
