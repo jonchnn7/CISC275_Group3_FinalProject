@@ -28,15 +28,30 @@ import cisc275.group3.view.ViewOverlayLabel;
 public class ControllerBeachMini extends ControllerScene implements LinkDynamics, LinkTime {
 	private final String BG_IMAGE = "img/beach_sand_bg.png";
 
+	/**
+	 * Constructor
+	 * 
+	 * @param w
+	 *            int-scene width
+	 * @param h
+	 *            int-scene height
+	 * @param f
+	 *            GameWindow-JFrame container
+	 * @param cl
+	 *            HashMap-associations of scene controllers and layers
+	 * @param sceneType
+	 *            int-indicates how the scene should be initialized/updated 0 =
+	 *            empty/no update, 1 = special update (ex. tutorial HQ), 2 =
+	 *            standard update, 3 = menus/interfaces
+	 */
 	public ControllerBeachMini(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType) {
 		super(w, h, f, cl, sceneType);
 	}
 
-	  /**
-	   * Creates the scene and adds it to
-	   * the main pain. Sets the layers and component list
-	   * for the Beach minigame. 
-	   */
+	/**
+	 * Creates the scene and adds it to the main pain. Sets the layers and component
+	 * list for the Beach minigame.
+	 */
 	@Override
 	protected void createScene() {
 		scene = new SceneBeachMini("Bay", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, BG_IMAGE, sceneType);
@@ -120,12 +135,5 @@ public class ControllerBeachMini extends ControllerScene implements LinkDynamics
 
 		sceneTime = Integer.toString(((SceneBeachMini) scene).getTime());
 		((ViewOverlayLabel) componentList.get("TimeLabel")).updateLabel(sceneTime);
-	}
-
-	/**
-	 * Displays the model score in the shared score label.
-	 */
-	public void displayScore() {
-		String sceneScore;
 	}
 }

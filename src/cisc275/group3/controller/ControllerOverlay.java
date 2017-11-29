@@ -25,18 +25,23 @@ import cisc275.group3.view.ViewOverlayLabel;
  * @author Ryan
  */
 public class ControllerOverlay extends ControllerScene {
+
+	// Varbiables to set imageicons,size, and overlay button for the following
+	// Map
 	private ImageIcon mapButtonImage;
 	private ImageIcon mapButtonRolloverImage;
 	private int mapButtonWidth;
 	private int mapButtonHeight;
 	private ViewOverlayButton mapButtonPanel;
 
+	// Tools
 	private ImageIcon toolsButtonImage;
 	private ImageIcon toolsButtonRolloverImage;
 	private int toolsButtonWidth;
 	private int toolsButtonHeight;
 	private ViewOverlayButton toolsButtonPanel;
 
+	// Time
 	private ImageIcon timeLabelBg;
 	private ImageIcon timeLabelImage;
 	private int timeLabelWidth;
@@ -44,6 +49,7 @@ public class ControllerOverlay extends ControllerScene {
 	private String timeLabelString;
 	private ViewOverlayLabel timeLabelPanel;
 
+	// Score
 	private ImageIcon scoreLabelBg;
 	private ImageIcon scoreLabelImage;
 	private int scoreLabelWidth;
@@ -51,6 +57,7 @@ public class ControllerOverlay extends ControllerScene {
 	private String scoreLabelString;
 	private ViewOverlayLabel scoreLabelPanel;
 
+	// MissionLabel
 	private ImageIcon missionLabelBg;
 	private ImageIcon missionLabelImage;
 	private int missionLabelWidth;
@@ -58,6 +65,7 @@ public class ControllerOverlay extends ControllerScene {
 	private String missionLabelString;
 	private ViewOverlayLabel missionLabelPanel;
 
+	// Inventory
 	private ImageIcon inventoryButtonImage;
 	private ImageIcon inventoryButtonRolloverImage;
 	private int inventoryButtonWidth;
@@ -70,13 +78,17 @@ public class ControllerOverlay extends ControllerScene {
 	 * <p>
 	 * 
 	 * @param w
-	 *            int-width
+	 *            int-scene width
 	 * @param h
-	 *            int-height
+	 *            int-scene height
 	 * @param f
-	 *            GameWindow-main game window
+	 *            GameWindow-JFrame container
 	 * @param cl
-	 *            HashMap-map of component name to component
+	 *            HashMap-associations of scene controllers and layers
+	 * @param sceneType
+	 *            int-indicates how the scene should be initialized/updated 0 =
+	 *            empty/no update, 1 = special update (ex. tutorial HQ), 2 =
+	 *            standard update, 3 = menus/interfaces
 	 */
 	public ControllerOverlay(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType) {
 		super(w, h, f, cl, sceneType);

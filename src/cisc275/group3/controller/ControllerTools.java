@@ -4,12 +4,8 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.Insets;
-import java.awt.Point;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -23,7 +19,6 @@ import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
 import cisc275.group3.model.scene.Scene;
-import cisc275.group3.model.scene.SceneBeachMini;
 import cisc275.group3.model.sceneobject.ToolCage;
 import cisc275.group3.model.sceneobject.ToolCamera;
 import cisc275.group3.model.sceneobject.ToolNet;
@@ -48,6 +43,7 @@ import cisc275.group3.view.GameWindow;
  */
 public class ControllerTools extends ControllerScene {
 
+	//JPanel and Buttons variables
 	private JPanel toolPanel;
 	private JButton netButton;
 	private JButton cameraButton;
@@ -55,6 +51,22 @@ public class ControllerTools extends ControllerScene {
 	private JButton trimmerButton;
 	private ImageIcon toolBg;
 
+	/**
+	 * Constructor
+	 * 
+	 * @param w
+	 *            int-scene width
+	 * @param h
+	 *            int-scene height
+	 * @param f
+	 *            GameWindow-JFrame container
+	 * @param cl
+	 *            HashMap-associations of scene controllers and layers
+	 * @param sceneType
+	 *            int-indicates how the scene should be initialized/updated 0 =
+	 *            empty/no update, 1 = special update (ex. tutorial HQ), 2 =
+	 *            standard update, 3 = menus/interfaces
+	 */
 	public ControllerTools(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType) {
 		super(w, h, f, cl, sceneType);
 		toolBg = new ImageIcon("img/toolbox_vert_menu.png");
@@ -92,6 +104,9 @@ public class ControllerTools extends ControllerScene {
 		componentList.put("Tools", toolPanel);
 	}
 
+	/**
+	 * Adds tool buttons for each individual tool to scene.
+	 */
 	private void addToolButtons() {
 
 		netButton = new JButton();
@@ -271,6 +286,9 @@ public class ControllerTools extends ControllerScene {
 		toolPanel.add(trimmerButton);
 	}
 
+	/**
+	 * sets tool overlay
+	 */
 	private void toolOverlay() {
 		mouseLabel = new JLabel(new ImageIcon("img/mouse_empty.png"));
 		mouseLabel.setBounds(0, 0, 100, 100);
@@ -303,6 +321,9 @@ public class ControllerTools extends ControllerScene {
 		});
 	}
 	
+	/**
+	 * sets tool overlay for tutorial
+	 */
 	 private void tutorialToolOverlay() {
 	    mouseLabel = new JLabel(new ImageIcon("img/mouse_empty.png"));
 	    mouseLabel.setBounds(0, 0, 100, 100);

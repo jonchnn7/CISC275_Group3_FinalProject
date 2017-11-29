@@ -3,7 +3,6 @@ package cisc275.group3.model.scene;
 import java.util.Collections;
 import java.util.Iterator;
 
-import cisc275.group3.exceptions.InsufficientDataException;
 import cisc275.group3.model.sceneobject.BetaCrab;
 import cisc275.group3.model.sceneobject.SceneObject;
 import cisc275.group3.utility.ConstructCrab;
@@ -18,17 +17,19 @@ import cisc275.group3.utility.SceneId;
  * <p>
  * SceneBeach.java
  * <p>
- * @author Jon 
- * @author Ryan 
+ * 
+ * @author Jon
+ * @author Ryan
  * @author Scott
  * @author Thomas
  */
 public class SceneBeach extends Scene implements ConstructCrab {
-  
+
 	/**
 	 * Constructor
 	 * 
-	 * @param mani sceneid used to distinguish between secenes
+	 * @param mani
+	 *            sceneid used to distinguish between secenes
 	 */
 	public SceneBeach(SceneId mani) {
 		super(mani);
@@ -42,13 +43,21 @@ public class SceneBeach extends Scene implements ConstructCrab {
 
 	/**
 	 * Used when SceneId must also be created
-	 * @param n		String-scene name
-	 * @param x		double-x-coordinate of upper left corner
-	 * @param y		double-y-coordinate of upper left corner
-	 * @param w		double-scene width
-	 * @param h		double-scene height
-	 * @param bg	String-file location of bg image
-	 * @param sceneType	int-type of scene
+	 * 
+	 * @param n
+	 *            String-scene name
+	 * @param x
+	 *            double-x-coordinate of upper left corner
+	 * @param y
+	 *            double-y-coordinate of upper left corner
+	 * @param w
+	 *            double-scene width
+	 * @param h
+	 *            double-scene height
+	 * @param bg
+	 *            String-file location of bg image
+	 * @param sceneType
+	 *            int-type of scene
 	 */
 	public SceneBeach(String n, double x, double y, double w, double h, String bg, int sceneType) {
 		this(new SceneId(n, x, y, w, h, sceneType, bg));
@@ -61,24 +70,22 @@ public class SceneBeach extends Scene implements ConstructCrab {
 	@Override
 	protected void fillScene() {
 		for (int i = 0; i < 10; i++) {
-			int crabType = randGen.nextInt(2) ;
+			int crabType = randGen.nextInt(2);
 
 			// Add Left Crab
 			sceneItems.add(ConstructCrab.constructLeftCrab(
-			    randGen.nextInt(20) - 10, // depth
-					crabType, // type
-					manifest.getWidth() + randGen.nextInt(500), // x location
-					((i * 140 + manifest.getStartY() + 10)) + 370)); // y location
+			        randGen.nextInt(20) - 10, // depth
+			        crabType, // type
+			        manifest.getWidth() + randGen.nextInt(500), // x location
+			        ((i * 140 + manifest.getStartY() + 10)) + 370)); // y location
 
 			// Add Right Crab
 			sceneItems.add(ConstructCrab.constructRightCrab(
-			    randGen.nextInt(20) - 10, // depth
-					crabType, // type
-					0 - randGen.nextInt(500), // x location
-					((i * 140 + manifest.getStartY() + 10)) + 370)); // y location
-			
-			
-			
+			        randGen.nextInt(20) - 10, // depth
+			        crabType, // type
+			        0 - randGen.nextInt(500), // x location
+			        ((i * 140 + manifest.getStartY() + 10)) + 370)); // y location
+
 		}
 		Collections.sort(sceneItems); // sort by depth
 	}
@@ -97,16 +104,16 @@ public class SceneBeach extends Scene implements ConstructCrab {
 			// Generate new crab on ~7% of calls
 			if (randGen.nextInt(100) <= 7) {
 				sceneItems.add(ConstructCrab.constructLeftCrab(
-				    randGen.nextInt(20) - 10, // depth
-						randGen.nextInt(2), // type
-						manifest.getWidth() + randGen.nextInt(500), // x location
-						((randGen.nextDouble() * manifest.getHeight() + manifest.getStartY()) + 370))); // y location
+				        randGen.nextInt(20) - 10, // depth
+				        randGen.nextInt(2), // type
+				        manifest.getWidth() + randGen.nextInt(500), // x location
+				        ((randGen.nextDouble() * manifest.getHeight() + manifest.getStartY()) + 370))); // y location
 
 				sceneItems.add(ConstructCrab.constructRightCrab(
-				    randGen.nextInt(20) - 10, // depth
-						randGen.nextInt(2), // type
-						0 - randGen.nextInt(75), // x location
-						((randGen.nextDouble() * manifest.getHeight() + manifest.getStartY()) + 370))); // y location
+				        randGen.nextInt(20) - 10, // depth
+				        randGen.nextInt(2), // type
+				        0 - randGen.nextInt(75), // x location
+				        ((randGen.nextDouble() * manifest.getHeight() + manifest.getStartY()) + 370))); // y location
 			}
 			// Move Crab
 			for (SceneObject crab : sceneItems) {

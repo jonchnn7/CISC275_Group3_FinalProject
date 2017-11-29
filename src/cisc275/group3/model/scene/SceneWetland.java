@@ -16,18 +16,25 @@ import cisc275.group3.utility.SceneId;
  * Wetland scene/model.
  * <p>
  * The Wetland scene implements scoring and timing functions via interface
- * implementations. The ConstructVegetation and ConstructHeron interface holds component
- * definitions for vegetation and heron objects, and static functions to return vegetation and heron
- * objects.
+ * implementations. The ConstructVegetation and ConstructHeron interface holds
+ * component definitions for vegetation and heron objects, and static functions
+ * to return vegetation and heron objects.
  * <p>
  * SceneWetland.java
  * <p>
- * @author Jon 
- * @author Ryan 
+ * 
+ * @author Jon
+ * @author Ryan
  * @author Scott
  */
 public class SceneWetland extends Scene {
-  
+
+	/**
+	 * Constructor
+	 * 
+	 * @param mani
+	 *            sceneid used to distinguish between scenes
+	 */
 	public SceneWetland(SceneId mani) {
 		super(mani);
 		time = 0;
@@ -40,13 +47,21 @@ public class SceneWetland extends Scene {
 
 	/**
 	 * Used when SceneId must also be created
-	 * @param n		String-scene name
-	 * @param x		double-x-coordinate of upper left corner
-	 * @param y		double-y-coordinate of upper left corner
-	 * @param w		double-scene width
-	 * @param h		double-scene height
-	 * @param bg	String-file location of bg image
-	 * @param sceneType	int-type of scene
+	 * 
+	 * @param n
+	 *            String-scene name
+	 * @param x
+	 *            double-x-coordinate of upper left corner
+	 * @param y
+	 *            double-y-coordinate of upper left corner
+	 * @param w
+	 *            double-scene width
+	 * @param h
+	 *            double-scene height
+	 * @param bg
+	 *            String-file location of bg image
+	 * @param sceneType
+	 *            int-type of scene
 	 */
 	public SceneWetland(String n, double x, double y, double w, double h, String bg, int sceneType) {
 		this(new SceneId(n, x, y, w, h, sceneType, bg));
@@ -72,8 +87,8 @@ public class SceneWetland extends Scene {
 	 * to determine how to update each scene model
 	 * 
 	 * <p>
-	 * For mission related scene models: On approx. 1.5% of calls, a new instance of a
-	 * BetaHeron will be added. On approx. 3% of calls a new instance of a
+	 * For mission related scene models: On approx. 1.5% of calls, a new instance of
+	 * a BetaHeron will be added. On approx. 3% of calls a new instance of a
 	 * BetaVegetation will be added
 	 * <p>
 	 * On every tick, the herons will call the move() method.
@@ -83,42 +98,42 @@ public class SceneWetland extends Scene {
 	 */
 	@Override
 	public void update() {
-    if (this.getManifest().getSceneType() == 2) {
-      // 2% to Add new Heron
-      if (randGen.nextInt(200) < 3) {
-        // 50/50 chance to pick right or left
-        if (randGen.nextInt(10) < 5) {
-          sceneItems.add(ConstructHeron.constructLeftHeron(randGen.nextInt(20) - 10, // depth
-              1, manifest.getWidth() + randGen.nextInt(500), // x location
-              randGen.nextDouble() * randGen.nextInt(450), false, false)); // y
-        } else {
-          sceneItems.add(ConstructHeron.constructRightHeron(randGen.nextInt(20) - 10, // depth
-              1, 0 - randGen.nextInt(75), // x location
-              randGen.nextDouble() * randGen.nextInt(450), false, false)); // y
-        }
-      }
-      // Generate new vegetation on 3% of calls
-      if (sceneItems.size() < 10) {
-        if (randGen.nextInt(100) < 3) {
-          sceneItems.add(ConstructVegetation.constructVegetation(randGen.nextInt(20) - 10, // depth
-              0, randGen.nextInt(1280), // x location
-              randGen.nextInt(650) + 70));
-        }
-      }
+		if (this.getManifest().getSceneType() == 2) {
+			// 2% to Add new Heron
+			if (randGen.nextInt(200) < 3) {
+				// 50/50 chance to pick right or left
+				if (randGen.nextInt(10) < 5) {
+					sceneItems.add(ConstructHeron.constructLeftHeron(randGen.nextInt(20) - 10, // depth
+							1, manifest.getWidth() + randGen.nextInt(500), // x location
+							randGen.nextDouble() * randGen.nextInt(450), false, false)); // y
+				} else {
+					sceneItems.add(ConstructHeron.constructRightHeron(randGen.nextInt(20) - 10, // depth
+							1, 0 - randGen.nextInt(75), // x location
+							randGen.nextDouble() * randGen.nextInt(450), false, false)); // y
+				}
+			}
+			// Generate new vegetation on 3% of calls
+			if (sceneItems.size() < 10) {
+				if (randGen.nextInt(100) < 3) {
+					sceneItems.add(ConstructVegetation.constructVegetation(randGen.nextInt(20) - 10, // depth
+							0, randGen.nextInt(1280), // x location
+							randGen.nextInt(650) + 70));
+				}
+			}
 
-      // Fly herons
-      for (SceneObject tempItem : sceneItems) {
-        // System.out.print(heron);
-        if ((tempItem.getPassport().getId() == 100) || (tempItem.getPassport().getId() == 200)) {
-          ((BetaHeron) tempItem).move();
-        }
-      }
+			// Fly herons
+			for (SceneObject tempItem : sceneItems) {
+				// System.out.print(heron);
+				if ((tempItem.getPassport().getId() == 100) || (tempItem.getPassport().getId() == 200)) {
+					((BetaHeron) tempItem).move();
+				}
+			}
 
-      // Remove Off-screen Herons, change heron image, grow Vegetation
-      modifySceneItems();
+			// Remove Off-screen Herons, change heron image, grow Vegetation
+			modifySceneItems();
 
-      Collections.sort(sceneItems);
-    }
+			Collections.sort(sceneItems);
+		}
 	}
 
 	/**
@@ -128,7 +143,7 @@ public class SceneWetland extends Scene {
 	 */
 	private void modifySceneItems() {
 		@SuppressWarnings("unchecked")
-    ArrayList<SceneObject> tempSceneObjects = (ArrayList<SceneObject>)sceneItems.clone();
+		ArrayList<SceneObject> tempSceneObjects = (ArrayList<SceneObject>) sceneItems.clone();
 		sceneItems.clear();
 
 		for (Iterator<SceneObject> iterator = tempSceneObjects.iterator(); iterator.hasNext();) {

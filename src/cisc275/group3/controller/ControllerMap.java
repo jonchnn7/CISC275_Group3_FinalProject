@@ -36,6 +36,7 @@ import cisc275.group3.view.GameWindow;
  */
 public class ControllerMap extends ControllerScene {
 
+	// JPanel and button variables
 	private JPanel mapPanel;
 	private JButton hqButton;
 	private JButton bayButton;
@@ -44,6 +45,22 @@ public class ControllerMap extends ControllerScene {
 	private JButton beachMiniButton;
 	private ImageIcon mapBg;
 
+	/**
+	 * Constructor
+	 * 
+	 * @param w
+	 *            int-scene width
+	 * @param h
+	 *            int-scene height
+	 * @param f
+	 *            GameWindow-JFrame container
+	 * @param cl
+	 *            HashMap-associations of scene controllers and layers
+	 * @param sceneType
+	 *            int-indicates how the scene should be initialized/updated 0 =
+	 *            empty/no update, 1 = special update (ex. tutorial HQ), 2 =
+	 *            standard update, 3 = menus/interfaces
+	 */
 	public ControllerMap(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType) {
 		super(w, h, f, cl, sceneType);
 

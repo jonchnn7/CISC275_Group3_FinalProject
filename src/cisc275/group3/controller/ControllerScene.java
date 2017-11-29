@@ -127,6 +127,9 @@ public abstract class ControllerScene implements Serializable {
 		});
 	}
 
+	/**
+	 * Displays a random fact about the given mission
+	 */
 	public void displayMission() {
 		String missionNum;
 
@@ -176,7 +179,7 @@ public abstract class ControllerScene implements Serializable {
 	public void displayScore() {
 		String sceneScore;
 
-		sceneScore = Integer.toString(scene.getScore());
+		sceneScore = Integer.toString(Scene.getScore());
 		((ViewOverlayLabel) componentList.get("ScoreLabel")).updateLabel(sceneScore);
 	}
 }

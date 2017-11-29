@@ -48,8 +48,9 @@ public abstract class Scene implements Serializable {
 
 	/**
 	 * Create scene
-	 *  
-	 * @param mani sceneid used to distinguish scenes
+	 * 
+	 * @param mani
+	 *            sceneid used to distinguish scenes
 	 */
 	public Scene(SceneId mani) {
 		manifest = mani;
@@ -69,12 +70,14 @@ public abstract class Scene implements Serializable {
 	 * Every subclass must define how to update itself
 	 */
 	abstract public void update();
-	
+
 	/**
 	 * Check the click with the compatible tool
 	 * 
-	 * @param clickX x-coordinate of click
-	 * @param clickY y-coordinate of click
+	 * @param clickX
+	 *            x-coordinate of click
+	 * @param clickY
+	 *            y-coordinate of click
 	 * @return if the right tool was used return true, else return false
 	 */
 	public boolean tutClick(double clickX, double clickY) {
@@ -92,8 +95,8 @@ public abstract class Scene implements Serializable {
 			case "Atlantic Blue Crab":
 			case "Horseshoe Crab":
 				if (SceneObjectType.BetaCrab.searchCompatability(currentTool.getName())) {
-						iterator.remove();
-						return true;
+					iterator.remove();
+					return true;
 				}
 				break;
 
@@ -102,23 +105,22 @@ public abstract class Scene implements Serializable {
 			case "Shortnose Sturgeon":
 			case "American Shad":
 				if (SceneObjectType.BetaFish.searchCompatability(currentTool.getName())) {
-						iterator.remove();
-						return true;
+					iterator.remove();
+					return true;
 				}
 				break;
 
 			// Beta Heronz
 			case "Great Blue Heron":
 				if (SceneObjectType.BetaHeron.searchCompatability(currentTool.getName())) {
-						iterator.remove();
-						return true;
+					iterator.remove();
+					return true;
 				}
 				break;
 			}
 		}
 		return false;
 	}
-
 
 	/**
 	 * Process Click Events from Controller. If a scene object is clicked on, its
@@ -231,7 +233,7 @@ public abstract class Scene implements Serializable {
 				if ((item.getPassport().getId() == 71) || (item.getPassport().getId() == 72)) {
 					return true;
 				}
-				
+
 				Scene.getCurrentMission().decreaseNum();
 				ControllerInventory.addItem(item);
 				return true;
@@ -381,13 +383,12 @@ public abstract class Scene implements Serializable {
 	public void missionScoreFail() {
 		score -= 50;
 	}
-	
+
 	/**
 	 * Reset Score to 0
 	 */
 	public void resetScore() {
 		score = 0;
 	}
-	
-	
+
 }
