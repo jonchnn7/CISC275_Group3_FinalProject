@@ -25,16 +25,23 @@ import cisc275.group3.view.ViewOverlayLabel;
  * <p>
  * 
  * @author Jolyne
+ * @author Thomas
  */
-
 public class ControllerMission extends ControllerScene {
-	private JPanel missionPanel;
-	private JButton missionButton;
+	private JPanel missionPanel;  //create mission JPanel
+	private JButton missionButton; //create mission button
 	private Random randGen = new Random();
 
-	protected int lastMission = -1;
-	protected boolean newMission = false;
-
+	protected int lastMission = -1; //used so missions can't repeat
+	protected boolean newMission = false; //used so missions can't repeat
+	
+	/**
+	 * @param w width of mission screen
+	 * @param h height of mission screen
+	 * @param f GameWindow type
+	 * @param cl adding component to component hashmaps
+	 * @param sceneType scene type
+	 */
 	public ControllerMission(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType) {
 		super(w, h, f, cl, sceneType);
 	}

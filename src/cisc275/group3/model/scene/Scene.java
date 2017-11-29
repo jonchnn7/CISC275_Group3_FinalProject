@@ -30,6 +30,7 @@ import java.util.Random;
  * @author Scott
  * @author Jon
  * @author Jolyne
+ * @author Thomas
  */
 public abstract class Scene implements Serializable {
 
@@ -45,6 +46,11 @@ public abstract class Scene implements Serializable {
 	// RNG
 	protected Random randGen = new Random();
 
+	/**
+	 * Create scene
+	 *  
+	 * @param mani sceneid used to distinguish scenes
+	 */
 	public Scene(SceneId mani) {
 		manifest = mani;
 		currentTool = null;
@@ -64,6 +70,13 @@ public abstract class Scene implements Serializable {
 	 */
 	abstract public void update();
 	
+	/**
+	 * Check the click with the compatible tool
+	 * 
+	 * @param clickX x-coordinate of click
+	 * @param clickY y-coordinate of click
+	 * @return if the right tool was used return true, else return false
+	 */
 	public boolean tutClick(double clickX, double clickY) {
 		for (Iterator<SceneObject> iterator = sceneItems.iterator(); iterator.hasNext();) {
 			SceneObject sceneItem = iterator.next();

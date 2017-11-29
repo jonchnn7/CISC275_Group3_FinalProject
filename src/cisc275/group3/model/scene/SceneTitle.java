@@ -3,9 +3,18 @@ package cisc275.group3.model.scene;
 import javax.swing.JButton;
 
 import cisc275.group3.utility.SceneId;
-
+/**
+ * SceneTitle extends scene and is used to represent the title screen
+ * 
+ * @author Scott
+ * @author Ryan
+ */
 public class SceneTitle extends Scene{
 
+	/**
+	 * Constructor 
+	 * @param mani sceneid used to distinguish between scenes
+	 */
 	public SceneTitle(SceneId mani) {
 		super(mani);
 		time = 0;

@@ -25,6 +25,11 @@ import cisc275.group3.utility.SceneId;
  */
 public class SceneBeach extends Scene implements ConstructCrab {
   
+	/**
+	 * Constructor
+	 * 
+	 * @param mani sceneid used to distinguish between secenes
+	 */
 	public SceneBeach(SceneId mani) {
 		super(mani);
 		time = 0;
