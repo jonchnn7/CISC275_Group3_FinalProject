@@ -36,7 +36,7 @@ import cisc275.group3.view.ViewGame;
  */
 
 public class ControllerTitle extends ControllerScene implements LinkDynamics, LinkTime {
-	private final ImageIcon BG_IMAGE = new ImageIcon("img/EstuaryTitle.png");
+	private final ImageIcon BG_IMAGE = new ImageIcon("img/CloudTitleScreen.png");
 	private JPanel titlePanel;
 	private JButton startButton;
 
@@ -80,12 +80,13 @@ public class ControllerTitle extends ControllerScene implements LinkDynamics, Li
 		titlePanel.setOpaque(true);
 
 		titlePanel.setName("TitleLayer");
-
-		if (sceneType == 1) {
+		addTitleButton();
+		addTutorialButton();
+	/*	if (sceneType == 1) {
 			addTutorialButton();
 		} else {
 			addTitleButton();
-		}
+		}*/
 
 		mainPane.setLayer(titlePanel, LayerCode.MainTop.getCode());
 		mainPane.add(titlePanel, LayerCode.MainTop.getCode());
@@ -98,8 +99,8 @@ public class ControllerTitle extends ControllerScene implements LinkDynamics, Li
 	private void addTitleButton() {
 		startButton = new JButton("Start");
 		startButton.setFont(new Font("Roboto", Font.BOLD, 30));
-		startButton.setBounds(500, 600, 300, 96);
-		startButton.setIcon(new ImageIcon("img/startButton.png"));
+		startButton.setBounds(200, 500, 300, 96);
+		startButton.setIcon(new ImageIcon("img/Yellow startbutton.png"));
 		startButton.setOpaque(false);
 		startButton.setBorderPainted(false);
 		startButton.setBorder(null);
@@ -130,8 +131,8 @@ public class ControllerTitle extends ControllerScene implements LinkDynamics, Li
 	private void addTutorialButton() {
 		startButton = new JButton("Start");
 		startButton.setFont(new Font("Roboto", Font.BOLD, 30));
-		startButton.setBounds(500, 600, 300, 96);
-		startButton.setIcon(new ImageIcon("img/startButton.png"));
+		startButton.setBounds(800, 500, 300, 96);
+		startButton.setIcon(new ImageIcon("img/Yellow Tutorialbutton.png"));
 		startButton.setOpaque(false);
 		startButton.setBorderPainted(false);
 		startButton.setBorder(null);
