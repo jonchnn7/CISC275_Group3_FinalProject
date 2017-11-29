@@ -15,15 +15,43 @@ import cisc275.group3.utility.ObjectId;
  * @author Jon
  */
 public class BetaVegetation extends SceneObject {
-
+	
+	  /**
+	   * Creates a Beta Vegetation
+	   * @param id		ObjectID-vegetation's object id
+	   * @param x		double-x-axis location
+	   * @param y		double-y-axis location
+	   */
   public BetaVegetation(ObjectId id, double x, double y) {
     super(id, x, y);
   }
   
+  /**
+   * Creates a Beta Vegetation as well as its ObjectID
+   * <p>
+   * See ObjectId.java
+   * <p>
+   * @param d		int-depth
+   * @param h		int-object height
+   * @param id		int-(deprecated) object type
+   * @param imFi	String-Image file string
+   * @param n		String-name for object
+   * @param w		int-object width
+   * @param x		double-x-axis location
+   * @param y		double-y-axis location
+   */
   public BetaVegetation(int d, int h, int id, String imFi, String n, int w, double x, double y) {
 	  this(new ObjectId(d, h, id, imFi, n, w), x, y);
   }
 
+  /**
+   * Provides a string-based representation
+   * of the vegetation by using its location and
+   * then printing the vegetation's ObjectId, 
+   * held in the passport variable.
+   * <p>
+   * See ObjectID.java
+   */
   public String toString() {
     String outString = "\nBeta Vegetation" 
                       +"\n========="
@@ -32,6 +60,11 @@ public class BetaVegetation extends SceneObject {
     return outString;
   }
   
+  /**
+   * Checks to see the size of vegetation
+   * and increases its size if it is below
+   * the third length
+   */
   public BetaVegetation grow() {
 	  if(this.getPassport().getId() < 72) {
 		  BetaVegetation vegetation =  ConstructVegetation.constructVegetation(this.getPassport().getDepth(),

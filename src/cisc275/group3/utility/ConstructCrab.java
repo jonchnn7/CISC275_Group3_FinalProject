@@ -11,7 +11,7 @@ import cisc275.group3.model.sceneobject.BetaCrab;
  * <p>
  *
  * @author Scott
- * @Author Ryan
+ * @author Ryan
  * @author Thomas
  *
  */
