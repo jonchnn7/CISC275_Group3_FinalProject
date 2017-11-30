@@ -128,6 +128,7 @@ public class GameController implements Serializable {
 						if (((ControllerTutorial) controlMap.get("Tutorial")).tutorialDone()) {
 							controlMap.clear();
 							layerMap.clear();
+							ControllerInventory.removeItem("All");
 							GAME_FRAME.getMainPane().removeAll();
 							controlMap.put("Title", new ControllerTitle(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 3));
 							gameState = 0;

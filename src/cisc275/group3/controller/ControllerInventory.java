@@ -26,6 +26,7 @@ import cisc275.group3.view.ViewGame;
  * 
  * @author Thomas
  * @author Scott
+ * @author Jon
  */
 public class ControllerInventory extends ControllerScene {
 
@@ -155,6 +156,9 @@ public class ControllerInventory extends ControllerScene {
 			if (sceneItem.getPassport().getName() == tmp) {
 				iterator.remove();
 			}
+		}
+		if(tmp == "All") {
+			sceneFillItems.clear();
 		}
 
 		ArrayList<SceneObject> tmp_list = new ArrayList<SceneObject>();

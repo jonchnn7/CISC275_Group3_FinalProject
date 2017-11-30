@@ -72,7 +72,7 @@ public abstract class Scene implements Serializable {
 	abstract public void update();
 
 	/**
-	 * Check the click with the compatible tool
+	 * Check the click with the compatible tool, mission is not needed
 	 * 
 	 * @param clickX
 	 *            x-coordinate of click
@@ -94,7 +94,9 @@ public abstract class Scene implements Serializable {
 			case "Cristmas Island Red Crab":
 			case "Atlantic Blue Crab":
 			case "Horseshoe Crab":
-				if ((SceneObjectType.BetaCrab.searchCompatability(currentTool.getName())) && (sceneItem.itemClicked(clickX, clickY))) {
+				if ((SceneObjectType.BetaCrab.searchCompatability(currentTool.getName()))
+						&& (sceneItem.itemClicked(clickX, clickY))) {
+					ControllerInventory.addItem(sceneItem);
 					iterator.remove();
 					return true;
 				}
@@ -104,7 +106,9 @@ public abstract class Scene implements Serializable {
 			case "Striped Bass":
 			case "Shortnose Sturgeon":
 			case "American Shad":
-				if ((SceneObjectType.BetaFish.searchCompatability(currentTool.getName())) && (sceneItem.itemClicked(clickX, clickY))) {
+				if ((SceneObjectType.BetaFish.searchCompatability(currentTool.getName()))
+						&& (sceneItem.itemClicked(clickX, clickY))) {
+					ControllerInventory.addItem(sceneItem);
 					iterator.remove();
 					return true;
 				}
@@ -112,7 +116,9 @@ public abstract class Scene implements Serializable {
 
 			// Beta Heronz
 			case "Great Blue Heron":
-				if ((SceneObjectType.BetaHeron.searchCompatability(currentTool.getName())) && (sceneItem.itemClicked(clickX, clickY))) {
+				if ((SceneObjectType.BetaHeron.searchCompatability(currentTool.getName()))
+						&& (sceneItem.itemClicked(clickX, clickY))) {
+					ControllerInventory.addItem(sceneItem);
 					iterator.remove();
 					return true;
 				}
