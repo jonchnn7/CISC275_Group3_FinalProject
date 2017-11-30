@@ -109,6 +109,7 @@ public class GameController implements Serializable {
 		Timer timer = new Timer(100, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (loopRun) {
+					//Checks to see any button presses from the Title Screen
 					if(gameState == 0) {
 						if (((ControllerTitle) controlMap.get("Title")).getAction() == 1){
 							gameState = 1;
@@ -117,9 +118,12 @@ public class GameController implements Serializable {
 							gameState = 3;
 						}
 					}
+					//Initializes tutorial and sets the layers
 					else if (gameState == 1) {
 						initTutorial();
+						((ControllerTitle)controlMap.get("Title")).tutShuffle();
 						gameState = 2;
+					//Playing the tutorial, resets to title screen when tutorial complete
 					} else if (gameState == 2) {
 						if (((ControllerTutorial) controlMap.get("Tutorial")).tutorialDone()) {
 							controlMap.clear();
@@ -128,9 +132,12 @@ public class GameController implements Serializable {
 							controlMap.put("Title", new ControllerTitle(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 3));
 							gameState = 0;
 						}
+					//Initializes game and sets the layers
 					} else if (gameState == 3) {
 						initGame();
+						((ControllerTitle)controlMap.get("Title")).startShuffle();
 						gameState = 4;
+					//Playing the game, when totalTime reaches value, endgame is triggered
 					} else if (gameState == 4) {
 						// Update Time Counter
 						totalTime += 100;
