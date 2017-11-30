@@ -99,9 +99,9 @@ public abstract class ControllerScene implements Serializable {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				if (e.getButton() == MouseEvent.BUTTON1) {
-					if (tutorial == true) {
-						scene.tutClick(e.getX(), e.getY());
-					}
+//					if (tutorial == true) {
+//						scene.tutClick(e.getX(), e.getY());
+//					}
 					if (scene.processClick(e.getX(), e.getY())) {
 						displayScore();
 						displayMission();
@@ -116,12 +116,12 @@ public abstract class ControllerScene implements Serializable {
 	 * the model.This ML implements tutClick which is used in the tutorial to remove
 	 * sceneObjects.
 	 */
-	protected void addML(boolean i) {
+	protected void addBasicML() {
 		viewGame.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				if (e.getButton() == MouseEvent.BUTTON1) {
-					scene.tutClick(e.getX(), e.getY());
+					scene.basicClick(e.getX(), e.getY());
 				}
 			}
 		});

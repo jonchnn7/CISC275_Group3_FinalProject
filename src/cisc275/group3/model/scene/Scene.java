@@ -80,7 +80,7 @@ public abstract class Scene implements Serializable {
 	 *            y-coordinate of click
 	 * @return if the right tool was used return true, else return false
 	 */
-	public boolean tutClick(double clickX, double clickY) {
+	public boolean basicClick(double clickX, double clickY) {
 		for (Iterator<SceneObject> iterator = sceneItems.iterator(); iterator.hasNext();) {
 			SceneObject sceneItem = iterator.next();
 
@@ -94,7 +94,7 @@ public abstract class Scene implements Serializable {
 			case "Cristmas Island Red Crab":
 			case "Atlantic Blue Crab":
 			case "Horseshoe Crab":
-				if (SceneObjectType.BetaCrab.searchCompatability(currentTool.getName())) {
+				if ((SceneObjectType.BetaCrab.searchCompatability(currentTool.getName())) && (sceneItem.itemClicked(clickX, clickY))) {
 					iterator.remove();
 					return true;
 				}
@@ -104,7 +104,7 @@ public abstract class Scene implements Serializable {
 			case "Striped Bass":
 			case "Shortnose Sturgeon":
 			case "American Shad":
-				if (SceneObjectType.BetaFish.searchCompatability(currentTool.getName())) {
+				if ((SceneObjectType.BetaFish.searchCompatability(currentTool.getName())) && (sceneItem.itemClicked(clickX, clickY))) {
 					iterator.remove();
 					return true;
 				}
@@ -112,7 +112,7 @@ public abstract class Scene implements Serializable {
 
 			// Beta Heronz
 			case "Great Blue Heron":
-				if (SceneObjectType.BetaHeron.searchCompatability(currentTool.getName())) {
+				if ((SceneObjectType.BetaHeron.searchCompatability(currentTool.getName())) && (sceneItem.itemClicked(clickX, clickY))) {
 					iterator.remove();
 					return true;
 				}

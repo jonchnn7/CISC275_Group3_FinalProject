@@ -64,7 +64,7 @@ public class ControllerTutorial extends ControllerScene implements LinkDynamics,
 
 		componentList.put("Tutorial", viewGame);
 
-		addML(true);
+		addBasicML();
 	}
 
 	/**
