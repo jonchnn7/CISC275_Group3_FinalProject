@@ -171,6 +171,7 @@ public class ControllerMission extends ControllerScene {
 					}
 					Scene.getCurrentMission().setObjectName(s);
 					Scene.getCurrentMission().setTargetNameForFact(s);
+					Scene.setCurrentFact("");
 					displayMission();
 				} else if ((Scene.getCurrentMission().getTargetObject() == null)
 						&& !(Scene.getCurrentMission().isDoneMission())) {

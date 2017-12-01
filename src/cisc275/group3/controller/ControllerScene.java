@@ -140,6 +140,11 @@ public abstract class ControllerScene implements Serializable {
 		if (((missionNum.equals("0")) && (Scene.getCurrentMission().getTargetObject() != null))
 				|| (missionNum.equals("-2"))) {
 			missionNum = "Complete!";
+			Scene.getCurrentMission().setTargetObject(null);
+			Scene.getCurrentMission().setObjectNum(-2);
+			((ViewOverlayLabel) componentList.get("MissionLabel")).updateIcon(null);
+		} else if (missionNum.equals("-1") || missionNum.equals("-5")) {
+			missionNum = "";
 			switch (Scene.getCurrentMission().getTargetNameForFact()) {
 			case "Striped Bass":
 				Scene.setCurrentFact(facts.getRandomFact(6));
@@ -163,11 +168,6 @@ public abstract class ControllerScene implements Serializable {
 				Scene.setCurrentFact(facts.getRandomFact(1));
 				break;
 			}
-			Scene.getCurrentMission().setTargetObject(null);
-			Scene.getCurrentMission().setObjectNum(-2);
-			((ViewOverlayLabel) componentList.get("MissionLabel")).updateIcon(null);
-		} else if (missionNum.equals("-1") || missionNum.equals("-5")) {
-			missionNum = "";
 		}
 
 		((ViewOverlayLabel) componentList.get("MissionLabel")).updateLabel(missionNum);
