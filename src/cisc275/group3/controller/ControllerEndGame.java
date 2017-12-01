@@ -42,11 +42,13 @@ public class ControllerEndGame extends ControllerScene implements LinkDynamics {
 	private JButton resetButton;
 	private JButton continueButton;
 	private JLabel finalScore;
+	private boolean reset;
+	private boolean cont;
 
 	/**
 	 * Constructor
 	 * 
-	* @param w
+	 * @param w
 	 *            int-scene width
 	 * @param h
 	 *            int-scene height
@@ -72,6 +74,9 @@ public class ControllerEndGame extends ControllerScene implements LinkDynamics {
 		endGamePanel = new JPanel() {
 		};
 		scene = new SceneHQ("EndGame", 0, 0, 1, 1, "", 3);
+
+		reset = false;
+		cont = false;
 
 		// Set Panel Properties
 		endGamePanel.setLayout(null);
@@ -110,10 +115,7 @@ public class ControllerEndGame extends ControllerScene implements LinkDynamics {
 		resetButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				scene.resetScore();
-				setDefaultLayers();
-				mainPane.setLayer(mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("HQ")))[0],
-						LayerCode.MainAll.getCode());
+				reset = true;
 			}
 		});
 		endGamePanel.add(resetButton);
@@ -125,6 +127,7 @@ public class ControllerEndGame extends ControllerScene implements LinkDynamics {
 		continueButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				cont = true;
 				setDefaultLayers();
 				mainPane.setLayer(mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("HQ")))[0],
 						LayerCode.MainAll.getCode());
@@ -181,5 +184,35 @@ public class ControllerEndGame extends ControllerScene implements LinkDynamics {
 	public void update() {
 		finalScore.setText("Final Score: " + Scene.getScore());
 
+	}
+
+	/**
+	 * returns the state of reset variable. This checks to see if the game should be
+	 * reset to title screen
+	 * 
+	 * @return reset
+	 */
+	public boolean getReset() {
+		return reset;
+	}
+
+	/**
+	 * returns the state of cont variable. This checks to see if the game should be
+	 * continued
+	 * 
+	 * @return cont
+	 */
+	public boolean getCont() {
+		return cont;
+	}
+
+	/**
+	 * set the cont variable to c
+	 * 
+	 * @param c
+	 *            boolean- the desired state of cont
+	 */
+	public void setCont(boolean c) {
+		cont = c;
 	}
 }

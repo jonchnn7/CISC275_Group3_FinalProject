@@ -65,7 +65,7 @@ public class GameController implements Serializable {
 		controlMap = new HashMap<String, ControllerScene>();
 		layerMap = new HashMap<String, Component>();
 		loopRun = true;
-		
+
 		controlMap.put("Title", new ControllerTitle(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 3));
 
 		gameTime();
@@ -80,7 +80,6 @@ public class GameController implements Serializable {
 		controlMap.put("Inventory", new ControllerInventory(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 1));
 		controlMap.put("HQ", new ControllerHQ(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 1));
 		controlMap.put("Tools", new ControllerTools(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 1));
-		
 
 	}
 
@@ -108,82 +107,91 @@ public class GameController implements Serializable {
 	private void gameTime() {
 		Timer timer = new Timer(100, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (loopRun) {
-					//Checks to see any button presses from the Title Screen
-					if(gameState == 0) {
-						if (((ControllerTitle) controlMap.get("Title")).getAction() == 1){
-							gameState = 1;
-						}
-						else if (((ControllerTitle) controlMap.get("Title")).getAction() == 2){
-							gameState = 3;
-						}
+				// Checks to see any button presses from the Title Screen
+				if (gameState == 0) {
+					if (((ControllerTitle) controlMap.get("Title")).getAction() == 1) {
+						gameState = 1;
+					} else if (((ControllerTitle) controlMap.get("Title")).getAction() == 2) {
+						gameState = 3;
 					}
-					//Initializes tutorial and sets the layers
-					else if (gameState == 1) {
-						initTutorial();
-						((ControllerTitle)controlMap.get("Title")).tutShuffle();
-						gameState = 2;
-					//Playing the tutorial, resets to title screen when tutorial complete
-					} else if (gameState == 2) {
-						if (((ControllerTutorial) controlMap.get("Tutorial")).tutorialDone()) {
-							controlMap.clear();
-							layerMap.clear();
-							ControllerInventory.removeItem("All");
-							GAME_FRAME.getMainPane().removeAll();
-							controlMap.put("Title", new ControllerTitle(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 3));
-							gameState = 0;
-						}
-					//Initializes game and sets the layers
-					} else if (gameState == 3) {
-						initGame();
-						((ControllerTitle)controlMap.get("Title")).startShuffle();
+				}
+				// Initializes tutorial and sets the layers
+				else if (gameState == 1) {
+					initTutorial();
+					((ControllerTitle) controlMap.get("Title")).tutShuffle();
+					gameState = 2;
+					// Playing the tutorial, resets to title screen when tutorial complete
+				} else if (gameState == 2) {
+					if (((ControllerTutorial) controlMap.get("Tutorial")).tutorialDone()) {
+						controlMap.clear();
+						layerMap.clear();
+						ControllerInventory.removeItem("All");
+						GAME_FRAME.getMainPane().removeAll();
+						controlMap.put("Title",
+								new ControllerTitle(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 3));
+						gameState = 0;
+					}
+					// Initializes game and sets the layers
+				} else if (gameState == 3) {
+					initGame();
+					((ControllerTitle) controlMap.get("Title")).startShuffle();
+					gameState = 4;
+					// Playing the game, when totalTime reaches value, endgame is triggered
+				} else if (gameState == 4) {
+					// Update Time Counter
+					totalTime += 100;
+					// 5 min
+					if (totalTime == 300000) {
+						GAME_FRAME.getMainPane().setLayer(GAME_FRAME.getMainPane().getComponentsInLayer(-18)[0],
+								LayerCode.EndGame.getCode());
+						gameState = 5;
+					}
+				} else if (gameState == 5) {
+					if (((ControllerEndGame) controlMap.get("EndGame")).getReset() == true) {
+						totalTime = 0;
+						controlMap.clear();
+						layerMap.clear();
+						ControllerInventory.removeItem("All");
+						GAME_FRAME.getMainPane().removeAll();
+						controlMap.put("Title",
+								new ControllerTitle(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 3));
+						gameState = 0;
+					}
+					else if (((ControllerEndGame) controlMap.get("EndGame")).getCont() == true) {
+						totalTime = 0;
+						((ControllerEndGame) controlMap.get("EndGame")).setCont(false);
 						gameState = 4;
-					//Playing the game, when totalTime reaches value, endgame is triggered
-					} else if (gameState == 4) {
-						// Update Time Counter
-						totalTime += 100;
-						// 5 min
-						if (totalTime == 300000) {
-							loopRun = false;
-							GAME_FRAME.getMainPane().setLayer(GAME_FRAME.getMainPane().getComponentsInLayer(-16)[0],
-									LayerCode.EndGame.getCode());
-						}
-
 					}
-					
-					controlMap.forEach((k, v) -> {
-						// Model Object Updates
+				}
+
+				controlMap.forEach((k, v) -> {
+					// Model Object Updates
+					switch (k) {
+					case "HQ":
+					case "Bay":
+					case "Beach":
+					case "Wetland":
+					case "BeachMini":
+					case "EndGame":
+					case "Tutorial":
+						((LinkDynamics) v).update();
+						break;
+					}
+
+					// Time Update
+					if (totalTime % 1000 == 0) {
 						switch (k) {
 						case "HQ":
+							((LinkTime) v).updateTime();
 						case "Bay":
 						case "Beach":
 						case "Wetland":
 						case "BeachMini":
-						case "EndGame":
-						case "Tutorial":
-							((LinkDynamics) v).update();
+							((LinkTime) v).displayTime();
 							break;
 						}
-
-						// Time Update
-						if (totalTime % 1000 == 0) {
-							switch (k) {
-							case "HQ":
-								((LinkTime) v).updateTime();
-							case "Bay":
-							case "Beach":
-							case "Wetland":
-							case "BeachMini":
-								((LinkTime) v).displayTime();
-								break;
-							}
-						}
-					});
-
-				} else {
-					loopRun = true;
-					totalTime = -1000;
-				}
+					}
+				});
 			}
 		});
 		timer.start(); // Start it up!
