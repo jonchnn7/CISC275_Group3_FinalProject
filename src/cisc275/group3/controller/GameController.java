@@ -141,7 +141,7 @@ public class GameController implements Serializable {
 					// Update Time Counter
 					totalTime += 100;
 					// 5 min
-					if (totalTime == 300000) {
+					if (totalTime == 20000) {
 						GAME_FRAME.getMainPane().setLayer(GAME_FRAME.getMainPane().getComponentsInLayer(-18)[0],
 								LayerCode.EndGame.getCode());
 						gameState = 5;

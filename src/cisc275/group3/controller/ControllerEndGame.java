@@ -165,7 +165,7 @@ public class ControllerEndGame extends ControllerScene implements LinkDynamics {
 		mainPane.setLayer(wetlandComponent, LayerCode.Wetland.getCode());
 		mainPane.setLayer(beachMiniComponent, LayerCode.BeachMini.getCode());
 		mainPane.setLayer(titleComponent, LayerCode.Title.getCode());
-		mainPane.setLayer(missionComponent, LayerCode.MissionHide.getCode());
+		mainPane.setLayer(missionComponent, LayerCode.Mission.getCode());
 		mainPane.setLayer(endGamePanel, LayerCode.EndGameHide.getCode());
 
 		// Reset Mouse
