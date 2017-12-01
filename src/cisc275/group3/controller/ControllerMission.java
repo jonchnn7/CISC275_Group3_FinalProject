@@ -31,6 +31,9 @@ public class ControllerMission extends ControllerScene {
 	private JPanel missionPanel; // create mission JPanel
 	private JButton missionButton; // create mission button
 	private Random randGen = new Random();
+	
+	private static int currentPersonID = -1;
+	private static int tmp = -1;
 
 	protected int lastMission = -1; // used so missions can't repeat
 	protected boolean newMission = false; // used so missions can't repeat
@@ -88,31 +91,27 @@ public class ControllerMission extends ControllerScene {
 			public void actionPerformed(ActionEvent e) {
 				if ((Scene.getCurrentMission().getTargetObject() == null)
 						&& (Scene.getCurrentMission().isDoneMission())) {
-					int tmpScene = randGen.nextInt(3);
-					int tmp = randGen.nextInt(12);
-
-					while (newMission == false) {
-						tmpScene = randGen.nextInt(3);
-						if (tmpScene == 0 && lastMission != 0)
-							newMission = true;
-						else if (tmpScene == 1 && lastMission != 1)
-							newMission = true;
-						else if (tmpScene == 2 && lastMission != 2)
-							newMission = true;
-					}
+		
+					
 					newMission = false;
 
-					switch (tmpScene) {
+					switch (currentPersonID) {
+					//BirdWatcher (Heron)
 					case 0:
-						tmp = randGen.nextInt(3);
+						tmp = 5;
 						break;
+					//Park Ranger (Weeds)
 					case 1:
-						tmp = randGen.nextInt(2) + 3;
+						tmp = 6;
 						break;
+					//Scientist
 					case 2:
-						tmp = randGen.nextInt(2) + 5;
+						tmp = randGen.nextInt(2) + 3;
+					//Filler guy (fish, 
+//					case 3
 						break;
 					}
+					
 
 					String s = "";
 					switch (tmp) {
@@ -184,5 +183,10 @@ public class ControllerMission extends ControllerScene {
 			}
 		});
 		missionPanel.add(missionButton);
+	}
+	
+	public static void setPersonID(int tmpID)
+	{
+		currentPersonID = tmpID;
 	}
 }

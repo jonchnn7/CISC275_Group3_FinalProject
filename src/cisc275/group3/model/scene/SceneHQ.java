@@ -3,6 +3,7 @@ package cisc275.group3.model.scene;
 import java.util.Collections;
 import java.util.Iterator;
 
+import cisc275.group3.controller.ControllerMission;
 import cisc275.group3.exceptions.InsufficientDataException;
 import cisc275.group3.model.sceneobject.BetaCrab;
 import cisc275.group3.model.sceneobject.BetaPerson;
@@ -24,10 +25,13 @@ import cisc275.group3.utility.SceneId;
  * @author Scott
  */
 public class SceneHQ extends Scene {
+	
+	private int prevPerson;
 
 	public SceneHQ(SceneId mani) {
 		super(mani);
 		time = 0;
+		prevPerson = 4;
 
 		if (getManifest().getSceneType() == 1) {
 			tutorialFill();
@@ -80,10 +84,17 @@ public class SceneHQ extends Scene {
 	public void update() {
 		if (this.getManifest().getSceneType() == 2) {
 			if (sceneItems.size() < 1) {
+				int x = randGen.nextInt(3);
+				while (x == prevPerson) {
+					x = randGen.nextInt(3);
+				}
+				
+				ControllerMission.setPersonID(x);
 				sceneItems.add(ConstructPerson.constructPerson(randGen.nextInt(20) - 10, // depth
-						0, // type
+						x, // type
 						1280, // x location
 						75)); // y location
+				prevPerson = x;
 			}
 			// Move Person
 			for (SceneObject person : sceneItems) {
