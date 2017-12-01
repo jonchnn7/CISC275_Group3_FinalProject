@@ -116,6 +116,8 @@ public class ControllerMap extends ControllerScene {
 						.getComponentsInLayer(mainPane.getLayer(componentList.get("Mission")))[0];
 				Component factComponent = mainPane
 						.getComponentsInLayer(mainPane.getLayer(componentList.get("MissionFact")))[0];
+				Component requestComponent = mainPane
+						.getComponentsInLayer(mainPane.getLayer(componentList.get("MissionRequest")))[0];
 
 				// Reset all layers and mouse, then
 				// move hq and mission layer forward
@@ -123,6 +125,7 @@ public class ControllerMap extends ControllerScene {
 				mainPane.setLayer(hqComponent, LayerCode.MainAll.getCode());
 				mainPane.setLayer(missionComponent, LayerCode.Mission.getCode());
 				mainPane.setLayer(factComponent, LayerCode.MissionFact.getCode());
+				mainPane.setLayer(requestComponent, LayerCode.MissionRequest.getCode());
 
 				if (Scene.getCurrentMission().getObjectNum() == -1) {
 					Scene.getCurrentMission().setObjectNum(-5);
@@ -238,6 +241,7 @@ public class ControllerMap extends ControllerScene {
 		Component titleComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Title")))[0];
 		Component missionComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Mission")))[0];
 		Component factComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("MissionFact")))[0];
+		Component requestComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("MissionRequest")))[0];
 
 		// Set Scenes to Default Layer Position
 		mainPane.setLayer(mapComponent, LayerCode.Map.getCode());
@@ -249,6 +253,7 @@ public class ControllerMap extends ControllerScene {
 		mainPane.setLayer(titleComponent, LayerCode.Title.getCode());
 		mainPane.setLayer(missionComponent, LayerCode.MissionHide.getCode());
 		mainPane.setLayer(factComponent, LayerCode.MissionFactHide.getCode());
+		mainPane.setLayer(requestComponent, LayerCode.MissionRequestHide.getCode());
 
 		// Reset Mouse
 		Scene.setCurrentTool(null);

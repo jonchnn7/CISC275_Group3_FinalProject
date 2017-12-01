@@ -12,6 +12,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import cisc275.group3.model.scene.Scene;
 import cisc275.group3.model.scene.SceneHQ;
+import cisc275.group3.utility.EstuaryFacts;
+import cisc275.group3.utility.EstuaryPrompts;
 import cisc275.group3.utility.LayerCode;
 import cisc275.group3.utility.LayerCodeTutorial;
 import cisc275.group3.view.GameWindow;
@@ -39,6 +41,7 @@ import cisc275.group3.view.ViewOverlayLabel;
 public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkTime {
 	private final String BG_IMAGE = "img/backgrounds/HQ_bg.jpg";
 	private ViewOverlayLabel statusLabel;
+	private ViewOverlayLabel missionLabel;
 
 	// Tutorial Layer Variables
 	ViewOverlayButton tutorialButton;
@@ -93,6 +96,15 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 		mainPane.add(statusLabel, LayerCode.MissionFact.getCode());
 
 		componentList.put("MissionFact", statusLabel);
+		
+		missionLabel = new ViewOverlayLabel((SCREEN_WIDTH / 4) + 300, (SCREEN_HEIGHT / 4) - 100, "  ");
+		missionLabel.setBounds((SCREEN_WIDTH / 4) + 300, (SCREEN_HEIGHT / 4) - 100, 700, 400);
+
+		missionLabel.setName("MissionRequest");
+		mainPane.setLayer(missionLabel, LayerCode.MissionRequest.getCode());
+		mainPane.add(missionLabel, LayerCode.MissionRequest.getCode());
+
+		componentList.put("MissionRequest", missionLabel);
 
 		if (sceneType == 1) {
 			// mainPane.setLayer(statusLabel, LayerCode.MainTop.getCode());
@@ -116,6 +128,16 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 			statusLabel.getLabel().setFont(new Font("Roboto", Font.BOLD, 18));
 			statusLabel.getLabel().setForeground(Color.PINK);
 			statusLabel.updateLabel(Scene.getCurrentFact());
+			
+			if ((Scene.getCurrentMission().getTargetObject() != null)
+					&& !(Scene.getCurrentMission().isDoneMission())) {
+				missionLabel.getLabel().setFont(new Font("Roboto", Font.BOLD, 18));
+				missionLabel.getLabel().setForeground(Color.PINK);
+				EstuaryPrompts prompts = new EstuaryPrompts();
+				missionLabel.updateLabel(prompts.getPrompt(Scene.getCurrentMission()));
+			} else if (Scene.getCurrentMission().getObjectNum() == -5) {
+				missionLabel.updateLabel("");
+			}
 		}
 	}
 
