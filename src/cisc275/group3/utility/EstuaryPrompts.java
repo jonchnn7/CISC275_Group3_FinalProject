@@ -12,6 +12,7 @@ import cisc275.group3.model.scene.Scene;
  * 
  * @author Jon
  * @author Thomas
+ * @author Jolyne
  */
 public final class EstuaryPrompts {
 	private String[][] prompt = new String[7][2];
