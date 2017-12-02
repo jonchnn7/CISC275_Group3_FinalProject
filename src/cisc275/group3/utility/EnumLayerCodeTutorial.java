@@ -6,7 +6,7 @@ package cisc275.group3.utility;
  * <p>
  * @author Scott
  */
-public enum LayerCodeTutorial {
+public enum EnumLayerCodeTutorial {
   ButtonMap(70),
   LabelToolsSpeech(70), ToolsPanel(71),
   ButtonTools(60), LabelToolsArrow(61),
@@ -28,7 +28,7 @@ public enum LayerCodeTutorial {
   
   private final int code;
   
-  LayerCodeTutorial(int code) {
+  EnumLayerCodeTutorial(int code) {
     this.code = code;
   }
   

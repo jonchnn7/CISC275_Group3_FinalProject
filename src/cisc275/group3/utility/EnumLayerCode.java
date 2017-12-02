@@ -6,7 +6,7 @@ package cisc275.group3.utility;
  * @author Scott
  * @author Jolyne
  */
-public enum LayerCode {
+public enum EnumLayerCode {
 
 
   EndGame(25), MainTop(20),
@@ -21,7 +21,7 @@ public enum LayerCode {
 
   private final int code;
   
-  LayerCode(int code) {
+  EnumLayerCode(int code) {
     this.code = code;
   }
   
