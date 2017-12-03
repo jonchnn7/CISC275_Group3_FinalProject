@@ -1,5 +1,8 @@
 package cisc275.group3.utility;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 import cisc275.group3.model.sceneobject.BetaPerson;
 
 /**
@@ -47,11 +50,14 @@ public interface ConstructPerson {
 	 * @return BetaPerson
 	 */
 	static public BetaPerson constructPerson(int depth, int type, double x, double y) {
-		BetaPerson person = new BetaPerson(depth, (int) (LENGTH * AR), // height
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		int width = (int)screenSize.getWidth();
+		
+		BetaPerson person = new BetaPerson(depth, (int) ((LENGTH/1280)*width * AR), // height
 				ID[type], // id
 				FILE[type], // image file
 				NAME[type], // name
-				(int) LENGTH, // width
+				(int) LENGTH/1280 *width, // width
 				x, // x position
 				y, // y position
 				SPEED, // x-axis speed
