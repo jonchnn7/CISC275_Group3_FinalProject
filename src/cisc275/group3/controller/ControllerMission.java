@@ -13,9 +13,11 @@ import javax.swing.JPanel;
 
 import cisc275.group3.model.scene.Scene;
 import cisc275.group3.utility.EnumLayerCode;
+import cisc275.group3.utility.EnumLayerCodeTutorial;
 import cisc275.group3.utility.EnumSceneType;
 import cisc275.group3.utility.Mission;
 import cisc275.group3.view.GameWindow;
+import cisc275.group3.view.ViewOverlayButton;
 import cisc275.group3.view.ViewOverlayLabel;
 
 /**
@@ -32,7 +34,7 @@ public class ControllerMission extends ControllerScene {
 	private JPanel missionPanel; // create mission JPanel
 	private JButton missionButton; // create mission button
 	private Random randGen = new Random();
-	
+
 	private static int currentPersonID = -1;
 	private static int tmp = -1;
 
@@ -40,7 +42,7 @@ public class ControllerMission extends ControllerScene {
 	protected boolean newMission = false; // used so missions can't repeat
 
 	/**
-	* @param w
+	 * @param w
 	 *            int-scene width
 	 * @param h
 	 *            int-scene height
@@ -64,8 +66,9 @@ public class ControllerMission extends ControllerScene {
 		missionPanel = new JPanel(true);
 
 		missionPanel.setLayout(null);
-		missionPanel.setBounds(SCREEN_WIDTH / 2 - 60, SCREEN_HEIGHT / 2 - 15, 120, 30);
-		missionPanel.setOpaque(true);
+		missionPanel.setBounds((SCREEN_WIDTH / 2) - (SCREEN_WIDTH / 4), (SCREEN_HEIGHT / 2 - SCREEN_HEIGHT / 3),
+				SCREEN_WIDTH / 10, SCREEN_HEIGHT / 3);
+		missionPanel.setOpaque(false);
 
 		addMissionButton();
 
@@ -81,36 +84,36 @@ public class ControllerMission extends ControllerScene {
 	 * mission can be completed when the correct sceneObjects have been clicked
 	 */
 	private void addMissionButton() {
-		missionButton = new JButton("Mission");
-		missionButton.setFont(new Font("Roboto", Font.BOLD, 18));
-		missionButton.setBounds(0, 0, 120, 30);
+		missionButton = new JButton();
+		missionButton.setBounds(0, 0, SCREEN_WIDTH / 10, SCREEN_HEIGHT / 3);
+		missionButton.setOpaque(false);
+		missionButton.setContentAreaFilled(false);
+		missionButton.setBorderPainted(false);
 
 		missionButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if ((Scene.getCurrentMission().getTargetObject() == null)
 						&& (Scene.getCurrentMission().isDoneMission())) {
-		
-					
+
 					newMission = false;
 
 					switch (currentPersonID) {
-					//BirdWatcher (Heron)
+					// BirdWatcher (Heron)
 					case 0:
 						tmp = 5;
 						break;
-					//Park Ranger (Weeds)
+					// Park Ranger (Weeds)
 					case 1:
 						tmp = 6;
 						break;
-					//Scientist
+					// Scientist
 					case 2:
 						tmp = randGen.nextInt(2) + 3;
-					//Filler guy (fish, 
-//					case 3
+						// Filler guy (fish,
+						// case 3
 						break;
 					}
-					
 
 					String s = "";
 					switch (tmp) {
@@ -183,9 +186,8 @@ public class ControllerMission extends ControllerScene {
 		});
 		missionPanel.add(missionButton);
 	}
-	
-	public static void setPersonID(int tmpID)
-	{
+
+	public static void setPersonID(int tmpID) {
 		currentPersonID = tmpID;
 	}
 }
