@@ -27,7 +27,7 @@ import cisc275.group3.view.ViewOverlayLabel;
  * @author Jon
  */
 public class ControllerTutorial extends ControllerScene implements LinkDynamics, LinkTime {
-	private final String BG_IMAGE = "img/tutorial_bg.jpg";
+	private final String BG_IMAGE = "img/tutorial_bg_2.jpg";
   private EnumGameState gameState;
   
 	/**
