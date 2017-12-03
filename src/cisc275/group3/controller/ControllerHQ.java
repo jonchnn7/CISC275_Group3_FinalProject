@@ -84,9 +84,9 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 		mainPane.add(viewGame, EnumLayerCode.HQ.getCode());
 
 		componentList.put("HQ", viewGame);
-
-		statusLabel = new ViewOverlayLabel((SCREEN_WIDTH / 4) + 300, (SCREEN_HEIGHT / 4) - 100, "  ");
-		statusLabel.setBounds((SCREEN_WIDTH / 4) + 300, (SCREEN_HEIGHT / 4) - 100, 700, 400);
+	
+		statusLabel = new ViewOverlayLabel(null, null, 600, 226, " ");
+		statusLabel.setBounds((SCREEN_WIDTH / 2)+100, 0 , 600, 226);
 
 		statusLabel.setName("MissionFact");
 		mainPane.setLayer(statusLabel, EnumLayerCode.MissionFact.getCode());
@@ -123,9 +123,7 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 			// Update Model
 			scene.update();
 			viewGame.updatePanel(scene.getSceneItems());
-			statusLabel.getLabel().setFont(new Font("Roboto", Font.BOLD, 18));
-			statusLabel.getLabel().setForeground(Color.PINK);
-			statusLabel.updateLabel(Scene.getCurrentFact());
+			statusLabel.updateBG(new ImageIcon(Scene.getCurrentFact()));
 			
 			if ((Scene.getCurrentMission().getTargetObject() != null)
 					&& !(Scene.getCurrentMission().isDoneMission())) {

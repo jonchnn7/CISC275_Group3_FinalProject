@@ -21,7 +21,7 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class ViewOverlayLabel extends JPanel {
 	private ImageIcon label_image;
-	private final ImageIcon LABEL_BG_IMAGE;
+	private ImageIcon LABEL_BG_IMAGE;
 	private final int LABEL_WIDTH;
 	private final int LABEL_HEIGHT;
 
@@ -149,6 +149,16 @@ public class ViewOverlayLabel extends JPanel {
 	 */
 	public void updateIcon(ImageIcon i) {
 		overLabel.setIcon(i);
+	}
+	
+	/**
+	 * Update background image labels
+	 * 
+	 * @param i
+	 *            ImageIcon- overlay label set to image icon
+	 */
+	public void updateBG(ImageIcon i) {
+		LABEL_BG_IMAGE = i;
 	}
 
 	/**

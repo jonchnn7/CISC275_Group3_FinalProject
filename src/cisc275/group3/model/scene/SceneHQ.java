@@ -90,7 +90,7 @@ public class SceneHQ extends Scene {
 				sceneItems.add(ConstructPerson.constructPerson(randGen.nextInt(20) - 10, // depth
 						x, // type
 						1280, // x location
-						75)); // y location
+						175)); // y location
 				prevPerson = x;
 			}
 			// Move Person
