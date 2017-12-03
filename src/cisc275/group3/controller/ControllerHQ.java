@@ -42,6 +42,8 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 	private final String BG_IMAGE = "img/backgrounds/HQ_bg.jpg";
 	private ViewOverlayLabel statusLabel;
 	private ViewOverlayLabel missionLabel;
+	
+	EstuaryPrompts prompts = new EstuaryPrompts();
 
 	// Tutorial Layer Variables
 	ViewOverlayButton tutorialButton;
@@ -73,6 +75,7 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 	protected void createScene() {
 		scene = new SceneHQ("HQ", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, BG_IMAGE, sceneType);
 		viewGame = new ViewGame(SCREEN_WIDTH, SCREEN_HEIGHT, scene.getSceneItems(), scene.getManifest().getBG());
+		
 
 		viewGame.setBounds(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 		viewGame.setName("HQLayer");
@@ -89,15 +92,17 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 		statusLabel.setBounds((SCREEN_WIDTH / 2)+100, 0 , 600, 226);
 
 		statusLabel.setName("MissionFact");
+		
 		mainPane.setLayer(statusLabel, EnumLayerCode.MissionFact.getCode());
 		mainPane.add(statusLabel, EnumLayerCode.MissionFact.getCode());
 
 		componentList.put("MissionFact", statusLabel);
 		
-		missionLabel = new ViewOverlayLabel((SCREEN_WIDTH / 4) + 300, (SCREEN_HEIGHT / 4) - 100, "  ");
-		missionLabel.setBounds((SCREEN_WIDTH / 4) + 300, (SCREEN_HEIGHT / 4) - 100, 700, 400);
+		missionLabel = new ViewOverlayLabel(null, null, 100, 100, " ");
+		missionLabel.setBounds(0,0, 600, 300);
 
 		missionLabel.setName("MissionRequest");
+		
 		mainPane.setLayer(missionLabel, EnumLayerCode.MissionRequest.getCode());
 		mainPane.add(missionLabel, EnumLayerCode.MissionRequest.getCode());
 
@@ -127,12 +132,12 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 			
 			if ((Scene.getCurrentMission().getTargetObject() != null)
 					&& !(Scene.getCurrentMission().isDoneMission())) {
-				missionLabel.getLabel().setFont(new Font("Roboto", Font.BOLD, 18));
-				missionLabel.getLabel().setForeground(Color.PINK);
-				EstuaryPrompts prompts = new EstuaryPrompts();
-				missionLabel.updateLabel(prompts.getPrompt(Scene.getCurrentMission()));
+				//missionLabel.getLabel().setFont(new Font("Roboto", Font.BOLD, 18));
+				//missionLabel.getLabel().setForeground(Color.PINK);
+
+				missionLabel.updateBG(new ImageIcon(prompts.getPrompt(Scene.getCurrentMission())));
 			} else if (Scene.getCurrentMission().getObjectNum() == -5) {
-				missionLabel.updateLabel("");
+				missionLabel.updateBG(new ImageIcon(""));
 			}
 		}
 	}
