@@ -32,7 +32,8 @@ public class GameWindow extends JFrame {
 	 */
 	public GameWindow(int w, int h) {
 		super("Estuary Click Adventure");
-
+    this.setUndecorated(true);
+    
 		// Display Parameters
 		WINDOW_WIDTH = w;
 		WINDOW_HEIGHT = h;
@@ -40,16 +41,17 @@ public class GameWindow extends JFrame {
 		// Create main layered pane
 		mainPane = new JLayeredPane();
 		mainPane.setDoubleBuffered(true);
-		mainPane.setBounds(0, 0, WINDOW_WIDTH, WINDOW_WIDTH);
-		mainPane.setPreferredSize(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT));
+		//mainPane.setBounds(0, 0, WINDOW_WIDTH, WINDOW_WIDTH);
+		//mainPane.setPreferredSize(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT));
 
 		// Add main pane to window
-		this.setLayout(new BorderLayout());
+		//this.setLayout(new BorderLayout());
 		this.add(mainPane, BorderLayout.CENTER);
 		this.pack();
 
 		// Finalize Display Window
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+    this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.setVisible(true);
 	}
 

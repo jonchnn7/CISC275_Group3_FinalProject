@@ -1,27 +1,20 @@
 package cisc275.group3.controller;
 
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.HashMap;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import cisc275.group3.model.scene.Scene;
-import cisc275.group3.model.scene.SceneBay;
-import cisc275.group3.model.scene.SceneTitle;
+
 import cisc275.group3.utility.EnumLayerCode;
-import cisc275.group3.utility.EnumLayerCodeTutorial;
 import cisc275.group3.view.GameWindow;
-import cisc275.group3.view.ViewGame;
 
 /**
  * The Title Controller is responsible for the control of the title screen.
@@ -71,15 +64,14 @@ public class ControllerTitle extends ControllerScene {
 		titlePanel = new JPanel(true) {
 			@Override
 			public void paintComponent(Graphics g) {
-				Dimension size = new Dimension(1280, 720);
-				g.drawImage(BG_IMAGE.getImage(), 0, 0, size.width, size.height, this);
+				g.drawImage(BG_IMAGE.getImage(), 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, this);
 			}
 		};
 
 		// Set Properties
 		titlePanel.setLayout(null);
-		titlePanel.setPreferredSize(new Dimension(1280, 720));
-		titlePanel.setBounds(0, 0, 1280, 720);
+		titlePanel.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
+		titlePanel.setBounds(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 		titlePanel.setOpaque(true);
 
 		titlePanel.setName("TitleLayer");
@@ -100,7 +92,7 @@ public class ControllerTitle extends ControllerScene {
 	private void addTitleButton() {
 		startButton = new JButton("Start");
 		startButton.setFont(new Font("Roboto", Font.BOLD, 1));
-		startButton.setBounds(200, 500, 300, 96);
+		startButton.setBounds(SCREEN_WIDTH/3-150, SCREEN_HEIGHT*3/4, 300, 96);
 		startButton.setIcon(new ImageIcon("img/Yellow startbutton.png"));
 		startButton.setOpaque(false);
 		startButton.setBorderPainted(false);
@@ -108,7 +100,7 @@ public class ControllerTitle extends ControllerScene {
 		startButton.setMargin(new Insets(0, 0, 0, 0));
 		startButton.setContentAreaFilled(false);
 		startButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		startButton.setSize(330, 96);
+		startButton.setSize(300, 96);
 		titlePanel.add(startButton);
 	}
 	
@@ -129,7 +121,7 @@ public class ControllerTitle extends ControllerScene {
 	private void addTutorialButton() {
 		tutorialButton = new JButton("Tutorial");
 		tutorialButton.setFont(new Font("Roboto", Font.BOLD, 1));
-		tutorialButton.setBounds(800, 500, 300, 96);
+		tutorialButton.setBounds(SCREEN_WIDTH*2/3-150, SCREEN_HEIGHT*3/4, 300, 96);
 		tutorialButton.setIcon(new ImageIcon("img/Yellow Tutorialbutton.png"));
 		tutorialButton.setOpaque(false);
 		tutorialButton.setBorderPainted(false);
