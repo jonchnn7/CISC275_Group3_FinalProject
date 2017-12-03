@@ -1,10 +1,6 @@
 package cisc275.group3.model.scene;
 
 import cisc275.group3.controller.ControllerInventory;
-import cisc275.group3.exceptions.InsufficientDataException;
-import cisc275.group3.model.sceneobject.BetaCrab;
-import cisc275.group3.model.sceneobject.BetaFish;
-import cisc275.group3.model.sceneobject.BetaHeron;
 import cisc275.group3.model.sceneobject.BetaVegetation;
 import cisc275.group3.model.sceneobject.SceneObject;
 import cisc275.group3.model.sceneobject.ToolObject;
