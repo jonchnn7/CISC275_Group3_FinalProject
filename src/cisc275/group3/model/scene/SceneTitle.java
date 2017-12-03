@@ -1,5 +1,6 @@
 package cisc275.group3.model.scene;
 
+import cisc275.group3.utility.EnumSceneType;
 import cisc275.group3.utility.SceneId;
 
 /**
@@ -19,10 +20,6 @@ public class SceneTitle extends Scene {
 	public SceneTitle(SceneId mani) {
 		super(mani);
 		time = 0;
-
-		if (this.getManifest().getSceneType() == 99) {
-			fillScene();
-		}
 	}
 
 	/**
@@ -42,7 +39,7 @@ public class SceneTitle extends Scene {
 	 * @param sceneType
 	 *            type of scene
 	 */
-	public SceneTitle(String n, double x, double y, double w, double h, String bg, int sceneType) {
+	public SceneTitle(String n, double x, double y, double w, double h, String bg, EnumSceneType sceneType) {
 		this(new SceneId(n, x, y, w, h, sceneType, bg));
 	}
 
@@ -54,7 +51,6 @@ public class SceneTitle extends Scene {
 	@Override
 	protected void fillScene() {
 		// TODO Auto-generated method stub
-
 	}
 
   /**

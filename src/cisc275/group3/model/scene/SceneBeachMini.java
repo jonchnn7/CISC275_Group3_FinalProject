@@ -2,6 +2,7 @@ package cisc275.group3.model.scene;
 
 import cisc275.group3.model.sceneobject.BetaCrab;
 import cisc275.group3.utility.ConstructCrab;
+import cisc275.group3.utility.EnumSceneType;
 import cisc275.group3.utility.SceneId;
 
 /**
@@ -23,7 +24,7 @@ public class SceneBeachMini extends Scene implements ConstructCrab {
 		super(mani);
 
 		time = 0;
-		if (this.getManifest().getSceneType() == 2) {
+		if (this.getManifest().getSceneType() == EnumSceneType.DEFAULT) {
 			fillScene();
 		}
 	}
@@ -44,9 +45,9 @@ public class SceneBeachMini extends Scene implements ConstructCrab {
 	 * @param bg
 	 *            String-file location of bg image
 	 * @param sceneType
-	 *            int-type of scene
+	 *            EnumSceneType-type of scene
 	 */
-	public SceneBeachMini(String n, double x, double y, double w, double h, String bg, int sceneType) {
+	public SceneBeachMini(String n, double x, double y, double w, double h, String bg, EnumSceneType sceneType) {
 		this(new SceneId(n, x, y, w, h, sceneType, bg));
 	}
 

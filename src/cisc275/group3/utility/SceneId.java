@@ -24,7 +24,7 @@ public class SceneId implements Serializable{
   private final double startX;
   private final double startY;
   private final double width;
-  private final int sceneType;
+  private final  EnumSceneType sceneType;
   
   /**
    * 
@@ -35,7 +35,7 @@ public class SceneId implements Serializable{
    * @param h	double-scene height
    * @param t	int-scene type
    */
-  public SceneId (String n, double x, double y, double w, double h, int t, String bg) {
+  public SceneId (String n, double x, double y, double w, double h,  EnumSceneType t, String bg) {
     height = h;
     name = n;
     startX = x;
@@ -103,7 +103,7 @@ public class SceneId implements Serializable{
   /**
    * @return the sceneType 
    */  
-  public int getSceneType() {
+  public  EnumSceneType getSceneType() {
 	  return sceneType;
   }
 }

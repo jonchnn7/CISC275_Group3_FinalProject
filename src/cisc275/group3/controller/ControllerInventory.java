@@ -17,6 +17,7 @@ import cisc275.group3.model.sceneobject.SceneObject;
 import cisc275.group3.utility.ConstructHeron;
 import cisc275.group3.utility.EnumLayerCode;
 import cisc275.group3.utility.EnumLayerCodeTutorial;
+import cisc275.group3.utility.EnumSceneType;
 import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.ViewGame;
 
@@ -53,11 +54,9 @@ public class ControllerInventory extends ControllerScene {
 	 * @param cl
 	 *            HashMap-associations of scene controllers and layers
 	 * @param sceneType
-	 *            int-indicates how the scene should be initialized/updated 0 =
-	 *            empty/no update, 1 = special update (ex. tutorial HQ), 2 =
-	 *            standard update, 3 = menus/interfaces
+	 *            EnumSceneType-type of scene to be rendered
 	 */
-	public ControllerInventory(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType) {
+	public ControllerInventory(int w, int h, GameWindow f, HashMap<String, Component> cl, EnumSceneType sceneType) {
 		super(w, h, f, cl, sceneType);
 		inventoryBg = new ImageIcon("img/inventoryPics/inventory_menu.png");
 	}
@@ -69,13 +68,13 @@ public class ControllerInventory extends ControllerScene {
 	@Override
 	protected void createScene() {
 
-		scene = new SceneInventory("Inventory", 0, 0, 300, 300, 3, "img/inventoryPics/inventory_menu_small.png");
+		scene = new SceneInventory("Inventory", 0, 0, 300, 300, EnumSceneType.MENU, "img/inventoryPics/inventory_menu_small.png");
 		viewGame = new ViewGame(300, 300, scene.getSceneItems(), scene.getManifest().getBG());
 
 		viewGame.setBounds(100, 0, 300, 300);
 		viewGame.setName("InventoryLayer");
 
-		if (sceneType == 1) {
+		if (sceneType == EnumSceneType.TUTORIAL) {
 			mainPane.setLayer(viewGame, EnumLayerCodeTutorial.InventoryHidden.getCode());
 			mainPane.add(viewGame, EnumLayerCodeTutorial.InventoryHidden.getCode());
 		} else {

@@ -8,6 +8,7 @@ import cisc275.group3.model.sceneobject.BetaVegetation;
 import cisc275.group3.model.sceneobject.SceneObject;
 import cisc275.group3.utility.ConstructHeron;
 import cisc275.group3.utility.ConstructVegetation;
+import cisc275.group3.utility.EnumSceneType;
 import cisc275.group3.utility.SceneId;
 
 /**
@@ -38,7 +39,7 @@ public class SceneWetland extends Scene {
 		time = 0;
 
 		// Fill scene with mission objects
-		if (this.getManifest().getSceneType() == 2) {
+		if (this.getManifest().getSceneType() == EnumSceneType.DEFAULT) {
 			fillScene();
 		}
 	}
@@ -59,9 +60,9 @@ public class SceneWetland extends Scene {
 	 * @param bg
 	 *            String-file location of bg image
 	 * @param sceneType
-	 *            int-type of scene
+	 *            EnumSceneType-type of scene
 	 */
-	public SceneWetland(String n, double x, double y, double w, double h, String bg, int sceneType) {
+	public SceneWetland(String n, double x, double y, double w, double h, String bg, EnumSceneType sceneType) {
 		this(new SceneId(n, x, y, w, h, sceneType, bg));
 	}
 
@@ -96,7 +97,7 @@ public class SceneWetland extends Scene {
 	 */
 	@Override
 	public void update() {
-		if (this.getManifest().getSceneType() == 2) {
+		if (this.getManifest().getSceneType() == EnumSceneType.DEFAULT) {
 			// 2% to Add new Heron
 			if (randGen.nextInt(200) < 3) {
 				// 50/50 chance to pick right or left

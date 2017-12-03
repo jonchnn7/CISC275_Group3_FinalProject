@@ -8,6 +8,7 @@ import javax.swing.ImageIcon;
 
 import cisc275.group3.utility.EnumLayerCode;
 import cisc275.group3.utility.EnumLayerCodeTutorial;
+import cisc275.group3.utility.EnumSceneType;
 import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.ViewOverlayButton;
 import cisc275.group3.view.ViewOverlayLabel;
@@ -85,11 +86,9 @@ public class ControllerOverlay extends ControllerScene {
 	 * @param cl
 	 *            HashMap-associations of scene controllers and layers
 	 * @param sceneType
-	 *            int-indicates how the scene should be initialized/updated 0 =
-	 *            empty/no update, 1 = special update (ex. tutorial HQ), 2 =
-	 *            standard update, 3 = menus/interfaces
+	 *            EnumSceneType-type of scene to be constructed
 	 */
-	public ControllerOverlay(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType) {
+	public ControllerOverlay(int w, int h, GameWindow f, HashMap<String, Component> cl, EnumSceneType sceneType) {
 		super(w, h, f, cl, sceneType);
 
 		// Map Button Parameters
@@ -162,7 +161,7 @@ public class ControllerOverlay extends ControllerScene {
 		mapButtonPanel.setBounds(180, SCREEN_HEIGHT - mapButtonHeight, mapButtonWidth, mapButtonHeight);
 		mapButtonPanel.setName("MapButton");
 
-		if (sceneType == 1) {
+		if (sceneType == EnumSceneType.TUTORIAL) {
 			mainPane.setLayer(mapButtonPanel, EnumLayerCodeTutorial.ButtonMapHidden.getCode());
 			mainPane.add(mapButtonPanel, EnumLayerCodeTutorial.ButtonMapHidden.getCode());
 		} else {
@@ -174,7 +173,7 @@ public class ControllerOverlay extends ControllerScene {
 		mapButtonPanel.getOverButton().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (sceneType == 1) {
+				if (sceneType == EnumSceneType.TUTORIAL) {
 					mainPane.setLayer(componentList.get("HQ"), -100);
 					mainPane.setLayer(componentList.get("Tutorial"), EnumLayerCodeTutorial.MainTop.getCode());
 				} else {
@@ -203,7 +202,7 @@ public class ControllerOverlay extends ControllerScene {
 		toolsButtonPanel.setBounds(SCREEN_WIDTH - 75 - toolsButtonWidth, 0, toolsButtonWidth, toolsButtonHeight);
 		toolsButtonPanel.setName("ToolsButton");
 
-		if (sceneType == 1) {
+		if (sceneType == EnumSceneType.TUTORIAL) {
 			mainPane.setLayer(toolsButtonPanel, EnumLayerCodeTutorial.ButtonToolsHidden.getCode());
 			mainPane.add(toolsButtonPanel, EnumLayerCodeTutorial.ButtonToolsHidden.getCode());
 		} else {
@@ -216,7 +215,7 @@ public class ControllerOverlay extends ControllerScene {
 		toolsButtonPanel.getOverButton().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (sceneType == 1) {
+				if (sceneType == EnumSceneType.TUTORIAL) {
 					Component toolsComponent = mainPane
 							.getComponentsInLayer(mainPane.getLayer(componentList.get("Tools")))[0];
 
@@ -251,7 +250,7 @@ public class ControllerOverlay extends ControllerScene {
 		inventoryButtonPanel.setBounds(0, 0, inventoryButtonWidth, inventoryButtonHeight);
 		inventoryButtonPanel.setName("InventoryButton");
 
-		if (sceneType == 1) {
+		if (sceneType == EnumSceneType.TUTORIAL) {
 			mainPane.setLayer(inventoryButtonPanel, EnumLayerCodeTutorial.ButtonInventoryHidden.getCode());
 			mainPane.add(inventoryButtonPanel, EnumLayerCodeTutorial.ButtonInventoryHidden.getCode());
 		} else {

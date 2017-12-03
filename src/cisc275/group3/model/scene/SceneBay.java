@@ -6,6 +6,7 @@ import cisc275.group3.model.sceneobject.SceneObject;
 import java.util.Collections;
 import java.util.Iterator;
 import cisc275.group3.utility.ConstructFish;
+import cisc275.group3.utility.EnumSceneType;
 import cisc275.group3.utility.SceneId;
 
 /**
@@ -30,7 +31,7 @@ public class SceneBay extends Scene implements ConstructFish {
 		super(mani);
 		time = 0;
 
-		if (this.getManifest().getSceneType() == 2) {
+		if (getManifest().getSceneType() ==  EnumSceneType.DEFAULT) {
 			fillScene();
 		}
 	}
@@ -43,9 +44,9 @@ public class SceneBay extends Scene implements ConstructFish {
 	 * @param w		double-scene width
 	 * @param h		double-scene height
 	 * @param bg	String-file location of bg image
-	 * @param sceneType	int-type of scene
+	 * @param sceneType	 EnumSceneType-type of scene
 	 */
-	public SceneBay(String n, double x, double y, double w, double h, String bg, int sceneType) {
+	public SceneBay(String n, double x, double y, double w, double h, String bg,  EnumSceneType sceneType) {
 		this(new SceneId(n, x, y, w, h, sceneType, bg));
 	}
 
@@ -88,7 +89,7 @@ public class SceneBay extends Scene implements ConstructFish {
 	 */
 	@Override
 	public void update() {
-		if (manifest.getSceneType() == 2) {
+		if (manifest.getSceneType() == EnumSceneType.DEFAULT) {
 			// Generate new fish on ~4% of calls
 			if (randGen.nextInt(100) <= 4) {
 				sceneItems.add(ConstructFish.constructLeftFish(

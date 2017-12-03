@@ -1,6 +1,7 @@
 package cisc275.group3.controller;
 
 import cisc275.group3.model.scene.Scene;
+import cisc275.group3.utility.EnumSceneType;
 import cisc275.group3.utility.EstuaryFacts;
 import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.ViewGame;
@@ -34,8 +35,8 @@ public abstract class ControllerScene implements Serializable {
 
 	// Scene Variables
 	protected Scene scene;
-	protected int sceneType;
 	protected ViewGame viewGame;
+	protected EnumSceneType sceneType;
 	protected static JLabel mouseLabel;
 	protected static HashMap<String, Component> componentList;
 	boolean tutorial;
@@ -60,11 +61,9 @@ public abstract class ControllerScene implements Serializable {
 	 * @param cl
 	 *            HashMap-associations of scene controllers and layers
 	 * @param sceneType
-	 *            int-indicates how the scene should be initialized/updated 0 =
-	 *            empty/no update, 1 = special update (ex. tutorial HQ), 2 =
-	 *            standard update, 3 = menus/interfaces
+	 *            EnumSceneType-type of scene to be constructed
 	 */
-	public ControllerScene(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType) {
+	public ControllerScene(int w, int h, GameWindow f, HashMap<String, Component> cl, EnumSceneType sceneType) {
 		SCREEN_WIDTH = w;
 		SCREEN_HEIGHT = h;
 		GAME_FRAME = f;

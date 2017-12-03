@@ -2,6 +2,7 @@ package cisc275.group3.model.scene;
 
 import java.util.Collections;
 import cisc275.group3.controller.ControllerInventory;
+import cisc275.group3.utility.EnumSceneType;
 import cisc275.group3.utility.SceneId;
 
 /**
@@ -51,7 +52,7 @@ public class SceneInventory extends Scene {
 	 * @param bg
 	 *            backround image
 	 */
-	public SceneInventory(String n, double x, double y, double w, double h, int sceneType, String bg) {
+	public SceneInventory(String n, double x, double y, double w, double h, EnumSceneType sceneType, String bg) {
 		this(new SceneId(n, x, y, w, h, sceneType, bg));
 	}
 

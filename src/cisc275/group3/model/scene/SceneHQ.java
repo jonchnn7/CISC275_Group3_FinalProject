@@ -7,6 +7,7 @@ import cisc275.group3.controller.ControllerMission;
 import cisc275.group3.model.sceneobject.BetaPerson;
 import cisc275.group3.model.sceneobject.SceneObject;
 import cisc275.group3.utility.ConstructPerson;
+import cisc275.group3.utility.EnumSceneType;
 import cisc275.group3.utility.SceneId;
 
 /**
@@ -30,7 +31,7 @@ public class SceneHQ extends Scene {
 		time = 0;
 		prevPerson = 4;
 
-		if (getManifest().getSceneType() == 1) {
+		if (getManifest().getSceneType() == EnumSceneType.TUTORIAL) {
 			tutorialFill();
 		}
 	}
@@ -51,11 +52,9 @@ public class SceneHQ extends Scene {
 	 * @param bg
 	 *            String-file location of bg image
 	 * @param sceneType
-	 *            int-type of scene
-	 * @param score           
-	 *            int-inital score
+	 *            EnumSceneType-type of scene
 	 */
-	public SceneHQ(String n, double x, double y, double w, double h, String bg, int sceneType) {
+	public SceneHQ(String n, double x, double y, double w, double h, String bg, EnumSceneType sceneType) {
 		this(new SceneId(n, x, y, w, h, sceneType, bg));
 	}
 
@@ -80,7 +79,7 @@ public class SceneHQ extends Scene {
 	 */
 	@Override
 	public void update() {
-		if (this.getManifest().getSceneType() == 2) {
+		if (this.getManifest().getSceneType() == EnumSceneType.DEFAULT) {
 			if (sceneItems.size() < 1) {
 				int x = randGen.nextInt(3);
 				while (x == prevPerson) {

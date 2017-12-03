@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import cisc275.group3.model.scene.Scene;
 import cisc275.group3.utility.EnumGameState;
 import cisc275.group3.utility.EnumLayerCode;
+import cisc275.group3.utility.EnumSceneType;
 import cisc275.group3.view.GameWindow;
 
 /**
@@ -50,11 +51,9 @@ public class ControllerTitle extends ControllerScene {
 	 * @param cl
 	 *            HashMap-associations of scene controllers and layers
 	 * @param sceneType
-	 *            int-indicates how the scene should be initialized/updated 0 =
-	 *            empty/no update, 1 = special update (ex. tutorial HQ), 2 =
-	 *            standard update, 3 = menus/interfaces
+	 *            EnumSceneType-type of scene to be constructed
 	 */
-	public ControllerTitle(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType) {
+	public ControllerTitle(int w, int h, GameWindow f, HashMap<String, Component> cl, EnumSceneType sceneType) {
 		super(w, h, f, cl, sceneType);
 	}
 

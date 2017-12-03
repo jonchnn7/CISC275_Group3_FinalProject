@@ -6,6 +6,7 @@ import java.util.Iterator;
 import cisc275.group3.model.sceneobject.BetaCrab;
 import cisc275.group3.model.sceneobject.SceneObject;
 import cisc275.group3.utility.ConstructCrab;
+import cisc275.group3.utility.EnumSceneType;
 import cisc275.group3.utility.SceneId;
 
 /**
@@ -36,7 +37,7 @@ public class SceneBeach extends Scene implements ConstructCrab {
 		time = 0;
 
 		// Fill scene with mission objects
-		if (this.getManifest().getSceneType() == 2) {
+		if (this.getManifest().getSceneType() == EnumSceneType.DEFAULT) {
 			fillScene();
 		}
 	}
@@ -57,9 +58,9 @@ public class SceneBeach extends Scene implements ConstructCrab {
 	 * @param bg
 	 *            String-file location of bg image
 	 * @param sceneType
-	 *            int-type of scene
+	 *            EnumSceneType-type of scene
 	 */
-	public SceneBeach(String n, double x, double y, double w, double h, String bg, int sceneType) {
+	public SceneBeach(String n, double x, double y, double w, double h, String bg, EnumSceneType sceneType) {
 		this(new SceneId(n, x, y, w, h, sceneType, bg));
 	}
 
@@ -100,7 +101,7 @@ public class SceneBeach extends Scene implements ConstructCrab {
 	 */
 	@Override
 	public void update() {
-		if (this.getManifest().getSceneType() == 2) {
+		if (this.getManifest().getSceneType() == EnumSceneType.DEFAULT) {
 			// Generate new crab on ~7% of calls
 			if (randGen.nextInt(100) <= 7) {
 				sceneItems.add(ConstructCrab.constructLeftCrab(
@@ -112,7 +113,7 @@ public class SceneBeach extends Scene implements ConstructCrab {
 				sceneItems.add(ConstructCrab.constructRightCrab(
 				        randGen.nextInt(20) - 10, // depth
 				        randGen.nextInt(2), // type
-				        0 - randGen.nextInt(75), // x location
+				        0 - randGen.nextInt(500), // x location
 				        ((randGen.nextDouble() * manifest.getHeight() + manifest.getStartY()) + 370))); // y location
 			}
 			// Move Crab

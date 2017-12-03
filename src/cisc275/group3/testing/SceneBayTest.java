@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import cisc275.group3.model.scene.SceneBay;
 import cisc275.group3.model.sceneobject.BetaFish;
+import cisc275.group3.utility.EnumSceneType;
 
 /**
  * Test class for SceneBay.java properties
@@ -31,7 +32,7 @@ public class SceneBayTest {
    */
   @Before
   public void sceneSetup() {
-    testBay = new SceneBay("Test Bay", 0, 0, SCENE_WIDTH, SCENE_HEIGHT, "img/bay_bg_1.png", 2);
+    testBay = new SceneBay("Test Bay", 0, 0, SCENE_WIDTH, SCENE_HEIGHT, "img/bay_bg_1.png", EnumSceneType.DEFAULT);
   }
   
   /**

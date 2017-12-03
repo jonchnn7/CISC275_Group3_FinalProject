@@ -18,6 +18,7 @@ import cisc275.group3.model.sceneobject.ToolTrimmer;
 import cisc275.group3.utility.ConstructCrab;
 import cisc275.group3.utility.ConstructFish;
 import cisc275.group3.utility.ConstructVegetation;
+import cisc275.group3.utility.EnumSceneType;
 import cisc275.group3.utility.ConstructHeron;
 import cisc275.group3.utility.Mission;
 
@@ -57,10 +58,10 @@ public class AbstractSceneTests implements ConstructCrab, ConstructFish, Constru
   public static void sceneSetup() {
 	  testList = new HashMap<String, Scene>();
 	  
-	  testList.put("Bay", new SceneBay("Bay Test", 0, 0, SCENE_WIDTH, SCENE_HEIGHT, "img/bay_bg_1.png", 0));
-	  testList.put("Beach", new SceneBeach("Beach Test", 0, 0, SCENE_WIDTH, SCENE_HEIGHT, "img/beach_bg.jpg", 0));
-	  testList.put("BeachMini", new SceneBeachMini("Beach Mini Test", 0, 0, SCENE_WIDTH, SCENE_HEIGHT, "img/beach_bg.jpg", 0));
-	  testList.put("Wetland", new SceneWetland("Wetland Test", 0, 0, SCENE_WIDTH, SCENE_HEIGHT, "img/wetland_bg.jpg", 0));
+	  testList.put("Bay", new SceneBay("Bay Test", 0, 0, SCENE_WIDTH, SCENE_HEIGHT, "img/bay_bg_1.png", EnumSceneType.EMPTY));
+	  testList.put("Beach", new SceneBeach("Beach Test", 0, 0, SCENE_WIDTH, SCENE_HEIGHT, "img/beach_bg.jpg", EnumSceneType.EMPTY));
+	  testList.put("BeachMini", new SceneBeachMini("Beach Mini Test", 0, 0, SCENE_WIDTH, SCENE_HEIGHT, "img/beach_bg.jpg", EnumSceneType.EMPTY));
+	  testList.put("Wetland", new SceneWetland("Wetland Test", 0, 0, SCENE_WIDTH, SCENE_HEIGHT, "img/wetland_bg.jpg", EnumSceneType.EMPTY));
 	  
 	  baySetup();
 	  beachSetup();
