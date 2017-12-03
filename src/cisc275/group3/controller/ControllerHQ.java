@@ -195,9 +195,8 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 		// Get Mission Label
 		ImageIcon getMissionLabelIcon = new ImageIcon("img/tutorial_arrow_upLeft.png");
 		ImageIcon getMissionLabelBG = new ImageIcon("img/tutorial_labelLeft_bg.png");
-		tutorialLabel = new ViewOverlayLabel(getMissionLabelIcon, getMissionLabelBG, (int) (SCREEN_WIDTH * .6),
-				SCREEN_HEIGHT / 2, "Click for mission!");
-		tutorialLabel.setBounds(480, 100, 780, 300);
+		tutorialLabel = new ViewOverlayLabel(getMissionLabelIcon, getMissionLabelBG, 780, 300, "Click for mission!");
+		tutorialLabel.setBounds(SCREEN_WIDTH*3/8, SCREEN_HEIGHT*3/14, 780, 300);
 		tutorialLabel.setName("GetMissionLabel");
 		tutorialLabel.getLabel().setFont(new Font("Roboto", Font.BOLD, 48));
 
@@ -208,7 +207,7 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 		// Get Mission Button
 		ImageIcon getMissionButtonIcon = new ImageIcon("img/tutorial_getMission_button.png");
 		tutorialButton = new ViewOverlayButton(getMissionButtonIcon, 400, 600);
-		tutorialButton.setBounds(100, 0, 400, 600);
+		tutorialButton.setBounds(SCREEN_WIDTH/4, SCREEN_HEIGHT/5, 400, 600);
 		tutorialButton.setName("GetMissionButton");
 
 		mainPane.setLayer(tutorialButton, EnumLayerCodeTutorial.ButtonGetMission.getCode());
@@ -266,7 +265,7 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 		ImageIcon offsetIcon = new ImageIcon("img/tutorial_speechBubble_offset.png");
 		tutorialLabel = new ViewOverlayLabel(offsetIcon, labelIcon, 400, 250,
 				"<html><br><br>Your mission objectives are up top.<br><br>We could really use a Horseshoe Crab, a Heron, and a Striped Bass!<html>");
-		tutorialLabel.setBounds(470, 110, 400, 250);
+		tutorialLabel.setBounds(SCREEN_WIDTH*3/8, SCREEN_HEIGHT*3/14, 400, 250);
 		tutorialLabel.setName("ObjectiveSpeech");
 		tutorialLabel.getLabel().setFont(new Font("Roboto", Font.BOLD, 22));
 		tutorialLabel.getLabel().setHorizontalAlignment(JLabel.LEFT);
@@ -325,7 +324,7 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 		ImageIcon offsetIcon = new ImageIcon("img/tutorial_speechBubble_offset.png");
 		tutorialLabel = new ViewOverlayLabel(offsetIcon, labelIcon, 400, 250,
 				"<html><br><br>That's your inventory.<br><br>Once you've collected an item, it'll appear in your bag.<html>");
-		tutorialLabel.setBounds(470, 110, 400, 250);
+		tutorialLabel.setBounds(SCREEN_WIDTH*3/8, SCREEN_HEIGHT*3/14, 400, 250);
 		tutorialLabel.setName("InventorySpeech");
 		tutorialLabel.getLabel().setFont(new Font("Roboto", Font.BOLD, 22));
 		tutorialLabel.getLabel().setHorizontalAlignment(JLabel.LEFT);
@@ -375,7 +374,7 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 		ImageIcon offsetIcon = new ImageIcon("img/tutorial_speechBubble_offset.png");
 		tutorialLabel = new ViewOverlayLabel(offsetIcon, labelIcon, 400, 250,
 				"<html><br><br>Your tools are all over here.<br><br>Make sure you choose the right tool for the job.<html>");
-		tutorialLabel.setBounds(470, 110, 400, 250);
+		tutorialLabel.setBounds(SCREEN_WIDTH*3/8, SCREEN_HEIGHT*3/14, 400, 250);
 		tutorialLabel.setName("ToolsSpeech");
 		tutorialLabel.getLabel().setFont(new Font("Roboto", Font.BOLD, 22));
 		tutorialLabel.getLabel().setHorizontalAlignment(JLabel.LEFT);

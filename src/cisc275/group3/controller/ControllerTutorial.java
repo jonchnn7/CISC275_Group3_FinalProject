@@ -3,6 +3,7 @@ package cisc275.group3.controller;
 import java.awt.Component;
 import java.util.HashMap;
 import cisc275.group3.model.scene.SceneTutorial;
+import cisc275.group3.utility.EnumGameState;
 import cisc275.group3.utility.EnumLayerCode;
 import cisc275.group3.utility.EnumLayerCodeTutorial;
 import cisc275.group3.view.GameWindow;
@@ -26,7 +27,8 @@ import cisc275.group3.view.ViewOverlayLabel;
  */
 public class ControllerTutorial extends ControllerScene implements LinkDynamics, LinkTime {
 	private final String BG_IMAGE = "img/tutorial_bg.jpg";
-
+  private EnumGameState gameState;
+  
 	/**
 	 * Constructor
 	 * 
@@ -45,6 +47,7 @@ public class ControllerTutorial extends ControllerScene implements LinkDynamics,
 	 */
 	public ControllerTutorial(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType) {
 		super(w, h, f, cl, sceneType);
+		gameState = EnumGameState.IN_TUTORIAL;
 	}
 
 	/**
@@ -75,12 +78,13 @@ public class ControllerTutorial extends ControllerScene implements LinkDynamics,
 	 */
 	@Override
 	public void update() {
-		// if (mainPane.getLayer(componentList.get("Tutorial")) ==
-		// LayerCode.MainTop.getCode()) {
 		// Update Model
 		scene.update();
 		viewGame.updatePanel(scene.getSceneItems());
-		// }
+		
+		if (tutorialDone()) {
+		  gameState = EnumGameState.START;
+		}
 	}
 
 	/**
@@ -116,11 +120,18 @@ public class ControllerTutorial extends ControllerScene implements LinkDynamics,
 	 * 
 	 * @return true if tutorial is completed, else false
 	 */
-	public boolean tutorialDone() {
+	private boolean tutorialDone() {
 		if (scene.getSceneItems().size() == 0) {
 			return true;
 		}
 		return false;
+	}
+	
+	/**
+	 * @return the game state
+	 */
+	public EnumGameState getGameState() {
+	  return gameState;
 	}
 
 }

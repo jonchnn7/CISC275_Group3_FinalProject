@@ -1,6 +1,7 @@
 package cisc275.group3.controller;
 
 import cisc275.group3.model.scene.Scene;
+import cisc275.group3.controller.ControllerTutorial;
 import cisc275.group3.utility.EnumGameState;
 import cisc275.group3.view.GameWindow;
 
@@ -82,6 +83,7 @@ public class GameController implements Serializable {
 			  // Game State Updates
 			  switch (gameState) {
 			  case START:
+			    clearWindow();
 			    initTitle();
 			    gameState = EnumGameState.TITLE;
 			    break;
@@ -98,6 +100,9 @@ public class GameController implements Serializable {
 			    Scene.setScore(carryScore);
 	        gameState = EnumGameState.IN_GAME;
 			    break;
+			  case IN_TUTORIAL:
+			    gameState = ((ControllerTutorial)controlMap.get("Tutorial")).getGameState();
+			    break;
 			  case IN_GAME:
 			    // Check if time is up
 			    if (totalTime == 300000) {
@@ -107,7 +112,6 @@ public class GameController implements Serializable {
 	        // Only update total time if in game.
 			    totalTime += 100;
 			  case TITLE:
-			  case IN_TUTORIAL:
 			  case END_GAME:
 			    // Do nothing. Wait for update
 			    break;
