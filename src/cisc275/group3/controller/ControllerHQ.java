@@ -12,7 +12,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import cisc275.group3.model.scene.Scene;
 import cisc275.group3.model.scene.SceneHQ;
-import cisc275.group3.utility.EstuaryFacts;
 import cisc275.group3.utility.EstuaryPrompts;
 import cisc275.group3.utility.EnumLayerCode;
 import cisc275.group3.utility.EnumLayerCodeTutorial;

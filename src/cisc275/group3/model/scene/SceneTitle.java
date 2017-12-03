@@ -1,7 +1,5 @@
 package cisc275.group3.model.scene;
 
-import javax.swing.JButton;
-
 import cisc275.group3.utility.SceneId;
 
 /**

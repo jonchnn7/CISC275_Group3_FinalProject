@@ -73,6 +73,7 @@ public class ControllerTools extends ControllerScene {
 	}
 
 	@Override
+	@SuppressWarnings("serial")
 	protected void createScene() {
 		Dimension toolSize = new Dimension(75, 300);
 		toolPanel = new JPanel(true) {

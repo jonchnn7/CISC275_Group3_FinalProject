@@ -4,11 +4,8 @@ import java.util.Collections;
 import java.util.Iterator;
 
 import cisc275.group3.controller.ControllerMission;
-import cisc275.group3.exceptions.InsufficientDataException;
-import cisc275.group3.model.sceneobject.BetaCrab;
 import cisc275.group3.model.sceneobject.BetaPerson;
 import cisc275.group3.model.sceneobject.SceneObject;
-import cisc275.group3.utility.ConstructCrab;
 import cisc275.group3.utility.ConstructPerson;
 import cisc275.group3.utility.SceneId;
 
@@ -63,11 +60,10 @@ public class SceneHQ extends Scene {
 	}
 
 	/**
-	 * Overridden from Scene.java
+	 * Required by Scene.java
 	 */
 	@Override
 	protected void fillScene() {
-		// TODO Auto-generated method stub
 	}
 
 	private void tutorialFill() {

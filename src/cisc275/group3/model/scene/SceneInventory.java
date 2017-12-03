@@ -2,7 +2,6 @@ package cisc275.group3.model.scene;
 
 import java.util.Collections;
 import cisc275.group3.controller.ControllerInventory;
-import cisc275.group3.exceptions.InsufficientDataException;
 import cisc275.group3.utility.SceneId;
 
 /**

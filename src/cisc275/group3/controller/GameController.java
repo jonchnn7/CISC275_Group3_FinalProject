@@ -39,7 +39,6 @@ public class GameController implements Serializable {
 	// Game Variables
 	private int totalTime;
 	private int carryScore;
-	private boolean loopRun;
 	private HashMap<String, ControllerScene> controlMap;
 	private HashMap<String, Component> layerMap;
 
@@ -66,7 +65,6 @@ public class GameController implements Serializable {
 		// Initialize Game
 		controlMap = new HashMap<String, ControllerScene>();
 		layerMap = new HashMap<String, Component>();
-		loopRun = true;
 		carryScore = 0;
 
     // Boot-up

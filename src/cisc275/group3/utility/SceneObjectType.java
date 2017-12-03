@@ -2,8 +2,6 @@ package cisc275.group3.utility;
 
 import java.util.ArrayList;
 
-import cisc275.group3.model.sceneobject.BetaPerson;
-
 /**
  * @author Jolyne
  */

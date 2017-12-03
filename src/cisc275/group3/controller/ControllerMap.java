@@ -72,6 +72,7 @@ public class ControllerMap extends ControllerScene {
 	 * list for the map.
 	 */
 	@Override
+	@SuppressWarnings("serial")
 	protected void createScene() {
 		mapPanel = new JPanel(true) {
 			@Override

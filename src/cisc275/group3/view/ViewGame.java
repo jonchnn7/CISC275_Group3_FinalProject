@@ -1,8 +1,6 @@
 package cisc275.group3.view;
 
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -13,7 +11,6 @@ import java.util.Collections;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-import cisc275.group3.model.scene.Scene;
 import cisc275.group3.model.sceneobject.SceneObject;
 
 /**

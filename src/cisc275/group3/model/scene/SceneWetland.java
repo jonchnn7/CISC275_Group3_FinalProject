@@ -3,8 +3,6 @@ package cisc275.group3.model.scene;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
-
-import cisc275.group3.exceptions.InsufficientDataException;
 import cisc275.group3.model.sceneobject.BetaHeron;
 import cisc275.group3.model.sceneobject.BetaVegetation;
 import cisc275.group3.model.sceneobject.SceneObject;

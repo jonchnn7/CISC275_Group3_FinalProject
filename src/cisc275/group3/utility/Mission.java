@@ -8,14 +8,6 @@ package cisc275.group3.utility;
  * <p>
  * @author Jolyne
  */
-
-import java.awt.Color;
-
-import cisc275.group3.model.sceneobject.BetaCrab;
-import cisc275.group3.model.sceneobject.BetaFish;
-import cisc275.group3.model.sceneobject.BetaVegetation;
-import cisc275.group3.model.sceneobject.SceneObject;
-
 public class Mission {
 	private String targetObject;
 	private String objectName;

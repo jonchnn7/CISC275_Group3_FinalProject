@@ -1,8 +1,6 @@
 package cisc275.group3.controller;
 
 import java.awt.Component;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.HashMap;
 
 import cisc275.group3.model.scene.SceneBeach;

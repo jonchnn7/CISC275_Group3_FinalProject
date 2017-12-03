@@ -65,7 +65,8 @@ public class ControllerTitle extends ControllerScene {
 	 * Creates the scene and adds it to the main pain. Sets the layers and component
 	 * list for the ControllerTitle.
 	 */
-	@Override
+  @Override
+	@SuppressWarnings("serial")
 	protected void createScene() {
 		titlePanel = new JPanel(true) {
 			@Override

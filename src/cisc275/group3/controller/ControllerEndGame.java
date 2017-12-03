@@ -5,8 +5,6 @@ import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.HashMap;
 
 import javax.swing.ImageIcon;
@@ -15,7 +13,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import cisc275.group3.model.scene.Scene;
-import cisc275.group3.model.scene.SceneHQ;
 import cisc275.group3.utility.EnumLayerCode;
 import cisc275.group3.view.GameWindow;
 
@@ -43,8 +40,6 @@ public class ControllerEndGame extends ControllerScene implements LinkDynamics {
 	private JButton resetButton;
 	private JButton continueButton;
 	private JLabel finalScore;
-	private boolean reset;
-	private boolean cont;
 
 	/**
 	 * Constructor
@@ -73,10 +68,6 @@ public class ControllerEndGame extends ControllerScene implements LinkDynamics {
 	@Override
 	protected void createScene() {
 		endGamePanel = new JPanel();
-		//scene = new SceneHQ("EndGame", 0, 0, 1, 1, "", 3);
-
-		reset = false;
-		cont = false;
 
 		// Set Panel Properties
 		endGamePanel.setLayout(null);
