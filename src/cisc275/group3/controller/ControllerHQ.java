@@ -42,8 +42,6 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 	private final String BG_IMAGE = "img/backgrounds/HQ_bg.jpg";
 	private ViewOverlayLabel statusLabel;
 	private ViewOverlayLabel missionLabel;
-	
-	private int score;
 
 	// Tutorial Layer Variables
 	ViewOverlayButton tutorialButton;
@@ -65,9 +63,8 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 	 *            empty/no update, 1 = special update (ex. tutorial HQ), 2 =
 	 *            standard update, 3 = menus/interfaces
 	 */
-	public ControllerHQ(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType, int score) {
+	public ControllerHQ(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType) {
 		super(w, h, f, cl, sceneType);
-		this.score = score;
 	}
 
 	/**
@@ -76,7 +73,7 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 	 */
 	@Override
 	protected void createScene() {
-		scene = new SceneHQ("HQ", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, BG_IMAGE, sceneType, score);
+		scene = new SceneHQ("HQ", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, BG_IMAGE, sceneType);
 		viewGame = new ViewGame(SCREEN_WIDTH, SCREEN_HEIGHT, scene.getSceneItems(), scene.getManifest().getBG());
 
 		viewGame.setBounds(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);

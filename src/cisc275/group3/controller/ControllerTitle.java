@@ -36,7 +36,7 @@ import cisc275.group3.view.ViewGame;
  * @author Jon
  */
 
-public class ControllerTitle extends ControllerScene implements LinkDynamics, LinkTime {
+public class ControllerTitle extends ControllerScene {
 	private final ImageIcon BG_IMAGE = new ImageIcon("img/backgrounds/titleScreen_bg.png");
 	private JPanel titlePanel;
 	private JButton startButton;
@@ -152,67 +152,9 @@ public class ControllerTitle extends ControllerScene implements LinkDynamics, Li
 	}
 
 	/**
-	 * Sets the components to their correct layers when the start button is pressed
-	 */
-	public void startShuffle() {
-		 Component titleComponent = mainPane
-		 .getComponentsInLayer(mainPane.getLayer(componentList.get("Title")))[0];
-		 Component hqComponent =
-		 mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("HQ")))[0];
-		 Component missionComponent = mainPane
-		 .getComponentsInLayer(mainPane.getLayer(componentList.get("Mission")))[0];
-		
-		 mainPane.setLayer(hqComponent, EnumLayerCode.MainAll.getCode());
-		 mainPane.setLayer(titleComponent, EnumLayerCode.Title.getCode());
-		 mainPane.setLayer(missionComponent, EnumLayerCode.Mission.getCode());
-	}
-	
-	/**
-	 * Sets the components to their correct layers when the tutorial button is pressed
-	 */
-	public void tutShuffle() {
-		 Component titleComponent = mainPane
-		 .getComponentsInLayer(mainPane.getLayer(componentList.get("Title")))[0];
-		 Component hqComponent =
-		 mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("HQ")))[0];
-		 Component getMissionButton = mainPane
-		 .getComponentsInLayer(mainPane.getLayer(componentList.get("GetMissionButton")))[0];
-		 Component getMissionLabel = mainPane
-		 .getComponentsInLayer(mainPane.getLayer(componentList.get("GetMissionLabel")))[0];
-		
-		 mainPane.setLayer(hqComponent, EnumLayerCodeTutorial.MainTop.getCode());
-		 mainPane.setLayer(titleComponent, EnumLayerCodeTutorial.TitleScreen.getCode());
-		 mainPane.setLayer(getMissionButton,
-		 EnumLayerCodeTutorial.ButtonGetMission.getCode());
-		 mainPane.setLayer(getMissionLabel,
-		 EnumLayerCodeTutorial.LabelGetMission.getCode());
-	}
-
-	/**
-	 * Needed by abstract class
+	 * Required by abstract class
 	 */
 	@Override
 	protected void addML() {
-	}
-
-	/**
-	 * Needed by abstract class
-	 */
-	@Override
-	public void updateTime() {
-	}
-
-	/**
-	 * Needed by abstract class
-	 */
-	@Override
-	public void displayTime() {
-	}
-
-	/**
-	 * Needed by abstract class
-	 */
-	@Override
-	public void update() {
 	}
 }

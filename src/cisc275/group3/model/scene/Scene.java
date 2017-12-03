@@ -347,6 +347,16 @@ public abstract class Scene implements Serializable {
 	public static int getScore() {
 		return score;
 	}
+	
+	/**
+	 * Sets the score.
+	 * <p>
+	 * Allows for continued games
+	 * to have a nonzero initial score.
+	 */
+	public static void setScore(int carryScore) {
+	  Scene.score = carryScore;
+	}
 
 	/**
 	 * Update score by adding 1

@@ -2,7 +2,6 @@ package cisc275.group3.controller;
 
 import cisc275.group3.model.scene.Scene;
 import cisc275.group3.utility.EnumGameState;
-import cisc275.group3.utility.EnumLayerCode;
 import cisc275.group3.view.GameWindow;
 
 import java.awt.Component;
@@ -59,7 +58,7 @@ public class GameController implements Serializable {
 		SCREEN_HEIGHT = y;
 
 		// Set state to title screen
-		gameState = EnumGameState.TITLE;
+		gameState = EnumGameState.START;
 
 		// Create game window
 		GAME_FRAME = new GameWindow(SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -71,7 +70,6 @@ public class GameController implements Serializable {
 		carryScore = 0;
 
     // Boot-up
-		initTitle();
 		gameTime();
 	}
 	
@@ -85,6 +83,10 @@ public class GameController implements Serializable {
 			  
 			  // Game State Updates
 			  switch (gameState) {
+			  case START:
+			    initTitle();
+			    gameState = EnumGameState.TITLE;
+			    break;
 			  case TUTORIAL:
 			    clearWindow();
 			    initTutorial();
@@ -92,13 +94,19 @@ public class GameController implements Serializable {
 			    break;
 			  case GAME:
 			    clearWindow();
-			    initGame(carryScore);
+			    initGame();
 			    
 			    totalTime = 0;
+			    Scene.setScore(carryScore);
 	        gameState = EnumGameState.IN_GAME;
 			    break;
 			  case IN_GAME:
-			    // Only update total time if in game.
+			    // Check if time is up
+			    if (totalTime == 30000) {
+	          gameState = EnumGameState.END_GAME;
+	          endGame();
+			    }
+	        // Only update total time if in game.
 			    totalTime += 100;
 			  case TITLE:
 			  case IN_TUTORIAL:
@@ -136,74 +144,8 @@ public class GameController implements Serializable {
             }
           }
 			  });
-        
-        // End Game Check
-        if (gameState == EnumGameState.IN_GAME && totalTime == 3000) {
-          gameState = EnumGameState.END_GAME;
-          endGame();
-        }
       }
     });
-			  
-	/*		  
-			  
-				// Checks to see any button presses from the Title Screen
-				if (gameState == EnumGameState.Tutorial.getCode()) {
-					if (((ControllerTitle) controlMap.get("Title")).getAction() == 1) {
-						gameState = 1;
-					} else if (((ControllerTitle) controlMap.get("Title")).getAction() == 2) {
-						gameState = 3;
-					}
-				}
-				// Initializes tutorial and sets the layers
-				else if (gameState == 1) {
-					initTutorial();
-					((ControllerTitle) controlMap.get("Title")).tutShuffle();
-					gameState = 2;
-					// Playing the tutorial, resets to title screen when tutorial complete
-				} else if (gameState == 2) {
-					if (((ControllerTutorial) controlMap.get("Tutorial")).tutorialDone()) {
-						controlMap.clear();
-						layerMap.clear();
-						ControllerInventory.removeItem("All");
-						GAME_FRAME.getMainPane().removeAll();
-						controlMap.put("Title",
-								new ControllerTitle(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 3));
-						gameState = 0;
-					}
-					// Initializes game and sets the layers
-				} else if (gameState == 3) {
-					initGame();
-					((ControllerTitle) controlMap.get("Title")).startShuffle();
-					gameState = 4;
-					// Playing the game, when totalTime reaches value, endgame is triggered
-				} else if (gameState == 4) {
-					// Update Time Counter
-					totalTime += 100;
-					// 5 min
-					if (totalTime == 300000) {
-						GAME_FRAME.getMainPane().setLayer(GAME_FRAME.getMainPane().getComponentsInLayer(-18)[0],
-								EnumLayerCode.EndGame.getCode());
-						gameState = 5;
-					}
-				} else if (gameState == 5) {
-					if (((ControllerEndGame) controlMap.get("EndGame")).getReset() == true) {
-						totalTime = 0;
-						controlMap.clear();
-						layerMap.clear();
-						ControllerInventory.removeItem("All");
-						GAME_FRAME.getMainPane().removeAll();
-						controlMap.put("Title",
-								new ControllerTitle(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 3));
-						gameState = 0;
-					}
-					else if (((ControllerEndGame) controlMap.get("EndGame")).getCont() == true) {
-						totalTime = 0;
-						((ControllerEndGame) controlMap.get("EndGame")).setCont(false);
-						gameState = 4;
-					}
-				}
-*/
 		timer.start(); // Start it up!
 	}
 	
@@ -239,7 +181,7 @@ public class GameController implements Serializable {
     controlMap.put("Tutorial", new ControllerTutorial(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 1));
     controlMap.put("Overlay", new ControllerOverlay(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 1));
     controlMap.put("Inventory", new ControllerInventory(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 1));
-    controlMap.put("HQ", new ControllerHQ(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 1, 0));
+    controlMap.put("HQ", new ControllerHQ(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 1));
     controlMap.put("Tools", new ControllerTools(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 1));
 
   }
@@ -250,9 +192,9 @@ public class GameController implements Serializable {
    * the controller map.
    * @param score int-initial game score
    */
-  private void initGame(int score) {
+  private void initGame() {
     controlMap.put("Mission", new ControllerMission(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 3));
-    controlMap.put("HQ", new ControllerHQ(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 2, score));
+    controlMap.put("HQ", new ControllerHQ(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 2));
     controlMap.put("Bay", new ControllerBay(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 2));
     controlMap.put("Beach", new ControllerBeach(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap,2));
     controlMap.put("Wetland", new ControllerWetland(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 2));
@@ -277,11 +219,8 @@ public class GameController implements Serializable {
       new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-          int tmpScore = Scene.getScore();
-        
-          clearWindow();
-          gameState = EnumGameState.IN_GAME;
-          initGame(tmpScore);
+          carryScore = Scene.getScore();
+          gameState = EnumGameState.GAME;
         }
       }
     );
@@ -292,8 +231,7 @@ public class GameController implements Serializable {
         @Override
         public void actionPerformed(ActionEvent e) {
           clearWindow();
-          gameState = EnumGameState.TITLE;
-          initTitle();
+          gameState = EnumGameState.START;
         }
       }
     );

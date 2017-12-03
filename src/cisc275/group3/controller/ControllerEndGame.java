@@ -92,6 +92,11 @@ public class ControllerEndGame extends ControllerScene implements LinkDynamics {
 		mainPane.setLayer(endGamePanel, EnumLayerCode.EndGame.getCode());
 		mainPane.add(endGamePanel, EnumLayerCode.EndGame.getCode());
 		componentList.put("EndGame", endGamePanel);
+		
+    // Reset Mouse
+    Scene.setCurrentTool(null);
+    mouseLabel.setIcon(new ImageIcon("img/mouse_empty.png"));
+    mouseLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
 	}
 
 	/**
@@ -145,42 +150,6 @@ public class ControllerEndGame extends ControllerScene implements LinkDynamics {
   }
 
 	/**
-	 * Every button initially resets all the layers to their default locations
-	 * before placing the appropriate layer up front. This method appropriates all
-	 * the repeated code.
-	 * <p>
-	 * Each layer is set to its default position, and the mouse is reset to its
-	 * default configuration.
-	 */
-	private void setDefaultLayers() {
-		Component mapComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Map")))[0];
-		Component hqComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("HQ")))[0];
-		Component bayComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Bay")))[0];
-		Component beachComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Beach")))[0];
-		Component wetlandComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Wetland")))[0];
-		Component beachMiniComponent = mainPane
-				.getComponentsInLayer(mainPane.getLayer(componentList.get("BeachMini")))[0];
-		Component titleComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Title")))[0];
-		Component missionComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Mission")))[0];
-
-		// Set Scenes to Default Layer Position
-		mainPane.setLayer(mapComponent, EnumLayerCode.Map.getCode());
-		mainPane.setLayer(hqComponent, EnumLayerCode.HQ.getCode());
-		mainPane.setLayer(bayComponent, EnumLayerCode.Bay.getCode());
-		mainPane.setLayer(beachComponent, EnumLayerCode.Beach.getCode());
-		mainPane.setLayer(wetlandComponent, EnumLayerCode.Wetland.getCode());
-		mainPane.setLayer(beachMiniComponent, EnumLayerCode.BeachMini.getCode());
-		mainPane.setLayer(titleComponent, EnumLayerCode.Title.getCode());
-		mainPane.setLayer(missionComponent, EnumLayerCode.Mission.getCode());
-		mainPane.setLayer(endGamePanel, EnumLayerCode.EndGameHide.getCode());
-
-		// Reset Mouse
-		Scene.setCurrentTool(null);
-		mouseLabel.setIcon(new ImageIcon("img/mouse_empty.png"));
-		mouseLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
-	}
-
-	/**
 	 * Connects the EndGame model and game view. The final score will be taken from
 	 * the games static score variable and displayed.
 	 * <p>
@@ -189,36 +158,5 @@ public class ControllerEndGame extends ControllerScene implements LinkDynamics {
 	@Override
 	public void update() {
 		finalScore.setText("Final Score: " + Scene.getScore());
-
-	}
-
-	/**
-	 * returns the state of reset variable. This checks to see if the game should be
-	 * reset to title screen
-	 * 
-	 * @return reset
-	 */
-	public boolean getReset() {
-		return reset;
-	}
-
-	/**
-	 * returns the state of cont variable. This checks to see if the game should be
-	 * continued
-	 * 
-	 * @return cont
-	 */
-	public boolean getCont() {
-		return cont;
-	}
-
-	/**
-	 * set the cont variable to c
-	 * 
-	 * @param c
-	 *            boolean- the desired state of cont
-	 */
-	public void setCont(boolean c) {
-		cont = c;
 	}
 }

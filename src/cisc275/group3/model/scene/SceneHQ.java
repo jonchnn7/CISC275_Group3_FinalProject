@@ -55,10 +55,11 @@ public class SceneHQ extends Scene {
 	 *            String-file location of bg image
 	 * @param sceneType
 	 *            int-type of scene
+	 * @param score           
+	 *            int-inital score
 	 */
-	public SceneHQ(String n, double x, double y, double w, double h, String bg, int sceneType, int score) {
+	public SceneHQ(String n, double x, double y, double w, double h, String bg, int sceneType) {
 		this(new SceneId(n, x, y, w, h, sceneType, bg));
-		Scene.score = score;
 	}
 
 	/**
