@@ -24,7 +24,7 @@ public interface ConstructPerson {
 	static final String[] NAME = { "Bird Watcher", "Park Ranger", "Scientist" };
 
 	// Person Dimensions
-	static final int LENGTH = 358;
+	static final double LENGTH = 358;
 
 	// Person Aspect Ratios (multiply by width for height)
 	static final double AR = 0.66;
@@ -50,14 +50,11 @@ public interface ConstructPerson {
 	 * @return BetaPerson
 	 */
 	static public BetaPerson constructPerson(int depth, int type, double x, double y) {
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		int width = (int)screenSize.getWidth();
-		
-		BetaPerson person = new BetaPerson(depth, (int) ((LENGTH/1280)*width * AR), // height
+		BetaPerson person = new BetaPerson(depth, (int) (LENGTH * AR), // height
 				ID[type], // id
 				FILE[type], // image file
 				NAME[type], // name
-				(int) LENGTH/1280 *width, // width
+				(int) LENGTH, // width
 				x, // x position
 				y, // y position
 				SPEED, // x-axis speed

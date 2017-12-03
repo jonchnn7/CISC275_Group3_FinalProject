@@ -98,14 +98,14 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 
 		componentList.put("MissionFact", statusLabel);
 		
-		missionLabel = new ViewOverlayLabel(null, null, 100, 100, " ");
-		missionLabel.setBounds(0,0, 600, 300);
+		missionLabel = new ViewOverlayLabel(null, null, 600, 226, " ");
+		missionLabel.setBounds(100, SCREEN_HEIGHT/8-100 , 600, 226);
 
 		missionLabel.setName("MissionRequest");
 		
 		mainPane.setLayer(missionLabel, EnumLayerCode.MissionRequest.getCode());
 		mainPane.add(missionLabel, EnumLayerCode.MissionRequest.getCode());
-
+		
 		componentList.put("MissionRequest", missionLabel);
 
 		if (sceneType == EnumSceneType.TUTORIAL) {
@@ -132,11 +132,8 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 			
 			if ((Scene.getCurrentMission().getTargetObject() != null)
 					&& !(Scene.getCurrentMission().isDoneMission())) {
-				//missionLabel.getLabel().setFont(new Font("Roboto", Font.BOLD, 18));
-				//missionLabel.getLabel().setForeground(Color.PINK);
-
 				missionLabel.updateBG(new ImageIcon(prompts.getPrompt(Scene.getCurrentMission())));
-			} else if (Scene.getCurrentMission().getObjectNum() == -5) {
+			} else {//if (Scene.getCurrentMission().getObjectNum() == -5) {
 				missionLabel.updateBG(new ImageIcon(""));
 			}
 		}
