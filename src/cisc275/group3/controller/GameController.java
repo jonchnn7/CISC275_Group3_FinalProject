@@ -61,7 +61,7 @@ public class GameController implements Serializable {
 
 		// Create game window
 		GAME_FRAME = new GameWindow(SCREEN_WIDTH, SCREEN_HEIGHT);
-
+		
 		// Initialize Game
 		controlMap = new HashMap<String, ControllerScene>();
 		layerMap = new HashMap<String, Component>();
@@ -100,7 +100,7 @@ public class GameController implements Serializable {
 			    break;
 			  case IN_GAME:
 			    // Check if time is up
-			    if (totalTime == 30000) {
+			    if (totalTime == 300000) {
 	          gameState = EnumGameState.END_GAME;
 	          endGame();
 			    }
