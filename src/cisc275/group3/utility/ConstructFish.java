@@ -8,7 +8,6 @@ import cisc275.group3.model.sceneobject.BetaFish;
  * size and increase extensibility.
  * <p>
  * ConstructFish.java
- * <p>
  * 
  * @author Scott
  */
