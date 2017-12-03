@@ -192,10 +192,9 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 	 */
 	private void tutorialStepOne() {
 		// Get Mission Label
-		ImageIcon getMissionLabelIcon = new ImageIcon("img/tutorial_arrow_upLeft.png");
-		ImageIcon getMissionLabelBG = new ImageIcon("img/tutorial_labelLeft_bg.png");
-		tutorialLabel = new ViewOverlayLabel(getMissionLabelIcon, getMissionLabelBG, 780, 300, "Click for mission!");
-		tutorialLabel.setBounds(SCREEN_WIDTH*3/8, SCREEN_HEIGHT*3/14, 780, 300);
+		ImageIcon getMissionLabelIcon = new ImageIcon("img/tutorialPics/AskForAMission.png");
+		tutorialLabel = new ViewOverlayLabel(getMissionLabelIcon, 800, 300, "Click for mission!");
+		tutorialLabel.setBounds(SCREEN_WIDTH*3/8, SCREEN_HEIGHT*3/14, 800, 300);
 		tutorialLabel.setName("GetMissionLabel");
 		tutorialLabel.getLabel().setFont(new Font("Roboto", Font.BOLD, 48));
 

@@ -21,7 +21,7 @@ public class ClickAdventure {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		final int HEIGHT = (int)screenSize.getHeight();
 		final int WIDTH = (int)screenSize.getWidth();
-		final int OFFSET = 40; // Avoid OS Bars
+		final int OFFSET = 0; // Avoid OS Bars
 
     javax.swing.SwingUtilities.invokeLater(new Runnable() {
       public void run() {
