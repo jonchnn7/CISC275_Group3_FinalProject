@@ -9,6 +9,8 @@ import cisc275.group3.view.GameWindow;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.Serializable;
 import java.util.HashMap;
 import javax.swing.Timer;
@@ -68,6 +70,7 @@ public class GameController implements Serializable {
 		controlMap = new HashMap<String, ControllerScene>();
 		layerMap = new HashMap<String, Component>();
 		carryScore = 0;
+		exitKeyListener();
 
     // Boot-up
 		gameTime();
@@ -252,5 +255,26 @@ public class GameController implements Serializable {
      ControllerInventory.removeItem("All");
     
     GAME_FRAME.getMainPane().removeAll();	  
+	}
+	
+	/**
+	 * Listens for the escape key to quit 
+	 * the program.
+	 */
+	private void exitKeyListener() {
+	  GAME_FRAME.addKeyListener(new KeyListener(){
+      @Override
+      public void keyPressed(KeyEvent e) { 
+        if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+          System.exit(0);
+        }
+      }
+      
+      @Override
+      public void keyTyped(KeyEvent e) { }
+
+      @Override
+      public void keyReleased(KeyEvent e) { } 
+    });
 	}
 }

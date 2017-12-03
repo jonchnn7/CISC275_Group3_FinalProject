@@ -80,11 +80,7 @@ public class ControllerTitle extends ControllerScene {
 		titlePanel.setName("TitleLayer");
 		addTitleButton();
 		addTutorialButton();
-		addExitButton();
-		/*
-		 * if (sceneType == 1) { addTutorialButton(); } else { addTitleButton(); }
-		 */
-
+		
 		mainPane.setLayer(titlePanel, EnumLayerCode.MainTop.getCode());
 		mainPane.add(titlePanel, EnumLayerCode.MainTop.getCode());
 		componentList.put("Title", titlePanel);
@@ -146,32 +142,6 @@ public class ControllerTitle extends ControllerScene {
 	 */
 	public JButton getTutorialButton() {
 	  return tutorialButton;
-	}
-	
-	/**
-	 * Adds an exit button to the top left corner
-	 */
-  private void addExitButton() {
-    exitButton = new JButton(" ");
-	  exitButton.setFont(new Font("Roboto", Font.BOLD, 1));
-	  exitButton.setBounds(SCREEN_WIDTH-85, 10, 75, 75);
-	  exitButton.setIcon(new ImageIcon("img/title_exit_icon.png"));
-	  exitButton.setOpaque(false);
-	  exitButton.setBorderPainted(false);
-	  exitButton.setBorder(null);
-	  exitButton.setMargin(new Insets(0, 0, 0, 0));
-	  exitButton.setContentAreaFilled(false);
-	  exitButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
-	  exitButton.setSize(75, 75);
-	  titlePanel.add(exitButton);
-	  
-	  // Add action listener 
-	  exitButton.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        System.exit(0);
-      }
-	  });
 	}
 
 	/**
