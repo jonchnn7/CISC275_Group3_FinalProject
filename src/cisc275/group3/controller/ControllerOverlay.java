@@ -7,8 +7,8 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 import javax.swing.ImageIcon;
 
-import cisc275.group3.utility.LayerCode;
-import cisc275.group3.utility.LayerCodeTutorial;
+import cisc275.group3.utility.EnumLayerCode;
+import cisc275.group3.utility.EnumLayerCodeTutorial;
 import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.ViewOverlayButton;
 import cisc275.group3.view.ViewOverlayLabel;
@@ -164,11 +164,11 @@ public class ControllerOverlay extends ControllerScene {
 		mapButtonPanel.setName("MapButton");
 
 		if (sceneType == 1) {
-			mainPane.setLayer(mapButtonPanel, LayerCodeTutorial.ButtonMapHidden.getCode());
-			mainPane.add(mapButtonPanel, LayerCodeTutorial.ButtonMapHidden.getCode());
+			mainPane.setLayer(mapButtonPanel, EnumLayerCodeTutorial.ButtonMapHidden.getCode());
+			mainPane.add(mapButtonPanel, EnumLayerCodeTutorial.ButtonMapHidden.getCode());
 		} else {
-			mainPane.setLayer(mapButtonPanel, LayerCode.MapButton.getCode());
-			mainPane.add(mapButtonPanel, LayerCode.MapButton.getCode());
+			mainPane.setLayer(mapButtonPanel, EnumLayerCode.MapButton.getCode());
+			mainPane.add(mapButtonPanel, EnumLayerCode.MapButton.getCode());
 		}
 		componentList.put("MapButton", mapButtonPanel);
 
@@ -177,15 +177,15 @@ public class ControllerOverlay extends ControllerScene {
 			public void actionPerformed(ActionEvent e) {
 				if (sceneType == 1) {
 					mainPane.setLayer(componentList.get("HQ"), -100);
-					mainPane.setLayer(componentList.get("Tutorial"), LayerCodeTutorial.MainTop.getCode());
+					mainPane.setLayer(componentList.get("Tutorial"), EnumLayerCodeTutorial.MainTop.getCode());
 				} else {
 					Component mapComponent = mainPane
 							.getComponentsInLayer(mainPane.getLayer(componentList.get("Map")))[0];
 
-					if (mainPane.getLayer(mapComponent) == LayerCode.Map.getCode()) {
-						mainPane.setLayer(mapComponent, LayerCode.MapOverlay.getCode());
+					if (mainPane.getLayer(mapComponent) == EnumLayerCode.Map.getCode()) {
+						mainPane.setLayer(mapComponent, EnumLayerCode.MapOverlay.getCode());
 					} else {
-						mainPane.setLayer(mapComponent, LayerCode.Map.getCode());
+						mainPane.setLayer(mapComponent, EnumLayerCode.Map.getCode());
 					}
 				}
 			}
@@ -205,11 +205,11 @@ public class ControllerOverlay extends ControllerScene {
 		toolsButtonPanel.setName("ToolsButton");
 
 		if (sceneType == 1) {
-			mainPane.setLayer(toolsButtonPanel, LayerCodeTutorial.ButtonToolsHidden.getCode());
-			mainPane.add(toolsButtonPanel, LayerCodeTutorial.ButtonToolsHidden.getCode());
+			mainPane.setLayer(toolsButtonPanel, EnumLayerCodeTutorial.ButtonToolsHidden.getCode());
+			mainPane.add(toolsButtonPanel, EnumLayerCodeTutorial.ButtonToolsHidden.getCode());
 		} else {
-			mainPane.setLayer(toolsButtonPanel, LayerCode.ToolsButton.getCode());
-			mainPane.add(toolsButtonPanel, LayerCode.ToolsButton.getCode());
+			mainPane.setLayer(toolsButtonPanel, EnumLayerCode.ToolsButton.getCode());
+			mainPane.add(toolsButtonPanel, EnumLayerCode.ToolsButton.getCode());
 		}
 
 		componentList.put("ToolsButton", toolsButtonPanel);
@@ -221,19 +221,19 @@ public class ControllerOverlay extends ControllerScene {
 					Component toolsComponent = mainPane
 							.getComponentsInLayer(mainPane.getLayer(componentList.get("Tools")))[0];
 
-					if (mainPane.getLayer(toolsComponent) == LayerCodeTutorial.ToolsPanel.getCode()) {
-						mainPane.setLayer(toolsComponent, LayerCodeTutorial.ToolsPanelHidden.getCode());
+					if (mainPane.getLayer(toolsComponent) == EnumLayerCodeTutorial.ToolsPanel.getCode()) {
+						mainPane.setLayer(toolsComponent, EnumLayerCodeTutorial.ToolsPanelHidden.getCode());
 					} else {
-						mainPane.setLayer(toolsComponent, LayerCodeTutorial.ToolsPanel.getCode());
+						mainPane.setLayer(toolsComponent, EnumLayerCodeTutorial.ToolsPanel.getCode());
 					}
 				} else {
 					Component toolsComponent = mainPane
 							.getComponentsInLayer(mainPane.getLayer(componentList.get("Tools")))[0];
 
-					if (mainPane.getLayer(toolsComponent) == LayerCode.Tools.getCode()) {
-						mainPane.setLayer(toolsComponent, LayerCode.ToolsOverlay.getCode());
+					if (mainPane.getLayer(toolsComponent) == EnumLayerCode.Tools.getCode()) {
+						mainPane.setLayer(toolsComponent, EnumLayerCode.ToolsOverlay.getCode());
 					} else {
-						mainPane.setLayer(toolsComponent, LayerCode.Tools.getCode());
+						mainPane.setLayer(toolsComponent, EnumLayerCode.Tools.getCode());
 					}
 				}
 			}
@@ -253,11 +253,11 @@ public class ControllerOverlay extends ControllerScene {
 		inventoryButtonPanel.setName("InventoryButton");
 
 		if (sceneType == 1) {
-			mainPane.setLayer(inventoryButtonPanel, LayerCodeTutorial.ButtonInventoryHidden.getCode());
-			mainPane.add(inventoryButtonPanel, LayerCodeTutorial.ButtonInventoryHidden.getCode());
+			mainPane.setLayer(inventoryButtonPanel, EnumLayerCodeTutorial.ButtonInventoryHidden.getCode());
+			mainPane.add(inventoryButtonPanel, EnumLayerCodeTutorial.ButtonInventoryHidden.getCode());
 		} else {
-			mainPane.setLayer(inventoryButtonPanel, LayerCode.InventoryButton.getCode());
-			mainPane.add(inventoryButtonPanel, LayerCode.InventoryButton.getCode());
+			mainPane.setLayer(inventoryButtonPanel, EnumLayerCode.InventoryButton.getCode());
+			mainPane.add(inventoryButtonPanel, EnumLayerCode.InventoryButton.getCode());
 		}
 		componentList.put("InventoryButton", inventoryButtonPanel);
 
@@ -267,10 +267,10 @@ public class ControllerOverlay extends ControllerScene {
 				Component inventoryComponent = mainPane
 						.getComponentsInLayer(mainPane.getLayer(componentList.get("Inventory")))[0];
 
-				if (mainPane.getLayer(inventoryComponent) == LayerCode.Inventory.getCode()) {
-					mainPane.setLayer(inventoryComponent, LayerCode.InventoryOverlay.getCode());
+				if (mainPane.getLayer(inventoryComponent) == EnumLayerCode.Inventory.getCode()) {
+					mainPane.setLayer(inventoryComponent, EnumLayerCode.InventoryOverlay.getCode());
 				} else {
-					mainPane.setLayer(inventoryComponent, LayerCode.Inventory.getCode());
+					mainPane.setLayer(inventoryComponent, EnumLayerCode.Inventory.getCode());
 				}
 			}
 		});
@@ -288,8 +288,8 @@ public class ControllerOverlay extends ControllerScene {
 				scoreLabelHeight);
 		scoreLabelPanel.setName("ScoreLabel");
 
-		mainPane.setLayer(scoreLabelPanel, LayerCode.ScoreLabel.getCode());
-		mainPane.add(scoreLabelPanel, LayerCode.ScoreLabel.getCode());
+		mainPane.setLayer(scoreLabelPanel, EnumLayerCode.ScoreLabel.getCode());
+		mainPane.add(scoreLabelPanel, EnumLayerCode.ScoreLabel.getCode());
 
 		componentList.put("ScoreLabel", scoreLabelPanel);
 	}
@@ -305,8 +305,8 @@ public class ControllerOverlay extends ControllerScene {
 				timeLabelHeight);
 		timeLabelPanel.setName("TimeLabel");
 
-		mainPane.setLayer(timeLabelPanel, LayerCode.TimeLabel.getCode());
-		mainPane.add(timeLabelPanel, LayerCode.TimeLabel.getCode());
+		mainPane.setLayer(timeLabelPanel, EnumLayerCode.TimeLabel.getCode());
+		mainPane.add(timeLabelPanel, EnumLayerCode.TimeLabel.getCode());
 
 		componentList.put("TimeLabel", timeLabelPanel);
 	}
@@ -323,8 +323,8 @@ public class ControllerOverlay extends ControllerScene {
 
 		// missionLabelPanel.getLabel().setFont(new Font("Roboto", Font.BOLD, 16));
 
-		mainPane.setLayer(missionLabelPanel, LayerCode.MissionLabel.getCode());
-		mainPane.add(missionLabelPanel, LayerCode.MissionLabel.getCode());
+		mainPane.setLayer(missionLabelPanel, EnumLayerCode.MissionLabel.getCode());
+		mainPane.add(missionLabelPanel, EnumLayerCode.MissionLabel.getCode());
 
 		componentList.put("MissionLabel", missionLabelPanel);
 	}

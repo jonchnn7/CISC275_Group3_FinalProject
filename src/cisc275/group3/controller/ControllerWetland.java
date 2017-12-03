@@ -5,7 +5,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.HashMap;
 import cisc275.group3.model.scene.SceneWetland;
-import cisc275.group3.utility.LayerCode;
+import cisc275.group3.utility.EnumLayerCode;
 import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.ViewGame;
 import cisc275.group3.view.ViewOverlayLabel;
@@ -62,8 +62,8 @@ public class ControllerWetland extends ControllerScene implements LinkDynamics, 
     viewGame.setBounds(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     viewGame.setName("WetlandLayer");
     
-    mainPane.setLayer(viewGame, LayerCode.Wetland.getCode());
-    mainPane.add(viewGame, LayerCode.Wetland.getCode());
+    mainPane.setLayer(viewGame, EnumLayerCode.Wetland.getCode());
+    mainPane.add(viewGame, EnumLayerCode.Wetland.getCode());
     
     componentList.put("Wetland", viewGame);
   
@@ -79,7 +79,7 @@ public class ControllerWetland extends ControllerScene implements LinkDynamics, 
    */
   @Override
   public void update() {
-    if (mainPane.getLayer(componentList.get("Wetland")) == LayerCode.MainAll.getCode()) {
+    if (mainPane.getLayer(componentList.get("Wetland")) == EnumLayerCode.MainAll.getCode()) {
       // Update Model
       ((SceneWetland)scene).update();
       viewGame.updatePanel(scene.getSceneItems());
@@ -96,7 +96,7 @@ public class ControllerWetland extends ControllerScene implements LinkDynamics, 
   public void updateTime() {
     ((SceneWetland)scene).updateTime();
     
-    if (mainPane.getLayer(componentList.get("Wetland")) == LayerCode.MainAll.getCode()) {
+    if (mainPane.getLayer(componentList.get("Wetland")) == EnumLayerCode.MainAll.getCode()) {
       displayTime();
     }
   }

@@ -3,8 +3,8 @@ package cisc275.group3.controller;
 import java.awt.Component;
 import java.util.HashMap;
 import cisc275.group3.model.scene.SceneTutorial;
-import cisc275.group3.utility.LayerCode;
-import cisc275.group3.utility.LayerCodeTutorial;
+import cisc275.group3.utility.EnumLayerCode;
+import cisc275.group3.utility.EnumLayerCodeTutorial;
 import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.ViewGame;
 import cisc275.group3.view.ViewOverlayLabel;
@@ -59,8 +59,8 @@ public class ControllerTutorial extends ControllerScene implements LinkDynamics,
 		viewGame.setBounds(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 		viewGame.setName("TutorialLayer");
 
-		mainPane.setLayer(viewGame, LayerCodeTutorial.TutorialScreen.getCode());
-		mainPane.add(viewGame, LayerCodeTutorial.TutorialScreen.getCode());
+		mainPane.setLayer(viewGame, EnumLayerCodeTutorial.TutorialScreen.getCode());
+		mainPane.add(viewGame, EnumLayerCodeTutorial.TutorialScreen.getCode());
 
 		componentList.put("Tutorial", viewGame);
 
@@ -93,7 +93,7 @@ public class ControllerTutorial extends ControllerScene implements LinkDynamics,
 	public void updateTime() {
 		((LinkTime) scene).updateTime();
 
-		if (mainPane.getLayer(componentList.get("Tutorial")) == LayerCode.MainTop.getCode()) {
+		if (mainPane.getLayer(componentList.get("Tutorial")) == EnumLayerCode.MainTop.getCode()) {
 			displayTime();
 		}
 	}

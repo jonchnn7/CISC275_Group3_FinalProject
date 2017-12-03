@@ -14,8 +14,8 @@ import cisc275.group3.model.scene.Scene;
 import cisc275.group3.model.scene.SceneHQ;
 import cisc275.group3.utility.EstuaryFacts;
 import cisc275.group3.utility.EstuaryPrompts;
-import cisc275.group3.utility.LayerCode;
-import cisc275.group3.utility.LayerCodeTutorial;
+import cisc275.group3.utility.EnumLayerCode;
+import cisc275.group3.utility.EnumLayerCodeTutorial;
 import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.ViewGame;
 import cisc275.group3.view.ViewOverlayButton;
@@ -42,6 +42,8 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 	private final String BG_IMAGE = "img/backgrounds/HQ_bg.jpg";
 	private ViewOverlayLabel statusLabel;
 	private ViewOverlayLabel missionLabel;
+	
+	private int score;
 
 	// Tutorial Layer Variables
 	ViewOverlayButton tutorialButton;
@@ -63,9 +65,9 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 	 *            empty/no update, 1 = special update (ex. tutorial HQ), 2 =
 	 *            standard update, 3 = menus/interfaces
 	 */
-	public ControllerHQ(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType) {
+	public ControllerHQ(int w, int h, GameWindow f, HashMap<String, Component> cl, int sceneType, int score) {
 		super(w, h, f, cl, sceneType);
-
+		this.score = score;
 	}
 
 	/**
@@ -74,7 +76,7 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 	 */
 	@Override
 	protected void createScene() {
-		scene = new SceneHQ("HQ", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, BG_IMAGE, sceneType);
+		scene = new SceneHQ("HQ", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, BG_IMAGE, sceneType, score);
 		viewGame = new ViewGame(SCREEN_WIDTH, SCREEN_HEIGHT, scene.getSceneItems(), scene.getManifest().getBG());
 
 		viewGame.setBounds(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -83,8 +85,8 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 		// Set Cursor
 		viewGame.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
-		mainPane.setLayer(viewGame, LayerCode.HQ.getCode());
-		mainPane.add(viewGame, LayerCode.HQ.getCode());
+		mainPane.setLayer(viewGame, EnumLayerCode.HQ.getCode());
+		mainPane.add(viewGame, EnumLayerCode.HQ.getCode());
 
 		componentList.put("HQ", viewGame);
 
@@ -92,8 +94,8 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 		statusLabel.setBounds((SCREEN_WIDTH / 4) + 300, (SCREEN_HEIGHT / 4) - 100, 700, 400);
 
 		statusLabel.setName("MissionFact");
-		mainPane.setLayer(statusLabel, LayerCode.MissionFact.getCode());
-		mainPane.add(statusLabel, LayerCode.MissionFact.getCode());
+		mainPane.setLayer(statusLabel, EnumLayerCode.MissionFact.getCode());
+		mainPane.add(statusLabel, EnumLayerCode.MissionFact.getCode());
 
 		componentList.put("MissionFact", statusLabel);
 		
@@ -101,15 +103,16 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 		missionLabel.setBounds((SCREEN_WIDTH / 4) + 300, (SCREEN_HEIGHT / 4) - 100, 700, 400);
 
 		missionLabel.setName("MissionRequest");
-		mainPane.setLayer(missionLabel, LayerCode.MissionRequest.getCode());
-		mainPane.add(missionLabel, LayerCode.MissionRequest.getCode());
+		mainPane.setLayer(missionLabel, EnumLayerCode.MissionRequest.getCode());
+		mainPane.add(missionLabel, EnumLayerCode.MissionRequest.getCode());
 
 		componentList.put("MissionRequest", missionLabel);
 
 		if (sceneType == 1) {
-			// mainPane.setLayer(statusLabel, LayerCode.MainTop.getCode());
-
+		  mainPane.setLayer(viewGame, EnumLayerCodeTutorial.MainTop.getCode());
 			tutorialStepOne();
+		} else {
+		  mainPane.setLayer(viewGame, EnumLayerCode.MainAll.getCode());
 		}
 	}
 
@@ -121,7 +124,7 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 	 */
 	@Override
 	public void update() {
-		if (mainPane.getLayer(componentList.get("HQ")) == LayerCode.MainAll.getCode()) {
+		if (mainPane.getLayer(componentList.get("HQ")) == EnumLayerCode.MainAll.getCode()) {
 			// Update Model
 			scene.update();
 			viewGame.updatePanel(scene.getSceneItems());
@@ -168,7 +171,7 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 				scene.resetTime();
 			}
 		}
-		if (mainPane.getLayer(componentList.get("HQ")) == LayerCode.MainAll.getCode()) {
+		if (mainPane.getLayer(componentList.get("HQ")) == EnumLayerCode.MainAll.getCode()) {
 			displayTime();
 		}
 		displayScore();
@@ -202,8 +205,8 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 		tutorialLabel.setName("GetMissionLabel");
 		tutorialLabel.getLabel().setFont(new Font("Roboto", Font.BOLD, 48));
 
-		mainPane.setLayer(tutorialLabel, LayerCodeTutorial.LabelGetMissionHidden.getCode());
-		mainPane.add(tutorialLabel, LayerCodeTutorial.LabelGetMissionHidden.getCode());
+		mainPane.setLayer(tutorialLabel, EnumLayerCodeTutorial.LabelGetMission.getCode());
+		mainPane.add(tutorialLabel, EnumLayerCodeTutorial.LabelGetMission.getCode());
 		componentList.put("GetMissionLabel", tutorialLabel);
 
 		// Get Mission Button
@@ -212,25 +215,25 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 		tutorialButton.setBounds(100, 0, 400, 600);
 		tutorialButton.setName("GetMissionButton");
 
-		mainPane.setLayer(tutorialButton, LayerCodeTutorial.ButtonGetMissionHidden.getCode());
-		mainPane.add(tutorialButton, LayerCodeTutorial.ButtonGetMissionHidden.getCode());
+		mainPane.setLayer(tutorialButton, EnumLayerCodeTutorial.ButtonGetMission.getCode());
+		mainPane.add(tutorialButton, EnumLayerCodeTutorial.ButtonGetMission.getCode());
 		componentList.put("GetMissionButton", tutorialButton);
 
 		tutorialButton.getOverButton().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				mainPane.setLayer(componentList.get("GetMissionButton"),
-						LayerCodeTutorial.ButtonGetMissionHidden.getCode());
+						EnumLayerCodeTutorial.ButtonGetMissionHidden.getCode());
 				mainPane.setLayer(componentList.get("GetMissionLabel"),
-						LayerCodeTutorial.LabelGetMissionHidden.getCode());
+						EnumLayerCodeTutorial.LabelGetMissionHidden.getCode());
 
 				tutorialStepTwo();
 
-				mainPane.setLayer(componentList.get("ObjectiveLabel"), LayerCodeTutorial.LabelObjective.getCode());
-				mainPane.setLayer(componentList.get("ObjectiveArrow"), LayerCodeTutorial.LabelObjectiveArrow.getCode());
+				mainPane.setLayer(componentList.get("ObjectiveLabel"), EnumLayerCodeTutorial.LabelObjective.getCode());
+				mainPane.setLayer(componentList.get("ObjectiveArrow"), EnumLayerCodeTutorial.LabelObjectiveArrow.getCode());
 				mainPane.setLayer(componentList.get("ObjectiveLabelSpeech"),
-						LayerCodeTutorial.LabelObjectiveSpeech.getCode());
-				mainPane.setLayer(componentList.get("ContinueButton"), LayerCodeTutorial.ButtonContinue.getCode());
+						EnumLayerCodeTutorial.LabelObjectiveSpeech.getCode());
+				mainPane.setLayer(componentList.get("ContinueButton"), EnumLayerCodeTutorial.ButtonContinue.getCode());
 			}
 		});
 	}
@@ -248,8 +251,8 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 		tutorialLabel.setName("ObjectiveLabel");
 		tutorialLabel.getLabel().setFont(new Font("Roboto", Font.BOLD, 48));
 
-		mainPane.setLayer(tutorialLabel, LayerCodeTutorial.LabelObjectiveHidden.getCode());
-		mainPane.add(tutorialLabel, LayerCodeTutorial.LabelObjectiveHidden.getCode());
+		mainPane.setLayer(tutorialLabel, EnumLayerCodeTutorial.LabelObjectiveHidden.getCode());
+		mainPane.add(tutorialLabel, EnumLayerCodeTutorial.LabelObjectiveHidden.getCode());
 		componentList.put("ObjectiveLabel", tutorialLabel);
 
 		// Objective Arrow Label
@@ -258,8 +261,8 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 		tutorialLabel.setBounds(SCREEN_WIDTH / 2 + 110, -5, 150, 120);
 		tutorialLabel.setName("ObjectiveArrow");
 
-		mainPane.setLayer(tutorialLabel, LayerCodeTutorial.LabelObjectiveArrowHidden.getCode());
-		mainPane.add(tutorialLabel, LayerCodeTutorial.LabelObjectiveArrowHidden.getCode());
+		mainPane.setLayer(tutorialLabel, EnumLayerCodeTutorial.LabelObjectiveArrowHidden.getCode());
+		mainPane.add(tutorialLabel, EnumLayerCodeTutorial.LabelObjectiveArrowHidden.getCode());
 		componentList.put("ObjectiveArrow", tutorialLabel);
 
 		// Objective Speech Label
@@ -273,8 +276,8 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 		tutorialLabel.getLabel().setHorizontalAlignment(JLabel.LEFT);
 		tutorialLabel.getLabel().setVerticalAlignment(JLabel.TOP);
 
-		mainPane.setLayer(tutorialLabel, LayerCodeTutorial.LabelObjectiveSpeechHidden.getCode());
-		mainPane.add(tutorialLabel, LayerCodeTutorial.LabelObjectiveSpeechHidden.getCode());
+		mainPane.setLayer(tutorialLabel, EnumLayerCodeTutorial.LabelObjectiveSpeechHidden.getCode());
+		mainPane.add(tutorialLabel, EnumLayerCodeTutorial.LabelObjectiveSpeechHidden.getCode());
 		componentList.put("ObjectiveLabelSpeech", tutorialLabel);
 
 		// Objective Continue Button
@@ -283,24 +286,24 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 		tutorialButton.setBounds(SCREEN_WIDTH - 150, SCREEN_HEIGHT - 200, 100, 100);
 		tutorialButton.setName("Continue");
 
-		mainPane.setLayer(tutorialButton, LayerCodeTutorial.ButtonContinueHidden.getCode());
-		mainPane.add(tutorialButton, LayerCodeTutorial.ButtonContinueHidden.getCode());
+		mainPane.setLayer(tutorialButton, EnumLayerCodeTutorial.ButtonContinueHidden.getCode());
+		mainPane.add(tutorialButton, EnumLayerCodeTutorial.ButtonContinueHidden.getCode());
 		componentList.put("ContinueButton", tutorialButton);
 
 		tutorialButton.getOverButton().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				mainPane.setLayer(componentList.get("ObjectiveLabelSpeech"),
-						LayerCodeTutorial.LabelObjectiveSpeechHidden.getCode());
+						EnumLayerCodeTutorial.LabelObjectiveSpeechHidden.getCode());
 				mainPane.setLayer(componentList.get("ObjectiveArrow"),
-						LayerCodeTutorial.LabelObjectiveArrowHidden.getCode());
+						EnumLayerCodeTutorial.LabelObjectiveArrowHidden.getCode());
 
 				tutorialStepThree();
 
-				mainPane.setLayer(componentList.get("InventoryButton"), LayerCodeTutorial.ButtonInventory.getCode());
-				mainPane.setLayer(componentList.get("InventoryArrow"), LayerCodeTutorial.LabelInventoryArrow.getCode());
+				mainPane.setLayer(componentList.get("InventoryButton"), EnumLayerCodeTutorial.ButtonInventory.getCode());
+				mainPane.setLayer(componentList.get("InventoryArrow"), EnumLayerCodeTutorial.LabelInventoryArrow.getCode());
 				mainPane.setLayer(componentList.get("InventorySpeech"),
-						LayerCodeTutorial.LabelInventorySpeech.getCode());
+						EnumLayerCodeTutorial.LabelInventorySpeech.getCode());
 			}
 		});
 	}
@@ -317,8 +320,8 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 		tutorialLabel.setBounds(20, 120, 150, 120);
 		tutorialLabel.setName("InventoryArrow");
 
-		mainPane.setLayer(tutorialLabel, LayerCodeTutorial.LabelInventoryArrowHidden.getCode());
-		mainPane.add(tutorialLabel, LayerCodeTutorial.LabelInventoryArrowHidden.getCode());
+		mainPane.setLayer(tutorialLabel, EnumLayerCodeTutorial.LabelInventoryArrowHidden.getCode());
+		mainPane.add(tutorialLabel, EnumLayerCodeTutorial.LabelInventoryArrowHidden.getCode());
 		componentList.put("InventoryArrow", tutorialLabel);
 
 		// Objective Speech Label
@@ -332,8 +335,8 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 		tutorialLabel.getLabel().setHorizontalAlignment(JLabel.LEFT);
 		tutorialLabel.getLabel().setVerticalAlignment(JLabel.TOP);
 
-		mainPane.setLayer(tutorialLabel, LayerCodeTutorial.LabelInventorySpeechHidden.getCode());
-		mainPane.add(tutorialLabel, LayerCodeTutorial.LabelInventorySpeechHidden.getCode());
+		mainPane.setLayer(tutorialLabel, EnumLayerCodeTutorial.LabelInventorySpeechHidden.getCode());
+		mainPane.add(tutorialLabel, EnumLayerCodeTutorial.LabelInventorySpeechHidden.getCode());
 		componentList.put("InventorySpeech", tutorialLabel);
 
 		// Continue Button
@@ -342,15 +345,15 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				mainPane.setLayer(componentList.get("InventorySpeech"),
-						LayerCodeTutorial.LabelInventorySpeechHidden.getCode());
+						EnumLayerCodeTutorial.LabelInventorySpeechHidden.getCode());
 				mainPane.setLayer(componentList.get("InventoryArrow"),
-						LayerCodeTutorial.LabelInventoryArrowHidden.getCode());
+						EnumLayerCodeTutorial.LabelInventoryArrowHidden.getCode());
 
 				tutorialStepFour();
 
-				mainPane.setLayer(componentList.get("ToolsButton"), LayerCodeTutorial.ButtonTools.getCode());
-				mainPane.setLayer(componentList.get("ToolsArrow"), LayerCodeTutorial.LabelToolsArrow.getCode());
-				mainPane.setLayer(componentList.get("ToolsSpeech"), LayerCodeTutorial.LabelToolsSpeech.getCode());
+				mainPane.setLayer(componentList.get("ToolsButton"), EnumLayerCodeTutorial.ButtonTools.getCode());
+				mainPane.setLayer(componentList.get("ToolsArrow"), EnumLayerCodeTutorial.LabelToolsArrow.getCode());
+				mainPane.setLayer(componentList.get("ToolsSpeech"), EnumLayerCodeTutorial.LabelToolsSpeech.getCode());
 			}
 		});
 	}
@@ -367,8 +370,8 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 		tutorialLabel.setBounds(SCREEN_WIDTH - 220, 80, 150, 120);
 		tutorialLabel.setName("ToolsArrow");
 
-		mainPane.setLayer(tutorialLabel, LayerCodeTutorial.LabelToolsArrowHidden.getCode());
-		mainPane.add(tutorialLabel, LayerCodeTutorial.LabelToolsArrowHidden.getCode());
+		mainPane.setLayer(tutorialLabel, EnumLayerCodeTutorial.LabelToolsArrowHidden.getCode());
+		mainPane.add(tutorialLabel, EnumLayerCodeTutorial.LabelToolsArrowHidden.getCode());
 		componentList.put("ToolsArrow", tutorialLabel);
 
 		// Objective Speech Label
@@ -382,8 +385,8 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 		tutorialLabel.getLabel().setHorizontalAlignment(JLabel.LEFT);
 		tutorialLabel.getLabel().setVerticalAlignment(JLabel.TOP);
 
-		mainPane.setLayer(tutorialLabel, LayerCodeTutorial.LabelToolsSpeechHidden.getCode());
-		mainPane.add(tutorialLabel, LayerCodeTutorial.LabelToolsSpeechHidden.getCode());
+		mainPane.setLayer(tutorialLabel, EnumLayerCodeTutorial.LabelToolsSpeechHidden.getCode());
+		mainPane.add(tutorialLabel, EnumLayerCodeTutorial.LabelToolsSpeechHidden.getCode());
 		componentList.put("ToolsSpeech", tutorialLabel);
 
 		// Continue Button
@@ -391,10 +394,10 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 		tutorialButton.getOverButton().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				mainPane.setLayer(componentList.get("ToolsSpeech"), LayerCodeTutorial.LabelToolsSpeechHidden.getCode());
-				mainPane.setLayer(componentList.get("ToolsArrow"), LayerCodeTutorial.LabelToolsArrowHidden.getCode());
+				mainPane.setLayer(componentList.get("ToolsSpeech"), EnumLayerCodeTutorial.LabelToolsSpeechHidden.getCode());
+				mainPane.setLayer(componentList.get("ToolsArrow"), EnumLayerCodeTutorial.LabelToolsArrowHidden.getCode());
 				tutorialButton.setBounds(1, 1, 2, 2);
-				mainPane.setLayer(componentList.get("MapButton"), LayerCodeTutorial.ButtonMap.getCode());
+				mainPane.setLayer(componentList.get("MapButton"), EnumLayerCodeTutorial.ButtonMap.getCode());
 			}
 		});
 	}

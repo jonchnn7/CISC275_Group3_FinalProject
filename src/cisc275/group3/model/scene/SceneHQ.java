@@ -56,8 +56,9 @@ public class SceneHQ extends Scene {
 	 * @param sceneType
 	 *            int-type of scene
 	 */
-	public SceneHQ(String n, double x, double y, double w, double h, String bg, int sceneType) {
+	public SceneHQ(String n, double x, double y, double w, double h, String bg, int sceneType, int score) {
 		this(new SceneId(n, x, y, w, h, sceneType, bg));
+		Scene.score = score;
 	}
 
 	/**

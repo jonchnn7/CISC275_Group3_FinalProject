@@ -12,7 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import cisc275.group3.model.scene.Scene;
-import cisc275.group3.utility.LayerCode;
+import cisc275.group3.utility.EnumLayerCode;
 import cisc275.group3.utility.Mission;
 import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.ViewOverlayLabel;
@@ -70,8 +70,8 @@ public class ControllerMission extends ControllerScene {
 
 		addMissionButton();
 
-		mainPane.setLayer(missionPanel, LayerCode.MissionHide.getCode());
-		mainPane.add(missionPanel, -20);
+		mainPane.setLayer(missionPanel, EnumLayerCode.Mission.getCode());
+		mainPane.add(missionPanel, EnumLayerCode.Mission.getCode());
 		componentList.put("Mission", missionPanel);
 	}
 

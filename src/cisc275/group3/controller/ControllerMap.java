@@ -15,7 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import cisc275.group3.model.scene.Scene;
-import cisc275.group3.utility.LayerCode;
+import cisc275.group3.utility.EnumLayerCode;
 import cisc275.group3.view.GameWindow;
 
 /**
@@ -93,8 +93,8 @@ public class ControllerMap extends ControllerScene {
 
 		// Add Map to Layered Pane
 		// and Component List
-		mainPane.setLayer(mapPanel, LayerCode.Map.getCode());
-		mainPane.add(mapPanel, LayerCode.Map.getCode());
+		mainPane.setLayer(mapPanel, EnumLayerCode.Map.getCode());
+		mainPane.add(mapPanel, EnumLayerCode.Map.getCode());
 		componentList.put("Map", mapPanel);
 	}
 
@@ -122,10 +122,10 @@ public class ControllerMap extends ControllerScene {
 				// Reset all layers and mouse, then
 				// move hq and mission layer forward
 				setDefaultLayers();
-				mainPane.setLayer(hqComponent, LayerCode.MainAll.getCode());
-				mainPane.setLayer(missionComponent, LayerCode.Mission.getCode());
-				mainPane.setLayer(factComponent, LayerCode.MissionFact.getCode());
-				mainPane.setLayer(requestComponent, LayerCode.MissionRequest.getCode());
+				mainPane.setLayer(hqComponent, EnumLayerCode.MainAll.getCode());
+				mainPane.setLayer(missionComponent, EnumLayerCode.Mission.getCode());
+				mainPane.setLayer(factComponent, EnumLayerCode.MissionFact.getCode());
+				mainPane.setLayer(requestComponent, EnumLayerCode.MissionRequest.getCode());
 
 				if (Scene.getCurrentMission().getObjectNum() == -1) {
 					Scene.getCurrentMission().setObjectNum(-5);
@@ -146,7 +146,7 @@ public class ControllerMap extends ControllerScene {
 				// Reset all layers and mouse,
 				// then move bay layer forward
 				setDefaultLayers();
-				mainPane.setLayer(bayComponent, LayerCode.MainAll.getCode());
+				mainPane.setLayer(bayComponent, EnumLayerCode.MainAll.getCode());
 
 				if (Scene.getCurrentMission().getObjectNum() == -5) {
 					Scene.getCurrentMission().setObjectNum(-1);
@@ -168,7 +168,7 @@ public class ControllerMap extends ControllerScene {
 				// Reset all layers and mouse, then
 				// move beach layer forward
 				setDefaultLayers();
-				mainPane.setLayer(beachComponent, LayerCode.MainAll.getCode());
+				mainPane.setLayer(beachComponent, EnumLayerCode.MainAll.getCode());
 
 				if (Scene.getCurrentMission().getObjectNum() == -5) {
 					Scene.getCurrentMission().setObjectNum(-1);
@@ -190,7 +190,7 @@ public class ControllerMap extends ControllerScene {
 				// Reset all layers and mouse, then
 				// move wetland layer forward
 				setDefaultLayers();
-				mainPane.setLayer(wetlandComponent, LayerCode.MainAll.getCode());
+				mainPane.setLayer(wetlandComponent, EnumLayerCode.MainAll.getCode());
 
 				if (Scene.getCurrentMission().getObjectNum() == -5) {
 					Scene.getCurrentMission().setObjectNum(-1);
@@ -212,7 +212,7 @@ public class ControllerMap extends ControllerScene {
 				// Reset all layers and mouse, then
 				// move beach mini layer forward
 				setDefaultLayers();
-				mainPane.setLayer(beachMiniComponent, LayerCode.MainMapToolsTime.getCode());
+				mainPane.setLayer(beachMiniComponent, EnumLayerCode.MainMapToolsTime.getCode());
 
 				if (Scene.getCurrentMission().getObjectNum() == -5) {
 					Scene.getCurrentMission().setObjectNum(-1);
@@ -238,22 +238,22 @@ public class ControllerMap extends ControllerScene {
 		Component wetlandComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Wetland")))[0];
 		Component beachMiniComponent = mainPane
 				.getComponentsInLayer(mainPane.getLayer(componentList.get("BeachMini")))[0];
-		Component titleComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Title")))[0];
+		//Component titleComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Title")))[0];
 		Component missionComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Mission")))[0];
 		Component factComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("MissionFact")))[0];
 		Component requestComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("MissionRequest")))[0];
 
 		// Set Scenes to Default Layer Position
-		mainPane.setLayer(mapComponent, LayerCode.Map.getCode());
-		mainPane.setLayer(hqComponent, LayerCode.HQ.getCode());
-		mainPane.setLayer(bayComponent, LayerCode.Bay.getCode());
-		mainPane.setLayer(beachComponent, LayerCode.Beach.getCode());
-		mainPane.setLayer(wetlandComponent, LayerCode.Wetland.getCode());
-		mainPane.setLayer(beachMiniComponent, LayerCode.BeachMini.getCode());
-		mainPane.setLayer(titleComponent, LayerCode.Title.getCode());
-		mainPane.setLayer(missionComponent, LayerCode.MissionHide.getCode());
-		mainPane.setLayer(factComponent, LayerCode.MissionFactHide.getCode());
-		mainPane.setLayer(requestComponent, LayerCode.MissionRequestHide.getCode());
+		mainPane.setLayer(mapComponent, EnumLayerCode.Map.getCode());
+		mainPane.setLayer(hqComponent, EnumLayerCode.HQ.getCode());
+		mainPane.setLayer(bayComponent, EnumLayerCode.Bay.getCode());
+		mainPane.setLayer(beachComponent, EnumLayerCode.Beach.getCode());
+		mainPane.setLayer(wetlandComponent, EnumLayerCode.Wetland.getCode());
+		mainPane.setLayer(beachMiniComponent, EnumLayerCode.BeachMini.getCode());
+		//mainPane.setLayer(titleComponent, EnumLayerCode.Title.getCode());
+		mainPane.setLayer(missionComponent, EnumLayerCode.MissionHide.getCode());
+		mainPane.setLayer(factComponent, EnumLayerCode.MissionFactHide.getCode());
+		mainPane.setLayer(requestComponent, EnumLayerCode.MissionRequestHide.getCode());
 
 		// Reset Mouse
 		Scene.setCurrentTool(null);

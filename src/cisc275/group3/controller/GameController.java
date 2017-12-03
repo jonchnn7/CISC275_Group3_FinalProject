@@ -1,6 +1,8 @@
 package cisc275.group3.controller;
 
-import cisc275.group3.utility.LayerCode;
+import cisc275.group3.model.scene.Scene;
+import cisc275.group3.utility.EnumGameState;
+import cisc275.group3.utility.EnumLayerCode;
 import cisc275.group3.view.GameWindow;
 
 import java.awt.Component;
@@ -33,11 +35,11 @@ public class GameController implements Serializable {
 	private final int SCREEN_WIDTH;
 	private final int SCREEN_HEIGHT;
 	private final GameWindow GAME_FRAME;
-	private int gameState; // 0 = main menu, 1 = initialize tutorial, 2 = in tutorial, 3 = initialize game,
-							// 4 = in game, 5 = endgame
+	private EnumGameState gameState; 
 
 	// Game Variables
 	private int totalTime;
+	private int carryScore;
 	private boolean loopRun;
 	private HashMap<String, ControllerScene> controlMap;
 	private HashMap<String, Component> layerMap;
@@ -56,7 +58,8 @@ public class GameController implements Serializable {
 		SCREEN_WIDTH = x;
 		SCREEN_HEIGHT = y;
 
-		gameState = 0;
+		// Set state to title screen
+		gameState = EnumGameState.TITLE;
 
 		// Create game window
 		GAME_FRAME = new GameWindow(SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -65,50 +68,87 @@ public class GameController implements Serializable {
 		controlMap = new HashMap<String, ControllerScene>();
 		layerMap = new HashMap<String, Component>();
 		loopRun = true;
+		carryScore = 0;
 
-		controlMap.put("Title", new ControllerTitle(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 3));
-
+    // Boot-up
+		initTitle();
 		gameTime();
 	}
-
+	
 	/**
-	 * Initializes scene to the controller map only for scenes needed for tutorial
-	 */
-	private void initTutorial() {
-		controlMap.put("Tutorial", new ControllerTutorial(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 1));
-		controlMap.put("Overlay", new ControllerOverlay(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 1));
-		controlMap.put("Inventory", new ControllerInventory(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 1));
-		controlMap.put("HQ", new ControllerHQ(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 1));
-		controlMap.put("Tools", new ControllerTools(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 1));
-
-	}
-
-	/**
-	 * Initializes the game by creating the individual scenes and placing them in
-	 * the controller map.
-	 */
-	private void initGame() {
-		controlMap.put("Mission", new ControllerMission(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 3));
-		controlMap.put("HQ", new ControllerHQ(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 2));
-		controlMap.put("Bay", new ControllerBay(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 2));
-		controlMap.put("Beach", new ControllerBeach(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 2));
-		controlMap.put("Wetland", new ControllerWetland(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 2));
-		controlMap.put("BeachMini", new ControllerBeachMini(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 2));
-		controlMap.put("Map", new ControllerMap(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 3));
-		controlMap.put("Overlay", new ControllerOverlay(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 3));
-		controlMap.put("Tools", new ControllerTools(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 3));
-		controlMap.put("Inventory", new ControllerInventory(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 3));
-		controlMap.put("EndGame", new ControllerEndGame(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 3));
-	}
-
-	/**
-	 * Updates dynamic models every 100ms and the time every 1000ms
+	 * Responds to game state changes, and updates 
+	 * dynamic models every 100ms and the time every 1000ms
 	 */
 	private void gameTime() {
 		Timer timer = new Timer(100, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+			  
+			  // Game State Updates
+			  switch (gameState) {
+			  case TUTORIAL:
+			    clearWindow();
+			    initTutorial();
+			    gameState = EnumGameState.IN_TUTORIAL;
+			    break;
+			  case GAME:
+			    clearWindow();
+			    initGame(carryScore);
+			    
+			    totalTime = 0;
+	        gameState = EnumGameState.IN_GAME;
+			    break;
+			  case IN_GAME:
+			    // Only update total time if in game.
+			    totalTime += 100;
+			  case TITLE:
+			  case IN_TUTORIAL:
+			  case END_GAME:
+			    // Do nothing. Wait for update
+			    break;
+			  }
+			  
+			  // Model and Time Updates
+			  controlMap.forEach((k, v) -> {
+          // Model Object Updates
+          switch (k) {
+          case "HQ":
+          case "Bay":
+          case "Beach":
+          case "Wetland":
+          case "BeachMini":
+          case "EndGame":
+          case "Tutorial":
+            ((LinkDynamics) v).update();
+            break;
+          }
+
+          // Time Update
+          if (totalTime % 1000 == 0) {
+            switch (k) {
+            case "HQ":
+              ((LinkTime) v).updateTime();
+            case "Bay":
+            case "Beach":
+            case "Wetland":
+            case "BeachMini":
+              ((LinkTime) v).displayTime();
+              break;
+            }
+          }
+			  });
+        
+        // End Game Check
+        if (gameState == EnumGameState.IN_GAME && totalTime == 3000) {
+          gameState = EnumGameState.END_GAME;
+          endGame();
+        }
+      }
+    });
+			  
+	/*		  
+			  
 				// Checks to see any button presses from the Title Screen
-				if (gameState == 0) {
+				if (gameState == EnumGameState.Tutorial.getCode()) {
 					if (((ControllerTitle) controlMap.get("Title")).getAction() == 1) {
 						gameState = 1;
 					} else if (((ControllerTitle) controlMap.get("Title")).getAction() == 2) {
@@ -143,7 +183,7 @@ public class GameController implements Serializable {
 					// 5 min
 					if (totalTime == 300000) {
 						GAME_FRAME.getMainPane().setLayer(GAME_FRAME.getMainPane().getComponentsInLayer(-18)[0],
-								LayerCode.EndGame.getCode());
+								EnumLayerCode.EndGame.getCode());
 						gameState = 5;
 					}
 				} else if (gameState == 5) {
@@ -163,37 +203,113 @@ public class GameController implements Serializable {
 						gameState = 4;
 					}
 				}
-
-				controlMap.forEach((k, v) -> {
-					// Model Object Updates
-					switch (k) {
-					case "HQ":
-					case "Bay":
-					case "Beach":
-					case "Wetland":
-					case "BeachMini":
-					case "EndGame":
-					case "Tutorial":
-						((LinkDynamics) v).update();
-						break;
-					}
-
-					// Time Update
-					if (totalTime % 1000 == 0) {
-						switch (k) {
-						case "HQ":
-							((LinkTime) v).updateTime();
-						case "Bay":
-						case "Beach":
-						case "Wetland":
-						case "BeachMini":
-							((LinkTime) v).displayTime();
-							break;
-						}
-					}
-				});
-			}
-		});
+*/
 		timer.start(); // Start it up!
+	}
+	
+	 /**
+   * Creates title scene for initial, between
+   * state, and end states.
+   */
+  private void initTitle() {
+    controlMap.put("Title", new ControllerTitle(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 3));
+    
+    // Start Game Listener
+    ((ControllerTitle)controlMap.get("Title")).getStartButton().addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        gameState = EnumGameState.GAME;
+      }
+    });
+    
+    // Tutorial Listener
+    ((ControllerTitle)controlMap.get("Title")).getTutorialButton().addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        gameState = EnumGameState.TUTORIAL;
+      }
+    });
+  }
+
+  /**
+   * Initializes scene to the controller map 
+   * only for scenes needed for tutorial
+   */
+  private void initTutorial() {
+    controlMap.put("Tutorial", new ControllerTutorial(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 1));
+    controlMap.put("Overlay", new ControllerOverlay(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 1));
+    controlMap.put("Inventory", new ControllerInventory(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 1));
+    controlMap.put("HQ", new ControllerHQ(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 1, 0));
+    controlMap.put("Tools", new ControllerTools(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 1));
+
+  }
+
+  /**
+   * Initializes the game by creating the 
+   * individual scenes and placing them in
+   * the controller map.
+   * @param score int-initial game score
+   */
+  private void initGame(int score) {
+    controlMap.put("Mission", new ControllerMission(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 3));
+    controlMap.put("HQ", new ControllerHQ(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 2, score));
+    controlMap.put("Bay", new ControllerBay(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 2));
+    controlMap.put("Beach", new ControllerBeach(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap,2));
+    controlMap.put("Wetland", new ControllerWetland(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 2));
+    controlMap.put("BeachMini", new ControllerBeachMini(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 2));
+    controlMap.put("Map", new ControllerMap(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 2));
+    controlMap.put("Overlay", new ControllerOverlay(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap,2));
+    controlMap.put("Tools", new ControllerTools(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 2));
+    controlMap.put("Inventory", new ControllerInventory(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 2));
+  }
+  
+  /**
+   * End game state.
+   * <p>
+   * Places the end game overlay and sets
+   * listeners for state changes.
+   */
+  private void endGame() {
+    controlMap.put("EndGame", new ControllerEndGame(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, 2));
+    
+    // Continue Listener
+    ((ControllerEndGame)controlMap.get("EndGame")).getContinueButton().addActionListener(
+      new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+          int tmpScore = Scene.getScore();
+        
+          clearWindow();
+          gameState = EnumGameState.IN_GAME;
+          initGame(tmpScore);
+        }
+      }
+    );
+    
+    // Reset Listener
+    ((ControllerEndGame)controlMap.get("EndGame")).getResetButton().addActionListener(
+      new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+          clearWindow();
+          gameState = EnumGameState.TITLE;
+          initTitle();
+        }
+      }
+    );
+  }
+	
+	/**
+	 * Clears the game window and all 
+	 * tracking variables. Used to
+	 * initiate a new game or tutorial
+	 */
+	private void clearWindow() {   
+	  if ( controlMap != null ) controlMap.clear();
+    if ( layerMap != null ) layerMap.clear();
+    if ( ControllerInventory.getSceneItems() != null ) 
+     ControllerInventory.removeItem("All");
+    
+    GAME_FRAME.getMainPane().removeAll();	  
 	}
 }

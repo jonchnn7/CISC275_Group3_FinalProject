@@ -15,8 +15,8 @@ import cisc275.group3.model.sceneobject.BetaHeron;
 import cisc275.group3.model.sceneobject.BetaVegetation;
 import cisc275.group3.model.sceneobject.SceneObject;
 import cisc275.group3.utility.ConstructHeron;
-import cisc275.group3.utility.LayerCode;
-import cisc275.group3.utility.LayerCodeTutorial;
+import cisc275.group3.utility.EnumLayerCode;
+import cisc275.group3.utility.EnumLayerCodeTutorial;
 import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.ViewGame;
 
@@ -76,11 +76,11 @@ public class ControllerInventory extends ControllerScene {
 		viewGame.setName("InventoryLayer");
 
 		if (sceneType == 1) {
-			mainPane.setLayer(viewGame, LayerCodeTutorial.InventoryHidden.getCode());
-			mainPane.add(viewGame, LayerCodeTutorial.InventoryHidden.getCode());
+			mainPane.setLayer(viewGame, EnumLayerCodeTutorial.InventoryHidden.getCode());
+			mainPane.add(viewGame, EnumLayerCodeTutorial.InventoryHidden.getCode());
 		} else {
-			mainPane.setLayer(viewGame, LayerCode.Inventory.getCode());
-			mainPane.add(viewGame, LayerCode.Inventory.getCode());
+			mainPane.setLayer(viewGame, EnumLayerCode.Inventory.getCode());
+			mainPane.add(viewGame, EnumLayerCode.Inventory.getCode());
 		}
 
 		componentList.put("Inventory", viewGame);

@@ -6,7 +6,7 @@ import java.awt.event.MouseEvent;
 import java.util.HashMap;
 
 import cisc275.group3.model.scene.SceneBeach;
-import cisc275.group3.utility.LayerCode;
+import cisc275.group3.utility.EnumLayerCode;
 import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.ViewGame;
 import cisc275.group3.view.ViewOverlayLabel;
@@ -61,8 +61,8 @@ public class ControllerBeach extends ControllerScene implements LinkDynamics, Li
 		viewGame.setBounds(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 		viewGame.setName("BeachLayer");
 
-		mainPane.setLayer(viewGame, LayerCode.Beach.getCode());
-		mainPane.add(viewGame, LayerCode.Beach.getCode());
+		mainPane.setLayer(viewGame, EnumLayerCode.Beach.getCode());
+		mainPane.add(viewGame, EnumLayerCode.Beach.getCode());
 
 		componentList.put("Beach", viewGame);
 
@@ -78,7 +78,7 @@ public class ControllerBeach extends ControllerScene implements LinkDynamics, Li
 	 */
 	@Override
 	public void update() {
-		if (mainPane.getLayer(componentList.get("Beach")) == LayerCode.MainAll.getCode()) {
+		if (mainPane.getLayer(componentList.get("Beach")) == EnumLayerCode.MainAll.getCode()) {
 			// Update Model
 			((SceneBeach) scene).update();
 			viewGame.updatePanel(scene.getSceneItems());
@@ -95,7 +95,7 @@ public class ControllerBeach extends ControllerScene implements LinkDynamics, Li
 	public void updateTime() {
 		((SceneBeach) scene).updateTime();
 
-		if (mainPane.getLayer(componentList.get("Beach")) == LayerCode.MainAll.getCode()) {
+		if (mainPane.getLayer(componentList.get("Beach")) == EnumLayerCode.MainAll.getCode()) {
 			displayTime();
 		}
 	}

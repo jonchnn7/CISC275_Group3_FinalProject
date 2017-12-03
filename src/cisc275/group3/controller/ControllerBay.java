@@ -5,7 +5,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.HashMap;
 import cisc275.group3.model.scene.SceneBay;
-import cisc275.group3.utility.LayerCode;
+import cisc275.group3.utility.EnumLayerCode;
 import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.ViewGame;
 import cisc275.group3.view.ViewOverlayLabel;
@@ -61,8 +61,8 @@ public class ControllerBay extends ControllerScene implements LinkDynamics, Link
 		viewGame.setBounds(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 		viewGame.setName("BayLayer");
 
-		mainPane.setLayer(viewGame, LayerCode.Bay.getCode());
-		mainPane.add(viewGame, LayerCode.Bay.getCode());
+		mainPane.setLayer(viewGame, EnumLayerCode.Bay.getCode());
+		mainPane.add(viewGame, EnumLayerCode.Bay.getCode());
 
 		componentList.put("Bay", viewGame);
 
@@ -77,7 +77,7 @@ public class ControllerBay extends ControllerScene implements LinkDynamics, Link
 	 */
 	@Override
 	public void update() {
-		if (mainPane.getLayer(componentList.get("Bay")) == LayerCode.MainAll.getCode()) {
+		if (mainPane.getLayer(componentList.get("Bay")) == EnumLayerCode.MainAll.getCode()) {
 			// Update Model
 			((SceneBay) scene).update();
 			viewGame.updatePanel(scene.getSceneItems());
@@ -94,7 +94,7 @@ public class ControllerBay extends ControllerScene implements LinkDynamics, Link
 	public void updateTime() {
 		((SceneBay) scene).updateTime();
 
-		if (mainPane.getLayer(componentList.get("Bay")) == LayerCode.MainAll.getCode()) {
+		if (mainPane.getLayer(componentList.get("Bay")) == EnumLayerCode.MainAll.getCode()) {
 			displayTime();
 		}
 	}

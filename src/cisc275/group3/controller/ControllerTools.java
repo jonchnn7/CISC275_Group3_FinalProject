@@ -23,8 +23,8 @@ import cisc275.group3.model.sceneobject.ToolCage;
 import cisc275.group3.model.sceneobject.ToolCamera;
 import cisc275.group3.model.sceneobject.ToolNet;
 import cisc275.group3.model.sceneobject.ToolTrimmer;
-import cisc275.group3.utility.LayerCode;
-import cisc275.group3.utility.LayerCodeTutorial;
+import cisc275.group3.utility.EnumLayerCode;
+import cisc275.group3.utility.EnumLayerCodeTutorial;
 import cisc275.group3.view.GameWindow;
 
 /**
@@ -92,12 +92,12 @@ public class ControllerTools extends ControllerScene {
 		addToolButtons();
 
 		if (sceneType == 1) {
-      mainPane.setLayer(toolPanel, LayerCodeTutorial.ToolsPanelHidden.getCode());
-      mainPane.add(toolPanel, LayerCodeTutorial.ToolsPanelHidden.getCode());
+      mainPane.setLayer(toolPanel, EnumLayerCodeTutorial.ToolsPanelHidden.getCode());
+      mainPane.add(toolPanel, EnumLayerCodeTutorial.ToolsPanelHidden.getCode());
       tutorialToolOverlay();
 		} else {
-  		mainPane.setLayer(toolPanel, LayerCode.Tools.getCode());
-  		mainPane.add(toolPanel, LayerCode.Tools.getCode());
+  		mainPane.setLayer(toolPanel, EnumLayerCode.Tools.getCode());
+  		mainPane.add(toolPanel, EnumLayerCode.Tools.getCode());
   		toolOverlay();
 		}
 		
@@ -127,7 +127,7 @@ public class ControllerTools extends ControllerScene {
 						.getComponentsInLayer(mainPane.getLayer(componentList.get("Tools")))[0];
 				
 				if (sceneType == 1) {
-          mainPane.setLayer(toolComponent, LayerCodeTutorial.Tools.getCode());
+          mainPane.setLayer(toolComponent, EnumLayerCodeTutorial.Tools.getCode());
           if (Scene.getCurrentTool() instanceof ToolNet) {
             Scene.setCurrentTool(null);
             mouseLabel.setIcon(new ImageIcon("img/toolPics/mouse_empty.png"));
@@ -138,7 +138,7 @@ public class ControllerTools extends ControllerScene {
             mouseLabel.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
           }
 				} else {
-  				mainPane.setLayer(toolComponent, LayerCode.Tools.getCode());
+  				mainPane.setLayer(toolComponent, EnumLayerCode.Tools.getCode());
   				if (Scene.getCurrentTool() instanceof ToolNet) {
   					Scene.setCurrentTool(null);
   					mouseLabel.setIcon(new ImageIcon("img/toolPics/mouse_empty.png"));
@@ -171,7 +171,7 @@ public class ControllerTools extends ControllerScene {
 						.getComponentsInLayer(mainPane.getLayer(componentList.get("Tools")))[0];
 				
 				if (sceneType == 1) {
-          mainPane.setLayer(toolComponent, LayerCodeTutorial.Tools.getCode());
+          mainPane.setLayer(toolComponent, EnumLayerCodeTutorial.Tools.getCode());
           if (Scene.getCurrentTool() instanceof ToolCamera) {
             Scene.setCurrentTool(null);
             mouseLabel.setIcon(new ImageIcon("img/toolPics/mouse_empty.png"));
@@ -182,7 +182,7 @@ public class ControllerTools extends ControllerScene {
             mouseLabel.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
           }
 				} else {
-  				mainPane.setLayer(toolComponent, LayerCode.Tools.getCode());
+  				mainPane.setLayer(toolComponent, EnumLayerCode.Tools.getCode());
   				if (Scene.getCurrentTool() instanceof ToolCamera) {
   					Scene.setCurrentTool(null);
   					mouseLabel.setIcon(new ImageIcon("img/toolPics/mouse_empty.png"));
@@ -215,7 +215,7 @@ public class ControllerTools extends ControllerScene {
 						.getComponentsInLayer(mainPane.getLayer(componentList.get("Tools")))[0];
 				
 				if (sceneType == 1) {
-          mainPane.setLayer(toolComponent, LayerCodeTutorial.Tools.getCode());
+          mainPane.setLayer(toolComponent, EnumLayerCodeTutorial.Tools.getCode());
           if (Scene.getCurrentTool() instanceof ToolCage) {
             Scene.setCurrentTool(null);
             mouseLabel.setIcon(new ImageIcon("img/toolPics/mouse_empty.png"));
@@ -226,7 +226,7 @@ public class ControllerTools extends ControllerScene {
             mouseLabel.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
           }
 				} else {
-  				mainPane.setLayer(toolComponent, LayerCode.Tools.getCode());
+  				mainPane.setLayer(toolComponent, EnumLayerCode.Tools.getCode());
   				if (Scene.getCurrentTool() instanceof ToolCage) {
   					Scene.setCurrentTool(null);
   					mouseLabel.setIcon(new ImageIcon("img/toolPics/mouse_empty.png"));
@@ -259,7 +259,7 @@ public class ControllerTools extends ControllerScene {
 						.getComponentsInLayer(mainPane.getLayer(componentList.get("Tools")))[0];
 				
 				if (sceneType == 1) {
-			    mainPane.setLayer(toolComponent, LayerCodeTutorial.Tools.getCode());
+			    mainPane.setLayer(toolComponent, EnumLayerCodeTutorial.Tools.getCode());
           if (Scene.getCurrentTool() instanceof ToolTrimmer) {
             Scene.setCurrentTool(null);
             mouseLabel.setIcon(new ImageIcon("img/toolPics/mouse_empty.png"));
@@ -270,7 +270,7 @@ public class ControllerTools extends ControllerScene {
             mouseLabel.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
           }
 				} else {
-  				mainPane.setLayer(toolComponent, LayerCode.Tools.getCode());
+  				mainPane.setLayer(toolComponent, EnumLayerCode.Tools.getCode());
   				if (Scene.getCurrentTool() instanceof ToolTrimmer) {
   					Scene.setCurrentTool(null);
   					mouseLabel.setIcon(new ImageIcon("img/toolPics/mouse_empty.png"));

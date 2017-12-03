@@ -6,7 +6,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.HashMap;
 import cisc275.group3.model.scene.SceneBeachMini;
-import cisc275.group3.utility.LayerCode;
+import cisc275.group3.utility.EnumLayerCode;
 import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.ViewGame;
 import cisc275.group3.view.ViewOverlayLabel;
@@ -62,8 +62,8 @@ public class ControllerBeachMini extends ControllerScene implements LinkDynamics
 		viewGame.setDoubleBuffered(true);
 		viewGame.setName("BeachMiniLayer");
 
-		mainPane.setLayer(viewGame, LayerCode.BeachMini.getCode());
-		mainPane.add(viewGame, LayerCode.BeachMini.getCode());
+		mainPane.setLayer(viewGame, EnumLayerCode.BeachMini.getCode());
+		mainPane.add(viewGame, EnumLayerCode.BeachMini.getCode());
 
 		componentList.put("BeachMini", viewGame);
 
@@ -104,7 +104,7 @@ public class ControllerBeachMini extends ControllerScene implements LinkDynamics
 	 */
 	@Override
 	public void update() {
-		if (mainPane.getLayer(componentList.get("BeachMini")) == LayerCode.MainMapToolsTime.getCode()) {
+		if (mainPane.getLayer(componentList.get("BeachMini")) == EnumLayerCode.MainMapToolsTime.getCode()) {
 			((SceneBeachMini) scene).update();
 			viewGame.updatePanel(scene.getSceneItems());
 		}
@@ -119,7 +119,7 @@ public class ControllerBeachMini extends ControllerScene implements LinkDynamics
 	public void updateTime() {
 		((SceneBeachMini) scene).updateTime();
 
-		if (mainPane.getLayer(componentList.get("BeachMini")) == LayerCode.MainMapToolsTime.getCode()) {
+		if (mainPane.getLayer(componentList.get("BeachMini")) == EnumLayerCode.MainMapToolsTime.getCode()) {
 			displayTime();
 		}
 	}

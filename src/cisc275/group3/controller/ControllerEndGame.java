@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 
 import cisc275.group3.model.scene.Scene;
 import cisc275.group3.model.scene.SceneHQ;
-import cisc275.group3.utility.LayerCode;
+import cisc275.group3.utility.EnumLayerCode;
 import cisc275.group3.view.GameWindow;
 
 /**
@@ -29,10 +29,11 @@ import cisc275.group3.view.GameWindow;
  * <p>
  * See cisc275.group3.controller.ControllerScene.java
  * <p>
- * ControllerMap.java
+ * ControllerEndGame.java
  * <p>
  * 
  * @author Jon
+ * @author Scott
  */
 
 public class ControllerEndGame extends ControllerScene implements LinkDynamics {
@@ -71,9 +72,8 @@ public class ControllerEndGame extends ControllerScene implements LinkDynamics {
 	 */
 	@Override
 	protected void createScene() {
-		endGamePanel = new JPanel() {
-		};
-		scene = new SceneHQ("EndGame", 0, 0, 1, 1, "", 3);
+		endGamePanel = new JPanel();
+		//scene = new SceneHQ("EndGame", 0, 0, 1, 1, "", 3);
 
 		reset = false;
 		cont = false;
@@ -89,8 +89,8 @@ public class ControllerEndGame extends ControllerScene implements LinkDynamics {
 
 		// Add to Layered Pane
 		// and Component List
-		mainPane.setLayer(endGamePanel, LayerCode.EndGameHide.getCode());
-		mainPane.add(endGamePanel, LayerCode.EndGameHide.getCode());
+		mainPane.setLayer(endGamePanel, EnumLayerCode.EndGame.getCode());
+		mainPane.add(endGamePanel, EnumLayerCode.EndGame.getCode());
 		componentList.put("EndGame", endGamePanel);
 	}
 
@@ -111,32 +111,38 @@ public class ControllerEndGame extends ControllerScene implements LinkDynamics {
 		resetButton = new JButton("Reset");
 		resetButton.setFont(new Font("Roboto", Font.BOLD, 10));
 		resetButton.setBounds(450, 500, 100, 100);
-
-		resetButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				reset = true;
-			}
-		});
+		
 		endGamePanel.add(resetButton);
 
 		continueButton = new JButton("Continue");
 		continueButton.setFont(new Font("Roboto", Font.BOLD, 10));
 		continueButton.setBounds(850, 500, 100, 100);
 
-		continueButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				cont = true;
-				setDefaultLayers();
-				mainPane.setLayer(mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("HQ")))[0],
-						LayerCode.MainAll.getCode());
-
-			}
-		});
 		endGamePanel.add(continueButton);
 
 	}
+
+  /**
+   * Returns continue button.
+   * <p>
+   * This method allows GameController to define the
+   * listener so state changes are within the correct
+   * scope.
+   */
+	public JButton getContinueButton() {
+	  return continueButton;
+	}
+	
+  /**
+   * Returns reset button.
+   * <p>
+   * This method allows GameController to define the
+   * listener so state changes are within the correct
+   * scope.
+   */
+  public JButton getResetButton() {
+    return resetButton;
+  }
 
 	/**
 	 * Every button initially resets all the layers to their default locations
@@ -158,15 +164,15 @@ public class ControllerEndGame extends ControllerScene implements LinkDynamics {
 		Component missionComponent = mainPane.getComponentsInLayer(mainPane.getLayer(componentList.get("Mission")))[0];
 
 		// Set Scenes to Default Layer Position
-		mainPane.setLayer(mapComponent, LayerCode.Map.getCode());
-		mainPane.setLayer(hqComponent, LayerCode.HQ.getCode());
-		mainPane.setLayer(bayComponent, LayerCode.Bay.getCode());
-		mainPane.setLayer(beachComponent, LayerCode.Beach.getCode());
-		mainPane.setLayer(wetlandComponent, LayerCode.Wetland.getCode());
-		mainPane.setLayer(beachMiniComponent, LayerCode.BeachMini.getCode());
-		mainPane.setLayer(titleComponent, LayerCode.Title.getCode());
-		mainPane.setLayer(missionComponent, LayerCode.Mission.getCode());
-		mainPane.setLayer(endGamePanel, LayerCode.EndGameHide.getCode());
+		mainPane.setLayer(mapComponent, EnumLayerCode.Map.getCode());
+		mainPane.setLayer(hqComponent, EnumLayerCode.HQ.getCode());
+		mainPane.setLayer(bayComponent, EnumLayerCode.Bay.getCode());
+		mainPane.setLayer(beachComponent, EnumLayerCode.Beach.getCode());
+		mainPane.setLayer(wetlandComponent, EnumLayerCode.Wetland.getCode());
+		mainPane.setLayer(beachMiniComponent, EnumLayerCode.BeachMini.getCode());
+		mainPane.setLayer(titleComponent, EnumLayerCode.Title.getCode());
+		mainPane.setLayer(missionComponent, EnumLayerCode.Mission.getCode());
+		mainPane.setLayer(endGamePanel, EnumLayerCode.EndGameHide.getCode());
 
 		// Reset Mouse
 		Scene.setCurrentTool(null);

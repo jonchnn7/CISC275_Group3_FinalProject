@@ -18,8 +18,8 @@ import javax.swing.JPanel;
 import cisc275.group3.model.scene.Scene;
 import cisc275.group3.model.scene.SceneBay;
 import cisc275.group3.model.scene.SceneTitle;
-import cisc275.group3.utility.LayerCode;
-import cisc275.group3.utility.LayerCodeTutorial;
+import cisc275.group3.utility.EnumLayerCode;
+import cisc275.group3.utility.EnumLayerCodeTutorial;
 import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.ViewGame;
 
@@ -41,7 +41,6 @@ public class ControllerTitle extends ControllerScene implements LinkDynamics, Li
 	private JPanel titlePanel;
 	private JButton startButton;
 	private JButton tutorialButton;
-	private int action; // 0 = none, 1 = tutorial, 2 = game
 
 	/**
 	 * 
@@ -89,8 +88,8 @@ public class ControllerTitle extends ControllerScene implements LinkDynamics, Li
 		 * if (sceneType == 1) { addTutorialButton(); } else { addTitleButton(); }
 		 */
 
-		mainPane.setLayer(titlePanel, LayerCode.MainTop.getCode());
-		mainPane.add(titlePanel, LayerCode.MainTop.getCode());
+		mainPane.setLayer(titlePanel, EnumLayerCode.MainTop.getCode());
+		mainPane.add(titlePanel, EnumLayerCode.MainTop.getCode());
 		componentList.put("Title", titlePanel);
 	}
 
@@ -109,13 +108,18 @@ public class ControllerTitle extends ControllerScene implements LinkDynamics, Li
 		startButton.setContentAreaFilled(false);
 		startButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		startButton.setSize(330, 96);
-		startButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				action = 2;
-			}
-		});
 		titlePanel.add(startButton);
+	}
+	
+	 /**
+   * Returns start button.
+   * <p>
+   * This method allows GameController to define the
+   * listener so state changes are within the correct
+   * scope.
+   */
+	public JButton getStartButton() {
+	  return startButton;
 	}
 
 	/**
@@ -133,13 +137,18 @@ public class ControllerTitle extends ControllerScene implements LinkDynamics, Li
 		tutorialButton.setContentAreaFilled(false);
 		tutorialButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		tutorialButton.setSize(330, 96);
-		tutorialButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				action = 1;
-			}
-		});
 		titlePanel.add(tutorialButton);
+	}
+	
+	/**
+	 * Returns tutorial button.
+	 * <p>
+   * This method allows GameController to define the
+   * listener so state changes are within the correct
+   * scope.
+	 */
+	public JButton getTutorialButton() {
+	  return tutorialButton;
 	}
 
 	/**
@@ -153,9 +162,9 @@ public class ControllerTitle extends ControllerScene implements LinkDynamics, Li
 		 Component missionComponent = mainPane
 		 .getComponentsInLayer(mainPane.getLayer(componentList.get("Mission")))[0];
 		
-		 mainPane.setLayer(hqComponent, LayerCode.MainAll.getCode());
-		 mainPane.setLayer(titleComponent, LayerCode.Title.getCode());
-		 mainPane.setLayer(missionComponent, LayerCode.Mission.getCode());
+		 mainPane.setLayer(hqComponent, EnumLayerCode.MainAll.getCode());
+		 mainPane.setLayer(titleComponent, EnumLayerCode.Title.getCode());
+		 mainPane.setLayer(missionComponent, EnumLayerCode.Mission.getCode());
 	}
 	
 	/**
@@ -171,23 +180,12 @@ public class ControllerTitle extends ControllerScene implements LinkDynamics, Li
 		 Component getMissionLabel = mainPane
 		 .getComponentsInLayer(mainPane.getLayer(componentList.get("GetMissionLabel")))[0];
 		
-		 mainPane.setLayer(hqComponent, LayerCodeTutorial.MainTop.getCode());
-		 mainPane.setLayer(titleComponent, LayerCodeTutorial.TitleScreen.getCode());
+		 mainPane.setLayer(hqComponent, EnumLayerCodeTutorial.MainTop.getCode());
+		 mainPane.setLayer(titleComponent, EnumLayerCodeTutorial.TitleScreen.getCode());
 		 mainPane.setLayer(getMissionButton,
-		 LayerCodeTutorial.ButtonGetMission.getCode());
+		 EnumLayerCodeTutorial.ButtonGetMission.getCode());
 		 mainPane.setLayer(getMissionLabel,
-		 LayerCodeTutorial.LabelGetMission.getCode());
-	}
-	
-	
-	/**
-	 * Returns the user input from the start and tutorial buttons. 0 = none, 1 =
-	 * tutorial, 2 = game
-	 * 
-	 * @return action
-	 */
-	public int getAction() {
-		return action;
+		 EnumLayerCodeTutorial.LabelGetMission.getCode());
 	}
 
 	/**
