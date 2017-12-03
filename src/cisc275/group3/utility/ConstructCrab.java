@@ -35,7 +35,7 @@ public interface ConstructCrab {
 	static final int[] CRAB_ID = { 200, 300 };
 
 	// Crab x-axis Speed
-	static final int[] CRAB_SPEED = { 10, 10 };
+	static final int[] CRAB_SPEED = { 13, 10 };
 
 	/**
 	 * Returns a constructed BetaCrab object. This crab will move left

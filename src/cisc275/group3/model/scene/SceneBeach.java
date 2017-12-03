@@ -70,7 +70,7 @@ public class SceneBeach extends Scene implements ConstructCrab {
 	 */
 	@Override
 	protected void fillScene() {
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 5; i++) {
 			int crabType = randGen.nextInt(2);
 
 			// Add Left Crab
@@ -78,15 +78,14 @@ public class SceneBeach extends Scene implements ConstructCrab {
 			        randGen.nextInt(20) - 10, // depth
 			        crabType, // type
 			        manifest.getWidth() + randGen.nextInt(500), // x location
-			        ((i * 140 + manifest.getStartY() + 10)) + 370)); // y location
+			        (i * getManifest().getHeight()/12) + getManifest().getHeight()*13/25 )); // y location
 
 			// Add Right Crab
 			sceneItems.add(ConstructCrab.constructRightCrab(
 			        randGen.nextInt(20) - 10, // depth
 			        crabType, // type
 			        0 - randGen.nextInt(500), // x location
-			        ((i * 140 + manifest.getStartY() + 10)) + 370)); // y location
-
+			        (i * getManifest().getHeight()/12 + manifest.getStartY()) + getManifest().getHeight()*13/25 )); // y location
 		}
 		Collections.sort(sceneItems); // sort by depth
 	}
@@ -107,14 +106,13 @@ public class SceneBeach extends Scene implements ConstructCrab {
 				sceneItems.add(ConstructCrab.constructLeftCrab(
 				        randGen.nextInt(20) - 10, // depth
 				        randGen.nextInt(2), // type
-				        manifest.getWidth() + randGen.nextInt(500), // x location
-				        ((randGen.nextDouble() * manifest.getHeight() + manifest.getStartY()) + 370))); // y location
-
+				        manifest.getWidth() + randGen.nextInt(200) + 100, // x location
+				        (randGen.nextInt(5) * manifest.getHeight()/12 + manifest.getStartY() + getManifest().getHeight()*13/25))); // y location
 				sceneItems.add(ConstructCrab.constructRightCrab(
 				        randGen.nextInt(20) - 10, // depth
 				        randGen.nextInt(2), // type
-				        0 - randGen.nextInt(500), // x location
-				        ((randGen.nextDouble() * manifest.getHeight() + manifest.getStartY()) + 370))); // y location
+				        0 - randGen.nextInt(200) - 100, // x location
+				        (randGen.nextInt(5) * manifest.getHeight()/12 + manifest.getStartY() + getManifest().getHeight()*13/25))); // y location
 			}
 			// Move Crab
 			for (SceneObject crab : sceneItems) {

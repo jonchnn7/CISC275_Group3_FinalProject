@@ -119,6 +119,32 @@ public abstract class Scene implements Serializable {
 					return true;
 				}
 				break;
+				
+			// Weedz
+			case "Invasive Plant":
+			  if (SceneObjectType.BetaVegetation.searchCompatability(currentTool.getName())) {
+          if (sceneItem.itemClicked(clickX, clickY)) {
+            BetaVegetation vegetation = null;
+
+            if (sceneItem.getPassport().getId() > 70) {
+              // Vegetation needs mowed down
+              // Swap current veg object for mowed down version
+              vegetation = ConstructVegetation.constructVegetation(
+                  sceneItem.getPassport().getDepth(),
+                  (sceneItem.getPassport().getId() % 10) - 1, // GetID
+                  sceneItem.getLocation().getX(), sceneItem.getLocation().getY());
+
+              iterator.remove();
+              sceneItems.add(vegetation);
+
+            } else {
+              // Vegetation already mowed down
+              iterator.remove();
+            }
+            return true;
+          }
+			  }
+			  break;
 			}
 		}
 		return false;

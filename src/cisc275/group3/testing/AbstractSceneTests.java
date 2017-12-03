@@ -84,7 +84,7 @@ public class AbstractSceneTests implements ConstructCrab, ConstructFish, Constru
     assertEquals("Initial Y = 0", 0, testList.get("Bay").getManifest().getStartY(), 1);
     assertEquals("Width = " + SCENE_WIDTH, SCENE_WIDTH, testList.get("Bay").getManifest().getWidth(), 1);
     assertEquals("Height = " + SCENE_HEIGHT, SCENE_HEIGHT, testList.get("Bay").getManifest().getHeight(), 1);
-    assertEquals("Scene Type = 0", 0, testList.get("Bay").getManifest().getSceneType());
+    assertEquals("Scene Type = EnumSceneType.EMPTY", EnumSceneType.EMPTY, testList.get("Bay").getManifest().getSceneType());
     
     System.out.println("    Beach Manifest");
     assertEquals("BG Image = img/beach_bg.jpg", "img/beach_bg.jpg", testList.get("Beach").getManifest().getBG());
@@ -93,7 +93,7 @@ public class AbstractSceneTests implements ConstructCrab, ConstructFish, Constru
     assertEquals("Initial Y = 0", 0, testList.get("Beach").getManifest().getStartY(), 1);
     assertEquals("Width = " + SCENE_WIDTH, SCENE_WIDTH, testList.get("Beach").getManifest().getWidth(), 1);
     assertEquals("Height = " + SCENE_HEIGHT, SCENE_HEIGHT, testList.get("Beach").getManifest().getHeight(), 1);
-    assertEquals("Scene Type = 0", 0, testList.get("Beach").getManifest().getSceneType());
+    assertEquals("Scene Type = EnumSceneType.EMPTY", EnumSceneType.EMPTY, testList.get("Beach").getManifest().getSceneType());
      
     System.out.println("    Beach Mini Manifest");
     assertEquals("BG Image = img/beach_bg.jpg", "img/beach_bg.jpg", testList.get("BeachMini").getManifest().getBG());
@@ -102,7 +102,7 @@ public class AbstractSceneTests implements ConstructCrab, ConstructFish, Constru
     assertEquals("Initial Y = 0", 0, testList.get("BeachMini").getManifest().getStartY(), 1);
     assertEquals("Width = " + SCENE_WIDTH, SCENE_WIDTH, testList.get("BeachMini").getManifest().getWidth(), 1);
     assertEquals("Height = " + SCENE_HEIGHT, SCENE_HEIGHT, testList.get("BeachMini").getManifest().getHeight(), 1);
-    assertEquals("Scene Type = 0", 0, testList.get("BeachMini").getManifest().getSceneType());
+    assertEquals("Scene Type = EnumSceneType.EMPTY", EnumSceneType.EMPTY, testList.get("BeachMini").getManifest().getSceneType());
     
     System.out.println("    Wetland Manifest");
     assertEquals("BG Image = img/wetland_bg.jpg", "img/wetland_bg.jpg", testList.get("Wetland").getManifest().getBG());
@@ -111,7 +111,7 @@ public class AbstractSceneTests implements ConstructCrab, ConstructFish, Constru
     assertEquals("Initial Y = 0", 0, testList.get("Wetland").getManifest().getStartY(), 1);
     assertEquals("Width = " + SCENE_WIDTH, SCENE_WIDTH, testList.get("Wetland").getManifest().getWidth(), 1);
     assertEquals("Height = " + SCENE_HEIGHT, SCENE_HEIGHT, testList.get("Wetland").getManifest().getHeight(), 1);
-    assertEquals("Scene Type = 0", 0, testList.get("Wetland").getManifest().getSceneType());
+    assertEquals("Scene Type = EnumSceneType.EMPTY", EnumSceneType.EMPTY, testList.get("Wetland").getManifest().getSceneType());
   }
   
   /**
@@ -120,51 +120,51 @@ public class AbstractSceneTests implements ConstructCrab, ConstructFish, Constru
    */
   @Test
   public void testProcessClick() { 
-    int co = 30; // click offset
+    int co = 40; // click offset
     
-    System.out.println("  Testing Process Click");
+    System.out.println("  Testing Click");
     
     // Null Tool
     Scene.setCurrentTool(null);
     System.out.println("    Null Tool");
-    assertEquals("Click: Null on Fish in Bay", false, testList.get("Bay").processClick(FISH_LOC_1[0]+co, FISH_LOC_1[1]+co));
-    assertEquals("Click: Null on Crab in Beach", false, testList.get("Beach").processClick(CRAB_LOC_1[0]+co, CRAB_LOC_1[1]+co));
-    assertEquals("Click: Null on Vegetation in Wetland", false, testList.get("Wetland").processClick(WEED_LOC_1[0]+co, WEED_LOC_1[1]+co));
-    assertEquals("Click: Null on Heron in Wetland", false, testList.get("Wetland").processClick(HERON_LOC_1[0]+co, HERON_LOC_1[1]+co));
+    assertEquals("Click: Null on Fish in Bay", false, testList.get("Bay").basicClick(FISH_LOC_1[0]+co, FISH_LOC_1[1]+co));
+    assertEquals("Click: Null on Crab in Beach", false, testList.get("Beach").basicClick(CRAB_LOC_1[0]+co, CRAB_LOC_1[1]+co));
+    assertEquals("Click: Null on Vegetation in Wetland", false, testList.get("Wetland").basicClick(WEED_LOC_1[0]+co, WEED_LOC_1[1]+co));
+    assertEquals("Click: Null on Heron in Wetland", false, testList.get("Wetland").basicClick(HERON_LOC_1[0]+co, HERON_LOC_1[1]+co));
     
     // Net Tool
     Scene.setCurrentTool(new ToolNet(0,0,0,0));
     System.out.println("    Net Tool");
-    assertEquals("Click: Net on Fish in Bay", true, testList.get("Bay").processClick(FISH_LOC_1[0]+co, FISH_LOC_1[1]+co));
-    assertEquals("Click: Net on Crab in Beach", false, testList.get("Beach").processClick(CRAB_LOC_1[0]+co, CRAB_LOC_1[1]+co));
-    assertEquals("Click: Net on Vegetation in Wetland", false, testList.get("Wetland").processClick(WEED_LOC_1[0]+co, WEED_LOC_1[1]+co));
-    assertEquals("Click: Net on Heron in Wetland", false, testList.get("Wetland").processClick(HERON_LOC_1[0]+co, HERON_LOC_1[1]+co));
+    assertEquals("Click: Net on Fish in Bay", true, testList.get("Bay").basicClick(FISH_LOC_1[0]+co, FISH_LOC_1[1]+co));
+    assertEquals("Click: Net on Crab in Beach", false, testList.get("Beach").basicClick(CRAB_LOC_1[0]+co, CRAB_LOC_1[1]+co));
+    assertEquals("Click: Net on Vegetation in Wetland", false, testList.get("Wetland").basicClick(WEED_LOC_1[0]+co, WEED_LOC_1[1]+co));
+    assertEquals("Click: Net on Heron in Wetland", false, testList.get("Wetland").basicClick(HERON_LOC_1[0]+co, HERON_LOC_1[1]+co));
     
     // Camera Tool
     Scene.setCurrentTool(new ToolCamera(0,0,0,0));
     System.out.println("    Camera Tool");
-    assertEquals("Click: Camera on Fish in Bay", false, testList.get("Bay").processClick(FISH_LOC_2[0]+co, FISH_LOC_2[1]+co));
-    assertEquals("Click: Camera on Crab in Beach", false, testList.get("Beach").processClick(CRAB_LOC_1[0]+co, CRAB_LOC_1[1]+co));
-    assertEquals("Click: Camera on Vegetation in Wetland", false, testList.get("Wetland").processClick(WEED_LOC_1[0]+co, WEED_LOC_1[1]+co));
-    assertEquals("Click: Camera on Heron in Wetland", true, testList.get("Wetland").processClick(HERON_LOC_1[0]+co, HERON_LOC_1[1]+co));
+    assertEquals("Click: Camera on Fish in Bay", false, testList.get("Bay").basicClick(FISH_LOC_2[0]+co, FISH_LOC_2[1]+co));
+    assertEquals("Click: Camera on Crab in Beach", false, testList.get("Beach").basicClick(CRAB_LOC_1[0]+co, CRAB_LOC_1[1]+co));
+    assertEquals("Click: Camera on Vegetation in Wetland", false, testList.get("Wetland").basicClick(WEED_LOC_1[0]+co, WEED_LOC_1[1]+co));
+    assertEquals("Click: Camera on Heron in Wetland", true, testList.get("Wetland").basicClick(HERON_LOC_1[0]+co, HERON_LOC_1[1]+co));
     
     // Cage Tool
     Scene.setCurrentTool(new ToolCage(0,0,0,0));
     System.out.println("    Cage Tool");
-    assertEquals("Click: Cage on Fish in Bay", false, testList.get("Bay").processClick(FISH_LOC_2[0]+co, FISH_LOC_2[1]+co));
-    assertEquals("Click: Cage on Crab in Beach", true, testList.get("Beach").processClick(CRAB_LOC_1[0]+co, CRAB_LOC_1[1]+co));
-    assertEquals("Click: Cage on Vegetation in Wetland", false, testList.get("Wetland").processClick(WEED_LOC_1[0]+co, WEED_LOC_1[1]+co));
-    assertEquals("Click: Cage on Heron in Wetland", false, testList.get("Wetland").processClick(HERON_LOC_2[0]+co, HERON_LOC_2[1]+co));
+    assertEquals("Click: Cage on Fish in Bay", false, testList.get("Bay").basicClick(FISH_LOC_2[0]+co, FISH_LOC_2[1]+co));
+    assertEquals("Click: Cage on Crab in Beach", true, testList.get("Beach").basicClick(CRAB_LOC_1[0]+co, CRAB_LOC_1[1]+co));
+    assertEquals("Click: Cage on Vegetation in Wetland", false, testList.get("Wetland").basicClick(WEED_LOC_1[0]+co, WEED_LOC_1[1]+co));
+    assertEquals("Click: Cage on Heron in Wetland", false, testList.get("Wetland").basicClick(HERON_LOC_2[0]+co, HERON_LOC_2[1]+co));
     
     // Trimmer Tool
     Scene.setCurrentTool(new ToolTrimmer(0,0,0,0));
     System.out.println("    Trimmer Tool");
-    assertEquals("Click: Trimmer on Fish in Bay", false, testList.get("Bay").processClick(FISH_LOC_2[0]+co, FISH_LOC_2[1]+co));
-    assertEquals("Click: Trimmer on Crab in Beach", false, testList.get("Beach").processClick(CRAB_LOC_2[0]+co, CRAB_LOC_2[1]+co));
-    assertEquals("Click: Trimmer on Vegetation in Wetland", true, testList.get("Wetland").processClick(WEED_LOC_1[0]+co, WEED_LOC_1[1]+co));
-    assertEquals("Click: Trimmer on Vegetation in Wetland", true, testList.get("Wetland").processClick(WEED_LOC_1[0]+co, WEED_LOC_1[1]+co));
-    assertEquals("Click: Trimmer on Vegetation in Wetland", true, testList.get("Wetland").processClick(WEED_LOC_1[0]+co, WEED_LOC_1[1]+co));
-    assertEquals("Click: Trimmer on Heron in Wetland", false, testList.get("Wetland").processClick(HERON_LOC_2[0]+co, HERON_LOC_2[1]+co));
+    assertEquals("Click: Trimmer on Fish in Bay", false, testList.get("Bay").basicClick(FISH_LOC_2[0]+co, FISH_LOC_2[1]+co));
+    assertEquals("Click: Trimmer on Crab in Beach", false, testList.get("Beach").basicClick(CRAB_LOC_2[0]+co, CRAB_LOC_2[1]+co));
+    assertEquals("Click: Trimmer on Vegetation in Wetland", true, testList.get("Wetland").basicClick(WEED_LOC_1[0]+co, WEED_LOC_1[1]+co));
+    assertEquals("Click: Trimmer on Vegetation in Wetland", true, testList.get("Wetland").basicClick(WEED_LOC_1[0]+co, WEED_LOC_1[1]+co));
+    assertEquals("Click: Trimmer on Vegetation in Wetland", true, testList.get("Wetland").basicClick(WEED_LOC_1[0]+co, WEED_LOC_1[1]+co));
+    assertEquals("Click: Trimmer on Heron in Wetland", false, testList.get("Wetland").basicClick(HERON_LOC_2[0]+co, HERON_LOC_2[1]+co));
   }
   
   /**
