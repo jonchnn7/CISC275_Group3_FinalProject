@@ -13,6 +13,10 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.Serializable;
 import java.util.HashMap;
+
+import javax.swing.AbstractAction;
+import javax.swing.JComponent;
+import javax.swing.KeyStroke;
 import javax.swing.Timer;
 
 /**
@@ -258,23 +262,19 @@ public class GameController implements Serializable {
 	}
 	
 	/**
-	 * Listens for the escape key to quit 
+	 * Establishes the escape key to quit 
 	 * the program.
 	 */
 	private void exitKeyListener() {
-	  GAME_FRAME.addKeyListener(new KeyListener(){
-      @Override
-      public void keyPressed(KeyEvent e) { 
-        if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-          System.exit(0);
+	  // Add Key Event
+    GAME_FRAME.getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+        KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "Quit"); 
+    
+    // Add Action
+    GAME_FRAME.getRootPane().getActionMap().put("Quit", new AbstractAction(){ 
+        public void actionPerformed(ActionEvent e) {
+            System.exit(0);
         }
-      }
-      
-      @Override
-      public void keyTyped(KeyEvent e) { }
-
-      @Override
-      public void keyReleased(KeyEvent e) { } 
     });
 	}
 }
