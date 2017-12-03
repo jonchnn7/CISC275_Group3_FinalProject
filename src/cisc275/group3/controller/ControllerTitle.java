@@ -155,7 +155,7 @@ public class ControllerTitle extends ControllerScene {
   private void addExitButton() {
     exitButton = new JButton(" ");
 	  exitButton.setFont(new Font("Roboto", Font.BOLD, 1));
-	  exitButton.setBounds(10, 10, 75, 75);
+	  exitButton.setBounds(SCREEN_WIDTH-85, 10, 75, 75);
 	  exitButton.setIcon(new ImageIcon("img/title_exit_icon.png"));
 	  exitButton.setOpaque(false);
 	  exitButton.setBorderPainted(false);
