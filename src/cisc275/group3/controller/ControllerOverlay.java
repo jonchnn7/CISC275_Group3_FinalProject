@@ -286,9 +286,13 @@ public class ControllerOverlay extends ControllerScene {
 				scoreLabelHeight);
 		scoreLabelPanel.setName("ScoreLabel");
 
-		mainPane.setLayer(scoreLabelPanel, EnumLayerCode.ScoreLabel.getCode());
-		mainPane.add(scoreLabelPanel, EnumLayerCode.ScoreLabel.getCode());
-
+		if (sceneType == EnumSceneType.TUTORIAL) {
+      mainPane.setLayer(scoreLabelPanel, EnumLayerCodeTutorial.LabelScoreHidden.getCode());
+      mainPane.add(scoreLabelPanel, EnumLayerCodeTutorial.LabelScoreHidden.getCode());
+		} else {
+  		mainPane.setLayer(scoreLabelPanel, EnumLayerCode.ScoreLabel.getCode());
+  		mainPane.add(scoreLabelPanel, EnumLayerCode.ScoreLabel.getCode());
+		}
 		componentList.put("ScoreLabel", scoreLabelPanel);
 	}
 
@@ -303,9 +307,14 @@ public class ControllerOverlay extends ControllerScene {
 				timeLabelHeight);
 		timeLabelPanel.setName("TimeLabel");
 
-		mainPane.setLayer(timeLabelPanel, EnumLayerCode.TimeLabel.getCode());
-		mainPane.add(timeLabelPanel, EnumLayerCode.TimeLabel.getCode());
-
+		if (sceneType == EnumSceneType.TUTORIAL) {
+		  mainPane.setLayer(timeLabelPanel, EnumLayerCodeTutorial.LabelTimeHidden.getCode());
+      mainPane.add(timeLabelPanel, EnumLayerCodeTutorial.LabelTimeHidden.getCode());
+		} else {
+  		mainPane.setLayer(timeLabelPanel, EnumLayerCode.TimeLabel.getCode());
+  		mainPane.add(timeLabelPanel, EnumLayerCode.TimeLabel.getCode());
+		}
+  		
 		componentList.put("TimeLabel", timeLabelPanel);
 	}
 

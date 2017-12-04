@@ -6,18 +6,17 @@ package cisc275.group3.model.sceneobject;
  * ToolCage.java
  * <p>
  * @author Jolyne
+ * @author Scott
  */
-
 public class ToolCage extends ToolObject {
 
-  public ToolCage(int x, int y, int width, int height) {
-    super(x, y, width, height);
+  /**
+   * Sets the click type and name
+   * for the cage tool.
+   */
+  public ToolCage() {
+    super();
     clickType = "Cage";
     toolName = "Cage";
-  }
-
-  @Override
-  public int compareTo(ToolObject o) {
-    return 0;
   }
 }

@@ -265,7 +265,8 @@ public class GameController implements Serializable {
 	 * Establishes the escape key to quit 
 	 * the program.
 	 */
-	private void exitKeyListener() {
+	@SuppressWarnings("serial")
+  private void exitKeyListener() {
 	  // Add Key Event
     GAME_FRAME.getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
         KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "Quit"); 

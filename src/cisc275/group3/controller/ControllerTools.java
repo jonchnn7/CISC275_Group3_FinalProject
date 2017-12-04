@@ -94,12 +94,13 @@ public class ControllerTools extends ControllerScene {
 		if (sceneType == EnumSceneType.TUTORIAL) {
       mainPane.setLayer(toolPanel, EnumLayerCodeTutorial.ToolsPanelHidden.getCode());
       mainPane.add(toolPanel, EnumLayerCodeTutorial.ToolsPanelHidden.getCode());
-      tutorialToolOverlay();
 		} else {
   		mainPane.setLayer(toolPanel, EnumLayerCode.Tools.getCode());
   		mainPane.add(toolPanel, EnumLayerCode.Tools.getCode());
-  		toolOverlay();
 		}
+
+		// Set Tool Overlay Graphics
+		toolOverlay();
 		
 		componentList.put("Tools", toolPanel);
 	}
@@ -133,7 +134,7 @@ public class ControllerTools extends ControllerScene {
             mouseLabel.setIcon(new ImageIcon("img/toolPics/mouse_empty.png"));
             mouseLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
           } else {
-            Scene.setCurrentTool(new ToolNet(0, 0, 0, 0));
+            Scene.setCurrentTool(new ToolNet());
             mouseLabel.setIcon(new ImageIcon("img/toolPics/mouse_net.png"));
             mouseLabel.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
           }
@@ -144,7 +145,7 @@ public class ControllerTools extends ControllerScene {
   					mouseLabel.setIcon(new ImageIcon("img/toolPics/mouse_empty.png"));
   					mouseLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
   				} else {
-  					Scene.setCurrentTool(new ToolNet(0, 0, 0, 0));
+  					Scene.setCurrentTool(new ToolNet());
   					mouseLabel.setIcon(new ImageIcon("img/toolPics/mouse_net.png"));
   					mouseLabel.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
   				}
@@ -177,7 +178,7 @@ public class ControllerTools extends ControllerScene {
             mouseLabel.setIcon(new ImageIcon("img/toolPics/mouse_empty.png"));
             mouseLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
           } else {
-            Scene.setCurrentTool(new ToolCamera(0, 0, 0, 0));
+            Scene.setCurrentTool(new ToolCamera());
             mouseLabel.setIcon(new ImageIcon("img/toolPics/mouse_cam.png"));
             mouseLabel.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
           }
@@ -188,7 +189,7 @@ public class ControllerTools extends ControllerScene {
   					mouseLabel.setIcon(new ImageIcon("img/toolPics/mouse_empty.png"));
   					mouseLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
   				} else {
-  					Scene.setCurrentTool(new ToolCamera(0, 0, 0, 0));
+  					Scene.setCurrentTool(new ToolCamera());
   					mouseLabel.setIcon(new ImageIcon("img/toolPics/mouse_cam.png"));
   					mouseLabel.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
   				}
@@ -221,7 +222,7 @@ public class ControllerTools extends ControllerScene {
             mouseLabel.setIcon(new ImageIcon("img/toolPics/mouse_empty.png"));
             mouseLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
           } else {
-            Scene.setCurrentTool(new ToolCage(0, 0, 0, 0));
+            Scene.setCurrentTool(new ToolCage());
             mouseLabel.setIcon(new ImageIcon("img/toolPics/mouse_cage.png"));
             mouseLabel.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
           }
@@ -232,7 +233,7 @@ public class ControllerTools extends ControllerScene {
   					mouseLabel.setIcon(new ImageIcon("img/toolPics/mouse_empty.png"));
   					mouseLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
   				} else {
-  					Scene.setCurrentTool(new ToolCage(0, 0, 0, 0));
+  					Scene.setCurrentTool(new ToolCage());
   					mouseLabel.setIcon(new ImageIcon("img/toolPics/mouse_cage.png"));
   					mouseLabel.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
   				}
@@ -265,7 +266,7 @@ public class ControllerTools extends ControllerScene {
             mouseLabel.setIcon(new ImageIcon("img/toolPics/mouse_empty.png"));
             mouseLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
           } else {
-            Scene.setCurrentTool(new ToolTrimmer(0, 0, 0, 0));
+            Scene.setCurrentTool(new ToolTrimmer());
             mouseLabel.setIcon(new ImageIcon("img/toolPics/mouse_trim.png"));
             mouseLabel.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
           }
@@ -276,7 +277,7 @@ public class ControllerTools extends ControllerScene {
   					mouseLabel.setIcon(new ImageIcon("img/toolPics/mouse_empty.png"));
   					mouseLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
   				} else {
-  					Scene.setCurrentTool(new ToolTrimmer(0, 0, 0, 0));
+  					Scene.setCurrentTool(new ToolTrimmer());
   					mouseLabel.setIcon(new ImageIcon("img/toolPics/mouse_trim.png"));
   					mouseLabel.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
   				}
@@ -299,53 +300,36 @@ public class ControllerTools extends ControllerScene {
 
 		componentList.put("MouseLabel", mouseLabel);
 
-		componentList.get("Bay").addMouseMotionListener(new MouseAdapter() {
-			@Override
-			public void mouseMoved(MouseEvent e) {
-				mouseLabel.setLocation(e.getX() - 50, e.getY() - 50);
-			}
-		});
-
-		componentList.get("Beach").addMouseMotionListener(new MouseAdapter() {
-			@Override
-			public void mouseMoved(MouseEvent e) {
-				mouseLabel.setLocation(e.getX() - 50, e.getY() - 50);
-			}
-		});
-
-		componentList.get("Wetland").addMouseMotionListener(new MouseAdapter() {
-			@Override
-			public void mouseMoved(MouseEvent e) {
-				mouseLabel.setLocation(e.getX() - 50, e.getY() - 50);
-			}
-		});
+		if (sceneType == EnumSceneType.TUTORIAL) {
+		  // Only add overlay to tutorial
+		  componentList.get("Tutorial").addMouseMotionListener(new MouseAdapter() {
+        @Override
+        public void mouseMoved(MouseEvent e) {
+          mouseLabel.setLocation(e.getX() - 50, e.getY() - 50);
+        }
+      });
+		} else {
+		  // Add overlay to all game scenes
+      componentList.get("Bay").addMouseMotionListener(new MouseAdapter() {
+        @Override
+        public void mouseMoved(MouseEvent e) {
+          mouseLabel.setLocation(e.getX() - 50, e.getY() - 50);
+        }
+      });
+		
+  		componentList.get("Beach").addMouseMotionListener(new MouseAdapter() {
+  			@Override
+  			public void mouseMoved(MouseEvent e) {
+  				mouseLabel.setLocation(e.getX() - 50, e.getY() - 50);
+  			}
+  		});
+  
+  		componentList.get("Wetland").addMouseMotionListener(new MouseAdapter() {
+  			@Override
+  			public void mouseMoved(MouseEvent e) {
+  				mouseLabel.setLocation(e.getX() - 50, e.getY() - 50);
+  			}
+  		});
+		}
 	}
-	
-	/**
-	 * sets tool overlay for tutorial
-	 */
-	 private void tutorialToolOverlay() {
-	    mouseLabel = new JLabel(new ImageIcon("img/mouse_empty.png"));
-	    mouseLabel.setBounds(0, 0, 100, 100);
-	    mouseLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
-
-	    mainPane.setLayer(mouseLabel, JLayeredPane.MODAL_LAYER);
-	    mainPane.add(mouseLabel, JLayeredPane.MODAL_LAYER);
-
-	    componentList.put("MouseLabel", mouseLabel);
-
-	    componentList.get("HQ").addMouseMotionListener(new MouseAdapter() {
-	      @Override
-	      public void mouseMoved(MouseEvent e) {
-	        mouseLabel.setLocation(e.getX() - 50, e.getY() - 50);
-	      }
-	    });
-
-	    componentList.get("Tutorial").addMouseMotionListener(new MouseAdapter() {
-	      @Override
-	      public void mouseMoved(MouseEvent e) {
-	        mouseLabel.setLocation(e.getX() - 50, e.getY() - 50);
-	      }
-	    });
-	  }
 }
