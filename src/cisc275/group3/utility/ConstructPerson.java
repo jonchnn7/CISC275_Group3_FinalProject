@@ -17,14 +17,14 @@ import cisc275.group3.model.sceneobject.BetaPerson;
  */
 public interface ConstructPerson {
 	// Person File Locations
-	static final String[] FILE = { "img/betaPersonPics/birdWatcher.png", "img/betaPersonPics/parkRanger.png",
-			"img/betaPersonPics/scientist.png" };
+	static final String[] FILE = { "img/betaPersonPics/birdWatcher(1).png", "img/betaPersonPics/parkRanger(1).png",
+			"img/betaPersonPics/scientist(1).png" };
 
 	// Person Names
 	static final String[] NAME = { "Bird Watcher", "Park Ranger", "Scientist" };
 
 	// Person Dimensions
-	static final double LENGTH = 358;
+	static final double LENGTH = 500;
 
 	// Person Aspect Ratios (multiply by width for height)
 	static final double AR = 0.66;
