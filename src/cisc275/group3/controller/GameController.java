@@ -200,7 +200,6 @@ public class GameController implements Serializable {
    * Initializes the game by creating the 
    * individual scenes and placing them in
    * the controller map.
-   * @param score int-initial game score
    */
   private void initGame() {
     controlMap.put("Mission", new ControllerMission(SCREEN_WIDTH, SCREEN_HEIGHT, GAME_FRAME, layerMap, EnumSceneType.MENU));
