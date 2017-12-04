@@ -94,7 +94,7 @@ public class ControllerMission extends ControllerScene {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if ((Scene.getCurrentMission().getTargetObject() == null)
-						&& (Scene.getCurrentMission().isDoneMission())) {
+						&& (Scene.getCurrentMission().isDoneMission()) && (Scene.getCurrentMission().getObjectNum() != -7)) {
 
 					newMission = false;
 
@@ -176,11 +176,14 @@ public class ControllerMission extends ControllerScene {
 					displayMission();
 				} else if ((Scene.getCurrentMission().getTargetObject() == null)
 						&& !(Scene.getCurrentMission().isDoneMission())) {
-					Scene.getCurrentMission().setObjectNum(-5);
+					Scene.getCurrentMission().setObjectNum(-7);
 					Scene.getCurrentMission().setDoneMission(true);
 					displayMission();
 					ControllerInventory.removeItem(Scene.getCurrentMission().getObjectName());
 					System.out.println(Scene.getCurrentFact());
+				}else if(Scene.getCurrentMission().getObjectNum() == -7){
+					Scene.getCurrentMission().setObjectNum(-5);
+					Scene.setCurrentFact("");
 				}
 			}
 		});
