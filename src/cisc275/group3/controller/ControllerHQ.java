@@ -88,7 +88,7 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 
 		componentList.put("HQ", viewGame);
 	
-		statusLabel = new ViewOverlayLabel(null, null, 600, 226, " ");
+		statusLabel = new ViewOverlayLabel(new ImageIcon("img/toolPics/mouse_empty.png"), new ImageIcon("img/toolPics/mouse_empty.png"), 600, 226, " ");
 		statusLabel.setBounds((SCREEN_WIDTH / 2)+100, 0 , 600, 226);
 
 		statusLabel.setName("MissionFact");
@@ -98,7 +98,7 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 
 		componentList.put("MissionFact", statusLabel);
 		
-		missionLabel = new ViewOverlayLabel(null, null, 600, 226, " ");
+		missionLabel = new ViewOverlayLabel(new ImageIcon("img/toolPics/mouse_empty.png"), new ImageIcon("img/toolPics/mouse_empty.png"), 600, 226, " ");
 		missionLabel.setBounds(100, SCREEN_HEIGHT/8-100 , 600, 226);
 
 		missionLabel.setName("MissionRequest");
