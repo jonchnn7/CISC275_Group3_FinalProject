@@ -53,7 +53,7 @@ public interface ConstructPerson {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		int width = (int)screenSize.getWidth();
 		
-		BetaPerson person = new BetaPerson(depth, (int) ((LENGTH/1280)*width * AR), // height
+		BetaPerson person = new BetaPerson(depth, (int) (width/1280*LENGTH * AR), // height
 				ID[type], // id
 				FILE[type], // image file
 				NAME[type], // name
