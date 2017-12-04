@@ -142,7 +142,7 @@ public abstract class ControllerScene implements Serializable {
 			Scene.getCurrentMission().setTargetObject(null);
 			Scene.getCurrentMission().setObjectNum(-2);
 			((ViewOverlayLabel) componentList.get("MissionLabel")).updateIcon(null);
-		} else if (missionNum.equals("-1") || missionNum.equals("-5")) {
+		} else if (missionNum.equals("-1") || missionNum.equals("-7")) {
 			missionNum = "";
 			switch (Scene.getCurrentMission().getTargetNameForFact()) {
 			case "Striped Bass":
