@@ -5,6 +5,8 @@ import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Insets;
 import java.util.HashMap;
 
 import javax.swing.ImageIcon;
@@ -30,12 +32,13 @@ import cisc275.group3.view.GameWindow;
  * ControllerEndGame.java
  * <p>
  * 
+ * @author Ryan
  * @author Jon
  * @author Scott
  */
 
 public class ControllerEndGame extends ControllerScene implements LinkDynamics {
-
+	private final ImageIcon BG_IMAGE = new ImageIcon("img/EndGameScreen.png");
 	// JPanel and Buttons variables
 	private JPanel endGamePanel;
 	private JButton resetButton;
@@ -65,28 +68,34 @@ public class ControllerEndGame extends ControllerScene implements LinkDynamics {
 	 * list for the endGame.
 	 */
 	@Override
+	@SuppressWarnings("serial")
 	protected void createScene() {
-		endGamePanel = new JPanel();
+		endGamePanel = new JPanel(true) {
+			@Override
+			public void paintComponent(Graphics g) {
+				g.drawImage(BG_IMAGE.getImage(), 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, this);
+			}
+		};
 
-		// Set Panel Properties
+		// Set Properties
 		endGamePanel.setLayout(null);
 		endGamePanel.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
 		endGamePanel.setBounds(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-		endGamePanel.setBackground(Color.CYAN);
 		endGamePanel.setOpaque(true);
 
+		endGamePanel.setName("EndGameLayer");
+		// addEndGameButton();
+		// addTutorialButton();
 		addLabelButtons();
 
-		// Add to Layered Pane
-		// and Component List
-		mainPane.setLayer(endGamePanel, EnumLayerCode.EndGame.getCode());
-		mainPane.add(endGamePanel, EnumLayerCode.EndGame.getCode());
+		mainPane.setLayer(endGamePanel, EnumLayerCode.MainTop.getCode());
+		mainPane.add(endGamePanel, EnumLayerCode.MainTop.getCode());
 		componentList.put("EndGame", endGamePanel);
-		
-    // Reset Mouse
-    Scene.setCurrentTool(null);
-    mouseLabel.setIcon(new ImageIcon("img/mouse_empty.png"));
-    mouseLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
+		// Reset Mouse
+		Scene.setCurrentTool(null);
+		mouseLabel.setIcon(new ImageIcon("img/mouse_empty.png"));
+		mouseLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
 	}
 
 	/**
@@ -98,46 +107,59 @@ public class ControllerEndGame extends ControllerScene implements LinkDynamics {
 	private void addLabelButtons() {
 		System.out.println(Scene.getScore());
 		finalScore = new JLabel("Final Score: " + Scene.getScore(), JLabel.CENTER);
-		finalScore.setBounds(500, 100, 450, 150);
+		finalScore.setBounds((SCREEN_WIDTH / 2) - 180, SCREEN_HEIGHT * 3 / 4, 300, 96);
+
 		finalScore.setFont(new Font("Roboto", Font.BOLD, 45));
 		finalScore.setForeground(Color.black);
 		endGamePanel.add(finalScore);
 
 		resetButton = new JButton("Reset");
-		resetButton.setFont(new Font("Roboto", Font.BOLD, 10));
-		resetButton.setBounds(450, 500, 100, 100);
-		
+		resetButton.setFont(new Font("Roboto", Font.BOLD, 1));
+		resetButton.setBounds(SCREEN_WIDTH / 3 - 150, SCREEN_HEIGHT * 3 / 4, 300, 96);
+		resetButton.setIcon(new ImageIcon("img/Yellow Resetbutton.png"));
+		resetButton.setOpaque(false);
+		resetButton.setBorderPainted(false);
+		resetButton.setBorder(null);
+		resetButton.setMargin(new Insets(0, 0, 0, 0));
+		resetButton.setContentAreaFilled(false);
+		resetButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		resetButton.setSize(300, 96);
 		endGamePanel.add(resetButton);
 
 		continueButton = new JButton("Continue");
-		continueButton.setFont(new Font("Roboto", Font.BOLD, 10));
-		continueButton.setBounds(850, 500, 100, 100);
-
+		continueButton.setFont(new Font("Roboto", Font.BOLD, 1));
+		continueButton.setBounds(SCREEN_WIDTH * 2 / 3 - 150, SCREEN_HEIGHT * 3 / 4, 300, 96);
+		continueButton.setIcon(new ImageIcon("img/Yellow ContinueButton.png"));
+		continueButton.setOpaque(false);
+		continueButton.setBorderPainted(false);
+		continueButton.setBorder(null);
+		continueButton.setMargin(new Insets(0, 0, 0, 0));
+		continueButton.setContentAreaFilled(false);
+		continueButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		continueButton.setSize(300, 96);
 		endGamePanel.add(continueButton);
 
 	}
 
-  /**
-   * Returns continue button.
-   * <p>
-   * This method allows GameController to define the
-   * listener so state changes are within the correct
-   * scope.
-   */
+	/**
+	 * Returns continue button.
+	 * <p>
+	 * This method allows GameController to define the listener so state changes are
+	 * within the correct scope.
+	 */
 	public JButton getContinueButton() {
-	  return continueButton;
+		return continueButton;
 	}
-	
-  /**
-   * Returns reset button.
-   * <p>
-   * This method allows GameController to define the
-   * listener so state changes are within the correct
-   * scope.
-   */
-  public JButton getResetButton() {
-    return resetButton;
-  }
+
+	/**
+	 * Returns reset button.
+	 * <p>
+	 * This method allows GameController to define the listener so state changes are
+	 * within the correct scope.
+	 */
+	public JButton getResetButton() {
+		return resetButton;
+	}
 
 	/**
 	 * Connects the EndGame model and game view. The final score will be taken from
