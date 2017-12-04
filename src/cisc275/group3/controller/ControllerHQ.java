@@ -399,6 +399,7 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 				mainPane.setLayer(componentList.get("ScoreTimeSpeech"), EnumLayerCodeTutorial.LabelScoreTimeSpeech.getCode());
 				mainPane.setLayer(componentList.get("ToolsButton"), EnumLayerCodeTutorial.LabelScore.getCode());
 				mainPane.setLayer(componentList.get("ScoreLabel"), EnumLayerCodeTutorial.LabelScore.getCode());
+        mainPane.setLayer(componentList.get("TimeLabel"), EnumLayerCodeTutorial.LabelTime.getCode());
 			}
 		});
 	}
@@ -423,18 +424,6 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 		mainPane.setLayer(tutorialLabel, EnumLayerCodeTutorial.LabelScoreArrowHidden.getCode());
 		mainPane.add(tutorialLabel, EnumLayerCodeTutorial.LabelScoreArrowHidden.getCode());
 		componentList.put("ScoreArrow", tutorialLabel);
-		
-		ImageIcon labelIcon2 = new ImageIcon("img/time_bg.png");
-		tutorialLabel = new ViewOverlayLabel(new ImageIcon("img/coins_icon.png"), labelIcon1, 150, 120, "");
-		tutorialLabel.setBounds(SCREEN_WIDTH - 2 * 170, SCREEN_HEIGHT - 70, 170,
-				70);
-		tutorialLabel.setName("ScoreLabel");
-
-		mainPane.setLayer(tutorialLabel, EnumLayerCodeTutorial.LabelScoreHidden.getCode());
-		mainPane.add(tutorialLabel, EnumLayerCodeTutorial.LabelScoreHidden.getCode());
-		componentList.put("ScoreLabel", tutorialLabel);
-		
-		
 
 		// Objective Speech Label
 		labelIcon = new ImageIcon("img/tutorial_speechBubble_bg.png");

@@ -4,20 +4,19 @@ package cisc275.group3.model.sceneobject;
  * Creating a camera tool 
  * <p>
  * ToolCamera.java
- * <p>
  * @author Jolyne
+ * @author Scott
  */
 
 public class ToolCamera extends ToolObject {
 
-  public ToolCamera(int x, int y, int width, int height) {
-    super(x, y, width, height);
+  /**
+   * Sets the click type and name
+   * for the cage tool.
+   */
+  public ToolCamera() {
+    super();
     clickType = "Camera";
     toolName = "Camera";
-  }
-
-  @Override
-  public int compareTo(ToolObject o) {
-    return 0;
   }
 }
