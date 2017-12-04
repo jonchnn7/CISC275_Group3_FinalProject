@@ -193,7 +193,7 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 	private void tutorialStepOne() {
 		// Get Mission Label
 		ImageIcon getMissionLabelIcon = new ImageIcon("img/tutorialPics/AskForAMission.png");
-		tutorialLabel = new ViewOverlayLabel(getMissionLabelIcon, 800, 300, "Click for mission!");
+		tutorialLabel = new ViewOverlayLabel(getMissionLabelIcon, 800, 300, "");
 		tutorialLabel.setBounds(SCREEN_WIDTH*3/8, SCREEN_HEIGHT*3/14, 800, 300);
 		tutorialLabel.setName("GetMissionLabel");
 		tutorialLabel.getLabel().setFont(new Font("Roboto", Font.BOLD, 48));
@@ -259,15 +259,10 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 		componentList.put("ObjectiveArrow", tutorialLabel);
 
 		// Objective Speech Label
-		labelIcon = new ImageIcon("img/tutorial_speechBubble_bg.png");
-		ImageIcon offsetIcon = new ImageIcon("img/tutorial_speechBubble_offset.png");
-		tutorialLabel = new ViewOverlayLabel(offsetIcon, labelIcon, 400, 250,
-				"<html><br><br>Your mission objectives are up top.<br><br>We could really use a Horseshoe Crab, a Heron, and a Striped Bass!<html>");
-		tutorialLabel.setBounds(SCREEN_WIDTH*3/8, SCREEN_HEIGHT*3/14, 400, 250);
-		tutorialLabel.setName("ObjectiveSpeech");
-		tutorialLabel.getLabel().setFont(new Font("Roboto", Font.BOLD, 22));
-		tutorialLabel.getLabel().setHorizontalAlignment(JLabel.LEFT);
-		tutorialLabel.getLabel().setVerticalAlignment(JLabel.TOP);
+		tutorialLabel = new ViewOverlayLabel(new ImageIcon(), new ImageIcon("img/tutorialPics/speech_bubble_right_tutorial_mission.png"), 600, 226, " ");
+		tutorialLabel.setBounds(SCREEN_WIDTH*3/8, SCREEN_HEIGHT*1/14, 600, 226);
+		tutorialLabel.setName("ObjectiveSpeech");		
+		labelIcon = new ImageIcon("img/tutorialPics/speech_bubble_right_tutorial.png");
 
 		mainPane.setLayer(tutorialLabel, EnumLayerCodeTutorial.LabelObjectiveSpeechHidden.getCode());
 		mainPane.add(tutorialLabel, EnumLayerCodeTutorial.LabelObjectiveSpeechHidden.getCode());
@@ -318,15 +313,9 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 		componentList.put("InventoryArrow", tutorialLabel);
 
 		// Objective Speech Label
-		labelIcon = new ImageIcon("img/tutorial_speechBubble_bg.png");
-		ImageIcon offsetIcon = new ImageIcon("img/tutorial_speechBubble_offset.png");
-		tutorialLabel = new ViewOverlayLabel(offsetIcon, labelIcon, 400, 250,
-				"<html><br><br>That's your inventory.<br><br>Once you've collected an item, it'll appear in your bag.<html>");
-		tutorialLabel.setBounds(SCREEN_WIDTH*3/8, SCREEN_HEIGHT*3/14, 400, 250);
-		tutorialLabel.setName("InventorySpeech");
-		tutorialLabel.getLabel().setFont(new Font("Roboto", Font.BOLD, 22));
-		tutorialLabel.getLabel().setHorizontalAlignment(JLabel.LEFT);
-		tutorialLabel.getLabel().setVerticalAlignment(JLabel.TOP);
+		tutorialLabel = new ViewOverlayLabel(new ImageIcon(), new ImageIcon("img/tutorialPics/speech_bubble_right_tutorial_inventory.png"), 600, 226, " ");
+		tutorialLabel.setBounds(SCREEN_WIDTH*3/8, SCREEN_HEIGHT*1/14, 600, 226);
+		tutorialLabel.setName("InventorySpeechSpeech");		
 
 		mainPane.setLayer(tutorialLabel, EnumLayerCodeTutorial.LabelInventorySpeechHidden.getCode());
 		mainPane.add(tutorialLabel, EnumLayerCodeTutorial.LabelInventorySpeechHidden.getCode());
@@ -368,15 +357,9 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 				componentList.put("ToolsArrow", tutorialLabel);
 
 				// Objective Speech Label
-				labelIcon = new ImageIcon("img/tutorial_speechBubble_bg.png");
-				ImageIcon offsetIcon = new ImageIcon("img/tutorial_speechBubble_offset.png");
-				tutorialLabel = new ViewOverlayLabel(offsetIcon, labelIcon, 400, 250,
-						"<html><br><br>Your tools are all over here.<br><br>Make sure you choose the right tool for the job.<html>");
-				tutorialLabel.setBounds(SCREEN_WIDTH*3/8, SCREEN_HEIGHT*3/14, 400, 250);
-				tutorialLabel.setName("ToolsSpeech");
-				tutorialLabel.getLabel().setFont(new Font("Roboto", Font.BOLD, 22));
-				tutorialLabel.getLabel().setHorizontalAlignment(JLabel.LEFT);
-				tutorialLabel.getLabel().setVerticalAlignment(JLabel.TOP);
+				tutorialLabel = new ViewOverlayLabel(new ImageIcon(), new ImageIcon("img/tutorialPics/speech_bubble_right_tutorial_tools.png"), 600, 226, " ");
+				tutorialLabel.setBounds(SCREEN_WIDTH*3/8, SCREEN_HEIGHT*1/14, 600, 226);
+				tutorialLabel.setName("ToolsSpeech");		
 
 				mainPane.setLayer(tutorialLabel, EnumLayerCodeTutorial.LabelToolsSpeechHidden.getCode());
 				mainPane.add(tutorialLabel, EnumLayerCodeTutorial.LabelToolsSpeechHidden.getCode());
@@ -437,18 +420,12 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 		
 
 		// Objective Speech Label
-		labelIcon = new ImageIcon("img/tutorial_speechBubble_bg.png");
-		ImageIcon offsetIcon = new ImageIcon("img/tutorial_speechBubble_offset.png");
-		tutorialLabel = new ViewOverlayLabel(offsetIcon, labelIcon, 400, 250,
-				"<html><br><br>Your tools are all over here.<br><br>Make sure you choose the right tool for the job.<html>");
-		tutorialLabel.setBounds(SCREEN_WIDTH*3/8, SCREEN_HEIGHT*3/14, 400, 250);
+		tutorialLabel = new ViewOverlayLabel(new ImageIcon(), new ImageIcon("img/tutorialPics/speech_bubble_right_tutorial_time_score.png"), 600, 226, " ");
+		tutorialLabel.setBounds(SCREEN_WIDTH*3/8, SCREEN_HEIGHT*1/14, 600, 226);
 		tutorialLabel.setName("ScoreTimeSpeech");
-		tutorialLabel.getLabel().setFont(new Font("Roboto", Font.BOLD, 22));
-		tutorialLabel.getLabel().setHorizontalAlignment(JLabel.LEFT);
-		tutorialLabel.getLabel().setVerticalAlignment(JLabel.TOP);
-
-		mainPane.setLayer(tutorialLabel, EnumLayerCodeTutorial.LabelScoreTimeSpeechHidden.getCode());
-		mainPane.add(tutorialLabel, EnumLayerCodeTutorial.LabelScoreTimeSpeechHidden.getCode());
+		
+		mainPane.setLayer(tutorialLabel, EnumLayerCodeTutorial.LabelToolsSpeechHidden.getCode());
+		mainPane.add(tutorialLabel, EnumLayerCodeTutorial.LabelToolsSpeechHidden.getCode());
 		componentList.put("ScoreTimeSpeech", tutorialLabel);
 
 		// Continue Button
