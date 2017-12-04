@@ -88,7 +88,7 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 
 		componentList.put("HQ", viewGame);
 	
-		statusLabel = new ViewOverlayLabel(new ImageIcon("img/toolPics/mouse_empty.png"), new ImageIcon("img/toolPics/mouse_empty.png"), 600, 226, " ");
+		statusLabel = new ViewOverlayLabel(new ImageIcon(), new ImageIcon(), 600, 226, " ");
 		statusLabel.setBounds((SCREEN_WIDTH / 2)+100, 0 , 600, 226);
 
 		statusLabel.setName("MissionFact");
@@ -98,7 +98,7 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 
 		componentList.put("MissionFact", statusLabel);
 		
-		missionLabel = new ViewOverlayLabel(new ImageIcon("img/toolPics/mouse_empty.png"), new ImageIcon("img/toolPics/mouse_empty.png"), 600, 226, " ");
+		missionLabel = new ViewOverlayLabel(new ImageIcon(), new ImageIcon(), 600, 226, " ");
 		missionLabel.setBounds(100, SCREEN_HEIGHT/8-100 , 600, 226);
 
 		missionLabel.setName("MissionRequest");
@@ -344,9 +344,9 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 
 				tutorialStepFour();
 
-				mainPane.setLayer(componentList.get("ToolsButton"), EnumLayerCodeTutorial.ButtonTools.getCode());
-				mainPane.setLayer(componentList.get("ToolsArrow"), EnumLayerCodeTutorial.LabelToolsArrow.getCode());
 				mainPane.setLayer(componentList.get("ToolsSpeech"), EnumLayerCodeTutorial.LabelToolsSpeech.getCode());
+				mainPane.setLayer(componentList.get("ToolsArrow"), EnumLayerCodeTutorial.LabelToolsArrow.getCode());
+				mainPane.setLayer(componentList.get("ToolsButton"), EnumLayerCodeTutorial.ButtonTools.getCode());
 			}
 		});
 	}
@@ -358,14 +358,83 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 	 */
 	private void tutorialStepFour() {
 		// Objective Arrow Label
+				ImageIcon labelIcon = new ImageIcon("img/tutorial_arrow_leftUp.png");
+				tutorialLabel = new ViewOverlayLabel(null, labelIcon, 150, 120, "");
+				tutorialLabel.setBounds(SCREEN_WIDTH - 220, 80, 150, 120);
+				tutorialLabel.setName("ToolsArrow");
+
+				mainPane.setLayer(tutorialLabel, EnumLayerCodeTutorial.LabelToolsArrowHidden.getCode());
+				mainPane.add(tutorialLabel, EnumLayerCodeTutorial.LabelToolsArrowHidden.getCode());
+				componentList.put("ToolsArrow", tutorialLabel);
+
+				// Objective Speech Label
+				labelIcon = new ImageIcon("img/tutorial_speechBubble_bg.png");
+				ImageIcon offsetIcon = new ImageIcon("img/tutorial_speechBubble_offset.png");
+				tutorialLabel = new ViewOverlayLabel(offsetIcon, labelIcon, 400, 250,
+						"<html><br><br>Your tools are all over here.<br><br>Make sure you choose the right tool for the job.<html>");
+				tutorialLabel.setBounds(SCREEN_WIDTH*3/8, SCREEN_HEIGHT*3/14, 400, 250);
+				tutorialLabel.setName("ToolsSpeech");
+				tutorialLabel.getLabel().setFont(new Font("Roboto", Font.BOLD, 22));
+				tutorialLabel.getLabel().setHorizontalAlignment(JLabel.LEFT);
+				tutorialLabel.getLabel().setVerticalAlignment(JLabel.TOP);
+
+				mainPane.setLayer(tutorialLabel, EnumLayerCodeTutorial.LabelToolsSpeechHidden.getCode());
+				mainPane.add(tutorialLabel, EnumLayerCodeTutorial.LabelToolsSpeechHidden.getCode());
+				componentList.put("ToolsSpeech", tutorialLabel);
+
+		// Continue Button
+		tutorialButton.getOverButton().removeActionListener(tutorialButton.getOverButton().getActionListeners()[0]);
+		tutorialButton.getOverButton().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mainPane.setLayer(componentList.get("ToolsSpeech"),
+						EnumLayerCodeTutorial.LabelToolsSpeechHidden.getCode());
+				mainPane.setLayer(componentList.get("ToolsArrow"),
+						EnumLayerCodeTutorial.LabelToolsArrowHidden.getCode());
+
+				tutorialStepFive();
+
+				mainPane.setLayer(componentList.get("ScoreArrow"), EnumLayerCodeTutorial.LabelScoreArrow.getCode());
+				mainPane.setLayer(componentList.get("TimeArrow"), EnumLayerCodeTutorial.LabelTimeArrow.getCode());
+				mainPane.setLayer(componentList.get("ScoreTimeSpeech"), EnumLayerCodeTutorial.LabelScoreTimeSpeech.getCode());
+				mainPane.setLayer(componentList.get("ToolsButton"), EnumLayerCodeTutorial.LabelScore.getCode());
+				mainPane.setLayer(componentList.get("ScoreLabel"), EnumLayerCodeTutorial.LabelScore.getCode());
+			}
+		});
+	}
+	
+	//Map Button
+	private void tutorialStepFive() {
+		// Objective Arrow Label
 		ImageIcon labelIcon = new ImageIcon("img/tutorial_arrow_leftUp.png");
 		tutorialLabel = new ViewOverlayLabel(null, labelIcon, 150, 120, "");
-		tutorialLabel.setBounds(SCREEN_WIDTH - 220, 80, 150, 120);
-		tutorialLabel.setName("ToolsArrow");
+		tutorialLabel.setBounds(SCREEN_WIDTH - 220, 300, 150, 120);
+		tutorialLabel.setName("TimeArrow");
 
-		mainPane.setLayer(tutorialLabel, EnumLayerCodeTutorial.LabelToolsArrowHidden.getCode());
-		mainPane.add(tutorialLabel, EnumLayerCodeTutorial.LabelToolsArrowHidden.getCode());
-		componentList.put("ToolsArrow", tutorialLabel);
+		mainPane.setLayer(tutorialLabel, EnumLayerCodeTutorial.LabelTimeArrowHidden.getCode());
+		mainPane.add(tutorialLabel, EnumLayerCodeTutorial.LabelTimeArrowHidden.getCode());
+		componentList.put("TimeArrow", tutorialLabel);
+		
+		ImageIcon labelIcon1 = new ImageIcon("img/tutorial_arrow_leftUp.png");
+		tutorialLabel = new ViewOverlayLabel(null, labelIcon1, 150, 120, "");
+		tutorialLabel.setBounds(SCREEN_WIDTH - 220, 400, 150, 120);
+		tutorialLabel.setName("ScoreArrow");
+
+		mainPane.setLayer(tutorialLabel, EnumLayerCodeTutorial.LabelScoreArrowHidden.getCode());
+		mainPane.add(tutorialLabel, EnumLayerCodeTutorial.LabelScoreArrowHidden.getCode());
+		componentList.put("ScoreArrow", tutorialLabel);
+		
+		ImageIcon labelIcon2 = new ImageIcon("img/time_bg.png");
+		tutorialLabel = new ViewOverlayLabel(new ImageIcon("img/coins_icon.png"), labelIcon1, 150, 120, "");
+		tutorialLabel.setBounds(SCREEN_WIDTH - 2 * 170, SCREEN_HEIGHT - 70, 170,
+				70);
+		tutorialLabel.setName("ScoreLabel");
+
+		mainPane.setLayer(tutorialLabel, EnumLayerCodeTutorial.LabelScoreHidden.getCode());
+		mainPane.add(tutorialLabel, EnumLayerCodeTutorial.LabelScoreHidden.getCode());
+		componentList.put("ScoreLabel", tutorialLabel);
+		
+		
 
 		// Objective Speech Label
 		labelIcon = new ImageIcon("img/tutorial_speechBubble_bg.png");
@@ -373,14 +442,14 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 		tutorialLabel = new ViewOverlayLabel(offsetIcon, labelIcon, 400, 250,
 				"<html><br><br>Your tools are all over here.<br><br>Make sure you choose the right tool for the job.<html>");
 		tutorialLabel.setBounds(SCREEN_WIDTH*3/8, SCREEN_HEIGHT*3/14, 400, 250);
-		tutorialLabel.setName("ToolsSpeech");
+		tutorialLabel.setName("ScoreTimeSpeech");
 		tutorialLabel.getLabel().setFont(new Font("Roboto", Font.BOLD, 22));
 		tutorialLabel.getLabel().setHorizontalAlignment(JLabel.LEFT);
 		tutorialLabel.getLabel().setVerticalAlignment(JLabel.TOP);
 
-		mainPane.setLayer(tutorialLabel, EnumLayerCodeTutorial.LabelToolsSpeechHidden.getCode());
-		mainPane.add(tutorialLabel, EnumLayerCodeTutorial.LabelToolsSpeechHidden.getCode());
-		componentList.put("ToolsSpeech", tutorialLabel);
+		mainPane.setLayer(tutorialLabel, EnumLayerCodeTutorial.LabelScoreTimeSpeechHidden.getCode());
+		mainPane.add(tutorialLabel, EnumLayerCodeTutorial.LabelScoreTimeSpeechHidden.getCode());
+		componentList.put("ScoreTimeSpeech", tutorialLabel);
 
 		// Continue Button
 		tutorialButton.getOverButton().removeActionListener(tutorialButton.getOverButton().getActionListeners()[0]);
