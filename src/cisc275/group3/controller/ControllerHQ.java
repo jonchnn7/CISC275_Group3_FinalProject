@@ -390,16 +390,17 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 	//Map Button
 	private void tutorialStepFive() {
 		// Objective Arrow Label
-		ImageIcon labelIcon = new ImageIcon("img/tutorial_arrow_leftUp.png");
+		ImageIcon labelIcon = new ImageIcon("img/tutorial_arrow_downRight.png");
 		tutorialLabel = new ViewOverlayLabel(null, labelIcon, 150, 120, "");
-		tutorialLabel.setBounds(SCREEN_WIDTH - 220, 300, 150, 120);
+		tutorialLabel.setBounds((SCREEN_WIDTH - 300) / 2, SCREEN_HEIGHT - 300, 150,
+				85);
 		tutorialLabel.setName("TimeArrow");
 
 		mainPane.setLayer(tutorialLabel, EnumLayerCodeTutorial.LabelTimeArrowHidden.getCode());
 		mainPane.add(tutorialLabel, EnumLayerCodeTutorial.LabelTimeArrowHidden.getCode());
 		componentList.put("TimeArrow", tutorialLabel);
 		
-		ImageIcon labelIcon1 = new ImageIcon("img/tutorial_arrow_leftUp.png");
+		ImageIcon labelIcon1 = new ImageIcon("img/tutorial_arrow_downRight.png");
 		tutorialLabel = new ViewOverlayLabel(null, labelIcon1, 150, 120, "");
 		tutorialLabel.setBounds(SCREEN_WIDTH - 220, 400, 150, 120);
 		tutorialLabel.setName("ScoreArrow");
