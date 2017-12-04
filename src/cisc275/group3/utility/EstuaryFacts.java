@@ -51,21 +51,21 @@ public final class EstuaryFacts {
 		facts[3][3] = "img/estruaryFactsPics/speech_bubble_right_3_3.png";
 		facts[3][4] = "img/estruaryFactsPics/speech_bubble_right_3_4.png";
 
-		// 4- Shortnosed Sturgeon
+		// 4- Shortnosed Sturgeon - Technical Report
 		facts[4][0] = "img/estruaryFactsPics/speech_bubble_right_4_0.png";
 		facts[4][1] = "img/estruaryFactsPics/speech_bubble_right_4_1.png";
 		facts[4][2] = "img/estruaryFactsPics/speech_bubble_right_4_2.png";
 		facts[4][3] = "img/estruaryFactsPics/speech_bubble_right_4_3.png";
 		facts[4][4] = "img/estruaryFactsPics/speech_bubble_right_4_4.png";
 
-		// 5 - American Shad
+		// 5 - American Shad - Technical Report
 		facts[5][0] = "img/estruaryFactsPics/speech_bubble_right_5_0.png";
 		facts[5][1] = "img/estruaryFactsPics/speech_bubble_right_5_1.png";
 		facts[5][2] = "img/estruaryFactsPics/speech_bubble_right_5_2.png";
 		facts[5][3] = "img/estruaryFactsPics/speech_bubble_right_5_3.png";
 		facts[5][4] = "img/estruaryFactsPics/speech_bubble_right_5_4.png";
 
-		// 6 - Striped Bass
+		// 6 - Striped Bass - Technical Report
 		facts[6][0] = "img/estruaryFactsPics/speech_bubble_right_6_0.png";
 		facts[6][1] = "img/estruaryFactsPics/speech_bubble_right_6_1.png";
 		facts[6][2] = "img/estruaryFactsPics/speech_bubble_right_6_2.png";
