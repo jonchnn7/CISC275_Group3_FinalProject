@@ -1,14 +1,11 @@
 package cisc275.group3.testing;
 
 import static org.junit.Assert.assertEquals;
-
 import org.junit.Before;
 import org.junit.Test;
-
-import cisc275.group3.model.sceneobject.BetaCrab;
 import cisc275.group3.model.sceneobject.BetaFish;
-import cisc275.group3.utility.ConstructCrab;
 import cisc275.group3.utility.ConstructFish;
+
 public class ObjectFishTest {
 	  // Left Fish
 	  BetaFish leftFish1;
