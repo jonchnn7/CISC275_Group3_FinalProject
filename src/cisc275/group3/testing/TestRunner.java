@@ -22,6 +22,9 @@ public class TestRunner {
 	  objectCrabTests();
 	  printSeparator();
 	  
+	  objectFishTests();
+    printSeparator();
+	  
 		sceneBayTests();
 		printSeparator();
 		
@@ -50,7 +53,7 @@ public class TestRunner {
   * Runs the tests for ObjectCrab.java
   */
  private static void objectCrabTests() {
-   // Generic Scene Object Tests
+   // Scene Object Tests
    System.out.println("\nRunning Object Crab Tests...");
    
    result = JUnitCore.runClasses(ObjectCrabTest.class);
@@ -61,6 +64,22 @@ public class TestRunner {
      
    System.out.println("Running Object Crab Tests Successful: " + result.wasSuccessful());
  } 
+ 
+ /**
+ * Runs the tests for ObjectFish.java
+ */
+private static void objectFishTests() {
+  // Scene Object Tests
+  System.out.println("\nRunning Object Fish Tests...");
+  
+  result = JUnitCore.runClasses(ObjectFishTest.class);
+
+  for (Failure failure : result.getFailures()) {
+     System.out.println("Failure: " + failure.toString());
+  }
+    
+  System.out.println("Running Object Fish Tests Successful: " + result.wasSuccessful());
+} 
 	
 	/**
 	 * Runs the Bay Specific tests for
