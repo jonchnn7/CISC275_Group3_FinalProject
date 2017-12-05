@@ -176,6 +176,9 @@ public class ControllerOverlay extends ControllerScene {
 				if (sceneType == EnumSceneType.TUTORIAL) {
 					mainPane.setLayer(componentList.get("HQ"), -100);
 					mainPane.setLayer(componentList.get("Tutorial"), EnumLayerCodeTutorial.MainTop.getCode());
+					mainPane.setLayer(componentList.get("MapArrow"), EnumLayerCodeTutorial.LabelMapArrowHidden.getCode());
+					mainPane.setLayer(componentList.get("MapSpeech"), EnumLayerCodeTutorial.LabelMapSpeechHidden.getCode());
+
 				} else {
 					Component mapComponent = mainPane
 							.getComponentsInLayer(mainPane.getLayer(componentList.get("Map")))[0];

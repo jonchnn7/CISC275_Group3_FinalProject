@@ -7,8 +7,8 @@ package cisc275.group3.utility;
  * @author Scott
  */
 public enum EnumLayerCodeTutorial {
-  ButtonMap(90),
-  LabelScore(80), LabelTime(85), LabelScoreArrow(86), LabelTimeArrow(87),
+  ButtonMap(90), LabelMapArrow(88),
+  LabelScore(80), LabelTime(85), LabelScoreArrow(86), LabelTimeArrow(87),LabelMapSpeech(81),
   LabelToolsSpeech(70), ToolsPanel(71),
   ButtonTools(60), LabelToolsArrow(61),
   LabelInventoryArrow(50), LabelInventorySpeech(51),
@@ -28,7 +28,7 @@ public enum EnumLayerCodeTutorial {
   ButtonToolsHidden(-50), LabelToolsArrowHidden(-51),
   LabelToolsSpeechHidden(-52), ToolsPanelHidden(-53),
   ButtonMapHidden(-60), Tools(-70),
-  LabelScoreHidden(-80), LabelTimeHidden(-85);
+  LabelScoreHidden(-80), LabelTimeHidden(-85), LabelMapSpeechHidden(-81), LabelMapArrowHidden(-88);
   
   
   private final int code;
