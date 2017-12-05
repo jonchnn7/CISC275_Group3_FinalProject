@@ -339,9 +339,9 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 	}
 
 	/**
-	 * Adds various components of the second step in the tutorial(The tools). This
-	 * includes: Arrow to point to the tools, tool interface, speech text, sets next
-	 * button click to add the map button
+	 * Adds various components of the fourth step in the tutorial(Time and Score).
+	 * This includes: Arrow to point to time and score interfaces, time and score interfaces, speech
+	 * text, sets next button click to go to step five
 	 */
 	private void tutorialStepFour() {
 		// Objective Arrow Label
@@ -385,6 +385,11 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 		});
 	}
 	
+	/**
+	 * Adds various components of the fifth step in the tutorial(Map).
+	 * This includes: Arrow to point to map interface, map button, speech
+	 * text
+	 */
 	//Map Button
 	private void tutorialStepFive() {
 		// Objective Arrow Label
