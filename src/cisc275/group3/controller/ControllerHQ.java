@@ -392,11 +392,11 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 	 */
 	//Map Button
 	private void tutorialStepFive() {
-		// Objective Arrow Label
+		// Map Arrow Label
 		ImageIcon labelIcon = new ImageIcon("img/tutorial_arrow_downRight.png");
 		tutorialLabel = new ViewOverlayLabel(null, labelIcon, 150, 120, "");
 
-		tutorialLabel.setBounds((SCREEN_WIDTH - 450) / 2, SCREEN_HEIGHT - 300, 150, 120);
+		tutorialLabel.setBounds(((SCREEN_WIDTH - 170) / 2)-170, SCREEN_HEIGHT - 125, 150, 120);
 
 		tutorialLabel.setName("TimeArrow");
 
