@@ -68,26 +68,26 @@ public class ControllerTools extends ControllerScene {
 	 */
 	public ControllerTools(int w, int h, GameWindow f, HashMap<String, Component> cl, EnumSceneType sceneType) {
 		super(w, h, f, cl, sceneType);
-		toolBg = new ImageIcon("img/toolPics/toolbox_vert_menu.png");
+		//toolBg = new ImageIcon("img/toolPics/toolbox_vert_menu.png");
+		toolBg = new ImageIcon("img/toolbox_open_menu.png");
 	}
 
 	@Override
 	@SuppressWarnings("serial")
 	protected void createScene() {
-		Dimension toolSize = new Dimension(75, 300);
+		Dimension toolSize = new Dimension(300, 300);
 		toolPanel = new JPanel(true) {
 			@Override
 			public void paintComponent(Graphics g) {
-				Dimension size = new Dimension(toolBg.getIconWidth(), toolBg.getIconHeight());
-				g.drawImage(toolBg.getImage(), 0, 0, size.width, size.height, this);
+				g.drawImage(toolBg.getImage(), 0, 0, toolSize.width, toolSize.height, this);
 			}
 		};
 
 		toolPanel.setLayout(null);
 		toolPanel.setPreferredSize(toolSize);
-		toolPanel.setBounds(SCREEN_WIDTH - toolSize.width, 5, toolSize.width, toolSize.height);
-		toolPanel.setBackground(Color.orange);
-		toolPanel.setOpaque(true);
+		toolPanel.setBounds(SCREEN_WIDTH - toolSize.width, 50, toolSize.width, toolSize.height);
+		//toolPanel.setBackground(Color.orange);
+		//toolPanel.setOpaque(true);
 
 		addToolButtons();
 
@@ -109,16 +109,16 @@ public class ControllerTools extends ControllerScene {
 	 * Adds tool buttons for each individual tool to scene.
 	 */
 	private void addToolButtons() {
-
+	  // Net Button and Tool
 		netButton = new JButton();
 		netButton.setBorderPainted(false);
 		netButton.setBorder(null);
 		netButton.setMargin(new Insets(0, 0, 0, 0));
 		netButton.setContentAreaFilled(false);
-		netButton.setIcon(new ImageIcon("img/toolPics/toolbar_net.png"));
+		netButton.setIcon(new ImageIcon("img/toolPics/toolbar_net2.png"));
 		netButton.setSize(50, 50);
-		netButton.setBounds(15, 20, 50, 50);
-		;
+		netButton.setBounds(60, 50, 50, 50);
+		
 		netButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
 		netButton.addActionListener(new ActionListener() {
@@ -135,7 +135,7 @@ public class ControllerTools extends ControllerScene {
             mouseLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
           } else {
             Scene.setCurrentTool(new ToolNet());
-            mouseLabel.setIcon(new ImageIcon("img/toolPics/mouse_net.png"));
+            mouseLabel.setIcon(new ImageIcon("img/toolPics/mouse_net2.png"));
             mouseLabel.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
           }
 				} else {
@@ -146,7 +146,7 @@ public class ControllerTools extends ControllerScene {
   					mouseLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
   				} else {
   					Scene.setCurrentTool(new ToolNet());
-  					mouseLabel.setIcon(new ImageIcon("img/toolPics/mouse_net.png"));
+  					mouseLabel.setIcon(new ImageIcon("img/toolPics/mouse_net2.png"));
   					mouseLabel.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
   				}
 				}
@@ -154,6 +154,7 @@ public class ControllerTools extends ControllerScene {
 		});
 		toolPanel.add(netButton);
 
+		// Camera Button and Tool
 		cameraButton = new JButton();
 		cameraButton.setBorderPainted(false);
 		cameraButton.setBorder(null);
@@ -161,7 +162,7 @@ public class ControllerTools extends ControllerScene {
 		cameraButton.setContentAreaFilled(false);
 		cameraButton.setIcon(new ImageIcon("img/toolPics/toolbar_cam.png"));
 		cameraButton.setSize(50, 50);
-		cameraButton.setBounds(15, 85, 50, 50);
+		cameraButton.setBounds(190, 50, 50, 50);
 		;
 		cameraButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
@@ -198,6 +199,7 @@ public class ControllerTools extends ControllerScene {
 		});
 		toolPanel.add(cameraButton);
 
+		// Cage Button and Tool
 		cageButton = new JButton();
 		cageButton.setBorderPainted(false);
 		cageButton.setBorder(null);
@@ -205,7 +207,7 @@ public class ControllerTools extends ControllerScene {
 		cageButton.setContentAreaFilled(false);
 		cageButton.setIcon(new ImageIcon("img/toolPics/toolbar_cage.png"));
 		cageButton.setSize(50, 50);
-		cageButton.setBounds(15, 160, 50, 50);
+		cageButton.setBounds(60, 170, 50, 50);
 		;
 		cageButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
@@ -242,6 +244,7 @@ public class ControllerTools extends ControllerScene {
 		});
 		toolPanel.add(cageButton);
 
+		// Trimmer Button and Tool
 		trimmerButton = new JButton();
 		trimmerButton.setBorderPainted(false);
 		trimmerButton.setBorder(null);
@@ -249,7 +252,7 @@ public class ControllerTools extends ControllerScene {
 		trimmerButton.setContentAreaFilled(false);
 		trimmerButton.setIcon(new ImageIcon("img/toolPics/toolbar_trim.png"));
 		trimmerButton.setSize(50, 50);
-		trimmerButton.setBounds(15, 230, 50, 50);
+		trimmerButton.setBounds(190, 170, 50, 50);
 		;
 		trimmerButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
 

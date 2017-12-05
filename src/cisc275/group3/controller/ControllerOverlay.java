@@ -98,7 +98,7 @@ public class ControllerOverlay extends ControllerScene {
 		mapButtonHeight = 75;
 
 		// Tool Button Parameters
-		toolsButtonImage = new ImageIcon("img/toolbox_menu.png");
+		toolsButtonImage = new ImageIcon("img/toolbox_menu_2.png");
 		toolsButtonRolloverImage = new ImageIcon("img/toolbox_menu_invert.png");
 		toolsButtonWidth = 107;
 		toolsButtonHeight = 70;
