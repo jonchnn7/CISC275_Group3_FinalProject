@@ -23,7 +23,7 @@ public final class EstuaryFacts {
 		// Not Specific to Delaware Estuary, but list of facts of common animals found
 		// in estuary found nearby http://www.nj.gov/dep/fgw/artdelstudy_factsheets.htm
 		// 0 - heron
-		facts[0][0] = "img/estruaryFactsPics/speech_<bubble_right_0_0.png";
+		facts[0][0] = "img/estruaryFactsPics/speech_bubble_right_0_0.png";
 		facts[0][1] = "img/estruaryFactsPics/speech_bubble_right_0_1.png";
 		facts[0][2] = "img/estruaryFactsPics/speech_bubble_right_0_2.png";
 		facts[0][3] = "img/estruaryFactsPics/speech_bubble_right_0_3.png";
