@@ -98,16 +98,18 @@ public class SceneWetland extends Scene {
 	@Override
 	public void update() {
 		if (this.getManifest().getSceneType() == EnumSceneType.DEFAULT) {
-			// 2% to Add new Heron
-			if (randGen.nextInt(200) < 3) {
+			// 1.5% to Add new Heron
+			if (randGen.nextInt(200) <= 3) {
 				// 50/50 chance to pick right or left
-				if (randGen.nextInt(10) < 5) {
-					sceneItems.add(ConstructHeron.constructLeftHeron(randGen.nextInt(20) - 10, // depth
-							1, manifest.getWidth() + randGen.nextInt(500), // x location
+				if (randGen.nextInt(2) == 1) {
+					sceneItems.add(ConstructHeron.constructLeftHeron(randGen.nextInt(40) - 20, // depth
+							1, // type
+							manifest.getWidth() + randGen.nextInt(100), // x location
 							randGen.nextDouble() * randGen.nextInt(450), false, false)); // y
 				} else {
-					sceneItems.add(ConstructHeron.constructRightHeron(randGen.nextInt(20) - 10, // depth
-							1, 0 - randGen.nextInt(75), // x location
+					sceneItems.add(ConstructHeron.constructRightHeron(randGen.nextInt(40) - 20, // depth
+							1, // type
+							0 - randGen.nextInt(100), // x location
 							randGen.nextDouble() * randGen.nextInt(450), false, false)); // y
 				}
 			}

@@ -392,8 +392,7 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 		// Objective Arrow Label
 		ImageIcon labelIcon = new ImageIcon("img/tutorial_arrow_downRight.png");
 		tutorialLabel = new ViewOverlayLabel(null, labelIcon, 150, 120, "");
-		tutorialLabel.setBounds((SCREEN_WIDTH - 300) / 2, SCREEN_HEIGHT - 300, 150,
-				85);
+		tutorialLabel.setBounds((SCREEN_WIDTH - 300) / 2, SCREEN_HEIGHT - 300, 150, 120);
 		tutorialLabel.setName("TimeArrow");
 
 		mainPane.setLayer(tutorialLabel, EnumLayerCodeTutorial.LabelTimeArrowHidden.getCode());
