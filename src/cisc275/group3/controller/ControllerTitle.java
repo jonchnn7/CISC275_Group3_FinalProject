@@ -93,7 +93,7 @@ public class ControllerTitle extends ControllerScene {
 		startButton = new JButton("Start");
 		startButton.setFont(new Font("Roboto", Font.BOLD, 1));
 		startButton.setBounds(SCREEN_WIDTH/3-150, SCREEN_HEIGHT*3/4, 300, 96);
-		startButton.setIcon(new ImageIcon("img/Yellow startbutton.png"));
+		startButton.setIcon(new ImageIcon("img/buttonPics/Yellow startbutton.png"));
 		startButton.setOpaque(false);
 		startButton.setBorderPainted(false);
 		startButton.setBorder(null);
@@ -122,7 +122,7 @@ public class ControllerTitle extends ControllerScene {
 		tutorialButton = new JButton("Tutorial");
 		tutorialButton.setFont(new Font("Roboto", Font.BOLD, 1));
 		tutorialButton.setBounds(SCREEN_WIDTH*2/3-150, SCREEN_HEIGHT*3/4, 300, 96);
-		tutorialButton.setIcon(new ImageIcon("img/Yellow Tutorialbutton.png"));
+		tutorialButton.setIcon(new ImageIcon("img/buttonPics/Yellow Tutorialbutton.png"));
 		tutorialButton.setOpaque(false);
 		tutorialButton.setBorderPainted(false);
 		tutorialButton.setBorder(null);
