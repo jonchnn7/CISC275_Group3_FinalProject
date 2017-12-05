@@ -96,6 +96,13 @@ public class BetaCrab extends SceneObject implements ActionMove {
   }
   
   /**
+   * @return speedX	returns x-axis speed
+   */
+  public double getSpeedX() {
+    return speedX;
+  }
+  
+  /**
    * Provides a string-based representation
    * of the crab by using its location and
    * then printing the crab's ObjectId, 
