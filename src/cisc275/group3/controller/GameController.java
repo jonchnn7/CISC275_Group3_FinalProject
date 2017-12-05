@@ -113,7 +113,7 @@ public class GameController implements Serializable {
 			    break;
 			  case IN_GAME:
 			    // Check if time is up
-			    if (totalTime == 300000) {//300000
+			    if (totalTime == 180000) {//3 mintues
 	          gameState = EnumGameState.END_GAME;
 	          endGame();
 			    }
