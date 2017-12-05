@@ -110,8 +110,10 @@ public class ControllerMission extends ControllerScene {
 					// Scientist
 					case 2:
 						tmp = randGen.nextInt(2) + 3;
-						// Filler guy (fish,
-						// case 3
+						break;
+					//fish
+					case 3:
+						tmp = randGen.nextInt(3);
 						break;
 					}
 

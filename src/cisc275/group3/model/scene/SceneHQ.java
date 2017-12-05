@@ -81,11 +81,10 @@ public class SceneHQ extends Scene {
 	public void update() {
 		if (this.getManifest().getSceneType() == EnumSceneType.DEFAULT) {
 			if (sceneItems.size() < 1) {
-				int x = randGen.nextInt(3);
+				int x = randGen.nextInt(4);
 				while (x == prevPerson) {
-					x = randGen.nextInt(3);
+					x = randGen.nextInt(4);
 				}
-				
 				ControllerMission.setPersonID(x);
 				sceneItems.add(ConstructPerson.constructPerson(randGen.nextInt(20) - 10, // depth
 						x, // type

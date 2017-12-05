@@ -18,10 +18,10 @@ import cisc275.group3.model.sceneobject.BetaPerson;
 public interface ConstructPerson {
 	// Person File Locations
 	static final String[] FILE = { "img/betaPersonPics/birdWatcher(1).png", "img/betaPersonPics/parkRanger(1).png",
-			"img/betaPersonPics/scientist(1).png" };
+			"img/betaPersonPics/scientist(1).png", "img/betaPersonPics/fisherman.png" };
 
 	// Person Names
-	static final String[] NAME = { "Bird Watcher", "Park Ranger", "Scientist" };
+	static final String[] NAME = { "Bird Watcher", "Park Ranger", "Scientist", "Fisherman" };
 
 	// Person Dimensions
 	static final double LENGTH = 500;
@@ -30,7 +30,7 @@ public interface ConstructPerson {
 	static final double AR = 0.66;
 
 	// Person ID Numbers
-	static final int[] ID = { 50, 51, 52 };
+	static final int[] ID = { 50, 51, 52, 53 };
 
 	// Person x-axis Speed
 	static final int SPEED = 15;
