@@ -95,7 +95,7 @@ public class SceneHQ extends Scene {
 			}
 			// Move Person
 			for (SceneObject person : sceneItems) {
-				if ((person.getLocation().getX() < 600) && ((((BetaPerson) person).getStatus()) == 1)) {
+				if ((person.getLocation().getX() < 600) && ((((BetaPerson) person).getStatus()) == 1) || (Scene.getCurrentMission().getObjectNum() == 0)) {
 					((BetaPerson) person).setStatus(0);
 				} else if ((Scene.getCurrentMission().getObjectNum() == -5) && ((((BetaPerson) person).getStatus()) == 0)) {
 					((BetaPerson) person).setStatus(-1);
