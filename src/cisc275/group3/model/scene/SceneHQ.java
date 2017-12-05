@@ -21,6 +21,7 @@ import cisc275.group3.utility.SceneId;
  * 
  * @author Jon
  * @author Scott
+ * @author Jolyne
  */
 public class SceneHQ extends Scene {
 	
@@ -94,10 +95,11 @@ public class SceneHQ extends Scene {
 			}
 			// Move Person
 			for (SceneObject person : sceneItems) {
-				if ((person.getLocation().getX() < 600) && ((((BetaPerson) person).getStatus()) == 1) || (Scene.getCurrentMission().getObjectNum() == 0)) {
+				if ((person.getLocation().getX() < 600) && ((((BetaPerson) person).getStatus()) == 1) && ((Scene.getCurrentMission().getObjectNum() == 0) || (Scene.getCurrentMission().getObjectNum() == -1) || (Scene.getCurrentMission().getObjectNum() == -4))) {
 					((BetaPerson) person).setStatus(0);
-				} else if ((Scene.getCurrentMission().getObjectNum() == -5) && ((((BetaPerson) person).getStatus()) == 0)) {
+				} else if ((Scene.getCurrentMission().getObjectNum() == -5) && ((((BetaPerson) person).getStatus()) == 0) || (((BetaPerson) person).getStatus()) == -1) {
 					((BetaPerson) person).setStatus(-1);
+					Scene.getCurrentMission().setObjectNum(-4);
 				}
 				((BetaPerson) person).move();
 			}
