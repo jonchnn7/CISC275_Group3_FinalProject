@@ -38,7 +38,7 @@ import cisc275.group3.view.GameWindow;
  */
 
 public class ControllerEndGame extends ControllerScene implements LinkDynamics {
-	private final ImageIcon BG_IMAGE = new ImageIcon("img/EndGameScreen.png");
+	private final ImageIcon BG_IMAGE = new ImageIcon("img/backgrounds/EndGameScreen.png");
 	// JPanel and Buttons variables
 	private JPanel endGamePanel;
 	private JButton resetButton;
@@ -116,7 +116,7 @@ public class ControllerEndGame extends ControllerScene implements LinkDynamics {
 		resetButton = new JButton("Reset");
 		resetButton.setFont(new Font("Roboto", Font.BOLD, 1));
 		resetButton.setBounds(SCREEN_WIDTH / 3 - 150, SCREEN_HEIGHT * 3 / 4, 300, 96);
-		resetButton.setIcon(new ImageIcon("img/Yellow Resetbutton.png"));
+		resetButton.setIcon(new ImageIcon("img/buttonPics/Yellow Resetbutton.png"));
 		resetButton.setOpaque(false);
 		resetButton.setBorderPainted(false);
 		resetButton.setBorder(null);
@@ -129,7 +129,7 @@ public class ControllerEndGame extends ControllerScene implements LinkDynamics {
 		continueButton = new JButton("Continue");
 		continueButton.setFont(new Font("Roboto", Font.BOLD, 1));
 		continueButton.setBounds(SCREEN_WIDTH * 2 / 3 - 150, SCREEN_HEIGHT * 3 / 4, 300, 96);
-		continueButton.setIcon(new ImageIcon("img/Yellow ContinueButton.png"));
+		continueButton.setIcon(new ImageIcon("img/buttonPics/Yellow ContinueButton.png"));
 		continueButton.setOpaque(false);
 		continueButton.setBorderPainted(false);
 		continueButton.setBorder(null);
