@@ -38,7 +38,7 @@ import cisc275.group3.view.GameWindow;
  */
 
 public class ControllerEndGame extends ControllerScene implements LinkDynamics {
-	private final ImageIcon BG_IMAGE = new ImageIcon("img/EndGameScreen.png");
+	private final ImageIcon BG_IMAGE = new ImageIcon("img/backgrounds/EndGameScreen.png");
 	// JPanel and Buttons variables
 	private JPanel endGamePanel;
 	private JButton resetButton;
