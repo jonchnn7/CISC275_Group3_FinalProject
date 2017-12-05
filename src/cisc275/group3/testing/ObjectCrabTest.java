@@ -120,7 +120,7 @@ public class ObjectCrabTest {
     // Right Crabs
     System.out.println("    Testing Right Crabs:");
     rightCrab1.move(20);
-    rightCrab2.move(20  );
+    rightCrab2.move(20);
     assertEquals("Right Crab 1 x Location > 800", true, (rightCrab1.getLocation().getX() > 800));
     assertEquals("Right Crab 2 x Location > 1000", true, (rightCrab2.getLocation().getX() > 1000));
     
