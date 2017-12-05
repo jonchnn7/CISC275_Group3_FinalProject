@@ -38,7 +38,7 @@ import cisc275.group3.view.GameWindow;
  */
 
 public class ControllerEndGame extends ControllerScene implements LinkDynamics {
-	private final ImageIcon BG_IMAGE = new ImageIcon("img/backgrounds/EndGameScreen.png");
+	private final ImageIcon BG_IMAGE = new ImageIcon("img/backgrounds/endGame_bg.png");
 	// JPanel and Buttons variables
 	private JPanel endGamePanel;
 	private JButton resetButton;
@@ -105,17 +105,16 @@ public class ControllerEndGame extends ControllerScene implements LinkDynamics {
 	 * current score, reset the game timer and bring the user to the HQ.
 	 */
 	private void addLabelButtons() {
-		System.out.println(Scene.getScore());
 		finalScore = new JLabel("Final Score: " + Scene.getScore(), JLabel.CENTER);
-		finalScore.setBounds((SCREEN_WIDTH / 2) - 180, SCREEN_HEIGHT * 3 / 4, 300, 96);
+		finalScore.setBounds((SCREEN_WIDTH * 6 / 16 ), SCREEN_HEIGHT * 3 / 4, 450, 96);
 
 		finalScore.setFont(new Font("Roboto", Font.BOLD, 45));
-		finalScore.setForeground(Color.black);
+		finalScore.setForeground(Color.white);
 		endGamePanel.add(finalScore);
 
 		resetButton = new JButton("Reset");
 		resetButton.setFont(new Font("Roboto", Font.BOLD, 1));
-		resetButton.setBounds(SCREEN_WIDTH / 3 - 150, SCREEN_HEIGHT * 3 / 4, 300, 96);
+		resetButton.setBounds(SCREEN_WIDTH / 3 - 250, SCREEN_HEIGHT * 3 / 4, 300, 96);
 		resetButton.setIcon(new ImageIcon("img/buttonPics/Yellow Resetbutton.png"));
 		resetButton.setOpaque(false);
 		resetButton.setBorderPainted(false);
@@ -128,7 +127,7 @@ public class ControllerEndGame extends ControllerScene implements LinkDynamics {
 
 		continueButton = new JButton("Continue");
 		continueButton.setFont(new Font("Roboto", Font.BOLD, 1));
-		continueButton.setBounds(SCREEN_WIDTH * 2 / 3 - 150, SCREEN_HEIGHT * 3 / 4, 300, 96);
+		continueButton.setBounds(SCREEN_WIDTH * 2 / 3 - 50, SCREEN_HEIGHT * 3 / 4, 300, 96);
 		continueButton.setIcon(new ImageIcon("img/buttonPics/Yellow ContinueButton.png"));
 		continueButton.setOpaque(false);
 		continueButton.setBorderPainted(false);

@@ -88,8 +88,8 @@ public class SceneHQ extends Scene {
 				ControllerMission.setPersonID(x);
 				sceneItems.add(ConstructPerson.constructPerson(randGen.nextInt(20) - 10, // depth
 						x, // type
-						1280, // x location
-						175)); // y location
+						getManifest().getWidth(), // x location
+						getManifest().getHeight()/4)); // y location
 				prevPerson = x;
 			}
 			// Move Person
