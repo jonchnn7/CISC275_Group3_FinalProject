@@ -43,22 +43,6 @@ public class BetaVegetation extends SceneObject {
   public BetaVegetation(int d, int h, int id, String imFi, String n, int w, double x, double y) {
 	  this(new ObjectId(d, h, id, imFi, n, w), x, y);
   }
-
-  /**
-   * Provides a string-based representation
-   * of the vegetation by using its location and
-   * then printing the vegetation's ObjectId, 
-   * held in the passport variable.
-   * <p>
-   * See ObjectID.java
-   */
-  public String toString() {
-    String outString = "\nBeta Vegetation" 
-                      +"\n========="
-                      +"\nLocation: " + location.toString()
-                      +passport.toString();
-    return outString;
-  }
   
   /**
    * Checks to see the size of vegetation

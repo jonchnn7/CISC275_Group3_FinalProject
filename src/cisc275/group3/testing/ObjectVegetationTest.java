@@ -42,8 +42,8 @@ public class ObjectVegetationTest {
     testVeg3.grow();
 
     System.out.println("    Testing Grown Vegetation:");
-    assertEquals("testVeg1 ID = 71", 71, testVeg1.getPassport().getId());
-    assertEquals("testVeg2 ID = 72", 72, testVeg2.getPassport().getId());
+    assertEquals("testVeg1 ID = 70", 70, testVeg1.getPassport().getId());
+    assertEquals("testVeg2 ID = 71", 71, testVeg2.getPassport().getId());
     assertEquals("testVeg3 ID = 72", 72, testVeg3.getPassport().getId());
 
   }

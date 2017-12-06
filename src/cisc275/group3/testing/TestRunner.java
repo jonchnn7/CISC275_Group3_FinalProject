@@ -15,6 +15,9 @@ public class TestRunner {
 	private static Result result;
 
 	public static void main(String[] args) {
+    ToolsTest();
+    printSeparator();
+	    
 		abstractSceneObjectTests();
 		printSeparator();
 
@@ -26,14 +29,14 @@ public class TestRunner {
 
 		objectPersonTests();
 		printSeparator();
+		
+		objectVegetationTests();
+		printSeparator();
 
 		sceneBayTests();
 		printSeparator();
 
-		abstractTests();
-		printSeparator();
-		
-		ToolsTest();
+		abstractSceneTests();
 		printSeparator();
 		
 		sceneTitleTest();
@@ -103,6 +106,22 @@ public class TestRunner {
 
 		System.out.println("Running Object Person Tests Successful: " + result.wasSuccessful());
 	}
+	
+	 /**
+   * Runs the tests for ObjectVegetation.java
+   */
+  private static void objectVegetationTests() {
+    // Scene Object Tests
+    System.out.println("\nRunning Object Vegetation Tests...");
+
+    result = JUnitCore.runClasses(ObjectVegetationTest.class);
+
+    for (Failure failure : result.getFailures()) {
+      System.out.println("Failure: " + failure.toString());
+    }
+
+    System.out.println("Running Object Vegetation Tests Successful: " + result.wasSuccessful());
+  }
 
 	/**
 	 * Runs the Bay Specific tests for SceneBay.java
@@ -139,7 +158,7 @@ public class TestRunner {
 	/**
 	 * Runs the Generic/Shared Abstract Scene.java tests
 	 */
-	private static void abstractTests() {
+	private static void abstractSceneTests() {
 		// Abstract Scene Tests
 		System.out.println("\nRunning Generic Scene Tests...");
 

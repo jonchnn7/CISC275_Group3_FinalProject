@@ -168,9 +168,4 @@ public class BetaHeron extends SceneObject implements ActionMove {
 	public double getSpeedY() {
 		return speedY;
 	}
-
-	public String toString() {
-		String outString = "\nBeta Heron" + "\n=========" + "\nLocation: " + location.toString() + passport.toString();
-		return outString;
-	}
 }

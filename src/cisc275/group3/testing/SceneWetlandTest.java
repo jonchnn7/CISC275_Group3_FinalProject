@@ -40,7 +40,7 @@ public class SceneWetlandTest {
    * Test scene is constructed/filled correctly.
    * <p>
    * There should be 6 items created when a 
-   * wetland scene of type 2 is initialized.
+   * wetland scene of type DEFAULT is initialized.
    */
   @Test
   public void testCreation() {    

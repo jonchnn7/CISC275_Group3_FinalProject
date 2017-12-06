@@ -190,7 +190,7 @@ public class AbstractSceneObjectTests {
     // Full Weeds
     tmpVeg = ConstructVegetation.constructVegetation(14, 0, 1300, 0);
     testObjects.put("Weeds1", tmpVeg);
-    
+    System.out.println(tmpVeg);
     // Medium Weeds
     tmpVeg = ConstructVegetation.constructVegetation(15, 1, 1400, 0);
     testObjects.put("Weeds2", tmpVeg);

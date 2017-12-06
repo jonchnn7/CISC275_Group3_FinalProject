@@ -127,15 +127,4 @@ public class BetaPerson extends SceneObject implements ActionMove {
 	public double getSpeedY() {
 		return speedY;
 	}
-
-	/**
-	 * Provides a string-based representation of the fish by using its location and
-	 * then printing the fish's ObjectId, held in the passport variable.
-	 * <p>
-	 * See ObjectID.java
-	 */
-	public String toString() {
-		String outString = "\nBetaPerson" + "\n=========" + "\nLocation: " + location.toString() + passport.toString();
-		return outString;
-	}
 }
