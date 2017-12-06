@@ -3,6 +3,7 @@ package cisc275.group3.model.scene;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
+import cisc275.group3.model.sceneobject.ActionMove;
 import cisc275.group3.model.sceneobject.BetaHeron;
 import cisc275.group3.model.sceneobject.BetaVegetation;
 import cisc275.group3.model.sceneobject.SceneObject;
@@ -74,8 +75,10 @@ public class SceneWetland extends Scene {
 	protected void fillScene() {
 		// Initializes Screen with 6 vegetation, no herons
 		for (int i = 0; i < 6; i++) {
-			sceneItems.add(ConstructVegetation.constructVegetation(randGen.nextInt(20) - 10, // depth
-					2, randGen.nextInt(1280), // x location
+			sceneItems.add(ConstructVegetation.constructVegetation(
+			    randGen.nextInt(20) - 10, // depth
+					2, // type
+					randGen.nextInt(1280), // x location
 					i * 140 + manifest.getStartY() + 10)); // y location
 		}
 		Collections.sort(sceneItems); // sort by depth
@@ -98,37 +101,19 @@ public class SceneWetland extends Scene {
 	@Override
 	public void update() {
 		if (this.getManifest().getSceneType() == EnumSceneType.DEFAULT) {
-			// 1.5% to Add new Heron
-			if (randGen.nextInt(200) <= 3) {
-				// 50/50 chance to pick right or left
-				if (randGen.nextInt(2) == 1) {
-					sceneItems.add(ConstructHeron.constructLeftHeron(randGen.nextInt(40) - 20, // depth
-							1, // type
-							manifest.getWidth() + randGen.nextInt(100), // x location
-							randGen.nextDouble() * randGen.nextInt(450), false, false)); // y
-				} else {
-					sceneItems.add(ConstructHeron.constructRightHeron(randGen.nextInt(40) - 20, // depth
-							1, // type
-							0 - randGen.nextInt(100), // x location
-							randGen.nextDouble() * randGen.nextInt(450), false, false)); // y
-				}
-			}
-			// Generate new vegetation on 3% of calls
-			if (sceneItems.size() < 10) {
-				if (randGen.nextInt(100) < 3) {
-					sceneItems.add(ConstructVegetation.constructVegetation(randGen.nextInt(20) - 10, // depth
-							0, randGen.nextInt(1280), // x location
-							randGen.nextInt(650) + 70));
-				}
-			}
-
-			// Fly herons
-			for (SceneObject tempItem : sceneItems) {
-				if ((tempItem.getPassport().getId() == 100) || (tempItem.getPassport().getId() == 200)) {
-					((BetaHeron) tempItem).move();
-				}
-			}
-
+		  switch (randGen.nextInt(100) ) {
+		  case 3:
+		    vegeGen();
+		    break;
+		  case 2:
+		  case 1:
+		  case 0:
+		    heronGen();
+		    vegeGen();
+		    break;
+		  }
+		  
+		  flyHerons();
 			// Remove Off-screen Herons, change heron image, grow Vegetation
 			modifySceneItems();
 
@@ -136,6 +121,57 @@ public class SceneWetland extends Scene {
 		}
 	}
 
+  /**
+   * Creates new, flying Heron with
+   * a 50/50 chance of them adding to
+   * the left/right side of the screen.
+   */
+  private void heronGen() {
+    if (randGen.nextInt(2) == 1) {
+      sceneItems.add(ConstructHeron.constructLeftHeron(randGen.nextInt(40) - 20, // depth
+          1, // type
+          manifest.getWidth() + randGen.nextInt(100), // x location
+          randGen.nextDouble() * randGen.nextInt(450), false, false)); // y
+    } else {
+      sceneItems.add(ConstructHeron.constructRightHeron(
+          randGen.nextInt(40) - 20, // depth
+          1, // type
+          0 - randGen.nextInt(100) - 50, // x location
+          randGen.nextDouble() * randGen.nextInt(450), false, false)); // y
+    }
+  }
+  
+  /**
+   * Moves Herons with ids of 100 or 200
+   */
+  private void flyHerons() {
+    // Fly herons
+    sceneItems.forEach(heron-> {
+      switch (heron.getPassport().getId()) {
+      case 100:
+      case 200:
+        ((ActionMove)heron).move();
+      }
+    });
+  }
+  
+  /**
+   * Generates new vegetation at 
+   * a random x and y location if
+   * the number of items < 10.
+   */
+  private void vegeGen() {
+    if (sceneItems.size() < 10) {
+      if (randGen.nextInt(100) < 3) {
+        sceneItems.add(ConstructVegetation.constructVegetation(
+            randGen.nextInt(20) - 10, // depth
+            0, // type
+            randGen.nextInt(1280), // x location
+            randGen.nextInt(650) + 70));
+      }
+    }
+  }
+  
 	/**
 	 * Responsible for the removal of sceneObjects and changing the sceneObject type
 	 * if necessary. Explicitly updates BetaVegetation with grow() method.

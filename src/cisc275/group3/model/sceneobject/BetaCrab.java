@@ -101,20 +101,4 @@ public class BetaCrab extends SceneObject implements ActionMove {
   public double getSpeedX() {
     return speedX;
   }
-  
-  /**
-   * Provides a string-based representation
-   * of the crab by using its location and
-   * then printing the crab's ObjectId, 
-   * held in the passport variable.
-   * <p>
-   * See ObjectID.java
-   */
-  public String toString() {
-	    String outString = "\nBeta Crab" 
-                          +"\n========="
-	                      +"\nLocation: " + location.toString()
-	                      +passport.toString();
-	    return outString;
-	  }
 }

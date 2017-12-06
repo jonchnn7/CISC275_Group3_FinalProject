@@ -22,9 +22,6 @@ public class SceneWetlandTest {
 	private final int SCENE_HEIGHT = 720;
 	private SceneWetland testWetland;
 
-	private int vegetationCount = 0;
-	private int heronCount = 0;
-
 	/**
 	 * Before each test, reset testBay to a new instance of SceneBay.java
 	 */
@@ -37,22 +34,13 @@ public class SceneWetlandTest {
 	/**
 	 * Test scene is constructed/filled correctly.
 	 * <p>
-	 * There should be 6 items created when a wetland scene of type 2 is
+	 * There should be 6 items created when a wetland scene of type DEFAULT is
 	 * initialized.
 	 */
 	@Test
 	public void testCreation() {
 		System.out.println("  Testing Initial Conditions");
 
-	    // Count vegetation and herons
-	    testWetland.getSceneItems().forEach((object)->{
-	      if (object.getPassport().getName() == "Invasive Plant") {
-	        vegetationCount += 1;
-	      } else {
-	        heronCount += 1;
-	      }
-	    });
-		assertEquals("Created Vegetation = 6", 6, vegetationCount-heronCount);
+		assertEquals("Created Vegetation = 6", 6, testWetland.getSceneItems().size());
 	}
-
 }

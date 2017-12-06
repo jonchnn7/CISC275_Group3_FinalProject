@@ -15,6 +15,9 @@ public class TestRunner {
 	private static Result result;
 
 	public static void main(String[] args) {
+    ToolsTest();
+    printSeparator();
+	    
 		abstractSceneObjectTests();
 		printSeparator();
 
@@ -39,13 +42,13 @@ public class TestRunner {
 		sceneWetlandTests();
 		printSeparator();
 
-		abstractTests();
-		printSeparator();
-		
-		ToolsTest();
+		abstractSceneTests();
 		printSeparator();
 		
 		sceneTitleTest();
+		printSeparator();
+		
+		sceneTutorialTest();
 		printSeparator();
 	}
 
@@ -129,21 +132,21 @@ public class TestRunner {
 		System.out.println("Running Object Person Tests Successful: " + result.wasSuccessful());
 	}
 	
-	/**
-	 * Runs the tests for ObjectVegetation.java
-	 */
-	private static void objectVegetationTests() {
-		// Scene Object Tests
-		System.out.println("\nRunning Object Vegetation Tests...");
+	 /**
+   * Runs the tests for ObjectVegetation.java
+   */
+  private static void objectVegetationTests() {
+    // Scene Object Tests
+    System.out.println("\nRunning Object Vegetation Tests...");
 
-		result = JUnitCore.runClasses(ObjectVegetationTest.class);
+    result = JUnitCore.runClasses(ObjectVegetationTest.class);
 
-		for (Failure failure : result.getFailures()) {
-			System.out.println("Failure: " + failure.toString());
-		}
+    for (Failure failure : result.getFailures()) {
+      System.out.println("Failure: " + failure.toString());
+    }
 
-		System.out.println("Running Object Vegetation Tests Successful: " + result.wasSuccessful());
-	}
+    System.out.println("Running Object Vegetation Tests Successful: " + result.wasSuccessful());
+  }
 
 	/**
 	 * Runs the Bay Specific tests for SceneBay.java
@@ -182,7 +185,7 @@ public class TestRunner {
 	 */
 	private static void sceneTitleTest() {
 		// Bay Specific Tests
-		System.out.println("\nRunning SceneTitle Tests...");
+		System.out.println("\nRunning Title Scene Tests...");
 
 		result = JUnitCore.runClasses(SceneBayTest.class);
 
@@ -190,13 +193,29 @@ public class TestRunner {
 			System.out.println("Failure: " + failure.toString());
 		}
 
-		System.out.println("SceneTitle Tests Successful: " + result.wasSuccessful());
+		System.out.println("Title Scene Tests Successful: " + result.wasSuccessful());
+	}
+	
+	/**
+	 * Runs the Tutorial Specific tests for SceneTitle.java
+	 */
+	private static void sceneTutorialTest() {
+		// Bay Specific Tests
+		System.out.println("\nRunning Tutorial Scene Tests...");
+
+		result = JUnitCore.runClasses(SceneTutorialTest.class);
+
+		for (Failure failure : result.getFailures()) {
+			System.out.println("Failure: " + failure.toString());
+		}
+
+		System.out.println("Tutorial Scene Tests Successful: " + result.wasSuccessful());
 	}
 
 	/**
 	 * Runs the Generic/Shared Abstract Scene.java tests
 	 */
-	private static void abstractTests() {
+	private static void abstractSceneTests() {
 		// Abstract Scene Tests
 		System.out.println("\nRunning Generic Scene Tests...");
 
