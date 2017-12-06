@@ -35,6 +35,9 @@ public class TestRunner {
 		
 		ToolsTest();
 		printSeparator();
+		
+		sceneTitleTest();
+		printSeparator();
 	}
 
 	/**
@@ -116,6 +119,22 @@ public class TestRunner {
 
 		System.out.println("Bay Specific Scene Tests Successful: " + result.wasSuccessful());
 	}
+	
+	/**
+	 * Runs the Title Specific tests for SceneTitle.java
+	 */
+	private static void sceneTitleTest() {
+		// Bay Specific Tests
+		System.out.println("\nRunning SceneTitle Tests...");
+
+		result = JUnitCore.runClasses(SceneBayTest.class);
+
+		for (Failure failure : result.getFailures()) {
+			System.out.println("Failure: " + failure.toString());
+		}
+
+		System.out.println("SceneTitle Tests Successful: " + result.wasSuccessful());
+	}
 
 	/**
 	 * Runs the Generic/Shared Abstract Scene.java tests
@@ -140,13 +159,13 @@ public class TestRunner {
 		// Scene Object Tests
 		System.out.println("\nRunning Tools Tests...");
 
-		result = JUnitCore.runClasses(ToolsTest.class);
+		result = JUnitCore.runClasses(SceneTitleTest.class);
 
 		for (Failure failure : result.getFailures()) {
 			System.out.println("Failure: " + failure.toString());
 		}
 
-		System.out.println("Running Tools Tests Successful: " + result.wasSuccessful());
+		System.out.println("ToolsTest Successful: " + result.wasSuccessful());
 	}
 
 	/**

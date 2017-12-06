@@ -12,7 +12,12 @@ import cisc275.group3.model.sceneobject.ToolNet;
 import cisc275.group3.model.sceneobject.ToolTrimmer;
 import cisc275.group3.utility.ConstructFish;
 
-
+/**
+ * Test class for ToolCage.java, ToolCamera.Java, ToolNet.java, ToolObject.java, ToolTrimmer.java
+ *  properties and methods.
+ * 
+ * @author Thomas
+ */
 public class ToolsTest {
 
 	  // Left Fish
