@@ -184,7 +184,7 @@ public class TestRunner {
 		// Bay Specific Tests
 		System.out.println("\nRunning Tutorial Scene Tests...");
 
-		result = JUnitCore.runClasses(SceneBayTest.class);
+		result = JUnitCore.runClasses(SceneTutorialTest.class);
 
 		for (Failure failure : result.getFailures()) {
 			System.out.println("Failure: " + failure.toString());
