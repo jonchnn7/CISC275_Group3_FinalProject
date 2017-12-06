@@ -103,23 +103,23 @@ public class ControllerOverlay extends ControllerScene {
 		toolsButtonHeight = 70;
 
 		// Score Label Parameters
-		scoreLabelBg = new ImageIcon("img/time_bg.png");
+		scoreLabelBg = new ImageIcon("img/overlay_bg_whiteYellow_small.png");
 		scoreLabelImage = new ImageIcon("img/coins_icon.png");
 		scoreLabelWidth = 170;
 		scoreLabelHeight = 70;
 		scoreLabelString = "0";
 
 		// Time Label Parameters
-		timeLabelBg = new ImageIcon("img/time_bg.png");
-		timeLabelImage = new ImageIcon("img/clock_icon.png");
+		timeLabelBg = new ImageIcon("img/overlay_bg_white_inverse_small.png");
+		timeLabelImage = new ImageIcon("img/timerPics/timer3_icon.png");
 		timeLabelWidth = 150;
 		timeLabelHeight = 85;
 		timeLabelString = "0";
 
 		// Mission Label Parameters
-		missionLabelBg = new ImageIcon("img/time_bg.png");
+		missionLabelBg = new ImageIcon("img/overlay_bg_white_small.png");
 		missionLabelWidth = 175;
-		missionLabelHeight = 85;
+		missionLabelHeight = 95;
 		missionLabelString = "";
 
 		// Inventory Button Parameters
