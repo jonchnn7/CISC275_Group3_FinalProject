@@ -67,7 +67,7 @@ public class ControllerMission extends ControllerScene {
 
 		missionPanel.setLayout(null);
 		missionPanel.setBounds((SCREEN_WIDTH / 2) - (SCREEN_WIDTH / 4), (SCREEN_HEIGHT / 2 - SCREEN_HEIGHT / 3),
-				SCREEN_WIDTH / 8, SCREEN_HEIGHT *2 / 5);
+				SCREEN_WIDTH / 8, SCREEN_HEIGHT * 2 / 5);
 		missionPanel.setOpaque(false);
 
 		addMissionButton();
@@ -85,7 +85,7 @@ public class ControllerMission extends ControllerScene {
 	 */
 	private void addMissionButton() {
 		missionButton = new JButton();
-		missionButton.setBounds(0, 0, SCREEN_WIDTH / 8, SCREEN_HEIGHT * 2/ 5);
+		missionButton.setBounds(0, 0, SCREEN_WIDTH / 8, SCREEN_HEIGHT * 2 / 5);
 		missionButton.setOpaque(false);
 		missionButton.setContentAreaFilled(false);
 		missionButton.setBorderPainted(false);
@@ -93,8 +93,8 @@ public class ControllerMission extends ControllerScene {
 		missionButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if ((Scene.getCurrentMission().getTargetObject() == null)
-						&& (Scene.getCurrentMission().isDoneMission()) && (Scene.getCurrentMission().getObjectNum() != -7)) {
+				if ((Scene.getCurrentMission().getTargetObject() == null) && (Scene.getCurrentMission().isDoneMission())
+						&& (Scene.getCurrentMission().getObjectNum() != -7) && (missionClickable == true)) {
 
 					newMission = false;
 
@@ -111,7 +111,7 @@ public class ControllerMission extends ControllerScene {
 					case 2:
 						tmp = randGen.nextInt(2) + 3;
 						break;
-					//fish
+					// fish
 					case 3:
 						tmp = randGen.nextInt(3);
 						break;
@@ -183,7 +183,7 @@ public class ControllerMission extends ControllerScene {
 					displayMission();
 					ControllerInventory.removeItem(Scene.getCurrentMission().getObjectName());
 					System.out.println(Scene.getCurrentFact());
-				}else if(Scene.getCurrentMission().getObjectNum() == -7){
+				} else if (Scene.getCurrentMission().getObjectNum() == -7) {
 					Scene.getCurrentMission().setObjectNum(-5);
 					Scene.setCurrentFact("");
 				}

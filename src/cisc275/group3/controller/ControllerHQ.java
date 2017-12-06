@@ -124,6 +124,7 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 	public void update() {
 		if (mainPane.getLayer(componentList.get("HQ")) == EnumLayerCode.MainAll.getCode()) {
 			// Update Model
+			missionClickable = ((SceneHQ)scene).isMissionClickable();
 			scene.update();
 			viewGame.updatePanel(scene.getSceneItems());
 			statusLabel.updateBG(new ImageIcon(Scene.getCurrentFact()));

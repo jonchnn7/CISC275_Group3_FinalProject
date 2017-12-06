@@ -124,4 +124,17 @@ public class SceneHQ extends Scene {
 			}
 		}
 	}
+	
+	/**
+	 * @return if the mission button is clickable (person is not moving)
+	 */
+	public boolean isMissionClickable() {
+		if(sceneItems.size() == 1) {
+			if(((BetaPerson)sceneItems.get(0)).getStatus() == 0) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
 }
