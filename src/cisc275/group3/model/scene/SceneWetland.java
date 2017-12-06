@@ -124,7 +124,6 @@ public class SceneWetland extends Scene {
 
 			// Fly herons
 			for (SceneObject tempItem : sceneItems) {
-				// System.out.print(heron);
 				if ((tempItem.getPassport().getId() == 100) || (tempItem.getPassport().getId() == 200)) {
 					((BetaHeron) tempItem).move();
 				}
