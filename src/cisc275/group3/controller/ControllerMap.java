@@ -6,6 +6,7 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
@@ -63,7 +64,7 @@ public class ControllerMap extends ControllerScene {
 	public ControllerMap(int w, int h, GameWindow f, HashMap<String, Component> cl, EnumSceneType sceneType) {
 		super(w, h, f, cl, sceneType);
 
-		mapBg = new ImageIcon("img/map_menu_icon.png");
+		mapBg = new ImageIcon("img/newMapHuh.png");
 	}
 
 	/**
@@ -105,8 +106,14 @@ public class ControllerMap extends ControllerScene {
 	 */
 	private void addMapButtons() {
 		hqButton = new JButton("HQ");
-		hqButton.setFont(new Font("Roboto", Font.BOLD, 10));
-		hqButton.setBounds(95, 80, 75, 30);
+		hqButton.setIcon(new ImageIcon("img/HQTag.png"));
+		hqButton.setFont(new Font("Roboto", Font.BOLD, 1));
+		hqButton.setBounds(105, 97, 75, 30);
+		hqButton.setOpaque(false);
+		hqButton.setBorderPainted(false);
+		hqButton.setBorder(null);
+		hqButton.setMargin(new Insets(0, 0, 0, 0));
+		hqButton.setContentAreaFilled(false);
 
 		hqButton.addActionListener(new ActionListener() {
 			@Override
@@ -135,8 +142,14 @@ public class ControllerMap extends ControllerScene {
 		mapPanel.add(hqButton);
 
 		bayButton = new JButton("Bay");
-		bayButton.setFont(new Font("Roboto", Font.BOLD, 10));
-		bayButton.setBounds(95, 120, 75, 30);
+		bayButton.setIcon(new ImageIcon("img/BayTag.png"));
+		bayButton.setFont(new Font("Roboto", Font.BOLD, 1));
+		bayButton.setBounds(105, 137, 75, 30);
+		bayButton.setOpaque(false);
+		bayButton.setBorderPainted(false);
+		bayButton.setBorder(null);
+		bayButton.setMargin(new Insets(0, 0, 0, 0));
+		bayButton.setContentAreaFilled(false);
 
 		bayButton.addActionListener(new ActionListener() {
 			@Override
@@ -156,8 +169,14 @@ public class ControllerMap extends ControllerScene {
 		mapPanel.add(bayButton);
 
 		beachButton = new JButton("Beach");
-		beachButton.setFont(new Font("Roboto", Font.BOLD, 10));
-		beachButton.setBounds(95, 160, 75, 30);
+		beachButton.setIcon(new ImageIcon("img/BeachTag.png"));
+		beachButton.setFont(new Font("Roboto", Font.BOLD, 1));
+		beachButton.setBounds(105, 177, 75, 30);
+		beachButton.setOpaque(false);
+		beachButton.setBorderPainted(false);
+		beachButton.setBorder(null);
+		beachButton.setMargin(new Insets(0, 0, 0, 0));
+		beachButton.setContentAreaFilled(false);
 
 		beachButton.addActionListener(new ActionListener() {
 			@Override
@@ -178,8 +197,14 @@ public class ControllerMap extends ControllerScene {
 		mapPanel.add(beachButton);
 
 		wetlandButton = new JButton("Wetland");
-		wetlandButton.setFont(new Font("Roboto", Font.BOLD, 10));
-		wetlandButton.setBounds(95, 200, 75, 30);
+		wetlandButton.setIcon(new ImageIcon("img/WetlandTag.png"));
+		wetlandButton.setFont(new Font("Roboto", Font.BOLD, 1));
+		wetlandButton.setBounds(105, 217, 75, 30);
+		wetlandButton.setOpaque(false);
+		wetlandButton.setBorderPainted(false);
+		wetlandButton.setBorder(null);
+		wetlandButton.setMargin(new Insets(0, 0, 0, 0));
+		wetlandButton.setContentAreaFilled(false);
 
 		wetlandButton.addActionListener(new ActionListener() {
 			@Override
