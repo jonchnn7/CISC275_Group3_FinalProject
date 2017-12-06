@@ -86,8 +86,6 @@ public class ControllerTools extends ControllerScene {
 		toolPanel.setLayout(null);
 		toolPanel.setPreferredSize(toolSize);
 		toolPanel.setBounds(SCREEN_WIDTH - toolSize.width, 50, toolSize.width, toolSize.height);
-		//toolPanel.setBackground(Color.orange);
-		//toolPanel.setOpaque(true);
 
 		addToolButtons();
 

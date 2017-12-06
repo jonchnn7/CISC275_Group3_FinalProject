@@ -99,7 +99,6 @@ public class ControllerOverlay extends ControllerScene {
 
 		// Tool Button Parameters
 		toolsButtonImage = new ImageIcon("img/toolbox_menu_2.png");
-		toolsButtonRolloverImage = new ImageIcon("img/toolbox_menu_invert.png");
 		toolsButtonWidth = 107;
 		toolsButtonHeight = 70;
 
@@ -200,9 +199,8 @@ public class ControllerOverlay extends ControllerScene {
 	 * storage layer.
 	 */
 	private void createToolsButton() {
-		toolsButtonPanel = new ViewOverlayButton(toolsButtonImage, toolsButtonRolloverImage, toolsButtonWidth,
-				toolsButtonHeight);
-		toolsButtonPanel.setBounds(SCREEN_WIDTH - 75 - toolsButtonWidth, 0, toolsButtonWidth, toolsButtonHeight);
+		toolsButtonPanel = new ViewOverlayButton(toolsButtonImage, toolsButtonWidth, toolsButtonHeight);
+		toolsButtonPanel.setBounds(SCREEN_WIDTH - toolsButtonWidth - 10, 0, toolsButtonWidth, toolsButtonHeight);
 		toolsButtonPanel.setName("ToolsButton");
 
 		if (sceneType == EnumSceneType.TUTORIAL) {
