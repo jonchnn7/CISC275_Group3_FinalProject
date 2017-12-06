@@ -119,9 +119,22 @@ public class SceneHQ extends Scene {
 		for (Iterator<SceneObject> iterator = sceneItems.iterator(); iterator.hasNext();) {
 			BetaPerson person = (BetaPerson) iterator.next();
 
-			if (person.getLocation().getX() >= (manifest.getWidth() + person.getPassport().getWidth())) {
+			if (person.getLocation().getX() >= (manifest.getWidth())) {
 				iterator.remove();
 			}
 		}
+	}
+	
+	/**
+	 * @return if the mission button is clickable (person is not moving)
+	 */
+	public boolean isMissionClickable() {
+		if(sceneItems.size() == 1) {
+			if(((BetaPerson)sceneItems.get(0)).getStatus() == 0) {
+				return true;
+			}
+		}
+		
+		return false;
 	}
 }

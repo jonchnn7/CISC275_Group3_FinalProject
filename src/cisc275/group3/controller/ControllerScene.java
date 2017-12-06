@@ -40,6 +40,7 @@ public abstract class ControllerScene implements Serializable {
 	protected static JLabel mouseLabel;
 	protected static HashMap<String, Component> componentList;
 	boolean tutorial;
+	protected static boolean missionClickable;
 
 	// Window Components
 	protected JLayeredPane mainPane;
@@ -69,6 +70,7 @@ public abstract class ControllerScene implements Serializable {
 		GAME_FRAME = f;
 
 		tutorial = false;
+		missionClickable = false;
 
 		componentList = cl;
 		this.sceneType = sceneType;
