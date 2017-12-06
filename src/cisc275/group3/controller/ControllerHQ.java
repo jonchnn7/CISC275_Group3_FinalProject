@@ -268,9 +268,9 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 		componentList.put("ObjectiveLabelSpeech", tutorialLabel);
 
 		// Objective Continue Button
-		ImageIcon tutorialButtonIcon = new ImageIcon("img/tutorialPics/Press to continue_withText.png");
-		tutorialButton = new ViewOverlayButton(tutorialButtonIcon, 100, 100);
-		tutorialButton.setBounds(SCREEN_WIDTH - 350, SCREEN_HEIGHT - 200, 300, 100);
+		ImageIcon tutorialButtonIcon = new ImageIcon("img/tutorialPics/PressToContinueFinal.png");
+		tutorialButton = new ViewOverlayButton(tutorialButtonIcon, 200, 200);
+		tutorialButton.setBounds(SCREEN_WIDTH - 350, SCREEN_HEIGHT - 200, 200, 200);
 		tutorialButton.setName("Continue");
 
 		mainPane.setLayer(tutorialButton, EnumLayerCodeTutorial.ButtonContinueHidden.getCode());

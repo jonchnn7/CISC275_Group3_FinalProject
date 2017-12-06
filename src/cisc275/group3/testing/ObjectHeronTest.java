@@ -28,17 +28,17 @@ public class ObjectHeronTest {
 	public void createHeron() {
 		// Left Herons
 		leftHeron1 = new BetaHeron(
-				new ObjectId(0, 230, 200, "img/betaHeronPics/heron_flying_left.png", "Great Blue Heron", 177), 1.0, 0.0,
-				100.0, 100.0, true);
+				new ObjectId(0, 230, 200, "img/betaHeronPics/heron_flying_left.png", "Great Blue Heron", 177), 100, 100,
+				20, 10, true);
 		leftHeron2 = ConstructHeron.constructLeftHeron(1, 0, 100, 100, true, true);
 		leftHeron3 = ConstructHeron.constructLeftHeron(1, 0, 100, 100, false, true);
 
 		// Right Herons
 		rightHeron1 = new BetaHeron(
-				new ObjectId(0, 230, 200, "img/betaHeronPics/heron_flying_right.png", "Great Blue Heron", 177), 1.0, 0.0,
-				100.0, 100.0, false);		
+				new ObjectId(0, 230, 200, "img/betaHeronPics/heron_flying_right.png", "Great Blue Heron", 177), 100, 100,
+				20, 10, false);		
 		rightHeron2 = ConstructHeron.constructRightHeron(1, 0, 100, 100, true, true);
-		rightHeron3 = ConstructHeron.constructLeftHeron(1, 0, 100, 100, false, true);
+		rightHeron3 = ConstructHeron.constructRightHeron(1, 0, 100, 100, false, true);
 
 	}
 
@@ -55,10 +55,13 @@ public class ObjectHeronTest {
 		rightHeron2.move();
 		rightHeron3.move();
 
-		assertEquals("leftHeron1 = 100", 120, leftHeron1.getLocation().getX(), 0.2);
-		assertEquals("leftHeron2 = 100", 100, leftHeron1.getLocation().getX(), 0.2);
-		assertEquals("rightHeron1 = 100", 100, leftHeron1.getLocation().getX(), 0.2);
-		assertEquals("rightHeron2 = 100", 100, leftHeron1.getLocation().getX(), 0.2);
+		assertEquals("leftHeron1 = 80", 80, leftHeron1.getLocation().getX(), 0.2);
+		assertEquals("leftHeron2 = 100", 100, leftHeron2.getLocation().getX(), 0.2);
+		assertEquals("leftHeron3 = 80", 80, leftHeron3.getLocation().getX(), 0.2);
+		assertEquals("rightHeron1 = 120", 120, rightHeron1.getLocation().getX(), 0.2);
+		assertEquals("rightHeron2 = 100", 100, rightHeron2.getLocation().getX(), 0.2);
+		assertEquals("rightHeron3 = 120", 120, rightHeron3.getLocation().getX(), 0.2);
+
 
 	}
 

@@ -38,6 +38,12 @@ public class TestRunner {
 
 		sceneBayTests();
 		printSeparator();
+		
+		sceneBeachTests();
+		printSeparator();
+		
+		sceneWetlandTests();
+		printSeparator();
 
 		abstractSceneTests();
 		printSeparator();
@@ -80,7 +86,7 @@ public class TestRunner {
 
 		System.out.println("Running Object Crab Tests Successful: " + result.wasSuccessful());
 	}
-	
+
 	/**
 	 * Runs the tests for ObjectHeron.java
 	 */
@@ -128,22 +134,22 @@ public class TestRunner {
 
 		System.out.println("Running Object Person Tests Successful: " + result.wasSuccessful());
 	}
-	
-	 /**
-   * Runs the tests for ObjectVegetation.java
-   */
-  private static void objectVegetationTests() {
-    // Scene Object Tests
-    System.out.println("\nRunning Object Vegetation Tests...");
 
-    result = JUnitCore.runClasses(ObjectVegetationTest.class);
+	/**
+	 * Runs the tests for ObjectVegetation.java
+	 */
+	private static void objectVegetationTests() {
+		// Scene Object Tests
+		System.out.println("\nRunning Object Vegetation Tests...");
 
-    for (Failure failure : result.getFailures()) {
-      System.out.println("Failure: " + failure.toString());
-    }
+		result = JUnitCore.runClasses(ObjectVegetationTest.class);
 
-    System.out.println("Running Object Vegetation Tests Successful: " + result.wasSuccessful());
-  }
+		for (Failure failure : result.getFailures()) {
+			System.out.println("Failure: " + failure.toString());
+		}
+
+		System.out.println("Running Object Vegetation Tests Successful: " + result.wasSuccessful());
+	}
 
 	/**
 	 * Runs the Bay Specific tests for SceneBay.java
@@ -160,7 +166,39 @@ public class TestRunner {
 
 		System.out.println("Bay Specific Scene Tests Successful: " + result.wasSuccessful());
 	}
-	
+
+	/**
+	 * Runs the Beach Specific tests for SceneBeach.java
+	 */
+	private static void sceneBeachTests() {
+		// Bay Specific Tests
+		System.out.println("\nRunning Beach Specific Scene Tests...");
+
+		result = JUnitCore.runClasses(SceneBeachTest.class);
+
+		for (Failure failure : result.getFailures()) {
+			System.out.println("Failure: " + failure.toString());
+		}
+
+		System.out.println("Beach Specific Scene Tests Successful: " + result.wasSuccessful());
+	}
+
+	/**
+	 *Runs the Wetland Specific tests for SceneWetland.java
+	 */
+	private static void sceneWetlandTests() {
+		// Bay Specific Tests
+		System.out.println("\nRunning Wetland Specific Scene Tests...");
+
+		result = JUnitCore.runClasses(SceneWetlandTest.class);
+
+		for (Failure failure : result.getFailures()) {
+			System.out.println("Failure: " + failure.toString());
+		}
+
+		System.out.println("Wetland Specific Scene Tests Successful: " + result.wasSuccessful());
+	}
+
 	/**
 	 * Runs the Title Specific tests for SceneTitle.java
 	 */
@@ -176,7 +214,7 @@ public class TestRunner {
 
 		System.out.println("Title Scene Tests Successful: " + result.wasSuccessful());
 	}
-	
+
 	/**
 	 * Runs the Tutorial Specific tests for SceneTitle.java
 	 */
@@ -208,7 +246,7 @@ public class TestRunner {
 
 		System.out.println("Generic Scene Tests Successful: " + result.wasSuccessful());
 	}
-	
+
 	/**
 	 * Runs the tests for ObjectPerson.java
 	 */
