@@ -43,6 +43,5 @@ public class ObjectVegetationTest {
     assertEquals("testVeg1 ID = 71", 71, testVeg1.getPassport().getId());
     assertEquals("testVeg2 ID = 72", 72, testVeg2.getPassport().getId());
     assertEquals("testVeg3 ID = 72", 72, testVeg3.getPassport().getId());
-
   }
 }

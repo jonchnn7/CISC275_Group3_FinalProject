@@ -15,6 +15,9 @@ public class TestRunner {
 	private static Result result;
 
 	public static void main(String[] args) {
+	  EnumLayerCodeTest();
+	  printSeparator();
+	  
     ToolsTest();
     printSeparator();
 	    
@@ -54,6 +57,22 @@ public class TestRunner {
 		sceneTutorialTest();
 		printSeparator();
 	}
+	
+	 /**
+   * Runs the EnumLayerCode tests for EnumLayerCodeTest.java
+   */
+  private static void EnumLayerCodeTest() {
+    // Generic Scene Object Tests
+    System.out.println("\nRunning Layer Code Tests...");
+
+    result = JUnitCore.runClasses(EnumLayerCodeTest.class);
+
+    for (Failure failure : result.getFailures()) {
+      System.out.println("Failure: " + failure.toString());
+    }
+
+    System.out.println("Layer Code Tests Successful: " + result.wasSuccessful());
+  }
 
 	/**
 	 * Runs the Generic/Shared tests for AbstractObjectTests.java
