@@ -106,7 +106,7 @@ public class ControllerEndGame extends ControllerScene implements LinkDynamics {
 	 */
 	private void addLabelButtons() {
 		finalScore = new JLabel("Final Score: " + Scene.getScore(), JLabel.CENTER);
-		finalScore.setBounds(SCREEN_WIDTH / 2 - 225, SCREEN_HEIGHT * 3 / 4, 450, 96);
+		finalScore.setBounds(SCREEN_WIDTH / 2 - 225, SCREEN_HEIGHT/16, 450, 96);
 
 		finalScore.setFont(new Font("Roboto", Font.BOLD, 52));
 		finalScore.setForeground(Color.white);
