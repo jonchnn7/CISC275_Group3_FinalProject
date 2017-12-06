@@ -44,8 +44,7 @@ public class SceneHQTest {
 	  public void testCreation() {    
 	    System.out.println("  Testing Initial Conditions");
 	    
-	    
-	    
+
 	    testHQ.update();
 	  }
 }
