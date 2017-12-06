@@ -66,8 +66,8 @@ public class ControllerMission extends ControllerScene {
 		missionPanel = new JPanel(true);
 
 		missionPanel.setLayout(null);
-		missionPanel.setBounds((SCREEN_WIDTH / 2) - (SCREEN_WIDTH / 4), (SCREEN_HEIGHT / 2 - SCREEN_HEIGHT / 3),
-				SCREEN_WIDTH / 8, SCREEN_HEIGHT * 2 / 5);
+		missionPanel.setBounds((SCREEN_WIDTH / 2) - (SCREEN_WIDTH / 4), (SCREEN_HEIGHT / 2 - SCREEN_HEIGHT *2/ 5),
+				SCREEN_WIDTH / 6, SCREEN_HEIGHT * 2 / 5);
 		missionPanel.setOpaque(false);
 
 		addMissionButton();
@@ -85,7 +85,7 @@ public class ControllerMission extends ControllerScene {
 	 */
 	private void addMissionButton() {
 		missionButton = new JButton();
-		missionButton.setBounds(0, 0, SCREEN_WIDTH / 8, SCREEN_HEIGHT * 2 / 5);
+		missionButton.setBounds(0, 0, SCREEN_WIDTH / 6, SCREEN_HEIGHT * 2 / 5);
 		missionButton.setOpaque(false);
 		missionButton.setContentAreaFilled(false);
 		missionButton.setBorderPainted(false);
