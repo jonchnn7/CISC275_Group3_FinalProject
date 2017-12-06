@@ -162,13 +162,12 @@ public class SceneWetland extends Scene {
    */
   private void vegeGen() {
     if (sceneItems.size() < 10) {
-      if (randGen.nextInt(100) < 3) {
-        sceneItems.add(ConstructVegetation.constructVegetation(
-            randGen.nextInt(20) - 10, // depth
-            0, // type
-            randGen.nextInt(1280), // x location
-            randGen.nextInt(650) + 70));
-      }
+      sceneItems.add(ConstructVegetation.constructVegetation(
+          randGen.nextInt(20) - 10, // depth
+          0, // type
+          randGen.nextInt(1280), // x location
+          randGen.nextInt(650) + 70));
+      
     }
   }
   
