@@ -244,7 +244,8 @@ public class ControllerMap extends ControllerScene {
 				}
 			}
 		});
-		mapPanel.add(beachMiniButton);
+		//Mini game we left out of map
+		//mapPanel.add(beachMiniButton);
 	}
 
 	/**
