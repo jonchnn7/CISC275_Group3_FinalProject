@@ -101,16 +101,18 @@ public class SceneBeach extends Scene implements ConstructCrab {
 	@Override
 	public void update() {
 		if (this.getManifest().getSceneType() == EnumSceneType.DEFAULT) {
-			// Generate new crab on ~7% of calls
+			// Generate new crab on ~7% of calls		  
 			if (randGen.nextInt(100) <= 7) {
+        int crabType = randGen.nextInt(2);
+
 				sceneItems.add(ConstructCrab.constructLeftCrab(
 				        randGen.nextInt(20) - 10, // depth
-				        randGen.nextInt(2), // type
+				        crabType, // type
 				        manifest.getWidth() + randGen.nextInt(200) + 100, // x location
 				        (randGen.nextInt(5) * manifest.getHeight()/12 + manifest.getStartY() + getManifest().getHeight()*13/25))); // y location
 				sceneItems.add(ConstructCrab.constructRightCrab(
 				        randGen.nextInt(20) - 10, // depth
-				        randGen.nextInt(2), // type
+				        (1-crabType), // type
 				        0 - randGen.nextInt(200) - 100, // x location
 				        (randGen.nextInt(5) * manifest.getHeight()/12 + manifest.getStartY() + getManifest().getHeight()*13/25))); // y location
 			}
