@@ -46,6 +46,7 @@ public class AbstractSceneObjectTests {
     addFish();
     addHeron();
     addVeggies();
+   
   } 
   
   /**
@@ -198,7 +199,6 @@ public class AbstractSceneObjectTests {
     // Low Weeds
     tmpVeg = ConstructVegetation.constructVegetation(16, 2, 1500, 0);
     testObjects.put("Weeds3", tmpVeg);
-    
   }
   
 }
