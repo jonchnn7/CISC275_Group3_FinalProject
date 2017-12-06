@@ -14,6 +14,8 @@ import cisc275.group3.model.sceneobject.BetaFish;
 import cisc275.group3.model.sceneobject.BetaHeron;
 import cisc275.group3.model.sceneobject.BetaVegetation;
 import cisc275.group3.model.sceneobject.SceneObject;
+import cisc275.group3.utility.ConstructCrab;
+import cisc275.group3.utility.ConstructFish;
 import cisc275.group3.utility.ConstructHeron;
 import cisc275.group3.utility.EnumLayerCode;
 import cisc275.group3.utility.EnumLayerCodeTutorial;
@@ -35,6 +37,8 @@ public class ControllerInventory extends ControllerScene {
 	private JPanel inventoryPanel;
 	private ImageIcon inventoryBg;
 	private static ArrayList<SceneObject> sceneFillItems = new ArrayList<SceneObject>();
+	private final static int INV_WIDTH = 340;
+	private final static int INV_HEIGHT = 300;
 
 	// Variables to keep track of next inventory slot
 	private static double inventory_x = 0;
@@ -68,10 +72,10 @@ public class ControllerInventory extends ControllerScene {
 	@Override
 	protected void createScene() {
 
-		scene = new SceneInventory("Inventory", 0, 0, 300, 300, EnumSceneType.MENU, "img/inventoryPics/inventory_menu_small.png");
-		viewGame = new ViewGame(300, 300, scene.getSceneItems(), scene.getManifest().getBG());
+		scene = new SceneInventory("Inventory", 0, 0, INV_WIDTH, INV_HEIGHT, EnumSceneType.MENU, "img/inventoryPics/inventory_menu_small.png");
+		viewGame = new ViewGame(INV_WIDTH, INV_HEIGHT, scene.getSceneItems(), scene.getManifest().getBG());
 
-		viewGame.setBounds(100, 0, 300, 300);
+		viewGame.setBounds(100, 0, INV_WIDTH, INV_HEIGHT);
 		viewGame.setName("InventoryLayer");
 
 		if (sceneType == EnumSceneType.TUTORIAL) {
@@ -96,33 +100,59 @@ public class ControllerInventory extends ControllerScene {
 	public static void addItem(SceneObject tmp) {
 		// Add Item
 		if (tmp instanceof BetaFish) {
-			if (tmp.getPassport().getHeight() > inventory_y_max) {
-				inventory_y_max = tmp.getPassport().getHeight();
+			System.out.println(tmp.getPassport().getName());
+			if (tmp.getPassport().getName() == "American Shad")
+			{//150x66
+				if (inventory_x + 150 > INV_WIDTH) {
+					inventory_x = 0;
+					inventory_y = inventory_y + 70;
+				}
+				BetaFish tFish = ConstructFish.constructRightFish(0,0,inventory_x,inventory_y);
+				sceneFillItems.add(tFish);
+				inventory_x = inventory_x + tmp.getPassport().getWidth();
 			}
-			if (inventory_x + tmp.getPassport().getWidth() > 300) {
-				inventory_x = 0;
-				inventory_y += inventory_y_max;
-				inventory_y_max = 0;
+			else {
+				if (tmp.getPassport().getHeight() > inventory_y_max) {
+					inventory_y_max = tmp.getPassport().getHeight();
+				}
+				if (inventory_x + tmp.getPassport().getWidth() > INV_WIDTH) {
+					inventory_x = 0;
+					inventory_y += inventory_y_max;
+					inventory_y_max = 0;
+				}
+				sceneFillItems.add(new BetaFish(tmp.getPassport(), inventory_x, inventory_y, 0, 0, true));
+				inventory_x = inventory_x + tmp.getPassport().getWidth();
 			}
-			sceneFillItems.add(new BetaFish(tmp.getPassport(), inventory_x, inventory_y, 0, 0, true));
-			inventory_x = inventory_x + tmp.getPassport().getWidth();
 		}
 
 		else if (tmp instanceof BetaCrab) {
-			if (tmp.getPassport().getHeight() > inventory_y_max) {
-				inventory_y_max = tmp.getPassport().getHeight();
+			if (tmp.getPassport().getName() == "Horseshoe Crab")
+			{
+				if (inventory_x + tmp.getPassport().getWidth() > INV_WIDTH) {
+					System.out.println("here");
+					inventory_x = 0;
+					inventory_y += inventory_y + tmp.getPassport().getHeight()+20;
+				}
+				BetaCrab hCrab = ConstructCrab.constructLeftCrab(0, 1, inventory_x, inventory_y);
+				sceneFillItems.add(hCrab);
+				inventory_x = inventory_x + tmp.getPassport().getWidth();		
 			}
-			if (inventory_x + tmp.getPassport().getWidth() > 300) {
-				inventory_x = 0;
-				inventory_y += inventory_y_max;
-				inventory_y_max = 0;
+			
+			else if (tmp.getPassport().getName() == "Atlantic Blue Crab")
+			{
+				if (inventory_x + tmp.getPassport().getWidth() > INV_WIDTH) {
+					inventory_x = 0;
+					inventory_y += inventory_y += tmp.getPassport().getHeight();
+				}
+				BetaCrab bCrab = ConstructCrab.constructLeftCrab(0, 0, inventory_x, inventory_y);
+				sceneFillItems.add(bCrab);
+				inventory_x = inventory_x + tmp.getPassport().getWidth();		
 			}
-			sceneFillItems.add(new BetaCrab(tmp.getPassport(), inventory_x, inventory_y, 0, 0, true));
-			inventory_x = inventory_x + tmp.getPassport().getWidth();
+
 		}
 
 		else if (tmp instanceof BetaHeron) {
-			if (inventory_x + 150 > 300) {
+			if (inventory_x + 150 > INV_WIDTH) {
 				inventory_x = 0;
 				inventory_y += inventory_y += 100;
 			}
@@ -132,12 +162,12 @@ public class ControllerInventory extends ControllerScene {
 		}
 
 		else if (tmp instanceof BetaVegetation) {
-			if (inventory_x + 100 > 300) {
+			if (inventory_x + tmp.getPassport().getWidth() > INV_WIDTH) {
 				inventory_x = 0;
-				inventory_y += 100;
+				inventory_y += tmp.getPassport().getHeight();
 			}
 			sceneFillItems.add(new BetaVegetation(tmp.getPassport(), inventory_x - 40, inventory_y - 60));
-			inventory_x = inventory_x + 100;
+			inventory_x = inventory_x + tmp.getPassport().getWidth();
 		}
 
 	}
