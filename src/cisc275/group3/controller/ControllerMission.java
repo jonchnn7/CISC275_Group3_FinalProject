@@ -113,7 +113,7 @@ public class ControllerMission extends ControllerScene {
 						break;
 					// SuperMarket Guy (Bass, Shad, Blue Crab) 
 					case 3:
-						tmp = randGen.nextInt(3) + 4
+						tmp = randGen.nextInt(3) + 4;
 					}
 
 					String s = "";
