@@ -5,9 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import cisc275.group3.model.sceneobject.BetaCrab;
 import cisc275.group3.model.sceneobject.BetaVegetation;
-import cisc275.group3.utility.ConstructCrab;
 import cisc275.group3.utility.ConstructVegetation;
 
 public class ObjectVegetationTest {
@@ -19,10 +17,10 @@ public class ObjectVegetationTest {
   
   /**
    * Before each test, create fresh
-   * instances of the test crabs.
+   * instances of the test vegetation.
    */
   @Before
-  public void createCrab() {
+  public void createVegetation() {
     // Vegetation
 	  testVeg1 = ConstructVegetation.constructVegetation(1, 0, 0, 0);
 	  testVeg2 = ConstructVegetation.constructVegetation(2, 1, 100, 0);
@@ -37,9 +35,9 @@ public class ObjectVegetationTest {
   public void testGrow() {
     System.out.println("  Testing grow():");
     
-    testVeg1.grow();
-    testVeg2.grow();
-    testVeg3.grow();
+    testVeg1 = testVeg1.grow();
+    testVeg2 = testVeg2.grow();
+    testVeg3 = testVeg3.grow();
 
     System.out.println("    Testing Grown Vegetation:");
     assertEquals("testVeg1 ID = 70", 70, testVeg1.getPassport().getId());

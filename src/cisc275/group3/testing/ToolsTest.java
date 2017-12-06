@@ -38,6 +38,9 @@ public class ToolsTest {
 	    trimmer = new ToolTrimmer();
 	  }
 	  
+	  /**
+	   * Test the tool attributes
+	   */
 	  @Test
 	  public void ToolCageTest()
 	  {

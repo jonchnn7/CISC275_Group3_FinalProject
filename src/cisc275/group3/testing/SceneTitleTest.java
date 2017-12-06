@@ -24,6 +24,9 @@ public class SceneTitleTest {
 	    testTitle.update();
 	  }
 	  
+	  /**
+	   * test the initial attributes of the scene
+	   */
 	  @Test
 	  public void testCreation() {    
 		    System.out.println("  Testing Initial Conditions");		    

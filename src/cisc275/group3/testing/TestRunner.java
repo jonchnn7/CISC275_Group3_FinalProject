@@ -24,6 +24,9 @@ public class TestRunner {
 		objectCrabTests();
 		printSeparator();
 
+		objectHeronTests();
+		printSeparator();
+
 		objectFishTests();
 		printSeparator();
 
@@ -40,6 +43,9 @@ public class TestRunner {
 		printSeparator();
 		
 		sceneTitleTest();
+		printSeparator();
+		
+		sceneTutorialTest();
 		printSeparator();
 	}
 
@@ -73,6 +79,22 @@ public class TestRunner {
 		}
 
 		System.out.println("Running Object Crab Tests Successful: " + result.wasSuccessful());
+	}
+	
+	/**
+	 * Runs the tests for ObjectHeron.java
+	 */
+	private static void objectHeronTests() {
+		// Scene Object Tests
+		System.out.println("\nRunning Object Heron Tests...");
+
+		result = JUnitCore.runClasses(ObjectHeronTest.class);
+
+		for (Failure failure : result.getFailures()) {
+			System.out.println("Failure: " + failure.toString());
+		}
+
+		System.out.println("Running Object Heron Tests Successful: " + result.wasSuccessful());
 	}
 
 	/**
@@ -144,7 +166,7 @@ public class TestRunner {
 	 */
 	private static void sceneTitleTest() {
 		// Bay Specific Tests
-		System.out.println("\nRunning SceneTitle Tests...");
+		System.out.println("\nRunning Title Scene Tests...");
 
 		result = JUnitCore.runClasses(SceneBayTest.class);
 
@@ -152,7 +174,23 @@ public class TestRunner {
 			System.out.println("Failure: " + failure.toString());
 		}
 
-		System.out.println("SceneTitle Tests Successful: " + result.wasSuccessful());
+		System.out.println("Title Scene Tests Successful: " + result.wasSuccessful());
+	}
+	
+	/**
+	 * Runs the Tutorial Specific tests for SceneTitle.java
+	 */
+	private static void sceneTutorialTest() {
+		// Bay Specific Tests
+		System.out.println("\nRunning Tutorial Scene Tests...");
+
+		result = JUnitCore.runClasses(SceneBayTest.class);
+
+		for (Failure failure : result.getFailures()) {
+			System.out.println("Failure: " + failure.toString());
+		}
+
+		System.out.println("Tutorial Scene Tests Successful: " + result.wasSuccessful());
 	}
 
 	/**
