@@ -119,7 +119,7 @@ public class SceneHQ extends Scene {
 		for (Iterator<SceneObject> iterator = sceneItems.iterator(); iterator.hasNext();) {
 			BetaPerson person = (BetaPerson) iterator.next();
 
-			if (person.getLocation().getX() >= (manifest.getWidth() + person.getPassport().getWidth())) {
+			if (person.getLocation().getX() >= (manifest.getWidth())) {
 				iterator.remove();
 			}
 		}
