@@ -106,15 +106,15 @@ public class ControllerEndGame extends ControllerScene implements LinkDynamics {
 	 */
 	private void addLabelButtons() {
 		finalScore = new JLabel("Final Score: " + Scene.getScore(), JLabel.CENTER);
-		finalScore.setBounds((SCREEN_WIDTH * 6 / 16 ), SCREEN_HEIGHT * 3 / 4, 450, 96);
+		finalScore.setBounds(SCREEN_WIDTH / 2 - 225, SCREEN_HEIGHT * 3 / 4, 450, 96);
 
-		finalScore.setFont(new Font("Roboto", Font.BOLD, 45));
+		finalScore.setFont(new Font("Roboto", Font.BOLD, 52));
 		finalScore.setForeground(Color.white);
 		endGamePanel.add(finalScore);
 
 		resetButton = new JButton("Reset");
 		resetButton.setFont(new Font("Roboto", Font.BOLD, 1));
-		resetButton.setBounds(SCREEN_WIDTH / 3 - 250, SCREEN_HEIGHT * 3 / 4, 300, 96);
+		resetButton.setBounds(SCREEN_WIDTH / 3 - 150, SCREEN_HEIGHT * 3 / 4, 300, 96);
 		resetButton.setIcon(new ImageIcon("img/buttonPics/yellowResetButton.png"));
 		resetButton.setOpaque(false);
 		resetButton.setBorderPainted(false);
@@ -127,7 +127,7 @@ public class ControllerEndGame extends ControllerScene implements LinkDynamics {
 
 		continueButton = new JButton("Continue");
 		continueButton.setFont(new Font("Roboto", Font.BOLD, 1));
-		continueButton.setBounds(SCREEN_WIDTH * 2 / 3 - 50, SCREEN_HEIGHT * 3 / 4, 300, 96);
+		continueButton.setBounds(SCREEN_WIDTH * 2 / 3 - 150, SCREEN_HEIGHT * 3 / 4, 300, 96);
 		continueButton.setIcon(new ImageIcon("img/buttonPics/yellowContinueButton.png"));
 		continueButton.setOpaque(false);
 		continueButton.setBorderPainted(false);
