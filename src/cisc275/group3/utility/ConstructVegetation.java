@@ -44,11 +44,11 @@ public interface ConstructVegetation {
 	 * @return BetaVegetation
 	 */
 	static public BetaVegetation constructVegetation(int depth, int type, double x, double y) {
-		BetaVegetation vegetation = new BetaVegetation(new ObjectId(depth, (int) (VEG_WIDTH * VEG_AR), // height
+		BetaVegetation vegetation = new BetaVegetation(depth, (int) (VEG_WIDTH * VEG_AR), // height
 				VEG_ID[type], // id
 				VEG_FILE[type], // image file
 				VEG_NAME, // name
-				(int) VEG_WIDTH), // width
+				(int) VEG_WIDTH, // width
 				x, // x position
 				y); // y position
 		return vegetation;

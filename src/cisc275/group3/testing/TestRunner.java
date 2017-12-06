@@ -26,6 +26,9 @@ public class TestRunner {
 
 		objectPersonTests();
 		printSeparator();
+		
+		objectVegetationTests();
+		printSeparator();
 
 		sceneBayTests();
 		printSeparator();
@@ -102,6 +105,22 @@ public class TestRunner {
 		}
 
 		System.out.println("Running Object Person Tests Successful: " + result.wasSuccessful());
+	}
+	
+	/**
+	 * Runs the tests for ObjectVegetation.java
+	 */
+	private static void objectVegetationTests() {
+		// Scene Object Tests
+		System.out.println("\nRunning Object Vegetation Tests...");
+
+		result = JUnitCore.runClasses(ObjectVegetationTest.class);
+
+		for (Failure failure : result.getFailures()) {
+			System.out.println("Failure: " + failure.toString());
+		}
+
+		System.out.println("Running Object Vegetation Tests Successful: " + result.wasSuccessful());
 	}
 
 	/**
