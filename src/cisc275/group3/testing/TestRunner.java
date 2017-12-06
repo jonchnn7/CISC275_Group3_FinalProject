@@ -38,6 +38,9 @@ public class TestRunner {
 
 		sceneBayTests();
 		printSeparator();
+		
+		sceneBeachTests();
+		printSeparator();
 
 		abstractSceneTests();
 		printSeparator();
@@ -159,6 +162,22 @@ public class TestRunner {
 		}
 
 		System.out.println("Bay Specific Scene Tests Successful: " + result.wasSuccessful());
+	}
+	
+	/**
+	 * Runs the Beach Specific tests for SceneBeach.java
+	 */
+	private static void sceneBeachTests() {
+		// Bay Specific Tests
+		System.out.println("\nRunning Beach Specific Scene Tests...");
+
+		result = JUnitCore.runClasses(SceneBeachTest.class);
+
+		for (Failure failure : result.getFailures()) {
+			System.out.println("Failure: " + failure.toString());
+		}
+
+		System.out.println("Beach Specific Scene Tests Successful: " + result.wasSuccessful());
 	}
 	
 	/**
