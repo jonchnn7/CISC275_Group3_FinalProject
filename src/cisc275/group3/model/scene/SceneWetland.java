@@ -114,7 +114,6 @@ public class SceneWetland extends Scene {
 		  }
 		  
 		  flyHerons();
-
 			// Remove Off-screen Herons, change heron image, grow Vegetation
 			modifySceneItems();
 
