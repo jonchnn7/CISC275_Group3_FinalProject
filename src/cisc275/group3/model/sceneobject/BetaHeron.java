@@ -111,7 +111,7 @@ public class BetaHeron extends SceneObject implements ActionMove {
 		double dy = speedY;
 
 		int i = randGen.nextInt(100);
-		// 10 percent chance for a flying heron to land or when gets too closed to
+		// 13 percent chance for a flying heron to land or when gets too closed to
 		// bottom of screen
 		if (((i < 13) && (location.getY() > 150) && (location.getX() > 200) && (location.getX() < 1080)
 				&& (hasLanded == false)) || ((location.getY() > 500) && (hasLanded == false))) {

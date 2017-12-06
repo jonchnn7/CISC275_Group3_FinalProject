@@ -21,6 +21,9 @@ public class TestRunner {
 		objectCrabTests();
 		printSeparator();
 
+		objectHeronTests();
+		printSeparator();
+
 		objectFishTests();
 		printSeparator();
 
@@ -73,6 +76,22 @@ public class TestRunner {
 		}
 
 		System.out.println("Running Object Crab Tests Successful: " + result.wasSuccessful());
+	}
+	
+	/**
+	 * Runs the tests for ObjectHeron.java
+	 */
+	private static void objectHeronTests() {
+		// Scene Object Tests
+		System.out.println("\nRunning Object Heron Tests...");
+
+		result = JUnitCore.runClasses(ObjectHeronTest.class);
+
+		for (Failure failure : result.getFailures()) {
+			System.out.println("Failure: " + failure.toString());
+		}
+
+		System.out.println("Running Object Heron Tests Successful: " + result.wasSuccessful());
 	}
 
 	/**
