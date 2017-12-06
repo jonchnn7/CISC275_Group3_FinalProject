@@ -68,8 +68,7 @@ public class ControllerTools extends ControllerScene {
 	 */
 	public ControllerTools(int w, int h, GameWindow f, HashMap<String, Component> cl, EnumSceneType sceneType) {
 		super(w, h, f, cl, sceneType);
-		//toolBg = new ImageIcon("img/toolPics/toolbox_vert_menu.png");
-		toolBg = new ImageIcon("img/toolbox_open_menu.png");
+		toolBg = new ImageIcon("img/toolbox_open_menu2.png");
 	}
 
 	@Override
@@ -85,7 +84,7 @@ public class ControllerTools extends ControllerScene {
 
 		toolPanel.setLayout(null);
 		toolPanel.setPreferredSize(toolSize);
-		toolPanel.setBounds(SCREEN_WIDTH - toolSize.width, 50, toolSize.width, toolSize.height);
+		toolPanel.setBounds(SCREEN_WIDTH - toolSize.width - 120, -5, toolSize.width, toolSize.height);
 
 		addToolButtons();
 
