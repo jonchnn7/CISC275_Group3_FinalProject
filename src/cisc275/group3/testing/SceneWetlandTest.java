@@ -22,6 +22,10 @@ public class SceneWetlandTest {
 	private final int SCENE_HEIGHT = 720;
 	private SceneWetland testWetland;
 
+	private int vegCount = 0;
+	private boolean heronR = false;
+	private boolean heronL = false;
+
 	/**
 	 * Before each test, reset testBay to a new instance of SceneBay.java
 	 */
@@ -42,5 +46,40 @@ public class SceneWetlandTest {
 		System.out.println("  Testing Initial Conditions");
 
 		assertEquals("Created Vegetation = 6", 6, testWetland.getSceneItems().size());
+	}
+
+	/**
+	 * Test to see if vegeGen() is working properly
+	 */
+	@Test
+	public void testVegeGen() {
+		while (vegCount < 10) {
+			vegCount = 0;
+			testWetland.update();
+			testWetland.getSceneItems().forEach(object -> {
+				if ((object.getPassport().getId() == 70) || (object.getPassport().getId() == 71)
+						|| (object.getPassport().getId() == 72)) {
+					vegCount++;
+				}
+			});
+		}
+	}
+	
+	/**
+	 * Test to see if vegeGen() is working properly
+	 */
+	@Test
+	public void testHeronGen() {
+		while (!(heronR == true && heronL == true)) {
+			testWetland.update();
+			testWetland.getSceneItems().forEach(object -> {
+				if (object.getPassport().getId() == 100) {
+					heronR = true;
+				}
+				else if (object.getPassport().getId() == 200) {
+					heronL = true;
+				}
+				});
+		}
 	}
 }
