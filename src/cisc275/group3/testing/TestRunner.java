@@ -47,6 +47,9 @@ public class TestRunner {
 		
 		sceneWetlandTests();
 		printSeparator();
+		
+		sceneBeachMiniTests();
+		printSeparator();
 
 		abstractSceneTests();
 		printSeparator();
@@ -216,6 +219,22 @@ public class TestRunner {
 		}
 
 		System.out.println("Wetland Specific Scene Tests Successful: " + result.wasSuccessful());
+	}
+	
+	/**
+	 *Runs the Wetland Specific tests for SceneBeachMini.java
+	 */
+	private static void sceneBeachMiniTests() {
+		// Bay Specific Tests
+		System.out.println("\nRunning BeachMini Specific Scene Tests...");
+
+		result = JUnitCore.runClasses(SceneBeachMiniTest.class);
+
+		for (Failure failure : result.getFailures()) {
+			System.out.println("Failure: " + failure.toString());
+		}
+
+		System.out.println("BeachMini Specific Scene Tests Successful: " + result.wasSuccessful());
 	}
 
 	/**
