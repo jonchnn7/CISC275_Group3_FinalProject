@@ -32,6 +32,9 @@ public class TestRunner {
 
 		abstractTests();
 		printSeparator();
+		
+		ToolsTest();
+		printSeparator();
 	}
 
 	/**
@@ -128,6 +131,22 @@ public class TestRunner {
 		}
 
 		System.out.println("Generic Scene Tests Successful: " + result.wasSuccessful());
+	}
+	
+	/**
+	 * Runs the tests for ObjectPerson.java
+	 */
+	private static void ToolsTest() {
+		// Scene Object Tests
+		System.out.println("\nRunning Tools Tests...");
+
+		result = JUnitCore.runClasses(ToolsTest.class);
+
+		for (Failure failure : result.getFailures()) {
+			System.out.println("Failure: " + failure.toString());
+		}
+
+		System.out.println("Running Tools Tests Successful: " + result.wasSuccessful());
 	}
 
 	/**
