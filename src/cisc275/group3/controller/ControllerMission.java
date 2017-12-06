@@ -101,35 +101,34 @@ public class ControllerMission extends ControllerScene {
 					switch (currentPersonID) {
 					// BirdWatcher (Heron)
 					case 0:
-						tmp = 5;
+						tmp = 0;
 						break;
 					// Park Ranger (Weeds)
 					case 1:
-						tmp = 6;
+						tmp = 1;
 						break;
-					// Scientist
+					// Scientist (Horeshoe Crab, Sturgeon)
 					case 2:
-						tmp = randGen.nextInt(2) + 3;
+						tmp = randGen.nextInt(2) + 2;
 						break;
-					// fish
+					// SuperMarket Guy (Bass, Shad, Blue Crab) 
 					case 3:
-						tmp = randGen.nextInt(3);
-						break;
+						tmp = randGen.nextInt(3) + 4
 					}
 
 					String s = "";
 					switch (tmp) {
 					case 0:
-						s = "Striped Bass";
+						s = "Great Blue Heron";
 						((ViewOverlayLabel) componentList.get("MissionLabel"))
-								.updateIcon(new ImageIcon("img/missionIconPics/striped_bass_icon.png"));
-						lastMission = 0;
+								.updateIcon(new ImageIcon("img/missionIconPics/heron_mission_icon.png"));
+						lastMission = 2;
 						break;
 					case 1:
-						s = "American Shad";
+						s = "Invasive Plant";
 						((ViewOverlayLabel) componentList.get("MissionLabel"))
-								.updateIcon(new ImageIcon("img/missionIconPics/shad_icon.png"));
-						lastMission = 0;
+								.updateIcon(new ImageIcon("img/missionIconPics/weeds_mission_icon.png"));
+						lastMission = 2;
 						break;
 					case 2:
 						s = "Shortnose Sturgeon";
@@ -138,28 +137,29 @@ public class ControllerMission extends ControllerScene {
 						lastMission = 0;
 						break;
 					case 3:
-						s = "Atlantic Blue Crab";
-						((ViewOverlayLabel) componentList.get("MissionLabel"))
-								.updateIcon(new ImageIcon("img/missionIconPics/crab_blue_icon.png"));
-						lastMission = 1;
-						break;
-					case 4:
 						s = "Horseshoe Crab";
 						((ViewOverlayLabel) componentList.get("MissionLabel"))
 								.updateIcon(new ImageIcon("img/missionIconPics/horeshoe_icon.png"));
 						lastMission = 1;
 						break;
-					case 5:
-						s = "Great Blue Heron";
+						
+					case 4:
+						s = "Striped Bass";
 						((ViewOverlayLabel) componentList.get("MissionLabel"))
-								.updateIcon(new ImageIcon("img/missionIconPics/heron_mission_icon.png"));
-						lastMission = 2;
+								.updateIcon(new ImageIcon("img/missionIconPics/striped_bass_icon.png"));
+						lastMission = 0;
+						break;
+					case 5:
+						s = "American Shad";
+						((ViewOverlayLabel) componentList.get("MissionLabel"))
+								.updateIcon(new ImageIcon("img/missionIconPics/shad_icon.png"));
+						lastMission = 0;
 						break;
 					case 6:
-						s = "Invasive Plant";
+						s = "Atlantic Blue Crab";
 						((ViewOverlayLabel) componentList.get("MissionLabel"))
-								.updateIcon(new ImageIcon("img/missionIconPics/weeds_mission_icon.png"));
-						lastMission = 2;
+								.updateIcon(new ImageIcon("img/missionIconPics/crab_blue_icon.png"));
+						lastMission = 1;
 						break;
 					}
 
