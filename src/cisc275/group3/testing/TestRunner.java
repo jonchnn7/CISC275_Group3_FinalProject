@@ -47,6 +47,9 @@ public class TestRunner {
 		
 		sceneWetlandTests();
 		printSeparator();
+		
+		sceneHQTests();
+		printSeparator();
 
 		abstractSceneTests();
 		printSeparator();
@@ -216,6 +219,22 @@ public class TestRunner {
 		}
 
 		System.out.println("Wetland Specific Scene Tests Successful: " + result.wasSuccessful());
+	}
+	
+	/**
+	 *Runs the HQ Specific tests for SceneWetland.java
+	 */
+	private static void sceneHQTests() {
+		// Bay Specific Tests
+		System.out.println("\nRunning HQ Specific Scene Tests...");
+
+		result = JUnitCore.runClasses(SceneHQTest.class);
+
+		for (Failure failure : result.getFailures()) {
+			System.out.println("Failure: " + failure.toString());
+		}
+
+		System.out.println("HQ Specific Scene Tests Successful: " + result.wasSuccessful());
 	}
 
 	/**

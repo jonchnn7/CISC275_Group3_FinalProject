@@ -35,6 +35,7 @@ import cisc275.group3.view.ViewOverlayLabel;
  * @author Jon
  * @author Jolyne
  * @author Thomas
+ * @author Ryan
  */
 public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkTime {
 	private final String BG_IMAGE = "img/backgrounds/HQ_bg.jpg";
