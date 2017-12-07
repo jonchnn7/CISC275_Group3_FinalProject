@@ -271,7 +271,7 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 		// Objective Continue Button
 		ImageIcon tutorialButtonIcon = new ImageIcon("img/tutorialPics/PressToContinueFinal.png");
 		tutorialButton = new ViewOverlayButton(tutorialButtonIcon, 200, 200);
-		tutorialButton.setBounds(SCREEN_WIDTH - 350, SCREEN_HEIGHT - 200, 200, 200);
+		tutorialButton.setBounds(SCREEN_WIDTH - 350, SCREEN_HEIGHT * 11 /16, 200, 200);
 		tutorialButton.setName("Continue");
 
 		mainPane.setLayer(tutorialButton, EnumLayerCodeTutorial.ButtonContinueHidden.getCode());
@@ -349,7 +349,7 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 		// Objective Arrow Label
 				ImageIcon labelIcon = new ImageIcon("img/tutorial_arrow_leftUp.png");
 				tutorialLabel = new ViewOverlayLabel(null, labelIcon, 150, 120, "");
-				tutorialLabel.setBounds(SCREEN_WIDTH - 220, 80, 150, 120);
+				tutorialLabel.setBounds(SCREEN_WIDTH*29/32, 80, 150, 120);
 				tutorialLabel.setName("ToolsArrow");
 
 				mainPane.setLayer(tutorialLabel, EnumLayerCodeTutorial.LabelToolsArrowHidden.getCode());
@@ -408,7 +408,7 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 		
 		ImageIcon labelIcon1 = new ImageIcon("img/tutorial_arrow_downRight.png");
 		tutorialLabel = new ViewOverlayLabel(null, labelIcon1, 150, 120, "");
-		tutorialLabel.setBounds((SCREEN_WIDTH + 375)/2, SCREEN_HEIGHT - 125, 150,
+		tutorialLabel.setBounds(SCREEN_WIDTH*23/32, SCREEN_HEIGHT - 125, 150,
 				120);
 		tutorialLabel.setName("ScoreArrow");
 
