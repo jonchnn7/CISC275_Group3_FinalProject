@@ -140,7 +140,7 @@ public abstract class ControllerScene implements Serializable {
 
 		if (((missionNum.equals("0")) && (Scene.getCurrentMission().getTargetObject() != null))
 				|| (missionNum.equals("-2"))) {
-			missionNum = "Complete!";
+			missionNum = "  Complete!";
 			Scene.getCurrentMission().setTargetObject(null);
 			Scene.getCurrentMission().setObjectNum(-2);
 			((ViewOverlayLabel) componentList.get("MissionLabel")).updateIcon(null);

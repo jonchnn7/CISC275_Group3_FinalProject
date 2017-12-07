@@ -103,7 +103,7 @@ public class ControllerInventory extends ControllerScene {
 			System.out.println(tmp.getPassport().getName());
 			if (tmp.getPassport().getName() == "American Shad")
 			{//150x66
-				if (inventory_x + 150 > INV_WIDTH) {
+				if (inventory_x + 170 > INV_WIDTH) {
 					inventory_x = 0;
 					inventory_y = inventory_y + 70;
 				}
@@ -121,7 +121,7 @@ public class ControllerInventory extends ControllerScene {
 					inventory_y_max = 0;
 				}
 				sceneFillItems.add(new BetaFish(tmp.getPassport(), inventory_x, inventory_y, 0, 0, true));
-				inventory_x = inventory_x + tmp.getPassport().getWidth();
+				inventory_x = inventory_x + tmp.getPassport().getWidth()+20;
 			}
 		}
 

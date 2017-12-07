@@ -117,8 +117,8 @@ public class ControllerOverlay extends ControllerScene {
 		timeLabelString = "0";
 
 		// Mission Label Parameters
-		missionLabelBg = new ImageIcon("img/overlay_bg_white_small.png");
-		missionLabelWidth = 175;
+		missionLabelBg = new ImageIcon("img/overlay_bg_white_small_2.png");
+		missionLabelWidth = 220;
 		missionLabelHeight = 95;
 		missionLabelString = "";
 
@@ -326,7 +326,7 @@ public class ControllerOverlay extends ControllerScene {
 	private void createMissionLabel() {
 		missionLabelPanel = new ViewOverlayLabel(missionLabelImage, missionLabelBg, missionLabelWidth,
 				missionLabelHeight, missionLabelString);
-		missionLabelPanel.setBounds((SCREEN_WIDTH - missionLabelWidth) / 2, 0, missionLabelWidth, missionLabelHeight);
+		missionLabelPanel.setBounds((SCREEN_WIDTH / 2) - (missionLabelWidth /2), 0, missionLabelWidth, missionLabelHeight);
 		missionLabelPanel.setName("MissionLabel");
 
 		// missionLabelPanel.getLabel().setFont(new Font("Roboto", Font.BOLD, 16));
