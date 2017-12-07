@@ -97,6 +97,7 @@ public class SceneHQ extends Scene {
 				while (x == prevPerson) {
 					x = randGen.nextInt(4);
 				}
+				
 				ControllerMission.setPersonID(x);
 				sceneItems.add(ConstructPerson.constructPerson(randGen.nextInt(20) - 10, // depth
 						x, // type

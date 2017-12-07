@@ -33,7 +33,7 @@ public interface ConstructPerson {
 	static final int[] ID = { 50, 51, 52, 53 };
 
 	// Person x-axis Speed
-	static final int SPEED = 30;
+	static final int SPEED = 60;
 
 	/**
 	 * Returns a constructed BetaPerson object

@@ -68,7 +68,7 @@ public class ControllerTools extends ControllerScene {
 	 */
 	public ControllerTools(int w, int h, GameWindow f, HashMap<String, Component> cl, EnumSceneType sceneType) {
 		super(w, h, f, cl, sceneType);
-		toolBg = new ImageIcon("img/toolbox_open_menu2.png");
+		toolBg = new ImageIcon("img/toolbox_open_menu_3.png");
 	}
 
 	@Override
