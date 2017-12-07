@@ -10,17 +10,18 @@ import org.junit.runner.notification.Failure;
  * Runs all testing classes and outputs results and error messages.
  * 
  * @author Scott
+ * @author Thomas
  */
 public class TestRunner {
 	private static Result result;
 
 	public static void main(String[] args) {
-	  EnumLayerCodeTest();
-	  printSeparator();
-	  
-    ToolsTest();
-    printSeparator();
-	    
+		EnumLayerCodeTest();
+		printSeparator();
+
+		ToolsTest();
+		printSeparator();
+
 		abstractSceneObjectTests();
 		printSeparator();
 
@@ -35,31 +36,31 @@ public class TestRunner {
 
 		objectPersonTests();
 		printSeparator();
-		
+
 		objectVegetationTests();
 		printSeparator();
 
 		sceneBayTests();
 		printSeparator();
-		
+
 		sceneBeachTests();
 		printSeparator();
-		
+
 		sceneWetlandTests();
 		printSeparator();
-		
+
 		sceneBeachMiniTests();
 		printSeparator();
-		
+
 		sceneHQTests();
 		printSeparator();
 
 		abstractSceneTests();
 		printSeparator();
-		
+
 		sceneTitleTest();
 		printSeparator();
-		
+
 		sceneTutorialTest();
 		printSeparator();
 	}
@@ -225,7 +226,7 @@ public class TestRunner {
 	}
 
 	/**
-	 *Runs the BeachMinigame Specific tests for SceneBeachMini.java
+	 * Runs the BeachMinigame Specific tests for SceneBeachMini.java
 	 */
 	private static void sceneBeachMiniTests() {
 		// Bay Specific Tests
@@ -236,20 +237,20 @@ public class TestRunner {
 		for (Failure failure : result.getFailures()) {
 			System.out.println("Failure: " + failure.toString());
 		}
-			
+
 		System.out.println("BeachMini Specific Scene Tests Successful: " + result.wasSuccessful());
 
-		}
-		
+	}
+
 	/**
-	 *Runs the HQ Specific tests for SceneWetland.java
+	 * Runs the HQ Specific tests for SceneWetland.java
 	 */
 	private static void sceneHQTests() {
 		// Bay Specific Tests
 		System.out.println("\nRunning HQ Specific Scene Tests...");
 
 		result = JUnitCore.runClasses(SceneHQTest.class);
-		
+
 		for (Failure failure : result.getFailures()) {
 			System.out.println("Failure: " + failure.toString());
 		}
@@ -264,7 +265,7 @@ public class TestRunner {
 		// Bay Specific Tests
 		System.out.println("\nRunning Title Scene Tests...");
 
-		result = JUnitCore.runClasses(SceneBayTest.class);
+		result = JUnitCore.runClasses(SceneTitleTest.class);
 
 		for (Failure failure : result.getFailures()) {
 			System.out.println("Failure: " + failure.toString());
@@ -312,13 +313,13 @@ public class TestRunner {
 		// Scene Object Tests
 		System.out.println("\nRunning Tools Tests...");
 
-		result = JUnitCore.runClasses(SceneTitleTest.class);
+		result = JUnitCore.runClasses(ToolsTest.class);
 
 		for (Failure failure : result.getFailures()) {
 			System.out.println("Failure: " + failure.toString());
 		}
 
-		System.out.println("ToolsTest Successful: " + result.wasSuccessful());
+		System.out.println("Tools Test Successful: " + result.wasSuccessful());
 	}
 
 	/**

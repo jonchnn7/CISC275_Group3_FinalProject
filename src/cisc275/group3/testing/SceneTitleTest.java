@@ -8,6 +8,14 @@ import org.junit.Test;
 import cisc275.group3.model.scene.SceneTitle;
 import cisc275.group3.utility.EnumSceneType;
 
+
+/**
+ * Test class for SceneTitle.java properties
+ * and methods not included in the abstract
+ * class Scene.java.
+ * 
+ * @author Thomas
+ */
 public class SceneTitleTest {
 	// Scene Variables
 	  private final int SCENE_WIDTH = 1280;

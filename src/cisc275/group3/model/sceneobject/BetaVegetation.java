@@ -48,6 +48,8 @@ public class BetaVegetation extends SceneObject {
    * Checks to see the size of vegetation
    * and increases its size if it is below
    * the third length
+   * 
+   * @return BetaVegatation - new betavegatation state
    */
   public BetaVegetation grow() {
 	  if(this.getPassport().getId() < 72) {
