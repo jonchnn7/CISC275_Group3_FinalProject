@@ -14,6 +14,8 @@ public class EnumLayerCodeTest {
    */
   @Test
   public void contractTests() {
+    System.out.println("  Testing Layer Code Enforcement");
+
     assertEquals("EndGame = 25", 25, EnumLayerCode.EndGame.getCode());
     assertEquals("MainTop = 20", 20, EnumLayerCode.MainTop.getCode());
     assertEquals("MissionRequest = 16", 16, EnumLayerCode.MissionRequest.getCode());

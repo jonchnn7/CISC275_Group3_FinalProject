@@ -10,13 +10,15 @@ import org.junit.runner.notification.Failure;
  * Runs all testing classes and outputs results and error messages.
  * 
  * @author Scott
- * @author Thomas
  */
 public class TestRunner {
 	private static Result result;
 
 	public static void main(String[] args) {
 		EnumLayerCodeTest();
+		printSeparator();
+
+		EnumLayerCodeTutorialTest();
 		printSeparator();
 
 		ToolsTest();
@@ -79,6 +81,22 @@ public class TestRunner {
 		}
 
 		System.out.println("Layer Code Tests Successful: " + result.wasSuccessful());
+	}
+
+	/**
+	 * Runs the EnumLayerCodeTutorial tests for EnumLayerCodeTutorialTest.java
+	 */
+	private static void EnumLayerCodeTutorialTest() {
+		// Generic Scene Object Tests
+		System.out.println("\nRunning Layer Code Tutorial Tests...");
+
+		result = JUnitCore.runClasses(EnumLayerCodeTutorialTest.class);
+
+		for (Failure failure : result.getFailures()) {
+			System.out.println("Failure: " + failure.toString());
+		}
+
+		System.out.println("Layer Code Tutorial Tests Successful: " + result.wasSuccessful());
 	}
 
 	/**

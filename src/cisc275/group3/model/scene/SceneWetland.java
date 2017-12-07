@@ -142,7 +142,7 @@ public class SceneWetland extends Scene {
   }
   
   /**
-   * Moves Herons with ids of 100 or 200
+   * Move Herons with ids of 100 or 200
    */
   private void flyHerons() {
     // Fly herons
@@ -158,10 +158,10 @@ public class SceneWetland extends Scene {
   /**
    * Generates new vegetation at 
    * a random x and y location if
-   * the number of items < 10.
+   * the number of items < 13.
    */
   private void vegeGen() {
-    if (sceneItems.size() < 10) {
+    if (sceneItems.size() < 13) {
       sceneItems.add(ConstructVegetation.constructVegetation(
           randGen.nextInt(20) - 10, // depth
           0, // type
