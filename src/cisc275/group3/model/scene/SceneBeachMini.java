@@ -79,7 +79,7 @@ public class SceneBeachMini extends Scene implements ConstructCrab {
 	@Override
 	public void update() {
 		sceneItems.forEach((crab) -> {
-			if (crab.getPassport().getId() == 100) {
+			if (crab.getPassport().getId() == 200) {
 				((BetaCrab) crab).move();
 			}
 		});
@@ -92,7 +92,7 @@ public class SceneBeachMini extends Scene implements ConstructCrab {
 	 */
 	public void update(double dx) {
 		sceneItems.forEach((crab) -> {
-			if (crab.getPassport().getId() == 200) {
+			if (crab.getPassport().getId() == 300) {
 				((BetaCrab) crab).move(dx);
 			}
 		});

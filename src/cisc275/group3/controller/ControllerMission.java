@@ -115,7 +115,7 @@ public class ControllerMission extends ControllerScene {
 					case 3:
 						tmp = randGen.nextInt(3) + 4;
 					}
-
+					
 					String s = "";
 					switch (tmp) {
 					case 0:
@@ -192,6 +192,10 @@ public class ControllerMission extends ControllerScene {
 		missionPanel.add(missionButton);
 	}
 
+	/**
+	 *  Set the ID of the person
+	 * @param tmpID int - the person ID
+	 */
 	public static void setPersonID(int tmpID) {
 		currentPersonID = tmpID;
 	}

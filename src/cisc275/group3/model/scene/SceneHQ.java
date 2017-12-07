@@ -35,6 +35,9 @@ public class SceneHQ extends Scene {
 		if (getManifest().getSceneType() == EnumSceneType.TUTORIAL) {
 			tutorialFill();
 		}
+		else {
+			fillScene();
+		}
 	}
 
 	/**
@@ -69,6 +72,14 @@ public class SceneHQ extends Scene {
 	private void tutorialFill() {
 
 	}
+	
+	/**
+	 * @return a variable indicating the type of the previously generated person
+	 */
+	public int getPrevPerson() {
+		return prevPerson;
+	}
+	
 
 	/**
 	 * Overridden from Scene.java abstract method. People are generated that will be

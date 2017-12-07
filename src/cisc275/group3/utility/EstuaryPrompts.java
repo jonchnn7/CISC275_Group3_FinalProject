@@ -21,18 +21,22 @@ public final class EstuaryPrompts {
 	   * Generates a string array that has all of the prompts
 	   */
 	public EstuaryPrompts() {
-		
-		
-		
+
 		
 	}
 	
+	/**
+	 * Based on the mission generate the appropriate prompt
+	 * @param m Mission - Mission that you want to load a prompt for
+	 * 
+	 * @return String - the image path for the prompt image
+	 */
 	public String getPrompt(Mission m) {
 		switch (Scene.getCurrentMission().getTargetNameForFact()) {
 		case "Striped Bass":
 			return "img/estuaryPromtPics/speech_bubble_left_striped_bass.png";
 		case "American Shad":
-			return "img/estuaryPromtPics/speech_bubble_left_pics.png";
+			return "img/estuaryPromtPics/speech_bubble_left_american_shad.png";
 		case "Shortnose Sturgeon":
 			return "img/estuaryPromtPics/speech_bubble_left_shortnose_sturgeon.png";
 		case "Atlantic Blue Crab":

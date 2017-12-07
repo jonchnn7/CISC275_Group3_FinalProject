@@ -50,6 +50,12 @@ public class TestRunner {
 		
 		sceneWetlandTests();
 		printSeparator();
+		
+		sceneBeachMiniTests();
+		printSeparator();
+		
+		sceneHQTests();
+		printSeparator();
 
 		abstractSceneTests();
 		printSeparator();
@@ -60,19 +66,19 @@ public class TestRunner {
 		sceneTutorialTest();
 		printSeparator();
 	}
-	
-	 /**
-   * Runs the EnumLayerCode tests for EnumLayerCodeTest.java
-   */
-  private static void EnumLayerCodeTest() {
-    // Generic Scene Object Tests
-    System.out.println("\nRunning Layer Code Tests...");
 
-    result = JUnitCore.runClasses(EnumLayerCodeTest.class);
+	/**
+	 * Runs the EnumLayerCode tests for EnumLayerCodeTest.java
+	 */
+	private static void EnumLayerCodeTest() {
+		// Generic Scene Object Tests
+		System.out.println("\nRunning Layer Code Tests...");
 
-    for (Failure failure : result.getFailures()) {
-      System.out.println("Failure: " + failure.toString());
-    }
+		result = JUnitCore.runClasses(EnumLayerCodeTest.class);
+
+	  for (Failure failure : result.getFailures()) {
+	    System.out.println("Failure: " + failure.toString());
+	  }
 
     System.out.println("Layer Code Tests Successful: " + result.wasSuccessful());
   }
@@ -92,6 +98,7 @@ public class TestRunner {
 
    System.out.println("Layer Code Tutorial Tests Successful: " + result.wasSuccessful());
  }
+
 
 	/**
 	 * Runs the Generic/Shared tests for AbstractObjectTests.java
@@ -222,7 +229,7 @@ public class TestRunner {
 	}
 
 	/**
-	 *Runs the Wetland Specific tests for SceneWetland.java
+	 * Runs the Wetland Specific tests for SceneWetland.java
 	 */
 	private static void sceneWetlandTests() {
 		// Bay Specific Tests
@@ -235,6 +242,39 @@ public class TestRunner {
 		}
 
 		System.out.println("Wetland Specific Scene Tests Successful: " + result.wasSuccessful());
+	}
+
+	/**
+	 *Runs the BeachMinigame Specific tests for SceneBeachMini.java
+	 */
+	private static void sceneBeachMiniTests() {
+		// Bay Specific Tests
+		System.out.println("\nRunning BeachMini Specific Scene Tests...");
+
+		result = JUnitCore.runClasses(SceneBeachMiniTest.class);
+
+		for (Failure failure : result.getFailures()) {
+			System.out.println("Failure: " + failure.toString());
+		}
+			
+		System.out.println("BeachMini Specific Scene Tests Successful: " + result.wasSuccessful());
+
+		}
+		
+	/**
+	 *Runs the HQ Specific tests for SceneWetland.java
+	 */
+	private static void sceneHQTests() {
+		// Bay Specific Tests
+		System.out.println("\nRunning HQ Specific Scene Tests...");
+
+		result = JUnitCore.runClasses(SceneHQTest.class);
+		
+		for (Failure failure : result.getFailures()) {
+			System.out.println("Failure: " + failure.toString());
+		}
+
+		System.out.println("HQ Specific Scene Tests Successful: " + result.wasSuccessful());
 	}
 
 	/**
