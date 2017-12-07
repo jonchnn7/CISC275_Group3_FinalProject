@@ -40,8 +40,8 @@ public class SceneTutorialTest {
 		    System.out.println("  Testing Initial Conditions");		    
 		    assertEquals("SceneTitle Time = 0", 0, testTutorial.getTime());
 
-		    assertEquals("Scene has a crab", "Atlantic Blue Crab", testTutorial.getSceneItems().get(0).getPassport().getName());
-		    assertEquals("Scene has a striped bass = 0", "Striped Bass", testTutorial.getSceneItems().get(1).getPassport().getName());
+		    assertEquals("Scene has a crab", "Horseshoe Crab", testTutorial.getSceneItems().get(0).getPassport().getName());
+		    assertEquals("Scene has a striped bass", "Striped Bass", testTutorial.getSceneItems().get(1).getPassport().getName());
 		    assertEquals("Scene has a heron", "Great Blue Heron", testTutorial.getSceneItems().get(2).getPassport().getName());
 		    
 		  }
