@@ -63,19 +63,22 @@ public class SceneTutorial extends Scene implements ConstructCrab, ConstructFish
 	protected void fillScene() {
 
 		// Add Crab
-		sceneItems.add(ConstructCrab.constructCrab(5, // depth
-				0, // type
+		sceneItems.add(ConstructCrab.constructCrab(
+		    5, // depth
+				1, // type
 				getManifest().getWidth()/2 - 63, // x location
 				getManifest().getHeight() * 4 / 5 - 50)); // y location
 
 		// Add Fish
-		sceneItems.add(ConstructFish.constructRightFish(5, // depth
+		sceneItems.add(ConstructFish.constructRightFish(
+		    5, // depth
 				1, // type
 				getManifest().getWidth()/6 - 50, // x location
 				getManifest().getHeight() * 4 / 5 - 60)); // y location
 
 		// Add Heron
-		sceneItems.add(ConstructHeron.constructRightHeron(5, // depth
+		sceneItems.add(ConstructHeron.constructRightHeron(
+		    5, // depth
 				1, // type
 				getManifest().getWidth()*5/6 - 90, // x location
 				getManifest().getHeight() * 4 / 5 - 80, // y location
