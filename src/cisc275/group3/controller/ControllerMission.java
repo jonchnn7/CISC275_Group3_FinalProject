@@ -115,7 +115,6 @@ public class ControllerMission extends ControllerScene {
 					case 3:
 						tmp = randGen.nextInt(3) + 4;
 					}
-					
 					String s = "";
 					switch (tmp) {
 					case 0:

@@ -72,8 +72,8 @@ public class ControllerInventory extends ControllerScene {
 	@Override
 	protected void createScene() {
 
-		scene = new SceneInventory("Inventory", 0, 0, INV_WIDTH, INV_HEIGHT, EnumSceneType.MENU, "img/inventoryPics/inventory_menu_small.png");
-		viewGame = new ViewGame(INV_WIDTH, INV_HEIGHT, scene.getSceneItems(), scene.getManifest().getBG());
+		scene = new SceneInventory("Inventory", 0, 0, 340, 300, EnumSceneType.MENU, "img/inventoryPics/inventory_menu_small.png");
+		viewGame = new ViewGame(340, 300, scene.getSceneItems(), scene.getManifest().getBG());
 
 		viewGame.setBounds(100, 0, INV_WIDTH, INV_HEIGHT);
 		viewGame.setName("InventoryLayer");
@@ -162,12 +162,12 @@ public class ControllerInventory extends ControllerScene {
 		}
 
 		else if (tmp instanceof BetaVegetation) {
-			if (inventory_x + tmp.getPassport().getWidth() > INV_WIDTH) {
+			if (inventory_x + 100 > 340) {
 				inventory_x = 0;
-				inventory_y += tmp.getPassport().getHeight();
+				inventory_y += 100;
 			}
-			sceneFillItems.add(new BetaVegetation(tmp.getPassport(), inventory_x - 40, inventory_y - 60));
-			inventory_x = inventory_x + tmp.getPassport().getWidth();
+			sceneFillItems.add(new BetaVegetation(tmp.getPassport(), inventory_x, inventory_y));
+			inventory_x = inventory_x + 100;
 		}
 
 	}
