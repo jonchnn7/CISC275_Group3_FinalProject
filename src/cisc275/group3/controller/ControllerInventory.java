@@ -166,7 +166,6 @@ public class ControllerInventory extends ControllerScene {
 				inventory_x = 0;
 				inventory_y += 100;
 			}
-			System.out.print(tmp.getPassport().getHeight());
 			sceneFillItems.add(new BetaVegetation(tmp.getPassport(), inventory_x, inventory_y-80));
 			inventory_x = inventory_x + 100;
 		}
