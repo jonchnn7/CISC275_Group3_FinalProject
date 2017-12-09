@@ -5,14 +5,14 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import cisc275.group3.sceneobject.BetaVegetation;
+import cisc275.group3.sceneobject.ObjectVegetation;
 import cisc275.group3.utility.ConstructVegetation;
 
 public class ObjectVegetationTest {
   //Vegetation
-  BetaVegetation testVeg1;
-  BetaVegetation testVeg2;
-  BetaVegetation testVeg3;
+  ObjectVegetation testVeg1;
+  ObjectVegetation testVeg2;
+  ObjectVegetation testVeg3;
 
   
   /**

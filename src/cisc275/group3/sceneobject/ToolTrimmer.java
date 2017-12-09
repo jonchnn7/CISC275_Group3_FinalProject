@@ -16,7 +16,6 @@ public class ToolTrimmer extends ToolObject {
    */
   public ToolTrimmer() {
     super();
-    clickType = "Trimmer";
     toolName = "Trimmer";
   }
 }

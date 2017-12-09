@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import cisc275.group3.scene.SceneBeach;
-import cisc275.group3.sceneobject.BetaCrab;
+import cisc275.group3.sceneobject.ObjectCrab;
 import cisc275.group3.utility.EnumSceneType;
 
 /**
@@ -51,7 +51,7 @@ public class SceneBeachTest {
 	    
 	    // Count left and right crabs
 	    testBeach.getSceneItems().forEach((crab)->{
-	      if (((BetaCrab)crab).getLeftCrab()) {
+	      if (((ObjectCrab)crab).getLeftCrab()) {
 	        leftCrabCount += 1;
 	      } else {
 	        rightCrabCount += 1;
@@ -115,7 +115,7 @@ public class SceneBeachTest {
 	  @Test
 	  public void testCrabGen() {
 	    System.out.println("  Testing New Crab Generation");
-	    double updateCount = SCENE_WIDTH / (((BetaCrab)testBeach.getSceneItems().get(0)).getSpeedX()*1.2);
+	    double updateCount = SCENE_WIDTH / (((ObjectCrab)testBeach.getSceneItems().get(0)).getSpeedX()*1.2);
 	    int countInitial = testBeach.getSceneItems().size();
 	    
 	    for (int i=0; i < updateCount; i++) {

@@ -160,7 +160,7 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 		}
 
 		if ((!Scene.getCurrentMission().isDoneMission()) && !(Scene.getCurrentMission().getTargetObject() == null)) {
-			((LinkTime)scene).updateTime();
+			((SceneHQ)scene).updateTime();
 		} else {
 			if (((SceneHQ)scene).getTime() != 0) {
 				scene.missionScore();

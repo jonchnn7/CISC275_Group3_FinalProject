@@ -12,7 +12,6 @@ package cisc275.group3.sceneobject;
 public abstract class ToolObject {
 
   // Item Properties
-  protected String clickType;
   protected String toolName;
 	
   /**

@@ -104,7 +104,7 @@ public class ControllerBeachMini extends ControllerScene implements LinkDynamics
 	@Override
 	public void update() {
 		if (mainPane.getLayer(componentList.get("BeachMini")) == EnumLayerCode.MainMapToolsTime.getCode()) {
-			((LinkDynamics)scene).update();
+			((SceneBeachMini)scene).update();
 			viewGame.updatePanel(scene.getSceneItems());
 		}
 	}

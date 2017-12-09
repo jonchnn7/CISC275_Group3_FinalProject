@@ -13,14 +13,14 @@ import cisc275.group3.utility.ObjectId;
  * 
  * @author Jon
  */
-public class BetaHeron extends SceneObject implements ActionMove {
+public class ObjectHeron extends SceneObject implements ActionMove {
 	protected double speedX; // x-axis speed
 	protected double speedY; // y-axis speed
 	protected boolean landed; // determines if bird has landed (or is moving)
 	protected boolean hasLanded; // determines if bird has/is landed at one point
 	protected boolean leftHeron; // moving left
 
-	public BetaHeron(ObjectId id, double x, double y, double sx, double sy, boolean lf) {
+	public ObjectHeron(ObjectId id, double x, double y, double sx, double sy, boolean lf) {
 		super(id, x, y);
 		speedX = sx;
 		speedY = sy;
@@ -50,7 +50,7 @@ public class BetaHeron extends SceneObject implements ActionMove {
 	 *            boolean-left moving heron
 	 * 
 	 */
-	public BetaHeron(ObjectId id, double x, double y, double sx, double sy, boolean land, boolean hasland, boolean lf) {
+	public ObjectHeron(ObjectId id, double x, double y, double sx, double sy, boolean land, boolean hasland, boolean lf) {
 		super(id, x, y);
 		speedX = sx;
 		speedY = sy;
@@ -92,7 +92,7 @@ public class BetaHeron extends SceneObject implements ActionMove {
 	 * @param lf
 	 *            boolean-left moving heron
 	 */
-	public BetaHeron(int d, int h, int id, String imFi, String n, int w, double x, double y, double sx, double sy,
+	public ObjectHeron(int d, int h, int id, String imFi, String n, int w, double x, double y, double sx, double sy,
 			boolean land, boolean hasland, boolean lf) {
 		this(new ObjectId(d, h, id, imFi, n, w), x, y, sx, sy, land, hasland, lf);
 	}

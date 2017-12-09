@@ -79,7 +79,7 @@ public class ControllerWetland extends ControllerScene implements LinkDynamics, 
   public void update() {
     if (mainPane.getLayer(componentList.get("Wetland")) == EnumLayerCode.MainAll.getCode()) {
       // Update Model
-      ((LinkDynamics)scene).update();
+      ((SceneWetland)scene).update();
       viewGame.updatePanel(scene.getSceneItems());
     }
   }

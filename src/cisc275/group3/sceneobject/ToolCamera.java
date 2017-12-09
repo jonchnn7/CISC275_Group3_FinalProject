@@ -16,7 +16,6 @@ public class ToolCamera extends ToolObject {
    */
   public ToolCamera() {
     super();
-    clickType = "Camera";
     toolName = "Camera";
   }
 }

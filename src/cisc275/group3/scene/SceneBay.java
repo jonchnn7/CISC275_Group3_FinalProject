@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.util.Iterator;
 
 import cisc275.group3.sceneobject.ActionMove;
-import cisc275.group3.sceneobject.BetaFish;
+import cisc275.group3.sceneobject.ObjectFish;
 import cisc275.group3.sceneobject.SceneObject;
 import cisc275.group3.utility.ConstructFish;
 import cisc275.group3.utility.EnumSceneType;
@@ -123,7 +123,7 @@ public class SceneBay extends Scene implements ConstructFish {
 	 */
 	private void removeFish() {
 		for (Iterator<SceneObject> iterator = sceneItems.iterator(); iterator.hasNext();) {
-			BetaFish fish = (BetaFish) iterator.next();
+			ObjectFish fish = (ObjectFish) iterator.next();
 
 			if (!fish.getLeftFish()
 					&& fish.getLocation().getX() >= (manifest.getWidth() + fish.getPassport().getWidth())) {

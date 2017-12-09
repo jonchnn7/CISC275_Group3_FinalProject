@@ -1,6 +1,6 @@
 package cisc275.group3.utility;
 
-import cisc275.group3.sceneobject.BetaCrab;
+import cisc275.group3.sceneobject.ObjectCrab;
 
 /**
  * Interface to simplify the construction of crab objects. This code used to be
@@ -50,8 +50,8 @@ public interface ConstructCrab {
 	 *            double-y-axis location
 	 * @return BetaCrab
 	 */
-	static public BetaCrab constructLeftCrab(int depth, int type, double x, double y) {
-		BetaCrab leftCrab = new BetaCrab(depth, (int) (CRAB_WIDTH[type] * CRAB_AR[type]), // height
+	static public ObjectCrab constructLeftCrab(int depth, int type, double x, double y) {
+		ObjectCrab leftCrab = new ObjectCrab(depth, (int) (CRAB_WIDTH[type] * CRAB_AR[type]), // height
 				CRAB_ID[type], // id
 				LEFT_FILE[type], // image file
 				CRAB_NAME[type], // name
@@ -78,8 +78,8 @@ public interface ConstructCrab {
 	 *            double-y-axis location
 	 * @return BetaCrab
 	 */
-	static public BetaCrab constructRightCrab(int depth, int type, double x, double y) {
-		BetaCrab rightCrab = new BetaCrab(depth, (int) (CRAB_WIDTH[type] * CRAB_AR[type]), // height
+	static public ObjectCrab constructRightCrab(int depth, int type, double x, double y) {
+		ObjectCrab rightCrab = new ObjectCrab(depth, (int) (CRAB_WIDTH[type] * CRAB_AR[type]), // height
 				CRAB_ID[type], // id
 				RIGHT_FILE[type], // image file
 				CRAB_NAME[type], // name
@@ -105,8 +105,8 @@ public interface ConstructCrab {
 	 *            double-y-axis location
 	 * @return BetaCrab
 	 */
-	static public BetaCrab constructCrab(int depth, int type, double x, double y) {
-		BetaCrab crab = new BetaCrab(depth, (int) (CRAB_WIDTH[type] * CRAB_AR[type]), // height
+	static public ObjectCrab constructCrab(int depth, int type, double x, double y) {
+		ObjectCrab crab = new ObjectCrab(depth, (int) (CRAB_WIDTH[type] * CRAB_AR[type]), // height
 				CRAB_ID[type], // id
 				RIGHT_FILE[type], // image file
 				CRAB_NAME[type], // name

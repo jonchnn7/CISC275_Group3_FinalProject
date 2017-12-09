@@ -1,7 +1,7 @@
 package cisc275.group3.scene;
 
 import cisc275.group3.sceneobject.ActionMove;
-import cisc275.group3.sceneobject.BetaCrab;
+import cisc275.group3.sceneobject.ObjectCrab;
 import cisc275.group3.utility.ConstructCrab;
 import cisc275.group3.utility.EnumSceneType;
 import cisc275.group3.utility.SceneId;
@@ -94,7 +94,7 @@ public class SceneBeachMini extends Scene implements ConstructCrab {
 	public void update(double dx) {
 		sceneItems.forEach((crab) -> {
 			if (crab.getPassport().getId() == 300) {
-				((BetaCrab) crab).move(dx);
+				((ObjectCrab) crab).move(dx);
 			}
 		});
 	}

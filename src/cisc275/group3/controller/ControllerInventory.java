@@ -8,10 +8,10 @@ import java.util.Iterator;
 import javax.swing.JPanel;
 
 import cisc275.group3.scene.SceneInventory;
-import cisc275.group3.sceneobject.BetaCrab;
-import cisc275.group3.sceneobject.BetaFish;
-import cisc275.group3.sceneobject.BetaHeron;
-import cisc275.group3.sceneobject.BetaVegetation;
+import cisc275.group3.sceneobject.ObjectCrab;
+import cisc275.group3.sceneobject.ObjectFish;
+import cisc275.group3.sceneobject.ObjectHeron;
+import cisc275.group3.sceneobject.ObjectVegetation;
 import cisc275.group3.sceneobject.SceneObject;
 import cisc275.group3.utility.ConstructCrab;
 import cisc275.group3.utility.ConstructFish;
@@ -96,7 +96,7 @@ public class ControllerInventory extends ControllerScene {
 	 */
 	public static void addItem(SceneObject tmp) {
 		// Add Item
-		if (tmp instanceof BetaFish) {
+		if (tmp instanceof ObjectFish) {
 			System.out.println(tmp.getPassport().getName());
 			if (tmp.getPassport().getName() == "American Shad")
 			{//150x66
@@ -104,7 +104,7 @@ public class ControllerInventory extends ControllerScene {
 					inventory_x = 0;
 					inventory_y = inventory_y + 70;
 				}
-				BetaFish tFish = ConstructFish.constructRightFish(0,0,inventory_x,inventory_y);
+				ObjectFish tFish = ConstructFish.constructRightFish(0,0,inventory_x,inventory_y);
 				sceneFillItems.add(tFish);
 				inventory_x = inventory_x + tmp.getPassport().getWidth();
 			}
@@ -117,12 +117,12 @@ public class ControllerInventory extends ControllerScene {
 					inventory_y += inventory_y_max;
 					inventory_y_max = 0;
 				}
-				sceneFillItems.add(new BetaFish(tmp.getPassport(), inventory_x, inventory_y, 0, 0, true));
+				sceneFillItems.add(new ObjectFish(tmp.getPassport(), inventory_x, inventory_y, 0, 0, true));
 				inventory_x = inventory_x + tmp.getPassport().getWidth()+20;
 			}
 		}
 
-		else if (tmp instanceof BetaCrab) {
+		else if (tmp instanceof ObjectCrab) {
 			if (tmp.getPassport().getName() == "Horseshoe Crab")
 			{
 				if (inventory_x + tmp.getPassport().getWidth() > INV_WIDTH) {
@@ -130,7 +130,7 @@ public class ControllerInventory extends ControllerScene {
 					inventory_x = 0;
 					inventory_y += inventory_y + tmp.getPassport().getHeight()+20;
 				}
-				BetaCrab hCrab = ConstructCrab.constructLeftCrab(0, 1, inventory_x, inventory_y);
+				ObjectCrab hCrab = ConstructCrab.constructLeftCrab(0, 1, inventory_x, inventory_y);
 				sceneFillItems.add(hCrab);
 				inventory_x = inventory_x + tmp.getPassport().getWidth();		
 			}
@@ -141,29 +141,29 @@ public class ControllerInventory extends ControllerScene {
 					inventory_x = 0;
 					inventory_y += inventory_y += tmp.getPassport().getHeight();
 				}
-				BetaCrab bCrab = ConstructCrab.constructLeftCrab(0, 0, inventory_x, inventory_y);
+				ObjectCrab bCrab = ConstructCrab.constructLeftCrab(0, 0, inventory_x, inventory_y);
 				sceneFillItems.add(bCrab);
 				inventory_x = inventory_x + tmp.getPassport().getWidth();		
 			}
 
 		}
 
-		else if (tmp instanceof BetaHeron) {
+		else if (tmp instanceof ObjectHeron) {
 			if (inventory_x + 150 > INV_WIDTH) {
 				inventory_x = 0;
 				inventory_y += inventory_y += 100;
 			}
-			BetaHeron tmpHeron = ConstructHeron.constructLeftHeron(0, 1, inventory_x - 10, inventory_y, false, false);
+			ObjectHeron tmpHeron = ConstructHeron.constructLeftHeron(0, 1, inventory_x - 10, inventory_y, false, false);
 			sceneFillItems.add(tmpHeron);// new BetaHeron(tmp.getPassport(), inventory_x, inventory_y, 0, 0, true)
 			inventory_x = inventory_x + 150;
 		}
 
-		else if (tmp instanceof BetaVegetation) {
+		else if (tmp instanceof ObjectVegetation) {
 			if (inventory_x + 100 > 340) {
 				inventory_x = 0;
 				inventory_y += 100;
 			}
-			sceneFillItems.add(new BetaVegetation(tmp.getPassport(), inventory_x, inventory_y-80));
+			sceneFillItems.add(new ObjectVegetation(tmp.getPassport(), inventory_x, inventory_y-80));
 			inventory_x = inventory_x + 100;
 		}
 

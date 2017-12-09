@@ -2,7 +2,6 @@ package cisc275.group3.sceneobject;
 
 import cisc275.group3.utility.ObjectId;
 import java.awt.geom.Point2D;
-import java.io.Serializable;
 import java.util.Random;
 
 /**
@@ -39,7 +38,7 @@ import java.util.Random;
  * 
  * @author Scott
  */
-public abstract class SceneObject implements Comparable<SceneObject>, Serializable {
+public abstract class SceneObject implements Comparable<SceneObject> {
 	protected ObjectId passport;
 	protected Point2D.Double location;
 	protected Random randGen = new Random();

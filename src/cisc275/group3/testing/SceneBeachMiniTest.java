@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import cisc275.group3.scene.SceneBay;
 import cisc275.group3.scene.SceneBeachMini;
-import cisc275.group3.sceneobject.BetaFish;
+import cisc275.group3.sceneobject.ObjectFish;
 import cisc275.group3.utility.EnumSceneType;
 
 /**

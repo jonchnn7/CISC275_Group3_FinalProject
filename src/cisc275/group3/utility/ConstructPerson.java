@@ -3,7 +3,7 @@ package cisc275.group3.utility;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
-import cisc275.group3.sceneobject.BetaPerson;
+import cisc275.group3.sceneobject.ObjectPerson;
 
 /**
  * Interface to simplify the construction of person objects. This code used to
@@ -49,8 +49,8 @@ public interface ConstructPerson {
 	 *            double - y-axis location
 	 * @return BetaPerson
 	 */
-	static public BetaPerson constructPerson(int depth, int type, double x, double y) {
-		BetaPerson person = new BetaPerson(depth, (int) (LENGTH * AR), // height
+	static public ObjectPerson constructPerson(int depth, int type, double x, double y) {
+		ObjectPerson person = new ObjectPerson(depth, (int) (LENGTH * AR), // height
 				ID[type], // id
 				FILE[type], // image file
 				NAME[type], // name

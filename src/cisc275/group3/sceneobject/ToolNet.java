@@ -12,7 +12,6 @@ public class ToolNet extends ToolObject {
 
   public ToolNet() {
     super();
-    clickType = "Net";
     toolName = "Net";
   }
 }

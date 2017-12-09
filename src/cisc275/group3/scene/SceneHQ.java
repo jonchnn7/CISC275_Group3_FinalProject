@@ -5,7 +5,7 @@ import java.util.Iterator;
 
 import cisc275.group3.controller.ControllerMission;
 import cisc275.group3.sceneobject.ActionMove;
-import cisc275.group3.sceneobject.BetaPerson;
+import cisc275.group3.sceneobject.ObjectPerson;
 import cisc275.group3.sceneobject.SceneObject;
 import cisc275.group3.utility.ConstructPerson;
 import cisc275.group3.utility.EnumSceneType;
@@ -97,10 +97,10 @@ public class SceneHQ extends Scene {
 			}
 			// Move Person
 			for (SceneObject person : sceneItems) {
-				if ((person.getLocation().getX() < 600) && ((((BetaPerson) person).getStatus()) == 1) && ((Scene.getCurrentMission().getObjectNum() == 0) || (Scene.getCurrentMission().getObjectNum() == -1) || (Scene.getCurrentMission().getObjectNum() == -4))) {
-					((BetaPerson) person).setStatus(0);
-				} else if ((Scene.getCurrentMission().getObjectNum() == -5) && ((((BetaPerson) person).getStatus()) == 0) || (((BetaPerson) person).getStatus()) == -1) {
-					((BetaPerson) person).setStatus(-1);
+				if ((person.getLocation().getX() < 600) && ((((ObjectPerson) person).getStatus()) == 1) && ((Scene.getCurrentMission().getObjectNum() == 0) || (Scene.getCurrentMission().getObjectNum() == -1) || (Scene.getCurrentMission().getObjectNum() == -4))) {
+					((ObjectPerson) person).setStatus(0);
+				} else if ((Scene.getCurrentMission().getObjectNum() == -5) && ((((ObjectPerson) person).getStatus()) == 0) || (((ObjectPerson) person).getStatus()) == -1) {
+					((ObjectPerson) person).setStatus(-1);
 					Scene.getCurrentMission().setObjectNum(-4);
 				}
 				((ActionMove) person).move();
@@ -119,7 +119,7 @@ public class SceneHQ extends Scene {
 	 */
 	private void removePerson() {
 		for (Iterator<SceneObject> iterator = sceneItems.iterator(); iterator.hasNext();) {
-			BetaPerson person = (BetaPerson) iterator.next();
+			ObjectPerson person = (ObjectPerson) iterator.next();
 
 			if (person.getLocation().getX() >= (manifest.getWidth())) {
 				iterator.remove();
@@ -132,7 +132,7 @@ public class SceneHQ extends Scene {
 	 */
 	public boolean isMissionClickable() {
 		if(sceneItems.size() == 1) {
-			if(((BetaPerson)sceneItems.get(0)).getStatus() == 0) {
+			if(((ObjectPerson)sceneItems.get(0)).getStatus() == 0) {
 				return true;
 			}
 		}

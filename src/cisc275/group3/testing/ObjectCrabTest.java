@@ -5,21 +5,21 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import cisc275.group3.sceneobject.BetaCrab;
+import cisc275.group3.sceneobject.ObjectCrab;
 import cisc275.group3.utility.ConstructCrab;
 
 public class ObjectCrabTest {
   // Impartial Crabs
-  BetaCrab testCrab1;
-  BetaCrab testCrab2;
+  ObjectCrab testCrab1;
+  ObjectCrab testCrab2;
   
   // Left Crabs
-  BetaCrab leftCrab1;
-  BetaCrab leftCrab2;
+  ObjectCrab leftCrab1;
+  ObjectCrab leftCrab2;
   
   // Right Crabs
-  BetaCrab rightCrab1;
-  BetaCrab rightCrab2;
+  ObjectCrab rightCrab1;
+  ObjectCrab rightCrab2;
   
   /**
    * Before each test, create fresh

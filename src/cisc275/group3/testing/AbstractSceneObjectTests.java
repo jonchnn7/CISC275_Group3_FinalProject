@@ -9,10 +9,10 @@ import java.util.HashMap;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import cisc275.group3.sceneobject.BetaCrab;
-import cisc275.group3.sceneobject.BetaFish;
-import cisc275.group3.sceneobject.BetaHeron;
-import cisc275.group3.sceneobject.BetaVegetation;
+import cisc275.group3.sceneobject.ObjectCrab;
+import cisc275.group3.sceneobject.ObjectFish;
+import cisc275.group3.sceneobject.ObjectHeron;
+import cisc275.group3.sceneobject.ObjectVegetation;
 import cisc275.group3.sceneobject.SceneObject;
 import cisc275.group3.utility.ConstructCrab;
 import cisc275.group3.utility.ConstructFish;
@@ -107,7 +107,7 @@ public class AbstractSceneObjectTests {
    * to the testObjects list.
    */
   private static void addCrabs() {
-    BetaCrab tmpCrab;
+    ObjectCrab tmpCrab;
     
     // Neutral, non-moving crab
     tmpCrab = ConstructCrab.constructCrab(1, 0, 0, 0);
@@ -128,7 +128,7 @@ public class AbstractSceneObjectTests {
    * to the testObjects list.
    */
   private static void addFish() {
-    BetaFish tmpFish;
+    ObjectFish tmpFish;
     
     // Left Fish - Type 0
     tmpFish = ConstructFish.constructLeftFish(4, 0, 300, 0);
@@ -161,7 +161,7 @@ public class AbstractSceneObjectTests {
    * to the testObjects list.
    */
   private static void addHeron() {
-    BetaHeron tmpHeron;
+    ObjectHeron tmpHeron;
     
     // Left Heron - Standing
     tmpHeron = ConstructHeron.constructLeftHeron(10, 0, 900, 0, true, true);
@@ -186,7 +186,7 @@ public class AbstractSceneObjectTests {
    * to the testObjects list.
    */
   private static void addVeggies() {
-    BetaVegetation tmpVeg;
+    ObjectVegetation tmpVeg;
     
     // Full Weeds
     tmpVeg = ConstructVegetation.constructVegetation(14, 0, 1300, 0);

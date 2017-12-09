@@ -5,15 +5,15 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import cisc275.group3.sceneobject.BetaPerson;
+import cisc275.group3.sceneobject.ObjectPerson;
 import cisc275.group3.utility.ConstructPerson;
 
 public class ObjectPersonTest {
   //Persons
-	BetaPerson testPerson1;
-	BetaPerson testPerson2;
-	BetaPerson testPerson3;
-	BetaPerson testPerson4;
+	ObjectPerson testPerson1;
+	ObjectPerson testPerson2;
+	ObjectPerson testPerson3;
+	ObjectPerson testPerson4;
   
   /**
    * Before each test, create fresh

@@ -1,6 +1,6 @@
 package cisc275.group3.utility;
 
-import cisc275.group3.sceneobject.BetaVegetation;
+import cisc275.group3.sceneobject.ObjectVegetation;
 
 /**
  * Interface to simplify the construction of vegetation objects. This code used
@@ -43,8 +43,8 @@ public interface ConstructVegetation {
 	 *            double - y-axis location
 	 * @return BetaVegetation
 	 */
-	static public BetaVegetation constructVegetation(int depth, int type, double x, double y) {
-		BetaVegetation vegetation = new BetaVegetation(depth, (int) (VEG_WIDTH * VEG_AR), // height
+	static public ObjectVegetation constructVegetation(int depth, int type, double x, double y) {
+		ObjectVegetation vegetation = new ObjectVegetation(depth, (int) (VEG_WIDTH * VEG_AR), // height
 				VEG_ID[type], // id
 				VEG_FILE[type], // image file
 				VEG_NAME, // name

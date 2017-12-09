@@ -1,6 +1,6 @@
 package cisc275.group3.utility;
 
-import cisc275.group3.sceneobject.BetaFish;
+import cisc275.group3.sceneobject.ObjectFish;
 
 /**
  * Interface to simplify the construction of fish objects. This code used to be
@@ -50,8 +50,8 @@ public interface ConstructFish {
 	 *            double - y-axis location
 	 * @return BetaFish
 	 */
-	static public BetaFish constructLeftFish(int depth, int type, double x, double y) {
-		BetaFish leftFish = new BetaFish(depth, (int) (LEFT_LENGTH[type] * LEFT_AR[type]), // height
+	static public ObjectFish constructLeftFish(int depth, int type, double x, double y) {
+		ObjectFish leftFish = new ObjectFish(depth, (int) (LEFT_LENGTH[type] * LEFT_AR[type]), // height
 				LEFT_ID[type], // id
 				LEFT_FILE[type], // image file
 				NAME[type], // name
@@ -77,8 +77,8 @@ public interface ConstructFish {
 	 *            double - y-axis location
 	 * @return BetaFish
 	 */
-	static public BetaFish constructRightFish(int depth, int type, double x, double y) {
-		BetaFish rightFish = new BetaFish(depth, (int) (RIGHT_LENGTH[type] * RIGHT_AR[type]), // height
+	static public ObjectFish constructRightFish(int depth, int type, double x, double y) {
+		ObjectFish rightFish = new ObjectFish(depth, (int) (RIGHT_LENGTH[type] * RIGHT_AR[type]), // height
 				RIGHT_ID[type], // id
 				RIGHT_FILE[type], // image file
 				NAME[type], // name

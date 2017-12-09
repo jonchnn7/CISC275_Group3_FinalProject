@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import cisc275.group3.scene.SceneHQ;
-import cisc275.group3.sceneobject.BetaPerson;
+import cisc275.group3.sceneobject.ObjectPerson;
 import cisc275.group3.utility.ConstructPerson;
 import cisc275.group3.utility.EnumSceneType;
 import cisc275.group3.utility.ObjectId;
@@ -71,7 +71,7 @@ public class SceneHQTest {
 		testHQ.getSceneItems().clear();
 		testHQ.getSceneItems().add(ConstructPerson.constructPerson(5, 3, 550, SCENE_HEIGHT/4));
 		testHQ.update();
-		assertEquals("Person2.status = 0", 0, ((BetaPerson)testHQ.getSceneItems().get(0)).getStatus());
+		assertEquals("Person2.status = 0", 0, ((ObjectPerson)testHQ.getSceneItems().get(0)).getStatus());
 		
 	  }
 
@@ -93,10 +93,10 @@ public class SceneHQTest {
 	  @Test
 	  public void isMissionClickableTest() {
 		  	assertEquals("isClickable = false", false, testHQ.isMissionClickable());
-			testHQ.getSceneItems().add(new BetaPerson(new ObjectId(10, 50, 50, "", "Tut Person", 50), 550, 500, 0, 0, 1));			
+			testHQ.getSceneItems().add(new ObjectPerson(new ObjectId(10, 50, 50, "", "Tut Person", 50), 550, 500, 0, 0, 1));			
 		  	assertEquals("isClickable = false", false, testHQ.isMissionClickable());
 		  	testHQ.getSceneItems().clear();
-			testHQ.getSceneItems().add(new BetaPerson(new ObjectId(10, 50, 50, "", "Tut Person", 50), 550, 500, 0, 0, 0));
+			testHQ.getSceneItems().add(new ObjectPerson(new ObjectId(10, 50, 50, "", "Tut Person", 50), 550, 500, 0, 0, 0));
 		  	assertEquals("isClickable = true", true, testHQ.isMissionClickable());
 	  }
 	  

@@ -5,8 +5,8 @@ import java.util.Collections;
 import java.util.Iterator;
 
 import cisc275.group3.sceneobject.ActionMove;
-import cisc275.group3.sceneobject.BetaHeron;
-import cisc275.group3.sceneobject.BetaVegetation;
+import cisc275.group3.sceneobject.ObjectHeron;
+import cisc275.group3.sceneobject.ObjectVegetation;
 import cisc275.group3.sceneobject.SceneObject;
 import cisc275.group3.utility.ConstructHeron;
 import cisc275.group3.utility.ConstructVegetation;
@@ -186,12 +186,12 @@ public class SceneWetland extends Scene {
 			SceneObject tempObject = (SceneObject) iterator.next();
 			// Determine if tempObject is a Heron
 			if ((tempObject.getPassport().getId() == 100) || (tempObject.getPassport().getId() == 200)) {
-				modifyHeron((BetaHeron) tempObject);
+				modifyHeron((ObjectHeron) tempObject);
 				// Determine if tempObject is a Vegetation
 			} else if ((tempObject.getPassport().getId() == 70) || (tempObject.getPassport().getId() == 71)
 					|| (tempObject.getPassport().getId() == 72)) {
 				if (randGen.nextInt(100) < 5) {
-					sceneItems.add(((BetaVegetation) tempObject).grow());
+					sceneItems.add(((ObjectVegetation) tempObject).grow());
 				} else {
 					sceneItems.add(tempObject);
 				}
@@ -205,7 +205,7 @@ public class SceneWetland extends Scene {
 	 * landed image, 2) change image of a flying heron to the flying image, 3)
 	 * remove out of bounds herons
 	 */
-	public void modifyHeron(BetaHeron theHeron) {
+	public void modifyHeron(ObjectHeron theHeron) {
 		// Check to see if herons need to change to landed image
 		if ((theHeron.getLanded() == true) && (theHeron.getPassport().getId() == 200)) {
 			// change left heron

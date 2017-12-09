@@ -4,17 +4,17 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import cisc275.group3.sceneobject.BetaFish;
+import cisc275.group3.sceneobject.ObjectFish;
 import cisc275.group3.utility.ConstructFish;
 
 public class ObjectFishTest {
 	  // Left Fish
-	  BetaFish leftFish1;
-	  BetaFish leftFish2;
+	  ObjectFish leftFish1;
+	  ObjectFish leftFish2;
 	  
 	  // Right Fish
-	  BetaFish rightFish1;
-	  BetaFish rightFish2;
+	  ObjectFish rightFish1;
+	  ObjectFish rightFish2;
 
 	  /**
 	   * Before each test, create fresh

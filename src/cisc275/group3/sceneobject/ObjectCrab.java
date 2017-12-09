@@ -18,9 +18,8 @@ import cisc275.group3.utility.ObjectId;
  * @author Ryan 
  * @author Thomas
  */
-public class BetaCrab extends SceneObject implements ActionMove {
+public class ObjectCrab extends SceneObject implements ActionMove {
   private double speedX; // x-axis speed
-  private double speedY; // y-axis speed
   private boolean leftCrab; //moving right to left?
 
   /**
@@ -32,10 +31,9 @@ public class BetaCrab extends SceneObject implements ActionMove {
    * @param sy  double-speed on y-axis
    * @param lc  boolean-left moving fish?
    */
-  public BetaCrab(ObjectId id, double x, double y, double sx, double sy, boolean lc) {
+  public ObjectCrab(ObjectId id, double x, double y, double sx, double sy, boolean lc) {
     super(id, x, y);
     speedX = sx; 
-    speedY = sy;  // Not actually used?...
     leftCrab = lc;
   }
 	  
@@ -56,7 +54,7 @@ public class BetaCrab extends SceneObject implements ActionMove {
    * @param sy    double-speed on y-axis
    * @param lc    boolean-left moving crab?
    */
-  public BetaCrab(int d, int h, int id, String imFi, String n, int w, double x, double y, double sx, double sy, boolean lc) {
+  public ObjectCrab(int d, int h, int id, String imFi, String n, int w, double x, double y, double sx, double sy, boolean lc) {
     this(new ObjectId(d, h, id, imFi, n, w), x, y, sx, sy, lc);
   }
 

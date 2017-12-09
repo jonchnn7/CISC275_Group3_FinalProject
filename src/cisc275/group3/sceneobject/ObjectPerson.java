@@ -13,7 +13,7 @@ import cisc275.group3.utility.ObjectId;
  * 
  * @author Jon
  */
-public class BetaPerson extends SceneObject implements ActionMove {
+public class ObjectPerson extends SceneObject implements ActionMove {
 	protected double speedX; // x-axis speed
 	protected double speedY; // y-axis speed
 	protected int status; // 1- going to counter, 0- waiting at counter, -1- leaving counter
@@ -34,7 +34,7 @@ public class BetaPerson extends SceneObject implements ActionMove {
 	 * @param stat
 	 *            int-determines the movement behavior of the person
 	 */
-	public BetaPerson(ObjectId id, double x, double y, double sx, double sy, int stat) {
+	public ObjectPerson(ObjectId id, double x, double y, double sx, double sy, int stat) {
 		super(id, x, y);
 		speedX = sx;
 		speedY = sy;
@@ -70,7 +70,7 @@ public class BetaPerson extends SceneObject implements ActionMove {
 	 * @param stat
 	 *            int- movement behavior of the person
 	 */
-	public BetaPerson(int d, int h, int id, String imFi, String n, int w, double x, double y, double sx, double sy,
+	public ObjectPerson(int d, int h, int id, String imFi, String n, int w, double x, double y, double sx, double sy,
 			int stat) {
 		this(new ObjectId(d, h, id, imFi, n, w), x, y, sx, sy, stat);
 	}

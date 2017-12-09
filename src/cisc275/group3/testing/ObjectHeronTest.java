@@ -5,21 +5,21 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import cisc275.group3.sceneobject.BetaHeron;
+import cisc275.group3.sceneobject.ObjectHeron;
 import cisc275.group3.utility.ConstructHeron;
 import cisc275.group3.utility.ObjectId;
 
 
 public class ObjectHeronTest {
 	// Left Herons
-	BetaHeron leftHeron1;
-	BetaHeron leftHeron2;
-	BetaHeron leftHeron3;
+	ObjectHeron leftHeron1;
+	ObjectHeron leftHeron2;
+	ObjectHeron leftHeron3;
 
 	// Right Herons
-	BetaHeron rightHeron1;
-	BetaHeron rightHeron2;
-	BetaHeron rightHeron3;
+	ObjectHeron rightHeron1;
+	ObjectHeron rightHeron2;
+	ObjectHeron rightHeron3;
 
 	/**
 	 * Before each test, create fresh instances of the test herons.
@@ -27,14 +27,14 @@ public class ObjectHeronTest {
 	@Before
 	public void createHeron() {
 		// Left Herons
-		leftHeron1 = new BetaHeron(
+		leftHeron1 = new ObjectHeron(
 				new ObjectId(0, 230, 200, "img/betaHeronPics/heron_flying_left.png", "Great Blue Heron", 177), 100, 100,
 				20, 10, true);
 		leftHeron2 = ConstructHeron.constructLeftHeron(1, 0, 100, 100, true, true);
 		leftHeron3 = ConstructHeron.constructLeftHeron(1, 0, 100, 100, false, true);
 
 		// Right Herons
-		rightHeron1 = new BetaHeron(
+		rightHeron1 = new ObjectHeron(
 				new ObjectId(0, 230, 200, "img/betaHeronPics/heron_flying_right.png", "Great Blue Heron", 177), 100, 100,
 				20, 10, false);		
 		rightHeron2 = ConstructHeron.constructRightHeron(1, 0, 100, 100, true, true);

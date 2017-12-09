@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import cisc275.group3.scene.SceneBay;
-import cisc275.group3.sceneobject.BetaFish;
+import cisc275.group3.sceneobject.ObjectFish;
 import cisc275.group3.utility.EnumSceneType;
 
 /**
@@ -51,7 +51,7 @@ public class SceneBayTest {
     
     // Count left and right fish
     testBay.getSceneItems().forEach((fish)->{
-      if (((BetaFish)fish).getLeftFish()) {
+      if (((ObjectFish)fish).getLeftFish()) {
         leftFishCount += 1;
       } else {
         rightFishCount += 1;
@@ -115,7 +115,7 @@ public class SceneBayTest {
   @Test
   public void testFishGen() {
     System.out.println("  Testing New Fish Generation");
-    double updateCount = SCENE_WIDTH / (((BetaFish)testBay.getSceneItems().get(0)).getSpeedX()*1.2);
+    double updateCount = SCENE_WIDTH / (((ObjectFish)testBay.getSceneItems().get(0)).getSpeedX()*1.2);
     int countInitial = testBay.getSceneItems().size();
     
     for (int i=0; i < updateCount; i++) {

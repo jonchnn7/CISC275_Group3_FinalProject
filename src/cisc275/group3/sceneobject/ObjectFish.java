@@ -18,7 +18,7 @@ import cisc275.group3.utility.ObjectId;
  * @author Thomas
  * @author Ryan
  */
-public class BetaFish extends SceneObject implements ActionMove {
+public class ObjectFish extends SceneObject implements ActionMove {
   protected double speedX; // x-axis speed
   protected double speedY; // y-axis speed
   protected boolean leftFish; // moving right to left?
@@ -32,7 +32,7 @@ public class BetaFish extends SceneObject implements ActionMove {
    * @param sy		double-speed on y-axis
    * @param lf		boolean-left moving fish?
    */
-  public BetaFish(ObjectId id, double x, double y, double sx, double sy, boolean lf) {
+  public ObjectFish(ObjectId id, double x, double y, double sx, double sy, boolean lf) {
     super(id, x, y);
     speedX = sx; 
     speedY = sy;  // Not actually used?...
@@ -56,7 +56,7 @@ public class BetaFish extends SceneObject implements ActionMove {
    * @param sy		double-speed on y-axis
    * @param lf		boolean-left moving fish?
    */
-  public BetaFish(int d, int h, int id, String imFi, String n, int w, double x, double y, double sx, double sy, boolean lf) {
+  public ObjectFish(int d, int h, int id, String imFi, String n, int w, double x, double y, double sx, double sy, boolean lf) {
 	  this(new ObjectId(d, h, id, imFi, n, w), x, y, sx, sy, lf);
   }
 
@@ -74,10 +74,10 @@ public class BetaFish extends SceneObject implements ActionMove {
    */
   @Override
   public void move() {
-	double dx = speedX - speedX*0.1 + randGen.nextGaussian()*speedX*0.2;
-	double dy = 1*(randGen.nextGaussian() - randGen.nextGaussian());
-	
-	int dir =  (leftFish) ? -1 : 1; // unit vector for direction
+  	double dx = speedX - speedX*0.1 + randGen.nextGaussian()*speedX*0.2;
+  	double dy = 1*(randGen.nextGaussian() - randGen.nextGaussian());
+  	
+  	int dir =  (leftFish) ? -1 : 1; // unit vector for direction
     double x = location.getX() + dir*dx;
     double y = location.getY() + dir*dy;
 	  

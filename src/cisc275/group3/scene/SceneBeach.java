@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.util.Iterator;
 
 import cisc275.group3.sceneobject.ActionMove;
-import cisc275.group3.sceneobject.BetaCrab;
+import cisc275.group3.sceneobject.ObjectCrab;
 import cisc275.group3.sceneobject.SceneObject;
 import cisc275.group3.utility.ConstructCrab;
 import cisc275.group3.utility.EnumSceneType;
@@ -133,7 +133,7 @@ public class SceneBeach extends Scene implements ConstructCrab {
 	 */
 	private void removeCrab() {
 		for (Iterator<SceneObject> iterator = sceneItems.iterator(); iterator.hasNext();) {
-			BetaCrab crab = (BetaCrab) iterator.next();
+			ObjectCrab crab = (ObjectCrab) iterator.next();
 
 			if (crab.getLocation().getX() >= (manifest.getWidth() + crab.getPassport().getWidth())) {
 				iterator.remove();

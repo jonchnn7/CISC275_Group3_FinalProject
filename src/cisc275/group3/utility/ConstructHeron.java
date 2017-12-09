@@ -1,6 +1,6 @@
 package cisc275.group3.utility;
 
-import cisc275.group3.sceneobject.BetaHeron;
+import cisc275.group3.sceneobject.ObjectHeron;
 
 /**
  * Interface to simplify the construction of heron objects. This code used to be
@@ -53,8 +53,8 @@ public interface ConstructHeron {
 	 *            it will not land again
 	 * @return BetaHeron
 	 */
-	static public BetaHeron constructLeftHeron(int depth, int type, double x, double y, boolean land, boolean hasland) {
-		BetaHeron leftHeron = new BetaHeron(depth, (int) (HERON_WIDTH[type] * HERON_AR[type]), // height
+	static public ObjectHeron constructLeftHeron(int depth, int type, double x, double y, boolean land, boolean hasland) {
+		ObjectHeron leftHeron = new ObjectHeron(depth, (int) (HERON_WIDTH[type] * HERON_AR[type]), // height
 				HERON_ID[type], // id
 				LEFT_FILE[type], // image file
 				HERON_NAME, // name
@@ -86,9 +86,9 @@ public interface ConstructHeron {
 	 *            it will not land again
 	 * @return BetaHeron
 	 */
-	static public BetaHeron constructRightHeron(int depth, int type, double x, double y, boolean land,
+	static public ObjectHeron constructRightHeron(int depth, int type, double x, double y, boolean land,
 			boolean hasland) {
-		BetaHeron rightHeron = new BetaHeron(depth, (int) (HERON_WIDTH[type] * HERON_AR[type]), // height
+		ObjectHeron rightHeron = new ObjectHeron(depth, (int) (HERON_WIDTH[type] * HERON_AR[type]), // height
 				HERON_ID[type], // id
 				RIGHT_FILE[type], // image file
 				HERON_NAME, // name

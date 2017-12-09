@@ -1,7 +1,7 @@
 package cisc275.group3.scene;
 
 import cisc275.group3.controller.ControllerInventory;
-import cisc275.group3.sceneobject.BetaVegetation;
+import cisc275.group3.sceneobject.ObjectVegetation;
 import cisc275.group3.sceneobject.SceneObject;
 import cisc275.group3.sceneobject.ToolObject;
 import cisc275.group3.utility.ConstructVegetation;
@@ -122,7 +122,7 @@ public abstract class Scene {
 			case "Invasive Plant":
 			  if (SceneObjectType.BetaVegetation.searchCompatability(currentTool.getName())) {
           if (sceneItem.itemClicked(clickX, clickY)) {
-            BetaVegetation vegetation = null;
+            ObjectVegetation vegetation = null;
 
             if (sceneItem.getPassport().getId() > 70) {
               // Vegetation needs mowed down
@@ -208,7 +208,7 @@ public abstract class Scene {
 
 				if (SceneObjectType.BetaVegetation.searchCompatability(currentTool.getName())) {
 					if (compatClick(sceneItem, clickX, clickY)) {
-						BetaVegetation vegetation = null;
+						ObjectVegetation vegetation = null;
 
 						if (sceneItem.getPassport().getId() > 70) {
 							// Vegetation needs mowed down

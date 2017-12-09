@@ -14,7 +14,7 @@ import cisc275.group3.utility.ObjectId;
  * <p>
  * @author Jon
  */
-public class BetaVegetation extends SceneObject {
+public class ObjectVegetation extends SceneObject {
 	
 	  /**
 	   * Creates a Beta Vegetation
@@ -22,7 +22,7 @@ public class BetaVegetation extends SceneObject {
 	   * @param x		double-x-axis location
 	   * @param y		double-y-axis location
 	   */
-  public BetaVegetation(ObjectId id, double x, double y) {
+  public ObjectVegetation(ObjectId id, double x, double y) {
     super(id, x, y);
   }
   
@@ -40,7 +40,7 @@ public class BetaVegetation extends SceneObject {
    * @param x		double-x-axis location
    * @param y		double-y-axis location
    */
-  public BetaVegetation(int d, int h, int id, String imFi, String n, int w, double x, double y) {
+  public ObjectVegetation(int d, int h, int id, String imFi, String n, int w, double x, double y) {
 	  this(new ObjectId(d, h, id, imFi, n, w), x, y);
   }
   
@@ -51,9 +51,10 @@ public class BetaVegetation extends SceneObject {
    * 
    * @return BetaVegatation - new betavegatation state
    */
-  public BetaVegetation grow() {
+  public ObjectVegetation grow() {
 	  if(this.getPassport().getId() < 72) {
-		  BetaVegetation vegetation =  ConstructVegetation.constructVegetation(this.getPassport().getDepth(),
+		  ObjectVegetation vegetation =  ConstructVegetation.constructVegetation(
+		      this.getPassport().getDepth(),
 				  (this.getPassport().getId()%10) +1,
 				  this.getLocation().getX(),
 				  this.getLocation().getY());;

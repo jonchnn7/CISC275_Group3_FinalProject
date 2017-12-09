@@ -16,7 +16,6 @@ public class ToolCage extends ToolObject {
    */
   public ToolCage() {
     super();
-    clickType = "Cage";
     toolName = "Cage";
   }
 }

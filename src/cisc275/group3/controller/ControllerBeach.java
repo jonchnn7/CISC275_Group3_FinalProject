@@ -77,7 +77,7 @@ public class ControllerBeach extends ControllerScene implements LinkDynamics, Li
 	public void update() {
 		if (mainPane.getLayer(componentList.get("Beach")) == EnumLayerCode.MainAll.getCode()) {
 			// Update Model
-			((LinkDynamics)scene).update();
+			((SceneBeach)scene).update();
 			viewGame.updatePanel(scene.getSceneItems());
 		}
 	}
@@ -90,7 +90,7 @@ public class ControllerBeach extends ControllerScene implements LinkDynamics, Li
 	 */
 	@Override
 	public void updateTime() {
-		((LinkTime)scene).updateTime();
+		((SceneBeach)scene).updateTime();
 
 		if (mainPane.getLayer(componentList.get("Beach")) == EnumLayerCode.MainAll.getCode()) {
 			displayTime();
