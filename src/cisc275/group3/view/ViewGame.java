@@ -82,8 +82,7 @@ public class ViewGame extends JPanel {
 	 * updates panel
 	 * 
 	 * @param list
-	 *            ArrayList<SceneObject> - list of items to update/repaint
-	 * 
+	 *            ArrayList-list of items to update/repaint
 	 */
 	@SuppressWarnings("unchecked")
 	public void updatePanel(ArrayList<SceneObject> list) {

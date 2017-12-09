@@ -105,6 +105,7 @@ public class ControllerTitle extends ControllerScene {
    * This method allows GameController to define the
    * listener so state changes are within the correct
    * scope.
+   * @return the start JButton
    */
 	public JButton getStartButton() {
 	  return startButton;
@@ -134,6 +135,7 @@ public class ControllerTitle extends ControllerScene {
    * This method allows GameController to define the
    * listener so state changes are within the correct
    * scope.
+   * @return the tutorial JButton
 	 */
 	public JButton getTutorialButton() {
 	  return tutorialButton;

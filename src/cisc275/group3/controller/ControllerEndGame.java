@@ -145,6 +145,7 @@ public class ControllerEndGame extends ControllerScene implements LinkDynamics {
 	 * <p>
 	 * This method allows GameController to define the listener so state changes are
 	 * within the correct scope.
+	 * @return the continue JButton
 	 */
 	public JButton getContinueButton() {
 		return continueButton;
@@ -155,6 +156,7 @@ public class ControllerEndGame extends ControllerScene implements LinkDynamics {
 	 * <p>
 	 * This method allows GameController to define the listener so state changes are
 	 * within the correct scope.
+	 * @return the reset JButton
 	 */
 	public JButton getResetButton() {
 		return resetButton;

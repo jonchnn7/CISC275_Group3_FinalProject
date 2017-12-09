@@ -22,7 +22,6 @@ import java.util.Random;
  * <a href=
  * "http://www.oracle.com/technetwork/articles/java/index-137868.html">Javadoc</a>
  * <p>
- * <p>
  * Code Changes
  * <p>
  * <a href=
@@ -33,7 +32,6 @@ import java.util.Random;
  * tutorial </a>
  * <p>
  * <a href="http://www.badlogicgames.com/wordpress/?p=2668">general design</a>
- * <p>
  * <p>
  * 
  * @author Scott

@@ -44,7 +44,6 @@ public class SceneHQTest {
 	  
 	  /**
 	   * Test scene is constructed/filled correctly.
-	   * <p>
 	   */
 	  @Test
 	  public void testCreation() {    
@@ -55,7 +54,6 @@ public class SceneHQTest {
 	  
 	  /**
 	   * Test scene is constructed/filled correctly.
-	   * <p>
 	   */
 	  @Test
 	  public void testUpdate() {    
@@ -64,7 +62,7 @@ public class SceneHQTest {
 	    testHQ.update();
 		assertEquals("sceneItems.size = 1" , 1, testHQ.getSceneItems().size());
 		assertEquals("prevPerson != currentPerson.id" , true, testHQ.getPrevPerson() != testHQ.getSceneItems().get(0).getPassport().getId());
-		assertEquals("Person moved to X = 1" , 1250, testHQ.getSceneItems().get(0).getLocation().getX(),5);
+		assertEquals("Person moved to X = 1" , 1220, testHQ.getSceneItems().get(0).getLocation().getX(),5);
 		
 		
 	    //Person Changing to state 0

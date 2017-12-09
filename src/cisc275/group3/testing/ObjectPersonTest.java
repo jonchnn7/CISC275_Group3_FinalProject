@@ -45,10 +45,10 @@ public class ObjectPersonTest {
 
     
     // Persons
-    assertEquals("testPerson1 = 15", 70, testPerson1.getLocation().getX(), 0.2);
-    assertEquals("testPerson2 = 15", 170, testPerson2.getLocation().getX(), 0.2);
+    assertEquals("testPerson1 = 40", 40, testPerson1.getLocation().getX(), 0.2);
+    assertEquals("testPerson2 = 140", 140, testPerson2.getLocation().getX(), 0.2);
     assertEquals("testPerson3 = 15", 300, testPerson3.getLocation().getX(), 0.2);
-    assertEquals("testPerson4 = 15", 430, testPerson4.getLocation().getX(), 0.2);
+    assertEquals("testPerson4 = 460", 460, testPerson4.getLocation().getX(), 0.2);
 
   }
   
@@ -77,10 +77,10 @@ public class ObjectPersonTest {
   public void testGetSpeedX() {
     System.out.println("  Testing getSpeedX():");
     // Persons
-    assertEquals("testPerson1 = 30", 30, testPerson1.getSpeedX(), 0.2);
-    assertEquals("testPerson2 = 30", 30, testPerson2.getSpeedX(), 0.2);
-    assertEquals("testPerson3 = 30", 30, testPerson3.getSpeedX(), 0.2);
-    assertEquals("testPerson4 = 30", 30, testPerson4.getSpeedX(), 0.2);
+    assertEquals("testPerson1 = 60", 60, testPerson1.getSpeedX(), 0.2);
+    assertEquals("testPerson2 = 60", 60, testPerson2.getSpeedX(), 0.2);
+    assertEquals("testPerson3 = 60", 60, testPerson3.getSpeedX(), 0.2);
+    assertEquals("testPerson4 = 60", 60, testPerson4.getSpeedX(), 0.2);
 
   }
   

@@ -204,6 +204,7 @@ public class SceneWetland extends Scene {
 	 * organize code. Three main instances: 1) change image of a landed heron to the
 	 * landed image, 2) change image of a flying heron to the flying image, 3)
 	 * remove out of bounds herons
+	 * @param theHeron ObjectHeron-heron to be modified
 	 */
 	public void modifyHeron(ObjectHeron theHeron) {
 		// Check to see if herons need to change to landed image

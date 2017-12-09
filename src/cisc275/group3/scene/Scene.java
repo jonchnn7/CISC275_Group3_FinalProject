@@ -375,6 +375,7 @@ public abstract class Scene {
 	 * <p>
 	 * Allows for continued games
 	 * to have a nonzero initial score.
+	 * @param carryScore int-score from continue game
 	 */
 	public static void setScore(int carryScore) {
 	  Scene.score = carryScore;

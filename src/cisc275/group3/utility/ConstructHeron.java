@@ -38,22 +38,15 @@ public interface ConstructHeron {
 	/**
 	 * Returns a constructed Beta Heron object. This heron will move left
 	 * 
-	 * @param depth
-	 *            int-heron depth
-	 * @param type
-	 *            int-heron type [0,1] (0 = landed , 1 = flying)
-	 * @param x
-	 *            double-x-axis location
-	 * @param y
-	 *            double-y-axis location
-	 * @param land
-	 *            boolean-determines if the heron has landed (is not moving)
-	 * @param hasLand
-	 *            boolean-determines if the heron has ever landed. If it has landed,
-	 *            it will not land again
+	 * @param depth  int-heron depth
+	 * @param type   int-heron type [0,1] (0 = landed , 1 = flying)
+	 * @param x  double-x-axis location
+	 * @param y  double-y-axis location
+	 * @param land boolean-determines if the heron has landed (is not moving)
+	 * @param hasLand  boolean-determines if the heron has ever landed. If it has landed, it will not land again
 	 * @return BetaHeron
 	 */
-	static public ObjectHeron constructLeftHeron(int depth, int type, double x, double y, boolean land, boolean hasland) {
+	static public ObjectHeron constructLeftHeron(int depth, int type, double x, double y, boolean land, boolean hasLand) {
 		ObjectHeron leftHeron = new ObjectHeron(depth, (int) (HERON_WIDTH[type] * HERON_AR[type]), // height
 				HERON_ID[type], // id
 				LEFT_FILE[type], // image file
@@ -63,7 +56,7 @@ public interface ConstructHeron {
 				y, // y position
 				HERON_XSPEED, // x-axis speed
 				HERON_YSPEED, // y-axis speed
-				land, hasland, true);
+				land, hasLand, true);
 
 		return leftHeron;
 	}
@@ -71,23 +64,15 @@ public interface ConstructHeron {
 	/**
 	 * Returns a constructed Beta Heron object. This heron will move right
 	 * 
-	 * @param depth
-	 *            int-heron depth
-	 * @param type
-	 *            int-heron type [0,1]
-	 * @param x
-	 *            double-x-axis location
-	 * @param y
-	 *            double-y-axis location
-	 * @param land
-	 *            boolean-determines if the heron has landed (is not moving)
-	 * @param hasLand
-	 *            boolean-determines if the heron has ever landed. If it has landed,
-	 *            it will not land again
+	 * @param depth  int-heron depth
+	 * @param type   int-heron type [0,1]
+	 * @param x  double-x-axis location
+	 * @param y  double-y-axis location
+	 * @param land boolean-determines if the heron has landed (is not moving)
+	 * @param hasLand  boolean-determines if the heron has ever landed. If it has landed, it will not land again
 	 * @return BetaHeron
 	 */
-	static public ObjectHeron constructRightHeron(int depth, int type, double x, double y, boolean land,
-			boolean hasland) {
+	static public ObjectHeron constructRightHeron(int depth, int type, double x, double y, boolean land, boolean hasLand) {
 		ObjectHeron rightHeron = new ObjectHeron(depth, (int) (HERON_WIDTH[type] * HERON_AR[type]), // height
 				HERON_ID[type], // id
 				RIGHT_FILE[type], // image file
@@ -97,7 +82,7 @@ public interface ConstructHeron {
 				y, // y position
 				HERON_XSPEED, // x-axis speed
 				HERON_YSPEED, // y-axis speed
-				land, hasland, false);
+				land, hasLand, false);
 		return rightHeron;
 	}
 }
