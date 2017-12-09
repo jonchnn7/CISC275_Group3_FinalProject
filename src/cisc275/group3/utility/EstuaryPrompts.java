@@ -13,15 +13,6 @@ import cisc275.group3.scene.Scene;
  * @author Jolyne
  */
 public final class EstuaryPrompts {
-//	private String[][] prompt = new String[7][2];
-
-	  /**
-	   * Generates a string array that has all of the prompts
-	   */
-//	public EstuaryPrompts() {
-
-		
-//	}
 	
 	/**
 	 * Based on the mission generate the appropriate prompt
@@ -48,5 +39,4 @@ public final class EstuaryPrompts {
 		}
 		return null;
 	}
-	
 }

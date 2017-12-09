@@ -2,7 +2,6 @@ package cisc275.group3.utility;
 
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
-import java.io.Serializable;
 
 /**
  * Data structure to hold immutable SceneObject parameters. Can also
@@ -11,7 +10,7 @@ import java.io.Serializable;
  * ObjectId.java
  * @author Scott
  */
-public class ObjectId implements Serializable {
+public class ObjectId {
   private final int depth;
   private final double height;
   private final int id;
