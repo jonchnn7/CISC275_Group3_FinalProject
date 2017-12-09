@@ -53,7 +53,7 @@ public class GameWindow extends JFrame {
 		this.setVisible(true);
 	}
 
-	/**
+	/**GameWindow
 	 * Helper method used to access the main JLayeredPane.
 	 * 
 	 * @return the main JLayeredPane
