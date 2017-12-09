@@ -1,10 +1,11 @@
-package cisc275.group3.model.scene;
-
-import cisc275.group3.model.sceneobject.BetaFish;
-import cisc275.group3.model.sceneobject.SceneObject;
+package cisc275.group3.scene;
 
 import java.util.Collections;
 import java.util.Iterator;
+
+import cisc275.group3.sceneobject.ActionMove;
+import cisc275.group3.sceneobject.BetaFish;
+import cisc275.group3.sceneobject.SceneObject;
 import cisc275.group3.utility.ConstructFish;
 import cisc275.group3.utility.EnumSceneType;
 import cisc275.group3.utility.SceneId;
@@ -106,7 +107,7 @@ public class SceneBay extends Scene implements ConstructFish {
 
 			// Move Fish
 			for (SceneObject fish : sceneItems) {
-				((BetaFish) fish).move();
+				((ActionMove)fish).move();
 			}
 
 			// Remove Off-screen Fish

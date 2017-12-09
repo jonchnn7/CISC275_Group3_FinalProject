@@ -5,8 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import cisc275.group3.model.scene.SceneBeach;
-import cisc275.group3.model.sceneobject.BetaCrab;
+import cisc275.group3.scene.SceneBeach;
+import cisc275.group3.sceneobject.BetaCrab;
 import cisc275.group3.utility.EnumSceneType;
 
 /**

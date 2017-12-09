@@ -1,6 +1,6 @@
 package cisc275.group3.utility;
 
-import cisc275.group3.model.sceneobject.BetaCrab;
+import cisc275.group3.sceneobject.BetaCrab;
 
 /**
  * Interface to simplify the construction of crab objects. This code used to be

@@ -1,6 +1,7 @@
-package cisc275.group3.model.scene;
+package cisc275.group3.scene;
 
-import cisc275.group3.model.sceneobject.BetaCrab;
+import cisc275.group3.sceneobject.ActionMove;
+import cisc275.group3.sceneobject.BetaCrab;
 import cisc275.group3.utility.ConstructCrab;
 import cisc275.group3.utility.EnumSceneType;
 import cisc275.group3.utility.SceneId;
@@ -80,7 +81,7 @@ public class SceneBeachMini extends Scene implements ConstructCrab {
 	public void update() {
 		sceneItems.forEach((crab) -> {
 			if (crab.getPassport().getId() == 200) {
-				((BetaCrab) crab).move();
+				((ActionMove) crab).move();
 			}
 		});
 	}
@@ -88,7 +89,7 @@ public class SceneBeachMini extends Scene implements ConstructCrab {
 	/**
 	 * Overloaded movement for user controlled 
 	 * crab. User crab differentiated by ID.
-	 * @param dx double-displacment along x-axis
+	 * @param dx double-displacement along x-axis
 	 */
 	public void update(double dx) {
 		sceneItems.forEach((crab) -> {

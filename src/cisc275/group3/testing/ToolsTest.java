@@ -5,11 +5,11 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import cisc275.group3.model.sceneobject.BetaFish;
-import cisc275.group3.model.sceneobject.ToolCage;
-import cisc275.group3.model.sceneobject.ToolCamera;
-import cisc275.group3.model.sceneobject.ToolNet;
-import cisc275.group3.model.sceneobject.ToolTrimmer;
+import cisc275.group3.sceneobject.BetaFish;
+import cisc275.group3.sceneobject.ToolCage;
+import cisc275.group3.sceneobject.ToolCamera;
+import cisc275.group3.sceneobject.ToolNet;
+import cisc275.group3.sceneobject.ToolTrimmer;
 import cisc275.group3.utility.ConstructFish;
 
 /**

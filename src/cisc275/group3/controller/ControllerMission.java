@@ -1,7 +1,6 @@
 package cisc275.group3.controller;
 
 import java.awt.Component;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
@@ -11,13 +10,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import cisc275.group3.model.scene.Scene;
+import cisc275.group3.scene.Scene;
 import cisc275.group3.utility.EnumLayerCode;
-import cisc275.group3.utility.EnumLayerCodeTutorial;
 import cisc275.group3.utility.EnumSceneType;
 import cisc275.group3.utility.Mission;
 import cisc275.group3.view.GameWindow;
-import cisc275.group3.view.ViewOverlayButton;
 import cisc275.group3.view.ViewOverlayLabel;
 
 /**

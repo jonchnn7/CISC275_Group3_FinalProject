@@ -1,16 +1,14 @@
-package cisc275.group3.model.scene;
+package cisc275.group3.scene;
 
 import cisc275.group3.controller.ControllerInventory;
-import cisc275.group3.model.sceneobject.BetaVegetation;
-import cisc275.group3.model.sceneobject.SceneObject;
-import cisc275.group3.model.sceneobject.ToolObject;
-
+import cisc275.group3.sceneobject.BetaVegetation;
+import cisc275.group3.sceneobject.SceneObject;
+import cisc275.group3.sceneobject.ToolObject;
 import cisc275.group3.utility.ConstructVegetation;
 import cisc275.group3.utility.Mission;
 import cisc275.group3.utility.SceneId;
 import cisc275.group3.utility.SceneObjectType;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
@@ -28,7 +26,7 @@ import java.util.Random;
  * @author Jolyne
  * @author Thomas
  */
-public abstract class Scene implements Serializable {
+public abstract class Scene {
 
 	// Scene Properties
 	protected SceneId manifest;
@@ -282,8 +280,10 @@ public abstract class Scene implements Serializable {
 	 * @return multiline string of parameter states
 	 */
 	public String toString() {
-		String outString = "\nName: " + manifest.getName() + "\nWidth: " + manifest.getWidth() + "\nHeight: "
-				+ manifest.getHeight() + "\nScene Objects: " + sceneItems.size();
+		String outString = "\nName: " + manifest.getName() 
+		                 + "\nWidth: " + manifest.getWidth() 
+		                 + "\nHeight: "+ manifest.getHeight() 
+		                 + "\nScene Objects: " + sceneItems.size();
 		return outString;
 	}
 
@@ -428,5 +428,4 @@ public abstract class Scene implements Serializable {
 	public void resetScore() {
 		score = 0;
 	}
-
 }

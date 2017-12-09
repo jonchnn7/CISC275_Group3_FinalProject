@@ -3,7 +3,7 @@ package cisc275.group3.utility;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
-import cisc275.group3.model.sceneobject.BetaPerson;
+import cisc275.group3.sceneobject.BetaPerson;
 
 /**
  * Interface to simplify the construction of person objects. This code used to

@@ -2,7 +2,8 @@ package cisc275.group3.controller;
 
 import java.awt.Component;
 import java.util.HashMap;
-import cisc275.group3.model.scene.SceneWetland;
+
+import cisc275.group3.scene.SceneWetland;
 import cisc275.group3.utility.EnumLayerCode;
 import cisc275.group3.utility.EnumSceneType;
 import cisc275.group3.view.GameWindow;
@@ -78,7 +79,7 @@ public class ControllerWetland extends ControllerScene implements LinkDynamics, 
   public void update() {
     if (mainPane.getLayer(componentList.get("Wetland")) == EnumLayerCode.MainAll.getCode()) {
       // Update Model
-      ((SceneWetland)scene).update();
+      ((LinkDynamics)scene).update();
       viewGame.updatePanel(scene.getSceneItems());
     }
   }
@@ -91,7 +92,7 @@ public class ControllerWetland extends ControllerScene implements LinkDynamics, 
    */
   @Override
   public void updateTime() {
-    ((SceneWetland)scene).updateTime();
+    ((LinkTime)scene).updateTime();
     
     if (mainPane.getLayer(componentList.get("Wetland")) == EnumLayerCode.MainAll.getCode()) {
       displayTime();

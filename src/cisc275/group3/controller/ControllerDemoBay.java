@@ -1,7 +1,6 @@
 package cisc275.group3.controller;
 
-//Project Imports
-import cisc275.group3.model.scene.SceneBay;
+import cisc275.group3.scene.SceneBay;
 import cisc275.group3.utility.EnumSceneType;
 
 /**

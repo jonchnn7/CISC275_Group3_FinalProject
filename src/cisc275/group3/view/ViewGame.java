@@ -11,7 +11,8 @@ import java.util.Collections;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-import cisc275.group3.model.sceneobject.SceneObject;
+
+import cisc275.group3.sceneobject.SceneObject;
 
 /**
  * @author Scott

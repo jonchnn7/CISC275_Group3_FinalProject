@@ -2,7 +2,7 @@ package cisc275.group3.utility;
 
 import java.util.Random;
 
-import cisc275.group3.model.scene.Scene;
+import cisc275.group3.scene.Scene;
 
 /**
  * Data structure that holds all of the facts about various sceneObjects in the

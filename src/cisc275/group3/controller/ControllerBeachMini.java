@@ -5,7 +5,8 @@ import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.HashMap;
-import cisc275.group3.model.scene.SceneBeachMini;
+
+import cisc275.group3.scene.SceneBeachMini;
 import cisc275.group3.utility.EnumLayerCode;
 import cisc275.group3.utility.EnumSceneType;
 import cisc275.group3.view.GameWindow;
@@ -27,8 +28,7 @@ import cisc275.group3.view.ViewOverlayLabel;
  * @author Scott
  */
 public class ControllerBeachMini extends ControllerScene implements LinkDynamics, LinkTime {
-	private final String BG_IMAGE = "img/backgrounds/beach_bg.jpg";
-
+  private final String BG_IMAGE = "img/backgrounds/beach_bg.jpg";
 	/**
 	 * Constructor
 	 * 
@@ -104,7 +104,7 @@ public class ControllerBeachMini extends ControllerScene implements LinkDynamics
 	@Override
 	public void update() {
 		if (mainPane.getLayer(componentList.get("BeachMini")) == EnumLayerCode.MainMapToolsTime.getCode()) {
-			((SceneBeachMini) scene).update();
+			((LinkDynamics)scene).update();
 			viewGame.updatePanel(scene.getSceneItems());
 		}
 	}
@@ -116,7 +116,7 @@ public class ControllerBeachMini extends ControllerScene implements LinkDynamics
 	 */
 	@Override
 	public void updateTime() {
-		((SceneBeachMini) scene).updateTime();
+		((LinkTime) scene).updateTime();
 
 		if (mainPane.getLayer(componentList.get("BeachMini")) == EnumLayerCode.MainMapToolsTime.getCode()) {
 			displayTime();

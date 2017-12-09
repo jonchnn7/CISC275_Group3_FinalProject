@@ -1,4 +1,4 @@
-package cisc275.group3.model.scene;
+package cisc275.group3.scene;
 
 import java.util.Collections;
 import cisc275.group3.controller.ControllerInventory;
@@ -20,7 +20,6 @@ import cisc275.group3.utility.SceneId;
  * @author Thomas
  * @author Scott
  */
-@SuppressWarnings("serial")
 public class SceneInventory extends Scene {
 
 	/**

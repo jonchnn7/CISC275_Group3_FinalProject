@@ -6,16 +6,12 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.HashMap;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import cisc275.group3.model.scene.Scene;
-import cisc275.group3.utility.EnumGameState;
 import cisc275.group3.utility.EnumLayerCode;
 import cisc275.group3.utility.EnumSceneType;
 import cisc275.group3.view.GameWindow;
@@ -38,7 +34,6 @@ public class ControllerTitle extends ControllerScene {
 	private JPanel titlePanel;
 	private JButton startButton;
 	private JButton tutorialButton;
-	private JButton exitButton;
 
 	/**
 	 * 

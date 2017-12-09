@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import cisc275.group3.model.sceneobject.BetaCrab;
+import cisc275.group3.sceneobject.BetaCrab;
 import cisc275.group3.utility.ConstructCrab;
 
 public class ObjectCrabTest {

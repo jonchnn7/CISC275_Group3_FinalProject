@@ -1,12 +1,13 @@
-package cisc275.group3.model.scene;
+package cisc275.group3.scene;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
-import cisc275.group3.model.sceneobject.ActionMove;
-import cisc275.group3.model.sceneobject.BetaHeron;
-import cisc275.group3.model.sceneobject.BetaVegetation;
-import cisc275.group3.model.sceneobject.SceneObject;
+
+import cisc275.group3.sceneobject.ActionMove;
+import cisc275.group3.sceneobject.BetaHeron;
+import cisc275.group3.sceneobject.BetaVegetation;
+import cisc275.group3.sceneobject.SceneObject;
 import cisc275.group3.utility.ConstructHeron;
 import cisc275.group3.utility.ConstructVegetation;
 import cisc275.group3.utility.EnumSceneType;

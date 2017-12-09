@@ -1,11 +1,12 @@
-package cisc275.group3.model.scene;
+package cisc275.group3.scene;
 
 import java.util.Collections;
 import java.util.Iterator;
 
 import cisc275.group3.controller.ControllerMission;
-import cisc275.group3.model.sceneobject.BetaPerson;
-import cisc275.group3.model.sceneobject.SceneObject;
+import cisc275.group3.sceneobject.ActionMove;
+import cisc275.group3.sceneobject.BetaPerson;
+import cisc275.group3.sceneobject.SceneObject;
 import cisc275.group3.utility.ConstructPerson;
 import cisc275.group3.utility.EnumSceneType;
 import cisc275.group3.utility.SceneId;
@@ -31,13 +32,6 @@ public class SceneHQ extends Scene {
 		super(mani);
 		time = 0;
 		prevPerson = 4;
-
-		if (getManifest().getSceneType() == EnumSceneType.TUTORIAL) {
-			tutorialFill();
-		}
-		else {
-			fillScene();
-		}
 	}
 
 	/**
@@ -67,10 +61,6 @@ public class SceneHQ extends Scene {
 	 */
 	@Override
 	protected void fillScene() {
-	}
-
-	private void tutorialFill() {
-
 	}
 	
 	/**
@@ -113,7 +103,7 @@ public class SceneHQ extends Scene {
 					((BetaPerson) person).setStatus(-1);
 					Scene.getCurrentMission().setObjectNum(-4);
 				}
-				((BetaPerson) person).move();
+				((ActionMove) person).move();
 			}
 
 			// Remove Off-screen Person

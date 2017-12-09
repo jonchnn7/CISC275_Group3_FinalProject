@@ -5,8 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import cisc275.group3.model.scene.SceneTitle;
-import cisc275.group3.model.scene.SceneTutorial;
+import cisc275.group3.scene.SceneTutorial;
 import cisc275.group3.utility.EnumSceneType;
 
 /**

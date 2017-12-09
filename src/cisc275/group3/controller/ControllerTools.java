@@ -1,6 +1,5 @@
 package cisc275.group3.controller;
 
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -18,11 +17,11 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
-import cisc275.group3.model.scene.Scene;
-import cisc275.group3.model.sceneobject.ToolCage;
-import cisc275.group3.model.sceneobject.ToolCamera;
-import cisc275.group3.model.sceneobject.ToolNet;
-import cisc275.group3.model.sceneobject.ToolTrimmer;
+import cisc275.group3.scene.Scene;
+import cisc275.group3.sceneobject.ToolCage;
+import cisc275.group3.sceneobject.ToolCamera;
+import cisc275.group3.sceneobject.ToolNet;
+import cisc275.group3.sceneobject.ToolTrimmer;
 import cisc275.group3.utility.EnumLayerCode;
 import cisc275.group3.utility.EnumLayerCodeTutorial;
 import cisc275.group3.utility.EnumSceneType;

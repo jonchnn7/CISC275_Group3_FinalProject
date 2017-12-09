@@ -5,4 +5,4 @@
  * @author Group 3 
  *
  */
-package cisc275.group3.model.sceneobject;
+package cisc275.group3.sceneobject;

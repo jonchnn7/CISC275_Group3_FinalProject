@@ -1,4 +1,4 @@
-package cisc275.group3.model.sceneobject;
+package cisc275.group3.sceneobject;
 
 /** 
  * Abstract class that defines the properties and methods of all the ToolObjects

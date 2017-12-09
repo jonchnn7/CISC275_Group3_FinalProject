@@ -36,7 +36,6 @@ public class ControllerOverlay extends ControllerScene {
 
 	// Tools
 	private ImageIcon toolsButtonImage;
-	private ImageIcon toolsButtonRolloverImage;
 	private int toolsButtonWidth;
 	private int toolsButtonHeight;
 	private ViewOverlayButton toolsButtonPanel;

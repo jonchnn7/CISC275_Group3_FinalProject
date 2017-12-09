@@ -3,7 +3,7 @@ package cisc275.group3.controller;
 import java.awt.Component;
 import java.util.HashMap;
 
-import cisc275.group3.model.scene.SceneBeach;
+import cisc275.group3.scene.SceneBeach;
 import cisc275.group3.utility.EnumLayerCode;
 import cisc275.group3.utility.EnumSceneType;
 import cisc275.group3.view.GameWindow;
@@ -24,10 +24,10 @@ import cisc275.group3.view.ViewOverlayLabel;
  * 
  * @author Jon
  * @author Ryan
+ * @author Scott
  */
 public class ControllerBeach extends ControllerScene implements LinkDynamics, LinkTime {
-	private final String BG_IMAGE = "img/backgrounds/beach_bg.jpg";
-
+  private final String BG_IMAGE = "img/backgrounds/beach_bg.jpg";
 	/**
 	 * Constructor
 	 * 
@@ -77,7 +77,7 @@ public class ControllerBeach extends ControllerScene implements LinkDynamics, Li
 	public void update() {
 		if (mainPane.getLayer(componentList.get("Beach")) == EnumLayerCode.MainAll.getCode()) {
 			// Update Model
-			((SceneBeach) scene).update();
+			((LinkDynamics)scene).update();
 			viewGame.updatePanel(scene.getSceneItems());
 		}
 	}
@@ -90,7 +90,7 @@ public class ControllerBeach extends ControllerScene implements LinkDynamics, Li
 	 */
 	@Override
 	public void updateTime() {
-		((SceneBeach) scene).updateTime();
+		((LinkTime)scene).updateTime();
 
 		if (mainPane.getLayer(componentList.get("Beach")) == EnumLayerCode.MainAll.getCode()) {
 			displayTime();

@@ -5,15 +5,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-import cisc275.group3.model.scene.SceneInventory;
-import cisc275.group3.model.sceneobject.BetaCrab;
-import cisc275.group3.model.sceneobject.BetaFish;
-import cisc275.group3.model.sceneobject.BetaHeron;
-import cisc275.group3.model.sceneobject.BetaVegetation;
-import cisc275.group3.model.sceneobject.SceneObject;
+import cisc275.group3.scene.SceneInventory;
+import cisc275.group3.sceneobject.BetaCrab;
+import cisc275.group3.sceneobject.BetaFish;
+import cisc275.group3.sceneobject.BetaHeron;
+import cisc275.group3.sceneobject.BetaVegetation;
+import cisc275.group3.sceneobject.SceneObject;
 import cisc275.group3.utility.ConstructCrab;
 import cisc275.group3.utility.ConstructFish;
 import cisc275.group3.utility.ConstructHeron;
@@ -32,10 +31,9 @@ import cisc275.group3.view.ViewGame;
  * @author Jon
  */
 public class ControllerInventory extends ControllerScene {
-
+  private final String BG_IMAGE = "img/inventoryPics/inventory_menu_small.png";
 	// Parameter and sizes for JPanel and images
 	private JPanel inventoryPanel;
-	private ImageIcon inventoryBg;
 	private static ArrayList<SceneObject> sceneFillItems = new ArrayList<SceneObject>();
 	private final static int INV_WIDTH = 340;
 	private final static int INV_HEIGHT = 300;
@@ -62,7 +60,6 @@ public class ControllerInventory extends ControllerScene {
 	 */
 	public ControllerInventory(int w, int h, GameWindow f, HashMap<String, Component> cl, EnumSceneType sceneType) {
 		super(w, h, f, cl, sceneType);
-		inventoryBg = new ImageIcon("img/inventoryPics/inventory_menu.png");
 	}
 
 	/**
@@ -72,7 +69,7 @@ public class ControllerInventory extends ControllerScene {
 	@Override
 	protected void createScene() {
 
-		scene = new SceneInventory("Inventory", 0, 0, 340, 300, EnumSceneType.MENU, "img/inventoryPics/inventory_menu_small.png");
+		scene = new SceneInventory("Inventory", 0, 0, 340, 300, EnumSceneType.MENU, BG_IMAGE);
 		viewGame = new ViewGame(340, 300, scene.getSceneItems(), scene.getManifest().getBG());
 
 		viewGame.setBounds(100, 0, INV_WIDTH, INV_HEIGHT);

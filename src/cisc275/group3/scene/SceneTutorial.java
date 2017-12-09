@@ -1,4 +1,4 @@
-package cisc275.group3.model.scene;
+package cisc275.group3.scene;
 
 import cisc275.group3.utility.ConstructCrab;
 import cisc275.group3.utility.ConstructFish;

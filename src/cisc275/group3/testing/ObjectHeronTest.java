@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import cisc275.group3.model.sceneobject.BetaHeron;
+import cisc275.group3.sceneobject.BetaHeron;
 import cisc275.group3.utility.ConstructHeron;
 import cisc275.group3.utility.ObjectId;
 

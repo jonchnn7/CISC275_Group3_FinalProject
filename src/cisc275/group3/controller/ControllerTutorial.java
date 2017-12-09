@@ -2,14 +2,13 @@ package cisc275.group3.controller;
 
 import java.awt.Component;
 import java.util.HashMap;
-import cisc275.group3.model.scene.SceneTutorial;
+
+import cisc275.group3.scene.SceneTutorial;
 import cisc275.group3.utility.EnumGameState;
-import cisc275.group3.utility.EnumLayerCode;
 import cisc275.group3.utility.EnumLayerCodeTutorial;
 import cisc275.group3.utility.EnumSceneType;
 import cisc275.group3.view.GameWindow;
 import cisc275.group3.view.ViewGame;
-import cisc275.group3.view.ViewOverlayLabel;
 
 /**
  * Contains the controller actions and logic for SceneBay.java.
@@ -26,7 +25,7 @@ import cisc275.group3.view.ViewOverlayLabel;
  * @author Scott
  * @author Jon
  */
-public class ControllerTutorial extends ControllerScene implements LinkDynamics, LinkTime {
+public class ControllerTutorial extends ControllerScene implements LinkDynamics {
 	private final String BG_IMAGE = "img/tutorial_bg_2.jpg";
   private EnumGameState gameState;
   
@@ -66,7 +65,7 @@ public class ControllerTutorial extends ControllerScene implements LinkDynamics,
 
 		componentList.put("Tutorial", viewGame);
 
-		addBasicML();
+		addML();
 	}
 
 	/**
@@ -87,34 +86,6 @@ public class ControllerTutorial extends ControllerScene implements LinkDynamics,
 	}
 
 	/**
-	 * Updates the model's time variable and calls displayTime() to share it with
-	 * the view.
-	 * <p>
-	 * Overridden from interface LinkTime.java
-	 */
-	@Override
-	public void updateTime() {
-		((LinkTime) scene).updateTime();
-
-		if (mainPane.getLayer(componentList.get("Tutorial")) == EnumLayerCode.MainTop.getCode()) {
-			displayTime();
-		}
-	}
-
-	/**
-	 * Displays the model time in the shared time label.
-	 * <p>
-	 * Overridden from interface LinkTime.java
-	 */
-	@Override
-	public void displayTime() {
-		String sceneTime;
-
-		sceneTime = Integer.toString(scene.getTime());
-		((ViewOverlayLabel) componentList.get("TimeLabel")).updateLabel(sceneTime);
-	}
-
-	/**
 	 * Determines if the tutorial is done
 	 * 
 	 * @return true if tutorial is completed, else false
@@ -132,5 +103,4 @@ public class ControllerTutorial extends ControllerScene implements LinkDynamics,
 	public EnumGameState getGameState() {
 	  return gameState;
 	}
-
 }

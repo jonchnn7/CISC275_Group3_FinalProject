@@ -9,11 +9,11 @@ import java.util.HashMap;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import cisc275.group3.model.sceneobject.BetaCrab;
-import cisc275.group3.model.sceneobject.BetaFish;
-import cisc275.group3.model.sceneobject.BetaHeron;
-import cisc275.group3.model.sceneobject.BetaVegetation;
-import cisc275.group3.model.sceneobject.SceneObject;
+import cisc275.group3.sceneobject.BetaCrab;
+import cisc275.group3.sceneobject.BetaFish;
+import cisc275.group3.sceneobject.BetaHeron;
+import cisc275.group3.sceneobject.BetaVegetation;
+import cisc275.group3.sceneobject.SceneObject;
 import cisc275.group3.utility.ConstructCrab;
 import cisc275.group3.utility.ConstructFish;
 import cisc275.group3.utility.ConstructHeron;

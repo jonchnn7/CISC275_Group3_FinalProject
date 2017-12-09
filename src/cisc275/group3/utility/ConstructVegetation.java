@@ -1,6 +1,6 @@
 package cisc275.group3.utility;
 
-import cisc275.group3.model.sceneobject.BetaVegetation;
+import cisc275.group3.sceneobject.BetaVegetation;
 
 /**
  * Interface to simplify the construction of vegetation objects. This code used

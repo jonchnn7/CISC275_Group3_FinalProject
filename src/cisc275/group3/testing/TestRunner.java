@@ -60,9 +60,6 @@ public class TestRunner {
 		abstractSceneTests();
 		printSeparator();
 
-		sceneTitleTest();
-		printSeparator();
-
 		sceneTutorialTest();
 		printSeparator();
 	}
@@ -274,22 +271,6 @@ public class TestRunner {
 		}
 
 		System.out.println("HQ Specific Scene Tests Successful: " + result.wasSuccessful());
-	}
-
-	/**
-	 * Runs the Title Specific tests for SceneTitle.java
-	 */
-	private static void sceneTitleTest() {
-		// Bay Specific Tests
-		System.out.println("\nRunning Title Scene Tests...");
-
-		result = JUnitCore.runClasses(SceneTitleTest.class);
-
-		for (Failure failure : result.getFailures()) {
-			System.out.println("Failure: " + failure.toString());
-		}
-
-		System.out.println("Title Scene Tests Successful: " + result.wasSuccessful());
 	}
 
 	/**

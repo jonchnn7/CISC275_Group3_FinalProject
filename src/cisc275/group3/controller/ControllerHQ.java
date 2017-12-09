@@ -8,9 +8,10 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 
 import javax.swing.ImageIcon;
-import cisc275.group3.model.scene.Scene;
-import cisc275.group3.model.scene.SceneHQ;
+
 import cisc275.group3.utility.EstuaryPrompts;
+import cisc275.group3.scene.Scene;
+import cisc275.group3.scene.SceneHQ;
 import cisc275.group3.utility.EnumLayerCode;
 import cisc275.group3.utility.EnumLayerCodeTutorial;
 import cisc275.group3.utility.EnumSceneType;
@@ -42,11 +43,11 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 	private ViewOverlayLabel statusLabel;
 	private ViewOverlayLabel missionLabel;
 	
-	EstuaryPrompts prompts = new EstuaryPrompts();
+	private EstuaryPrompts prompts = new EstuaryPrompts();
 
 	// Tutorial Layer Variables
-	ViewOverlayButton tutorialButton;
-	ViewOverlayLabel tutorialLabel;
+	private ViewOverlayButton tutorialButton;
+	private ViewOverlayLabel tutorialLabel;
 
 	/**
 	 * Constructor
@@ -159,9 +160,9 @@ public class ControllerHQ extends ControllerScene implements LinkDynamics, LinkT
 		}
 
 		if ((!Scene.getCurrentMission().isDoneMission()) && !(Scene.getCurrentMission().getTargetObject() == null)) {
-			((SceneHQ) scene).updateTime();
+			((LinkTime)scene).updateTime();
 		} else {
-			if (((SceneHQ) scene).getTime() != 0) {
+			if (((SceneHQ)scene).getTime() != 0) {
 				scene.missionScore();
 				scene.resetTime();
 			}

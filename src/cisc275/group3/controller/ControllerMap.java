@@ -15,7 +15,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import cisc275.group3.model.scene.Scene;
+import cisc275.group3.scene.Scene;
 import cisc275.group3.utility.EnumLayerCode;
 import cisc275.group3.utility.EnumSceneType;
 import cisc275.group3.view.GameWindow;
@@ -45,7 +45,7 @@ public class ControllerMap extends ControllerScene {
 	private JButton beachButton;
 	private JButton wetlandButton;
 	private JButton beachMiniButton;
-	private ImageIcon mapBg;
+	private final ImageIcon mapBg;
 
 	/**
 	 * Constructor

@@ -1,6 +1,6 @@
 package cisc275.group3.controller;
 
-import cisc275.group3.model.scene.Scene;
+import cisc275.group3.scene.Scene;
 import cisc275.group3.utility.EnumSceneType;
 import cisc275.group3.utility.EstuaryFacts;
 import cisc275.group3.view.GameWindow;
@@ -11,7 +11,6 @@ import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.util.HashMap;
 import java.awt.event.MouseEvent;
-import java.io.Serializable;
 
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
@@ -27,7 +26,7 @@ import javax.swing.JLayeredPane;
  * @author Jon
  * @author Jolyne
  */
-public abstract class ControllerScene implements Serializable {
+public abstract class ControllerScene {
 	// Window Parameters
 	protected final int SCREEN_WIDTH;
 	protected final int SCREEN_HEIGHT;
@@ -39,7 +38,6 @@ public abstract class ControllerScene implements Serializable {
 	protected EnumSceneType sceneType;
 	protected static JLabel mouseLabel;
 	protected static HashMap<String, Component> componentList;
-	boolean tutorial;
 	protected static boolean missionClickable;
 
 	// Window Components
@@ -69,7 +67,6 @@ public abstract class ControllerScene implements Serializable {
 		SCREEN_HEIGHT = h;
 		GAME_FRAME = f;
 
-		tutorial = false;
 		missionClickable = false;
 
 		componentList = cl;
@@ -100,29 +97,14 @@ public abstract class ControllerScene implements Serializable {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				if (e.getButton() == MouseEvent.BUTTON1) {
-//					if (tutorial == true) {
-//						scene.tutClick(e.getX(), e.getY());
-//					}
-					if (scene.processClick(e.getX(), e.getY())) {
-						displayScore();
-						displayMission();
-					}
-				}
-			}
-		});
-	}
-
-	/**
-	 * Adds a mouse listener to the scene background and passes clicks through to
-	 * the model.This ML implements tutClick which is used in the tutorial to remove
-	 * sceneObjects.
-	 */
-	protected void addBasicML() {
-		viewGame.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mousePressed(MouseEvent e) {
-				if (e.getButton() == MouseEvent.BUTTON1) {
-					scene.basicClick(e.getX(), e.getY());
+				  if (sceneType == EnumSceneType.TUTORIAL) {
+		          scene.basicClick(e.getX(), e.getY());
+				  } else {
+  					if (scene.processClick(e.getX(), e.getY())) {
+  						displayScore();
+  						displayMission();
+  					}
+				  }
 				}
 			}
 		});

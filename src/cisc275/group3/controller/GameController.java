@@ -1,7 +1,7 @@
 package cisc275.group3.controller;
 
-import cisc275.group3.model.scene.Scene;
 import cisc275.group3.controller.ControllerTutorial;
+import cisc275.group3.scene.Scene;
 import cisc275.group3.utility.EnumGameState;
 import cisc275.group3.utility.EnumSceneType;
 import cisc275.group3.view.GameWindow;
@@ -10,7 +10,6 @@ import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.io.Serializable;
 import java.util.HashMap;
 
 import javax.swing.AbstractAction;
@@ -35,7 +34,7 @@ import javax.swing.Timer;
  * @author Scott
  * @author Jon
  */
-public class GameController implements Serializable {
+public class GameController {
 
 	// Game Parameters
 	private final int SCREEN_WIDTH;

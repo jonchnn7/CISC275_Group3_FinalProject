@@ -1,6 +1,6 @@
 package cisc275.group3.utility;
 
-import cisc275.group3.model.sceneobject.BetaFish;
+import cisc275.group3.sceneobject.BetaFish;
 
 /**
  * Interface to simplify the construction of fish objects. This code used to be

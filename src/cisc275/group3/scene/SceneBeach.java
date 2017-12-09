@@ -1,10 +1,11 @@
-package cisc275.group3.model.scene;
+package cisc275.group3.scene;
 
 import java.util.Collections;
 import java.util.Iterator;
 
-import cisc275.group3.model.sceneobject.BetaCrab;
-import cisc275.group3.model.sceneobject.SceneObject;
+import cisc275.group3.sceneobject.ActionMove;
+import cisc275.group3.sceneobject.BetaCrab;
+import cisc275.group3.sceneobject.SceneObject;
 import cisc275.group3.utility.ConstructCrab;
 import cisc275.group3.utility.EnumSceneType;
 import cisc275.group3.utility.SceneId;
@@ -46,7 +47,7 @@ public class SceneBeach extends Scene implements ConstructCrab {
 	 * Used when SceneId must also be created
 	 * 
 	 * @param n
-	 *            String-scene name
+	 *            String-scene nameSceneBay(in ...)
 	 * @param x
 	 *            double-x-coordinate of upper left corner
 	 * @param y
@@ -116,7 +117,7 @@ public class SceneBeach extends Scene implements ConstructCrab {
 			}
 			// Move Crab
 			for (SceneObject crab : sceneItems) {
-				((BetaCrab) crab).move();
+				((ActionMove) crab).move();
 			}
 
 			// Remove Off-screen crabs

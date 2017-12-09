@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import cisc275.group3.model.sceneobject.BetaPerson;
+import cisc275.group3.sceneobject.BetaPerson;
 import cisc275.group3.utility.ConstructPerson;
 
 public class ObjectPersonTest {

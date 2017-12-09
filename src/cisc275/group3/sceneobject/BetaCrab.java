@@ -1,4 +1,4 @@
-package cisc275.group3.model.sceneobject;
+package cisc275.group3.sceneobject;
 
 import java.awt.geom.Point2D;
 

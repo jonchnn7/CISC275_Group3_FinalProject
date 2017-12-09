@@ -5,8 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import cisc275.group3.model.scene.SceneHQ;
-import cisc275.group3.model.sceneobject.BetaPerson;
+import cisc275.group3.scene.SceneHQ;
+import cisc275.group3.sceneobject.BetaPerson;
 import cisc275.group3.utility.ConstructPerson;
 import cisc275.group3.utility.EnumSceneType;
 import cisc275.group3.utility.ObjectId;

@@ -2,7 +2,8 @@ package cisc275.group3.controller;
 
 import java.awt.Component;
 import java.util.HashMap;
-import cisc275.group3.model.scene.SceneBay;
+
+import cisc275.group3.scene.SceneBay;
 import cisc275.group3.utility.EnumLayerCode;
 import cisc275.group3.utility.EnumSceneType;
 import cisc275.group3.view.GameWindow;
@@ -26,8 +27,7 @@ import cisc275.group3.view.ViewOverlayLabel;
  * @author Jolyne
  */
 public class ControllerBay extends ControllerScene implements LinkDynamics, LinkTime {
-	private final String BG_IMAGE = "img/backgrounds/bay_bg.jpg";
-
+  private final String BG_IMAGE = "img/backgrounds/bay_bg.jpg";
 	/**
 	 * Constructor
 	 * 
@@ -89,7 +89,7 @@ public class ControllerBay extends ControllerScene implements LinkDynamics, Link
 	 */
 	@Override
 	public void updateTime() {
-		((SceneBay) scene).updateTime();
+		((LinkTime)scene).updateTime();
 
 		if (mainPane.getLayer(componentList.get("Bay")) == EnumLayerCode.MainAll.getCode()) {
 			displayTime();
